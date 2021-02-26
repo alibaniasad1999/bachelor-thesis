@@ -93,7 +93,7 @@
 %
 %    300
 
-function [XOpt FOpt nFE]=TCACS(FunctionName, Domain, MaxFE, MaxAcceptedError, Options)
+function [XOpt, FOpt, nFE]=TCACS(FunctionName, Domain, MaxFE, MaxAcceptedError, Options)
 % Execution Options -------------------------------------
 DemoMode=0;
 PlotBalls=0;
@@ -115,17 +115,17 @@ if nargin==4
         WeightingMode=1; % Roulette
         WeightingFactor=0.5;
         PCAFactor=2;
-    end;
+    end
 else
     nAnts=Options{1};
     WeightingMode=Options{2};
     WeightingFactor=Options{3};
     PCAFactor=Options{4};
-end;
+end
 b=Domain(2,:);
 a=Domain(1,:);
 N=round(MaxFE/nAnts);    % Max Number of iteration
-rand('state',sum(100*clock));
+rand('state' ,sum(100*clock));
 Ymax=-inf;
 TabuRegionSize=inf;
 nFE=0;
@@ -134,7 +134,7 @@ FOpt=inf;
 sigma=zeros(nVar,1);
 for i=1:nVar
     sigma(i)=4*(b(i)-a(i));
-end;
+end
 
 % Tabu List Settings ------------------------------------
 TabuListSize=nAnts*1;
@@ -154,12 +154,12 @@ InitialSpacing=(0.7*DomainVolume/nAnts)^(1/nVar);
 if (DemoMode==2)
     for ifig=1:20
         delete(gcf);
-    end;
-end;
+    end
+end
 for nIter=1:N
     if nFE>=MaxFE
         break;
-    end;
+    end
     % Create a New Tour
     i=1;
     TabuDetectionNo=0;
@@ -169,14 +169,14 @@ for nIter=1:N
             while ~valid
                 x=a'+rand(nVar,1).*(b-a)';
                 valid=~LiesInTabuList(x,X,InitialSpacing);
-            end;
+            end
         else
             x=XOpt+((sigma.*randn(nVar,1))'*X2Z')';
             while (sum(x<a')+sum(x>b'))>0
                 x=XOpt+((sigma.*randn(nVar,1))'*X2Z')';
-            end;
+            end
         end
-        if (~LiesInTabuList(x,XTabu,TabuRegionSize)) | (IsTabuReady==0) | (TabuDetectionNo>1000)
+        if (~LiesInTabuList(x,XTabu,TabuRegionSize)) || (IsTabuReady==0) || (TabuDetectionNo>1000)
             y=feval(FunctionName,x');
             nFE=nFE+1;
             X(:,i)=x;
@@ -186,14 +186,14 @@ for nIter=1:N
                     disp(strcat('Number of Function Evaluations:',Num2Str(nFE)));
                     disp(strcat('Current Minumum Value:',Num2Str(FOpt)));
                     disp(strcat('Greatest Sigma Component:',Num2Str(max(sigma))));
-                end;
-            end;
+                end
+            end
             i=i+1;
             TabuDetectionNo=0;
         else
             TabuDetectionNo=TabuDetectionNo+1;
-        end;
-    end;
+        end
+    end
     if (IsTabuReady==1) && (DemoMode==1)
         NoOfPlots=nVar;
         NoOfCols=ceil(sqrt(NoOfPlots));
@@ -203,20 +203,20 @@ for nIter=1:N
             subplot(NoOfRows,NoOfCols,ip);
             hold on;
             plot(X(ip,:),'k+');
-        end;
+        end
         pause;
-    end;
+    end
     % Global Maximum Update
     YmaxEachIteration=max(Y);
     if YmaxEachIteration>Ymax
         Ymax=YmaxEachIteration;
-    end;
+    end
     % Global Minimum Update
     [YminEachIteration,Imin]=min(Y);
     if YminEachIteration<FOpt
         XOpt=X(:,Imin);
         FOpt=Y(Imin);
-    end;
+    end
     if IsTabuReady==0
         XSeed=[XSeed X];
         YSeed=[YSeed Y];
@@ -224,8 +224,8 @@ for nIter=1:N
             IsTabuReady=1;
             X=XSeed;
             Y=YSeed;
-        end;
-    end;
+        end
+    end
     if IsTabuReady==1
         XSeed=[X XTabu XProm];
         YSeed=[Y YTabu YProm];
@@ -238,7 +238,7 @@ for nIter=1:N
             YProm=[YProm YSeed(:,Ibest)];
             YSeed(:,Ibest)=[];
             XSeed(:,Ibest)=[];
-        end;
+        end
 
         X=XProm;
         Y=YProm;
@@ -252,16 +252,16 @@ for nIter=1:N
             TabuBallsNumber=TabuListSize;
         else
             TabuBallsNumber=AvailableSelections;
-        end;
+        end
         for i=1:TabuBallsNumber
             [Yworst,Iworst]=max(YSeed);
             XTabu=[XTabu XSeed(:,Iworst)];
             YTabu=[YTabu YSeed(:,Iworst)];
             YSeed(:,Iworst)=[];
             XSeed(:,Iworst)=[];
-        end;
+        end
         TabuRegionSize=0.5*CalculateTabuRegionSize(XProm,XTabu);
-    end;
+    end
     Y=Y+1e-300;
     if (DemoMode==1)&&(IsTabuReady==1)
         NoOfPlots=nVar;
@@ -282,32 +282,32 @@ for nIter=1:N
                 plot(XProm(ip,:),'go');
                 if AvailableSelections~=0
                     plot(XTabu(ip,:),'ro');
-                end;
-            end;
+                end
+            end
             title(strcat('X_',num2str(ip),'=',num2str(OptReg)));
-        end;
-    end;
+        end
+    end
     % Pheromone Update
     X2Z = GetCoord(X',PCAFactor);
     X2Z=X2Z';
     Z=(X'*X2Z)';
-    [Ymin,Imin]=min(Y);
+    [Ymin, Imin]=min(Y);
     ZOpt=Z(:,Imin);
     iii=1:size(Z,2);
     W=CalculateWeights(ZOpt,Z(:,iii~=Imin),Y(:,iii~=Imin),WeightingMode,WeightingFactor,1);
     for j=1:nVar
         sigma(j)=sqrt(sum(W.*((Z(j,iii~=Imin)-ZOpt(j)).^2)));
-    end;
+    end
     distance=[];
     for i=1:size(X,2)
         distance=[distance norm(X(:,i)-XOpt,2)];
-    end;
+    end
     d=max(distance);
     if (d<=MaxAcceptedError)
         break
-    end;
+    end
 
-end;
+end
 %==========================================================================
 % FUNCTIONS
 %==========================================================================
@@ -316,8 +316,8 @@ CurrentSeparation=inf;
 for i=1:size(XBest,2)
     for j=1:size(XTabu,2)
         CurrentSeparation=min(norm(XBest(:,i)-XTabu(:,j)),CurrentSeparation);
-    end;
-end;
+    end
+end
 result=CurrentSeparation/2;
 %==========================================================================
 function result=LiesInTabuList(Point,Pop,Separation)
@@ -330,15 +330,15 @@ for i=1:size(Pop,2)
 end
 %==========================================================================
 function res=IsSelectable(XTabu,XMin,Sigma,BoundSigma)
-[d n]=size(XTabu);
+[d, n]=size(XTabu);
 checklist=zeros(n,1);
 for i=1:n
     checklist(i)=(sum(abs(XTabu(:,i)-XMin)<(Sigma*BoundSigma))==d);
-end;
+end
 res=checklist';
 %==========================================================================
 function RM=GetCoord(X,m)
-[np nv]=size(X);
+[np, nv]=size(X);
 X=X-repmat(mean(X,1),np,1);
 p=sum(X.^2,2).^m;
 p=p/sum(p);
@@ -356,7 +356,7 @@ for i=2:(nv-1)
     ind=sum(p<rand)+1;
     Vcur=Xcur(ind,:)/((sum(Xcur(ind,:).^2))^.5);
     Vectors=[Vectors;Vcur];
-end;
+end
 V=([Vectors;ones(1,nv)]\[zeros(nv-1,1);10]);V=V/((sum(V.^2))^.5);
 RM=[Vectors;V'];
 %==========================================================================
@@ -376,14 +376,14 @@ switch Mode
         w_y=(max(Y)-Y)/1;%max(Y);
         if w_y==0
             w_y=ones(1,n);
-        end;
+        end
         w_y=w_y/sum(w_y);
         w_d=(d-min(d))/1;%min(d);
         if w_d==0
             w_d=ones(1,n);
-        end;
+        end
         w_d=w_d/sum(w_d);
         W=(abs((a*w_y+(1-a)*w_d))).^strength;
         W=W/sum(W);
-end;
+end
 %==========================================================================
