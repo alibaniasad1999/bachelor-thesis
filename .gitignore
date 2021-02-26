@@ -1,1 +1,4 @@
 .DS_Store
+.slprj
+*.slxc
+Code/Simulink/MBK/slprj/
