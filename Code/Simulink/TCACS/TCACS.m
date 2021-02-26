@@ -300,7 +300,7 @@ for nIter=1:N
     end
     distance=[];
     for i=1:size(X,2)
-        distance=[distance norm(X(:,i)-XOpt,2)];
+        distance = [distance norm(X(:,i)-XOpt,2)];
     end
     d=max(distance);
     if (d<=MaxAcceptedError)
@@ -355,7 +355,7 @@ for i=2:(nv-1)
     p=cumsum(p);
     ind=sum(p<rand)+1;
     Vcur=Xcur(ind,:)/((sum(Xcur(ind,:).^2))^.5);
-    Vectors=[Vectors;Vcur];
+    Vectors = [Vectors;Vcur];
 end
 V=([Vectors;ones(1,nv)]\[zeros(nv-1,1);10]);V=V/((sum(V.^2))^.5);
 RM=[Vectors;V'];
