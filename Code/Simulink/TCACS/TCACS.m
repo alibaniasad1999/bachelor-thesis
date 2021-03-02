@@ -254,9 +254,9 @@ for nIter=1:N
             TabuBallsNumber=AvailableSelections;
         end
         for i=1:TabuBallsNumber
-            [Yworst,Iworst]=max(YSeed);
-            XTabu=[XTabu XSeed(:,Iworst)];
-            YTabu=[YTabu YSeed(:,Iworst)];
+            [Yworst, Iworst]=max(YSeed);
+            XTabu = [XTabu XSeed(:,Iworst)];
+            YTabu = [YTabu YSeed(:,Iworst)];
             YSeed(:,Iworst)=[];
             XSeed(:,Iworst)=[];
         end

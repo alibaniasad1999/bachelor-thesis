@@ -4,7 +4,7 @@ assignin('base', 'G', G);
 try
     % Run Simulink
     sim('MBK.slx');
-    JCost = Error' * Error;
+    JCost = RefrenceError' * RefrenceError;
 catch
         JCost = 1e5;
 end
