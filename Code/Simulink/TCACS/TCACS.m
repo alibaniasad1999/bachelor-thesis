@@ -218,8 +218,10 @@ for nIter=1:N
         FOpt=Y(Imin);
     end
     if IsTabuReady==0
-        XSeed=[XSeed X];
-        YSeed=[YSeed Y];
+        temp  = [XSeed X];
+        XSeed = temp;
+        temp  = [YSeed Y];
+        YSeed  = temp;
         if length(YSeed)>=(TabuListSize+PromListSize)
             IsTabuReady=1;
             X=XSeed;
@@ -232,10 +234,12 @@ for nIter=1:N
         XProm=[];
         YProm=[];
         for i=1:PromListSize
-            [Ybest,Ibest]=min(YSeed);
+            [~,Ibest]=min(YSeed);
             size(XSeed);
-            XProm=[XProm XSeed(:,Ibest)];
-            YProm=[YProm YSeed(:,Ibest)];
+            temp  = [XProm XSeed(:,Ibest)];
+            XProm = temp;
+            temp  = [YProm YSeed(:,Ibest)];
+            YProm = temp;
             YSeed(:,Ibest)=[];
             XSeed(:,Ibest)=[];
         end
@@ -254,9 +258,11 @@ for nIter=1:N
             TabuBallsNumber=AvailableSelections;
         end
         for i=1:TabuBallsNumber
-            [Yworst, Iworst]=max(YSeed);
-            XTabu = [XTabu XSeed(:,Iworst)];
-            YTabu = [YTabu YSeed(:,Iworst)];
+            [~, Iworst]=max(YSeed);
+            temp  = [XTabu XSeed(:,Iworst)];
+            XTabu = temp;
+            temp  = [YTabu YSeed(:,Iworst)];
+            YTabu = temp;
             YSeed(:,Iworst)=[];
             XSeed(:,Iworst)=[];
         end
@@ -291,7 +297,7 @@ for nIter=1:N
     X2Z = GetCoord(X',PCAFactor);
     X2Z=X2Z';
     Z=(X'*X2Z)';
-    [Ymin, Imin]=min(Y);
+    [~, Imin]=min(Y);
     ZOpt=Z(:,Imin);
     iii=1:size(Z,2);
     W=CalculateWeights(ZOpt,Z(:,iii~=Imin),Y(:,iii~=Imin),WeightingMode,WeightingFactor,1);
@@ -300,7 +306,8 @@ for nIter=1:N
     end
     distance=[];
     for i=1:size(X,2)
-        distance = [distance norm(X(:,i)-XOpt,2)];
+        temp     = [distance norm(X(:,i)-XOpt,2)];
+        distance = temp;
     end
     d=max(distance);
     if (d<=MaxAcceptedError)
@@ -355,7 +362,8 @@ for i=2:(nv-1)
     p=cumsum(p);
     ind=sum(p<rand)+1;
     Vcur=Xcur(ind,:)/((sum(Xcur(ind,:).^2))^.5);
-    Vectors = [Vectors;Vcur];
+    temp    = [Vectors;Vcur];
+    Vectors = temp;
 end
 V=([Vectors;ones(1,nv)]\[zeros(nv-1,1);10]);V=V/((sum(V.^2))^.5);
 RM=[Vectors;V'];
@@ -366,9 +374,9 @@ q=1:n;
 d=sqrt(sum((X-repmat(XOpt,1,n)).^2,1));
 switch Mode
     case 0
-        [B,IY]=sort(Y);
+        [~,IY]=sort(Y);
         w_y(IY)=n-q+1;
-        [B,IX]=sort(d,'descend');
+        [~,IX]=sort(d,'descend');
         w_d(IX)=n-q+1;
         W=(abs(a*w_y+(1-a)*w_d)).^strength;
         W=W/sum(W);
