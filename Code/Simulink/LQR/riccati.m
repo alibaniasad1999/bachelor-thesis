@@ -5,8 +5,8 @@ k = 5;
 A = [0    1;
    -k/m -b/m];
 B = [0; 1/m];
-Q = [20 0;...
-     0 10] ;
+Q = [1000 0;...
+     0 1] ;
 R = 1;
 Forloop = 0;
 
@@ -47,7 +47,7 @@ if 1
                 break;
             end
         end
-        if isempty(Forloop)
+        if isempty(Forloop == 1)
             break;
         end
     end
