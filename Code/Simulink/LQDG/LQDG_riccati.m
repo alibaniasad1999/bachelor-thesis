@@ -1,18 +1,23 @@
 %% Initial Condition
+%% System Description
+% Mass
 m = 10;
+% Viscous Friction Coefficient 
 b = 2;
+% Spring Constant
 k = 5;
-u =0;
-A = [0 1;...
+%% State Space
+% x_dot = Ax + Bu - Dv (DV: Disturbance)
+A = [ 0    1;
     -k/m -b/m];
 C = [0 1];
-B = [ 0 ;
-     1/m];
 D = B;
+
+% Weight Matrix
 R = 1;
-Q = [100    0;
-     0   1];
- G = 2;
+Q = [5 0;
+     0   1] ;
+G = 0.8;
 %% Riccati Equation
 if 1 % use for simulink
     P_ans = zeros(2, 2);

@@ -1,14 +1,17 @@
 %%% LQDG solver for MBK system %%%
 syms Q11 Q22 G P11 P12 P22
-m = sym('m', 'real');
-b = sym('b', 'real');
-k = sym('k', 'real');
+m = sym('m', 'real'); % Mass
+b = sym('b', 'real'); % Viscous Friction Coefficient 
+k = sym('k', 'real'); % Spring Constant
+%% State Space
+% x_dot = Ax + Bu - Dv (DV: Disturbance)
 A = [ 0    1;
     -k/m -b/m];
 C = [0 1];
 B = [ 0 ;
      1/m];
 D = B;
+% Weight Matrix (G is weight matrix)
 R = 1;
 Q = [Q11    0;
      0   Q22];
