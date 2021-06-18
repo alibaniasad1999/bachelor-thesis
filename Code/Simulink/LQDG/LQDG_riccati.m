@@ -11,13 +11,15 @@ k = 5;
 A = [ 0    1;
     -k/m -b/m];
 C = [0 1];
+B = [ 0 ;
+     1/m];
 D = B;
 
 % Weight Matrix
 R = 1;
-Q = [5 0;
+Q = [1000 0;
      0   1] ;
-G = 0.8;
+G = 2;
 %% Riccati Equation
 if 1 % use for simulink
     P_ans = zeros(2, 2);
@@ -25,7 +27,7 @@ if 1 % use for simulink
     % first equation Q(1, 1) - P12^2/m^2 + P12^2/(G*m^2) - (2*P12*k)/m = 0
     % Ans1 P12 = -(G*m*(k - ((G*k^2 - Q(1, 1) + G*Q(1, 1))/G)^(1/2)))/(G - 1)
     % Ans2 P12 = -(G*m*(k - ((G*k^2 - Q(1, 1) + G*Q(1, 1))/G)^(1/2)))/(G - 1)
-    if ((G*k^2 - Q(1, 1) + G*Q(1, 1))/G) > 0
+    if ((G*k^2 - Q(1, 1) + G*Q(1, 1))/G) >= 0
         P12(1) = -(G*m*(k - ((G*k^2 - Q(1, 1) + G*Q(1, 1))/G)^(1/2)))/(G - 1);
         P12(2) = -(G*m*(k - ((G*k^2 - Q(1, 1) + G*Q(1, 1))/G)^(1/2)))/(G - 1);
     else
@@ -41,7 +43,7 @@ if 1 % use for simulink
         % Ans1 K12 =  -(G*m*(b + ((G*b^2 - 2*P12 - Q(2, 2) + 2*G*P12 + G*Q(2, 2))/G)^(1/2)))/(G - 1)
         % Ans2 K12 =  -(G*m*(b - ((G*b^2 - 2*P12 - Q(2, 2) + 2*G*P12 + G*Q(2, 2))/G)^(1/2)))/(G - 1)
         P22 = zeros(1, 2);
-        if ((G*b^2 - 2*P12 - Q(2, 2) + 2*G*P12 + G*Q(2, 2))/G) > 0
+        if ((G*b^2 - 2*P12 - Q(2, 2) + 2*G*P12 + G*Q(2, 2))/G) >= 0
             P22(1) = -(G*m*(b + ((G*b^2 - 2*P12(i) - Q(2, 2) + 2*G*P12(i) + G*Q(2, 2))/G)^(1/2)))/(G - 1);
             P22(2) = -(G*m*(b - ((G*b^2 - 2*P12(i) - Q(2, 2) + 2*G*P12(i) + G*Q(2, 2))/G)^(1/2)))/(G - 1);
         else
@@ -66,7 +68,7 @@ if 1 % use for simulink
                 break;
             end
         end
-        if isempty(Forloop)
+        if Forloop == 1
             break;
         end
     end
