@@ -1,10 +1,11 @@
+%%% LQDG TCACS %%%
 warning off all;
 close all;
 clear
 clc
 clear
 Iteration =  0;
-MaxFE     = 10;
+MaxFE     = 1000;
 %    Q11  Q22    G
 a = [ 1  ,  1,  1.1];
 b = [100, 100,   20];
