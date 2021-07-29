@@ -1,5 +1,5 @@
 global A B Q n S1 S2 R1_inv u_saver counter t_u
-[A, B] = Quadcopter_system(zeros(6, 1), ones(4, 1) * 2000);
+[A, B] = Quadcopter_system(zeros(6, 1), ones(4, 1) * 20);
 Q      = 10*eye(6);
 R1     = eye(4);
 R1_inv = R1^-1;
@@ -39,26 +39,26 @@ for i = 1:7
     ylabel('$RPM$', 'interpreter', 'latex');
     switch i
         case 1
-            print(101, '../../Figure/LQDG/FeedBackLQDGroll.png','-dpng','-r500')
-            print(102, '../../Figure/LQDG/FeedBackLQDGrollcontrol.png','-dpng','-r500')
+            print(101, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGroll.png','-dpng','-r500')
+            print(102, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGrollcontrol.png','-dpng','-r500')
         case 2
-            print(101, '../../Figure/LQDG/FeedBackLQDGpitch.png','-dpng','-r500')
-            print(102, '../../Figure/LQDG/FeedBackLQDGpitchcontrol.png','-dpng','-r500')
+            print(101, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGpitch.png','-dpng','-r500')
+            print(102, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGpitchcontrol.png','-dpng','-r500')
         case 3
-            print(101, '../../Figure/LQDG/FeedBackLQDGpsi.png','-dpng','-r500')
-            print(102, '../../Figure/LQDG/FeedBackLQDGpsicontrol.png','-dpng','-r500')
+            print(101, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGpsi.png','-dpng','-r500')
+            print(102, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGpsicontrol.png','-dpng','-r500')
         case 4
-            print(101, '../../Figure/LQDG/FeedBackLQDGp.png','-dpng','-r500')
-            print(102, '../../Figure/LQDG/FeedBackLQDGpcontrol.png','-dpng','-r500')
+            print(101, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGp.png','-dpng','-r500')
+            print(102, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGpcontrol.png','-dpng','-r500')
         case 5
-            print(101, '../../Figure/LQDG/FeedBackLQDGq.png','-dpng','-r500')
-            print(102, '../../Figure/LQDG/FeedBackLQDGqcontrol.png','-dpng','-r500')
+            print(101, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGq.png','-dpng','-r500')
+            print(102, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGqcontrol.png','-dpng','-r500')
         case 6
-            print(101, '../../Figure/LQDG/FeedBackLQDGr.png','-dpng','-r500')
-            print(102, '../../Figure/LQDG/FeedBackLQDGrcontrol.png','-dpng','-r500')
+            print(101, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGr.png','-dpng','-r500')
+            print(102, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGrcontrol.png','-dpng','-r500')
         otherwise
-            print(101, '../../Figure/LQDG/FeedBackLQDGall.png','-dpng','-r500')
-            print(102, '../../Figure/LQDG/FeedBackLQDGallcontrol.png','-dpng','-r500')
+            print(101, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGall.png','-dpng','-r500')
+            print(102, '../../../Figure/Ode45Simulation/LQDG/FeedBackLQDGallcontrol.png','-dpng','-r500')
     end
 %     close all;
 end
