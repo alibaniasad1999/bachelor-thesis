@@ -31,7 +31,7 @@ hold on
 plot(t,x)
 legend('$\phi$', '$\theta$', '$\psi$','$p$','$q$','$r$',...
     'interpreter', 'latex')
-%%
+%% Functions
 function d = diff_eq_Riccati(~,k)
 global A B Q R_inv n
 K	 = reshape(k,n,n);
