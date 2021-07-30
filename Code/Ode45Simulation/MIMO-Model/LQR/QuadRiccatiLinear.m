@@ -1,6 +1,6 @@
 global A B Q R n R_inv
-[A, B] = Quadcopter_system(zeros(6, 1), 1000*ones(4, 1));
-Q	= 1000*eye(6);
+[A, B] = Quadcopter_system(zeros(6, 1), 2000*ones(4, 1));
+Q	= 10*eye(6);
 R	= eye(4);
 R_inv = R^-1;
 H	= 40*eye(6);
@@ -17,7 +17,13 @@ figure(100)
 hold on
 plot(t_K,K_arr)
 
-x0	= ones(6, 1);
+x0 = [deg2rad(30) ; % roll
+      deg2rad(45) ; % pitch
+      deg2rad(60) ; % yaw
+      deg2rad(60) ; % p
+      deg2rad(50) ; % q
+      deg2rad(30)]; % r
+  
 [t,x] = ode45(@diff_eq_states,[0,tf],x0);
 
 figure(101)
@@ -28,14 +34,14 @@ legend('$\phi$', '$\theta$', '$\psi$','$p$','$q$','$r$',...
 %%
 function d = diff_eq_Riccati(~,k)
 global A B Q R_inv n
-K	= reshape(k,n,n);
-Kdot	= -K*A - A'*K - Q + K*B*R_inv*B'*K;
-d	= reshape(Kdot,n^2,1);
+K	 = reshape(k,n,n);
+Kdot = -K*A - A'*K - Q + K*B*R_inv*B'*K;
+d	 = reshape(Kdot,n^2,1);
 end
 
-function d = diff_eq_states(t,x)
+function d = diff_eq_states(~,x)
 global R_inv n A B
-global t_K K_arr u
+global K_arr u
 
 K_t	= K_arr(end, :);
 K	= reshape(K_t,n,n);
