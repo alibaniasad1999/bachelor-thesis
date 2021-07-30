@@ -1,6 +1,6 @@
 global A B Q R n R_inv
 [A, B] = Quadcopter_system(zeros(6, 1), rpm2radpersec(2000)*ones(4, 1));
-Q	= 10*eye(6);
+Q	= 100*eye(6);
 R	= eye(4);
 R_inv = R^-1;
 H	= 40*eye(6);
@@ -19,7 +19,7 @@ plot(t_K,K_arr)
 
 x0 = [deg2rad(30) ; % roll
       deg2rad(45) ; % pitch
-      deg2rad(60) ; % yaw
+      deg2rad(30) ; % yaw
       deg2rad(60) ; % p
       deg2rad(50) ; % q
       deg2rad(30)]; % r
