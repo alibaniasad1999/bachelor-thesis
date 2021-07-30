@@ -1,10 +1,10 @@
 global A B Q R n R_inv
-[A, B] = Quadcopter_system(zeros(6, 1), 2000*ones(4, 1));
+[A, B] = Quadcopter_system(zeros(6, 1), rpm2radpersec(2000)*ones(4, 1));
 Q	= 10*eye(6);
 R	= eye(4);
 R_inv = R^-1;
 H	= 40*eye(6);
-tf	= 10;
+tf	= 15;
 
 K0	= H;
 n	= 6;
@@ -47,4 +47,8 @@ K_t	= K_arr(end, :);
 K	= reshape(K_t,n,n);
 u	= -R_inv*B'*K*x;
 d	= A*x + B*u;
+end
+
+function radpersec = rpm2radpersec(rpm)
+radpersec = rpm / 60 * 2 * pi;
 end
