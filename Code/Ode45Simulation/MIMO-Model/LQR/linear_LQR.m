@@ -75,15 +75,16 @@ function d = diff_eq_states(~,x)
 global R_inv n A B U_1 U_2 U_3 U_4
 global K_arr u
 
-K_t	= K_arr(end, :);
-K	= reshape(K_t,n,n);
-u	= -R_inv*B'*K*x;
-u   = u  + rpm2radpersec(2000);
+K_t	       = K_arr(end, :);
+K	       = reshape(K_t,n,n);
+u	       = -R_inv*B'*K*x;
+u          = u  + rpm2radpersec(2000);
 U_1(end+1) = u(1); % save u1
 U_2(end+1) = u(2); % save u2
 U_3(end+1) = u(3); % save u3
 U_4(end+1) = u(4); % save u4
-d	= A*x + B*u;
+
+d          = A*x + B*u;
 end
 
 % rpm to rad/sec
