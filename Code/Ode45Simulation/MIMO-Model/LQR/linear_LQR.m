@@ -37,7 +37,8 @@ global t_K K_arr
 figure(100)
 hold on
 plot(t_K,K_arr)
-
+xlabel('$Time_{(\sec)}$', 'interpreter', 'latex');
+hold off
 x0 = [deg2rad(30) ; % roll
       deg2rad(45) ; % pitch
       deg2rad(30) ; % yaw
@@ -52,6 +53,15 @@ figure(101)
 hold on
 plot(t,x)
 legend('$\phi$', '$\theta$', '$\psi$','$p$','$q$','$r$',...
+    'interpreter', 'latex')
+xlabel('$Time_{(\sec)}$', 'interpreter', 'latex');
+ylabel('$System~State$', 'interpreter', 'latex');
+hold off
+figure(102)
+plot(linspace(0, tf, length(U)), U);
+xlabel('$Time_{(\sec)}$', 'interpreter', 'latex');
+ylabel('$RPM$', 'interpreter', 'latex');
+legend('$\omega_1$', '$\omega_2$', '$\omega_3$','$\omega_4$' ,...
     'interpreter', 'latex')
 %% Functions
 function d = diff_eq_Riccati(~,k)
