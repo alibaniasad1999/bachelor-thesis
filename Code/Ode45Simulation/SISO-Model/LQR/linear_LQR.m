@@ -5,59 +5,72 @@ global A B1 B2 B3 Q n R_inv U_1 U_2 U_3 U_t
 U_1   = []; % save data u1
 U_2   = []; % save data u2
 U_3   = []; % save data u3
-U_t = []; % time for u saver
+U_t   = []; % time for u saver
 
 [A, B1, B2, B3] = Quadcopter_system(zeros(6, 1)); % Space State
 
 q_v = [10
        10 
+       10000000
        10
        10
-       10
-       10];
+       10000000];
 Q      = diag(q_v);
 R      = 5;
 R_inv  = R^-1;
 
 h_v = [10
        10 
+       10000000
        10
        10
-       10
-       10];
+       10000000];
 H	 = diag(h_v);
 
-tf   = 15; % final time
+tf   = 20; % final time
 
 k0	= H;
 n	= 6;
 k0	= reshape(k0,n^2,1);
 
 global t_k_1 k_arr_1
-% u1 
+% u1 omega_2^2 - omega_4^2
 [t_k_1,k_arr_1] = ode45(@diff_eq_Riccati_u1,[tf,0],k0);
 
 global t_k_2 k_arr_2
-% u2 
+% u2 omega_1^2 - omega_3^2
 [t_k_2,k_arr_2] = ode45(@diff_eq_Riccati_u2,[tf,0],k0);
 
 global t_k_3 k_arr_3
-% u3 
+% u3 omega_1^2 - omega_2^2 + omega_3^2 - omega_4^2
 [t_k_3,k_arr_3] = ode45(@diff_eq_Riccati_u3,[tf,0],k0);
 
-% all U in one
-U = [U_1; U_2; U_3];
+% u4 = omega_1^2 + omega_2^2 + omega_3^2 + omega_4^2 Assume 4*2000rpm
 
 x0 = [deg2rad(30) ; % roll
       deg2rad(45) ; % pitch
-      deg2rad(00) ; % yaw
+      deg2rad(30) ; % yaw
       deg2rad(60) ; % p
       deg2rad(50) ; % q
-      deg2rad(00)]; % r
+      deg2rad(30)]; % r
  
 % System Simulation
 [t,x] = ode45(@diff_eq_states,[0,tf],x0);
 
+% control effort
+U_4 = ones(1, length(U_1)) * 4 * rpm2rad_sec(2000)^2;
+
+% all U in one
+U = [U_1; U_2; U_3; U_4];
+
+% calculate omega
+omega_1 = sqrt((U_4 + U_3 + 2 * U_2) / 4);
+omega_3 = sqrt((U_4 + U_3 - 2 * U_2) / 4);
+omega_2 = sqrt((U_4 - U_3 + 2 * U_1) / 4);
+omega_4 = sqrt((U_4 - U_3 - 2 * U_1) / 4);
+omega = [omega_1; omega_2; omega_3; omega_4];
+% rad/sec to rpm
+omega = rad_sec2rpm(omega);
 % Plot figure
 figure(101)
 plot(t, x)
@@ -100,6 +113,7 @@ kdot = -k*A - A'*k - Q + k*B*R_inv*B'*k;
 d	= reshape(kdot, n^2, 1);
 end
 
+% System simulation
 function d = diff_eq_states(t,x)
 global A B1 B2 B3 n R_inv
 global U_1 U_2 U_3 U_t
@@ -123,4 +137,14 @@ U_3(end+1) = u3;
 U_t(end+1) = t ;
 
 d	= A * x + B1 * u1 + B2 * u2 + B3 * u3;
+end
+
+% rpm to rad/sec
+function rad = rpm2rad_sec(rpm)
+rad = rpm / 60 * 2 * pi;
+end
+
+% rad/sec to rpm
+function rpm = rad_sec2rpm(rad)
+rpm = rad * 60 / 2 / pi;
 end
