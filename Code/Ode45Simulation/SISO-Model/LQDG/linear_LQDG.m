@@ -1,6 +1,6 @@
 clear
 clc
-
+% feedback game
 global A1 A2 A3 B1 B2 B3 n R1_inv R2_inv U_1 U_2 U_3 U_t
 U_1   = []; % save data u1
 U_2   = []; % save data u2
