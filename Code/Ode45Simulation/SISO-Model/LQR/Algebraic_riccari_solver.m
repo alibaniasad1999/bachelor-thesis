@@ -1,4 +1,4 @@
-function K_ans = Algebraeic_riccari_solver(a, b, q1, q2, R)
+function K_ans = Algebraic_riccari_solver(a, b, q1, q2, R)
 A = [0 1 ;
      a 0];
 
