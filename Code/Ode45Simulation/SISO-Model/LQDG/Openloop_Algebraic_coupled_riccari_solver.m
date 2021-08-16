@@ -68,7 +68,7 @@ for i = 1:length(k12_1)
         temp_K_2(1, 2) = k12_2(i);
         temp_K_2(2, 1) = k12_2(i);
         temp_K_2(2, 2) = k22_2(j);
-        if all(eig(A + (-R1_inv*B'*temp_K_1 -R2_inv*B'*temp_K_2)) < 0)
+        if all(eig(A + B * (-R1_inv*B'*temp_K_1 -R2_inv*B'*temp_K_2)) < 0)
             k1_ans = temp_K_1;
             k2_ans = temp_K_2;
             valid_ans = true;

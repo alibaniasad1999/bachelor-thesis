@@ -6,7 +6,7 @@ U_1   = []; % save data u1
 U_2   = []; % save data u2
 U_3   = []; % save data u3
 U_t   = []; % time for u saver
-global S1_1 S2_1 S1_2 S2_2 S1_3 S2_3
+global S1_1 S2_1 S1_2 S2_2 S1_3 S2_3 Q1 Q2 Q3
 
 [A1, A2, A3, B1, B2, B3] = SISO_Quadcopter_system(zeros(6, 1)); % Space State
 
