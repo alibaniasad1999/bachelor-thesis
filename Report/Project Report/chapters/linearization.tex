@@ -1,4 +1,4 @@
-\section{خطی‌سازی}
+\section{خطی‌سازی به فرم \lr{MIMO}}
 در این قسمت با توجه به فضای حالت بدست آمده، چهارپره حول نقطه کار خطی‌سازی می‌شود.
 \begin{equation*}
 	a = \begin{bmatrix}
@@ -27,7 +27,7 @@
 \end{equation}
 برای خطی سازی از بسط تیلور استفاده شده‌است.
 \begin{equation}
-	\delta \dot x = \dfrac{\partial a}{\partial x}\delta x + \dfrac{\partial a}{\partial u}\delta u 
+	\delta \dot x = \dfrac{\partial a}{\partial x}\delta x + \dfrac{\partial a}{\partial\omega}\delta \omega 
 \end{equation}
 \begin{equation}
 	\dot{\vec{x}} =
@@ -37,7 +37,7 @@
 		\delta \dot x_3&
 		\delta \dot x_4&
 		\delta \dot x_5&
-		\delta \dot x_6&
+		\delta \dot x_6
 	\end{bmatrix}^T
 \end{equation}
 
@@ -49,76 +49,76 @@
 \dfrac{\partial  a_1}{\partial  x_3}&
 \dfrac{\partial  a_1}{\partial  x_4}&
 \dfrac{\partial  a_1}{\partial  x_5}&
-\dfrac{\partial  a_1}{\partial  x_6}&
+\dfrac{\partial  a_1}{\partial  x_6}
 \\[1em]
 \dfrac{\partial  a_2}{\partial  x_1}&
 \dfrac{\partial  a_2}{\partial  x_2}&
 \dfrac{\partial  a_2}{\partial  x_3}&
 \dfrac{\partial  a_2}{\partial  x_4}&
 \dfrac{\partial  a_2}{\partial  x_5}&
-\dfrac{\partial  a_2}{\partial  x_6}&
+\dfrac{\partial  a_2}{\partial  x_6}
 \\[1em]
 \dfrac{\partial  a_3}{\partial  x_1}&
 \dfrac{\partial  a_3}{\partial  x_2}&
 \dfrac{\partial  a_3}{\partial  x_3}&
 \dfrac{\partial  a_3}{\partial  x_4}&
 \dfrac{\partial  a_3}{\partial  x_5}&
-\dfrac{\partial  a_3}{\partial  x_6}&
+\dfrac{\partial  a_3}{\partial  x_6}
 \\[1em]
 \dfrac{\partial  a_4}{\partial  x_1}&
 \dfrac{\partial  a_4}{\partial  x_2}&
 \dfrac{\partial  a_4}{\partial  x_3}&
 \dfrac{\partial  a_4}{\partial  x_4}&
 \dfrac{\partial  a_4}{\partial  x_5}&
-\dfrac{\partial  a_4}{\partial  x_6}&
+\dfrac{\partial  a_4}{\partial  x_6}
 \\[1em]
 \dfrac{\partial  a_5}{\partial  x_1}&
 \dfrac{\partial  a_5}{\partial  x_2}&
 \dfrac{\partial  a_5}{\partial  x_3}&
 \dfrac{\partial  a_5}{\partial  x_4}&
 \dfrac{\partial  a_5}{\partial  x_5}&
-\dfrac{\partial  a_5}{\partial  x_6}&
+\dfrac{\partial  a_5}{\partial  x_6}
 \\[1em]
 \dfrac{\partial  a_6}{\partial  x_1}&
 \dfrac{\partial  a_6}{\partial  x_2}&
 \dfrac{\partial  a_6}{\partial  x_3}&
 \dfrac{\partial  a_6}{\partial  x_4}&
 \dfrac{\partial  a_6}{\partial  x_5}&
-\dfrac{\partial  a_6}{\partial  x_6}&
+\dfrac{\partial  a_6}{\partial  x_6}
 	\end{bmatrix}
 \end{equation}
 \begin{equation}
-	\dfrac{\partial \vec a}{\partial \vec u} = B = 
+	\dfrac{\partial \vec a}{\partial \vec \omega} = B = 
 	\begin{bmatrix}
-		\dfrac{\partial  a_1}{\partial  u_1}&
-		\dfrac{\partial  a_1}{\partial  u_2}&
-		\dfrac{\partial  a_1}{\partial  u_3}&
-		\dfrac{\partial  a_1}{\partial  u_4}&
+		\dfrac{\partial  a_1}{\partial  \omega_1}&
+		\dfrac{\partial  a_1}{\partial  \omega_2}&
+		\dfrac{\partial  a_1}{\partial  \omega_3}&
+		\dfrac{\partial  a_1}{\partial  \omega_4}
 		\\[1em]
-		\dfrac{\partial  a_2}{\partial  u_1}&
-		\dfrac{\partial  a_2}{\partial  u_2}&
-		\dfrac{\partial  a_2}{\partial  u_3}&
-		\dfrac{\partial  a_2}{\partial  u_4}&
+		\dfrac{\partial  a_2}{\partial  \omega_1}&
+		\dfrac{\partial  a_2}{\partial  \omega_2}&
+		\dfrac{\partial  a_2}{\partial  \omega_3}&
+		\dfrac{\partial  a_2}{\partial  \omega_4}
 		\\[1em]
-		\dfrac{\partial  a_3}{\partial  u_1}&
-		\dfrac{\partial  a_3}{\partial  u_2}&
-		\dfrac{\partial  a_3}{\partial  u_3}&
-		\dfrac{\partial  a_3}{\partial  u_4}&
+		\dfrac{\partial  a_3}{\partial  \omega_1}&
+		\dfrac{\partial  a_3}{\partial  \omega_2}&
+		\dfrac{\partial  a_3}{\partial  \omega_3}&
+		\dfrac{\partial  a_3}{\partial  \omega_4}
 		\\[1em]
-		\dfrac{\partial  a_4}{\partial  u_1}&
-		\dfrac{\partial  a_4}{\partial  u_2}&
-		\dfrac{\partial  a_4}{\partial  u_3}&
-		\dfrac{\partial  a_4}{\partial  u_4}&
+		\dfrac{\partial  a_4}{\partial  \omega_1}&
+		\dfrac{\partial  a_4}{\partial  \omega_2}&
+		\dfrac{\partial  a_4}{\partial  \omega_3}&
+		\dfrac{\partial  a_4}{\partial  \omega_4}
 		\\[1em]
-		\dfrac{\partial  a_5}{\partial  u_1}&
-		\dfrac{\partial  a_5}{\partial  u_2}&
-		\dfrac{\partial  a_5}{\partial  u_3}&
-		\dfrac{\partial  a_5}{\partial  u_4}&
+		\dfrac{\partial  a_5}{\partial  \omega_1}&
+		\dfrac{\partial  a_5}{\partial  \omega_2}&
+		\dfrac{\partial  a_5}{\partial  \omega_3}&
+		\dfrac{\partial  a_5}{\partial  \omega_4}
 		\\[1em]
-		\dfrac{\partial  a_6}{\partial  u_1}&
-		\dfrac{\partial  a_6}{\partial  u_2}&
-		\dfrac{\partial  a_6}{\partial  u_3}&
-		\dfrac{\partial  a_6}{\partial  u_4}&
+		\dfrac{\partial  a_6}{\partial  \omega_1}&
+		\dfrac{\partial  a_6}{\partial  \omega_2}&
+		\dfrac{\partial  a_6}{\partial  \omega_3}&
+		\dfrac{\partial  a_6}{\partial  \omega_4}
 		\\[1em]
 	\end{bmatrix}
 \end{equation}
