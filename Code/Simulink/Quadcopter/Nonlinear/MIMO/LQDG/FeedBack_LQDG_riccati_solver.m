@@ -9,10 +9,10 @@ U_4   = []; % time for u saver
 [A, B] = Quadcopter_system(zeros(6, 1), ones(4, 1) * rpm2rad_sec(2000));
 q_v = [10
        10 
+       100000
        10
        10
-       10
-       10];
+       100000];
 Q      = diag(q_v);
 R1     = eye(4);
 R1_inv = R1^-1;
