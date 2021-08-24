@@ -27,7 +27,7 @@ h_v = [10
        10
        10];
 H	 = diag(h_v);
-tf     = 10;
+tf     = 15;
 p0	= [H;H];
 n	= 6;
 p0	= reshape(p0,2 * n^2,1);
@@ -47,7 +47,7 @@ p1 = p(1:n, :);
 p2 = p(n+1: end, :);
 
 % all player
-LQDG_openloop_gain = (-R1_inv * B' * p1 - R2_inv * B' * p2) ;
+LQDG_openloop_gain = (-R1_inv * B' * p1) ;
 %% Functions %%
 function d = diff_eq_Riccati(~,p)
 global A Q n S1 S2
