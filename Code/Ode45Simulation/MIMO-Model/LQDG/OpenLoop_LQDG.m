@@ -6,7 +6,7 @@ U_1   = []; % save data u1
 U_2   = []; % save data u2
 U_3   = []; % save data u3
 U_4   = []; % time for u saver
-[A, B] = Quadcopter_system(zeros(6, 1), ones(4, 1) * 2000);
+[A, B] = Quadcopter_system(zeros(6, 1), ones(4, 1) * rpm2rad_sec(2000));
 q_v = [10
        10 
        10
@@ -27,7 +27,7 @@ h_v = [10
        10
        10];
 H	 = diag(h_v);
-tf     = 10;
+tf     = 15;
 p0	= [H;H];
 n	= 6;
 p0	= reshape(p0,2 * n^2,1);
