@@ -1,7 +1,7 @@
 function JCost = Cost(Q_weight)
 warning off all;
 close all;
-% assign G to workspace
+% assign Q weights(q1-q6) to workspace
 assignin('base', 'Q_weight', Q_weight);
 % Run Simulink
 try
@@ -13,6 +13,7 @@ catch
 	JCost = 1e5;
 end
 Iteration = evalin('base', 'Iteration');
-Iteration = Iteration + 1
+Iteration = Iteration + 1;
+fprintf('num of ite: %d\n', Iteration);
 assignin('base', 'Iteration', Iteration);
 end

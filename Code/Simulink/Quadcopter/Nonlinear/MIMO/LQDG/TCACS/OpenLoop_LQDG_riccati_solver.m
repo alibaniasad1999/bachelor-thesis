@@ -1,5 +1,5 @@
 % clear
-clc
+% clc
 QuadConstants;
 global A B Q n S1 S2 R1_inv R2_inv U_1 U_2 U_3 U_4
 U_1   = []; % save data u1
@@ -7,12 +7,12 @@ U_2   = []; % save data u2
 U_3   = []; % save data u3
 U_4   = []; % time for u saver
 [A, B] = Quadcopter_system(zeros(6, 1), ones(4, 1) * rpm2rad_sec(2000));
-q_v = [Q_weight(1)
-       Q_weight(2)
-       Q_weight(3)
-       Q_weight(4)
-       Q_weight(5)
-       Q_weight(6)];
+q_v = [10^Q_weight(1)
+       10^Q_weight(2)
+       10^Q_weight(3)
+       10^Q_weight(4)
+       10^Q_weight(5)
+       10^Q_weight(6)];
 Q      = diag(q_v);
 R1     = eye(4);
 R1_inv = R1^-1;
