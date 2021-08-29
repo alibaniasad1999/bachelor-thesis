@@ -7,16 +7,20 @@ U_2   = []; % save data u2
 U_3   = []; % save data u3
 U_4   = []; % time for u saver
 [A, B] = Quadcopter_system(zeros(6, 1), ones(4, 1) * rpm2rad_sec(2000));
-q_v = [10^Q_weight(1)
-       10^Q_weight(2)
-       10^Q_weight(3)
-       10^Q_weight(4)
-       10^Q_weight(5)
-       10^Q_weight(6)];
+q_v = [10^weighting_matrix(1)
+       10^weighting_matrix(2)
+       10^weighting_matrix(3)
+       10^weighting_matrix(4)
+       10^weighting_matrix(5)
+       10^weighting_matrix(6)];
 Q      = diag(q_v);
+R2_v = [10^weighting_matrix( 7)
+       10^weighting_matrix( 8)
+       10^weighting_matrix( 9)
+       10^weighting_matrix(10)];
 R1     = eye(4);
 R1_inv = R1^-1;
-R2     = 2 * eye(4);
+R2     = diag(R2_v);
 R2_inv = R2^-1;
 S1     = B* R1_inv * B';
 S2     = B* R2_inv * B';

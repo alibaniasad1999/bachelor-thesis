@@ -1,8 +1,8 @@
-function JCost = Cost(Q_weight)
+function JCost = Cost(weighting_matrix)
 warning off all;
 close all;
 % assign Q weights(q1-q6) to workspace
-assignin('base', 'Q_weight', Q_weight);
+assignin('base', 'weighting_matrix', weighting_matrix);
 % Run Simulink
 try
 	simout = sim('Quad_Nonlinear_Openloop_LQDG.slx');
