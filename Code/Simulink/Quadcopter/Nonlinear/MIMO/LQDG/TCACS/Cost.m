@@ -1,7 +1,7 @@
 function JCost = Cost(weighting_matrix)
 warning off all;
 close all;
-% assign Q weights(q1-q6) to workspace
+% assign weighting_matrix weights(q1-q6 and R2_1-R2_4) to workspace
 assignin('base', 'weighting_matrix', weighting_matrix);
 % Run Simulink
 try
