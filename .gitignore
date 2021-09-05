@@ -324,7 +324,6 @@ codegen/
 
 # Octave session info
 octave-workspace
-*.png
 *.slxc
 ## Core latex/pdflatex auxiliary files:
 *.aux
