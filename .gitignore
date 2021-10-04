@@ -313,7 +313,9 @@ helpsearch*/
 slprj/
 sccprj/
 *_ert_rtw/
-
+*.elf
+*.hex
+*.eep
 # Matlab code generation folders
 codegen/
 
