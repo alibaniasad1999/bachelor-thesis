@@ -9,65 +9,96 @@
 دینامیک دورانی استند بهصورت معادله زیر حاصل می‌شود:
 \begin{equation}\label{demifinalrotation}
 	\begin{split}
-		\left[\dfrac{d\omega^{BI}}{dt}\right]^B = 
-		\left(\left[J\right]^B\right)^{-1}\Bigg(
-		-&\left[\Omega^{BI}\right]\times\left(
-		\left[J\right]^B\left[\omega^{BI}\right]^B
-		+\left[I_R\right]^B\right) + \\
-		&\left[m_A\right]^B+\left[s_{DC}\right]^B
-		\bigg(-\left[G\right]^B
-		-\left[T\right]^B+ \\
+		\left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B = 
+		\left(\left[\boldsymbol J\right]^B\right)^{-1}\Bigg(
+		-&\left[\boldsymbol\Omega^{BI}\right]\times\left(
+		\left[\boldsymbol J\right]^B\left[\boldsymbol\omega^{BI}\right]^B
+		+\left[\boldsymbol I_R\right]^B\right) + \\
+		&\left[\boldsymbol m_A\right]^B+\left[\boldsymbol s_{DC}\right]^B
+		\bigg(-\left[\boldsymbol G\right]^B
+		-\left[\boldsymbol T\right]^B+ \\
 		&m_{tot}\Bigl\{2
-		\left[\Omega^{BI}\right]^B
-		\left[\Omega^{BI}\right]^B
-		\left[s_{cd}\right]^B+
-		\left[\dfrac{d\Omega^{BI}}{dt}\right]^B
-		\left[s_{cd}\right]^B
+		\left[\boldsymbol \Omega^{BI}\right]^B
+		\left[\boldsymbol \Omega^{BI}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B+
+		\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B
 		\Bigr\}\bigg)\Bigg)
 	\end{split}
 \end{equation}
 در رابطه
 \ref{demifinalrotation}،
 عبارت
-$\left[\dfrac{d\Omega^{BI}}{dt}\right]^B$
+$\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B$
 بیانگر ماتریس پادمتقارن بردار مشتق سرعت‌ زاویه‌ای بدنی
-$\left[\dfrac{d\omega^{BI}}{dt}\right]^B$
+$\left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B$
 است. جمله آخر در معادله فوق را می‌توان به صورت زیر بازنویسی کرد:
 \begin{equation}\label{sc}
-	m_{tot}\left[s_{DC}\right]^R
-	\left[\dfrac{d\Omega^{BI}}{dt}\right]^B\left[s_{CD}\right]^R = 
-	m_{tot}\left[s_{DC}\right]^R\left[s_{DC}\right]^R
-	\left[\dot{\omega}^{BI}\right]^B
+	m_{tot}\left[\boldsymbol s_{DC}\right]^R
+	\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B\left[\boldsymbol s_{CD}\right]^R = 
+	m_{tot}\left[\boldsymbol s_{DC}\right]^R\left[\boldsymbol s_{DC}\right]^R
+	\left[\dot{\boldsymbol\omega}^{BI}\right]^B
 \end{equation}
 با جایگذاری معادله
 \ref{sc}
 در معادله
 \ref{demifinalrotation}
-و ساده سازی بردار سرعت زاویه‌ای پرنده به صورت زیر حاصل می‌شود:
-\begin{equation}\label{finaltorquefinal}
+معادله زیر حاصل می‌شود:
+\begin{equation}\label{longfinal}
 	\begin{split}
-		\left[\dfrac{d\omega^{BI}}{dt}\right]^B &= A^{-1}b\\
-		A &= I - m_{tot}\left(\left[J\right]^B\right)^{-1}
-		\left[s_{DC}\right]^B
-		\left[s_{DC}\right]^B\\
-		b = \left(\left[J\right]^B\right)^{-1}\Bigg(
-		-&\left[\Omega^{BI}\right]\times\left(
-		\left[J\right]^B\left[\omega^{BI}\right]^B
-		+\left[I_R\right]^B\right) + \\
-		&\left[m_A\right]^B+\left[s_{DC}\right]^B
-		\bigg(-\left[G\right]^B
-		-\left[T\right]^B+ \\
+		\left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B  & \left(
+		I - m_{tot} \left(\left[\boldsymbol J\right]^B\right)^{-1}
+		\left[\boldsymbol s_{DC}\right]^B
+		\left[\boldsymbol s_{DC}\right]^B\right) = \\
+		\left(\left[\boldsymbol J\right]^B\right)^{-1}\Bigg(
+		-&\left[\boldsymbol\Omega^{BI}\right]\times\left(
+		\left[\boldsymbol J\right]^B\left[\boldsymbol\omega^{BI}\right]^B
+		+\left[\boldsymbol I_R\right]^B\right) + \\
+		&\left[\boldsymbol m_A\right]^B+\left[\boldsymbol s_{DC}\right]^B
+		\bigg(-\left[\boldsymbol F_g\right]^B
+		-\left[\boldsymbol F_T\right]^B+ \\
 		&m_{tot}\Bigl\{2
-		\left[\Omega^{BI}\right]^B
-		\left[\Omega^{BI}\right]^B
-		\left[s_{cd}\right]^B+
-		\left[\dfrac{d\Omega^{BI}}{dt}\right]^B
-		\left[s_{cd}\right]^B
+		\left[\boldsymbol\Omega^{BI}\right]^B
+		\left[\boldsymbol\Omega^{BI}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B+
+		\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B
 		\Bigr\}\bigg)\Bigg)		
 	\end{split}
 \end{equation}
-با جایگذاری معادلات بدست آمده در معادله
-\ref{finaltorquefinal}
+با ساده‌سازی رابطه \ref{longfinal}  بردار سرعت زاویه‌ای استند به صورت زیر حاصل می‌شود:
+\begin{equation}\label{finaltorquefinal}
+	\begin{split}
+		\left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B &= a^{-1}b\\
+		a &= I - m_{tot}\left(\left[\boldsymbol J\right]^B\right)^{-1}
+		\left[\boldsymbol s_{DC}\right]^B
+		\left[\boldsymbol s_{DC}\right]^B\\
+		b = \left(\left[\boldsymbol J\right]^B\right)^{-1}\Bigg(
+		-&\left[\boldsymbol\Omega^{BI}\right]\times\left(
+		\left[\boldsymbol J\right]^B\left[\boldsymbol\omega^{BI}\right]^B
+		+\left[\boldsymbol I_R\right]^B\right) + \\
+		&\left[\boldsymbol m_A\right]^B+\left[\boldsymbol s_{DC}\right]^B
+		\bigg(-\left[\boldsymbol F_g\right]^B
+		-\left[\boldsymbol F_T\right]^B+ \\
+		&m_{tot}\Bigl\{2
+		\left[\boldsymbol\Omega^{BI}\right]^B
+		\left[\boldsymbol\Omega^{BI}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B+
+		\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B
+		\Bigr\}\bigg)\Bigg)		
+	\end{split}
+\end{equation}
+با جایگذاری معادلات
+ \ref{IR}،
+ \ref{IRomega} و
+ \ref{omega_d}
+ معادله مربوط به تکانه کلی پره‌ها، 
+ معادله \ref{trust}
+مربوط به برآی پره و معادله 
+\ref{finaltorque}
+در معادله 
+\ref{finaltorquefinal}،
 مؤلفه‌های بردار مشتق سرعت زاویه‌ای چهارپره به صورت زیر حاصل می‌شود:
 \begin{align}
 	\begin{split}
