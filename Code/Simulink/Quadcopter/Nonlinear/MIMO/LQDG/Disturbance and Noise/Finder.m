@@ -4,7 +4,7 @@ clear
 clc
 clear
 Iteration =     0;
-MaxFE     = 15000;
+MaxFE     = 10000;
 %     roll and pitch yaw  p and q   r    R2
 min = [     0,        0,     0,     0,   -2];
 max = [     9,        9,     9,     9,    6];
