@@ -24,7 +24,7 @@ $\boldsymbol{u_i}^*(t)=\boldsymbol{F_i}^*(t)\boldsymbol{x}(t)$
 تشکیل شده‌است از بازخورد خطی تعادل نش اگر
 \begin{equation*}
 	J_1(\boldsymbol{u_1}^*, \boldsymbol{u_2}^*)\leq J_1(\boldsymbol{u_1}, \boldsymbol{u_2}^*)\text{\rm{ and }}
-	J_1(\boldsymbol{u_1}^*,\boldsymbol{ u_2}^*)\leq J_1(\boldsymbol{u_1}^*, \boldsymbol{u_2})
+	J_2(\boldsymbol{u_1}^*,\boldsymbol{ u_2}^*)\leq J_2(\boldsymbol{u_1}^*, \boldsymbol{u_2})
 \end{equation*}
 برای هر 
 $\boldsymbol{u_i}\in \boldsymbol{\Gamma^{lfb}_i}$
@@ -35,12 +35,12 @@ $\boldsymbol{u_i}\in \boldsymbol{\Gamma^{lfb}_i}$
 
 \begin{align}
 	\begin{split}
-		\boldsymbol{\dot{K}_1}(t) &= -(\boldsymbol{A}-\boldsymbol{S_2}\boldsymbol{K_2}(t))^T\boldsymbol{K_1}(t)-\boldsymbol{K_1}(t)(\boldsymbol{A}-\boldsymbol{S_2K_2}(t))+
+		\boldsymbol{\dot{K}_1}(t) &= -(\boldsymbol{A}-\boldsymbol{S_2}\boldsymbol{K_2}(t))^\mathrm{T}\boldsymbol{K_1}(t)-\boldsymbol{K_1}(t)(\boldsymbol{A}-\boldsymbol{S_2K_2}(t))+
 		\boldsymbol{K_1}(t)\boldsymbol{S_1K_1}(t)-\boldsymbol{Q_1}\\
 		\quad \boldsymbol{K_1}(T) &= \boldsymbol{H_1}
 	\end{split}\\
 	\begin{split}
-		\boldsymbol{\dot{K}_2}(t) &= -(\boldsymbol{A}-\boldsymbol{S_1}\boldsymbol{K_1}(t))^T\boldsymbol{K_2}(t)-\boldsymbol{K_2}(t)(\boldsymbol{A}-\boldsymbol{S_1K_1}(t))+
+		\boldsymbol{\dot{K}_2}(t) &= -(\boldsymbol{A}-\boldsymbol{S_1}\boldsymbol{K_1}(t))^\mathrm{T}\boldsymbol{K_2}(t)-\boldsymbol{K_2}(t)(\boldsymbol{A}-\boldsymbol{S_1K_1}(t))+
 \boldsymbol{K_2}(t)\boldsymbol{S_2K_2}(t)-\boldsymbol{Q_2}\\
 \quad \boldsymbol{K_2}(T) &= \boldsymbol{H_2}
 	\end{split}

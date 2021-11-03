@@ -7,9 +7,9 @@
  این پروژه حالت دو بازیکن را بررسی می‌کند. در این مسئله فرض شده  که تابع هزینه برای هر بازیکن به فرم مربعی است. 	هدف اصلی پروژه کم کردن تابع هزینه برای بازیکنان است. تابع هزینه به فرم رابطه \ref{cost}نوشته می‌شود.
 
  \begin{equation}\label{cost}
- 	J_i(u_1, u_2) = \int_{0}^{T}\left( \boldsymbol{x} ^T(t) \boldsymbol{Q_i} \boldsymbol{x}(t)+
- 	 \boldsymbol{u_i} ^T(t) \boldsymbol{Q_{ii}} \boldsymbol{u_i}(t)+
- 	 \boldsymbol{u_j} ^T(t)\boldsymbol{ Q_{ij} u_j}(t)
+ 	J_i(u_1, u_2) = \int_{0}^{T}\left( \boldsymbol{x} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x}(t)+
+ 	 \boldsymbol{u_i} ^\mathrm{T}(t) \boldsymbol{R_{ii}} \boldsymbol{u_i}(t)+
+ 	 \boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ Q_{ij} u_j}(t)
  	\right)dt+
  	\boldsymbol{ x} ^T(T)\boldsymbol{ H_i}\boldsymbol{ x}(T) 
   \end{equation}
@@ -23,7 +23,7 @@ $\boldsymbol{R_{ii}}$
 فرض شده‌است.
 دینامیک سیستم تحت تاثیر هر دو بازیکن قرار می‌گیرد. در اینحا دینامک سیستم به فرم رابطه \ref{system_dynamic} در نظر گرفته شده ‌است.
 \begin{equation}\label{system_dynamic}
-	\boldsymbol{\dot x}(t) = \boldsymbol{Ax}(t) + \boldsymbol{B_1u_1}(t) + \boldsymbol{B_2u_2}(t), \quad x(0) = x_0
+	\boldsymbol{\dot x}(t) = \boldsymbol{Ax}(t) + \boldsymbol{B_1u_1}(t) + \boldsymbol{B_2u_2}(t), \quad \boldsymbol{x}(0) = \boldsymbol{x}_0
 \end{equation}
 در رابطه 
 \ref{system_dynamic}
