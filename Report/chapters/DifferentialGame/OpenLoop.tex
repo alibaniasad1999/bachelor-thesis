@@ -1,33 +1,34 @@
 \section{بازی حلقه‌باز}
 در این حالت فرض شده است که تمامی بازیکنان در زمان 
 $t \in [0, T]$
-فقط اطلاعات شرایط اولیه و مدل سیستم را دارند. این فرض به این صورت تفسیر می‌شود که دو بازیکن همزمان حرکت خود را در انتخاب می‌کنند. در این حالت امکان بستن قرارداد بین دو بازیکن وجود ندارد. تعادل نش در ادامه تعریف شده ‌است.
+فقط اطلاعات شرایط اولیه و مدل سیستم را دارند. این فرض به این صورت تفسیر می‌شود که دو بازیکن همزمان حرکت خود را در انتخاب می‌کنند. در این حالت امکان هماهنگی بین دو بازیکن وجود ندارد. تعادل نش در ادامه تعریف شده ‌است.
 \شروع{قضیه} 
 به مجموعه‌ای از حرکات قابل قبول 
 $(\boldsymbol{u_1}^*,  \boldsymbol{u_2}^*)$
 یک \مهم{تعادل نش} برای بازی می‌گویند اگر تمامی حرکات قابل قبول 
 $(\boldsymbol{u_1},  \boldsymbol{u_2})$
-از نامساوی\ref{nash_lqe} پیروی کنند.
+از نامساوی (\ref{nash_lqe}) پیروی کنند.
 \begin{equation}\label{nash_lqe}
 	J_1(\boldsymbol{u_1}^*, \boldsymbol{u_2}^*)\leq J_1(\boldsymbol{u_1}, \boldsymbol{u_2}^*) \text{\rm{ and }}
 	J_2(\boldsymbol{u_1}^*, \boldsymbol{u_2}^*)\leq 
 	J_2(\boldsymbol{u_1}^*, \boldsymbol{u_2})
 \end{equation}
 \پایان{قضیه}
-در اینجا قابل قبول بودن به معنی است که
+در اینجا قابل قبول بودن به‌معنی آن است که
 $\boldsymbol{u_i}(.)$
-به یک مجموعه محدود حرکات تعلق دارد، این مجموعه حرکات که بستگی به اطلاعات بازیکنان از بازی دارد، مجموعه‌ای از استراتژی‌هایی است که بازیکنان دوست دارند برای کنترل سیستم انجام دهند و سیستم 
-\ref{system_dynamic}
+به یک مجموعه محدود حرکات تعلق دارد، این مجموعه‌ی حرکات که بستگی به اطلاعات بازیکنان از بازی دارد، مجموعه‌ای از راهبردهایی است که بازیکنان ترجیح می‌دهند برای کنترل سیستم انجام دهند و سیستم 
+(\ref{system_dynamic})
 باید یک جواب منحصر به فرد داشته باشد. 
 
 
 تعادل نش به گونه‌ای تعریف می‌شود که هیچ یک از بازیکنان انگیزه‌ی یک طرفه برای انحراف از بازی ندارند. قابل ذکر است که نمی‌توان انتظار داشت که یک تعادل نش منحصر به فرد وجود داشته باشد. به هر حال به راحتی می‌توان تایید کرد که حرکات
 $(\boldsymbol{u_1}^*, \boldsymbol{u_2}^*)$
 یک تعادل نش برای بازی با تابع هزینه
-$J_i,~ i = 1, 2$
-است. اگر تعادل نش برای تابع هزینه قسمت قبل برقرار باشد برای تابع هزینه
-$\alpha_iJ_i,~ i = 1, 2, ~\alpha_i>0$
-نیز برقرار است.
+$J_i,~ (i = 1, 2)$
+است.
+ %اگر تعادل نش برای تابع هزینه قسمت قبل برقرار باشد برای تابع هزینه
+%$\alpha_iJ_i,~ i = 1, 2, ~\alpha_i>0$
+%نیز برقرار است.
 
 
 برای سادگی از نمادسازی 
@@ -45,15 +46,15 @@ $\boldsymbol{M}$ را در نظر بگیرید:
 	\end{bmatrix}
 \end{equation}
 فرض شده ‌است که دو معادله دیفرانسیلی ریکاتی
-(\ref{riccati_teorm})، $\boldsymbol{K_i}(i)$ 
+(\ref{riccati_teorm})، 
  در بازه
 $[0, T]$
 جواب متقارن دارند.
 \begin{equation}\label{riccati_teorm}
-	\boldsymbol{\dot{K}_i}(t) = -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_i}(t)-\boldsymbol{K_i}(t)\boldsymbol{A}+\boldsymbol{K_i}(t)\boldsymbol{S_iK_i}(t)-\boldsymbol{Q_i},\quad \boldsymbol{K_i}(T) = \boldsymbol{H},\quad i = i, 2
+	\boldsymbol{\dot{K}_i}(t) = -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_i}(t)-\boldsymbol{K_i}(t)\boldsymbol{A}+\boldsymbol{K_i}(t)\boldsymbol{S_iK_i}(t)-\boldsymbol{Q_i},\quad \boldsymbol{K_i}(T) = \boldsymbol{H},\quad i = 1, 2
 \end{equation}
 \newpage
-پس بازی دیفرانسیل خطی درجه دوم دو نفره\LTRfootnote{the two player linear quadratic differential game} دارای تعادل نش حلقه‌باز در هر شرایط اولیه $\boldsymbol{X_0}
+پس بازی دیفرانسیل خطی درجه دوم دو نفره\LTRfootnote{the two player linear quadratic differential game} تعادل نش حلقه‌باز در هر شرایط اولیه $\boldsymbol{X_0}
 $
 دارد اگر ماتریس
 \begin{equation}
