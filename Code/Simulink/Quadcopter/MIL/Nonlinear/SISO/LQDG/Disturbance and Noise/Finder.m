@@ -5,9 +5,9 @@ clc
 clear
 Iteration =     0;
 MaxFE     = 10000;
-%     roll and pitch yaw  p and q   r    R2
-min = [     0,        0,     0,     0,   -2];
-max = [     9,        9,     9,     9,    6];
+%     roll and pitch yaw  p and q   r    R2  Integrator
+min = [     0,        0,     0,     0,   -2      0     ];
+max = [     9,        9,     9,     9,    6      9     ];
 tic
 [XOpt, FOpt, nFE] = TCACS('Cost', [min; max], MaxFE, 1e-4);
 toc
