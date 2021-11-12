@@ -6,8 +6,8 @@ clear
 Iteration =     0;
 MaxFE     = 10000;
 %     roll and pitch yaw  p and q   r    R2  Integrator
-min = [     0,        0,     0,     0,   -2           ];
-max = [     9,        9,     9,     9,    6           ];
+min = [     0,        0,     0,     0,   -6           ];
+max = [    12,       12,    12,    12,    6           ];
 tic
 [XOpt, FOpt, nFE] = TCACS('Cost', [min; max], MaxFE, 1e-4);
 toc
