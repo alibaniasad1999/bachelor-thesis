@@ -2,9 +2,9 @@ function JCost = Cost(PID)
 warning off all;
 close all;
 % assign weighting_matrix weights(q1-q6 and R2_1-R2_4) to workspace
-KP_Roll = PID(1);
-KI_Roll = PID(2);
-KD_Roll = PID(3);
+KP_Roll = 10^PID(1);
+KI_Roll = 10^PID(2);
+KD_Roll = 10^PID(3);
 assignin('base', 'KP_Roll', KP_Roll);
 assignin('base', 'KI_Roll', KI_Roll);
 assignin('base', 'KD_Roll', KD_Roll);
