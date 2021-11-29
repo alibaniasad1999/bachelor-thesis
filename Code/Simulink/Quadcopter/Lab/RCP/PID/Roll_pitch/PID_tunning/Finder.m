@@ -4,7 +4,7 @@ clear
 clc
 clear
 Iteration =     0;
-MaxFE     = 10000;
+MaxFE     = 100000;
 %  P-->KP   KI   KD  R-->KP   KI   KD
 min = [ 0,   0,   0      0,   0,   0];
 max = [12,  12,  12     12,  12,  12];

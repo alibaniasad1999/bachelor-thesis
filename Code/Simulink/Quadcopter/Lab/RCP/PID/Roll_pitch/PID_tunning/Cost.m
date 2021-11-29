@@ -16,7 +16,7 @@ assignin('base', 'KI_Roll', KI_Roll);
 assignin('base', 'KD_Roll', KD_Roll);
 % Run Simulink
 try
-	simout = sim('Quad_Nonlinear_Pitch_PID.slx');
+	simout = sim('Quad_Nonlinear_PID_Roll_Pitch.slx');
 % 	VCost = RefrenceError(:, 1)' * RefrenceError(:, 1);
 % 	XCost = RefrenceError(:, 2)' * RefrenceError(:, 2);
 	JCost = simout.ITAE.Data(end);
