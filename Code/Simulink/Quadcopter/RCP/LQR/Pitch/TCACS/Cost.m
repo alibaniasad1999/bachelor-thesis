@@ -11,7 +11,7 @@ try
 	JCost = simout.ITAE.Data(end);
 catch
 	JCost = 1e5;
-    fprintf('Oppppps\n');
+    fprintf('Oppppps ');
 end
 Iteration = evalin('base', 'Iteration');
 Iteration = Iteration + 1;
