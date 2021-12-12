@@ -1,0 +1,15 @@
+clear;
+clc;
+QuadParameter;
+PS_I;
+Omega_I = Omega;
+init_I = init;
+data_I = data;
+PS_II;
+Omega_II = Omega;
+init_II = init;
+data_II = data;
+PS_III;
+Omega_III = Omega;
+init_III = init;
+data_III = data;
