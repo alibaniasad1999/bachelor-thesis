@@ -1,4 +1,3 @@
-clear;
 load('Scenario_IV.mat', 'AHRS', 'AHRS_rate', 'Omega');
 time = 0:0.02:0.5;
 time = time';
