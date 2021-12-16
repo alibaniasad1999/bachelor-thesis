@@ -21,16 +21,16 @@
 \begin{equation}
 	\dot x_4 = A_1\cos(x_2)\sin(x_1) + 
 	A_2x_5x_6 + A_3\left(\omega_2^2-\omega_4^2\right)+
-	A_4x_5\left(\omega_1-\omega_2+\omega_3-\omega_4\right)
+	A_4x_5\left(\omega_1-\omega_2+\omega_3-\omega_4\right) - \dfrac{x_4}{\lvert x_4\rvert}A_5
 \end{equation}
 \begin{equation}
 	\dot x_5 = B_1\sin(x_2) + 
 	B_2x_4x_6 + B_3\left(\omega_1^2-\omega_3^2\right)+
-	B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right)
+	B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right) - \dfrac{x_5}{\lvert x_5\rvert}B_5
 \end{equation}
 \begin{equation}
 	\dot x_6 = C_1x_4x_5 + 
-	C_2\left(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2\right)
+	C_2\left(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2\right) - \dfrac{x_6}{\lvert x_6\rvert}C_3
 \end{equation}
 ثابت‌های معادلات بالا  به صورت زیر تعریف می‌شوند:
 \begin{align*}
@@ -38,14 +38,17 @@
 	&A_2  = \dfrac{2m_{tot}h_{cg}^2+J_{22}-J_{33}}{m_{tot}h_{cg}^2+J_{11}}\quad
 	&A_3  = \dfrac{d_{cg}}{m_{tot}h_{cg}^2+J_{11}}
 	&A_4  = \dfrac{J_R}{m_{tot}h_{cg}^2+J_{11}}\\
+	& & A_5 = \dfrac{m_1g\mu r_x}{m_{tot}h_{cg}^2 + J_{11}} & &\\
 	&B_1  = \dfrac{h_{cg}gm_{tot}}{m_{tot}h_{cg}^2+J_{22}}
 	&B_2  = \dfrac{-2m_{tot}h_{cg}^2-J_{11}+J_{33}}{m_{tot}h_{cg}^2+J_{22}}\quad
 	&B_3  = \dfrac{d_{cg}}{m_{tot}h_{cg}^2+J_{22}}
-	&B_4  = \dfrac{-J_R}{m_{tot}h_{cg}^2+J_{22}}
+	&B_4  = \dfrac{-J_R}{m_{tot}h_{cg}^2+J_{22}}\\
+	& & B_5 = \dfrac{m_2g\mu r_y}{m_{tot}h_{cg}^2 + J_{22}} & &
 \end{align*}
 \begin{align*}
 	C_1 =\dfrac{J_{11}-J_{22}}{J_{33}}\quad
-	C_2 =\dfrac{d}{J_{33}}
+	C_2 =\dfrac{d}{J_{33}}\quad
+	C_3 = \dfrac{m_3g\mu r_z}{ J_{33}}
 \end{align*}
 به منظور شبیه‌سازی ، پارامترهای استند به صورت جدول 
 \ref{parameterstable}
