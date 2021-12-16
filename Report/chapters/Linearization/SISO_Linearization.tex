@@ -1,18 +1,18 @@
 \subsection{خطی‌سازی به فرم یک ورودی یک خروجی}\label{lin_SISO}
 در این قسمت با توجه به فضای حالت بدست آمده، چهارپره حول نقطه کار خطی‌سازی می‌شود.
 \begin{equation*}
-	a = \begin{bmatrix}
+	\boldsymbol a = \begin{bmatrix}
 		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
 		x_5\cos(x_1)- x_6\sin(x_1)\\
 		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
 		A_1\cos(x_2)\sin(x_1) + 
 		A_2x_5x_6 + A_3\left(\omega_2^2-\omega_4^2\right)+
-		A_4x_5\left(\omega_1-\omega_2+\omega_3-\omega_4\right)\\
+		A_4x_5\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_4}{\lvert x_4\rvert}A_5\\
 		B_1\sin(x_2) + 
 		B_2x_4x_6 + B_3\left(\omega_1^2-\omega_3^2\right)+
-		B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right)\\
+		B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_5}{\lvert x_5\rvert}B_5\\
 		C_1x_4x_5 + 
-		C_2\left(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2\right)
+		C_2\left(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2\right)- \dfrac{x_6}{\lvert x_6\rvert}C_3
 	\end{bmatrix}
 \end{equation*} 
 در این قسمت برای ساده‌سازی، ورودی مسئله را از سرعت دورانی به نیروهای تاثیرگذار در مودهای رول، پیچ و یاو تغیر داده شده است. این کار باعث می‌شود که مسئله از چند ورودی و چند خروجی به سه مسئله یک ورودی و یک خروجی تبدیل شود. نیروها به فرم رابطه 
@@ -42,7 +42,7 @@
 فضای حالت جدید:
 
 \begin{equation}
-	a = \begin{bmatrix}
+	\boldsymbol a = \begin{bmatrix}
 		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
 		x_5\cos(x_1)- x_6\sin(x_1)\\
 		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
@@ -57,21 +57,21 @@
 \end{equation} 
 
 \begin{equation}
-	\vec{x} = \begin{bmatrix}
+	\boldsymbol{x} = \begin{bmatrix}
 		\phi& \theta & \psi & p& q& r
-	\end{bmatrix}^T
+	\end{bmatrix}^\mathrm{T}
 \end{equation}
 \begin{equation}
-	\vec{u} = \begin{bmatrix}
+	\boldsymbol{u} = \begin{bmatrix}
 		u_1&u_2&u_3&u_4
-	\end{bmatrix}^T
+	\end{bmatrix}^\mathrm{T}
 \end{equation}
 برای خطی سازی از بسط تیلور استفاده شده‌است.
 \begin{equation}
-	\delta \dot{\vec{x}} = \dfrac{\partial \vec a}{\partial \vec x}\delta \vec x + \dfrac{\partial \vec a}{\partial \vec u}\delta \vec u 
+	\delta \dot{\boldsymbol{x}} = \dfrac{\partial \boldsymbol a}{\partial \boldsymbol x}\delta \boldsymbol x + \dfrac{\partial \boldsymbol a}{\partial \boldsymbol u}\delta \boldsymbol u 
 \end{equation}
 \begin{equation}
-	\dot{\vec{x}} =
+	\dot{\boldsymbol{x}} =
 	\begin{bmatrix}
 		\delta \dot x_1&
 		\delta \dot x_2&
@@ -79,11 +79,11 @@
 		\delta \dot x_4&
 		\delta \dot x_5&
 		\delta \dot x_6
-	\end{bmatrix}^T
+	\end{bmatrix}^\mathrm{T}
 \end{equation}
 
 \begin{equation}
-	A = \dfrac{\partial \vec a}{\partial \vec x} =
+	A = \dfrac{\partial \boldsymbol a}{\partial \boldsymbol x} =
 	\begin{bmatrix}
 		\dfrac{\partial  a_1}{\partial  x_1}&
 		\dfrac{\partial  a_1}{\partial  x_2}&
@@ -129,7 +129,7 @@
 	\end{bmatrix}
 \end{equation}
 \begin{equation}
-	B = \dfrac{\partial \vec a}{\partial \vec u} = 
+	B = \dfrac{\partial \boldsymbol a}{\partial \boldsymbol u} = 
 	\begin{bmatrix}
 		\dfrac{\partial  a_1}{\partial  u_1}&
 		\dfrac{\partial  a_1}{\partial  u_2}&
@@ -163,7 +163,7 @@
 		\\[1em]
 	\end{bmatrix}
 \end{equation}
-روابط بالا به فرم یک سیستم یک ورودی و یک خروجی نوشته ‌شده ‌است.
+روابط بالا به فرم چند سیستم یک ورودی و چند خروجی نوشته ‌شده ‌است. آن را به یک ورودی و یک خروجی تبدیل می‌کنیم.
 \subsubsection{مود رول}
 \begin{equation}
 	A_{roll} = \begin{bmatrix}
@@ -235,7 +235,7 @@
 	\end{bmatrix}
 \end{equation}
 \subsubsection{استخراج سرعت دورانی پره‌ها از نیروها}
-چهارمعادله و چهارمجهول:
+چهار معادله و چهار مجهول:
 \begin{align}\label{4eq4ans}
 	\begin{split}
 		u_1 &= \omega_2^2 - \omega_4^2\\
