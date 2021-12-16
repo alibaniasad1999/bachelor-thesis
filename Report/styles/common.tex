@@ -18,6 +18,8 @@
 \usepackage[localise=on,extrafootnotefeatures]{xepersian}
 \usepackage[noend]{algpseudocode}
 \input{styles/alg-fa}
+\usepackage{notoccite}
+\ignorecitefornumbering
 
 
 % -------------------- Page Layout --------------------
@@ -178,5 +180,4 @@ Path=styles/fonts/
 \NewDocumentCommand{\img}{m m o}
 	{\begin{wrapfigure}{l}{\IfValueTF{#3}{#3}{#2}}
 	\centering\includegraphics[width=#2]{figs/#1}\end{wrapfigure}}
-
 
