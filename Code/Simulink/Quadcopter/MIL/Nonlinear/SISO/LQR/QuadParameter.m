@@ -7,7 +7,7 @@ b = 1.10794e-5;
 % Rotor torque drag factor (non dimensional)
 d = 3.2e-6;
 % Total mass (kg)
-m_tot = 1.774;
+m_tot = 1.074;
 % Quad Moment of inertia respect to axix X Body (kg.m^2)
 J_xx = 0.0297598;
 % Quad Moment of inertia respect to axix Y Body (kg.m^2)
@@ -38,3 +38,6 @@ tau = 0.15;
 T_d = 0.02;
 % Gravity force (m/s^2)
 g = 9.81;
+roll_parameterestimation_result;
+pitch_parameter_estiation_result;
+yaw_parameterestimation_result;
