@@ -1,6 +1,6 @@
 clear;
 clc;
-QuadParameter;
+QuadConstants;
 PS_I;
 Omega_I = Omega_data;
 data_I = data;
