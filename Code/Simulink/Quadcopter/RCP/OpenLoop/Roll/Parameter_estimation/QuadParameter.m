@@ -38,4 +38,3 @@ tau = 0.15;
 T_d = 0.02;
 % Gravity force (m/s^2)
 g = 9.81;
-roll_parameterestimation_result;
