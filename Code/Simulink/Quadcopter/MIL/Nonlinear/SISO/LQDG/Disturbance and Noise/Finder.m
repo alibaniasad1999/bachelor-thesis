@@ -9,7 +9,7 @@ MaxFE     = 10000;
 min = [     0,        0,     0,     0,   -6           ];
 max = [    12,       12,    12,    12,    6           ];
 tic
-[XOpt, FOpt, nFE] = TCACS('Cost', [min; max], MaxFE, 1e-4);
+[XOpt, FOpt, nFE] = TCACS('Cost', [min; max], MaxFE, 2);
 toc
 savedata = {XOpt, FOpt, nFE};
 now_time = string(datetime('now'));

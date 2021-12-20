@@ -1,7 +1,7 @@
 pitch = [0, 0];
-q_pitch = 8.4754;
-q_q = -3.7210;
-R_weight =  -1.6927;
+q_pitch = weighting_matrix(1);
+q_q = weighting_matrix(3);
+R_weight =  weighting_matrix(5);
 % QuadConstants;
 % QuadConstants;
 %%% constans %%%
