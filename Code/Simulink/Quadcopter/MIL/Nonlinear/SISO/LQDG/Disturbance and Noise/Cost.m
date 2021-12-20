@@ -15,6 +15,6 @@ catch
 end
 Iteration = evalin('base', 'Iteration');
 Iteration = Iteration + 1;
-fprintf('num of ite: %d\n', Iteration);
+fprintf('num of ite: %d\nCost:%f', Iteration, JCost);
 assignin('base', 'Iteration', Iteration);
 end
