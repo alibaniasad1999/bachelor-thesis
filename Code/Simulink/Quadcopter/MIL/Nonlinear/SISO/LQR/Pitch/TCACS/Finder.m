@@ -4,12 +4,12 @@ clear
 clc
 clear
 Iteration =     0;
-MaxFE     = 400;
+MaxFE     = 200;
 %          Q_1       Q_2        R      I
 min = [    -6,       -6,       -6,    -6];
 max = [    12,       12,       12,    12];
 tic
-[XOpt, FOpt, nFE] = TCACS('Cost', [min; max], MaxFE, 2);
+[XOpt, FOpt, nFE] = TCACS('Cost', [min; max], MaxFE, 1e-4);
 toc
 savedata = {XOpt, FOpt, nFE};
 now_time = string(datetime('now'));

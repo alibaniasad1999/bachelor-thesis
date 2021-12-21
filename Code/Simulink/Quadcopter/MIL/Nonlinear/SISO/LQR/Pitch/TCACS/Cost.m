@@ -10,7 +10,7 @@ try
 % 	XCost = RefrenceError(:, 2)' * RefrenceError(:, 2);
 	JCost = simout.ITAE.Data(end);
 catch
-	JCost = 1e5;
+	JCost = inf;
     fprintf('Ooooooooops');
 end
 Iteration = evalin('base', 'Iteration');
