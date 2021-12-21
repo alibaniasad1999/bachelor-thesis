@@ -4,7 +4,7 @@ clear
 clc
 clear
 Iteration =     0;
-MaxFE     = 10000;
+MaxFE     = 1000;
 %          Q_1       Q_2        R
 min = [    -6,       -6,       -6];
 max = [    20,       20,       20];
