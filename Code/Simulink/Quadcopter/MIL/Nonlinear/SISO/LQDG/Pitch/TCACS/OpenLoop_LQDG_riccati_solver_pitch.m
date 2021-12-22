@@ -37,6 +37,7 @@ p2 = p(n+1: end, :);
 
 % all player
 LQDG_openloop_gain = (R1_inv * B' * p1) ;
+I = 10^weighting_matrix(4);
 %% Functions %%
 function d = diff_eq_Riccati(~,p)
 global A Q n S1 S2
