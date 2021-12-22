@@ -4,7 +4,7 @@ clear
 clc
 clear
 Iteration =    0;
-MaxFE     = 1000;
+MaxFE     = 10000;
 %          Q_1       Q_2        R_2      I
 min = [    -6,       -6,        -6,      -6];
 max = [     3,        3,         3,       3];
@@ -17,4 +17,4 @@ str_now_time = now_time{1};
 str_now_time(12) = '-';
 str_now_time(15) = '-';
 str_now_time(18) = '-';
-save(append(str_now_time, '-', 'noise_ite_Pitch_LQDG_no_i', string(nFE)), 'XOpt', 'FOpt', 'nFE');
+save(append(str_now_time, '-', 'noise_ite_Pitch_LQDG_i', string(nFE)), 'XOpt', 'FOpt', 'nFE');
