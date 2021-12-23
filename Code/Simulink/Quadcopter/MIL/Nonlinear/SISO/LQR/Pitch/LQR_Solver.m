@@ -8,6 +8,6 @@ weighting_matrix = XOpt;
 Q1 = weighting_matrix(1)^10;
 Q2 = weighting_matrix(2)^10;
 R  = weighting_matrix(3)^10;
-I  = weighting_matrix(4)^10;
+% I  = weighting_matrix(4)^10;
 Q = diag([Q1, Q2]);
 [~, K, ~] = icare(A, B, Q, R);
