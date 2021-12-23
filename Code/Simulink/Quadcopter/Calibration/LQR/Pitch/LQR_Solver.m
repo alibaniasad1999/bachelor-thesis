@@ -1,7 +1,7 @@
 QuadConstants;
 A = [0 1;
     B1 0];
-B = [0; B3];
+B = [0; 1];
 C = eye(2);
 D = zeros(2, 1);
 load('22-Dec-2021-13-45-48-noise_ite_Pitch_LQR_no_i1000.mat')
