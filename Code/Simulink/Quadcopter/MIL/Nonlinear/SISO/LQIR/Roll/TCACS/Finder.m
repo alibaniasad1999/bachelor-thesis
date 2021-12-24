@@ -3,8 +3,8 @@ close all;
 clear
 clc
 clear
-Iteration =    0;
-MaxFE     = 1000;
+Iteration =     0;
+MaxFE     = 10000;
 %          Q_1     Q_2    Q_3     Q_4        R 
 min = [    -10,     -10,    -10,     -10,       -10];
 max = [     10,      10,     10,      10,        10];
