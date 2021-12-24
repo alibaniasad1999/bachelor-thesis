@@ -5,9 +5,9 @@ clc
 clear
 Iteration =    0;
 MaxFE     = 1000;
-%          Q_1       Q_2        R      I
-min = [    -6,       -6,       -6];
-max = [    3,       3,       3, ];
+%          Q_1_r     Q_2_r    Q_1_p     Q_2_p        R      I
+min = [    -6,       -6,      -6,       -6,       -6];
+max = [    3,         3,       3,       3,        3 ];
 tic
 [XOpt, FOpt, nFE] = TCACS('Cost', [min; max], MaxFE, 1e-4);
 toc
@@ -17,4 +17,4 @@ str_now_time = now_time{1};
 str_now_time(12) = '-';
 str_now_time(15) = '-';
 str_now_time(18) = '-';
-save(append(str_now_time, '-', 'noise_ite_Pitch_LQR_no_i', string(nFE)), 'XOpt', 'FOpt', 'nFE');
+save(append(str_now_time, '-', 'roll-pitch-diff-noise_ite', string(nFE)), 'XOpt', 'FOpt', 'nFE');
