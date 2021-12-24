@@ -7,7 +7,7 @@ Iteration =     0;
 MaxFE     = 10000;
 %          Q1        Q2     Q3     Q4     R
 min = [    -6,       -6,    -6,    -6,   -6];
-max = [    12,       12,    12,    12,    6];
+max = [    3,       3,    3,    3,    3];
 tic
 [XOpt, FOpt, nFE] = TCACS('Cost', [min; max], MaxFE, 2);
 toc
