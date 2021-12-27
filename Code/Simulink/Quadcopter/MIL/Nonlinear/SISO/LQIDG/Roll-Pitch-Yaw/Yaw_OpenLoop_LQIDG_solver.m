@@ -12,10 +12,10 @@ B = [0 ;
      1];
 B = [B; zeros(2, 1)];
 
-q_v = [10^weighting_matrix(1) % psi
-       10^weighting_matrix(2)
-       10^weighting_matrix(3)
-       10^weighting_matrix(4)]; % r
+q_v = [10^weighting_matrix(9 ) % psi
+       10^weighting_matrix(10)
+       10^weighting_matrix(11)
+       10^weighting_matrix(12)]; % r
 Q      = diag(q_v);
 R1     = eye(1);
 R1_inv = R1^-1;
