@@ -5,7 +5,7 @@ close all;
 assignin('base', 'weighting_matrix', weighting_matrix);
 % Run Simulink
 try
-	simout = sim('Quadcopter_nonlinear_LQIDDG');
+	simout = sim('Quadcopter_nonlinear_LQIDG');
 % 	VCost = RefrenceError(:, 1)' * RefrenceError(:, 1);
 % 	XCost = RefrenceError(:, 2)' * RefrenceError(:, 2);
 	JCost = simout.ITAE.Data(end);

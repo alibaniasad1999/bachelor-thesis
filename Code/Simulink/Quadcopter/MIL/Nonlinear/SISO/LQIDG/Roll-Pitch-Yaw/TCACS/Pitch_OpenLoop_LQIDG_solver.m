@@ -12,14 +12,14 @@ B = [0 ;
      1];
 B = [B; zeros(2, 1)];
 
-q_v = [10^weighting_matrix(5) % theta
-       10^weighting_matrix(6)
-       10^weighting_matrix(7)
-       10^weighting_matrix(8)]; % q
+q_v = [10^weighting_matrix(1) % theta
+       10^weighting_matrix(2)
+       10^weighting_matrix(3)
+       10^weighting_matrix(4)]; % q
 Q      = diag(q_v);
 R1     = eye(1);
 R1_inv = R1^-1;
-R2     = weighting_matrix(13);
+R2     = weighting_matrix(9);
 R2_inv = R2^-1;
 S1     = B* R1_inv * B';
 S2     = B* R2_inv * B';
