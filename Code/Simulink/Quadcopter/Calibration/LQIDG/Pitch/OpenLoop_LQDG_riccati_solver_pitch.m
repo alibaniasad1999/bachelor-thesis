@@ -19,7 +19,7 @@ q_v = [10^weighting_matrix(1) % pitch
 Q      = diag(q_v);
 R1     = eye(1);
 R1_inv = R1^-1;
-R2     = weighting_matrix(6);
+R2     = weighting_matrix(5);
 R2_inv = R2^-1;
 S1     = B* R1_inv * B';
 S2     = B* R2_inv * B';
@@ -44,7 +44,7 @@ p1 = p(1:n, :);
 p2 = p(n+1: end, :);
 
 % all player
-LQIDG_openloop_gain = (R1_inv * B' * p1) ;
+LQIDG_openloop_pitch = (R1_inv * B' * p1) ;
 %% Functions %%
 function d = diff_eq_Riccati(~,p)
 global A Q n S1 S2
