@@ -1,11 +1,13 @@
 load('../Scenario_I');
+AHRS = -AHRS;
 roll  = AHRS(:, 1);
 pitch = AHRS(:, 2);
 p     = AHRS(:, 4);
 q     = AHRS(:, 5);
 data = [roll ,pitch ,p ,q];
 Omega_I = Omega(1, :);
-data_I = data(290:290+25, :);
+data_I = data(290:310, :);
 init_I = data_I(1, :);
 time_step = 0.02;
 time_I = 0:time_step:(length(data_I)-1)*time_step;
+time_I = time_I';

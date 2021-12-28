@@ -1,4 +1,5 @@
 load('../Scenario_VIII');
+AHRS = -AHRS;
 roll  = AHRS(:, 1);
 pitch = AHRS(:, 2);
 p     = AHRS(:, 4);
@@ -9,3 +10,4 @@ data_VIII = data(369:386, :);
 init_VIII = data_VIII(1, :);
 time_step = 0.02;
 time_VIII = 0:time_step:(length(data_VIII)-1)*time_step;
+time_VIII = time_VIII'; 

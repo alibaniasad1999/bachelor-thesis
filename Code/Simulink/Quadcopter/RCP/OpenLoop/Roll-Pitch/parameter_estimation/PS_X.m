@@ -1,4 +1,5 @@
 load('../Scenario_X');
+AHRS = -AHRS;
 roll  = AHRS(:, 1);
 pitch = AHRS(:, 2);
 p     = AHRS(:, 4);
@@ -9,3 +10,4 @@ data_X = data(310:345, :);
 init_X = data_X(1, :);
 time_step = 0.02;
 time_X = 0:time_step:(length(data_X)-1)*time_step;
+time_X = time_X'; 
