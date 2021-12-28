@@ -1,0 +1,11 @@
+load('../Scenario_III');
+roll  = AHRS(:, 1);
+pitch = AHRS(:, 2);
+p     = AHRS(:, 4);
+q     = AHRS(:, 5);
+data = [roll ,pitch ,p ,q];
+Omega_III = Omega(1, :);
+data_III = data(282:315, :);
+init_III = data_III(1, :);
+time_step = 0.02;
+time_III = 0:time_step:(length(data_III)-1)*time_step;
