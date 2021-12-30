@@ -2,7 +2,5 @@ load('../Scenario_VII');
 AHRS = -AHRS;
 Omega_VII = Omega(1, :);
 tIme_step = 0.02;
-data_VII = AHRS(311:342, :);
-tIme_VII = 0:tIme_step:(length(data_VII)-1)*tIme_step;
-InIt_VII = data_VII(1, :);
-tIme_VII = tIme_VII';
+data_VII = AHRS(311:311+10, :);
+
