@@ -20,5 +20,3 @@ Omega = 2000 / 60 * 2 * pi;
 roll_parameter_estimation_result;
 pitch_parameter_estiation_result;
 yaw_parameterestimation_result;
-A6 = 0;
-B6 = 0;

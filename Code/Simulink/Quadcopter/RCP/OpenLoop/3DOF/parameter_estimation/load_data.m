@@ -2,6 +2,8 @@
 clc;
 clear;
 QuadConstants;
+time = 0:0.02:0.2;
+time = time';
 PS_I;
 PS_II;
 PS_III;
