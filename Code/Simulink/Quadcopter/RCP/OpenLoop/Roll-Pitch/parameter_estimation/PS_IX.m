@@ -1,5 +1,6 @@
 load('../Scenario_IX');
 AHRS = -AHRS;
+AHRS = lowpass(AHRS, 50, 1e3);
 roll  = AHRS(:, 1);
 pitch = AHRS(:, 2);
 p     = AHRS(:, 4);
