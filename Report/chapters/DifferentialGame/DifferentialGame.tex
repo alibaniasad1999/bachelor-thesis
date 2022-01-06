@@ -9,7 +9,7 @@
  \begin{equation}\label{cost}
  	J_i(u_1, u_2) = \int_{0}^{T}\left( \boldsymbol{x} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x}(t)+
  	 \boldsymbol{u_i} ^\mathrm{T}(t) \boldsymbol{R_{ii}} \boldsymbol{u_i}(t)+
- 	 \boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ Q_{ij} u_j}(t)
+ 	 \boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ R_{ij} u_j}(t)
  	\right)dt+
  	\boldsymbol{ x} ^\mathrm{T}(T)\boldsymbol{ H_i}\boldsymbol{ x}(T) 
   \end{equation}
@@ -28,4 +28,4 @@ $\boldsymbol{R_{ii}}$
 در رابطه 
 (\ref{system_dynamic})،
 $\boldsymbol{u_1}$
-برابر با تلاش کنترلی بهینه بازیکن اول است. در اینجا ممکن است تلاش کنترلی بازیکن اول موجب دور شدن بازیکن دوم از هدف شود و یا برعکس.  این پروژه حالت همکاری دو بازیکن را بررسی نمی‌کند و دو بازیکن در تلاش برای کم کردن تابع هزینه خود و زیاد کردن تابع هزینه بازیکن مقابل هستند.
+برابر با تلاش کنترلی  بازیکن اول است. در اینجا ممکن است تلاش  بازیکن اول موجب دور شدن بازیکن دوم از هدف شود و یا برعکس.  این پروژه حالت همکاری دو بازیکن را بررسی نمی‌کند و دو بازیکن در تلاش برای کم کردن تابع هزینه خود و زیاد کردن تابع هزینه بازیکن مقابل هستند.

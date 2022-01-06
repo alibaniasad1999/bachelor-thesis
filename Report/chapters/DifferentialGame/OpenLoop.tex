@@ -27,7 +27,7 @@ $(\boldsymbol{u_1}^*, \boldsymbol{u_2}^*)$
 $J_i,~ (i = 1, 2)$
 است.
  %اگر تعادل نش برای تابع هزینه قسمت قبل برقرار باشد برای تابع هزینه
-%$\alpha_iJ_i,~ i = 1, 2, ~\alpha_i>0$
+%$\alpha_iJ_i~ i = 1, 2, ~\alpha_i>0$
 %نیز برقرار است.
 
 
@@ -51,10 +51,10 @@ $\boldsymbol{M}$ را در نظر بگیرید:
 $[0, T]$
 جواب متقارن دارند.
 \begin{equation}\label{riccati_teorm}
-	\boldsymbol{\dot{K}_i}(t) = -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_i}(t)-\boldsymbol{K_i}(t)\boldsymbol{A}+\boldsymbol{K_i}(t)\boldsymbol{S_iK_i}(t)-\boldsymbol{Q_i},\quad \boldsymbol{K_i}(T) = \boldsymbol{H},\quad i = 1, 2
+	\boldsymbol{\dot{K}_i}(t) = -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_i}(t)-\boldsymbol{K_i}(t)\boldsymbol{A}+\boldsymbol{K_i}(t)\boldsymbol{S_iK_i}(t)-\boldsymbol{Q_i},\quad \boldsymbol{K_i}(T) = \boldsymbol{H_i},\quad i = 1, 2
 \end{equation}
 \newpage
-پس بازی دیفرانسیل خطی درجه دوم دو نفره\LTRfootnote{the two player linear quadratic differential game} تعادل نش حلقه‌باز در هر شرایط اولیه $\boldsymbol{X_0}
+بازی دیفرانسیل خطی درجه دوم دو نفره\LTRfootnote{the two player linear quadratic differential game} تعادل نش حلقه‌باز در هر شرایط اولیه $\boldsymbol{X_0}
 $
 دارد اگر ماتریس
 \begin{equation}
@@ -68,11 +68,13 @@ e^{-\boldsymbol{M}T}
 	\\ \boldsymbol{H_{2}}
 \end{bmatrix}
 \end{equation}
-قابلیت معکوس شدن را  داشته‌ باشد.
+معکوس‌پذیر‌ باشد
+ \cite{article1}
+ .
 \پایان{قضیه}
 در معادلات بالا تلاش کنترلی برای هر بازیکن به فرم رابطه \ref{openloop_u} تعریف شده است.
 \begin{equation}\label{openloop_u}
-	\boldsymbol{u_1}(t) = -\boldsymbol{R_{ii}}\boldsymbol{B_i}^\mathrm{T}\boldsymbol{x}(t)
+	\boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}\boldsymbol{B_i}^\mathrm{T}\boldsymbol{x}(t),\quad i = 1, 2
 \end{equation}
 در آخر با استفاده از قضیه
  \ref{openlooptheorm}
