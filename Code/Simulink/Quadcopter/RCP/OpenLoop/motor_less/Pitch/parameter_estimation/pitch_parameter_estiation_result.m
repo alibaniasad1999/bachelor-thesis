@@ -1,0 +1,5 @@
+% result from parameter estimation motor less
+B1 = 4.36026813860301;
+B3 = 7.12739951623694e-05;
+B5 = 0.595980110229882;
+B6 = 4.42876359313229;
