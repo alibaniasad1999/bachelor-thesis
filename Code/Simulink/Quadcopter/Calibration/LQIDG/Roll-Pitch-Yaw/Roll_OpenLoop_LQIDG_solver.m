@@ -12,8 +12,8 @@ B = [0 ;
      1];
 B = [B; zeros(2, 1)];
 
-q_v = [10^weighting_matrix(1) % phi
-       10^weighting_matrix(2)
+q_v = [10^(weighting_matrix(1)+1) % phi
+       10^(weighting_matrix(2)+1)
        10^weighting_matrix(3)
        10^weighting_matrix(4)]; % p
 Q      = diag(q_v);
