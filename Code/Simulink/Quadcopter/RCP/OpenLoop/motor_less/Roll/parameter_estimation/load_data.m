@@ -1,0 +1,17 @@
+clear;
+clc;
+QuadConstants;
+load('roll.mat', 'AHRS');
+AHRS = lowpass(AHRS, 50, 1e3);
+data_I = AHRS(1697:1697+25, :);
+init_I = data_I(1, :);
+data_II = AHRS(2023:2023+25, :);
+init_II = data_II(1, :);
+data_III = AHRS(2506:2506+25, :);
+init_III = data_III(1, :);
+% data_IV = AHRS(3470:3470+25, :);
+% init_IV = data_IV(1, :);
+% data_V = AHRS(3575:3575+25, :);
+% init_V = data_V(1, :);
+time = 0:0.02:25*0.02;
+time = time';
