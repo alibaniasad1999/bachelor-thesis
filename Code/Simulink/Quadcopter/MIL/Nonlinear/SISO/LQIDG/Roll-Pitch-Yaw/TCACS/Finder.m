@@ -20,8 +20,8 @@ max_yaw = [ 3,  3,  3,  3];
 % R2
 min_R = -3;
 max_R =  3;
-min = [min_roll, min_yaw, min_R];
-max = [max_roll, max_yaw, max_R];
+min = [min_roll, min_pitch, min_yaw, min_R];
+max = [max_roll, max_pitch, max_yaw, max_R];
 tic
 [XOpt, FOpt, nFE] = TCACS('Cost', [min; max], MaxFE, 1e-4);
 toc
