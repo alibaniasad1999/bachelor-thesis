@@ -16,3 +16,4 @@ C1 = (J_xx - J_yy) / (J_zz);
 C2 = (d) / (J_zz);
 C3 = (m3 * g * miu_k * r_z) / (J_zz);
 A6 = 0;
+roll_parameter_estiation_result_I;
