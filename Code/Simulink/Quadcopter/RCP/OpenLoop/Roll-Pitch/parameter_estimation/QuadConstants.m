@@ -19,3 +19,4 @@ C3 = (m3 * g * miu_k * r_z) / (J_zz);
 Omega = 2000 / 60 * 2 * pi;
 roll_parameter_estiation_result_II;
 pitch_parameter_estiation_result_II;
+roll_pitch_parameter_estimation;
