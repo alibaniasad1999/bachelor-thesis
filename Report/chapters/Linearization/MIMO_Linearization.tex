@@ -1,6 +1,7 @@
 \subsection{خطی‌سازی به فرم چند ورودی چند خروجی}\label{lin_MIMO}
 در این قسمت با توجه به فضای حالت بدست آمده، چهارپره حول نقطه کار خطی‌سازی می‌شود.
 \begin{equation*}
+	\sloppy
 	\boldsymbol a = \begin{bmatrix}
 		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
 		x_5\cos(x_1)- x_6\sin(x_1)\\
@@ -10,7 +11,7 @@
 		A_4x_5\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_4}{\lvert x_4\rvert}A_5+A_6\cos(x_1)\\
 		B_1\sin(x_2) + 
 		B_2x_4x_6 + B_3\left(\omega_1^2-\omega_3^2\right)+
-		B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_5}{\lvert x_5\rvert}B_5\\
+		B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_5}{\lvert x_5\rvert}B_5 + B_6\cos(x_2)\\
 		C_1x_4x_5 + 
 		C_2\left(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2\right)- \dfrac{x_6}{\lvert x_6\rvert}C_3
 	\end{bmatrix}
