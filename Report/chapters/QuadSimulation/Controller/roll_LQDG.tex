@@ -10,10 +10,14 @@
 TCACS \cite{Karimi2010}
 استفاده شده است.
 \begin{figure}[H]\label{lqdg_roll_fig}
-	\includegraphics[width=12cm]{../Figures/MIL/LQR/Roll/lqr_roll.png}
+	\includegraphics[width=12cm]{../Figures/MIL/LQDG/Roll/lqdg_roll.png}
 	\centering
 	\caption{عملكرد LQDG در کنترل زاويه رول (تعقیب ورودی صفر)}
 \end{figure}
 بر اساس خروجی شبیه‌سازی (شکل
 \ref{lqdg_roll_fig})
-،کانال رول در حضور کنترل‌کننده LQR در حدود پنج ثانیه به تعادل می‌رسد اما دارای خطای ماندگار است. 
+،کانال رول در حضور کنترل‌کننده LQR در کمتر از پنج ثانیه به تعادل می‌رسد اما دارای خطای ماندگار است ولی خطای مانگار آن نسبت به کنترل‌کننده بخش
+\ref{roll_lqr_section}
+کمتر است. به دلیل خطای ماندگار، در بخش
+%LQIDG
+انتگرالگیر به کنترل‌کننده اضافه می‌شود تا خطای مانگار استند را کم کند.
