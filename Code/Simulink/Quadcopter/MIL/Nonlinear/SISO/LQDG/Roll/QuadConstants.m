@@ -15,5 +15,4 @@ B5 = (m2 * g * miu_k * r_y) / (m_tot * h_cg^2 + J_yy);
 C1 = (J_xx - J_yy) / (J_zz);
 C2 = (d) / (J_zz);
 C3 = (m3 * g * miu_k * r_z) / (J_zz);
-pitch_parameter_estiation_result;
-Ba = 3.49728; % my moment
+roll_parameter_estiation_result;
