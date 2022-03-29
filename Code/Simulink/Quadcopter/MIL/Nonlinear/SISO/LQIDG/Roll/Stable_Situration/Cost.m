@@ -8,7 +8,7 @@ try
 	simout = sim('Quad_Nonlinear_Roll_LQIDG_Model.slx');
 % 	VCost = RefrenceError(:, 1)' * RefrenceError(:, 1);
 % 	XCost = RefrenceError(:, 2)' * RefrenceError(:, 2);
-	JCost = simout.ITAE.Data(end);
+	JCost = simout.ITAE(end);
 catch
 	JCost = 1e30;
     fprintf('Ooooooooops');
