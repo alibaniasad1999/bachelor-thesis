@@ -5,7 +5,7 @@ close all;
 assignin('base', 'weighting_matrix', weighting_matrix);
 % Run Simulink
 try
-	simout = sim('Quad_Nonlinear_Pitch_Model_LQDG.slx');
+	simout = sim('Quad_Nonlinear_Roll_Model_LQDG.slx');
 % 	VCost = RefrenceError(:, 1)' * RefrenceError(:, 1);
 % 	XCost = RefrenceError(:, 2)' * RefrenceError(:, 2);
 	JCost = simout.ITAE.Data(end);

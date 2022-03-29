@@ -8,12 +8,12 @@ A = [0  1 ;
 B = [0 ;
      1];
 
-q_v = [10^weighting_matrix(1) % pitch
-       10^weighting_matrix(2)]; % q
+q_v = [10^weighting_matrix(1) % roll
+       10^weighting_matrix(2)]; % p
 Q      = diag(q_v);
 R1     = eye(1);
 R1_inv = R1^-1;
-R2     = weighting_matrix(3);
+R2     = 10^weighting_matrix(3);
 R2_inv = R2^-1;
 S1     = B* R1_inv * B';
 S2     = B* R2_inv * B';
