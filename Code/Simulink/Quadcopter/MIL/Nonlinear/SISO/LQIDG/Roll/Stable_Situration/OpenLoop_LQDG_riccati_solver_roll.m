@@ -17,9 +17,9 @@ q_v = [10^weighting_matrix(1) % pitch
        10^weighting_matrix(3)
        10^weighting_matrix(4)]; % q
 Q      = diag(q_v);
-R1     = eye(1);
+R1     = 10^weighting_matrix(5);
 R1_inv = R1^-1;
-R2     = 10^weighting_matrix(5);
+R2     = 10^weighting_matrix(6);
 R2_inv = R2^-1;
 S1     = B* R1_inv * B';
 S2     = B* R2_inv * B';
@@ -34,9 +34,6 @@ n	= 4;
 p0	= reshape(p0,2 * n^2,1);
 global t_p p_arr
 [t_p,p_arr] = ode45(@diff_eq_Riccati,[tf,0],p0);
-
-% x0 = [1 ; % pitch
-%       0]; % q 
 
 p_t	= p_arr(end, :);
 p	= reshape(p_t,2 * n,n);
