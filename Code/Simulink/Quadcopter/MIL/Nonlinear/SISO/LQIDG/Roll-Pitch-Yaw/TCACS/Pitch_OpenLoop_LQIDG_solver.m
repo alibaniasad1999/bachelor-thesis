@@ -4,7 +4,7 @@ QuadConstants;
 global A B Q n S1 S2 R1_inv R2_inv
 
 A = [0   1 ;
-     B1  0];
+     1  0];
 % A for LQIDG
 A = [A      , zeros(2) ;
      eye(2) , zeros(2)];
