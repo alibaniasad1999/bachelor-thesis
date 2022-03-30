@@ -4,7 +4,7 @@ clear
 clc
 clear
 Iteration =    0;
-MaxFE     = 1000;
+MaxFE     = 10000;
 % roll
 %           Q1  Q2  Q3  Q4
 min_roll = [-4, -4, -4, -4];
