@@ -1,4 +1,4 @@
-load('../Scenario_XI');
+load('../scenario_XI');
 AHRS = -AHRS;
 AHRS = lowpass(AHRS, 50, 1e3);
 Omega_XI = Omega(1, :);
