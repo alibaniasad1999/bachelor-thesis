@@ -1,4 +1,4 @@
-load('../Scenario_X');
+load('../scenario_X');
 AHRS = -AHRS;
 AHRS = lowpass(AHRS, 50, 1e3);
 roll  = AHRS(:, 1);
