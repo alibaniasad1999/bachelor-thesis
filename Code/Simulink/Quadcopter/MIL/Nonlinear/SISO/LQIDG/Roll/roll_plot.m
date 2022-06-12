@@ -13,12 +13,9 @@ xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
 subplot(2,1,2);
-plot(out.tout, zeros(1, length(out.tout)), '--k', 'linewidth', 2);
-hold on
-plot(out.tout, out.roll_state(:, 2), 'r', 'linewidth', 2);
+plot(out.tout, out.u*J_xx);
 hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll rate$_{(rad/\sec)}$', 'interpreter', 'latex', 'FontSize', 18);
-legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
+ylabel('Control Command (Moment)', 'interpreter', 'latex', 'FontSize', 12);
 
 print('../../../../../../../../Figures/MIL/LQIDG/Roll/lqidg_roll.png','-dpng','-r400');
