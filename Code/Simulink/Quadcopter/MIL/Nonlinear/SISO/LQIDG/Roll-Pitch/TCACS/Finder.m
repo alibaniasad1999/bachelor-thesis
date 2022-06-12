@@ -17,4 +17,4 @@ str_now_time = now_time{1};
 str_now_time(12) = '-';
 str_now_time(15) = '-';
 str_now_time(18) = '-';
-save(append(str_now_time, '-', 'LQIDG_noise_ite', string(nFE)), 'XOpt', 'FOpt', 'nFE');
+save(append(str_now_time, '-', 'LQIDG_lessnoise_ite', string(nFE)), 'XOpt', 'FOpt', 'nFE');
