@@ -1,6 +1,6 @@
 clc;
 clear;
-load('11-Jan-2022-17-02-26-LQIDG_noise_ite1005.mat');
+load('12-Jun-2022-15-09-03-LQIDG_noise_ite1005.mat');
 weighting_matrix = XOpt;
 out = sim('Quad_Nonlinear_Roll_LQIDG_Model');
 
