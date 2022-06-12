@@ -61,4 +61,4 @@ xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('yaw rate$_{(rad/\sec)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
 
-print('../../../../../../../../Figures/MIL/LQIDG/3DOF/lqidg_yaw.png','-dpng','-r400');
+% print('../../../../../../../../Figures/MIL/LQIDG/3DOF/lqidg_yaw.png','-dpng','-r400');
