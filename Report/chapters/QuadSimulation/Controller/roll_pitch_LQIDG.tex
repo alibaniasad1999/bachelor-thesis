@@ -9,11 +9,38 @@
  در شبیه‌سازی برای بهینه‌سازی ضرایب وزنی از روش
 TCACS \cite{Karimi2010}
 استفاده شده است.
-\begin{figure}[H]\label{lqidg_roll_pitch_fig}
-	\includegraphics[width=12cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch.png}
+\begin{figure}
 	\centering
-	\caption{عملكرد LQIDG در کنترل زاويه رول و پیچ (تعقیب ورودی صفر)}
+	\begin{subfigure}
+		\centering
+		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll.png}
+		\caption{تغییرات زاویه رول}
+	\end{subfigure}%
+	\begin{subfigure}
+		\centering
+		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_pitch.png}
+		\caption{تغییرات زاویه پیچ}
+	\end{subfigure}
+	\caption{‫‪عملکرد کنترل‌کننده LQIDG در کنترل زاویه رول و پیچ (تعقیب ورودی صفر)}
 \end{figure}
+
+
+\begin{figure}
+	\centering
+	\begin{subfigure}
+		\centering
+		\includegraphics[width=2cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_1.png}
+		\caption{موتور شماره یک}
+	\end{subfigure}
+	\begin{subfigure}
+	\centering
+	\includegraphics[width=2cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_2.png}
+	\caption{موتور شماره دو}
+\end{subfigure}
+	\caption{‫‪فرمان کنترل‌کننده در کنترل زاویه رول و پیچ (تعقیب ورودی صفر)}
+\end{figure}
+
+
 بر اساس خروجی شبیه‌سازی (شکل
 \ref{lqidg_roll_fig})
 ،کانال رول در حضور کنترل‌کننده LQIDG در حدود پنج ثانیه و کانال پیچ در حدود هشت ثانیه به تعادل می‌رسد و خطای ماندگار آن در حدود صفر است.
