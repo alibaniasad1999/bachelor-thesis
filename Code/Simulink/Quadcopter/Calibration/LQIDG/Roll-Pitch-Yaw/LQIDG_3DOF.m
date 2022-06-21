@@ -7,5 +7,7 @@ Roll_OpenLoop_LQIDG_solver;
 Pitch_OpenLoop_LQIDG_solver;
 load('21-Feb-2022-16-37-47-LQIDG_3DOF1005.mat');
 weighting_matrix = XOpt;
+weighting_matrix(10) = 0.1;
+weighting_matrix(11) = -3.2761;
 % weighting_matrix(end) = weighting_matrix(end) + 1;
 Yaw_OpenLoop_LQIDG_solver;
