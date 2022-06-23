@@ -1,60 +1,148 @@
 \section{کنترل‌کننده مربعی خطی انتگرالی مبتنی بر بازی دیفرانسیلی}\label{LQIDG}
-تفاوت بازی همراه با بازخورد\LTRfootnote{The Feeback Game} با بازی حلقه‌باز در این است که بازیکنان در هر لحظه از بازی بازخورد می‌گیرند و متناسب با بازخورد رفتار می‌کنند. این بازخورد ممکن است باعث شود یک بازیکن انگیزه پیدا کند که از بازی انحراف پیدا کند در حالی که این اتفاق در بازی حلقه‌باز رخ نمی‌دهد. این اتفاق منجر به یک راه حل تعادلی دیگر می‌شود. 
-%از طرف دیگر راه حل تعادلی نباید در طول بازی خودش را با بازیکنان سازگار کند.
-با توجه به اینکه سیستم خطی است، می‌توان استدلال کرد که جواب بهینه به صورت تابعی خطی از وضعیت سیستم است \cite{article1}
-.
-% این بدین مفهوم است که تعادل نش باید در فضای ذکر شده باشد. فضای راهبردی
-% استراتژی
-% به فرم رابطه
-% \ref{NashSpace}
+%تفاوت بازی همراه با بازخورد\LTRfootnote{The Feeback Game} با بازی حلقه‌باز در این است که بازیکنان در هر لحظه از بازی بازخورد می‌گیرند و متناسب با بازخورد رفتار می‌کنند. این بازخورد ممکن است باعث شود یک بازیکن انگیزه پیدا کند که از بازی انحراف پیدا کند در حالی که این اتفاق در بازی حلقه‌باز رخ نمی‌دهد. این اتفاق منجر به یک راه حل تعادلی دیگر می‌شود. 
+%%از طرف دیگر راه حل تعادلی نباید در طول بازی خودش را با بازیکنان سازگار کند.
+%با توجه به اینکه سیستم خطی است، می‌توان استدلال کرد که جواب بهینه به صورت تابعی خطی از وضعیت سیستم است \cite{article1}
+%.
+%% این بدین مفهوم است که تعادل نش باید در فضای ذکر شده باشد. فضای راهبردی
+%% استراتژی
+%% به فرم رابطه
+%% \ref{NashSpace}
+%%
+%%\begin{equation}\label{NashSpace}
+%%	\boldsymbol{\Gamma^{lfb}_i} :‌= \left\{\boldsymbol{u_i}(0, T)\vert \boldsymbol{u_i}(t) = \boldsymbol{F_i}(t)\boldsymbol{x}(t) ,~ i = 1, 2\right\}
+%%\end{equation}
+%%تعریف می‌شود. در رابطه
+%% \ref{NashSpace}
+%%$\boldsymbol{F_i}(.)$
+%%قسمتی از یک تابع است. حرکات تعادل نش
+%%$(\boldsymbol{u_{a_1}}^*, \boldsymbol{u_{a_2}}^*)$
+%%در فضای استراتژی 
+%%$\boldsymbol{\Gamma^{lfb}_{a_1}}\times\boldsymbol{\Gamma^{lfb}_{a_2}}$
+%%است.
+%\شروع{قضیه} 
+%مجموعه‌ی حرکات کنترلی 
+%$\boldsymbol{u_i}^*(t)=\boldsymbol{F_i}^*(t)\boldsymbol{x}(t)$
+%تشکیل شده‌است از بازخورد خطی تعادل نش اگر
+%\begin{equation*}
+%	J_{a_1}(\boldsymbol{u_{a_1}}^*, \boldsymbol{u_{a_2}}^*)\leq J_{a_1}(\boldsymbol{u_{a_1}}, \boldsymbol{u_{a_2}}^*)\text{\rm{ and }}
+%	J_{a_2}(\boldsymbol{u_{a_1}}^*,\boldsymbol{ u_{a_2}}^*)\leq J_{a_2}(\boldsymbol{u_{a_1}}^*, \boldsymbol{u_{a_2}})
+%\end{equation*}
+%برای هر 
+%$\boldsymbol{u_i}\in \boldsymbol{\Gamma^{lfb}_i}$
+%برقرار باشد.
+%\پایان{قضیه}
+%\شروع{قضیه}
+%بازی دیفرانسیلی خطی درجه دوم دو نفره برای هر شرایط اولیه، تعادل نش خطی بازخورد دارد اگر و فقط اگر مجموعه معادلات کوپل ریکاتی
 %
-%\begin{equation}\label{NashSpace}
-%	\boldsymbol{\Gamma^{lfb}_i} :‌= \left\{\boldsymbol{u_i}(0, T)\vert \boldsymbol{u_i}(t) = \boldsymbol{F_i}(t)\boldsymbol{x}(t) ,~ i = 1, 2\right\}
-%\end{equation}
-%تعریف می‌شود. در رابطه
-% \ref{NashSpace}
-%$\boldsymbol{F_i}(.)$
-%قسمتی از یک تابع است. حرکات تعادل نش
-%$(\boldsymbol{u_1}^*, \boldsymbol{u_2}^*)$
-%در فضای استراتژی 
-%$\boldsymbol{\Gamma^{lfb}_1}\times\boldsymbol{\Gamma^{lfb}_2}$
+%\begin{align}
+%	\begin{split}
+%		\boldsymbol{\dot{K}_{a_1}}(t) &= -(\boldsymbol{A}-\boldsymbol{S_{a_2}}\boldsymbol{K_{a_2}}(t))^\mathrm{T}\boldsymbol{K_{a_1}}(t)-\boldsymbol{K_{a_1}}(t)(\boldsymbol{A}-\boldsymbol{S_{a_2}K_{a_2}}(t))+
+%		\boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_1}K_{a_1}}(t)-\boldsymbol{Q_{a_1}}\\
+%		\quad \boldsymbol{K_{a_1}}(T) &= \boldsymbol{H_{a_1}}
+%	\end{split}\\
+%	\begin{split}
+%		\boldsymbol{\dot{K}_{a_2}}(t) &= -(\boldsymbol{A}-\boldsymbol{S_{a_1}}\boldsymbol{K_{a_1}}(t))^\mathrm{T}\boldsymbol{K_{a_2}}(t)-\boldsymbol{K_{a_2}}(t)(\boldsymbol{A}-\boldsymbol{S_{a_1}K_{a_1}}(t))+
+%\boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_2}K_{a_2}}(t)-\boldsymbol{Q_{a_2}}\\
+%\quad \boldsymbol{K_{a_2}}(T) &= \boldsymbol{H_{a_2}}
+%	\end{split}
+%\end{align}
+%در بازه زمانی 
+%$[0, T]$
+%جواب متقارن داشته ‌باشند (برای سادگی 
+%$\boldsymbol{S_{12}}=\boldsymbol{S_{21}} =\boldsymbol 0 $
+%فرض شده است).
+%در این حالت دارای تعادل منحصر به فرد است. حرکت‌های تعادل به فرم رابطه
+%\ref{nash_action}
 %است.
-\شروع{قضیه} 
-مجموعه‌ی حرکات کنترلی 
-$\boldsymbol{u_i}^*(t)=\boldsymbol{F_i}^*(t)\boldsymbol{x}(t)$
-تشکیل شده‌است از بازخورد خطی تعادل نش اگر
-\begin{equation*}
-	J_1(\boldsymbol{u_1}^*, \boldsymbol{u_2}^*)\leq J_1(\boldsymbol{u_1}, \boldsymbol{u_2}^*)\text{\rm{ and }}
-	J_2(\boldsymbol{u_1}^*,\boldsymbol{ u_2}^*)\leq J_2(\boldsymbol{u_1}^*, \boldsymbol{u_2})
-\end{equation*}
-برای هر 
-$\boldsymbol{u_i}\in \boldsymbol{\Gamma^{lfb}_i}$
-برقرار باشد.
-\پایان{قضیه}
-\شروع{قضیه}
-بازی دیفرانسیلی خطی درجه دوم دو نفره برای هر شرایط اولیه، تعادل نش خطی بازخورد دارد اگر و فقط اگر مجموعه معادلات کوپل ریکاتی
-
-\begin{align}
-	\begin{split}
-		\boldsymbol{\dot{K}_1}(t) &= -(\boldsymbol{A}-\boldsymbol{S_2}\boldsymbol{K_2}(t))^\mathrm{T}\boldsymbol{K_1}(t)-\boldsymbol{K_1}(t)(\boldsymbol{A}-\boldsymbol{S_2K_2}(t))+
-		\boldsymbol{K_1}(t)\boldsymbol{S_1K_1}(t)-\boldsymbol{Q_1}\\
-		\quad \boldsymbol{K_1}(T) &= \boldsymbol{H_1}
-	\end{split}\\
-	\begin{split}
-		\boldsymbol{\dot{K}_2}(t) &= -(\boldsymbol{A}-\boldsymbol{S_1}\boldsymbol{K_1}(t))^\mathrm{T}\boldsymbol{K_2}(t)-\boldsymbol{K_2}(t)(\boldsymbol{A}-\boldsymbol{S_1K_1}(t))+
-\boldsymbol{K_2}(t)\boldsymbol{S_2K_2}(t)-\boldsymbol{Q_2}\\
-\quad \boldsymbol{K_2}(T) &= \boldsymbol{H_2}
-	\end{split}
-\end{align}
-در بازه زمانی 
-$[0, T]$
-جواب متقارن داشته ‌باشند (برای سادگی 
-$\boldsymbol{S_{12}}=\boldsymbol{S_{21}} =\boldsymbol 0 $
-فرض شده است).
-در این حالت دارای تعادل منحصر به فرد است. حرکت‌های تعادل به فرم رابطه
-\ref{nash_action}
-است.
-\begin{equation}\label{nash_action}
-	\boldsymbol{u_i}^*(t) = -\boldsymbol{R_{ii}B_i}^T\boldsymbol{K_i}(T)\boldsymbol{x}(T),~i = 1, 2
+%\begin{equation}\label{nash_action}
+%	\boldsymbol{u_i}^*(t) = -\boldsymbol{R_{ii}B_i}^T\boldsymbol{K_i}(T)\boldsymbol{x}(T),~i = 1, 2
+%\end{equation}
+%\پایان{قضیه}
+در صورت وجود اغتشاش و یا خطای مدل‌سازی، عدم وجود انتگرال‌گیر در کنترل‌کننده
+\lr{LQDG}
+ میتواند باعث ایجاد خطای حالت ماندگار شود. به‌منظور حذف این خطا، کنترل‌کننده
+ \lr{LQIDG}
+ بر پایه کنترل‌کننده
+ \lr{LQDG}
+ تعمیم‌یافته است. در این کنترل‌کننده، انتگرال اختلاف بین خروجی سیستم و مقدار مطلوب به بردار حالت اضافه شده‌است. بنابراین، بردار حالت به‌صورت زیر نوشته می‌شود:
+ \begin{equation}\label{lqidg_x}
+ 	\boldsymbol{x_a} = \begin{bmatrix}
+ 		\boldsymbol{x_d} - \boldsymbol{x}\\
+ 		\displaystyle \int (\boldsymbol{y_d} - \boldsymbol{y})
+ 	\end{bmatrix}
+ \end{equation}
+در رابطه
+\ref{lqidg_x}،
+بردار حالت افزوده\LTRfootnote{Augmented}،
+$	\boldsymbol{x_d}$
+بردار حالت مطلوب و
+$	\boldsymbol{y_d}$
+  بردار خروجی مطلوب است. ماتریس
+  $	\boldsymbol{C}$
+ یک ماتریس همانی است در نظر گرفته شده‌است؛ بنابراین، بردار خروجی برابر با بردار حالت خواهد
+بود:
+\begin{equation}
+	\boldsymbol{y} = \boldsymbol{x}
 \end{equation}
-\پایان{قضیه}
+با تعریف بردار حالت افزوده، معادلات حالت به شكل زیر بازنویسی می‌شود:
+ \begin{equation}\label{systemlqidg}
+	\begin{split}
+		&\boldsymbol{\dot x_a}(t) = \boldsymbol{A_ax_a}(t) + \boldsymbol{B_{a_{a_1}}u_{a_1}}(t) + \boldsymbol{B_{a_{a_2}}u_{a_2}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
+		\\
+		&\boldsymbol{y}(t) = \boldsymbol{C_ax_a}(t) + \boldsymbol{D_{a_{a_1}}u_{a_1}}(t) + \boldsymbol{D_{a_{a_2}}u_{a_2}}(t)
+	\end{split}
+\end{equation}
+که ماتریسهای $\boldsymbol{A_a}$ و $\boldsymbol{B_a}$ به‌صورت زیر تعریف می‌شوند:
+
+ \begin{equation}
+	\boldsymbol{A_a} = \begin{bmatrix}
+		\boldsymbol{A} &0\\
+		\boldsymbol{C} & 0
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+	\boldsymbol{B_a} = \begin{bmatrix}
+		\boldsymbol{B}\\
+		0
+	\end{bmatrix}
+\end{equation}
+با معرفی معادلات حالت جدید برای سامانه، سایر گام‌های طراحی کنترل‌کننده
+  \lr{LQIDG}
+ مشابه کنترل‌کننده
+\lr{LQDG}
+است. بنابراین، فرمان کنترلی بهینه \lr{LQIDG} بازیکن شماره \lr{i} به‌صورت رابطه
+(\ref{LQIDG_u})
+محاسبه می‌شود.
+
+\begin{equation}\label{LQIDG_u}
+	\boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}\boldsymbol{K_{a_i}}(t)\boldsymbol{x_a}(t),\quad i = 1, 2
+\end{equation}
+که در رابطه 
+(\ref{LQIDG_u})
+،ضریب ماتریس $\boldsymbol{x_a}(t)$ بیانگر بهره بازخورد بهینه است. این بهره به گونه‌ای محاسبه می‌شود که تابع هزینه مربعی بازیکن شماره \lr{i} با فرض بدترین حرکت سایر بازیکنان کمینه شود. تابع هزینه بازیکن شماره \lr{i} در زیر آورده شده است.
+\begin{equation}
+	J_i(u_{1}, u_{2}) = \int_{0}^{T}\left( \boldsymbol{x_a} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x_a}(t)+
+	\boldsymbol{u_i} ^\mathrm{T}(t) \boldsymbol{R_{ii}} \boldsymbol{u_i}(t)+
+	\boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ R_{ij} u_j}(t)
+	\right)dt
+%	\boldsymbol{ x} ^\mathrm{T}(T)\boldsymbol{ H_i}\boldsymbol{x}(T) 
+\end{equation}
+در رابطه 
+(\ref{openloop_u})
+، ماتریس $\boldsymbol{K_{i}}(t)$ بیانگر پاسخ معادله کوپل ریكاتی\LTRfootnote{Coupled Riccati Differential Equations}
+زیر است
+\cite{diff_game}:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{\dot{K}_{a_1}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_1}}(t) - \boldsymbol{K_{a_1}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_1}} +\boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t) + \boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t)\\
+		\boldsymbol{\dot{K}_{a_2}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_2}}(t) - \boldsymbol{K_{a_2}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_2}} +\boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t) + \boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t)
+	\end{split}
+\end{equation}
+برای سادگی از نمادسازی
+$\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}$
+استفاده شده‌است. 
+ 
+ 
+ 
+ 
