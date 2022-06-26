@@ -23,7 +23,7 @@ axis([0 10 -1 0.2])
 % xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 % ylabel('pitch rate$_{(rad/\sec)}$', 'interpreter', 'latex', 'FontSize', 18);
 % legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
-print('../../../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_roll.png','-dpng','-r400');
+print('../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_roll.png','-dpng','-r400');
 
 plot(time, zeros(1, length(time)), '--k', 'linewidth', 2);
 hold on;
@@ -32,7 +32,7 @@ hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
-print('../../../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_pitch.png','-dpng','-r400');
+print('../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_pitch.png','-dpng','-r400');
 
 plot(time, zeros(1, length(time)), '--k', 'linewidth', 2);
 hold on;
@@ -41,25 +41,25 @@ hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
-print('../../../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_yaw.png','-dpng','-r400');
+print('../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_yaw.png','-dpng','-r400');
 
 
 plot(time, simout1(find(sim_time == 5):end, 1), 'k');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('$\omega_{1_{(rad/\sec)}}$', 'interpreter', 'latex', 'FontSize', 18);
-print('../../../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_1.png','-dpng','-r400');
+print('../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_1.png','-dpng','-r400');
 
 plot(time, simout1(find(sim_time == 5):end, 2), 'k');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('$\omega_{2_{(rad/\sec)}}$', 'interpreter', 'latex', 'FontSize', 18);
-print('../../../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_2.png','-dpng','-r400');
+print('../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_2.png','-dpng','-r400');
 
 plot(time, simout1(find(sim_time == 5):end, 3), 'k');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('$\omega_{3_{(rad/\sec)}}$', 'interpreter', 'latex', 'FontSize', 18);
-print('../../../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_3.png','-dpng','-r400');
+print('../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_3.png','-dpng','-r400');
 
 plot(time, simout1(find(sim_time == 5):end, 4), 'k');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('$\omega_{4_{(rad/\sec)}}$', 'interpreter', 'latex', 'FontSize', 18);
-print('../../../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_4.png','-dpng','-r400');
+print('../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_4.png','-dpng','-r400');
