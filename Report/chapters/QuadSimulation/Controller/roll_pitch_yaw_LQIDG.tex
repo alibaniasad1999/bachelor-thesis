@@ -10,62 +10,69 @@
 TCACS \cite{Karimi2010}
 استفاده شده است.
 
+%\begin{figure}[H]
+%	\centering
+%	\begin{subfigure}[H]
+%		\centering
+%		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/3DOF/lqidg_roll.png}
+%		\caption{تغییرات زاویه رول}
+%	\end{subfigure}%
+%	\begin{subfigure}
+%		\centering
+%		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/3DOF/lqidg_pitch.png}
+%		\caption{تغییرات زاویه پیچ}
+%	\end{subfigure}
+%	\caption{‫‪عملکرد کنترل‌کننده LQIDG در کنترل زاویه رول، پیچ و یاد (تعقیب ورودی صفر)}
+%\end{figure}
+%
+%\begin{figure}[H]
+%	\centering
+%	\begin{subfigure}[H]
+%		\centering
+%		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/3DOF/lqidg_yaw.png}
+%		\caption{تغییرات زاویه یاو}
+%	\end{subfigure}
+%	\caption{‫‪عملکرد کنترل‌کننده LQIDG در کنترل زاویه رول، پیچ و یاد (تعقیب ورودی صفر)}
+%\end{figure}
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[H]
-		\centering
-		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/3DOF/lqidg_roll.png}
-		\caption{تغییرات زاویه رول}
-	\end{subfigure}%
-	\begin{subfigure}
-		\centering
-		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/3DOF/lqidg_pitch.png}
-		\caption{تغییرات زاویه پیچ}
-	\end{subfigure}
+\subfigure[تغییرات زاویه رول]{
+	\centering
+	\includegraphics[width=.6\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll.png}
+}
+\subfigure[تغییرات زاویه پیچ]{
+	\centering
+	\includegraphics[width=.6\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_pitch.png}
+}
+\subfigure[تغییرات زاویه یاو]{
+	\centering
+	\includegraphics[width=.6\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_yaw.png}
+}
 	\caption{‫‪عملکرد کنترل‌کننده LQIDG در کنترل زاویه رول، پیچ و یاد (تعقیب ورودی صفر)}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[H]
-		\centering
-		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/3DOF/lqidg_yaw.png}
-		\caption{تغییرات زاویه یاو}
-	\end{subfigure}
-	\caption{‫‪عملکرد کنترل‌کننده LQIDG در کنترل زاویه رول، پیچ و یاد (تعقیب ورودی صفر)}
-\end{figure}
-
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[H]
+	\subfigure[موتور شماره یک]{
 		\centering
-		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_1.png}
-		\caption{موتور شماره یک}
-	\end{subfigure}
-	\begin{subfigure}[H]
+		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_1.png}
+	}
+	\subfigure[موتور شماره دو]{
 		\centering
-		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_2.png}
-		\caption{موتور شماره دو}
-	\end{subfigure}
-	\caption{‫‪فرمان کنترل‌کننده موتور یک و دو در کنترل زاویه  رول، پیچ و یاد (تعقیب ورودی صفر)}
+		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_2.png}
+	}
+	\subfigure[موتور شماره سه]{
+		\centering
+		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_3.png}
+	}
+	\subfigure[موتور شماره چهار]{
+		\centering
+		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_4.png}
+	}
+	\caption{‫‪فرمان کنترلی موتورها در کنترل زاویه رول، پیچ و یاو (تعقیب ورودی صفر)}
 \end{figure}
 
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[H]
-		\centering
-		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_3.png}
-		\caption{موتور شماره سه}
-	\end{subfigure}
-	\begin{subfigure}[H]
-		\centering
-		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_4.png}
-		\caption{موتور شماره چهار}
-	\end{subfigure}
-	\caption{‫‪فرمان کنترل‌کننده موتور سه و چهار در کنترل زاویه  رول، پیچ و یاو (تعقیب ورودی صفر)}
-\end{figure}
 
 
 %بر اساس خروجی شبیه‌سازی (شکل
