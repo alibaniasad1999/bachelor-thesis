@@ -2,7 +2,7 @@ clear;
 clc;
 %% plot data %%
 time = 0:0.02:15; % set time from start
-load('pitch_LQDG.mat'); % load data
+load('pitch_LQDG1.mat'); % load data
 sim_time = 0:0.02:20;
 state_LQDG.signals.values = -state_LQDG.signals.values; %error to state
 % pitch
