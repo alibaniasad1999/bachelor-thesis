@@ -119,7 +119,7 @@ hold off;
 print('../../../../../../../Figures/RCP/roll_pitch_parameter_estimation/RCP_roll_pitch_S3.png',...
     '-dpng','-r400');
 %% scenario V (only valid scenario)
-subplot(2,1,1);
+% subplot(2,1,1);
 % roll
 plot(time, SDOSimTest_Log.simout3(:, 1), 'k--', 'linewidth', 2);
 hold on;
@@ -128,8 +128,10 @@ hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+print('../../../../../../../Figures/RCP/roll_pitch_parameter_estimation/RCP_roll.png',...
+    '-dpng','-r400');
 % pitch
-subplot(2,1,2); 
+% subplot(2,1,2); 
 plot(time, SDOSimTest_Log.simout3(:, 2), 'k--', 'linewidth', 2);
 hold on;
 plot(time, data_V(:, 2), 'r', 'linewidth', 2);
@@ -137,6 +139,8 @@ legend('Simulated', 'Measured', 'Location','northeast');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
+print('../../../../../../../Figures/RCP/roll_pitch_parameter_estimation/RCP_pitch.png',...
+    '-dpng','-r400');
 % subplot(2,2,3);
 % roll rate
 % plot(time, SDOSimTest_Log.simout3(:, 3), 'k--', 'linewidth', 2);
@@ -155,8 +159,7 @@ hold off;
 % xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 % ylabel('pitch rate$_{(rad/\sec)}$', 'interpreter', 'latex', 'FontSize', 18);
 % hold off;
-print('../../../../../../../Figures/RCP/roll_pitch_parameter_estimation/RCP_roll_pitch_S4.png',...
-    '-dpng','-r400');
+
 %% scenario VII (only valid scenario)
 subplot(2,1,1);
 % roll

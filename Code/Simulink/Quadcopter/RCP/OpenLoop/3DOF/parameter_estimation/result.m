@@ -173,7 +173,7 @@ ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 print('../../../../../../../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_roll_pitch_yaw_S3.png',...
     '-dpng','-r400');
 %% scenario V (only valid scenario)
-subplot(3,1,1);
+% subplot(3,1,1);
 % roll
 plot(time, out.simout4(:, 1), 'k--', 'linewidth', 2);
 hold on;
@@ -182,8 +182,10 @@ hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+print('../../../../../../../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_roll.png',...
+    '-dpng','-r400');
 % pitch
-subplot(3,1,2); 
+% subplot(3,1,2); 
 plot(time, out.simout4(:, 2), 'k--', 'linewidth', 2);
 hold on;
 plot(time, data_V(:, 2), 'r', 'linewidth', 2);
@@ -191,7 +193,9 @@ legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
-subplot(3,1,3);
+print('../../../../../../../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_pitch.png',...
+    '-dpng','-r400');
+% subplot(3,1,3);
 % yaw
 plot(time, out.simout4(:, 3), 'k--', 'linewidth', 2);
 hold on;
@@ -200,6 +204,8 @@ hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+print('../../../../../../../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_yaw.png',...
+    '-dpng','-r400');
 % % roll rate
 % subplot(3,2,2); 
 % plot(time, out.simout4(:, 4), 'k--', 'linewidth', 2);
@@ -227,8 +233,7 @@ ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 % ylabel('yaw rate$_{(rad/\sec)}$', 'interpreter', 'latex', 'FontSize', 18);
 % hold off;
-print('../../../../../../../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_roll_pitch_yaw_S5.png',...
-    '-dpng','-r400');
+
 %% scenario VI (only valid scenario)
 subplot(3,1,1);
 % roll
