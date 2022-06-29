@@ -1,5 +1,7 @@
 \subsection{فرم خطی فضای حالت کانال‌های چهارپره}\label{lin_SISO}
-در این قسمت با توجه به فضای حالت بدست آمده، چهارپره حول نقطه کار خطی‌سازی می‌شود.
+در این قسمت، با توجه به فضای حالت  بدست آمده در بخش
+\ref{spacestate}،
+چهارپره حول نقطه کار خطی‌سازی می‌شود.
 %\begin{equation*}
 %	\sigma_1 = \omega_2^2-\omega_4^2,\quad \sigma_2 = \omega_1^2-\omega_3^2,
 %	\quad \sigma_3 = \omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2,\quad \sigma_4 = \omega_1-\omega_2+\omega_3-\omega_4
@@ -30,7 +32,7 @@
 %		C_2\sigma_3- \dfrac{x_6}{\lvert x_6\rvert}C_3
 %	\end{bmatrix}
 %\end{equation*} 
-در این قسمت برای ساده‌سازی، ورودی مسئله را از سرعت دورانی به نیروهای تاثیرگذار در مودهای رول، پیچ و یاو تغیر داده شده است. این کار باعث می‌شود که مسئله از چند ورودی و چند خروجی به سه مسئله یک ورودی و یک خروجی تبدیل شود. نیروها به فرم رابطه 
+برای ساده‌سازی، ورودی مسئله را از سرعت دورانی به نیروهای تاثیرگذار در مودهای رول، پیچ و یاو تغیر داده شده‌است. این کار باعث می‌شود که مسئله از چند ورودی و چند خروجی به سه مسئله یک ورودی و یک خروجی تبدیل شود. نیروها به فرم رابطه 
 \ref{SISO_force}
 تعریف می‌شوند.
 \begin{equation}\label{SISO_force}
@@ -38,10 +40,10 @@
 	u_2 = \omega_1^2 - \omega_3^2, \quad
 	u_3 = \omega_1^2 - \omega_2^2  + \omega_3^2 - \omega_4^2
 \end{equation}
-با توجه به اینکه سه نیرو در نظر گرفته ‌شده و مسئله نیاز به چهار خروجی دارد یک نیروی دیگر نیز در نظر گرفته ‌می‌شود که به فرم رابطه 
+با توجه به اینکه سه نیرو در نظر گرفته ‌شده و مسئله نیاز به چهار خروجی (سرعت دورانی موتورها) دارد یک نیروی دیگر نیز در نظر گرفته ‌می‌شود که به فرم رابطه 
 \ref{SISO_u4}
 است و مقدار آن به صورت ثابت و برابر با سرعت دورانی تمام پره‌ها در دور نامی یعنی
-\lr{2000 RPM}
+\lr{2000 RPM\LTRfootnote{Revolutions Per Minute}}
 در نظر گرفته ‌شده ‌است.
 \begin{equation}\label{SISO_u4}
 	u_4 = \omega_1^2 + \omega_2^2  + \omega_3^2 + \omega_4^2
@@ -84,7 +86,7 @@
 \end{equation}
 برای خطی سازی از بسط تیلور استفاده شده‌است.
 \begin{equation}
-	\delta \dot{\boldsymbol{x}} = \dfrac{\partial \boldsymbol a}{\partial \boldsymbol x}\delta \boldsymbol x + \dfrac{\partial \boldsymbol a}{\partial \boldsymbol u}\delta \boldsymbol u 
+	\delta \dot{\boldsymbol{x}} = \boldsymbol{A}\delta \boldsymbol x + \boldsymbol{B}\delta \boldsymbol u 
 \end{equation}
 \begin{equation}
 	\boldsymbol{x^*} = \begin{bmatrix} % bold or vec???????????/
@@ -98,7 +100,7 @@
 \end{equation}
 
 \begin{equation}
-	\boldsymbol A = \dfrac{\partial \boldsymbol f}{\partial \boldsymbol x}
+	\boldsymbol A = \left.\dfrac{\partial \boldsymbol f}{\partial \boldsymbol x}\right\vert_{\boldsymbol{x^*}}
 %	\begin{bmatrix}
 %		\dfrac{\partial  a_1}{\partial  x_1}&
 %		\dfrac{\partial  a_1}{\partial  x_2}&
@@ -144,7 +146,7 @@
 %	\end{bmatrix}
 \end{equation}
 \begin{equation}
-	\boldsymbol B = \dfrac{\partial \boldsymbol f}{\partial \boldsymbol u}
+	\boldsymbol B = \left.\dfrac{\partial \boldsymbol f}{\partial \boldsymbol u}\right\vert_{\boldsymbol{u^*}}
 %	\begin{bmatrix}
 %		\dfrac{\partial  a_1}{\partial  u_1}&
 %		\dfrac{\partial  a_1}{\partial  u_2}&
@@ -250,7 +252,7 @@
 	\end{bmatrix}
 \end{equation}
 \subsubsection{استخراج سرعت دورانی پره‌ها از نیروها}
-چهار معادله و چهار مجهول:
+چهار معادله و چهار مجهول به‌صورت زیر است.
 \begin{align}\label{4eq4ans}
 	\begin{split}
 		u_1 &= \omega_2^2 - \omega_4^2\\
@@ -261,7 +263,7 @@
 \end{align}
 جواب معادلات 
 \ref{4eq4ans}
-به فرم رابطه 
+به‌صورت رابطه 
 \ref{u2omega}
 بدست می‌آید.
 \begin{equation}\label{u2omega}
