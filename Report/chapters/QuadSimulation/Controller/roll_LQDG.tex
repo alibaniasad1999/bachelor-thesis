@@ -1,23 +1,21 @@
-\subsection{شبیه‌سازی کانال رول استند در حضور کنترل‌کننده LQDG}\label{roll_LQDG}
+\subsection{شبیه‌سازی کانال رول استند در حضور کنترل‌کننده \lr{LQDG}}\label{roll_LQDG_section_simulation}
 در بخش
 \ref{quadchanell_roll}
-شبیه‌سازی کانال رول استند چهارپره انجام شد. در این بخش به بررسی عملکرد چهارپره در حضور کنترل‌کننده LQDG پرداخته می‌شود. کنترل‌کننده LQDG در بخش‌های
-\ref{openloop_game}
-و
-\ref{closedloop_game}
+شبیه‌سازی کانال رول استند چهارپره انجام شد. در این بخش به بررسی عملکرد چهارپره در حضور کنترل‌کننده \lr{LQDG} پرداخته می‌شود. کنترل‌کننده \lr{LQDG} در بخش
+\ref{LQDG}
 بررسی شده است.
- در شبیه‌سازی برای بهینه‌سازی ضرایب وزنی از روش
-TCACS \cite{Karimi2010}
+ در شبیه‌سازی برای بهینه‌سازی ضرایب وزنی \lr{LQDG} از روش
+\lr{TCACS} \cite{Karimi2010}
 استفاده شده است.
-\begin{figure}[H]\label{lqdg_roll_fig}
+\begin{figure}[H]\label{lqdg_roll_fig_simulation}
 	\includegraphics[width=12cm]{../Figures/MIL/LQDG/Roll/lqdg_roll.png}
 	\centering
-	\caption{عملكرد LQDG در کنترل زاويه رول (تعقیب ورودی صفر)}
+	\caption{عملكرد \lr{LQDG} در کنترل زاويه رول (تعقیب ورودی صفر)}
 \end{figure}
 بر اساس خروجی شبیه‌سازی (شکل
-\ref{lqdg_roll_fig})
-،کانال رول در حضور کنترل‌کننده LQDG در کمتر از پنج ثانیه به تعادل می‌رسد اما دارای خطای ماندگار است ولی خطای مانگار آن نسبت به کنترل‌کننده بخش
-\ref{roll_lqr_section}
+\ref{lqdg_roll_fig_simulation})
+،کانال رول در حضور کنترل‌کننده \lr{LQDG} در کمتر از پنج ثانیه به تعادل می‌رسد اما دارای خطای ماندگار است ولی خطای مانگار آن نسبت به کنترل‌کننده بخش
+\ref{roll_lqr_section_simulation}
 کمتر است. به دلیل خطای ماندگار، در بخش
 %LQIDG
 انتگرال‌گیر به کنترل‌کننده اضافه می‌شود تا خطای مانگار استند را کم کند.
