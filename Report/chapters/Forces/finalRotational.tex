@@ -30,7 +30,7 @@
 عبارت
 $\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B$
 بیانگر ماتریس پادمتقارن بردار مشتق سرعت‌ زاویه‌ای بدنی
-$\left( \left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B \right)$
+($\left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B $)
 است. جمله آخر در معادله فوق را می‌توان به صورت زیر بازنویسی کرد:
 \begin{equation}\label{sc}
 	m_{tot}\left[\boldsymbol s_{DC}\right]^R
@@ -100,7 +100,7 @@ $\left( \left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B \right)$
 \ref{finaltorquefinal}،
 مؤلفه‌های بردار مشتق سرعت زاویه‌ای چهارپره به صورت زیر حاصل می‌شود:
 \begin{align}
-	\begin{split}
+	\begin{split}\label{p dot}
 		\dot{p} =& \dfrac{h_{cg}gm_{dot}\cos(\theta)\sin(\phi)
 			+\left(J_{22} - J_{33} +2m_{tot}h_{ch}^2\right)qr
 		}
@@ -125,13 +125,15 @@ $\left( \left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B \right)$
 به منظور انتشار وضعیت دورانی چهارپره، از روش انتشار اویلر استفاده می‌شود. در این‌صورت
 \cite{zipfel2000modeling}
 :
-$$\dot\phi = p + q\sin(\phi)\cos(\theta) +‌
-r\cos(\phi)\tan(\theta)
-$$
-$$
-\dot \theta = q\cos(\phi) - r\sin(\phi)
-$$
-$$
-\dot\psi = (q\sin(phi)) + r\cos(\phi))\sec(\theta) 
-$$
+\begin{equation}
+	\dot\phi = p + q\sin(\phi)\cos(\theta) +‌
+	r\cos(\phi)\tan(\theta)
+\end{equation}
+\begin{equation}
+\dot \theta = q\cos(\phi) - r\sin(\phi))
+\end{equation}
+\begin{equation}\label{psidot}
+	\dot\psi = (q\sin(phi)) + r\cos(\phi))\sec(\theta) 
+\end{equation}
+
 

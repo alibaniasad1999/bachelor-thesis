@@ -8,30 +8,74 @@
 	\phi\\ \theta \\ \psi \\ p\\ q\\ r
 \end{bmatrix}
 \end{equation}
-معادلات ارائه شده به فرم زیر برای فضای حالت بازنویسی شدند:
+همچنین، بردار ورودی به صورت زیر تعریف می‌شود.
 \begin{equation}
-	\dot x_1 = x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)
+	\boldsymbol{\omega} = \begin{bmatrix}
+		\omega_1&\omega_2&\omega_3&\omega_4
+	\end{bmatrix}^\mathrm{T}
 \end{equation}
+معادلات ارائه شده به فرم زیر برای فضای حالت بازنویسی می‌شوند:
 \begin{equation}
-	\dot x_2 = x_5\cos(x_1)- x_6\sin(x_1)
+	\boldsymbol{\dot x} = \boldsymbol f(\boldsymbol x, \boldsymbol{\omega})
 \end{equation}
+که $\boldsymbol F(\boldsymbol x)$ مطابق روابط
+\ref{p dot}
+تا
+\ref{psidot}
+به صورت زیر استخراج می‌شود.
+%\begin{equation}
+%	\dot x_1 = x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)
+%\end{equation}
+%\begin{equation}
+%	\dot x_2 = x_5\cos(x_1)- x_6\sin(x_1)
+%\end{equation}
+%\begin{equation}
+%	\dot x_3 = (x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)
+%\end{equation}
+%\begin{equation}
+%	\dot x_4 = A_1\cos(x_2)\sin(x_1) + 
+%	A_2x_5x_6 + A_3\left(\omega_2^2-\omega_4^2\right)+
+%	A_4x_5\left(\omega_1-\omega_2+\omega_3-\omega_4\right) - \dfrac{x_4}{\lvert x_4\rvert}A_5
+%\end{equation}
+%\begin{equation}
+%	\dot x_5 = B_1\sin(x_2) + 
+%	B_2x_4x_6 + B_3\left(\omega_1^2-\omega_3^2\right)+
+%	B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right) - \dfrac{x_5}{\lvert x_5\rvert}B_5
+%\end{equation}
+%\begin{equation}
+%	\dot x_6 = C_1x_4x_5 + 
+%	C_2\left(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2\right) - \dfrac{x_6}{\lvert x_6\rvert}C_3
+%\end{equation}
 \begin{equation}
-	\dot x_3 = (x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)
-\end{equation}
-\begin{equation}
-	\dot x_4 = A_1\cos(x_2)\sin(x_1) + 
-	A_2x_5x_6 + A_3\left(\omega_2^2-\omega_4^2\right)+
-	A_4x_5\left(\omega_1-\omega_2+\omega_3-\omega_4\right) - \dfrac{x_4}{\lvert x_4\rvert}A_5
-\end{equation}
-\begin{equation}
-	\dot x_5 = B_1\sin(x_2) + 
-	B_2x_4x_6 + B_3\left(\omega_1^2-\omega_3^2\right)+
-	B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right) - \dfrac{x_5}{\lvert x_5\rvert}B_5
-\end{equation}
-\begin{equation}
-	\dot x_6 = C_1x_4x_5 + 
-	C_2\left(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2\right) - \dfrac{x_6}{\lvert x_6\rvert}C_3
-\end{equation}
+\boldsymbol f = \begin{bmatrix}
+		%		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
+		%		x_5\cos(x_1)- x_6\sin(x_1)\\
+		%		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
+		%		A_1\cos(x_2)\sin(x_1) + 
+		%		A_2x_5x_6 + A_3\left(\omega_2^2-\omega_4^2\right)+
+		%		A_4x_5\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_4}{\lvert x_4\rvert}A_5+A_6\cos(x_1)\\
+		%		B_1\sin(x_2) + 
+		%		B_2x_4x_6 + B_3\left(\omega_1^2-\omega_3^2\right)+
+		%		B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_5}{\lvert x_5\rvert}B_5 + B_6\cos(x_2)\\
+		%		C_1x_4x_5 + 
+		%		C_2\left(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2\right)- \dfrac{x_6}{\lvert x_6\rvert}C_3
+		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
+		x_5\cos(x_1)- x_6\sin(x_1)\\
+		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
+		A_1\cos(x_2)\sin(x_1) + 
+		A_2x_5x_6 + A_3\sigma_1+
+		A_4x_5\sigma_4- \dfrac{x_4}{\lvert x_4\rvert}A_5+A_6\cos(x_1)\\
+		B_1\sin(x_2) + 
+		B_2x_4x_6 + B_3\sigma_2+
+		B_4x_4\sigma_4- \dfrac{x_5}{\lvert x_5\rvert}B_5 + B_6\cos(x_2)\\
+		C_1x_4x_5 + 
+		C_2\sigma_3- \dfrac{x_6}{\lvert x_6\rvert}C_3
+	\end{bmatrix}
+\end{equation} 
+\begin{equation*}
+	\sigma_1 = \omega_2^2-\omega_4^2,\quad \sigma_2 = \omega_1^2-\omega_3^2,
+	\quad \sigma_3 = \omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2,\quad \sigma_4 = \omega_1-\omega_2+\omega_3-\omega_4
+\end{equation*}
 ثابت‌های معادلات بالا  به صورت زیر تعریف می‌شوند:
 \begin{align*}
 	&A_1  = \dfrac{h_{cg}gm_{tot}}{m_{tot}h_{cg}^2+J_{11}}& 
@@ -52,10 +96,9 @@
 	C_2 =\dfrac{d}{J_{33}}\quad
 	C_3 = \dfrac{m_3g\mu r_z}{ J_{33}}
 \end{align*}
-به منظور شبیه‌سازی ، پارامترهای استند به صورت جدول 
+به منظور شبیه‌سازی، پارامترهای استند آزمایشگاه به صورت جدول 
 \ref{parameterstable}
-درنظر گرفته شده است که 
-مقدار پارامترهای استند آزمایشگاه است.
+درنظر گرفته شده‌است.
 \begin{table}[H]
 	\caption {پارامترهای شبیه‌سازی استند چهارپره \cite{norian}} 
 	\label{parameterstable}
