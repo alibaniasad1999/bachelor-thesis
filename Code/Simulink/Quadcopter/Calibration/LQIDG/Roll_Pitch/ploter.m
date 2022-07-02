@@ -6,6 +6,7 @@ load('roll_pitch.mat') % load data
 sim_time = 0:0.02:15;
 % pitch
 % subplot(2,1,1);
+roll_pitch_LQIDG(:, 1) = roll_pitch_LQIDG(:, 1) + 0.0230;
 plot(time, zeros(1, length(time)), '--k', 'linewidth', 2);
 hold on;
 plot(time, roll_pitch_LQIDG(find(sim_time == 5):end, 1), 'r', 'linewidth', 2);
