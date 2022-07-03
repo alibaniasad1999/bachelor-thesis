@@ -158,7 +158,7 @@ The parameter used in this model introduced in the article.
 
 
 ## Simulation of quadcopter with LQIDG controller in MATLAB simulink
-Three degree of freedom of freedom simulation of quadcopter are shown in the figure below.
+Three degree of freedom simulation of quadcopter are shown in the figure below.
 For optimzation of LQIDG weighting matrix used TCACS algorithm.
 
 roll             |  pitch
@@ -167,7 +167,7 @@ roll             |  pitch
 yaw
 ![](https://user-images.githubusercontent.com/37424536/177053905-824123af-e7e3-476a-96cd-f4fcb82dae5c.png)
 
-
+Motor commands simulation of quadcopter are shown in the figure below.
 Motor 1             |  Motor 2
 :-------------------------:|:-------------------------:
 ![](https://user-images.githubusercontent.com/37424536/177054364-16d4b1b9-862e-4d42-964a-ba171d085fef.png)  |  ![](https://user-images.githubusercontent.com/37424536/177054367-68e700b5-6e78-4ad0-97f7-68ecd7c5af77.png)
@@ -175,7 +175,7 @@ Motor 3             |  Motor 4
 ![](https://user-images.githubusercontent.com/37424536/177054369-81e79e8a-e704-4595-bbe2-a3de13d64832.png)  |  ![](https://user-images.githubusercontent.com/37424536/177054372-3fb6b099-ba70-4eab-b224-06d1e5d9dfa6.png)
 
 ## Final test of quadcopter with LQIDG controller in MATLAB simulink
-Three degree of freedom of freedom final test of quadcopter are shown in the figure below.
+Three degree of freedom final test of quadcopter are shown in the figure below.
 For optimzation of LQIDG weighting matrix used TCACS algorithm that used in simulation.
 roll             |  pitch
 :-------------------------:|:-------------------------:
@@ -183,7 +183,7 @@ roll             |  pitch
 yaw
 ![](https://user-images.githubusercontent.com/37424536/177053905-824123af-e7e3-476a-96cd-f4fcb82dae5c.png)
 
-real
+Motor commands final test of quadcopter are shown in the figure below.
 
 Motor 1             |  Motor 2
 :-------------------------:|:-------------------------:
