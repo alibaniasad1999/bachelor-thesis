@@ -26,7 +26,9 @@ Optimum control command:
 $$
 	\boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}\boldsymbol{K_{i}}(t)\boldsymbol{x}(t),\quad i = 1, 2
 $$
-![fe62e1b46eaf07b2e6eba04c3ba298a6](https://user-images.githubusercontent.com/37424536/177055195-8ba066f7-360e-4e42-9d43-a82454579d88.png)
+
+  <p align="center"><img width="350" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055195-8ba066f7-360e-4e42-9d43-a82454579d88.png">
+
 
 
 ### LQIDG controller
@@ -38,7 +40,9 @@ $$
  		\displaystyle \int (\boldsymbol{y_d} - \boldsymbol{y})
  	\end{bmatrix}
 $$
-![6688e8199121727fbbb8e5ea4d970e4c](https://user-images.githubusercontent.com/37424536/177055225-64c1e62f-5504-4f63-8ee7-8427d7d3c6d3.png)
+
+  <p align="center"><img width="180" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055225-64c1e62f-5504-4f63-8ee7-8427d7d3c6d3.png">
+
 
 
 New space state matrix:
@@ -49,7 +53,9 @@ $$
 	\end{bmatrix}
 $$
 
-![67889d39be3399a236992444b327c6d0](https://user-images.githubusercontent.com/37424536/177055238-6778f115-3c46-4284-aee8-06c14d543861.png)
+
+
+  <p align="center"><img width="110" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055238-6778f115-3c46-4284-aee8-06c14d543861.png">
 
 
 
@@ -59,7 +65,9 @@ $$
 		0
 	\end{bmatrix}
 $$
-![8a5bd8b6de623050707032e8509fe00a](https://user-images.githubusercontent.com/37424536/177055254-074e0649-f633-4901-a034-b19f6bdf9b5c.png)
+<!-- ![8a5bd8b6de623050707032e8509fe00a](https://user-images.githubusercontent.com/37424536/177055254-074e0649-f633-4901-a034-b19f6bdf9b5c.png) -->
+
+ <p align="center"><img width="90" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055254-074e0649-f633-4901-a034-b19f6bdf9b5c.png">
 
 
 and C matrix is identity matrix.
@@ -70,7 +78,8 @@ $$
 		\boldsymbol{\dot{K}_{a_2}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_2}}(t) - \boldsymbol{K_{a_2}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_2}} +\boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t) + \boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t)
 	\end{split}
 $$
-![d87aa81d7b8a3f5578ea6528f3110828](https://user-images.githubusercontent.com/37424536/177055264-3b3b5fcc-a4dd-45e3-93de-b438a09cae14.png)
+ <p align="center"><img width="1500" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055264-3b3b5fcc-a4dd-45e3-93de-b438a09cae14.png">
+<!-- ![d87aa81d7b8a3f5578ea6528f3110828](https://user-images.githubusercontent.com/37424536/177055264-3b3b5fcc-a4dd-45e3-93de-b438a09cae14.png) -->
 
 
 
@@ -79,8 +88,9 @@ $$
 \boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}\boldsymbol{K_{a_i}}(t)\boldsymbol{x_a}(t),\quad i = 1, 2
 $$
 
-![a4d4a74a0141e65350cbda507312d7f7](https://user-images.githubusercontent.com/37424536/177055274-31e56ec9-e430-4a45-bd48-c36e40efadf0.png)
 
+<!-- ![a4d4a74a0141e65350cbda507312d7f7](https://user-images.githubusercontent.com/37424536/177055274-31e56ec9-e430-4a45-bd48-c36e40efadf0.png) -->
+  <p align="center"><img width="350" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055274-31e56ec9-e430-4a45-bd48-c36e40efadf0.png">
 
 
 ## model of quadcopter stand
@@ -88,7 +98,8 @@ This Article used perivous work to model the quadcopter stand.
 Final model is shown below.
 $$ \boldsymbol{\dot x} = \boldsymbol f(\boldsymbol x, \boldsymbol{\omega})
 $$
-![b196e9eb979f8f21d09483c35ed7ae44](https://user-images.githubusercontent.com/37424536/177055281-c1bf86c5-4ac1-43e9-9a49-34d0de4b7574.png)
+<!-- ![b196e9eb979f8f21d09483c35ed7ae44](https://user-images.githubusercontent.com/37424536/177055281-c1bf86c5-4ac1-43e9-9a49-34d0de4b7574.png) -->
+  <p align="center"><img width="100" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055281-c1bf86c5-4ac1-43e9-9a49-34d0de4b7574.png">
 
 
 $$
@@ -118,7 +129,8 @@ $$
 	\end{bmatrix}
 $$
 
-![6617686d03fa55c7d1220468ab3ac4c2](https://user-images.githubusercontent.com/37424536/177055296-d5356c77-e794-4366-8317-54b446deba93.png)
+<!-- ![6617686d03fa55c7d1220468ab3ac4c2](https://user-images.githubusercontent.com/37424536/177055296-d5356c77-e794-4366-8317-54b446deba93.png) -->
+ <p align="center"><img width="1300" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055296-d5356c77-e794-4366-8317-54b446deba93.png">
 
 
 
