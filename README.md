@@ -1,11 +1,121 @@
 # Bachelor Thesis
-## LQIDG Controler for 3DOF Quadcopter Stand ![MATLABver](https://img.shields.io/badge/MATLAB-v9.1%2B-orange.svg) ![MATLAB2020a](https://img.shields.io/badge/MATLAB-R2020a-green.svg) ![Xelatex2020](https://img.shields.io/badge/Xelatex-2020-blue.svg)
+## LQIDG Controler for 3DOF Quadcopter Stand ![MATLABver](https://img.shields.io/badge/MATLAB-v9.1%2B-orange.svg) ![MATLAB2020a](https://img.shields.io/badge/MATLAB-R2020a-green.svg) ![xelatex2020](https://img.shields.io/badge/xelatex-2020-blue.svg)
 ## Abstrcat
 In this research, a method based on game theory has been used. In this method, two main players, system and disturbance, are considered. Each of the two players tries to increase their score with the lowest cost, which is considered here, the status of the players' score. In this method, the selection of the move is done using the Nash2 equilibrium, whose purpose is to reduce the cost function assuming the worst move of the other player. This method is resistant to input disturbance. It also has good resistance to modeling uncertainty. The presented method has been used to control a quadcopter three degree of freedom stand, which is also a kind of inverted pendulum. To evaluate the performance of this method, first simulations have been performed in the Simulink environment and then, by implementing it, the correctness of its performance has been confirmed.
 <!-- ![This is an image](https://user-images.githubusercontent.com/37424536/177047530-034dd479-7912-4439-bbe6-32a2f6122b37.png) -->
 Keywords: quadcopter, differential game, game theory, Nash equilibrium, three degree of freedom stand, model base design, linear quadratic regulator
-## How it works
-This is tree degree of freedom quadcopter stand.
+## Plant
+This is three degree of freedom quadcopter stand.
 <p align="center"><img width=43% src="https://user-images.githubusercontent.com/37424536/177047530-034dd479-7912-4439-bbe6-32a2f6122b37.png"></p>
-$$ali^{hazy}$$
+
+## Differential game
+In game theory, differential games are a group of problems related to the modeling and analysis of conflict in the context of a dynamical system. More specifically, a state variable or variables evolve over time according to a differential equation.
+ ### LQDG controller
+ Optimum answer of LQDG come from solving two coupled riccati equation.
+ riccati equation mentioned before:
+$$
+\begin{split}
+	\boldsymbol{\dot{K}_1}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_1}(t) - \boldsymbol{K_1}(t)\boldsymbol{A} - \boldsymbol{Q_1} +\boldsymbol{K_1}(t)\boldsymbol{S_1}(t)\boldsymbol{K_1}(t) + \boldsymbol{K_1}(t)\boldsymbol{S_2}(t)\boldsymbol{K_2}(t)\\
+	\boldsymbol{\dot{K}_2}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_2}(t) - \boldsymbol{K_2}(t)\boldsymbol{A} - \boldsymbol{Q_2} +\boldsymbol{K_2}(t)\boldsymbol{S_2}(t)\boldsymbol{K_2}(t) + \boldsymbol{K_2}(t)\boldsymbol{S_1}(t)\boldsymbol{K_1}(t)
+\end{split}
+$$
+Optimum control command:
+$$
+	\boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}\boldsymbol{K_{i}}(t)\boldsymbol{x}(t),\quad i = 1, 2
+$$
+### LQIDG controller
+When there is uncertanity in model it is better to use LQIDG controller.
+In this controller, the integral of the difference between the system output and the desired value is added to the state vector.
+$$
+ 	\boldsymbol{x_a} = \begin{bmatrix}
+ 		\boldsymbol{x_d} - \boldsymbol{x}\\
+ 		\displaystyle \int (\boldsymbol{y_d} - \boldsymbol{y})
+ 	\end{bmatrix}
+$$
+New space state matrix:
+$$
+	\boldsymbol{A_a} = \begin{bmatrix}
+		\boldsymbol{A} &0\\
+		\boldsymbol{C} & 0
+	\end{bmatrix}
+$$
+$$
+	\boldsymbol{B_a} = \begin{bmatrix}
+		\boldsymbol{B}\\
+		0
+	\end{bmatrix}
+$$
+and C matrix is identity matrix.
+LQIDG coupled riccati equation:
+$$
+	\begin{split}
+		\boldsymbol{\dot{K}_{a_1}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_1}}(t) - \boldsymbol{K_{a_1}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_1}} +\boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t) + \boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t)\\
+		\boldsymbol{\dot{K}_{a_2}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_2}}(t) - \boldsymbol{K_{a_2}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_2}} +\boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t) + \boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t)
+	\end{split}
+$$
+LQIDG omptimum control command:
+$$
+\boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}\boldsymbol{K_{a_i}}(t)\boldsymbol{x_a}(t),\quad i = 1, 2
+$$
+
+## model of quadcopter stand
+This Article used perivous work to model the quadcopter stand.
+Final model is shown below.
+$$ \boldsymbol{\dot x} = \boldsymbol f(\boldsymbol x, \boldsymbol{\omega})
+$$
+
+$$
+\boldsymbol f = \begin{bmatrix}
+		%		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
+		%		x_5\cos(x_1)- x_6\sin(x_1)\\
+		%		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
+		%		A_1\cos(x_2)\sin(x_1) + 
+		%		A_2x_5x_6 + A_3\left(\omega_2^2-\omega_4^2\right)+
+		%		A_4x_5\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_4}{\lvert x_4\rvert}A_5+A_6\cos(x_1)\\
+		%		B_1\sin(x_2) + 
+		%		B_2x_4x_6 + B_3\left(\omega_1^2-\omega_3^2\right)+
+		%		B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_5}{\lvert x_5\rvert}B_5 + B_6\cos(x_2)\\
+		%		C_1x_4x_5 + 
+		%		C_2\left(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2\right)- \dfrac{x_6}{\lvert x_6\rvert}C_3
+		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
+		x_5\cos(x_1)- x_6\sin(x_1)\\
+		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
+		A_1\cos(x_2)\sin(x_1) + 
+		A_2x_5x_6 + A_3\sigma_1+
+		A_4x_5\sigma_4- \dfrac{x_4}{\lvert x_4\rvert}A_5+A_6\cos(x_1)\\
+		B_1\sin(x_2) + 
+		B_2x_4x_6 + B_3\sigma_2+
+		B_4x_4\sigma_4- \dfrac{x_5}{\lvert x_5\rvert}B_5 + B_6\cos(x_2)\\
+		C_1x_4x_5 + 
+		C_2\sigma_3- \dfrac{x_6}{\lvert x_6\rvert}C_3
+	\end{bmatrix}
+$$
+$$
+\begin{align*}
+	&A_1  = \dfrac{h_{cg}gm_{tot}}{m_{tot}h_{cg}^2+J_{11}}& 
+	&A_2  =  \dfrac{2m_{tot}h_{cg}^2+J_{22}-J_{33}}{m_{tot}h_{cg}^2+J_{11}}& 
+	&A_3  =  \dfrac{bd_{cg}}{m_{tot}h_{cg}^2+J_{11}}& 	\\
+	& A_4  =  \dfrac{J_R}{m_{tot}h_{cg}^2+J_{11}} & 
+	& A_5 =  \dfrac{m_1g\mu r_x}{m_{tot}h_{cg}^2 + J_{11}} & 
+	& A_6=  \\
+	&B_1  =  \dfrac{h_{cg}gm_{tot}}{m_{tot}h_{cg}^2+J_{22}}& 
+	&B_2 =  \dfrac{-2m_{tot}h_{cg}^2-J_{11}+J_{33}}{m_{tot}h_{cg}^2+J_{22}}& 
+	&B_3  =  \dfrac{bd_{cg}}{m_{tot}h_{cg}^2+J_{22}}& \\
+	&B_4 =  \dfrac{-J_R}{m_{tot}h_{cg}^2+J_{22}}& 
+	& B_5 =  \dfrac{m_2g\mu r_y}{m_{tot}h_{cg}^2 + J_{22}}& 
+	& B_6=&
+\end{align*}
+$$
+$$
+\begin{align*}
+	C_1 =\dfrac{J_{11}-J_{22}}{J_{33}}\quad
+	C_2 =\dfrac{d}{J_{33}}\quad
+	C_3 = \dfrac{m_3g\mu r_z}{ J_{33}}
+\end{align*}
+$$
+The parameter used in this model introduced in the article.
+ ## Simulation in MATLAB simulink
+ In this article used simmulink to simulate the quadcopter stand.
+ Simulation in MATLAB simulink is shown below.
+ <!-- \fig from simulation -->
 The project is about quadcopter simulation use LQR, LQDG and LQIDG method.
