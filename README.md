@@ -91,7 +91,7 @@ $$
 
 
 
-## model of quadcopter stand
+## Model of quadcopter stand
 This Article used perivous work to model the quadcopter stand.
 Final model is shown below.
 
