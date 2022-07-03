@@ -125,5 +125,5 @@ The parameter used in this model introduced in the article.
  <p align="center"><img width="500" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053072-ddd34d85-ff92-44be-b623-dfd590661819.png">
 
 
-## Simulation LQDG and LQIDG in  simulink for quadcopter
+## Simulation LQDG and LQIDG in MATLAB simulink for quadcopter
 
