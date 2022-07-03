@@ -121,7 +121,7 @@ The parameter used in this model introduced in the article.
 
  Solving differtial eqautions using ode45.
  <p align="center"><img width="500" alt="Integrator" src="https://user-images.githubusercontent.com/37424536/177053080-08d47018-dcad-48b3-8843-367c3c2b8f4e.png"></p>
- all 6 chanell of quadcopter are shown in the figure below.
+ All 6 chanell of quadcopter are shown in the figure below.
  <p align="center"><img width="500" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053072-ddd34d85-ff92-44be-b623-dfd590661819.png">
 
 
@@ -136,29 +136,37 @@ roll             |  pitch
 yaw
 ![](https://user-images.githubusercontent.com/37424536/177053905-824123af-e7e3-476a-96cd-f4fcb82dae5c.png)
 
+
+Motor 1             |  Motor 2
+:-------------------------:|:-------------------------:
+![](https://user-images.githubusercontent.com/37424536/177054364-16d4b1b9-862e-4d42-964a-ba171d085fef.png)  |  ![](https://user-images.githubusercontent.com/37424536/177054367-68e700b5-6e78-4ad0-97f7-68ecd7c5af77.png)
+Motor 3             |  Motor 4
+![](https://user-images.githubusercontent.com/37424536/177054369-81e79e8a-e704-4595-bbe2-a3de13d64832.png)  |  ![](https://user-images.githubusercontent.com/37424536/177054372-3fb6b099-ba70-4eab-b224-06d1e5d9dfa6.png)
+
 ## in real
 roll             |  pitch
 :-------------------------:|:-------------------------:
 ![](https://user-images.githubusercontent.com/37424536/177053886-b2a01459-61f8-42fe-b19b-a17003adf53c.png)  |  ![](https://user-images.githubusercontent.com/37424536/177053893-44b0d95f-0328-4bb0-b74d-10227e85ab36.png)
 yaw
 ![](https://user-images.githubusercontent.com/37424536/177053905-824123af-e7e3-476a-96cd-f4fcb82dae5c.png)
+
+real
+
+Motor 1             |  Motor 2
+:-------------------------:|:-------------------------:
+![](https://user-images.githubusercontent.com/37424536/177054344-c924c746-9063-49e4-93c0-031d27ea1480.png)  |  ![](https://user-images.githubusercontent.com/37424536/177054347-25d75f38-2d9a-4d2e-8b65-f79a35c8bf3e.png)
+Motor 3             |  Motor 4
+![](https://user-images.githubusercontent.com/37424536/177054349-6fe3bf2e-6f5e-4da5-97d0-59ae7cf91fac.png)  |  ![](https://user-images.githubusercontent.com/37424536/177054352-71a75642-0633-4c67-b7df-235341d2ccd7.png)
  <!-- <p align="center"><img width="250" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053886-b2a01459-61f8-42fe-b19b-a17003adf53c.png">
 <p align="center"><img width="250" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053893-44b0d95f-0328-4bb0-b74d-10227e85ab36.png">
 <p align="center"><img width="250" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053905-824123af-e7e3-476a-96cd-f4fcb82dae5c.png"> -->
 
-![lqidg_roll_pitch_Omega_1](https://user-images.githubusercontent.com/37424536/177054364-16d4b1b9-862e-4d42-964a-ba171d085fef.png)
+<!-- ![lqidg_roll_pitch_Omega_1](https://user-images.githubusercontent.com/37424536/177054364-16d4b1b9-862e-4d42-964a-ba171d085fef.png)
 ![lqidg_roll_pitch_Omega_2](https://user-images.githubusercontent.com/37424536/177054367-68e700b5-6e78-4ad0-97f7-68ecd7c5af77.png)
 ![lqidg_roll_pitch_Omega_3](https://user-images.githubusercontent.com/37424536/177054369-81e79e8a-e704-4595-bbe2-a3de13d64832.png)
-![lqidg_roll_pitch_Omega_4](https://user-images.githubusercontent.com/37424536/177054372-3fb6b099-ba70-4eab-b224-06d1e5d9dfa6.png)
-
-
-sim
-	
-	
-	
-real
-![lqidg_Omega_1](https://user-images.githubusercontent.com/37424536/177054344-c924c746-9063-49e4-93c0-031d27ea1480.png)
-![lqidg_Omega_2](https://user-images.githubusercontent.com/37424536/177054347-25d75f38-2d9a-4d2e-8b65-f79a35c8bf3e.png)
-![lqidg_Omega_3](https://user-images.githubusercontent.com/37424536/177054349-6fe3bf2e-6f5e-4da5-97d0-59ae7cf91fac.png)
-![lqidg_Omega_4](https://user-images.githubusercontent.com/37424536/177054352-71a75642-0633-4c67-b7df-235341d2ccd7.png)
+![lqidg_roll_pitch_Omega_4](https://user-images.githubusercontent.com/37424536/177054372-3fb6b099-ba70-4eab-b224-06d1e5d9dfa6.png) -->
+<!-- ![lqidg_Omega_1]()
+![lqidg_Omega_2]()
+![lqidg_Omega_3]()
+![lqidg_Omega_4]() -->
 	
