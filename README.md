@@ -13,12 +13,14 @@ In game theory, differential games are a group of problems related to the modeli
  ### LQDG controller
  Optimum answer of LQDG come from solving two coupled riccati equation.
  riccati equation mentioned before:
-<!-- $$
+ 
+$$
 \begin{split}
 	\boldsymbol{\dot{K}_1}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_1}(t) - \boldsymbol{K_1}(t)\boldsymbol{A} - \boldsymbol{Q_1} +\boldsymbol{K_1}(t)\boldsymbol{S_1}(t)\boldsymbol{K_1}(t) + \boldsymbol{K_1}(t)\boldsymbol{S_2}(t)\boldsymbol{K_2}(t)\\
 	\boldsymbol{\dot{K}_2}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_2}(t) - \boldsymbol{K_2}(t)\boldsymbol{A} - \boldsymbol{Q_2} +\boldsymbol{K_2}(t)\boldsymbol{S_2}(t)\boldsymbol{K_2}(t) + \boldsymbol{K_2}(t)\boldsymbol{S_1}(t)\boldsymbol{K_1}(t)
 \end{split}
-$$ -->
+$$
+
 ![b66f707709628180f909f8860dc8c7bf](https://user-images.githubusercontent.com/37424536/177055174-c8ea4f59-dd90-4571-817e-32b54deb4b52.png)
 
 
