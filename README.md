@@ -117,5 +117,8 @@ The parameter used in this model introduced in the article.
  ## Simulation in MATLAB simulink
  In this article used simmulink to simulate the quadcopter stand.
  Simulation in MATLAB simulink is shown below.
- <!-- \fig from simulation -->
+<img width="1006" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053072-ddd34d85-ff92-44be-b623-dfd590661819.png">
+<img width="1309" alt="Integrator" src="https://user-images.githubusercontent.com/37424536/177053080-08d47018-dcad-48b3-8843-367c3c2b8f4e.png">
+<img width="1316" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177053082-635a8796-2a62-443e-8793-926f9a43eb4d.png">
+
 The project is about quadcopter simulation use LQR, LQDG and LQIDG method.
