@@ -13,20 +13,20 @@ In game theory, differential games are a group of problems related to the modeli
  ### LQDG controller
  Optimum answer of LQDG come from solving two coupled riccati equation.
  riccati equation mentioned before:
-<!-- $$
+$$
 \begin{split}
 	\boldsymbol{\dot{K}_1}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_1}(t) - \boldsymbol{K_1}(t)\boldsymbol{A} - \boldsymbol{Q_1} +\boldsymbol{K_1}(t)\boldsymbol{S_1}(t)\boldsymbol{K_1}(t) + \boldsymbol{K_1}(t)\boldsymbol{S_2}(t)\boldsymbol{K_2}(t)\\
 	\boldsymbol{\dot{K}_2}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_2}(t) - \boldsymbol{K_2}(t)\boldsymbol{A} - \boldsymbol{Q_2} +\boldsymbol{K_2}(t)\boldsymbol{S_2}(t)\boldsymbol{K_2}(t) + \boldsymbol{K_2}(t)\boldsymbol{S_1}(t)\boldsymbol{K_1}(t)
-\end{split} -->
-<!-- $$ -->
+\end{split}
+$$
 Optimum control command:
-<!-- $$
+$$
 	\boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}\boldsymbol{K_{i}}(t)\boldsymbol{x}(t),\quad i = 1, 2
-$$ -->
+$$
 ### LQIDG controller
 When there is uncertanity in model it is better to use LQIDG controller.
 In this controller, the integral of the difference between the system output and the desired value is added to the state vector.
-<!-- $$
+$$
  	\boldsymbol{x_a} = \begin{bmatrix}
  		\boldsymbol{x_d} - \boldsymbol{x}\\
  		\displaystyle \int (\boldsymbol{y_d} - \boldsymbol{y})
@@ -44,26 +44,26 @@ $$
 		\boldsymbol{B}\\
 		0
 	\end{bmatrix}
-$$ -->
+$$
 and C matrix is identity matrix.
 LQIDG coupled riccati equation:
-<!-- $$
+$$
 	\begin{split}
 		\boldsymbol{\dot{K}_{a_1}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_1}}(t) - \boldsymbol{K_{a_1}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_1}} +\boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t) + \boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t)\\
 		\boldsymbol{\dot{K}_{a_2}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_2}}(t) - \boldsymbol{K_{a_2}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_2}} +\boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t) + \boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t)
 	\end{split}
-$$ -->
+$$
 LQIDG omptimum control command:
-<!-- $$
+$$
 \boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}\boldsymbol{K_{a_i}}(t)\boldsymbol{x_a}(t),\quad i = 1, 2
-$$ -->
+$$
 
 ## model of quadcopter stand
 This Article used perivous work to model the quadcopter stand.
 Final model is shown below.
-<!-- $$ \boldsymbol{\dot x} = \boldsymbol f(\boldsymbol x, \boldsymbol{\omega})
-$$ -->
-<!-- 
+$$ \boldsymbol{\dot x} = \boldsymbol f(\boldsymbol x, \boldsymbol{\omega})
+$$
+
 $$
 \boldsymbol f = \begin{bmatrix}
 		%		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
@@ -112,7 +112,7 @@ $$
 	C_2 =\dfrac{d}{J_{33}}\quad
 	C_3 = \dfrac{m_3g\mu r_z}{ J_{33}}
 \end{align*}
-$$ -->
+$$
 The parameter used in this model introduced in the article.
  ## Simulation in MATLAB simulink
  In this article used simmulink to simulate the quadcopter stand.
