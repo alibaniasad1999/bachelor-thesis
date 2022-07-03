@@ -13,12 +13,12 @@ In game theory, differential games are a group of problems related to the modeli
  ### LQDG controller
  Optimum answer of LQDG come from solving two coupled riccati equation.
  riccati equation mentioned before:
-$$
+<!-- $$
 \begin{split}
 	\boldsymbol{\dot{K}_1}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_1}(t) - \boldsymbol{K_1}(t)\boldsymbol{A} - \boldsymbol{Q_1} +\boldsymbol{K_1}(t)\boldsymbol{S_1}(t)\boldsymbol{K_1}(t) + \boldsymbol{K_1}(t)\boldsymbol{S_2}(t)\boldsymbol{K_2}(t)\\
 	\boldsymbol{\dot{K}_2}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_2}(t) - \boldsymbol{K_2}(t)\boldsymbol{A} - \boldsymbol{Q_2} +\boldsymbol{K_2}(t)\boldsymbol{S_2}(t)\boldsymbol{K_2}(t) + \boldsymbol{K_2}(t)\boldsymbol{S_1}(t)\boldsymbol{K_1}(t)
 \end{split} -->
-$$
+<!-- $$ -->
 Optimum control command:
 <!-- $$
 	\boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}\boldsymbol{K_{i}}(t)\boldsymbol{x}(t),\quad i = 1, 2
@@ -126,6 +126,6 @@ The parameter used in this model introduced in the article.
 
 
 ## Simulation LQDG and LQIDG in  simulink for quadcopter
-<!-- $$
+$$
 	ali^{hazi}
-	$$ -->
+	$$
