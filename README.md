@@ -126,4 +126,6 @@ The parameter used in this model introduced in the article.
 
 
 ## Simulation LQDG and LQIDG in  simulink for quadcopter
-
+$$
+	ali^{hazi}
+	$$
