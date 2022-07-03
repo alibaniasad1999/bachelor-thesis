@@ -6,7 +6,7 @@ In this research, a method based on game theory has been used. In this method, t
 Keywords: quadcopter, differential game, game theory, Nash equilibrium, three degree of freedom stand, model base design, linear quadratic regulator
 ## Plant
 This is three degree of freedom quadcopter stand.
-<p align="center"><img width=43% src="https://user-images.githubusercontent.com/37424536/177047530-034dd479-7912-4439-bbe6-32a2f6122b37.png"></p>
+<!-- <p align="center"><img width=43% src="https://user-images.githubusercontent.com/37424536/177047530-034dd479-7912-4439-bbe6-32a2f6122b37.png"></p> -->
 
 ## Differential game
 In game theory, differential games are a group of problems related to the modeling and analysis of conflict in the context of a dynamical system. More specifically, a state variable or variables evolve over time according to a differential equation.
@@ -21,21 +21,23 @@ $$
 \end{split}
 $$
 
-![b66f707709628180f909f8860dc8c7bf](https://user-images.githubusercontent.com/37424536/177055174-c8ea4f59-dd90-4571-817e-32b54deb4b52.png)
+<!-- ![b66f707709628180f909f8860dc8c7bf](https://user-images.githubusercontent.com/37424536/177055174-c8ea4f59-dd90-4571-817e-32b54deb4b52.png) -->
 
 
 Optimum control command:
+
 $$
 	\boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}\boldsymbol{K_{i}}(t)\boldsymbol{x}(t),\quad i = 1, 2
 $$
 
-  <p align="center"><img width="350" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055195-8ba066f7-360e-4e42-9d43-a82454579d88.png">
+  <!-- <p align="center"><img width="350" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055195-8ba066f7-360e-4e42-9d43-a82454579d88.png"> -->
 
 
 
 ### LQIDG controller
 When there is uncertanity in model it is better to use LQIDG controller.
 In this controller, the integral of the difference between the system output and the desired value is added to the state vector.
+
 $$
  	\boldsymbol{x_a} = \begin{bmatrix}
  		\boldsymbol{x_d} - \boldsymbol{x}\\
@@ -43,11 +45,12 @@ $$
  	\end{bmatrix}
 $$
 
-  <p align="center"><img width="180" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055225-64c1e62f-5504-4f63-8ee7-8427d7d3c6d3.png">
+  <!-- <p align="center"><img width="180" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055225-64c1e62f-5504-4f63-8ee7-8427d7d3c6d3.png"> -->
 
 
 
 New space state matrix:
+
 $$
 	\boldsymbol{A_a} = \begin{bmatrix}
 		\boldsymbol{A} &0\\
@@ -57,7 +60,7 @@ $$
 
 
 
-  <p align="center"><img width="110" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055238-6778f115-3c46-4284-aee8-06c14d543861.png">
+  <!-- <p align="center"><img width="110" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055238-6778f115-3c46-4284-aee8-06c14d543861.png"> -->
 
 
 
@@ -67,41 +70,47 @@ $$
 		0
 	\end{bmatrix}
 $$
+
 <!-- ![8a5bd8b6de623050707032e8509fe00a](https://user-images.githubusercontent.com/37424536/177055254-074e0649-f633-4901-a034-b19f6bdf9b5c.png) -->
 
- <p align="center"><img width="90" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055254-074e0649-f633-4901-a034-b19f6bdf9b5c.png">
+ <!-- <p align="center"><img width="90" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055254-074e0649-f633-4901-a034-b19f6bdf9b5c.png"> -->
 
 
 and C matrix is identity matrix.
 LQIDG coupled riccati equation:
+
 $$
 	\begin{split}
 		\boldsymbol{\dot{K}_{a_1}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_1}}(t) - \boldsymbol{K_{a_1}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_1}} +\boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t) + \boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t)\\
 		\boldsymbol{\dot{K}_{a_2}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_2}}(t) - \boldsymbol{K_{a_2}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_2}} +\boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t) + \boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t)
 	\end{split}
 $$
- <p align="center"><img width="1500" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055264-3b3b5fcc-a4dd-45e3-93de-b438a09cae14.png">
+
+ <!-- <p align="center"><img width="1500" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055264-3b3b5fcc-a4dd-45e3-93de-b438a09cae14.png"> -->
 <!-- ![d87aa81d7b8a3f5578ea6528f3110828](https://user-images.githubusercontent.com/37424536/177055264-3b3b5fcc-a4dd-45e3-93de-b438a09cae14.png) -->
 
 
 
 LQIDG omptimum control command:
+
 $$
 \boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}\boldsymbol{K_{a_i}}(t)\boldsymbol{x_a}(t),\quad i = 1, 2
 $$
 
 
 <!-- ![a4d4a74a0141e65350cbda507312d7f7](https://user-images.githubusercontent.com/37424536/177055274-31e56ec9-e430-4a45-bd48-c36e40efadf0.png) -->
-  <p align="center"><img width="350" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055274-31e56ec9-e430-4a45-bd48-c36e40efadf0.png">
+  <!-- <p align="center"><img width="350" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055274-31e56ec9-e430-4a45-bd48-c36e40efadf0.png"> -->
 
 
 ## model of quadcopter stand
 This Article used perivous work to model the quadcopter stand.
 Final model is shown below.
+
 $$ \boldsymbol{\dot x} = \boldsymbol f(\boldsymbol x, \boldsymbol{\omega})
 $$
+
 <!-- ![b196e9eb979f8f21d09483c35ed7ae44](https://user-images.githubusercontent.com/37424536/177055281-c1bf86c5-4ac1-43e9-9a49-34d0de4b7574.png) -->
-  <p align="center"><img width="100" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055281-c1bf86c5-4ac1-43e9-9a49-34d0de4b7574.png">
+  <!-- <p align="center"><img width="100" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055281-c1bf86c5-4ac1-43e9-9a49-34d0de4b7574.png"> -->
 
 
 $$
@@ -132,7 +141,7 @@ $$
 $$
 
 <!-- ![6617686d03fa55c7d1220468ab3ac4c2](https://user-images.githubusercontent.com/37424536/177055296-d5356c77-e794-4366-8317-54b446deba93.png) -->
- <p align="center"><img width="1300" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055296-d5356c77-e794-4366-8317-54b446deba93.png">
+ <!-- <p align="center"><img width="1300" alt="Stand_Model" src="https://user-images.githubusercontent.com/37424536/177055296-d5356c77-e794-4366-8317-54b446deba93.png"> -->
 
 
 
@@ -152,6 +161,8 @@ $$
 	& B_6=&
 \end{align*}
 $$
+
+
 $$
 \begin{align*}
 	C_1 =\dfrac{J_{11}-J_{22}}{J_{33}}\quad
@@ -159,6 +170,8 @@ $$
 	C_3 = \dfrac{m_3g\mu r_z}{ J_{33}}
 \end{align*}
 $$
+
+
 The parameter used in this model introduced in the article.
  ## Simulation in MATLAB simulink
  In this article used simmulink to simulate the quadcopter stand.
