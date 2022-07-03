@@ -126,16 +126,26 @@ The parameter used in this model introduced in the article.
 
 
 ## Simulation LQDG and LQIDG in MATLAB simulink for quadcopter
-![lqidg_yaw](https://user-images.githubusercontent.com/37424536/177053851-71be0275-7cd6-424b-ba56-b69b94fe0a41.png)
-![lqidg_pitch](https://user-images.githubusercontent.com/37424536/177053905-824123af-e7e3-476a-96cd-f4fcb82dae5c.png)
-![lqidg_roll](https://user-images.githubusercontent.com/37424536/177053906-10043543-7b4d-4ee3-ac61-c17e14789df3.png)
+
+<!-- <p align="center"><img width="250" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053906-10043543-7b4d-4ee3-ac61-c17e14789df3.png">
+ <p align="center"><img width="250" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053851-71be0275-7cd6-424b-ba56-b69b94fe0a41.png">
+<p align="center"><img width="250" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053905-824123af-e7e3-476a-96cd-f4fcb82dae5c.png"> -->
+roll             |  pitch
+:-------------------------:|:-------------------------:
+![](https://user-images.githubusercontent.com/37424536/177053906-10043543-7b4d-4ee3-ac61-c17e14789df3.png)  |  ![](https://user-images.githubusercontent.com/37424536/177053851-71be0275-7cd6-424b-ba56-b69b94fe0a41.png)
+yaw
+![](https://user-images.githubusercontent.com/37424536/177053905-824123af-e7e3-476a-96cd-f4fcb82dae5c.png)
+
+## in real
+roll             |  pitch
+:-------------------------:|:-------------------------:
+![](https://user-images.githubusercontent.com/37424536/177053886-b2a01459-61f8-42fe-b19b-a17003adf53c.png)  |  ![](https://user-images.githubusercontent.com/37424536/177053893-44b0d95f-0328-4bb0-b74d-10227e85ab36.png)
+yaw
+![](https://user-images.githubusercontent.com/37424536/177053905-824123af-e7e3-476a-96cd-f4fcb82dae5c.png)
+ <!-- <p align="center"><img width="250" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053886-b2a01459-61f8-42fe-b19b-a17003adf53c.png">
+<p align="center"><img width="250" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053893-44b0d95f-0328-4bb0-b74d-10227e85ab36.png">
+<p align="center"><img width="250" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053905-824123af-e7e3-476a-96cd-f4fcb82dae5c.png"> -->
 
 
-![lqidg_roll](https://user-images.githubusercontent.com/37424536/177053886-b2a01459-61f8-42fe-b19b-a17003adf53c.png)
-![lqidg_pitch](https://user-images.githubusercontent.com/37424536/177053893-44b0d95f-0328-4bb0-b74d-10227e85ab36.png)
-![lqidg_yaw](https://user-images.githubusercontent.com/37424536/177053898-0cb2d97c-50a8-4bbf-acc1-b1cfe916dabb.png)
 
 
-
-
- <p align="center"><img width="500" alt="All-six" src="https://user-images.githubusercontent.com/37424536/177053072-ddd34d85-ff92-44be-b623-dfd590661819.png">
