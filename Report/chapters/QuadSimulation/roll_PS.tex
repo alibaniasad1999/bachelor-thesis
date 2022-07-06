@@ -1,12 +1,20 @@
-\subsection{تخمین پارامترهای کانال رول}
-برای اصلاح پارامترهای رول چندین آزمایش انجام شد و با استفاده از داده‌های ثبت شده از وضعیت استند در کانال رول و جعبه‌ابزار
-\lr{Parameter Estimator}،
-پارامترهای کانال رول اصلاح شدند.
-برای انجام آزمایش هر یک از موتورهای دو و چهار  با دور مختلف شروع به حرکت کردند و از خروجی سنسور داده برداری شد. سپس، مدل و داده‌های ثبت شده‌ی سنسور (وضعیت استند در کانال رول) به جعبه‌ابزار
-\lr{Parameter Estimator}
-داده شد. وضعیت کانال رول استند در شبیه‌سازی و واقعیت بعد از اصلاح پارامترهای کانال رول در شکل‌های
-\ref{roll_ps1}, \ref{roll_ps2}, \ref{roll_ps3}, \ref{roll_ps4} و \ref{roll_ps5}
-مقایسه شده است.
+%\subsection{تخمین پارامترهای کانال رول}
+%برای اصلاح پارامترهای رول چندین آزمایش انجام شد و با استفاده از داده‌های ثبت شده از وضعیت استند در کانال رول و جعبه‌ابزار
+%\lr{Parameter Estimator}،
+%پارامترهای کانال رول اصلاح شدند.
+%برای انجام آزمایش هر یک از موتورهای دو و چهار  با دور مختلف شروع به حرکت کردند و از خروجی سنسور داده برداری شد. سپس، مدل و داده‌های ثبت شده‌ی سنسور (وضعیت استند در کانال رول) به جعبه‌ابزار
+%\lr{Parameter Estimator}
+%داده شد. وضعیت کانال رول استند در شبیه‌سازی و واقعیت بعد از اصلاح پارامترهای کانال رول در شکل‌های
+%\ref{roll_ps1}, \ref{roll_ps2}, \ref{roll_ps3}, \ref{roll_ps4} و \ref{roll_ps5}
+%مقایسه شده است. 
+\hspace*{0.5cm}
+در ادامه اصلاح پارامترهای موتور کانال رول چهارپره آورده شده‌است.
+\hspace*{0.5cm}
+
+
+
+
+
 %
 %\begin{figure}[H]
 %	\includegraphics[width=12cm]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S1.png}
@@ -26,15 +34,33 @@
 %	\caption{مقايسه وضعیت استند در  آزمايش سوم و شبیه‌سازی، پس از تخمین پارامترهای کانال رول}
 %	\label{roll_ps3}
 %\end{figure}
-\begin{figure}[H]
-	\includegraphics[width=.48\linewidth]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S4.png}
-	\centering
-	\caption{مقايسه وضعیت استند در  آزمايش چهارم و شبیه‌سازی، پس از تخمین پارامترهای کانال رول}
-	\label{roll_ps4}
-\end{figure}
+%\begin{figure}[H]
+%	\includegraphics[width=.48\linewidth]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S4.png}
+%	\centering
+%	\caption{مقايسه وضعیت استند در  آزمايش چهارم و شبیه‌سازی، پس از تخمین پارامترهای کانال رول}
+%	\label{roll_ps4}
+%\end{figure}
 %\begin{figure}[H]
 %	\includegraphics[width=12cm]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S5.png}
 %	\centering
 %	\caption{مقايسه وضعیت استند در  آزمايش پنجم و شبیه‌سازی، پس از تخمین پارامترهای کانال رول}
 %	\label{roll_ps5}
 %\end{figure}
+  \begin{minipage}[H]{\linewidth}
+	\hfill
+	\begin{minipage}[b]{0.49\linewidth}
+		\centering
+		\begin{tabular}{ccc}\hline
+			پارامتر & مقدار پارامتر  & مقدار پارامتر بعد از اصلاح
+			\\ \hline
+			$A_3$  & $1.1\times10^{-4}$ & $5.47\times10^{-5}$ \\\\
+			\\\\\\
+		\end{tabular}
+		\captionof{table}{مقايسه پارامترهای کانال رول قبل و بعد از اصلاح}
+	\end{minipage}
+	\begin{minipage}[b]{0.48\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../Figures/RCP/roll_ml_parameter_estimation/RCP_roll_S2.png}
+		\captionof{figure}{مقايسه وضعیت کانال رول شبیه‌سازی و واقعیت}
+	\end{minipage}
+\end{minipage}
