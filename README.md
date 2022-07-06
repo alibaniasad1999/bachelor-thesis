@@ -116,7 +116,7 @@ $$
 	\end{bmatrix}
 $$
 
-
+Constants used above are shown below.
 
 $$
 \begin{align*}
@@ -125,13 +125,13 @@ $$
 	&A_3  =  \dfrac{bd_{cg}}{m_{tot}h_{cg}^2+J_{11}}& 	\\
 	& A_4  =  \dfrac{J_R}{m_{tot}h_{cg}^2+J_{11}} & 
 	& A_5 =  \dfrac{m_1g\mu r_x}{m_{tot}h_{cg}^2 + J_{11}} & 
-	& A_6=  \\
+	& A_6= \dfrac{m_{tot}x_{cg}}{m_{tot}h_{cg}^2+J_{11}} \\
 	&B_1  =  \dfrac{h_{cg}gm_{tot}}{m_{tot}h_{cg}^2+J_{22}}& 
 	&B_2 =  \dfrac{-2m_{tot}h_{cg}^2-J_{11}+J_{33}}{m_{tot}h_{cg}^2+J_{22}}& 
 	&B_3  =  \dfrac{bd_{cg}}{m_{tot}h_{cg}^2+J_{22}}& \\
 	&B_4 =  \dfrac{-J_R}{m_{tot}h_{cg}^2+J_{22}}& 
 	& B_5 =  \dfrac{m_2g\mu r_y}{m_{tot}h_{cg}^2 + J_{22}}& 
-	& B_6=&
+	& B_6= \dfrac{m_{tot}y_{cg}}{m_{tot}h_{cg}^2+J_{22}} 
 \end{align*}
 $$
 
