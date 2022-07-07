@@ -1,12 +1,13 @@
-\subsection{تخمین پارامتر کانال‌های رول-پیچ-یاو}
-برای اصلاح پارامترها رول-پیچ چندین آزمایش انجام شد و با استفاده از داده‌های ثبت شده از وضعیت استند در کانال رول-پپچ-یاو و جعبه‌ابزار
-\lr{Parameter Estimator}
-پارامترهای کانال رول-پیچ-یاو اصلاح شدند.
-برای آزمایش تمامی موتورها با دور مختلف شروع به حرکت کردند و از خروجی سنسور داده برداری شد. سپس، مدل و  داده‌های ثبت شده سنسور (وضعیت استند در کانال رول-پیج-یاو) به جعبه‌ابزار
-\lr{Parameter Estimator}
-داده شد. وضعیت کانال رول-پیچ-یاو استند در شبیه‌سازی و واقعیت بعد از اصلاح پارامترهای کانال‌ رول-پیچ-یاو بعد در شکل‌های
-(\ref{ roll_pitch_yaw_ps1}, \ref{ roll_pitch_yaw_ps2}, \ref{ roll_pitch_yaw_ps3}, \ref{ roll_pitch_yaw_ps4}, \ref{ roll_pitch_yaw_ps5}, \ref{ roll_pitch_yaw_ps6}, \ref{ roll_pitch_yaw_ps7}, \ref{ roll_pitch_yaw_ps8}, \ref{ roll_pitch_yaw_ps9})
-آورده شده است.
+%\subsection{تخمین پارامتر کانال‌های رول-پیچ-یاو}
+در پایان اصلاح پارامترهای کانال رول-پیچ-یاو با اثر متقابل تمام کانال‌ها بر یکدیگر انجام شده‌است.
+%برای اصلاح پارامترها رول-پیچ چندین آزمایش انجام شد و با استفاده از داده‌های ثبت شده از وضعیت استند در کانال رول-پپچ-یاو و جعبه‌ابزار
+%\lr{Parameter Estimator}
+%پارامترهای کانال رول-پیچ-یاو اصلاح شدند.
+%برای آزمایش تمامی موتورها با دور مختلف شروع به حرکت کردند و از خروجی سنسور داده برداری شد. سپس، مدل و  داده‌های ثبت شده سنسور (وضعیت استند در کانال رول-پیج-یاو) به جعبه‌ابزار
+%\lr{Parameter Estimator}
+%داده شد. وضعیت کانال رول-پیچ-یاو استند در شبیه‌سازی و واقعیت بعد از اصلاح پارامترهای کانال‌ رول-پیچ-یاو بعد در شکل‌های
+%(\ref{ roll_pitch_yaw_ps1}, \ref{ roll_pitch_yaw_ps2}, \ref{ roll_pitch_yaw_ps3}, \ref{ roll_pitch_yaw_ps4}, \ref{ roll_pitch_yaw_ps5}, \ref{ roll_pitch_yaw_ps6}, \ref{ roll_pitch_yaw_ps7}, \ref{ roll_pitch_yaw_ps8}, \ref{ roll_pitch_yaw_ps9})
+%آورده شده است.
 
 %\begin{figure}[H]
 %	\includegraphics[width=12cm]{../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_roll_pitch_yaw_S1.png}
@@ -35,20 +36,20 @@
 
 \begin{figure}[H]
 	\centering
-	\subfigure[تغییرات زاویه رول]{
+	\subfigure[کانال رول]{
 		\centering
 		\includegraphics[width=.48\linewidth]{../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_roll.png}
 	}
-	\subfigure[تغییرات زاویه پیچ]{
+	\subfigure[کانال پیچ]{
 		\centering
 		\includegraphics[width=.48\linewidth]{../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_pitch.png}
 	}
-	\subfigure[تغییرات زاویه یاو]{
+	\subfigure[کانال یاو]{
 	\centering
 	\includegraphics[width=.48\linewidth]{../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_yaw.png}
 }
-	\caption{مقايسه وضعیت استند در  آزمايش چهارم و شبیه‌سازی، پس از تخمین پارامترهای کانال رول-پیچ-یاو}
-	\label{ roll_pitch_yaw_ps4}
+	\caption{مقايسه وضعیت کانال رول-پیچ-یاو در شبیه‌سازی و واقعیت}
+%	\label{ roll_pitch_yaw_ps4}
 \end{figure}
 
 
@@ -82,3 +83,16 @@
 %	\caption{مقايسه وضعیت استند در  آزمايش نهم و شبیه‌سازی، پس از تخمین پارامترهای کانال رول-پیچ-یاو}
 %	\label{ roll_pitch_yaw_ps9}
 %\end{figure}
+\vspace{1.5cm}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{ccc}\hline
+			پارامتر & مقدار پارامتر  & مقدار پارامتر بعد از اصلاح
+			\\ \hline
+			$A_2$  & $-0.9521$ & $\-1.5652$ \\
+			$B_2$  & $0.9523$ & $1.5707$ \\ 
+			$C_1$  & $-0.0017$ & $0.0085$ \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption {مقايسه پارامترهای کانال رول-پیچ-یاو قبل و بعد از اصلاح}
+\end{table}
