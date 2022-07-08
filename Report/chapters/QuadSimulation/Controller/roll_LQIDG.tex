@@ -9,12 +9,14 @@
 \lr{TCACS} \cite{Karimi2010}
 استفاده شده‌است.
 تابع هزینه \lr{TCACS} به‌صورت
-\lr{ITSE\LTRfootnote{Integral Time Square Error}}
+\lr{ITSE}
 در نظر گرفته شده‌است. ضرایب وزنی خروجی بهینه‌سازی در پایین آورده شده‌است.
 \begin{equation}
-	\boldsymbol{Q_{LQIDG}} = \begin{bmatrix}
-		0.1707 & 0.0000\\
-		837.8606& 756.1341
+	\boldsymbol{Q_{a_{LQIDG}}} = \begin{bmatrix}
+		0.1707 &0& 0& 0\\
+		0 &  0.12 & 0 &0 \\
+		0 & 0 & 837.8606 & 0\\
+		0 & 0 & 0 & 756.1341
 	\end{bmatrix}, \quad R_{1_{LQDG}} =  1, \quad R_{2_{LQDG}} =  7.7422
 \end{equation}
 در گام بعد، با حل معادله
