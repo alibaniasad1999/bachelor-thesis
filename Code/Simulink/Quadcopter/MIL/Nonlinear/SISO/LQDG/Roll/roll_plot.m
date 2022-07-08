@@ -8,7 +8,7 @@ hold on;
 plot(out.tout, out.roll_state(:, 1), 'r', 'linewidth', 2);
 hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQDG Controller', 'Location','northeast');
 print('../../../../../../../../Figures/MIL/LQDG/Roll/lqdg_roll.png','-dpng','-r400');
 % subplot(2,1,2);
@@ -40,7 +40,7 @@ print('../../../../../../../../Figures/MIL/LQDG/Roll/lqdg_roll_omega_4.png','-dp
 % plot(out.tout, out.roll_state(:, 1), 'r', 'linewidth', 2);
 % hold off;
 % xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-% ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+% ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % legend('Setpoint', 'LQDG Controller', 'Location','northeast');
 % subplot(2,1,2);
 % plot(out.tout, out.u*J_xx);

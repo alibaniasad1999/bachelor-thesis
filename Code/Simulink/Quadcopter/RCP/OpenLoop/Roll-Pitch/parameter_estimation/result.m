@@ -10,7 +10,7 @@ plot(time, data_II(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(2,1,2); 
 plot(time, SDOSimTest_Log.simout(:, 2), 'k--', 'linewidth', 2);
@@ -18,7 +18,7 @@ hold on;
 plot(time, data_II(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 % subplot(2,2,3);
 % % roll rate
@@ -49,7 +49,7 @@ plot(time, data_III(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(2,1,2); 
 plot(time, SDOSimTest_Log.simout1(:, 2), 'k--', 'linewidth', 2);
@@ -57,7 +57,7 @@ hold on;
 plot(time, data_III(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northeast');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 % subplot(2,2,3);
 % roll rate
@@ -88,7 +88,7 @@ plot(time, data_IV(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northeast');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(2,1,2); 
 plot(time, SDOSimTest_Log.simout2(:, 2), 'k--', 'linewidth', 2);
@@ -96,7 +96,7 @@ hold on;
 plot(time, data_IV(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northeast');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 % subplot(2,2,3);
 % roll rate
@@ -127,7 +127,7 @@ plot(time, data_V(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 print('../../../../../../../Figures/RCP/roll_pitch_parameter_estimation/RCP_roll.png',...
     '-dpng','-r400');
 % pitch
@@ -137,7 +137,7 @@ hold on;
 plot(time, data_V(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northeast');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 print('../../../../../../../Figures/RCP/roll_pitch_parameter_estimation/RCP_pitch.png',...
     '-dpng','-r400');
@@ -169,7 +169,7 @@ plot(time, data_VII(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(2,1,2); 
 plot(time, SDOSimTest_Log.simout4(:, 2), 'k--', 'linewidth', 2);
@@ -177,7 +177,7 @@ hold on;
 plot(time, data_VII(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northeast');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 % subplot(2,2,3);
 % roll rate
@@ -208,7 +208,7 @@ plot(time, data_IX(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(2,1,2); 
 plot(time, SDOSimTest_Log.simout5(:, 2), 'k--', 'linewidth', 2);
@@ -216,7 +216,7 @@ hold on;
 plot(time, data_IX(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 % subplot(2,2,3);
 % roll rate
@@ -247,7 +247,7 @@ plot(time, data_X(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(2,1,2); 
 plot(time, SDOSimTest_Log.simout6(:, 2), 'k--', 'linewidth', 2);
@@ -255,7 +255,7 @@ hold on;
 plot(time, data_X(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northeast');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 % subplot(2,2,3);
 % roll rate

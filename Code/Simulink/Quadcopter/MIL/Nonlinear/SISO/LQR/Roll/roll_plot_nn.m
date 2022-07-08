@@ -8,7 +8,7 @@ hold on;
 plot(out.tout, out.roll_state_nn(:, 1), 'r', 'linewidth', 2);
 hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQR Controller', 'Location','northeast');
 print('../../../../../../../../Figures/MIL/LQR/Roll/lqr_roll_nn.png','-dpng','-r400');
 % subplot(2,1,2);

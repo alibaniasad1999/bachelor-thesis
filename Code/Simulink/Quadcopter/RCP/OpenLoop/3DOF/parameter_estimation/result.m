@@ -10,7 +10,7 @@ plot(time, data_I(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(3,1,2); 
 plot(time, out.simout(:, 2), 'k--', 'linewidth', 2);
@@ -18,7 +18,7 @@ hold on;
 plot(time, data_I(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 subplot(3,1,3);
 % yaw
@@ -28,7 +28,7 @@ plot(time, data_I(:, 3), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\psi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % roll rate
 % subplot(3,2,2); 
 % plot(time, out.simout(:, 4), 'k--', 'linewidth', 2);
@@ -67,7 +67,7 @@ plot(time, data_II(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(3,1,2); 
 plot(time, out.simout1(:, 2), 'k--', 'linewidth', 2);
@@ -75,7 +75,7 @@ hold on;
 plot(time, data_II(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 subplot(3,1,3);
 % yaw
@@ -85,7 +85,7 @@ plot(time, data_II(:, 3), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\psi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % % roll rate
 % subplot(3,2,2); 
 % plot(time, out.simout1(:, 4), 'k--', 'linewidth', 2);
@@ -124,7 +124,7 @@ plot(time, data_III(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(3,1,2); 
 plot(time, out.simout2(:, 2), 'k--', 'linewidth', 2);
@@ -132,7 +132,7 @@ hold on;
 plot(time, data_III(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 subplot(3,1,3);
 % yaw
@@ -142,7 +142,7 @@ plot(time, data_III(:, 3), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\psi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % % roll rate
 % subplot(3,2,2); 
 % plot(time, out.simout2(:, 4), 'k--', 'linewidth', 2);
@@ -181,7 +181,7 @@ plot(time, data_V(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 print('../../../../../../../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_roll.png',...
     '-dpng','-r400');
 % pitch
@@ -191,7 +191,7 @@ hold on;
 plot(time, data_V(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 print('../../../../../../../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_pitch.png',...
     '-dpng','-r400');
@@ -203,7 +203,7 @@ plot(time, data_V(:, 3), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\psi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 print('../../../../../../../Figures/RCP/roll_pitch_yaw_parameter_estimation/RCP_yaw.png',...
     '-dpng','-r400');
 % % roll rate
@@ -243,7 +243,7 @@ plot(time, data_VI(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(3,1,2); 
 plot(time, out.simout5(:, 2), 'k--', 'linewidth', 2);
@@ -251,7 +251,7 @@ hold on;
 plot(time, data_VI(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 subplot(3,1,3);
 % yaw
@@ -261,7 +261,7 @@ plot(time, data_VI(:, 3), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\psi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % % roll rate
 % subplot(3,2,2); 
 % plot(time, out.simout5(:, 4), 'k--', 'linewidth', 2);
@@ -300,7 +300,7 @@ plot(time, data_VII(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(3,1,2); 
 plot(time, out.simout6(:, 2), 'k--', 'linewidth', 2);
@@ -308,7 +308,7 @@ hold on;
 plot(time, data_VII(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 subplot(3,1,3);
 % yaw
@@ -318,7 +318,7 @@ plot(time, data_VII(:, 3), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\psi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % % roll rate
 % subplot(3,2,2); 
 % plot(time, out.simout6(:, 4), 'k--', 'linewidth', 2);
@@ -357,7 +357,7 @@ plot(time, data_VIII(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(3,1,2); 
 plot(time, out.simout7(:, 2), 'k--', 'linewidth', 2);
@@ -365,7 +365,7 @@ hold on;
 plot(time, data_VIII(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 subplot(3,1,3);
 % yaw
@@ -375,7 +375,7 @@ plot(time, data_VIII(:, 3), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\psi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % % roll rate
 % subplot(3,2,2); 
 % plot(time, out.simout7(:, 4), 'k--', 'linewidth', 2);
@@ -414,7 +414,7 @@ plot(time, data_IX(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(3,1,2); 
 plot(time, out.simout8(:, 2), 'k--', 'linewidth', 2);
@@ -422,7 +422,7 @@ hold on;
 plot(time, data_IX(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 subplot(3,1,3);
 % yaw
@@ -432,7 +432,7 @@ plot(time, data_IX(:, 3), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\psi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % % roll rate
 % subplot(3,2,2); 
 % plot(time, out.simout8(:, 4), 'k--', 'linewidth', 2);
@@ -471,7 +471,7 @@ plot(time, data_X(:, 1), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % pitch
 subplot(3,1,2); 
 plot(time, out.simout9(:, 2), 'k--', 'linewidth', 2);
@@ -479,7 +479,7 @@ hold on;
 plot(time, data_X(:, 2), 'r', 'linewidth', 2);
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 hold off;
 subplot(3,1,3);
 % yaw
@@ -489,7 +489,7 @@ plot(time, data_X(:, 3), 'r', 'linewidth', 2);
 hold off;
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\psi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % % roll rate
 % subplot(3,2,2); 
 % plot(time, out.simout9(:, 4), 'k--', 'linewidth', 2);

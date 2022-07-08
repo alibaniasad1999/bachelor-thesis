@@ -20,7 +20,7 @@ hold on;
 plot(out.tout, out.roll_pitch_state_nn(:, 2), 'r', 'linewidth', 2);
 hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQIDG Controller', 'Location','southeast');
 print('../../../../../../../../Figures/MIL/LQIDG/Roll_Pitch/lqidg_pitch_nn.png','-dpng','-r400');
 % subplot(2,1,2);
