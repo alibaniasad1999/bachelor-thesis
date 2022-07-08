@@ -1,0 +1,73 @@
+\subsection{بررسی عملكرد کنترل‌کننده در حضور نويز اندازه‌گیری}
+
+
+ در این بخش به بررسی عملکرد چهارپره در حضور کنترل‌کننده \lr{LQR} پرداخته می‌شود. در شبیه‌سازی برای بهینه‌سازی ضرایب وزنی \lr{LQR} از روش بهینه‌سازی
+\lr{TCACS} \cite{Karimi2010}
+استفاده شده‌است.
+\begin{figure}[H]
+	\includegraphics[width=.48\linewidth]{../Figures/MIL/LQR/Roll/lqr_roll.png}
+	\centering
+	\caption{عملكرد \lr{LQR} در کنترل زاويه رول (تعقیب ورودی صفر)}
+	\label{lqr_roll_figure_simulation}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\subfigure[موتور شماره دو]{
+		\centering
+		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQR/Roll/lqr_roll_Omega_2.png}
+	}
+	\subfigure[موتور شماره چهار]{
+		\centering
+		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQR/Roll/lqr_roll_Omega_4.png}
+	}
+	\caption{‫‪فرمان کنترلی موتورها در کنترل زاویه رول (تعقیب ورودی صفر)}
+\end{figure}
+
+
+بر اساس خروجی شبیه‌سازی (شکل
+\ref{lqr_roll_figure_simulation})،
+کانال رول در حضور کنترل‌کننده \lr{LQR} در حدود پنج ثانیه به تعادل می‌رسد اما دارای خطای ماندگار است. 
+
+
+
+\begin{figure}[H]
+	\includegraphics[width=.48\linewidth]{../Figures/MIL/LQDG/Roll/lqdg_roll.png}
+	\centering
+	\caption{عملكرد کنترل‌کننده \lr{LQDG} در کنترل زاويه رول (تعقیب ورودی صفر)}
+	\label{lqdg_roll_fig_simulation}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\subfigure[موتور شماره دو]{
+		\centering
+		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQDG/Roll/lqdg_roll_Omega_2.png}
+	}
+	\subfigure[موتور شماره چهار]{
+		\centering
+		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQDG/Roll/lqdg_roll_Omega_4.png}
+	}
+	\caption{‫‪فرمان کنترلی موتورها در کنترل زاویه رول (تعقیب ورودی صفر)}
+\end{figure}
+
+
+
+
+
+\begin{figure}[H]
+	\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/Roll/lqidg_roll.png}
+	\centering
+	\caption{عملكرد کنترل‌کننده \lr{LQIDG} در کنترل زاويه رول (تعقیب ورودی صفر)}
+	\label{lqidg_roll_fig_simulation}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\subfigure[موتور شماره دو]{
+		\centering
+		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/Roll/lqidg_roll_Omega_2.png}
+	}
+	\subfigure[موتور شماره چهار]{
+		\centering
+		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/Roll/lqidg_roll_Omega_4.png}
+	}
+	\caption{‫‪فرمان کنترلی موتورها در کنترل زاویه رول (تعقیب ورودی صفر)}
+\end{figure}
