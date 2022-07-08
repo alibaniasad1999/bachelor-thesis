@@ -27,7 +27,7 @@ print('../../../../../../../../Figures/MIL/LQIDG/MIMO/lqidg_roll_nn.png','-dpng'
 % subplot(2,1,1);
 plot(out.tout, zeros(1, length(out.tout)), '--k', 'linewidth', 2);
 hold on;
-plot(out.tout, out.state_nn(:, 2)+2*pi/180, 'r', 'linewidth', 2);
+plot(out.tout, out.state_nn(:, 2), 'r', 'linewidth', 2);
 hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
