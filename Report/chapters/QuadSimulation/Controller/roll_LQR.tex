@@ -4,9 +4,9 @@
 شبیه‌سازی استند سه درجه آزادی چهارپره انجام شد.
 در این بخش به کنترل زاویه رول با فرض مقید‌بودن زاویه پیچ و یاو پرداخته شده‌است. به این منظور، در بخش
 \ref{roll_regulator}
-نتایج شبیه‌سازی برای تعقیب مقدار مطلوب خروجی زاویه رول ارائه می‌شود. سپس، در بخش
+نتایج شبیه‌سازی برای تعقیب مقدار مطلوب خروجی زاویه رول ارائه شده‌است. سپس، در بخش
 \ref{roll_noise}
-عملکرد کنترل‌کننده در  حضور نویز اندازه‌گیری بررسی می‌شود.
+عملکرد کنترل‌کننده در  حضور نویز اندازه‌گیری بررسی شده‌است.
 \subsection{تعقیب مقدار مطلوب خروجی}\label{roll_regulator}
 
 
@@ -23,14 +23,14 @@
 \begin{equation}
 		\boldsymbol{u_i}(t) = -\boldsymbol{K_{LQR}}\boldsymbol{x}(t)
 \end{equation}
-که در رابطه فوق، ماتریس $\boldsymbol{K_{LQR}}$ بیانگر بهره بازخورد بهینه است. این بهره به‌گونهای محاسبه می‌شود که تابع هزینه مربعی زیر کمینه شود:
+که در رابطه فوق، ماتریس $\boldsymbol{K_{LQR}}$ بیانگر بهره بازخورد بهینه است. این بهره به‌گونه‌ای محاسبه می‌شود که تابع هزینه مربعی زیر کمینه شود:
  \begin{equation}\label{lqr_cost}
-	J_i(u_1, u_2) = \int_{0}^{T}\left( \boldsymbol{x} ^\mathrm{T}(t) \boldsymbol{Q} \boldsymbol{x}(t)+
+	J_i(u_1) = \int_{0}^{T}\left( \boldsymbol{x} ^\mathrm{T}(t) \boldsymbol{Q} \boldsymbol{x}(t)+
 	\boldsymbol{u} ^\mathrm{T}(t) \boldsymbol{R} \boldsymbol{u}(t)
 	\right)dt
 	%	\boldsymbol{ x} ^\mathrm{T}(T)\boldsymbol{ H_i}\boldsymbol{x}(T) 
 \end{equation}
-در رابطه فوق، ماتریس‌های $Q$ و $R$ به ترتیب بیانگر میزان اهمیت انحراف متغیرهای حالت از مقادیر مطلوب و میزان تلاش کنترلی هستند. برای کمینه‌کردن رابطه
+در رابطه فوق، ماتریس‌های $\boldsymbol{Q}$ و $\boldsymbol{R}$ به ترتیب بیانگر میزان اهمیت انحراف متغیرهای حالت از مقادیر مطلوب و میزان تلاش کنترلی هستند. هره بازخورد بهینه برای کمینه‌کردن رابطه
 (\ref{lqr_cost})،
 از رابطه زیر حاصل می‌شود:
 \begin{equation}
@@ -47,9 +47,9 @@
   در شبیه‌سازی برای بهینه‌سازی ضرایب وزنی \lr{LQR} از روش بهینه‌سازی
 \lr{TCACS}\LTRfootnote{Tabu Continuous Ant Colony System} \cite{Karimi2010}
 استفاده شده‌است.
-تابع هزینه \lr{TCACS} به‌صورت
+تابع هزینه ورودی \lr{TCACS} به‌صورت
 \lr{ITSE}\LTRfootnote{Integral Time Square Error}
-در نظر گرفته شده‌است. ضرایب وزنی خروجی بهینه‌سازی در پایین آورده شده‌است.
+در نظر گرفته شده‌است. ضرایب وزنی خروجی بهینه شده در پایین آورده شده‌است.
 \begin{equation}
 	\boldsymbol{Q_{LQR}} = \begin{bmatrix}
 		0.5215 & 0\\
@@ -72,7 +72,7 @@
 		\centering
 		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQR/Roll/lqr_roll_Omega_4_nn.png}
 	}
-	\caption{‫‪فرمان کنترلی موتورها در کنترل زاویه رول (تعقیب ورودی صفر)}
+	\caption{‫‪فرمان کنترلی موتورهای دو و چهار در کنترل زاویه رول (تعقیب ورودی صفر)}
 \end{figure}
 
 
