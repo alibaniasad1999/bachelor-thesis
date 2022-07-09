@@ -1,14 +1,8 @@
-\section{طراحی و شبیه‌سازی کنترل‌کننده برای کانال رول-پیچ-یاو}\label{roll_pitch_yaw_lqidg_section_lll}
-در بخش
-\ref{quadall3}
-شبیه‌سازی سه درجه آزادی استند چهارپره انجام شد. در این بخش به بررسی عملکرد چهارپره در حضور کنترل‌کننده \lr{LQIDG} پرداخته می‌شود. کنترل‌کننده \lr{LQIDG} در بخش‌های
-\ref{LQIDG}
-\subsection{شبیه‌سازی کنترل‌کننده به‌صورت سه کانال تک ورودی}
-بررسی شده است.
- در شبیه‌سازی برای بهینه‌سازی ضرایب وزنی \lr{LQIDG} از روش بهینه‌سازی
-\lr{TCACS} \cite{Karimi2010}
-استفاده شده‌است.
 
+\subsection{بررسی عملكرد کنترل‌کننده در حضور نويز اندازه‌گیری}\label{3dof_noise}
+در این بخش عملکرد کنترل‌کننده در حضور نویز (نویز تصادفی حول نقطه صفر و با انحراف معیار دو صدم) وارد بر تمامی مقدار  اندازه‌گیری‌شده‌ی سنسور، مورد بررسی قرار می‌گیرد. فرکانس تولید نویز در شبیه‌سازی ۵۰ هرتز در نظر گرفته شده‌است.
+%در بخش
+\subsubsection{شبیه‌سازی کنترل‌کننده به‌صورت سه کانال تک ورودی}
 %\begin{figure}[H]
 %	\centering
 %	\begin{subfigure}[H]
@@ -47,7 +41,7 @@
 	\centering
 	\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_yaw.png}
 }
-	\caption{‫‪عملکرد کنترل‌کننده \lr{LQIDG} در کنترل زاویه رول، پیچ و یاو (تعقیب ورودی صفر)}
+	\caption{‫‪عملکرد کنترل‌کننده \lr{LQIDG} در کنترل وضعیت با حضور نويز اندازه‌گیری}
 	\label{lqidg_roll_pitch_yaw_fig_simulation}
 \end{figure}
 
@@ -70,14 +64,18 @@
 		\centering
 		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_4.png}
 	}
-	\caption{‫‪فرمان کنترلی موتورها در کنترل زاویه رول، پیچ و یاو (تعقیب ورودی صفر)}
+	\caption{‫‪فرمان کنترلی موتورها در کنترل وضعیت با حضور نويز اندازه‌گیری}
+	\label{3dof_noise_siso}
 \end{figure}
 
-\subsection{شبیه‌سازی کنترل‌کننده به‌صورت چهار ورودی}
+همانطور که از شکل
+\ref{3dof_noise_siso}
+مشخص است، عملکرد کنترل‌کننده \lr{LQDG} در برابر نویز اندازه‌گیری خوب است و خروجی نوسان و ندارد.
+\subsubsection{شبیه‌سازی کنترل‌کننده به‌صورت چهار ورودی}
 
-بر اساس خروجی شبیه‌سازی (شکل
-\ref{lqidg_roll_fig})
-،کانال رول در حضور کنترل‌کننده \lr{LQIDG} در حدود پنج ثانیه و کانال پیچ در حدود هشت ثانیه به تعادل می‌رسد و خطای ماندگار آن در حدود صفر است.
+%بر اساس خروجی شبیه‌سازی (شکل
+%\ref{lqidg_roll_fig})
+%،کانال رول در حضور کنترل‌کننده \lr{LQIDG} در حدود پنج ثانیه و کانال پیچ در حدود هشت ثانیه به تعادل می‌رسد و خطای ماندگار آن در حدود صفر است.
 
 \begin{figure}[H]
 	\centering
@@ -94,7 +92,7 @@
 		\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/MIMO/lqidg_yaw.png}
 	}
 	\caption{‫‪عملکرد کنترل‌کننده \lr{LQIDG} در کنترل زاویه رول، پیچ و یاو (تعقیب ورودی صفر)}
-	\label{lqidg_roll_pitch_yaw_fig_simulation_MIMO}
+	\label{lqidg_roll_pitch_yaw_fig_simulation_MIMO_noise}
 \end{figure}
 
 
@@ -118,3 +116,6 @@
 	}
 	\caption{‫‪فرمان کنترلی موتورها در کنترل زاویه رول، پیچ و یاو (تعقیب ورودی صفر)}
 \end{figure}
+همانطور که از شکل
+\ref{lqidg_roll_pitch_yaw_fig_simulation_MIMO_noise}
+مشخص است، عملکرد کنترل‌کننده \lr{LQDG} در برابر نویز اندازه‌گیری خوب است و خروجی نوسان و ندارد.

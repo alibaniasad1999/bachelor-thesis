@@ -12,7 +12,7 @@ hold on;
 plot(time, roll_pitch_LQIDG(find(sim_time == 5):end, 1), 'r', 'linewidth', 2);
 hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('roll$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
 axis([0 10 -1 0.2])
 % % pitch rate q
@@ -31,7 +31,7 @@ hold on;
 plot(time, roll_pitch_LQIDG(find(sim_time == 5):end, 2), 'r', 'linewidth', 2);
 hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
 print('../../../../../../Figures/Calibration/LQIDG/Roll_Pitch/lqidg_pitch.png','-dpng','-r400');
 

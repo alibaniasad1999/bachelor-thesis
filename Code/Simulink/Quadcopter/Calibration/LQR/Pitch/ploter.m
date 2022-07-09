@@ -11,7 +11,7 @@ hold on;
 plot(time, pitch_LQR.signals.values(find(sim_time == 5):end, 1), 'r', 'linewidth', 2);
 hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
-ylabel('pitch$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
+ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
 % pitch rate q
 % subplot(2,1,2);
