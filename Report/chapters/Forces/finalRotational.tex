@@ -1,10 +1,10 @@
-\subsection{ استخراج معادله نهایی دينامیک دورانی}
+\section{ استخراج معادله نهایی دينامیک دورانی}\label{sec:finalrotate}
 با جایگذاری گشتاورهای خارجی چهارپره و تكانه زاویه‌ای کلی پره‌ها در معادله دیفرانسیل اویلر، شكل نهایی معادله دیفرانسیل استند چهارپره حاصل می‌شود. به این منظور، با جایگذاری مقدار 
 گشتاورهای اعمالی به چهارپره از معادله
 (\ref{finalm})
 در معادله 
 (\ref{torque})
-رابطه موردنیاز برای مدل‌سازی
+رابطه مورد نیاز برای مدل‌سازی
 دینامیک دورانی استند به‌صورت معادله زیر حاصل می‌شود:
 \begin{equation}\label{demifinalrotation}
 	\begin{split}
@@ -99,6 +99,7 @@ $\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B$
  (\ref{trust})
 مربوط به برآی پره و معادله 
 (\ref{finaltorque})
+مربوط به گشتاورهای آیرودینامیکی پره‌ها،
 در معادله 
 (\ref{finaltorquefinal})،
 مؤلفه‌های بردار مشتق سرعت زاویه‌ای چهارپره به صورت زیر حاصل می‌شود:
@@ -125,9 +126,8 @@ $\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B$
 	}{J_{33}}
 	\end{split}
 \end{align}
-به منظور انتشار وضعیت دورانی چهارپره، از روش انتشار اویلر استفاده می‌شود. در این‌صورت
-\cite{zipfel2000modeling}
-:
+به منظور انتشار وضعیت دورانی چهارپره، از روش انتشار اویلر به‌صورت زیر استفاده می‌شود
+\cite{zipfel2000modeling}:
 \begin{equation}
 	\dot\phi = p + q\sin(\phi)\cos(\theta) +‌
 	r\cos(\phi)\tan(\theta)
@@ -138,5 +138,11 @@ $\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B$
 \begin{equation}\label{psidot}
 	\dot\psi = (q\sin(phi)) + r\cos(\phi))\sec(\theta) 
 \end{equation}
+در رابطه بالا
+$\phi$,
+$\theta$
+و
+$\psi$
+بیانگر زوایای اویلر هستند.
 
 
