@@ -192,3 +192,4 @@ Motor 3             |  Motor 4
 ![](https://user-images.githubusercontent.com/37424536/177054349-6fe3bf2e-6f5e-4da5-97d0-59ae7cf91fac.png)  |  ![](https://user-images.githubusercontent.com/37424536/177054352-71a75642-0633-4c67-b7df-235341d2ccd7.png)
 
 	
+This project is licensed under the [MIT License](LICENSE.md) - Author: [**Ali BaniAsad**](https://www.linkedin.com/in/ali-baniasad-a50b27173/?original_referer=)
