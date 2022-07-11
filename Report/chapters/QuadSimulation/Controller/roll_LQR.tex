@@ -12,10 +12,9 @@
 
  در این بخش به ارائه مختصری از کنترل‌کننده \lr{LQR} پرداخته شده‌است. سپس، به بررسی عملکرد چهارپره در حضور کنترل‌کننده \lr{LQR} پرداخته می‌شود.
  برای یک سامانه خطی پیوسته با معادلات حالت:
-
 \begin{equation}
 	\begin{split}
-		&\boldsymbol{\dot x}(t) = \boldsymbol{Ax}(t) + \boldsymbol{Bu}(t) %, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
+		\boldsymbol{\dot x}(t) = \boldsymbol{Ax}(t) + \boldsymbol{Bu}(t) %, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
 	\end{split}
 \end{equation}
 فرمان کنترلی بهینه \lr{LQR} به‌صورت زیر محاسبه می‌شود
@@ -25,12 +24,12 @@
 \end{equation}
 که در رابطه فوق، ماتریس $\boldsymbol{K_{LQR}}$ بیانگر بهره بازخورد بهینه است. این بهره به‌گونه‌ای محاسبه می‌شود که تابع هزینه مربعی زیر کمینه شود:
  \begin{equation}\label{lqr_cost}
-	J_i(u_1) = \int_{0}^{T}\left( \boldsymbol{x} ^\mathrm{T}(t) \boldsymbol{Q} \boldsymbol{x}(t)+
+	J(\boldsymbol u) = \int_{0}^{T}\left( \boldsymbol{x} ^\mathrm{T}(t) \boldsymbol{Q} \boldsymbol{x}(t)+
 	\boldsymbol{u} ^\mathrm{T}(t) \boldsymbol{R} \boldsymbol{u}(t)
 	\right)dt
 	%	\boldsymbol{ x} ^\mathrm{T}(T)\boldsymbol{ H_i}\boldsymbol{x}(T) 
 \end{equation}
-در رابطه فوق، ماتریس‌های $\boldsymbol{Q}$ و $\boldsymbol{R}$ به ترتیب بیانگر میزان اهمیت انحراف متغیرهای حالت از مقادیر مطلوب و میزان تلاش کنترلی هستند. هره بازخورد بهینه برای کمینه‌کردن رابطه
+در رابطه فوق، ماتریس‌های $\boldsymbol{Q}$ و $\boldsymbol{R}$ به ترتیب بیانگر میزان اهمیت انحراف متغیرهای حالت از مقادیر مطلوب و میزان تلاش کنترلی هستند. بهره بازخورد بهینه برای کمینه‌کردن رابطه
 (\ref{lqr_cost})،
 از رابطه زیر حاصل می‌شود:
 \begin{equation}
@@ -74,8 +73,6 @@
 	}
 	\caption{‫‪فرمان کنترلی موتورهای دو و چهار در کنترل زاویه رول (تعقیب ورودی صفر)}
 \end{figure}
-
-
-همانطور که از شکل
+\بدون‌تورفتگی همانطور که از شکل
 \ref{lqr_roll_figure_simulation}
 مشخص است، زمان نشست در حدود دو ثانیه است. خطای ماندگار دارد.

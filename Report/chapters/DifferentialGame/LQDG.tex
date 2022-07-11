@@ -64,7 +64,7 @@
 (\ref{openloop_u})
 ،ضریب ماتریس $\boldsymbol{x}(t)$ بیانگر بهره بازخورد بهینه است. این بهره به گونه‌ای محاسبه می‌شود که تابع هزینه مربعی بازیکن شماره \lr{i} با فرض بدترین حرکت سایر بازیکنان کمینه شود. تابع هزینه بازیکن شماره \lr{i} در زیر آورده شده‌است.
  \begin{equation}
-	J_i(u_1, u_2) = \int_{0}^{T}\left( \boldsymbol{x} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x}(t)+
+	J_i( \boldsymbol{u_1},  \boldsymbol{u_2}) = \int_{0}^{T}\left( \boldsymbol{x} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x}(t)+
 	\boldsymbol{u_i} ^\mathrm{T}(t) \boldsymbol{R_{ii}} \boldsymbol{u_i}(t)+
 	\boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ R_{ij} u_j}(t)
 	\right)dt

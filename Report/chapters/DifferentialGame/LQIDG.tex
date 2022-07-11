@@ -60,7 +60,7 @@
 %\پایان{قضیه}
 در صورت وجود اغتشاش و یا خطای مدل‌سازی، عدم وجود انتگرال‌گیر در کنترل‌کننده
 \lr{LQDG}
- میتواند باعث ایجاد خطای حالت ماندگار شود. به‌منظور حذف این خطا، کنترل‌کننده
+ می‌تواند باعث ایجاد خطای حالت ماندگار شود. به‌منظور حذف این خطا، کنترل‌کننده
  \lr{LQIDG}
  بر پایه کنترل‌کننده
  \lr{LQDG}
@@ -124,7 +124,7 @@ $	\boldsymbol{y_d}$
 (\ref{LQIDG_u})
 ،ضریب ماتریس $\boldsymbol{x_a}(t)$ بیانگر بهره بازخورد بهینه است. این بهره به گونه‌ای محاسبه می‌شود که تابع هزینه مربعی بازیکن شماره \lr{i} با فرض بدترین حرکت سایر بازیکنان کمینه شود. تابع هزینه بازیکن شماره \lr{i} در زیر آورده شده است.
 \begin{equation}
-	J_i(u_{1}, u_{2}) = \int_{0}^{T}\left( \boldsymbol{x_a} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x_a}(t)+
+	J_i( \boldsymbol{u_1},  \boldsymbol{u_2}) = \int_{0}^{T}\left( \boldsymbol{x_a} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x_a}(t)+
 	\boldsymbol{u_i} ^\mathrm{T}(t) \boldsymbol{R_{ii}} \boldsymbol{u_i}(t)+
 	\boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ R_{ij} u_j}(t)
 	\right)dt

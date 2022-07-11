@@ -57,7 +57,6 @@
 را از معادلات حذف می‌کنیم.
 
 فضای حالت جدید:
-
 \begin{equation}
 	\boldsymbol f = \begin{bmatrix}
 		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
@@ -72,13 +71,12 @@
 		C_2u_3
 	\end{bmatrix}
 \end{equation} 
-
+بردار ورودی جدید به‌صورت زیر تعریف می‌شود.
 %\begin{equation}
 %	\boldsymbol{x} = \begin{bmatrix}
 %		\phi& \theta & \psi & p& q& r
 %	\end{bmatrix}^\mathrm{T}
 %\end{equation}
-بردار ورودی جدید به‌صورت زیر تعریف می‌شود.
 \begin{equation}
 	\boldsymbol{u} = \begin{bmatrix}
 		u_1&u_2&u_3&u_4
@@ -181,7 +179,8 @@
 %	\end{bmatrix}
 \end{equation}
 روابط بالا به فرم چند سیستم چند ورودی و چند خروجی نوشته ‌شده‌است. آن را به تک ورودی تبدیل می‌کنیم.
-\subsubsection{مود رول}
+%\subsubsection{مود رول}
+بنابراین، ماتریس‌های $\boldsymbol{A}$ و $\boldsymbol{B}$ کانال رول به‌صورت زیر است.
 \begin{equation}
 	\boldsymbol A_{roll} = \begin{bmatrix}
 		\dfrac{\partial  f_1}{\partial  x_1}& \dfrac{\partial  f_1}{\partial  x_4}
@@ -205,7 +204,8 @@
 	\end{bmatrix}
 \end{equation}
 
-\subsubsection{مود پیچ}
+%\subsubsection{مود پیچ}
+همچنین، ماتریس‌های $\boldsymbol{A}$ و $\boldsymbol{B}$ کانال پیچ به‌صورت زیر است.
 \begin{equation}
 	\boldsymbol A_{pitch} = \begin{bmatrix}
 		\dfrac{\partial  f_2}{\partial  x_2}& \dfrac{\partial  f_2}{\partial  x_5}
@@ -228,7 +228,8 @@
 		B_3
 	\end{bmatrix}
 \end{equation}
-\subsubsection{مود یاو}
+%\subsubsection{مود یاو}
+همچنین، ماتریس‌های $\boldsymbol{A}$ و $\boldsymbol{B}$ کانال یاو به‌صورت زیر است.
 \begin{equation}
 	\boldsymbol A_{yaw} = \begin{bmatrix}
 		\dfrac{\partial  f_3}{\partial  x_3}& \dfrac{\partial  f_3}{\partial  x_6}
