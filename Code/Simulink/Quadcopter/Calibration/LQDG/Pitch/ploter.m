@@ -13,7 +13,7 @@ plot(time, state_LQDG.signals.values(find(sim_time == 5):end, 2), 'r', 'linewidt
 hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('$\theta_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
-legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
+legend('Setpoint', 'LQDG Controller', 'Location','northeast');
 % pitch rate q
 % subplot(2,1,2);
 % plot(time, zeros(1, length(time)), '--k', 'linewidth', 2);
