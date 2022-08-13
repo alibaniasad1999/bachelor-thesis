@@ -6,7 +6,7 @@ In this research, a method based on game theory has been used. In this method, t
 Keywords: Quadcopter, Differential Game, Game Theory, Nash Equilibrium, Three Degree of Freedom Stand, Model Base Design, Linear Quadratic Regulator
 ## Plant
 This is three degree of freedom quadcopter stand.
-<p align="center"><img width=70% src="https://user-images.githubusercontent.com/37424536/177047530-034dd479-7912-4439-bbe6-32a2f6122b37.png"></p>
+<p align="center"><img width=70% src="https://user-images.githubusercontent.com/37424536/184509120-5035c89a-928c-46b6-b8d4-de49a87b5299.png"></p>
 
 ## Differential game
 In game theory, differential games are a group of problems related to the modeling and analysis of conflict in the context of a dynamical system. More specifically, a state variable or variables evolve over time according to a differential equation.
