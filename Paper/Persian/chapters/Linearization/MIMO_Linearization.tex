@@ -1,0 +1,239 @@
+%\subsection{فرم خطی فضای حالت چهارپره}\label{lin_MIMO}
+%در این قسمت با توجه به معادلات فضای حالت به دست آمده، چهارپره حول نقطه کار خطی‌سازی می‌شود. به این منظور، نقطه کار به‌صورت زیر در نظر گرفته شده‌است.
+%\begin{equation}
+%	\boldsymbol{x^*} = \begin{bmatrix} % bold or vec???????????/
+%		0& 0 & 0 & 0& 0& 0
+%	\end{bmatrix}^\mathrm{T}
+%\end{equation}
+%\begin{equation}
+%	\boldsymbol{\omega^*} = \begin{bmatrix}
+%		2000&2000&2000&2000
+%	\end{bmatrix}^\mathrm{T}\rm{RPM}
+%\end{equation}
+%که $\boldsymbol{x^*}$ بردار حالت تعادلی و $\boldsymbol{\omega^*}$ بردار ورودی حالت تعادلی است.
+%%\begin{equation*}
+%%	\sigma_1 = \omega_2^2-\omega_4^2,\quad \sigma_2 = \omega_1^2-\omega_3^2,
+%%	\quad \sigma_3 = \omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2,\quad \sigma_4 = \omega_1-\omega_2+\omega_3-\omega_4
+%%\end{equation*}
+%%\begin{equation*}
+%%		\boldsymbol a = \begin{bmatrix}
+%%%		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
+%%%		x_5\cos(x_1)- x_6\sin(x_1)\\
+%%%		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
+%%%		A_1\cos(x_2)\sin(x_1) + 
+%%%		A_2x_5x_6 + A_3\left(\omega_2^2-\omega_4^2\right)+
+%%%		A_4x_5\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_4}{\lvert x_4\rvert}A_5+A_6\cos(x_1)\\
+%%%		B_1\sin(x_2) + 
+%%%		B_2x_4x_6 + B_3\left(\omega_1^2-\omega_3^2\right)+
+%%%		B_4x_4\left(\omega_1-\omega_2+\omega_3-\omega_4\right)- \dfrac{x_5}{\lvert x_5\rvert}B_5 + B_6\cos(x_2)\\
+%%%		C_1x_4x_5 + 
+%%%		C_2\left(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2\right)- \dfrac{x_6}{\lvert x_6\rvert}C_3
+%%		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
+%%		x_5\cos(x_1)- x_6\sin(x_1)\\
+%%		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
+%%		A_1\cos(x_2)\sin(x_1) + 
+%%		A_2x_5x_6 + A_3\sigma_1+
+%%		A_4x_5\sigma_4- \dfrac{x_4}{\lvert x_4\rvert}A_5+A_6\cos(x_1)\\
+%%		B_1\sin(x_2) + 
+%%		B_2x_4x_6 + B_3\sigma_2+
+%%		B_4x_4\sigma_4- \dfrac{x_5}{\lvert x_5\rvert}B_5 + B_6\cos(x_2)\\
+%%		C_1x_4x_5 + 
+%%		C_2\sigma_3- \dfrac{x_6}{\lvert x_6\rvert}C_3
+%%	\end{bmatrix}
+%%\end{equation*} 
+%%\begin{equation}
+%%	\boldsymbol{x} = \begin{bmatrix} % bold or vec???????????/
+%%		\phi& \theta & \psi & p& q& r
+%%	\end{bmatrix}^\mathrm{T}
+%%\end{equation}
+%%\begin{equation}
+%%	\boldsymbol{\omega} = \begin{bmatrix}
+%%		\omega_1&\omega_2&\omega_3&\omega_4
+%%	\end{bmatrix}^\mathrm{T}
+%%\end{equation}
+%برای خطی سازی از بسط تیلور استفاده شده‌‌است.
+%\begin{equation}
+%	\delta \dot{\boldsymbol{x}} = \boldsymbol A\delta \boldsymbol x + \boldsymbol B \delta \boldsymbol \omega 
+%\end{equation}
+%که:
+%%\begin{equation}
+%%	\delta \dot{\boldsymbol{x}} =
+%%	\begin{bmatrix}
+%%		\delta \dot x_1&
+%%		\delta \dot x_2&
+%%		\delta \dot x_3&
+%%		\delta \dot x_4&
+%%		\delta \dot x_5&
+%%		\delta \dot x_6
+%%	\end{bmatrix}^\mathrm{T}
+%%\end{equation}
+%\begin{equation}
+%	\boldsymbol A = \left.\dfrac{\partial \boldsymbol f}{\partial  \boldsymbol x}\right\vert_{\boldsymbol{x^*}} 
+%\end{equation}
+%%	\begin{bmatrix}
+%%\dfrac{\partial  a_1}{\partial  x_1}&
+%%\dfrac{\partial  a_1}{\partial  x_2}&
+%%\dfrac{\partial  a_1}{\partial  x_3}&
+%%\dfrac{\partial  a_1}{\partial  x_4}&
+%%\dfrac{\partial  a_1}{\partial  x_5}&
+%%\dfrac{\partial  a_1}{\partial  x_6}
+%%\\[1em]
+%%\dfrac{\partial  a_2}{\partial  x_1}&
+%%\dfrac{\partial  a_2}{\partial  x_2}&
+%%\dfrac{\partial  a_2}{\partial  x_3}&
+%%\dfrac{\partial  a_2}{\partial  x_4}&
+%%\dfrac{\partial  a_2}{\partial  x_5}&
+%%\dfrac{\partial  a_2}{\partial  x_6}
+%%\\[1em]
+%%\dfrac{\partial  a_3}{\partial  x_1}&
+%%\dfrac{\partial  a_3}{\partial  x_2}&
+%%\dfrac{\partial  a_3}{\partial  x_3}&
+%%\dfrac{\partial  a_3}{\partial  x_4}&
+%%\dfrac{\partial  a_3}{\partial  x_5}&
+%%\dfrac{\partial  a_3}{\partial  x_6}
+%%\\[1em]
+%%\dfrac{\partial  a_4}{\partial  x_1}&
+%%\dfrac{\partial  a_4}{\partial  x_2}&
+%%\dfrac{\partial  a_4}{\partial  x_3}&
+%%\dfrac{\partial  a_4}{\partial  x_4}&
+%%\dfrac{\partial  a_4}{\partial  x_5}&
+%%\dfrac{\partial  a_4}{\partial  x_6}
+%%\\[1em]
+%%\dfrac{\partial  a_5}{\partial  x_1}&
+%%\dfrac{\partial  a_5}{\partial  x_2}&
+%%\dfrac{\partial  a_5}{\partial  x_3}&
+%%\dfrac{\partial  a_5}{\partial  x_4}&
+%%\dfrac{\partial  a_5}{\partial  x_5}&
+%%\dfrac{\partial  a_5}{\partial  x_6}
+%%\\[1em]
+%%\dfrac{\partial  a_6}{\partial  x_1}&
+%%\dfrac{\partial  a_6}{\partial  x_2}&
+%%\dfrac{\partial  a_6}{\partial  x_3}&
+%%\dfrac{\partial  a_6}{\partial  x_4}&
+%%\dfrac{\partial  a_6}{\partial  x_5}&
+%%\dfrac{\partial  a_6}{\partial  x_6}
+%%	\end{bmatrix}
+%
+%\begin{equation}
+%	\boldsymbol B = \left.\dfrac{\partial \boldsymbol f}{\partial \boldsymbol \omega}\right\vert_{\boldsymbol{\omega^*}}
+%%	\begin{bmatrix}
+%%		\dfrac{\partial  a_1}{\partial  \omega_1}&
+%%		\dfrac{\partial  a_1}{\partial  \omega_2}&
+%%		\dfrac{\partial  a_1}{\partial  \omega_3}&
+%%		\dfrac{\partial  a_1}{\partial  \omega_4}
+%%		\\[1em]
+%%		\dfrac{\partial  a_2}{\partial  \omega_1}&
+%%		\dfrac{\partial  a_2}{\partial  \omega_2}&
+%%		\dfrac{\partial  a_2}{\partial  \omega_3}&
+%%		\dfrac{\partial  a_2}{\partial  \omega_4}
+%%		\\[1em]
+%%		\dfrac{\partial  a_3}{\partial  \omega_1}&
+%%		\dfrac{\partial  a_3}{\partial  \omega_2}&
+%%		\dfrac{\partial  a_3}{\partial  \omega_3}&
+%%		\dfrac{\partial  a_3}{\partial  \omega_4}
+%%		\\[1em]
+%%		\dfrac{\partial  a_4}{\partial  \omega_1}&
+%%		\dfrac{\partial  a_4}{\partial  \omega_2}&
+%%		\dfrac{\partial  a_4}{\partial  \omega_3}&
+%%		\dfrac{\partial  a_4}{\partial  \omega_4}
+%%		\\[1em]
+%%		\dfrac{\partial  a_5}{\partial  \omega_1}&
+%%		\dfrac{\partial  a_5}{\partial  \omega_2}&
+%%		\dfrac{\partial  a_5}{\partial  \omega_3}&
+%%		\dfrac{\partial  a_5}{\partial  \omega_4}
+%%		\\[1em]
+%%		\dfrac{\partial  a_6}{\partial  \omega_1}&
+%%		\dfrac{\partial  a_6}{\partial  \omega_2}&
+%%		\dfrac{\partial  a_6}{\partial  \omega_3}&
+%%		\dfrac{\partial  a_6}{\partial  \omega_4}
+%%		\\[1em]
+%%	\end{bmatrix}
+%\end{equation}
+%ماتریس‌های $\boldsymbol A$ و $\boldsymbol B$ مطابق روابط
+%(\ref{A_compact})
+%تا
+%(\ref{B_MIMO})
+%محاسبه می‌شوند.
+%\begin{equation}\label{A_compact}
+%	\boldsymbol A = \begin{bmatrix}
+%		\dfrac{\partial \boldsymbol{ f}}{\partial  x_1} &
+%		\dfrac{\partial \boldsymbol{ f}}{\partial  x_2} &
+%		\dfrac{\partial \boldsymbol{ f}}{\partial  x_3} &
+%		\dfrac{\partial \boldsymbol{ f}}{\partial  x_4} &
+%		\dfrac{\partial \boldsymbol{ f}}{\partial  x_5} &
+%		\dfrac{\partial \boldsymbol{ f}}{\partial  x_6} 
+%	\end{bmatrix}
+%\end{equation}
+%\begin{equation}
+%	 \dfrac{\partial \boldsymbol{ f}}{\partial  x_1} = 
+%	 \begin{bmatrix}
+%	 	x_5 \,\mathrm{cos}\left(x_1 \right)\,\mathrm{tan}\left(x_2 \right)-x_6 \,\mathrm{sin}\left(x_1 \right)\,\mathrm{tan}\left(x_2 \right)\\
+%	 	-x_6 \,\mathrm{cos}\left(x_1 \right)-x_5 \,\mathrm{sin}\left(x_1 \right)\\[0.5em]
+%	 	\dfrac{x_5 \,\mathrm{cos}\left(x_1 \right)-x_6 \,\mathrm{sin}\left(x_1 \right)}{\mathrm{cos}\left(x_2 \right)}\\
+%	 	A_1 \,\mathrm{cos}\left(x_1 \right)\,\mathrm{cos}\left(x_2 \right)\\
+%	 	0\\
+%	 	0
+%	 \end{bmatrix}
+%\end{equation}
+%\begin{equation}
+%	\dfrac{\partial \boldsymbol{ f}}{\partial  x_2} = 
+%	\begin{bmatrix}
+%	\dfrac{x_6 \,\mathrm{cos}\left(x_1 \right)}{{\mathrm{cos}\left(x_2 \right)}^2 }+\dfrac{x_5 \,\mathrm{sin}\left(x_1 \right)}{{\mathrm{cos}\left(x_2 \right)}^2 }\\
+%	0\\[0.5em]
+%	\dfrac{\mathrm{tan}\left(x_2 \right)\,{\left(x_6 \,\mathrm{cos}\left(x_1 \right)+x_5 \,\mathrm{sin}\left(x_1 \right)\right)}}{\mathrm{cos}\left(x_2 \right)}\\
+%	-A_2 \,\mathrm{sin}\left(x_1 \right)\,\mathrm{sin}\left(x_2 \right)\\
+%	B_1 \,\mathrm{cos}\left(x_2 \right)\\
+%	0
+%	\end{bmatrix}
+%\end{equation}
+%\begin{equation}
+%	\dfrac{\partial \boldsymbol{ f}}{\partial  x_3} = 
+%	\begin{bmatrix}
+%		0\\0\\0\\0\\0\\0
+%	\end{bmatrix}
+%\end{equation}
+%\begin{equation}
+%	\dfrac{\partial \boldsymbol{ f}}{\partial  x_4} = 
+%	\begin{bmatrix}
+%	1\\
+%	0\\
+%	0\\
+%	0\\
+%	B_2 \,x_6 +B_4 \,{\left(\omega_1 -\omega_2 +\omega_3 -\omega_4 \right)}\\
+%	C_1 \,x_5 
+%	\end{bmatrix}
+%\end{equation}
+%\begin{equation}
+%	\dfrac{\partial \boldsymbol{ f}}{\partial  x_5} = 
+%	\begin{bmatrix}
+%	\mathrm{sin}\left(x_1 \right)\,\mathrm{tan}\left(x_2 \right)\\
+%	\mathrm{cos}\left(x_1 \right)\\
+%	\dfrac{\mathrm{sin}\left(x_1 \right)}{\mathrm{cos}\left(x_2 \right)}\\
+%	A_2 \,x_6 +A_4 \,{\left(\omega_1 -\omega_2 +\omega_3 -\omega_4 \right)}\\
+%	0\\
+%	C_1 \,x_4 
+%	\end{bmatrix}
+%\end{equation}
+%\begin{equation}
+%	\dfrac{\partial \boldsymbol{ f}}{\partial  x_6} = 
+%	\begin{bmatrix}
+%	\mathrm{cos}\left(x_1 \right)\,\mathrm{tan}\left(x_2 \right)\\
+%	-\mathrm{sin}\left(x_1 \right)\\
+%	\dfrac{\mathrm{cos}\left(x_1 \right)}{\mathrm{cos}\left(x_2 \right)}\\
+%	0\\
+%	B_2 \,x_4 \\
+%	0
+%	\end{bmatrix}
+%\end{equation}
+%
+%
+%\begin{equation}\label{B_MIMO}
+%	\boldsymbol B = \begin{bmatrix}
+%			0 & 0 & 0 & 0\\
+%			0 & 0 & 0 & 0\\
+%			0 & 0 & 0 & 0\\
+%			A_4 \,x_5  & 2\,A_3 \,\omega_2 -A_4 \,x_5  & A_4 \,x_5  & -2\,A_3 \,\omega_4 -A_4 \,x_5 \\
+%			2\,B_3 \,\omega_1 +B_4 \,x_4  & -B_4 \,x_4  & B_4 \,x_4 -2\,B_3 \,\omega_3  & -B_4 \,x_4 \\
+%			2\,C_2 \,\omega_1  & -2\,C_2 \,\omega_2  & 2\,C_2 \,\omega_3  & -2\,C_2 \,\omega_4 
+%	\end{bmatrix}
+%\end{equation}

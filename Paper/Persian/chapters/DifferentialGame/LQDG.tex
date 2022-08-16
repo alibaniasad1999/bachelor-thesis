@@ -1,0 +1,88 @@
+
+ %اگر تعادل نش برای تابع هزینه قسمت قبل برقرار باشد برای تابع هزینه
+%$\alpha_iJ_i~ i = 1, 2, ~\alpha_i>0$
+%نیز برقرار است.
+
+\subsection{کنترل‌کننده مربعی خطی مبتنی بر بازی دیفرانسیلی}\label{LQDG}
+%برای سادگی از نمادسازی 
+%$\boldsymbol{S_i} := \boldsymbol{B_iR_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}$
+%استفاده شده‌است. در اینجا فرض شده است که زمان $T$ محدود است.
+%\شروع{قضیه} \label{openlooptheorm}
+%ماتریس
+%$\boldsymbol{M}$ را در نظر بگیرید:
+%\begin{equation}
+%	\boldsymbol{M} :=
+%	\begin{bmatrix}
+%		\boldsymbol{A} & -\boldsymbol{S_1} & -\boldsymbol{S_2}\\
+%		-\boldsymbol{Q_1} & -\boldsymbol{A}^\mathrm{T}& \boldsymbol{0}\\
+%		-\boldsymbol{Q_2} & \boldsymbol{0} & -\boldsymbol{A}^\mathrm{T}
+%	\end{bmatrix}
+%\end{equation}
+%فرض شده ‌است که دو معادله دیفرانسیلی ریکاتی
+%(\ref{riccati_teorm})، 
+% در بازه
+%$[0, T]$
+%جواب متقارن دارند.
+%\begin{equation}\label{riccati_teorm}
+%	\boldsymbol{\dot{K}_i}(t) = -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_i}(t)-\boldsymbol{K_i}(t)\boldsymbol{A}+\boldsymbol{K_i}(t)\boldsymbol{S_iK_i}(t)-\boldsymbol{Q_i},\quad \boldsymbol{K_i}(T) = \boldsymbol{H_i},\quad i = 1, 2
+%\end{equation}
+%\newpage
+%بازی دیفرانسیل خطی درجه دوم دو نفره\LTRfootnote{the two player linear quadratic differential game} تعادل نش حلقه‌باز در هر شرایط اولیه $\boldsymbol{X_0}
+%$
+%دارد اگر ماتریس
+%\begin{equation}
+%	\boldsymbol{H}(T) := \begin{bmatrix}
+%		\boldsymbol{I}&0&0
+%	\end{bmatrix}
+%e^{-\boldsymbol{M}T}
+%\begin{bmatrix}
+%	\boldsymbol{I}
+%	\\ \boldsymbol{H_{1}}
+%	\\ \boldsymbol{H_{2}}
+%\end{bmatrix}
+%\end{equation}
+%معکوس‌پذیر‌ باشد
+% \cite{article1}
+% .
+%\پایان{قضیه}
+برای یک سامانه خطی پیوسته با معادلات حالت:
+ \begin{equation}\label{systemlqdg}
+ 	\begin{split}
+		&\boldsymbol{\dot x}(t) = \boldsymbol{Ax}(t) + \boldsymbol{B_1u_1}(t) + \boldsymbol{B_2u_2}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
+		\\
+		&\boldsymbol{y}(t) = \boldsymbol{Cx}(t) + \boldsymbol{D_1u_1}(t) + \boldsymbol{D_2u_2}(t)
+	\end{split}
+\end{equation}
+فرمان کنترلی بهینه \lr{LQDG} بازیکن شماره \lr{i} به‌صورت رابطه
+(\ref{openloop_u})
+محاسبه می‌شود.
+
+\begin{equation}\label{openloop_u}
+	\boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}\boldsymbol{K_{i}}(t)\boldsymbol{x}(t),\quad i = 1, 2
+\end{equation}
+که در رابطه 
+(\ref{openloop_u})
+،ضریب ماتریس $\boldsymbol{x}(t)$ بیانگر بهره بازخورد بهینه است. این بهره به گونه‌ای محاسبه می‌شود که تابع هزینه مربعی بازیکن شماره \lr{i} با فرض بدترین حرکت سایر بازیکنان کمینه شود. تابع هزینه بازیکن شماره \lr{i} در زیر آورده شده‌است.
+ \begin{equation}
+	J_i( \boldsymbol{u_1},  \boldsymbol{u_2}) = \int_{0}^{T}\left( \boldsymbol{x} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x}(t)+
+	\boldsymbol{u_i} ^\mathrm{T}(t) \boldsymbol{R_{ii}} \boldsymbol{u_i}(t)+
+	\boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ R_{ij} u_j}(t)
+	\right)dt
+%	\boldsymbol{ x} ^\mathrm{T}(T)\boldsymbol{ H_i}\boldsymbol{x}(T) 
+\end{equation}
+در رابطه 
+(\ref{openloop_u}),
+ماتریس $\boldsymbol{K_{i}}(t)$ بیانگر پاسخ معادله کوپل ریكاتی\LTRfootnote{Coupled Riccati Differential Equations}
+ زیر است
+ \cite{diff_game}:
+\begin{equation}\label{coupled_riccatti_LQDG}
+\begin{split}
+	\boldsymbol{\dot{K}_1}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_1}(t) - \boldsymbol{K_1}(t)\boldsymbol{A} - \boldsymbol{Q_1} +\boldsymbol{K_1}(t)\boldsymbol{S_1}(t)\boldsymbol{K_1}(t) + \boldsymbol{K_1}(t)\boldsymbol{S_2}(t)\boldsymbol{K_2}(t)\\
+	\boldsymbol{\dot{K}_2}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_2}(t) - \boldsymbol{K_2}(t)\boldsymbol{A} - \boldsymbol{Q_2} +\boldsymbol{K_2}(t)\boldsymbol{S_2}(t)\boldsymbol{K_2}(t) + \boldsymbol{K_2}(t)\boldsymbol{S_1}(t)\boldsymbol{K_1}(t)
+\end{split}
+\end{equation}
+برای سادگی از نمادسازی
+$\boldsymbol{S_i} := \boldsymbol{B_iR_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}$
+  استفاده شده‌است. 
+
+

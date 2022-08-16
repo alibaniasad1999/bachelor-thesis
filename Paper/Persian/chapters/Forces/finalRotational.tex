@@ -1,0 +1,151 @@
+\section{ استخراج معادله نهایی دينامیک دورانی}\label{sec:finalrotate}
+با جایگذاری گشتاورهای خارجی چهارپره و تكانه زاویه‌ای کلی پره‌ها در معادله دیفرانسیل اویلر، شكل نهایی معادله دیفرانسیل استند چهارپره حاصل می‌شود. به این منظور، با جایگذاری مقدار 
+گشتاورهای اعمالی به چهارپره از معادله
+(\ref{finalm})
+در معادله 
+(\ref{torque})
+رابطه مورد نیاز برای مدل‌سازی
+دینامیک دورانی استند به‌صورت معادله زیر حاصل می‌شود:
+\begin{equation}\label{demifinalrotation}
+	\begin{split}
+		\left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B = 
+		\left(\left[\boldsymbol J\right]^B\right)^{-1}\Bigg(
+		-&\left[\boldsymbol\Omega^{BI}\right]\times\left(
+		\left[\boldsymbol J\right]^B\left[\boldsymbol\omega^{BI}\right]^B
+		+\left[\boldsymbol I_R\right]^B\right) + \\
+		&\left[\boldsymbol m_A\right]^B + \left[\boldsymbol m_{cg}\right]^B +\left[\boldsymbol s_{DC}\right]^B
+		\bigg(-\left[\boldsymbol G\right]^B
+		-\left[\boldsymbol T\right]^B+ \\
+		&m_{tot}\Bigl\{2
+		\left[\boldsymbol \Omega^{BI}\right]^B
+		\left[\boldsymbol \Omega^{BI}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B+
+		\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B
+		\Bigr\}\bigg)\Bigg)
+	\end{split}
+\end{equation}
+
+
+
+در رابطه
+(\ref{demifinalrotation})،
+عبارت
+$\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B$
+بیانگر ماتریس پادمتقارن بردار مشتق سرعت‌ زاویه‌ای بدنی
+($\left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B $)
+است. جمله آخر در معادله فوق را می‌توان به‌صورت زیر بازنویسی کرد:
+\begin{equation}\label{sc}
+	m_{tot}\left[\boldsymbol s_{DC}\right]^R
+	\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B\left[\boldsymbol s_{CD}\right]^R = 
+	m_{tot}\left[\boldsymbol s_{DC}\right]^R\left[\boldsymbol s_{DC}\right]^R
+	\left[\dot{\boldsymbol\omega}^{BI}\right]^B
+\end{equation}
+با جایگذاری معادله
+(\ref{sc})
+در معادله
+(\ref{demifinalrotation})
+معادله زیر حاصل می‌شود:
+\begin{equation}\label{longfinal}
+	\begin{split}
+		\left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B  & \left(
+		I - m_{tot} \left(\left[\boldsymbol J\right]^B\right)^{-1}
+		\left[\boldsymbol s_{DC}\right]^B
+		\left[\boldsymbol s_{DC}\right]^B\right) = \\
+		\left(\left[\boldsymbol J\right]^B\right)^{-1}\Bigg(
+		-&\left[\boldsymbol\Omega^{BI}\right]\times\left(
+		\left[\boldsymbol J\right]^B\left[\boldsymbol\omega^{BI}\right]^B
+		+\left[\boldsymbol I_R\right]^B\right) + \\
+		&\left[\boldsymbol m_A\right]^B + \left[\boldsymbol m_{cg}\right]^B+\left[\boldsymbol s_{DC}\right]^B
+		\bigg(-\left[\boldsymbol F_g\right]^B
+		-\left[\boldsymbol F_T\right]^B+ \\
+		&m_{tot}\Bigl\{2
+		\left[\boldsymbol\Omega^{BI}\right]^B
+		\left[\boldsymbol\Omega^{BI}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B+
+		\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B
+		\Bigr\}\bigg)\Bigg)		
+	\end{split}
+\end{equation}
+با ساده‌سازی رابطه
+(\ref{longfinal}),
+بردار سرعت زاویه‌ای استند به‌صورت زیر حاصل می‌شود:
+\begin{equation}\label{finaltorquefinal}
+	\begin{split}
+		\left[\dfrac{d\boldsymbol\omega^{BI}}{dt}\right]^B &= a^{-1}b\\
+		a &= I - m_{tot}\left(\left[\boldsymbol J\right]^B\right)^{-1}
+		\left[\boldsymbol s_{DC}\right]^B
+		\left[\boldsymbol s_{DC}\right]^B\\
+		b = \left(\left[\boldsymbol J\right]^B\right)^{-1}\Bigg(
+		-&\left[\boldsymbol\Omega^{BI}\right]\times\left(
+		\left[\boldsymbol J\right]^B\left[\boldsymbol\omega^{BI}\right]^B
+		+\left[\boldsymbol I_R\right]^B\right) + \\
+		&\left[\boldsymbol m_A\right]^B+ \left[\boldsymbol m_{cg}\right]^B +\left[\boldsymbol s_{DC}\right]^B
+		\bigg(-\left[\boldsymbol F_g\right]^B
+		-\left[\boldsymbol F_T\right]^B+ \\
+		&m_{tot}\Bigl\{2
+		\left[\boldsymbol\Omega^{BI}\right]^B
+		\left[\boldsymbol\Omega^{BI}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B+
+		\left[\dfrac{d\boldsymbol\Omega^{BI}}{dt}\right]^B
+		\left[\boldsymbol s_{cd}\right]^B
+		\Bigr\}\bigg)\Bigg)		
+	\end{split}
+\end{equation}
+با جایگذاری معادلات
+ (\ref{IR})،
+ (\ref{IRomega}) و
+ (\ref{omega_d})
+ معادله مربوط به تکانه کلی پره‌ها، 
+ معادله
+ (\ref{trust})
+مربوط به برآی پره و معادله 
+(\ref{finaltorque})
+مربوط به گشتاورهای آیرودینامیکی پره‌ها،
+در معادله 
+(\ref{finaltorquefinal})،
+مؤلفه‌های بردار مشتق سرعت زاویه‌ای چهارپره به‌صورت زیر حاصل می‌شود:
+\begin{align}
+	\begin{split}\label{p dot}
+		\dot{p} =& \dfrac{h_{cg}gm_{dot}\cos(\theta)\sin(\phi)
+			+\left(J_{22} - J_{33} +2m_{tot}h_{ch}^2\right)qr
+		}
+		{m_{tot}h_{cg}^2 + J_{11}} \\
+		&+\dfrac{bd_{cg}\left(\omega_2^2-\omega_4^2\right) + qJ_R(\omega_1-\omega_2+\omega_3-\omega_4) - \dfrac{p}{\lvert p \rvert}P_1\mu r_x}
+		{m_{tot}h_{cg}^2 + J_{11}}
+	\end{split}\\[1em]
+		\begin{split}
+		\dot{q} =& \dfrac{h_{cg}gm_{dot}\sin(\theta)
+			+\left(J_{33} - J_{11} +2m_{tot}h_{ch}^2\right)pr
+		}
+		{m_{tot}h_{cg}^2 + J_{11}} \\
+		&+\dfrac{bd_{cg}\left(\omega_1^2-\omega_3^2\right) - pJ_R(\omega_1-\omega_2+\omega_3-\omega_4)- \dfrac{q}{\lvert q \rvert}P_2\mu r_y}
+		{m_{tot}h_{cg}^2 + J_{11}}
+	\end{split}\\[1em]
+	\begin{split}
+		\dot{r} =& \dfrac{pq(J_{11}-J_{22})
+		+ d(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2) - \dfrac{r}{\lvert r \rvert}P_3\mu r_z
+	}{J_{33}}
+	\end{split}
+\end{align}
+به منظور انتشار وضعیت دورانی چهارپره، از روش انتشار اویلر به‌صورت زیر استفاده می‌شود
+\cite{zipfel2000modeling}:
+\begin{equation}
+	\dot\phi = p + q\sin(\phi)\cos(\theta) +‌
+	r\cos(\phi)\tan(\theta)
+\end{equation}
+\begin{equation}
+\dot \theta = q\cos(\phi) - r\sin(\phi))
+\end{equation}
+\begin{equation}\label{psidot}
+	\dot\psi = (q\sin(phi)) + r\cos(\phi))\sec(\theta) 
+\end{equation}
+در رابطه بالا
+$\phi$,
+$\theta$
+و
+$\psi$
+بیانگر زوایای اویلر هستند.
+
+
