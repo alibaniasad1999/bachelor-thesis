@@ -17,5 +17,5 @@ C2 = (d) / (J_zz);
 C3 = (m3 * g * miu_k * r_z) / (J_zz);
 % omega for linearzation 2000 RPM
 Omega = 2000 / 60 * 2 * pi;
-roll_parameterestimation_result;
+roll_parameter_estiation_result;
 Aa = 0.3633;
