@@ -1,4 +1,4 @@
-load('11-Jun-2022-12-19-13-noise_ite_Roll_LQDG500.mat');
+load('16-Aug-2022-20-08-09-noise_ite_Roll_LQDG1000.mat');
 weighting_matrix = XOpt;
 out = sim('Quad_Nonlinear_Roll_Model_LQDG');
 

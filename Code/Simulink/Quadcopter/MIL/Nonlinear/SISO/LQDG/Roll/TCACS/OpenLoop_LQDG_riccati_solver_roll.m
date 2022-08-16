@@ -20,7 +20,7 @@ S2     = B* R2_inv * B';
 h_v = [10
        10];
 H	 = diag(h_v);
-tf     = 15;
+tf     = 20;
 p0	= [H;H];
 n	= 2;
 p0	= reshape(p0,2 * n^2,1);

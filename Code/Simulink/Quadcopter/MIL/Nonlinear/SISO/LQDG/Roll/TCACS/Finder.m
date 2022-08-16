@@ -1,13 +1,14 @@
 warning off all;
 close all;
+bdclose;
 clear
 clc
 clear
 Iteration =    0;
 MaxFE     = 1000;
 %          Q_1       Q_2        R_2      
-min = [    -6,       -6,        -6];
-max = [     3,        3,         3];
+min = [     4,        2.5,      0.5];
+max = [     5,        3.5,      1.5];
 tic
 [XOpt, FOpt, nFE] = TCACS('Cost', [min; max], MaxFE, 1e-4);
 toc
