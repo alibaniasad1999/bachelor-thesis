@@ -78,7 +78,7 @@
 %	\end{bmatrix}^\mathrm{T}
 %\end{equation}
 \begin{equation}
-	\boldsymbol{u} = \begin{bmatrix}
+	\boldsymbol{\mathrm{u}} = \begin{bmatrix}
 		u_1&u_2&u_3&u_4
 	\end{bmatrix}^\mathrm{T}
 \end{equation}
@@ -87,18 +87,18 @@
 	\delta \dot{\boldsymbol{\mathrm{x}}} = \boldsymbol{\mathrm{A}}\delta \boldsymbol{\mathrm{x}} + \boldsymbol{\mathrm{B}}\delta \boldsymbol{\mathrm{u}}
 \end{equation}
 \begin{equation}
-	\boldsymbol{x^*} = \begin{bmatrix} % bold or vec???????????/
+	\boldsymbol{\mathrm{x}^*} = \begin{bmatrix} % bold or vec???????????/
 		0& 0 & 0 & 0& 0& 0
 	\end{bmatrix}^\mathrm{T}
 \end{equation}
 \begin{equation}
-	\boldsymbol{u^*} = \begin{bmatrix}
+	\boldsymbol{\mathrm{u}^*} = \begin{bmatrix}
 		0&0&0&4\times2000^2
 	\end{bmatrix}^\mathrm{T}
 \end{equation}
 
 \begin{equation}
-	\boldsymbol A = \left.\dfrac{\partial \boldsymbol f}{\partial \boldsymbol x}\right\vert_{\boldsymbol{x^*}}
+	\boldsymbol{\mathrm{A}} = \left.\dfrac{\partial \boldsymbol{\mathrm{f}}}{\partial \boldsymbol{\mathrm{x}}}\right\vert_{\boldsymbol{\mathrm{x}^*}}
 %	\begin{bmatrix}
 %		\dfrac{\partial  a_1}{\partial  x_1}&
 %		\dfrac{\partial  a_1}{\partial  x_2}&
@@ -144,7 +144,7 @@
 %	\end{bmatrix}
 \end{equation}
 \begin{equation}
-	\boldsymbol B = \left.\dfrac{\partial \boldsymbol f}{\partial \boldsymbol u}\right\vert_{\boldsymbol{u^*}}
+	\boldsymbol{\mathrm{B}} = \left.\dfrac{\partial \boldsymbol{\mathrm{f}}}{\partial \boldsymbol{\mathrm{u}}}\right\vert_{\boldsymbol{\mathrm{u}^*}}
 %	\begin{bmatrix}
 %		\dfrac{\partial  a_1}{\partial  u_1}&
 %		\dfrac{\partial  a_1}{\partial  u_2}&
@@ -182,7 +182,7 @@
 %\subsubsection{مود رول}
 بنابراین، ماتریس‌های $\boldsymbol{A}$ و $\boldsymbol{B}$ کانال رول به‌صورت زیر است.
 \begin{equation}
-	\boldsymbol A_{roll} = \begin{bmatrix}
+	\boldsymbol{\mathrm{A}}_{\text{roll}} = \begin{bmatrix}
 		\dfrac{\partial  f_1}{\partial  x_1}& \dfrac{\partial  f_1}{\partial  x_4}
 		\\[1em]
 		\dfrac{\partial  f_4}{\partial  x_1}& \dfrac{\partial  f_4}{\partial  x_4}
@@ -193,7 +193,7 @@
 	\end{bmatrix}
 \end{equation}
 \begin{equation}
-	\boldsymbol B_{roll} = \begin{bmatrix}
+	\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
 		\dfrac{\partial  f_1}{\partial  u_1}
 		\\[1em]
 		\dfrac{\partial  f_4}{\partial  u_1}
@@ -207,7 +207,7 @@
 %\subsubsection{مود پیچ}
 همچنین، ماتریس‌های $\boldsymbol{A}$ و $\boldsymbol{B}$ کانال پیچ به‌صورت زیر است.
 \begin{equation}
-	\boldsymbol A_{pitch} = \begin{bmatrix}
+	\boldsymbol{\mathrm{A}}_{\text{pitch}}  = \begin{bmatrix}
 		\dfrac{\partial  f_2}{\partial  x_2}& \dfrac{\partial  f_2}{\partial  x_5}
 		\\[1em]
 		\dfrac{\partial  f_5}{\partial  x_2}& \dfrac{\partial  f_5}{\partial  x_5}
@@ -218,7 +218,7 @@
 	\end{bmatrix}
 \end{equation}
 \begin{equation}
-	\boldsymbol B_{pitch} = \begin{bmatrix}
+	\boldsymbol{\mathrm{B}}_{\text{pitch}}  = \begin{bmatrix}
 		\dfrac{\partial  f_2}{\partial  u_2}
 		\\[1em]
 		\dfrac{\partial  f_5}{\partial  u_2}
@@ -231,7 +231,7 @@
 %\subsubsection{مود یاو}
 همچنین، ماتریس‌های $\boldsymbol{A}$ و $\boldsymbol{B}$ کانال یاو به‌صورت زیر است.
 \begin{equation}
-	\boldsymbol A_{yaw} = \begin{bmatrix}
+	\boldsymbol{\mathrm{A}}_{\text{yaw}} = \begin{bmatrix}
 		\dfrac{\partial  f_3}{\partial  x_3}& \dfrac{\partial  f_3}{\partial  x_6}
 		\\[1em]
 		\dfrac{\partial  f_6}{\partial  x_3}& \dfrac{\partial  f_6}{\partial  x_6}
@@ -242,7 +242,7 @@
 	\end{bmatrix}
 \end{equation}
 \begin{equation}
-	\boldsymbol B_{yaw} = \begin{bmatrix}
+	\boldsymbol{\mathrm{B}}_{\text{yaw}} = \begin{bmatrix}
 		\dfrac{\partial  f_3}{\partial  u_3}
 		\\[1em]
 		\dfrac{\partial  f_6}{\partial  u_3}

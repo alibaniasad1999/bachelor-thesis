@@ -67,9 +67,9 @@
  تعمیم‌یافته است. در این کنترل‌کننده، انتگرال اختلاف بین خروجی سیستم و مقدار مطلوب به بردار حالت اضافه شده‌است. بنابراین، بردار حالت به‌صورت زیر نوشته می‌شود
  \cite{reza_pordal}:
  \begin{equation}\label{lqidg_x}
- 	\boldsymbol{x_a} = \begin{bmatrix}
- 		\boldsymbol{x_d} - \boldsymbol{x}\\
- 		\displaystyle \int (\boldsymbol{y_d} - \boldsymbol{y})
+ 	\boldsymbol{\mathrm{x_a}} = \begin{bmatrix}
+ 		\boldsymbol{\mathrm{x_d}} - \boldsymbol{\mathrm{x}}\\
+ 		\displaystyle \int (\boldsymbol{\mathrm{y_d}} - \boldsymbol{\mathrm{y}})
  	\end{bmatrix}
  \end{equation}
 در رابطه
@@ -84,28 +84,28 @@ $	\boldsymbol{y_d}$
  یک ماتریس همانی است در نظر گرفته شده‌است؛ بنابراین، بردار خروجی برابر با بردار حالت خواهد
 بود:
 \begin{equation}
-	\boldsymbol{y} = \boldsymbol{x}
+	\boldsymbol{\mathrm{y}} = \boldsymbol{\mathrm{x}}
 \end{equation}
 با تعریف بردار حالت افزوده، معادلات حالت به شكل زیر بازنویسی می‌شود:
  \begin{equation}\label{systemlqidg}
 	\begin{split}
-		&\boldsymbol{\dot x_a}(t) = \boldsymbol{A_ax_a}(t) + \boldsymbol{B_{{a_1}}u_{a_1}}(t) + \boldsymbol{B_{{a_2}}u_{a_2}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
+		&\boldsymbol{\dot{\mathrm{x}}_a}(t) = \boldsymbol{\mathrm{A_ax_a}}(t) + \boldsymbol{\mathrm{B_{{a_1}}u_{a_1}}}(t) + \boldsymbol{\mathrm{B_{{a_2}}u_{a_2}}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
 		\\
-		&\boldsymbol{y}(t) = \boldsymbol{C_ax_a}(t) + \boldsymbol{D_{{a_1}}u_{a_1}}(t) + \boldsymbol{D_{{a_2}}u_{a_2}}(t)
+		&\boldsymbol{\mathrm{y}}(t) = \boldsymbol{\mathrm{C_ax_a}}(t) + \boldsymbol{\mathrm{D_{{a_1}}u_{a_1}}}(t) + \boldsymbol{\mathrm{D_{{a_2}}u_{a_2}}}(t)
 	\end{split}
 \end{equation}
 که ماتریسهای $\boldsymbol{A_a}$ و $\boldsymbol{B_a}$ به‌صورت زیر تعریف می‌شوند:
 
  \begin{equation}
-	\boldsymbol{A_a} = \begin{bmatrix}
-		\boldsymbol{A} &0\\
-		\boldsymbol{C} & 0
+	\boldsymbol{\mathrm{A_a}} = \begin{bmatrix}
+		\boldsymbol{\mathrm{A}} &0\\
+		\boldsymbol{\mathrm{C}} & 0
 	\end{bmatrix}
 \end{equation}
 
 \begin{equation}
-	\boldsymbol{B_a} = \begin{bmatrix}
-		\boldsymbol{B}\\
+	\boldsymbol{\mathrm{B_a}} = \begin{bmatrix}
+		\boldsymbol{\mathrm{B}}\\
 		0
 	\end{bmatrix}
 \end{equation}
@@ -118,16 +118,17 @@ $	\boldsymbol{y_d}$
 محاسبه می‌شود.
 
 \begin{equation}\label{LQIDG_u}
-	\boldsymbol{u_i}(t) = -\boldsymbol{R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}\boldsymbol{K_{a_i}}(t)\boldsymbol{x_a}(t),\quad i = 1, 2
+	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_{a_i}}}^\mathrm{T}\boldsymbol{\mathrm{K_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t),\quad i = 1, 2
 \end{equation}
 که در رابطه 
 (\ref{LQIDG_u})
 ،ضریب ماتریس $\boldsymbol{x_a}(t)$ بیانگر بهره بازخورد بهینه است. این بهره به گونه‌ای محاسبه می‌شود که تابع هزینه مربعی بازیکن شماره \lr{i} با فرض بدترین حرکت سایر بازیکنان کمینه شود. تابع هزینه بازیکن شماره \lr{i} در زیر آورده شده است.
 \begin{equation}
-	J_i( \boldsymbol{u_1},  \boldsymbol{u_2}) = \int_{0}^{T}\left( \boldsymbol{x_a} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x_a}(t)+
-	\boldsymbol{u_i} ^\mathrm{T}(t) \boldsymbol{R_{ii}} \boldsymbol{u_i}(t)+
-	\boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ R_{ij} u_j}(t)
-	\right)dt
+	J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\left( \boldsymbol{\mathrm{x}_a} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_a}}(t)+
+\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+
+\boldsymbol{\mathrm{u_j}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{ij} u_j}}(t)
+\right)\mathrm{d}t
+% 	\boldsymbol{ x} ^\mathrm{T}(T)\boldsymbol{ H_i}\boldsymbol{ x}(T) 
 %	\boldsymbol{ x} ^\mathrm{T}(T)\boldsymbol{ H_i}\boldsymbol{x}(T) 
 \end{equation}
 در رابطه 
@@ -137,8 +138,8 @@ $	\boldsymbol{y_d}$
 \cite{diff_game}:
 \begin{equation}\label{coupled_riccatti_LQIDG}
 	\begin{split}
-		\boldsymbol{\dot{K}_{a_1}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_1}}(t) - \boldsymbol{K_{a_1}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_1}} +\boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t) + \boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t)\\
-		\boldsymbol{\dot{K}_{a_2}}(t) &= -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_{a_2}}(t) - \boldsymbol{K_{a_2}}(t)\boldsymbol{A} - \boldsymbol{Q_{a_2}} +\boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_2}}(t)\boldsymbol{K_{a_2}}(t) + \boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_1}}(t)\boldsymbol{K_{a_1}}(t)
+		\boldsymbol{\dot{\mathrm{K}}_{a_1}}(t) &= -\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{K_{a_1}}}(t) - \boldsymbol{\mathrm{K_{a_1}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_1}} +\boldsymbol{\mathrm{K_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{K_{a_1}}}(t) + \boldsymbol{\mathrm{K_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{K_{a_2}}}(t)\\
+		\boldsymbol{\dot{\mathrm{K}}_{a_2}}(t) &= -\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{K_{a_2}}}(t) - \boldsymbol{\mathrm{K_{a_2}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_2}} +\boldsymbol{\mathrm{K_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{K_{a_2}}}(t) + \boldsymbol{\mathrm{K_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{K_{a_1}}}(t)
 	\end{split}
 \end{equation}
 برای سادگی از نمادسازی

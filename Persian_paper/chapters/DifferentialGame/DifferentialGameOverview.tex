@@ -3,9 +3,9 @@
  این پروژه حالت دو بازیکن را بررسی می‌کند. در این مسئله برای یک سامانه خطی پیوسته با معالات حالت:
  \begin{equation}\label{system_dynamic}
  	\begin{split}
- 		 	&\boldsymbol{\dot x}(t) = \boldsymbol{Ax}(t) + \boldsymbol{B_1u_1}(t) + \boldsymbol{B_2u_2}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
+ 		 	&\boldsymbol{\dot{\mathrm{x}}}(t) = \boldsymbol{\mathrm{Ax}}(t) + \boldsymbol{\mathrm{B_1u_1}}(t) + \boldsymbol{\mathrm{B_2u_2}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
  		\\
- 		&\boldsymbol{y}(t) = \boldsymbol{Cx}(t) + \boldsymbol{D_1u_1}(t) + \boldsymbol{D_2u_2}(t)
+ 		&\boldsymbol{\mathrm{y}}(t) = \boldsymbol{\mathrm{Cx}}(t) + \boldsymbol{\mathrm{D_1u_1}}(t) + \boldsymbol{\mathrm{D_2u_2}}(t)
  	\end{split}
  \end{equation}
 که در رابطه (\ref{system_dynamic})
@@ -25,10 +25,10 @@ $\boldsymbol{D_2}$
   هدف اصلی کم‌کردن تابع هزینه برای بازیکنان است. تابع هزینه برای بازیکن شماره \lr{i}  (این مسئله شامل دو بازیکن است) به فرم رابطه (\ref{cost}) نوشته می‌شود.
 
  \begin{equation}\label{cost}
- 	J_i( \boldsymbol{u_1},  \boldsymbol{u_2}) = \int_{0}^{T}\left( \boldsymbol{x} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x}(t)+
- 	 \boldsymbol{u_i} ^\mathrm{T}(t) \boldsymbol{R_{ii}} \boldsymbol{u_i}(t)+
- 	 \boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ R_{ij} u_j}(t)
- 	\right)dt
+ 	J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\left( \boldsymbol{\mathrm{x}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x}}(t)+
+ 	 \boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+
+ 	 \boldsymbol{\mathrm{u_j}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{ij} u_j}}(t)
+ 	\right)\mathrm{d}t
 % 	\boldsymbol{ x} ^\mathrm{T}(T)\boldsymbol{ H_i}\boldsymbol{ x}(T) 
   \end{equation}
 در رابطه
@@ -61,9 +61,9 @@ $(\boldsymbol{u_1}^*,  \boldsymbol{u_2}^*)$
 $(\boldsymbol{u_1},  \boldsymbol{u_2})$
 از نامساوی (\ref{nash_lqe}) پیروی کنند.
 \begin{equation}\label{nash_lqe}
-	J_1(\boldsymbol{u_1}^*, \boldsymbol{u_2}^*)\leq J_1(\boldsymbol{u_1}, \boldsymbol{u_2}^*) \text{\rm{ and }}
-	J_2(\boldsymbol{u_1}^*, \boldsymbol{u_2}^*)\leq 
-	J_2(\boldsymbol{u_1}^*, \boldsymbol{u_2})
+	J_1(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}}^*)\leq J_1(\boldsymbol{\mathrm{u_1}}, \boldsymbol{\mathrm{u_2}}^*) \text{\rm{ and }}
+	J_2(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}}^*)\leq 
+	J_2(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}})
 \end{equation}
 \پایان{قضیه}
 در اینجا قابل قبول بودن به‌معنی آن است که
