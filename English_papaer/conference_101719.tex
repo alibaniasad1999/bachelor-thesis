@@ -14,7 +14,7 @@
 \title{Control of a Three Degree of Freedom Quadcopter Stand Using Linear Quadratic Integral Based on the Differential Game Theory\\
 % {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
 % should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
+\thanks{In partnership with BaniAsad Industries}
 }
 
 \author{\IEEEauthorblockN{Hadi Nobahari}
@@ -79,14 +79,25 @@ Differential games are a series of problems that arise while examining and simul
 Differential equations are used to simulate how a state variable or set of state variables changes over time.
 % Differential equations are used to model the evolution over time of a state variable or variables.
 \subsection{An introduction to the differential game}
-
-The IEEEtran class file is used to format your paper and style the text. All margins, 
-column widths, line spaces, and text fonts are prescribed; please do not 
-alter them. You may note peculiarities. For example, the head margin
-measures proportionately more than is customary. This measurement 
-and others are deliberate, using specifications that anticipate your paper 
-as one part of the entire proceedings, and not as an independent document. 
-Please do not revise any of the current designations.
+It is considered that two players are involved in this paper.
+% In this paper, there are considered to be two players.
+The space states of a continuous linear system are shown below.
+\begin{equation}\label{system_dynamic}
+    \begin{split}
+             &\boldsymbol{\dot{\mathrm{x}}}(t) = \boldsymbol{\mathrm{Ax}}(t) + \boldsymbol{\mathrm{B_1u_1}}(t) + \boldsymbol{\mathrm{B_2u_2}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
+        \\
+        &\boldsymbol{\mathrm{y}}(t) = \boldsymbol{\mathrm{Cx}}(t) + \boldsymbol{\mathrm{D_1u_1}}(t) + \boldsymbol{\mathrm{D_2u_2}}(t)
+    \end{split}
+\end{equation}
+where $\boldsymbol{\mathrm{x}}$ is the vector of all the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u_1}}$ is the firts player (controller) input vector, $\boldsymbol{\mathrm{u_2}}$ is the second player (disturbance) input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B_1}}$ is firts player the input matrix, $\boldsymbol{\mathrm{B_2}}$ is the second player input matrix,
+$\boldsymbol{\mathrm{C}}$ is the output matrix, $\boldsymbol{\mathrm{D_1}}$ is first player the output matrix and $\boldsymbol{\mathrm{D_2}}$ is second player the output matrix.
+Equation (\ref{system_dynamic}) demonstrates how both participants have an impact on the system's dynamics.
+% As shown in equation 1, both players affect the dynamics of the system.
+The second player may progress toward the goal as a result of the first player's exertion, or vice versa.
+% The first player's effort could push the second player away from the goal, or the other way around.
+In this paper we consider the case that players do not cooperate in order to realize their goals.
+The situation where players do not work together (non-cooperative) to achieve their objectives is examined in the paper.
+% The paper examines the situation in which players do not cooperate to achieve their goals.
 
 \section{Mathematical modeling}
 Before you begin to format your paper, first write and save the content as a 
