@@ -1,5 +1,5 @@
 \subsection{کنترل‌کننده مربعی خطی انتگرالی مبتنی بر بازی دیفرانسیلی}\label{LQIDG}
-%تفاوت بازی همراه با بازخورد\LTRfootnote{The Feeback Game} با بازی حلقه‌باز در این است که بازیکنان در هر لحظه از بازی بازخورد می‌گیرند و متناسب با بازخورد رفتار می‌کنند. این بازخورد ممکن است باعث شود یک بازیکن انگیزه پیدا کند که از بازی انحراف پیدا کند در حالی که این اتفاق در بازی حلقه‌باز رخ نمی‌دهد. این اتفاق منجر به یک راه حل تعادلی دیگر می‌شود. 
+%تفاوت بازی همراه با بازخورد\LTRfootnote{The FeebacP Game} با بازی حلقه‌باز در این است که بازیکنان در هر لحظه از بازی بازخورد می‌گیرند و متناسب با بازخورد رفتار می‌کنند. این بازخورد ممکن است باعث شود یک بازیکن انگیزه پیدا کند که از بازی انحراف پیدا کند در حالی که این اتفاق در بازی حلقه‌باز رخ نمی‌دهد. این اتفاق منجر به یک راه حل تعادلی دیگر می‌شود. 
 %%از طرف دیگر راه حل تعادلی نباید در طول بازی خودش را با بازیکنان سازگار کند.
 %با توجه به اینکه سیستم خطی است، می‌توان استدلال کرد که جواب بهینه به صورت تابعی خطی از وضعیت سیستم است \cite{article1}
 %.
@@ -36,14 +36,14 @@
 %
 %\begin{align}
 %	\begin{split}
-%		\boldsymbol{\dot{K}_{a_1}}(t) &= -(\boldsymbol{A}-\boldsymbol{S_{a_2}}\boldsymbol{K_{a_2}}(t))^\mathrm{T}\boldsymbol{K_{a_1}}(t)-\boldsymbol{K_{a_1}}(t)(\boldsymbol{A}-\boldsymbol{S_{a_2}K_{a_2}}(t))+
-%		\boldsymbol{K_{a_1}}(t)\boldsymbol{S_{a_1}K_{a_1}}(t)-\boldsymbol{Q_{a_1}}\\
-%		\quad \boldsymbol{K_{a_1}}(T) &= \boldsymbol{H_{a_1}}
+%		\boldsymbol{\dot{P}_{a_1}}(t) &= -(\boldsymbol{A}-\boldsymbol{S_{a_2}}\boldsymbol{P_{a_2}}(t))^\mathrm{T}\boldsymbol{P_{a_1}}(t)-\boldsymbol{P_{a_1}}(t)(\boldsymbol{A}-\boldsymbol{S_{a_2}P_{a_2}}(t))+
+%		\boldsymbol{P_{a_1}}(t)\boldsymbol{S_{a_1}P_{a_1}}(t)-\boldsymbol{Q_{a_1}}\\
+%		\quad \boldsymbol{P_{a_1}}(T) &= \boldsymbol{H_{a_1}}
 %	\end{split}\\
 %	\begin{split}
-%		\boldsymbol{\dot{K}_{a_2}}(t) &= -(\boldsymbol{A}-\boldsymbol{S_{a_1}}\boldsymbol{K_{a_1}}(t))^\mathrm{T}\boldsymbol{K_{a_2}}(t)-\boldsymbol{K_{a_2}}(t)(\boldsymbol{A}-\boldsymbol{S_{a_1}K_{a_1}}(t))+
-%\boldsymbol{K_{a_2}}(t)\boldsymbol{S_{a_2}K_{a_2}}(t)-\boldsymbol{Q_{a_2}}\\
-%\quad \boldsymbol{K_{a_2}}(T) &= \boldsymbol{H_{a_2}}
+%		\boldsymbol{\dot{P}_{a_2}}(t) &= -(\boldsymbol{A}-\boldsymbol{S_{a_1}}\boldsymbol{P_{a_1}}(t))^\mathrm{T}\boldsymbol{P_{a_2}}(t)-\boldsymbol{P_{a_2}}(t)(\boldsymbol{A}-\boldsymbol{S_{a_1}P_{a_1}}(t))+
+%\boldsymbol{P_{a_2}}(t)\boldsymbol{S_{a_2}P_{a_2}}(t)-\boldsymbol{Q_{a_2}}\\
+%\quad \boldsymbol{P_{a_2}}(T) &= \boldsymbol{H_{a_2}}
 %	\end{split}
 %\end{align}
 %در بازه زمانی 
@@ -55,7 +55,7 @@
 %\ref{nash_action}
 %است.
 %\begin{equation}\label{nash_action}
-%	\boldsymbol{u_i}^*(t) = -\boldsymbol{R_{ii}B_i}^T\boldsymbol{K_i}(T)\boldsymbol{x}(T),~i = 1, 2
+%	\boldsymbol{u_i}^*(t) = -\boldsymbol{R_{ii}B_i}^T\boldsymbol{P_i}(T)\boldsymbol{x}(T),~i = 1, 2
 %\end{equation}
 %\پایان{قضیه}
 در صورت وجود اغتشاش و یا خطای مدل‌سازی، عدم وجود انتگرال‌گیر در کنترل‌کننده
@@ -118,11 +118,11 @@ $	\boldsymbol{y_d}$
 محاسبه می‌شود.
 
 \begin{equation}\label{LQIDG_u}
-	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_{a_i}}}^\mathrm{T}\boldsymbol{\mathrm{K_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t),\quad i = 1, 2
+	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_{a_i}}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t) = - \boldsymbol{\mathrm{K_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t),\quad i = 1, 2
 \end{equation}
 که در رابطه 
 (\ref{LQIDG_u})
-،ضریب ماتریس $\boldsymbol{x_a}(t)$ بیانگر بهره بازخورد بهینه است. این بهره به گونه‌ای محاسبه می‌شود که تابع هزینه مربعی بازیکن شماره \lr{i} با فرض بدترین حرکت سایر بازیکنان کمینه شود. تابع هزینه بازیکن شماره \lr{i} در زیر آورده شده است.
+،ضریب  $\boldsymbol{\mathrm{K_{a_i}}}(t)$ بیانگر بهره بازخورد بهینه است. این بهره به گونه‌ای محاسبه می‌شود که تابع هزینه مربعی بازیکن شماره \lr{i} با فرض بدترین حرکت سایر بازیکنان کمینه شود. تابع هزینه بازیکن شماره \lr{i} در زیر آورده شده است.
 \begin{equation}
 	J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\left( \boldsymbol{\mathrm{x}_a} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_a}}(t)+
 \boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+
@@ -133,13 +133,13 @@ $	\boldsymbol{y_d}$
 \end{equation}
 در رابطه 
 (\ref{openloop_u})
-، ماتریس $\boldsymbol{K_{i}}(t)$ بیانگر پاسخ معادله کوپل ریكاتی\LTRfootnote{Coupled Riccati Differential Equations}
+، ماتریس $\boldsymbol{P_{i}}(t)$ بیانگر پاسخ معادله کوپل ریكاتی\LTRfootnote{Coupled Riccati Differential Equations}
 زیر است
 \cite{diff_game}:
 \begin{equation}\label{coupled_riccatti_LQIDG}
 	\begin{split}
-		\boldsymbol{\dot{\mathrm{K}}_{a_1}}(t) &= -\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{K_{a_1}}}(t) - \boldsymbol{\mathrm{K_{a_1}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_1}} +\boldsymbol{\mathrm{K_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{K_{a_1}}}(t) + \boldsymbol{\mathrm{K_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{K_{a_2}}}(t)\\
-		\boldsymbol{\dot{\mathrm{K}}_{a_2}}(t) &= -\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{K_{a_2}}}(t) - \boldsymbol{\mathrm{K_{a_2}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_2}} +\boldsymbol{\mathrm{K_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{K_{a_2}}}(t) + \boldsymbol{\mathrm{K_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{K_{a_1}}}(t)
+		\boldsymbol{\dot{\mathrm{P}}_{a_1}}(t) &= -\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_1}}}(t) - \boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_1}} +\boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{P_{a_1}}}(t) + \boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{P_{a_2}}}(t)\\
+		\boldsymbol{\dot{\mathrm{P}}_{a_2}}(t) &= -\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_2}}}(t) - \boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_2}} +\boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{P_{a_2}}}(t) + \boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{P_{a_1}}}(t)
 	\end{split}
 \end{equation}
 برای سادگی از نمادسازی

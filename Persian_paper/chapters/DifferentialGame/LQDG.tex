@@ -24,7 +24,7 @@
 %$[0, T]$
 %جواب متقارن دارند.
 %\begin{equation}\label{riccati_teorm}
-%	\boldsymbol{\dot{K}_i}(t) = -\boldsymbol{A}^\mathrm{T}\boldsymbol{K_i}(t)-\boldsymbol{K_i}(t)\boldsymbol{A}+\boldsymbol{K_i}(t)\boldsymbol{S_iK_i}(t)-\boldsymbol{Q_i},\quad \boldsymbol{K_i}(T) = \boldsymbol{H_i},\quad i = 1, 2
+%	\boldsymbol{\dot{P}_i}(t) = -\boldsymbol{A}^\mathrm{T}\boldsymbol{P_i}(t)-\boldsymbol{P_i}(t)\boldsymbol{A}+\boldsymbol{P_i}(t)\boldsymbol{S_iP_i}(t)-\boldsymbol{Q_i},\quad \boldsymbol{P_i}(T) = \boldsymbol{H_i},\quad i = 1, 2
 %\end{equation}
 %\newpage
 %بازی دیفرانسیل خطی درجه دوم دو نفره\LTRfootnote{the two player linear quadratic differential game} تعادل نش حلقه‌باز در هر شرایط اولیه $\boldsymbol{X_0}
@@ -53,13 +53,15 @@
 	&\boldsymbol{\mathrm{y}}(t) = \boldsymbol{\mathrm{Cx}}(t) + \boldsymbol{\mathrm{D_1u_1}}(t) + \boldsymbol{\mathrm{D_2u_2}}(t)
 \end{split}
 \end{equation}
-
+فرمان کنترلی بهینه \lr{LQDG} بازیکن شماره \lr{i} به‌صورت رابطه
+(\ref{openloop_u})
+محاسبه می‌شود.
 \begin{equation}\label{openloop_u}
-	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_i}}^\mathrm{T}\boldsymbol{\mathrm{K_{i}}}(t)\boldsymbol{\mathrm{x}}(t),\quad i = 1, 2
+	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_i}}^\mathrm{T}\boldsymbol{\mathrm{P_{i}}}(t)\boldsymbol{\mathrm{x}}(t) = -\boldsymbol{\mathrm{k_{i}}}(t)\boldsymbol{\mathrm{x}}(t),\quad i = 1, 2
 \end{equation}
 که در رابطه 
 (\ref{openloop_u})
-،ضریب ماتریس $\boldsymbol{x}(t)$ بیانگر بهره بازخورد بهینه است. این بهره به گونه‌ای محاسبه می‌شود که تابع هزینه مربعی بازیکن شماره \lr{i} با فرض بدترین حرکت سایر بازیکنان کمینه شود. تابع هزینه بازیکن شماره \lr{i} در زیر آورده شده‌است.
+،ضریب  $\boldsymbol{K}(t)$ بیانگر بهره بازخورد بهینه است. این بهره به گونه‌ای محاسبه می‌شود که تابع هزینه مربعی بازیکن شماره \lr{i} با فرض بدترین حرکت سایر بازیکنان کمینه شود. تابع هزینه بازیکن شماره \lr{i} در زیر آورده شده‌است.
  \begin{equation}\label{cost}
 	J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\left( \boldsymbol{\mathrm{x}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x}}(t)+
 	\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+
@@ -70,13 +72,13 @@
 در رابطه
 در رابطه 
 (\ref{openloop_u}),
-ماتریس $\boldsymbol{K_{i}}(t)$ بیانگر پاسخ معادله کوپل ریكاتی\LTRfootnote{Coupled Riccati Differential Equations}
+ماتریس $\boldsymbol{P_{i}}(t)$ بیانگر پاسخ معادله کوپل ریكاتی\LTRfootnote{Coupled Riccati Differential Equations}
  زیر است
  \cite{diff_game}:
 \begin{equation}\label{coupled_riccatti_LQDG}
 \begin{split}
-	\boldsymbol{\dot{\mathrm{K}}_1}(t) &= -\boldsymbol{\mathrm{A}}^\mathrm{T}\boldsymbol{\mathrm{K_1}}(t) - \boldsymbol{\mathrm{K_1}}(t)\boldsymbol{\mathrm{A}} - \boldsymbol{\mathrm{Q_1}} +\boldsymbol{\mathrm{K_1}}(t)\boldsymbol{\mathrm{S_1}}(t)\boldsymbol{\mathrm{K_1}}(t) + \boldsymbol{\mathrm{K_1}}(t)\boldsymbol{\mathrm{S_2}}(t)\boldsymbol{\mathrm{K_2}}(t)\\
-	\boldsymbol{\dot{\mathrm{K}}_2}(t) &= -\boldsymbol{\mathrm{A}}^\mathrm{T}\boldsymbol{\mathrm{K_2}}(t) - \boldsymbol{\mathrm{K_2}}(t)\boldsymbol{\mathrm{A}} - \boldsymbol{\mathrm{Q_2}} +\boldsymbol{\mathrm{K_2}}(t)\boldsymbol{\mathrm{S_2}}(t)\boldsymbol{\mathrm{K_2}}(t) + \boldsymbol{\mathrm{K_2}}(t)\boldsymbol{\mathrm{S_1}}(t)\boldsymbol{\mathrm{K_1}}(t)
+	\boldsymbol{\dot{\mathrm{P}}_1}(t) &= -\boldsymbol{\mathrm{A}}^\mathrm{T}\boldsymbol{\mathrm{P_1}}(t) - \boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{A}} - \boldsymbol{\mathrm{Q_1}} +\boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{S_1}}(t)\boldsymbol{\mathrm{P_1}}(t) + \boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{S_2}}(t)\boldsymbol{\mathrm{P_2}}(t)\\
+	\boldsymbol{\dot{\mathrm{P}}_2}(t) &= -\boldsymbol{\mathrm{A}}^\mathrm{T}\boldsymbol{\mathrm{P_2}}(t) - \boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{A}} - \boldsymbol{\mathrm{Q_2}} +\boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{S_2}}(t)\boldsymbol{\mathrm{P_2}}(t) + \boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{S_1}}(t)\boldsymbol{\mathrm{P_1}}(t)
 \end{split}
 \end{equation}
 برای سادگی از نمادسازی
