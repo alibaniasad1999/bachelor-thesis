@@ -91,7 +91,7 @@ The space states of a continuous linear system are shown below.
         &\boldsymbol{\mathrm{y}}(t) = \boldsymbol{\mathrm{Cx}}(t) + \boldsymbol{\mathrm{D_1u_1}}(t) + \boldsymbol{\mathrm{D_2u_2}}(t)
     \end{split}
 \end{equation}
-where $\boldsymbol{\mathrm{x}}$ is the vector of all the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u_1}}$ is the firts player (controller) input vector, $\boldsymbol{\mathrm{u_2}}$ is the second player (disturbance) input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B_1}}$ is firts player the input matrix, $\boldsymbol{\mathrm{B_2}}$ is the second player input matrix,
+Where $\boldsymbol{\mathrm{x}}$ is the vector of the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u_1}}$ is the firts player (controller) input vector, $\boldsymbol{\mathrm{u_2}}$ is the second player (disturbance) input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B_1}}$ is firts player the input matrix, $\boldsymbol{\mathrm{B_2}}$ is the second player input matrix,
 $\boldsymbol{\mathrm{C}}$ is the output matrix, $\boldsymbol{\mathrm{D_1}}$ is first player the output matrix and $\boldsymbol{\mathrm{D_2}}$ is second player the output matrix.
 Equation (\ref{system_dynamic}) demonstrates how both participants have an impact on the system's dynamics.
 % As shown in equation 1, both players affect the dynamics of the system.
@@ -141,7 +141,107 @@ $\boldsymbol{\mathrm{P_{i}}}$ is found by solving the continuous time couple Ric
 		\end{split}
 	\end{split}
 \end{equation}
+Using the shorthand notation $\boldsymbol{S_i} := \boldsymbol{B_iR_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}$. %?????????????????????
+
+
+\subsection{LQIDG controller}
+The absence of an integrator in the LQDG controller may result in steady-state errors due to disturbances or modeling errors.
+% The LQDG controller's lack of an integrator could lead to steady-state errors due to disturbances or faulty modeling.
+The LQIDG controller is based on the LQDG controller to eliminate this error.
+
+The LQIDG controller adds the integral of the difference between the system output and the desired value to the state vector.
+% In this controller, the integral of the difference between the system output and the desired value is added to the state vector.
+% The integral of the difference between the system output and the desired value is added to the state vector by the LQIDG controller.
+Therefore, The augmented space states of a continuous linear system are shown below.
+\begin{equation}\label{lqidg_x}
+    \boldsymbol{\mathrm{x_a}} = \begin{bmatrix}
+        \boldsymbol{\mathrm{x_d}} - \boldsymbol{\mathrm{x}}\\
+        \displaystyle \int (\boldsymbol{\mathrm{y_d}} - \boldsymbol{\mathrm{y}})
+    \end{bmatrix}
+\end{equation}
+Where $\boldsymbol{\mathrm{x_a}}$ is the vector of augmented state variables, $\boldsymbol{\mathrm{x_d}}$ is the vector of the desired state variables, and $\boldsymbol{\mathrm{y_d}}$ is the desired output vector.
+As a result, the state vector and the output vector are equal.
+\begin{equation}
+	\boldsymbol{\mathrm{y}} = \boldsymbol{\mathrm{x}}
+\end{equation}
+% Hence, the output vector equals the state vector.
+Following is a representation of the system dynamics in the augmented state space.
+% In the augmented state space, the system's dynamics are shown below.
+\begin{equation}\label{systemlqidg}
+	\begin{split}
+		&\boldsymbol{\dot{\mathrm{x}}_a}(t) = \boldsymbol{\mathrm{A_ax_a}}(t) + \boldsymbol{\mathrm{B_{{a_1}}u_{a_1}}}(t) + \boldsymbol{\mathrm{B_{{a_2}}u_{a_2}}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
+		\\
+		&\boldsymbol{\mathrm{y}}(t) = \boldsymbol{\mathrm{C_ax_a}}(t) + \boldsymbol{\mathrm{D_{{a_1}}u_{a_1}}}(t) + \boldsymbol{\mathrm{D_{{a_2}}u_{a_2}}}(t)
+	\end{split}
+\end{equation}
+Where matrices $\boldsymbol{\mathrm{A_a}}$ and $\boldsymbol{\mathrm{B_a}}$ are defined as follows:
+\begin{equation}
+	\boldsymbol{\mathrm{A_a}} = \begin{bmatrix}
+		\boldsymbol{\mathrm{A}} &0\\
+		\boldsymbol{\mathrm{C}} & 0
+	\end{bmatrix}
+, \quad
+	\boldsymbol{\mathrm{B_a}} = \begin{bmatrix}
+		\boldsymbol{\mathrm{B}}\\
+		0
+	\end{bmatrix}
+\end{equation}
+By introducing a new space state for the system, the remaining design phases of the LQIDG controller are comparable to those of the LQDG controller. LQIDG optimum control effort calculates from equation (\ref{LQIDG_u}).
+\begin{equation}\label{LQIDG_u}
+	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_{a_i}}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t) = - \boldsymbol{\mathrm{K_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t),~ i = 1, 2
+\end{equation}
+
+
+
+In equation \ref{LQIDG_u}, $\boldsymbol{\mathrm{K_{a_i}}}$ is optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function (equation \ref{cost_LQIDG}) of player number i.
+\begin{equation}\label{cost_LQIDG}
+	\begin{split}
+		J_i( \boldsymbol{u_1},  \boldsymbol{u_2}) = \int_{0}^{T}\biggl (\boldsymbol{x_a} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x_a}(t)+ 
+		&\boldsymbol{u_i} ^\mathrm{T}(t) \boldsymbol{R_{ii}} \boldsymbol{u_i}(t)+ \\
+		&\boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ R_{ij} u_j}(t)
+		\biggl) \mathrm{d}t
+	\end{split}
+\end{equation}
+$\boldsymbol{\dot{\mathrm{P}}_{a_i}}$ is found by solving the continuous time couple Riccati differential equation:
+\begin{equation}\label{coupled_riccatti_LQIDG}
+    \begin{split}
+        &\begin{split}
+            \boldsymbol{\dot{\mathrm{P}}_{a_1}}(t) = -&\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_1}}}(t) - \boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_1}} +\\ &\boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{P_{a_1}}}(t) + \boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{P_{a_2}}}(t)
+        \end{split}\\
+        &\begin{split}
+            \boldsymbol{\dot{\mathrm{P}}_{a_2}}(t) = -&\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_2}}}(t) - \boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_2}} +\\ &\boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{P_{a_2}}}(t) + \boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{P_{a_1}}}(t)
+        \end{split}
+    \end{split}
+\end{equation}
+Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}$. %?????????????????????
+
+
+
+
+
+
+
+
 \section{Mathematical modeling}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 % Before you begin to format your paper, first write and save the content as a 
 % separate text file. Complete all content and organizational editing before 
 % formatting. Please note sections \ref{AA}--\ref{SCM} below for more information on 
