@@ -57,7 +57,7 @@ alibaniasad1999@yahoo.com}
 \maketitle
 
 \begin{abstract}
-    In this paper, a quadcopter stand with three degrees of freedom was controlled using game theory-based control. The first player tracks a desired input, and the second player creates a disturbance in the tracking of the first player to cause an error in the tracking. The move is chosen using the Nash equilibrium, which presupposes that the other player made the worst move.. In addition to being resistant to input interruptions, this method may also be resilient to modeling system uncertainty. This method evaluated the performance through simulation in the Simulink environment and implementation on a three-degree-of-freedom stand.
+    In this paper, a quadcopter stand with three degrees of freedom was controlled using game theory-based control. The first player tracks a desired input, and the second player creates a disturbance in the tracking of the first player to cause an error in the tracking. The ???? move is chosen using the Nash equilibrium, which presupposes that the other player made the worst move. In addition to being resistant to input interruptions, this method may also be resilient to modeling system uncertainty. This method evaluated the performance through simulation in the Simulink environment and implementation on a three-degree-of-freedom stand.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -81,7 +81,7 @@ Differential equations
  simulate how a state variable or set of state variables changes over time.
 % Differential equations are used to model the evolution over time of a state variable or variables.
 \subsection{An introduction to the differential game}
-It is considered that two players are involved in this paper.
+It is considered that two players are involved in this research.
 % In this paper, there are considered to be two players.
 The space states of a continuous linear system are shown below.
 \begin{equation}\label{system_dynamic}
@@ -91,17 +91,17 @@ The space states of a continuous linear system are shown below.
         &\boldsymbol{\mathrm{y}}(t) = \boldsymbol{\mathrm{Cx}}(t) + \boldsymbol{\mathrm{D_1u_1}}(t) + \boldsymbol{\mathrm{D_2u_2}}(t)
     \end{split}
 \end{equation}
-Where $\boldsymbol{\mathrm{x}}$ is the vector of the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u_1}}$ is the firts player (controller) input vector, $\boldsymbol{\mathrm{u_2}}$ is the second player (disturbance) input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B_1}}$ is firts player the input matrix, $\boldsymbol{\mathrm{B_2}}$ is the second player input matrix,
+Where $\boldsymbol{\mathrm{x}}$ is the vector of the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u_1}}$ is the first player (controller) input vector, $\boldsymbol{\mathrm{u_2}}$ is the second player (disturbance) input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B_1}}$ is the first player input matrix, $\boldsymbol{\mathrm{B_2}}$ is the second player input matrix,
 $\boldsymbol{\mathrm{C}}$ is the output matrix, $\boldsymbol{\mathrm{D_1}}$ is first player the output matrix and $\boldsymbol{\mathrm{D_2}}$ is second player the output matrix.
 Equation (\ref{system_dynamic}) demonstrates how both participants have an impact on the system's dynamics.
 % As shown in equation 1, both players affect the dynamics of the system.
 The second player may progress toward the goal as a result of the first player's exertion, or vice versa.
 % The first player's effort could push the second player away from the goal, or the other way around.
-In this paper we consider the case that players do not cooperate in order to realize their goals.
+This paper considers the case that players do not cooperate in order to realize their goals.
 The situation where players do not work together (non-cooperative) to achieve their objectives is examined in the paper.
 % The paper examines the situation in which players do not cooperate to achieve their goals.
 In this case, every player knows at time $t \in [0, T]$ just the initial state $\boldsymbol{\mathrm{x}_0}$ and the model structure.
-This scenario can be interpreted as the players simultaneously determining their actions, next submitting their actions. 
+% This scenario can be interpreted as the players simultaneously determining their actions, next submitting their actions. 
 % The players can be interpreted as simultaneously determining their actions, then submitting them.
 For the game (1,2), we will use the set of Nash equilibria. Formal Nash equilibrium is defined as follows.
 % Here are the formal Nash equilibrium definitions for games (1) and (2).
@@ -112,7 +112,7 @@ An admissible set of actions $(\boldsymbol{u_1}^*,  \boldsymbol{u_2}^*)$ is a Na
 	J_2(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}}^*)\leq 
 	J_2(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}})
 \end{equation}
-Here admissibility is meant in the sense that $\boldsymbol{\mathrm{u_i}}(.)$ belongs to some restricted set, where this set depends on the information players have on the game, the set of strategies the players like to use to control the system, and the system (2) must have a unique solution.
+% Here admissibility is meant in the sense that $\boldsymbol{\mathrm{u_i}}(.)$ belongs to some restricted set, where this set depends on the information players have on the game, the set of strategies the players like to use to control the system, and the system (2) must have a unique solution.
 % The term admissibility refers to the fact that u(.) belongs to a restricted set determined by the information players have about the game, the strategies they use to control the system, and the uniqueness of the solution.
 \subsection{LQDG controller}
 For the system described in equation (\ref{system_dynamic}), LQDG optimum control effort calculates from equation (\ref{LQDG_u}).
@@ -121,7 +121,7 @@ For the system described in equation (\ref{system_dynamic}), LQDG optimum contro
 \begin{equation}\label{LQDG_u}
 	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_i}}^\mathrm{T}\boldsymbol{\mathrm{P_{i}}}(t)\boldsymbol{\mathrm{x}}(t) = -\boldsymbol{\mathrm{k_{i}}}(t)\boldsymbol{\mathrm{x}}(t),\quad i = 1, 2
 \end{equation}
-In equation \ref{LQDG_u}, $\boldsymbol{\mathrm{k_{i}}}$ is optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function (equation \ref{cost}) of player number i.
+In equation (\ref{LQDG_u}), $\boldsymbol{\mathrm{k_{i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function (equation \ref{cost}) of player number i.
 \begin{equation}\label{cost}
     \begin{split}
         J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x}}(t)+
@@ -161,11 +161,12 @@ Therefore, The augmented space states of a continuous linear system are shown be
 \end{equation}
 Where $\boldsymbol{\mathrm{x_a}}$ is the vector of augmented state variables, $\boldsymbol{\mathrm{x_d}}$ is the vector of the desired state variables, and $\boldsymbol{\mathrm{y_d}}$ is the desired output vector.
 As a result, the state vector and the output vector are equal.
+% Hence, the output vector equals the state vector.
 \begin{equation}
 	\boldsymbol{\mathrm{y}} = \boldsymbol{\mathrm{x}}
 \end{equation}
-% Hence, the output vector equals the state vector.
-Following is a representation of the system dynamics in the augmented state space.
+The following represents the system dynamics in the augmented state space.
+% Following is a representation of the system dynamics in the augmented state space.
 % In the augmented state space, the system's dynamics are shown below.
 \begin{equation}\label{systemlqidg}
 	\begin{split}
@@ -193,14 +194,14 @@ By introducing a new space state for the system, the remaining design phases of 
 
 
 
-In equation \ref{LQIDG_u}, $\boldsymbol{\mathrm{K_{a_i}}}$ is optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function (equation \ref{cost_LQIDG}) of player number i.
+In equation (\ref{LQIDG_u}), $\boldsymbol{\mathrm{K_{a_i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function, equation \ref{cost_LQIDG}, of player number i.
 \begin{equation}\label{cost_LQIDG}
-	\begin{split}
-		J_i( \boldsymbol{u_1},  \boldsymbol{u_2}) = \int_{0}^{T}\biggl (\boldsymbol{x_a} ^\mathrm{T}(t) \boldsymbol{Q_i} \boldsymbol{x_a}(t)+ 
-		&\boldsymbol{u_i} ^\mathrm{T}(t) \boldsymbol{R_{ii}} \boldsymbol{u_i}(t)+ \\
-		&\boldsymbol{u_j} ^\mathrm{T}(t)\boldsymbol{ R_{ij} u_j}(t)
-		\biggl) \mathrm{d}t
-	\end{split}
+    \begin{split}
+        J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x_a}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_a}}(t)+
+        &\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+\\
+        &\boldsymbol{\mathrm{u_j}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{ij} u_j}}(t)
+        \biggl )\mathrm{d}t
+    \end{split} 
 \end{equation}
 $\boldsymbol{\dot{\mathrm{P}}_{a_i}}$ is found by solving the continuous time couple Riccati differential equation:
 \begin{equation}\label{coupled_riccatti_LQIDG}
