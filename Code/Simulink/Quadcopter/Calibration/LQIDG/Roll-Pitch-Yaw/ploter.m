@@ -13,7 +13,7 @@ hold off;
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('$\phi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
-axis([0 10 -1 0.2])
+axis([0 25 -1 0.2])
 % % pitch rate q
 % subplot(2,1,2);
 % plot(time, zeros(1, length(time)), '--k', 'linewidth', 2);
