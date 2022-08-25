@@ -124,9 +124,9 @@ For the system described in equation (\ref{system_dynamic}), LQDG optimum contro
 % The optimum control effort calculated by LQDG for the system described in equation 1 is calculated using equation 2.
 % For the system described in equation 1, LQDG optimum control effort calculates from equation 2.
 \begin{equation}\label{LQDG_u}
-	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_i}}^\mathrm{T}\boldsymbol{\mathrm{P_{i}}}(t)\boldsymbol{\mathrm{x}}(t) = -\boldsymbol{\mathrm{k_{i}}}(t)\boldsymbol{\mathrm{x}}(t),\quad i = 1, 2
+	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_i}}^\mathrm{T}\boldsymbol{\mathrm{P_{i}}}(t)\boldsymbol{\mathrm{x}}(t) = -\boldsymbol{\mathrm{K_{i}}}(t)\boldsymbol{\mathrm{x}}(t),\quad i = 1, 2
 \end{equation}
-In equation (\ref{LQDG_u}), $\boldsymbol{\mathrm{k_{i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function (equation \ref{cost}) of player number i.
+In equation (\ref{LQDG_u}), $\boldsymbol{\mathrm{K_{i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function (equation \ref{cost}) of player number i.
 \begin{equation}\label{cost}
     \begin{split}
         J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x}}(t)+
@@ -341,25 +341,140 @@ Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}
 		C_2
 	\end{bmatrix}
 \end{equation}
-\begin{align}\label{4eq4ans}
-	\begin{split}
-		u_1 &= \omega_2^2 - \omega_4^2\\
-		u_2 &= \omega_1^2 - \omega_3^2\\
-		u_3 &= \omega_1^2 - \omega_2^2  + \omega_3^2 - \omega_4^2\\
-		u_4 &= \omega_1^2 + \omega_2^2  + \omega_3^2 + \omega_4^2
-	\end{split}
-\end{align}
+% \begin{align}\label{4eq4ans}
+% 	\begin{split}
+% 		u_1 &= \omega_2^2 - \omega_4^2\\
+% 		u_2 &= \omega_1^2 - \omega_3^2\\
+% 		u_3 &= \omega_1^2 - \omega_2^2  + \omega_3^2 - \omega_4^2\\
+% 		u_4 &= \omega_1^2 + \omega_2^2  + \omega_3^2 + \omega_4^2
+% 	\end{split}
+% \end{align}
 
-\begin{equation}\label{u2omega}
+% \begin{equation}\label{u2omega}
+% 	\begin{split}
+% 		\omega_1 &= \sqrt{\dfrac{u_4 + u_3 +2u_2}{4}}\\[1em]
+% 		\omega_2 &= \sqrt{\dfrac{u_4 - u_3 +2u_1}{4}}\\[1em]
+% 		\omega_3 &= \sqrt{\dfrac{u_4 + u_3 -2u_2}{4}}\\[1em]
+% 		\omega_4 &= \sqrt{\dfrac{u_4 - u_3 -2u_1}{4}}
+% 	\end{split}
+% \end{equation}
+
+\section{Simulation}
+used Simulink
+\subsection{LQR}
+
+LQR weighting matrices are optimized using the TCACS optimization method in the simulation.
+% In the simulation, the TCACS optimization method is used to optimize the LQR weighting matrices.
+ITSE is considered for the TCACS input cost function.
+% TCACS input cost function is considered as ITSE.
+Here are the weighting matrices for the optimized output.
+% The weighting matrices of the optimized output are given below.
+\begin{equation}
+	\boldsymbol{\mathrm{Q}}_{\text{LQR}} = \begin{bmatrix}
+		0.5215 & 0\\
+		0 & 0.0745
+	\end{bmatrix}, \quad R_{\text{LQR}} =  0.0001
+\end{equation} 
+
+\subsection{LQDG}
+The weighting matrices used in the LQDG portion are chosen like that of the LOR.
+% LQDG weighting matrices are chosen like the method used in the LQR section.
+% In the LQDG section, weighting matrices are selected similarly to those used in the LOR section.
+\begin{equation}
+	\boldsymbol{\mathrm{Q}}_{\text{LQDG}} = \begin{bmatrix}
+		100 & 0\\
+		0 & 0.078
+	\end{bmatrix}, \quad R_{1_{\text{LQDG}}} =  1, \quad R_{2_{\text{LQDG}}} =  99.96
+\end{equation}
+
+\begin{equation}
+	\boldsymbol{\dot{\mathrm{P}}_{1}} = \begin{bmatrix}
+		
+		286.0470  & 39.1188\\
+		39.1188   & 8.8510\\
+    \end{bmatrix}    
+\end{equation}
+
+\begin{equation}
+    \boldsymbol{\mathrm{K_{1}}} = \begin{bmatrix}
+        39.1188   & 8.8510
+    \end{bmatrix}
+\end{equation}
+
+\subsection{LQIDG}
+LQIDG weighting matrices are chosen like the method used in the LQR and LQDG sections.
+
+Roll:
+\begin{equation}
+    \begin{split}
+        &\boldsymbol{\mathrm{Q_{{\text{LQIDG}}}}} = \begin{bmatrix}
+            0.1707 &0& 0& 0\\
+            0 &  0.12 & 0 &0 \\
+            0 & 0 & 837.8606 & 0\\
+            0 & 0 & 0 & 756.1341
+        \end{bmatrix}
+        \\[1em]
+        &R_{1_{\text{LQIDG}}} =  1, \quad R_{2_{\text{LQIDG}}} =  7.7422
+    \end{split}
+\end{equation}
+
+\begin{equation}
+	\boldsymbol{\dot{\mathrm{P}}_{a_1}} = \begin{bmatrix}
+		10924.84&   39.83 & 1014.34 & -10629.93\\
+		39.83   &  8.40 & 27.22& 11.70\\
+		1014.34 &  27.22 & 1047.80 & -756.13\\
+		-10658.93 & 11.70 & -756.13 & 10658.93
+	\end{bmatrix}
+\end{equation}
+\begin{equation}
+	\boldsymbol{\mathrm{K_{a_1}}} = \begin{bmatrix}
+		28.1410 &   8.4017  & 27.2223  & 11.6894
+	\end{bmatrix}
+\end{equation}
+Roll-Pitch:
+\begin{equation}
 	\begin{split}
-		\omega_1 &= \sqrt{\dfrac{u_4 + u_3 +2u_2}{4}}\\[1em]
-		\omega_2 &= \sqrt{\dfrac{u_4 - u_3 +2u_1}{4}}\\[1em]
-		\omega_3 &= \sqrt{\dfrac{u_4 + u_3 -2u_2}{4}}\\[1em]
-		\omega_4 &= \sqrt{\dfrac{u_4 - u_3 -2u_1}{4}}
+		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{roll}}}} &= \begin{bmatrix}
+			585.9 &0& 0& 0\\
+			0 &  31.1 & 0 &0 \\
+			0 & 0 & 83.8 & 0\\
+			0 & 0 & 0 & 0
+		\end{bmatrix}\\[1em]
+	    \boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{pitch}}}} &= \begin{bmatrix}
+		546.5 &0& 0& 0\\
+		0 &  311.4 & 0 &0 \\
+		0 & 0 & 2.22 & 0\\
+		0 & 0 & 0 & 0
+		\end{bmatrix}\\[1em]
+	 R_{1_{\text{LQIDG}}} &=  1, \quad R_{2_{\text{LQIDG}}} =  7.7422
 	\end{split}
 \end{equation}
 
-\section{Simulation}
+Roll-Pitch-Yaw:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{roll}}}} &= \begin{bmatrix}
+			631.85 & 0.00 & 0.00 & 0.00  \\ 
+			0.00 & 214.28 & 0.00 & 0.00  \\ 
+			0.00 & 0.00 & 7.91 & 0.00  \\ 
+			0.00 & 0.00 & 0.00 & 0.01  \\ 
+		\end{bmatrix} \\[1em]
+		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{pitch}}}} &= \begin{bmatrix}
+			0.01 & 0.00 & 0.00 & 0.00  \\
+			0.00 & 873.93 & 0.00 & 0.00  \\ 
+			0.00 & 0.00 & 9853.09 & 0.00 \\ 
+			0.00 & 0.00 & 0.00 & 0.12  \\ 
+		\end{bmatrix}\\[1em]
+		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{yaw}}}}  &= \begin{bmatrix}
+			0.03 & 0.00 & 0.00 & 0.00 \\ 
+			0.00 & 0.17 & 0.00 & 0.00 \\ 
+			0.00 & 0.00 & 1.81 & 0.00 \\ 
+			0.00 & 0.00 & 0.00 & 0.45 \\
+		\end{bmatrix}\times 10^{-4}\\[1em]
+          R_{1_{\text{LQIDG}}} &= 1, \quad  R_{2_{\text{LQIDG}}} = 1.2577
+	\end{split}
+\end{equation}
+
 
 
 
