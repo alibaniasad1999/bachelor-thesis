@@ -2,6 +2,11 @@
 \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 \usepackage{cite}
+\ifCLASSOPTIONcompsoc \usepackage[caption=false,font=normalsize,labelfon
+t=sf,textfont=sf]{subfig}
+\else
+\usepackage[caption=false,font=footnotesize]{subfi g}
+\fi
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
@@ -130,6 +135,7 @@ In equation (\ref{LQDG_u}), $\boldsymbol{\mathrm{k_{i}}}$ is the optimal feedbac
         \biggl )\mathrm{d}t
     \end{split} 
 \end{equation}
+Here the matrices $\boldsymbol{\mathrm{Q_i}}$ and  $\boldsymbol{\mathrm{R_{ii}}}$ are assumed to be symmetric and $\boldsymbol{\mathrm{R_{ii}}}$ positive definite.
 $\boldsymbol{\mathrm{P_{i}}}$ is found by solving the continuous time couple Riccati differential equation:
 \begin{equation}\label{coupled_riccatti_LQDG}
 	\begin{split}
@@ -224,6 +230,136 @@ Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}
 
 
 \section{Mathematical modeling}
+\begin{equation}
+	\boldsymbol{\mathrm{f}} = \begin{bmatrix}
+		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
+		x_5\cos(x_1)- x_6\sin(x_1)\\
+		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
+		A_1\cos(x_2)\sin(x_1) + 
+		A_2x_5x_6 + A_3u_1
+		\\
+		B_1\sin(x_2) + 
+		B_2x_4x_6 + B_3u_2\\
+		C_1x_4x_5 + 
+		C_2u_3
+	\end{bmatrix}
+\end{equation} 
+\begin{equation}
+	\boldsymbol{\mathrm{u}} = \begin{bmatrix}
+		u_1&u_2&u_3&u_4
+	\end{bmatrix}^\mathrm{T}
+\end{equation}
+
+\begin{equation}
+	\delta \dot{\boldsymbol{\mathrm{x}}} = \boldsymbol{\mathrm{A}}\delta \boldsymbol{\mathrm{x}} + \boldsymbol{\mathrm{B}}\delta \boldsymbol{\mathrm{u}}
+\end{equation}
+\begin{equation}
+	\boldsymbol{\mathrm{x}^*} = \begin{bmatrix} % bold or vec???????????/
+		0& 0 & 0 & 0& 0& 0
+	\end{bmatrix}^\mathrm{T}
+\end{equation}
+\begin{equation}
+	\boldsymbol{\mathrm{u}^*} = \begin{bmatrix}
+		0&0&0&4\times2000^2
+	\end{bmatrix}^\mathrm{T}
+\end{equation}
+
+\begin{equation}
+	\boldsymbol{\mathrm{A}} = \left.\dfrac{\partial \boldsymbol{\mathrm{f}}}{\partial \boldsymbol{\mathrm{x}}}\right\vert_{\boldsymbol{\mathrm{x}^*}}
+\end{equation}
+
+\begin{equation}
+	\boldsymbol{\mathrm{B}} = \left.\dfrac{\partial \boldsymbol{\mathrm{f}}}{\partial \boldsymbol{\mathrm{u}}}\right\vert_{\boldsymbol{\mathrm{u}^*}}
+\end{equation}
+
+\begin{equation}
+	\boldsymbol{\mathrm{A}}_{\text{roll}} = \begin{bmatrix}
+		\dfrac{\partial  f_1}{\partial  x_1}& \dfrac{\partial  f_1}{\partial  x_4}
+		\\[1em]
+		\dfrac{\partial  f_4}{\partial  x_1}& \dfrac{\partial  f_4}{\partial  x_4}
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		0 & 1\\
+		A_1\cos(x_1) & 0
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+	\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
+		\dfrac{\partial  f_1}{\partial  u_1}
+		\\[1em]
+		\dfrac{\partial  f_4}{\partial  u_1}
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		0\\
+		A_3
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+	\boldsymbol{\mathrm{A}}_{\text{pitch}}  = \begin{bmatrix}
+		\dfrac{\partial  f_2}{\partial  x_2}& \dfrac{\partial  f_2}{\partial  x_5}
+		\\[1em]
+		\dfrac{\partial  f_5}{\partial  x_2}& \dfrac{\partial  f_5}{\partial  x_5}
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		0 & 1\\
+		B_1\cos(x_1) & 0
+	\end{bmatrix}
+\end{equation}
+\begin{equation}
+	\boldsymbol{\mathrm{B}}_{\text{pitch}}  = \begin{bmatrix}
+		\dfrac{\partial  f_2}{\partial  u_2}
+		\\[1em]
+		\dfrac{\partial  f_5}{\partial  u_2}
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		0\\
+		B_3
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+	\boldsymbol{\mathrm{A}}_{\text{yaw}} = \begin{bmatrix}
+		\dfrac{\partial  f_3}{\partial  x_3}& \dfrac{\partial  f_3}{\partial  x_6}
+		\\[1em]
+		\dfrac{\partial  f_6}{\partial  x_3}& \dfrac{\partial  f_6}{\partial  x_6}
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		0 & 1\\
+		0 & 0
+	\end{bmatrix}
+\end{equation}
+\begin{equation}
+	\boldsymbol{\mathrm{B}}_{\text{yaw}} = \begin{bmatrix}
+		\dfrac{\partial  f_3}{\partial  u_3}
+		\\[1em]
+		\dfrac{\partial  f_6}{\partial  u_3}
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		0\\
+		C_2
+	\end{bmatrix}
+\end{equation}
+\begin{align}\label{4eq4ans}
+	\begin{split}
+		u_1 &= \omega_2^2 - \omega_4^2\\
+		u_2 &= \omega_1^2 - \omega_3^2\\
+		u_3 &= \omega_1^2 - \omega_2^2  + \omega_3^2 - \omega_4^2\\
+		u_4 &= \omega_1^2 + \omega_2^2  + \omega_3^2 + \omega_4^2
+	\end{split}
+\end{align}
+
+\begin{equation}\label{u2omega}
+	\begin{split}
+		\omega_1 &= \sqrt{\dfrac{u_4 + u_3 +2u_2}{4}}\\[1em]
+		\omega_2 &= \sqrt{\dfrac{u_4 - u_3 +2u_1}{4}}\\[1em]
+		\omega_3 &= \sqrt{\dfrac{u_4 + u_3 -2u_2}{4}}\\[1em]
+		\omega_4 &= \sqrt{\dfrac{u_4 - u_3 -2u_1}{4}}
+	\end{split}
+\end{equation}
+
+\section{Simulation}
 
 
 
@@ -240,6 +376,17 @@ Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}
 
 
 
+
+
+% \begin{figure*}[!t]
+%     \centering
+%     \subfloat[Case I]{\includegraphics[width=2.5in]{../Figures/MIL/LQIDG/Roll/lqidg_roll.png}
+%     \label{fig_first_case}}
+%     \hfil
+%     \subfloat[Case II]{\includegraphics[width=2.5in]{../Figures/MIL/LQIDG/Roll/lqidg_roll.png}
+%     \label{fig_second_case}}
+%     \caption{Simulation results for the network.} \label{fig_sim}
+% \end{figure*}
 
 
 
