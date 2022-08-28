@@ -248,11 +248,17 @@ The space state of a three-degree-of-freedom quadcopter is defined as:
 \end{bmatrix}
 \end{equation}
 For simplicity, the system's inputs have been changed from rotational speed to influential forces in roll, pitch, and yaw modes. This change makes the problem from multi-input and multi-output to three single-input problems.
-Then, the input vector is defined as follows.
+Then, the input vector is defined as
 \begin{equation}
 	\boldsymbol{\mathrm{u}} = \begin{bmatrix}
 		u_1&u_2&u_3
 	\end{bmatrix}^\mathrm{T}
+\end{equation}
+where 
+\begin{equation}\label{SISO_force}
+	u_1 = \omega_2^2 - \omega_4^2, ~
+	u_2 = \omega_1^2 - \omega_3^2, ~
+	u_3 = \omega_1^2 - \omega_2^2  + \omega_3^2 - \omega_4^2
 \end{equation}
 The dynamic model of the three-degree-of-freedom quadcopter stand can be described as
 \begin{equation}
