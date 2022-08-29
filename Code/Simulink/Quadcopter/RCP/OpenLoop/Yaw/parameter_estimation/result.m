@@ -29,7 +29,7 @@ plot(time, out.scenario_II(:, 1), 'k--', 'linewidth', 2);
 hold on;
 plot(time, data_II(:, 1), 'r', 'linewidth', 2);
 hold off;
-legend('Simulated', 'Measured', 'Location','northwest');
+legend('Simulated', 'Measured', 'Location','southwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('yaw$_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
 % yaw rate
