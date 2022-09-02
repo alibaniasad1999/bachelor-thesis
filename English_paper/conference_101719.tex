@@ -112,154 +112,6 @@ In order to control quadrotors, neural networks \cite{b9} and machine learning \
 
 
 
-\section{Differential Game}
-Differential games are a series of problems that arise while examining and simulating dynamic systems in game theory.
-%  A differential game is a game in which the player who is trying to maximize the utility of his strategy is the opponent. The player who is trying to minimize the utility of his strategy is the player who is trying to maximize the utility of the opponent's strategy.
-% In the context of differential games, differential games in game theory address the modeling and analysis of dynamic systems.
-% Differential games are a class of games in which the players are able to model the system and the players are able to choose the optimal move.
-% Differential games are sets of issues that arise while examining and simulating dynamic systems in game theory.
-Differential equations
-%  are used to 
- simulate how a state variable or set of state variables changes over time.
-% Differential equations are used to model the evolution over time of a state variable or variables.
-\subsection{An introduction to the differential game}
-It is considered that two players are involved in this research.
-% In this paper, there are considered to be two players.
-The space states of a continuous linear system are shown below.
-\begin{equation}\label{system_dynamic}
-    \begin{split}
-             &\boldsymbol{\dot{\mathrm{x}}}(t) = \boldsymbol{\mathrm{Ax}}(t) + \boldsymbol{\mathrm{B_1u_1}}(t) + \boldsymbol{\mathrm{B_2u_2}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0
-        \\
-        &\boldsymbol{\mathrm{y}}(t) = \boldsymbol{\mathrm{Cx}}(t) + \boldsymbol{\mathrm{D_1u_1}}(t) + \boldsymbol{\mathrm{D_2u_2}}(t)
-    \end{split}
-\end{equation}
-Where $\boldsymbol{\mathrm{x}}$ is the vector of the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u_1}}$ is the first player (controller) input vector, $\boldsymbol{\mathrm{u_2}}$ is the second player (disturbance) input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B_1}}$ is the first player input matrix, $\boldsymbol{\mathrm{B_2}}$ is the second player input matrix,
-$\boldsymbol{\mathrm{C}}$ is the output matrix, $\boldsymbol{\mathrm{D_1}}$ is first player the output matrix and $\boldsymbol{\mathrm{D_2}}$ is second player the output matrix.
-Equation \eqref{system_dynamic} demonstrates how both participants have an impact on the system's dynamics.
-% As shown in equation 1, both players affect the dynamics of the system.
-The second player may progress toward the goal as a result of the first player's exertion, or vice versa.
-% The first player's effort could push the second player away from the goal, or the other way around.
-This paper considers the case that players do not cooperate in order to realize their goals.
-The situation where players do not work together (non-cooperative) to achieve their objectives is examined in the paper.
-% The paper examines the situation in which players do not cooperate to achieve their goals.
-In this case, every player knows at time $t \in [0, T]$ just the initial state $\boldsymbol{\mathrm{x}_0}$ and the model structure.
-% This scenario can be interpreted as the players simultaneously determining their actions, next submitting their actions. 
-% The players can be interpreted as simultaneously determining their actions, then submitting them.
-For the game (1,2), we will use the set of Nash equilibria. Formal Nash equilibrium is defined as follows.
-% Here are the formal Nash equilibrium definitions for games (1) and (2).
-% defenition
-An admissible set of actions $(\boldsymbol{u_1}^*,  \boldsymbol{u_2}^*)$ is a Nash equilibrium for the game (1,2); if for all admissible $(\boldsymbol{u_1},  \boldsymbol{u_2})$, the following inequalities hold:
-\begin{equation}\label{nash_lqe}
-	J_1(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}}^*)\leq J_1(\boldsymbol{\mathrm{u_1}}, \boldsymbol{\mathrm{u_2}}^*) \text{\rm{ , }}
-	J_2(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}}^*)\leq 
-	J_2(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}})
-\end{equation}
-% Here admissibility is meant in the sense that $\boldsymbol{\mathrm{u_i}}(.)$ belongs to some restricted set, where this set depends on the information players have on the game, the set of strategies the players like to use to control the system, and the system (2) must have a unique solution.
-% The term admissibility refers to the fact that u(.) belongs to a restricted set determined by the information players have about the game, the strategies they use to control the system, and the uniqueness of the solution.
-\subsection{LQDG controller}
-For the system described in equation \eqref{system_dynamic}, LQDG optimum control effort calculates from equation \eqref{LQDG_u}.
-% The optimum control effort calculated by LQDG for the system described in equation 1 is calculated using equation 2.
-% For the system described in equation 1, LQDG optimum control effort calculates from equation 2.
-\begin{equation}\label{LQDG_u}
-	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_i}}^\mathrm{T}\boldsymbol{\mathrm{P_{i}}}(t)\boldsymbol{\mathrm{x}}(t) = -\boldsymbol{\mathrm{K_{i}}}(t)\boldsymbol{\mathrm{x}}(t),\quad i = 1, 2
-\end{equation}
-In equation \eqref{LQDG_u}, $\boldsymbol{\mathrm{K_{i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function equation \eqref{cost} of player number i.
-\begin{equation}\label{cost}
-    \begin{split}
-        J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x}}(t)+
-        &\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+\\
-        &\boldsymbol{\mathrm{u_j}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{ij} u_j}}(t)
-        \biggl )\mathrm{d}t
-    \end{split} 
-\end{equation}
-Here the matrices $\boldsymbol{\mathrm{Q_i}}$ and  $\boldsymbol{\mathrm{R_{ii}}}$ are assumed to be symmetric and $\boldsymbol{\mathrm{R_{ii}}}$ positive definite.
-$\boldsymbol{\mathrm{P_{i}}}$ is found by solving the continuous time couple Riccati differential equation:
-\begin{equation}\label{coupled_riccatti_LQDG}
-	\begin{split}
-		&\begin{split}
-             \boldsymbol{\dot{\mathrm{P}}_1}(t) = -&\boldsymbol{\mathrm{A}}^\mathrm{T}\boldsymbol{\mathrm{P_1}}(t) - \boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{A}} - \boldsymbol{\mathrm{Q_1}} +\boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{S_1}}(t)\boldsymbol{\mathrm{P_1}}(t) +\\ &\boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{S_2}}(t)\boldsymbol{\mathrm{P_2}}(t)
-		\end{split}\\
-		&\begin{split}
-            \boldsymbol{\dot{\mathrm{P}}_2}(t) = -&\boldsymbol{\mathrm{A}}^\mathrm{T}\boldsymbol{\mathrm{P_2}}(t) - \boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{A}} - \boldsymbol{\mathrm{Q_2}} +\boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{S_2}}(t)\boldsymbol{\mathrm{P_2}}(t) +\\ &\boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{S_1}}(t)\boldsymbol{\mathrm{P_1}}(t)
-		\end{split}
-	\end{split}
-\end{equation}
-Using the shorthand notation $\boldsymbol{S_i} := \boldsymbol{B_iR_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}$. %?????????????????????
-
-
-\subsection{LQIDG controller}
-The absence of an integrator in the LQDG controller may result in steady-state errors due to disturbances or modeling errors.
-% The LQDG controller's lack of an integrator could lead to steady-state errors due to disturbances or faulty modeling.
-The LQIDG controller is based on the LQDG controller to eliminate this error.
-
-The LQIDG controller adds the integral of the difference between the system output and the desired value to the state vector.
-% In this controller, the integral of the difference between the system output and the desired value is added to the state vector.
-% The integral of the difference between the system output and the desired value is added to the state vector by the LQIDG controller.
-Therefore, The augmented space states of a continuous linear system are shown below.
-\begin{equation}\label{lqidg_x}
-    \boldsymbol{\mathrm{x_a}} = \begin{bmatrix}
-        \boldsymbol{\mathrm{x_d}} - \boldsymbol{\mathrm{x}}\\
-        \displaystyle \int (\boldsymbol{\mathrm{y_d}} - \boldsymbol{\mathrm{y}})
-    \end{bmatrix}
-\end{equation}
-Where $\boldsymbol{\mathrm{x_a}}$ is the vector of augmented state variables, $\boldsymbol{\mathrm{x_d}}$ is the vector of the desired state variables, and $\boldsymbol{\mathrm{y_d}}$ is the desired output vector.
-As a result, the state vector and the output vector are equal.
-% Hence, the output vector equals the state vector.
-\begin{equation}
-	\boldsymbol{\mathrm{y}} = \boldsymbol{\mathrm{x}}
-\end{equation}
-The following represents the system dynamics in the augmented state space.
-% Following is a representation of the system dynamics in the augmented state space.
-% In the augmented state space, the system's dynamics are shown below.
-\begin{equation}\label{systemlqidg}
-	\begin{split}
-		\boldsymbol{\dot{\mathrm{x}}_a}(t) &= \boldsymbol{\mathrm{A_ax_a}}(t) + \boldsymbol{\mathrm{B_{{a_1}}u_{a_1}}}(t) + \boldsymbol{\mathrm{B_{{a_2}}u_{a_2}}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
-		% \\
-		% \boldsymbol{\mathrm{y}}(t) &= \boldsymbol{\mathrm{C_ax_a}}(t) + \boldsymbol{\mathrm{D_{{a_1}}u_{a_1}}}(t) + \boldsymbol{\mathrm{D_{{a_2}}u_{a_2}}}(t)
-	\end{split}
-\end{equation}
-Where matrices $\boldsymbol{\mathrm{A_a}}$ and $\boldsymbol{\mathrm{B_a}}$ are defined as follows:
-\begin{equation}
-	\boldsymbol{\mathrm{A_a}} = \begin{bmatrix}
-		\boldsymbol{\mathrm{A}} &0\\
-		\boldsymbol{\mathrm{C}} & 0
-	\end{bmatrix}
-, \quad
-	\boldsymbol{\mathrm{B_a}} = \begin{bmatrix}
-		\boldsymbol{\mathrm{B}}\\
-		0
-	\end{bmatrix}
-\end{equation}
-By introducing a new space state for the system, the remaining design phases of the LQIDG controller are comparable to those of the LQDG controller. LQIDG optimum control effort calculates from equation \eqref{LQIDG_u}.
-\begin{equation}\label{LQIDG_u}
-	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_{a_i}}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t) = - \boldsymbol{\mathrm{K_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t),~ i = 1, 2
-\end{equation}
-
-
-
-In equation \eqref{LQIDG_u}, $\boldsymbol{\mathrm{K_{a_i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function, equation \eqref{cost_LQIDG}, of player number i.
-\begin{equation}\label{cost_LQIDG}
-    \begin{split}
-        J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x_a}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_a}}(t)+
-        &\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+\\
-        &\boldsymbol{\mathrm{u_j}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{ij} u_j}}(t)
-        \biggl )\mathrm{d}t
-    \end{split} 
-\end{equation}
-$\boldsymbol{\dot{\mathrm{P}}_{a_i}}$ is found by solving the continuous time couple Riccati differential equation:
-\begin{equation}\label{coupled_riccatti_LQIDG}
-    \begin{split}
-        &\begin{split}
-            \boldsymbol{\dot{\mathrm{P}}_{a_1}}(t) = -&\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_1}}}(t) - \boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_1}} +\\ &\boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{P_{a_1}}}(t) + \boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{P_{a_2}}}(t)
-        \end{split}\\
-        &\begin{split}
-            \boldsymbol{\dot{\mathrm{P}}_{a_2}}(t) = -&\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_2}}}(t) - \boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_2}} +\\ &\boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{P_{a_2}}}(t) + \boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{P_{a_1}}}(t)
-        \end{split}
-    \end{split}
-\end{equation}
-Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}$. %?????????????????????
-
-
 
 
 
@@ -510,6 +362,160 @@ Here is a comparison between the states of the quadrotor in simulation and reali
 % 	\caption{Simulation results for the network.} \label{fig_sim}
 % \end{figure*}
 
+
+
+
+
+\section{Differential Game}
+Differential games are a series of problems that arise while examining and simulating dynamic systems in game theory.
+%  A differential game is a game in which the player who is trying to maximize the utility of his strategy is the opponent. The player who is trying to minimize the utility of his strategy is the player who is trying to maximize the utility of the opponent's strategy.
+% In the context of differential games, differential games in game theory address the modeling and analysis of dynamic systems.
+% Differential games are a class of games in which the players are able to model the system and the players are able to choose the optimal move.
+% Differential games are sets of issues that arise while examining and simulating dynamic systems in game theory.
+Differential equations
+%  are used to 
+ simulate how a state variable or set of state variables changes over time.
+% Differential equations are used to model the evolution over time of a state variable or variables.
+\subsection{An introduction to the differential game}
+It is considered that two players are involved in this research.
+% In this paper, there are considered to be two players.
+The space states of a continuous linear system are shown below.
+\begin{equation}\label{system_dynamic}
+    \begin{split}
+             &\boldsymbol{\dot{\mathrm{x}}}(t) = \boldsymbol{\mathrm{Ax}}(t) + \boldsymbol{\mathrm{B_1u_1}}(t) + \boldsymbol{\mathrm{B_2u_2}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0
+        \\
+        &\boldsymbol{\mathrm{y}}(t) = \boldsymbol{\mathrm{Cx}}(t) + \boldsymbol{\mathrm{D_1u_1}}(t) + \boldsymbol{\mathrm{D_2u_2}}(t)
+    \end{split}
+\end{equation}
+Where $\boldsymbol{\mathrm{x}}$ is the vector of the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u_1}}$ is the first player (controller) input vector, $\boldsymbol{\mathrm{u_2}}$ is the second player (disturbance) input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B_1}}$ is the first player input matrix, $\boldsymbol{\mathrm{B_2}}$ is the second player input matrix,
+$\boldsymbol{\mathrm{C}}$ is the output matrix, $\boldsymbol{\mathrm{D_1}}$ is first player the output matrix and $\boldsymbol{\mathrm{D_2}}$ is second player the output matrix.
+Equation \eqref{system_dynamic} demonstrates how both participants have an impact on the system's dynamics.
+% As shown in equation 1, both players affect the dynamics of the system.
+The second player may progress toward the goal as a result of the first player's exertion, or vice versa.
+% The first player's effort could push the second player away from the goal, or the other way around.
+This paper considers the case that players do not cooperate in order to realize their goals.
+The situation where players do not work together (non-cooperative) to achieve their objectives is examined in the paper.
+% The paper examines the situation in which players do not cooperate to achieve their goals.
+In this case, every player knows at time $t \in [0, T]$ just the initial state $\boldsymbol{\mathrm{x}_0}$ and the model structure.
+% This scenario can be interpreted as the players simultaneously determining their actions, next submitting their actions. 
+% The players can be interpreted as simultaneously determining their actions, then submitting them.
+For the game (1,2), we will use the set of Nash equilibria. Formal Nash equilibrium is defined as follows.
+% Here are the formal Nash equilibrium definitions for games (1) and (2).
+% defenition
+An admissible set of actions $(\boldsymbol{u_1}^*,  \boldsymbol{u_2}^*)$ is a Nash equilibrium for the game (1,2); if for all admissible $(\boldsymbol{u_1},  \boldsymbol{u_2})$, the following inequalities hold:
+\begin{equation}\label{nash_lqe}
+	J_1(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}}^*)\leq J_1(\boldsymbol{\mathrm{u_1}}, \boldsymbol{\mathrm{u_2}}^*) \text{\rm{ , }}
+	J_2(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}}^*)\leq 
+	J_2(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}})
+\end{equation}
+% Here admissibility is meant in the sense that $\boldsymbol{\mathrm{u_i}}(.)$ belongs to some restricted set, where this set depends on the information players have on the game, the set of strategies the players like to use to control the system, and the system (2) must have a unique solution.
+% The term admissibility refers to the fact that u(.) belongs to a restricted set determined by the information players have about the game, the strategies they use to control the system, and the uniqueness of the solution.
+\subsection{LQDG controller}
+For the system described in equation \eqref{system_dynamic}, LQDG optimum control effort calculates from equation \eqref{LQDG_u}.
+% The optimum control effort calculated by LQDG for the system described in equation 1 is calculated using equation 2.
+% For the system described in equation 1, LQDG optimum control effort calculates from equation 2.
+\begin{equation}\label{LQDG_u}
+	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_i}}^\mathrm{T}\boldsymbol{\mathrm{P_{i}}}(t)\boldsymbol{\mathrm{x}}(t) = -\boldsymbol{\mathrm{K_{i}}}(t)\boldsymbol{\mathrm{x}}(t),\quad i = 1, 2
+\end{equation}
+In equation \eqref{LQDG_u}, $\boldsymbol{\mathrm{K_{i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function equation \eqref{cost} of player number i.
+\begin{equation}\label{cost}
+    \begin{split}
+        J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x}}(t)+
+        &\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+\\
+        &\boldsymbol{\mathrm{u_j}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{ij} u_j}}(t)
+        \biggl )\mathrm{d}t
+    \end{split} 
+\end{equation}
+Here the matrices $\boldsymbol{\mathrm{Q_i}}$ and  $\boldsymbol{\mathrm{R_{ii}}}$ are assumed to be symmetric and $\boldsymbol{\mathrm{R_{ii}}}$ positive definite.
+$\boldsymbol{\mathrm{P_{i}}}$ is found by solving the continuous time couple Riccati differential equation:
+\begin{equation}\label{coupled_riccatti_LQDG}
+	\begin{split}
+		&\begin{split}
+             \boldsymbol{\dot{\mathrm{P}}_1}(t) = -&\boldsymbol{\mathrm{A}}^\mathrm{T}\boldsymbol{\mathrm{P_1}}(t) - \boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{A}} - \boldsymbol{\mathrm{Q_1}} +\boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{S_1}}(t)\boldsymbol{\mathrm{P_1}}(t) +\\ &\boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{S_2}}(t)\boldsymbol{\mathrm{P_2}}(t)
+		\end{split}\\
+		&\begin{split}
+            \boldsymbol{\dot{\mathrm{P}}_2}(t) = -&\boldsymbol{\mathrm{A}}^\mathrm{T}\boldsymbol{\mathrm{P_2}}(t) - \boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{A}} - \boldsymbol{\mathrm{Q_2}} +\boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{S_2}}(t)\boldsymbol{\mathrm{P_2}}(t) +\\ &\boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{S_1}}(t)\boldsymbol{\mathrm{P_1}}(t)
+		\end{split}
+	\end{split}
+\end{equation}
+Using the shorthand notation $\boldsymbol{S_i} := \boldsymbol{B_iR_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}$. %?????????????????????
+
+
+\subsection{LQIDG controller}
+The absence of an integrator in the LQDG controller may result in steady-state errors due to disturbances or modeling errors.
+% The LQDG controller's lack of an integrator could lead to steady-state errors due to disturbances or faulty modeling.
+The LQIDG controller is based on the LQDG controller to eliminate this error.
+
+The LQIDG controller adds the integral of the difference between the system output and the desired value to the state vector.
+% In this controller, the integral of the difference between the system output and the desired value is added to the state vector.
+% The integral of the difference between the system output and the desired value is added to the state vector by the LQIDG controller.
+Therefore, The augmented space states of a continuous linear system are shown below.
+\begin{equation}\label{lqidg_x}
+    \boldsymbol{\mathrm{x_a}} = \begin{bmatrix}
+        \boldsymbol{\mathrm{x_d}} - \boldsymbol{\mathrm{x}}\\
+        \displaystyle \int (\boldsymbol{\mathrm{y_d}} - \boldsymbol{\mathrm{y}})
+    \end{bmatrix}
+\end{equation}
+Where $\boldsymbol{\mathrm{x_a}}$ is the vector of augmented state variables, $\boldsymbol{\mathrm{x_d}}$ is the vector of the desired state variables, and $\boldsymbol{\mathrm{y_d}}$ is the desired output vector.
+As a result, the state vector and the output vector are equal.
+% Hence, the output vector equals the state vector.
+\begin{equation}
+	\boldsymbol{\mathrm{y}} = \boldsymbol{\mathrm{x}}
+\end{equation}
+The following represents the system dynamics in the augmented state space.
+% Following is a representation of the system dynamics in the augmented state space.
+% In the augmented state space, the system's dynamics are shown below.
+\begin{equation}\label{systemlqidg}
+	\begin{split}
+		\boldsymbol{\dot{\mathrm{x}}_a}(t) &= \boldsymbol{\mathrm{A_ax_a}}(t) + \boldsymbol{\mathrm{B_{{a_1}}u_{a_1}}}(t) + \boldsymbol{\mathrm{B_{{a_2}}u_{a_2}}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0%
+		% \\
+		% \boldsymbol{\mathrm{y}}(t) &= \boldsymbol{\mathrm{C_ax_a}}(t) + \boldsymbol{\mathrm{D_{{a_1}}u_{a_1}}}(t) + \boldsymbol{\mathrm{D_{{a_2}}u_{a_2}}}(t)
+	\end{split}
+\end{equation}
+Where matrices $\boldsymbol{\mathrm{A_a}}$ and $\boldsymbol{\mathrm{B_a}}$ are defined as follows:
+\begin{equation}
+	\boldsymbol{\mathrm{A_a}} = \begin{bmatrix}
+		\boldsymbol{\mathrm{A}} &0\\
+		\boldsymbol{\mathrm{C}} & 0
+	\end{bmatrix}
+, \quad
+	\boldsymbol{\mathrm{B_a}} = \begin{bmatrix}
+		\boldsymbol{\mathrm{B}}\\
+		0
+	\end{bmatrix}
+\end{equation}
+By introducing a new space state for the system, the remaining design phases of the LQIDG controller are comparable to those of the LQDG controller. LQIDG optimum control effort calculates from equation \eqref{LQIDG_u}.
+\begin{equation}\label{LQIDG_u}
+	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_{a_i}}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t) = - \boldsymbol{\mathrm{K_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t),~ i = 1, 2
+\end{equation}
+
+
+
+In equation \eqref{LQIDG_u}, $\boldsymbol{\mathrm{K_{a_i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function, equation \eqref{cost_LQIDG}, of player number i.
+\begin{equation}\label{cost_LQIDG}
+    \begin{split}
+        J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x_a}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_a}}(t)+
+        &\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+\\
+        &\boldsymbol{\mathrm{u_j}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{ij} u_j}}(t)
+        \biggl )\mathrm{d}t
+    \end{split} 
+\end{equation}
+$\boldsymbol{\dot{\mathrm{P}}_{a_i}}$ is found by solving the continuous time couple Riccati differential equation:
+\begin{equation}\label{coupled_riccatti_LQIDG}
+    \begin{split}
+        &\begin{split}
+            \boldsymbol{\dot{\mathrm{P}}_{a_1}}(t) = -&\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_1}}}(t) - \boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_1}} +\\ &\boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{P_{a_1}}}(t) + \boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{P_{a_2}}}(t)
+        \end{split}\\
+        &\begin{split}
+            \boldsymbol{\dot{\mathrm{P}}_{a_2}}(t) = -&\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_2}}}(t) - \boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_2}} +\\ &\boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{P_{a_2}}}(t) + \boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{P_{a_1}}}(t)
+        \end{split}
+    \end{split}
+\end{equation}
+Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}$. %?????????????????????
+
+
+
+
 \section{Simulation}
 used Simulink
 \subsection{LQR}
@@ -625,16 +631,6 @@ Roll-Pitch-Yaw:
           R_{1_{\text{LQIDG}}} &= 1, \quad  R_{2_{\text{LQIDG}}} = 1.2577
 	\end{split}
 \end{equation}
-
-
-
-
-
-
-
-
-
-
 
 
 
