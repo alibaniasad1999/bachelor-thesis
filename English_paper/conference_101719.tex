@@ -62,7 +62,7 @@ alibaniasad1999@yahoo.com}
 \maketitle
 
 \begin{abstract}
-    In this paper, a quadcopter stand with three degrees of freedom was controlled using game theory-based control. The first player tracks a desired input, and the second player creates a disturbance in the tracking of the first player to cause an error in the tracking. The ???? move is chosen using the Nash equilibrium, which presupposes that the other player made the worst move. In addition to being resistant to input interruptions, this method may also be resilient to modeling system uncertainty. This method evaluated the performance through simulation in the Simulink environment and implementation on a three-degree-of-freedom stand.
+    In this paper, a quadcopter stand with three degrees of freedom was controlled using game theory-based control. The first player tracks a desired input, and the second player creates a disturbance in the tracking of the first player to cause an error in the tracking. The control effort is chosen using the Nash equilibrium, which presupposes that the other player made the worst move. In addition to being resistant to input interruptions, this method may also be resilient to modeling system uncertainty. This method evaluated the performance through simulation in the Simulink environment and implementation on a three-degree-of-freedom stand.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -73,6 +73,43 @@ alibaniasad1999@yahoo.com}
 % This document is a model and instructions for \LaTeX.
 % Please observe the conference page limits. 
 Quadcopter is a type of helicopter with four rotors. % https://en.wikipedia.org/wiki/Quadcopter#cite_note-dasc04-1
+Quadcopters have extensive applications due to their excellent maneuverability and the possibility of hover flight with high balance.
+% The outstanding maneuverability of quadcopters and the possibility of hover flight with a high balance make them very useful.
+In recent years, companies, universities, and research centers have attracted more to this type of UAV.
+% Many companies, universities, and research centers have recently become interested in these UAVs.
+% It has become increasingly popular for companies, universities, and research centers to use this type of UAV in recent years.
+In this way, the facilities and the flight of these UAVs are continuously improving.
+% These UAVs are undergoing significant improvements in facilities and performance each day.
+% This leads to significant improvements in the facilities and flight of these UAVs daily.
+Quadcopters are widely used in research, military, imaging, recreation, and agriculture.
+% In agriculture, research, military, imaging, and recreation, quadcopters are widely used
+% Researchers, military, imagers, recreation, and farmers use quadcopters in various applications.
+Mathematical models are used in game theory to examine how rational, intelligent beings cooperate or compete.
+% Game theory uses mathematical models to analyze the cooperation or competition methods of logical and intelligent beings.
+Game theory can be applied to pursuit and evasion as one of its broad
+applications.
+% One of the broad applications of game theory is pursuit-evasion
+There can be two \cite{b1} or more players \cite{b2} involved in the pursuit-evasion.
+Pursuit-evasion can occur indoors as well \cite{b3}.
+% Two or more players can participate in the pursuit-evasion.
+In some cases, machine learning and differential games pursuit-evade \cite{b4}.
+Players may play different roles in differential games, such as protecting some targets \cite{b5}.
+% The players in a differential game may have a different roles, such as protecting a specific target.
+% Differential games may have different roles for the players, for example, protecting some targets.
+% There may be a different role for each player in a differential game, for example, the role of protecting a specific target.
+The differential game's ability to examine the actions of two or more players makes it powerful.
+% The power of the differential game is to analyze the behavior of two or more players.
+Player cooperation can be used through swarm platooning \cite{b6}.
+Multi-agent \cite{b7} and self-driving automobiles \cite{b8} motion planning are two other applications of player cooperation.
+% Autonomous cars and multi-agent motion planning are two other applications of player cooperation.
+
+
+Due to the widespread use of quadrotors, their control has become an important issue.
+% Quadrotor control has become increasingly important as they are widely used.
+In order to control quadrotors, neural networks \cite{b9} and machine learning \cite{b10} methods have been used.
+% Neural networks and machine learning methods have been used to control quadrotors.
+% For quadrotor control, neural networks and machine learning techniques have been used.
+
 
 
 \section{Differential Game}
@@ -426,15 +463,15 @@ Here is a comparison between the states of the quadrotor in simulation and reali
 
 \begin{figure}[!h]
 	\centering
-	\subfloat[Roll]{\includegraphics[width=2.5in]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S4.png}
+	\subfloat[Roll Channel]{\includegraphics[width=2.5in]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S4.png}
 	\label{fig: roll PE}}
 	\hfil
-	\subfloat[Pitch]{\includegraphics[width=2.5in]{../Figures/RCP/pitch_parameter_estimation/RCP_pitch_S1.png}
+	\subfloat[Pitch Channel]{\includegraphics[width=2.5in]{../Figures/RCP/pitch_parameter_estimation/RCP_pitch_S1.png}
 	\label{fig: pitch PE}}
 	\hfil
-	\subfloat[Yaw]{\includegraphics[width=2.5in]{../Figures/RCP/yaw_parameter_estimation/RCP_yaw_S2.png}
+	\subfloat[Yaw Channel]{\includegraphics[width=2.5in]{../Figures/RCP/yaw_parameter_estimation/RCP_yaw_S2.png}
 	\label{fig: yaw PE}}
-	\caption{Comparison of yaw mode states in simulation and reality.} \label{fig_sim}
+	\caption{Comparison of quadrotor states in simulation and reality.} \label{fig_sim}
 \end{figure}
 
 
@@ -501,13 +538,13 @@ The weighting matrices used in the LQDG portion are chosen like that of the LOR.
 	\end{bmatrix}, \quad R_{1_{\text{LQDG}}} =  1, \quad R_{2_{\text{LQDG}}} =  99.96
 \end{equation}
 
-\begin{equation}
-	\boldsymbol{\dot{\mathrm{P}}_{1}} = \begin{bmatrix}
+% \begin{equation}
+% 	\boldsymbol{\dot{\mathrm{P}}_{1}} = \begin{bmatrix}
 		
-		286.0470  & 39.1188\\
-		39.1188   & 8.8510\\
-    \end{bmatrix}    
-\end{equation}
+% 		286.0470  & 39.1188\\
+% 		39.1188   & 8.8510\\
+%     \end{bmatrix}    
+% \end{equation}
 
 \begin{equation}
     \boldsymbol{\mathrm{K_{1}}} = \begin{bmatrix}
@@ -532,14 +569,14 @@ Roll:
     \end{split}
 \end{equation}
 
-\begin{equation}
-	\boldsymbol{\dot{\mathrm{P}}_{a_1}} = \begin{bmatrix}
-		10924.84&   39.83 & 1014.34 & -10629.93\\
-		39.83   &  8.40 & 27.22& 11.70\\
-		1014.34 &  27.22 & 1047.80 & -756.13\\
-		-10658.93 & 11.70 & -756.13 & 10658.93
-	\end{bmatrix}
-\end{equation}
+% \begin{equation}
+% 	\boldsymbol{\dot{\mathrm{P}}_{a_1}} = \begin{bmatrix}
+% 		10924.84&   39.83 & 1014.34 & -10629.93\\
+% 		39.83   &  8.40 & 27.22& 11.70\\
+% 		1014.34 &  27.22 & 1047.80 & -756.13\\
+% 		-10658.93 & 11.70 & -756.13 & 10658.93
+% 	\end{bmatrix}
+% \end{equation}
 \begin{equation}
 	\boldsymbol{\mathrm{K_{a_1}}} = \begin{bmatrix}
 		28.1410 &   8.4017  & 27.2223  & 11.6894
@@ -797,24 +834,28 @@ Roll-Pitch-Yaw:
 % Unless there are six authors or more give all authors' names; do not use 
 % ``et al.''. Papers that have not been published, even if they have been 
 % submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
-% that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
+% that have been accepted for publication should be cited as ``in press'' \cite{b8}. 
 % Capitalize only the first word in a paper title, except for proper nouns and 
 % element symbols.
 
 % For papers published in translation journals, please give the English 
 % citation first, followed by the original foreign-language citation \cite{b6}.
 
-% \begin{thebibliography}{00}
-% \bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
-% \bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
-% \bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
-% \bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
-% \bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
-% \bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
-% \bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
-% \end{thebibliography}
-% \vspace{12pt}
-% \color{red}
-% IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
+\begin{thebibliography}{00}
+\bibitem{b1} Weintraub, I. E., Pachter, M., Garcia, E. (2020). An Introduction to Pursuit-evasion Differential Games. 2020 American Control Conference (ACC), 1049–1066. https://doi.org/10.23919/ACC45564.2020.9147205
+\bibitem{b2} Garcia, E., Casbeer, D. W., Pachter, M. (2020). Optimal Strategies for a Class of Multi-Player Reach-Avoid Differential Games in 3D Space. IEEE Robotics and Automation Letters, 5(3), 4257–4264. https://doi.org/10.1109/LRA.2020.2994023
+\bibitem{b3} [1]H. Lai, W. Liang, R. Yan, Z. Shi, and Y. Zhong, “LiDAR-Inertial based Localization and Perception for Indoor Pursuit-Evasion Differential Games,” in 2021 40th Chinese Control Conference (CCC), 2021, pp. 7468–7473. doi: 10.23919/CCC52363.2021.9549330.
+\bibitem{b4} F. Jiang, X. Guo, X. Zhang, Z. Zhang, and D. Dong, “Approximate Soft Policy Iteration Based Reinforcement Learning for Differential Games with Two Pursuers versus One Evader,” in 2020 5th International Conference on Advanced Robotics and Mechatronics (ICARM), 2020, pp. 471–476. doi: 10.1109/ICARM49381.2020.9195328.
+\bibitem{b5} M. He and X. Wang, “Nonlinear Differential Game Guidance Law for Guarding a Target,” in 2020 6th International Conference on Control, Automation and Robotics (ICCAR), 2020, pp. 713–721. doi: 10.1109/ICCAR49639.2020.9108001.
+\bibitem{b6} A. Yildiz and H. B. Jond, “Vehicle Swarm Platooning as Differential Game,” in 2021 20th International Conference on Advanced Robotics (ICAR), 2021, pp. 885–890. doi: 10.1109/ICAR53236.2021.9659431.
+\bibitem{b7} D. Fridovich-Keil, V. Rubies-Royo, and C. J. Tomlin, “An Iterative Quadratic Method for General-Sum Differential Games with Feedback Linearizable Dynamics,” in 2020 IEEE International Conference on Robotics and Automation (ICRA), 2020, pp. 2216–2222. doi: 10.1109/ICRA40945.2020.9196517.
+\bibitem{b8} T. Kessler, K. Esterle, and A. Knoll, “Linear Differential Games for Cooperative Behavior Planning of Autonomous Vehicles Using Mixed-Integer Programming,” in 2020 59th IEEE Conference on Decision and Control (CDC), 2020, pp. 4060–4066. doi: 10.1109/CDC42340.2020.9304495.
+\bibitem{b9} S. Edhah, S. Mohamed, A. Rehan, M. AlDhaheri, A. AlKhaja, and Y. Zweiri, “Deep Learning Based Neural Network Controller for Quad Copter: Application to Hovering Mode,” in 2019 International Conference on Electrical and Computing Technologies and Applications (ICECTA), 2019, pp. 1–5. doi: 10.1109/ICECTA48151.2019.8959776.
+\bibitem{b10} R. G. do Nascimento, K. Fricke, and F. Viana, “Quadcopter Control Optimization through Machine Learning,” in AIAA Scitech 2020 Forum, doi: 10.2514/6.2020-1148.
+
+\end{thebibliography}
+\vspace{12pt}
+\color{red}
+IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
 
 \end{document}
