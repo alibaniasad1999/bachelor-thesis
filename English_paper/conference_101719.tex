@@ -322,38 +322,38 @@ Here is a comparison between the states of the quadrotor in simulation and reali
 % Below is a comparison of how the quadrotor performed in simulations and real-life after modifying various parameters.
 % The state of the quadrotor stand in simulation and reality after modifying various parameters is compared below.
 
-\begin{figure}[!h]
-	\centering
-	\subfloat[Roll Channel]{\includegraphics[width=2.5in]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S4.png}
-	\label{fig: roll PE}}
-	\hfil
-	\subfloat[Pitch Channel]{\includegraphics[width=2.5in]{../Figures/RCP/pitch_parameter_estimation/RCP_pitch_S1.png}
-	\label{fig: pitch PE}}
-	\hfil
-	\subfloat[Yaw Channel]{\includegraphics[width=2.5in]{../Figures/RCP/yaw_parameter_estimation/RCP_yaw_S2.png}
-	\label{fig: yaw PE}}
-	\caption{Comparison of quadrotor states in simulation and reality.} \label{fig_sim}
-\end{figure}
+% \begin{figure}[!h]
+% 	\centering
+% 	\subfloat[Roll Channel]{\includegraphics[width=2.5in]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S4.png}
+% 	\label{fig: roll PE}}
+% 	\hfil
+% 	\subfloat[Pitch Channel]{\includegraphics[width=2.5in]{../Figures/RCP/pitch_parameter_estimation/RCP_pitch_S1.png}
+% 	\label{fig: pitch PE}}
+% 	\hfil
+% 	\subfloat[Yaw Channel]{\includegraphics[width=2.5in]{../Figures/RCP/yaw_parameter_estimation/RCP_yaw_S2.png}
+% 	\label{fig: yaw PE}}
+% 	\caption{Comparison of quadrotor states in simulation and reality.} \label{fig_sim}
+% \end{figure}
 
 
-\begin{table}[!h]
-	\renewcommand{\arraystretch}{1.3}
-	\caption{Parameter Estimation Results}
-	\begin{center}
-	\begin{tabular}{c c c}
-	\hline
-	\textbf{Parameter} & \textbf{\textit{Initial Value}}& \textbf{\textit{Value After Estimation}} \\
-	\hline
-	$A_1$ & $7.312$ & $4.152$ \\
-	$A_3$  & $1.1\times10^{-4}$ & $5.47\times10^{-5}$\\
-	$B_1$  & $4.53$ & $4.36$ \\
-	$B_3$  & $1.1\times10^{-4}$ & $7.13\times10^{-5}$ \\ 
-	$C_2$  & $5.45\times10^{-5}$ & $1.3\times10^{-5}$ \\
-	\hline
-	\end{tabular}
-	\label{tab1}
-	\end{center}
-\end{table}
+% \begin{table}[!h]
+% 	\renewcommand{\arraystretch}{1.3}
+% 	\caption{Parameter Estimation Results}
+% 	\begin{center}
+% 	\begin{tabular}{c c c}
+% 	\hline
+% 	\textbf{Parameter} & \textbf{\textit{Initial Value}}& \textbf{\textit{Value After Estimation}} \\
+% 	\hline
+% 	$A_1$ & $7.312$ & $4.152$ \\
+% 	$A_3$  & $1.1\times10^{-4}$ & $5.47\times10^{-5}$\\
+% 	$B_1$  & $4.53$ & $4.36$ \\
+% 	$B_3$  & $1.1\times10^{-4}$ & $7.13\times10^{-5}$ \\ 
+% 	$C_2$  & $5.45\times10^{-5}$ & $1.3\times10^{-5}$ \\
+% 	\hline
+% 	\end{tabular}
+% 	\label{tab1}
+% 	\end{center}
+% \end{table}
 
 
 
@@ -385,69 +385,76 @@ Differential equations
 %  are used to 
  simulate how a state variable or set of state variables changes over time.
 % Differential equations are used to model the evolution over time of a state variable or variables.
-\subsection{An introduction to the differential game}
-It is considered that two players are involved in this research.
+\subsection{Differential Game Usage in a Quadrotor Control Loop}
+This paper describes the state of two players in different loop control of a quadrotor.
+% It is considered that two players are involved in this research.
 % In this paper, there are considered to be two players.
-The space states of a continuous linear system are shown below.
+Three groups of players are identified: two players for roll loop control, two players for pitch loop control, and two players for yaw loop control.
+% Two players associated with roll loop control, two players associated with pitch loop control, and two players associated with yaw loop control are defined.
+% The space states of a continuous linear system are shown below.
+The space state of roll, pitch, and yaw are defined below.
+%% fix i to italic
 \begin{equation}\label{system_dynamic}
     \begin{split}
-             &\boldsymbol{\dot{\mathrm{x}}}(t) = \boldsymbol{\mathrm{Ax}}(t) + \boldsymbol{\mathrm{B_1u_1}}(t) + \boldsymbol{\mathrm{B_2u_2}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0
+             &\boldsymbol{\dot{\mathrm{x_i}}}(t) = \boldsymbol{\mathrm{A_ix_i}}(t) + \boldsymbol{\mathrm{B_iu_i}}(t) + \boldsymbol{\mathrm{B_{i_d}u_{i_d}}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0
         \\
-        &\boldsymbol{\mathrm{y}}(t) = \boldsymbol{\mathrm{Cx}}(t) + \boldsymbol{\mathrm{D_1u_1}}(t) + \boldsymbol{\mathrm{D_2u_2}}(t)
+        &\boldsymbol{\mathrm{y_i}}(t) = \boldsymbol{\mathrm{C_ix_i}}(t) + \boldsymbol{\mathrm{D_iu_i}}(t) + \boldsymbol{\mathrm{D_{i_d}u_{i_d}}}(t)\\
+		& i =1, 2, 3
+		%  \text{Roll, Pitch, Yaw}
     \end{split}
 \end{equation}
-Where $\boldsymbol{\mathrm{x}}$ is the vector of the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u_1}}$ is the first player (controller) input vector, $\boldsymbol{\mathrm{u_2}}$ is the second player (disturbance) input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B_1}}$ is the first player input matrix, $\boldsymbol{\mathrm{B_2}}$ is the second player input matrix,
-$\boldsymbol{\mathrm{C}}$ is the output matrix, $\boldsymbol{\mathrm{D_1}}$ is first player the output matrix and $\boldsymbol{\mathrm{D_2}}$ is second player the output matrix.
-Equation \eqref{system_dynamic} demonstrates how both participants have an impact on the system's dynamics.
+Where $\boldsymbol{\mathrm{x}}$ is the vector of the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u}}$ is the controller input vector, $\boldsymbol{\mathrm{u_d}}$ is the disturbance input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B}}$ is the controller input matrix, $\boldsymbol{\mathrm{B_d}}$ is the disturbance input matrix,
+$\boldsymbol{\mathrm{C}}$ is the output matrix, $\boldsymbol{\mathrm{D}}$ is controller the output matrix and $\boldsymbol{\mathrm{D_d}}$ is disturbance the output matrix.
+Equation \eqref{system_dynamic} demonstrates how both participants have an impact on the quadrotor's dynamics.
 % As shown in equation 1, both players affect the dynamics of the system.
 The second player may progress toward the goal as a result of the first player's exertion, or vice versa.
 % The first player's effort could push the second player away from the goal, or the other way around.
 This paper considers the case that players do not cooperate in order to realize their goals.
-The situation where players do not work together (non-cooperative) to achieve their objectives is examined in the paper.
+% The situation where players do not work together (non-cooperative) to achieve their objectives is examined in the paper.
 % The paper examines the situation in which players do not cooperate to achieve their goals.
 In this case, every player knows at time $t \in [0, T]$ just the initial state $\boldsymbol{\mathrm{x}_0}$ and the model structure.
 % This scenario can be interpreted as the players simultaneously determining their actions, next submitting their actions. 
 % The players can be interpreted as simultaneously determining their actions, then submitting them.
-For the game (1,2), we will use the set of Nash equilibria. Formal Nash equilibrium is defined as follows.
+For the game between two players in each loop control, the set of Nash equilibria is used. Formal Nash equilibrium is defined as follows.
 % Here are the formal Nash equilibrium definitions for games (1) and (2).
 % defenition
-An admissible set of actions $(\boldsymbol{u_1}^*,  \boldsymbol{u_2}^*)$ is a Nash equilibrium for the game (1,2); if for all admissible $(\boldsymbol{u_1},  \boldsymbol{u_2})$, the following inequalities hold:
+An admissible set of actions $(\boldsymbol{u_1}^*,  \boldsymbol{u_{i_d}}^*)$ is a Nash equilibrium for the game between two player in each loop control; if for all admissible $(\boldsymbol{u_i},  \boldsymbol{u_{i_d}})$, the following inequalities hold:
 \begin{equation}\label{nash_lqe}
-	J_1(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}}^*)\leq J_1(\boldsymbol{\mathrm{u_1}}, \boldsymbol{\mathrm{u_2}}^*) \text{\rm{ , }}
-	J_2(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}}^*)\leq 
-	J_2(\boldsymbol{\mathrm{u_1}}^*, \boldsymbol{\mathrm{u_2}})
+	J_1(\boldsymbol{\mathrm{u_i}}^*, \boldsymbol{\mathrm{u_{i_d}}}^*)\leq J_1(\boldsymbol{\mathrm{u_1}}, \boldsymbol{\mathrm{u_{i_d}}}^*) \text{\rm{ , }}
+	J_2(\boldsymbol{\mathrm{u_i}}^*, \boldsymbol{\mathrm{u_{i_d}}}^*)\leq 
+	J_2(\boldsymbol{\mathrm{u_i}}^*, \boldsymbol{\mathrm{u_{i_d}}})
 \end{equation}
 % Here admissibility is meant in the sense that $\boldsymbol{\mathrm{u_i}}(.)$ belongs to some restricted set, where this set depends on the information players have on the game, the set of strategies the players like to use to control the system, and the system (2) must have a unique solution.
 % The term admissibility refers to the fact that u(.) belongs to a restricted set determined by the information players have about the game, the strategies they use to control the system, and the uniqueness of the solution.
 \subsection{LQDG controller}
-For the system described in equation \eqref{system_dynamic}, LQDG optimum control effort calculates from equation \eqref{LQDG_u}.
+For the each control loop described in equation \eqref{system_dynamic}, LQDG optimum control effort calculates from equation \eqref{LQDG_u}.
 % The optimum control effort calculated by LQDG for the system described in equation 1 is calculated using equation 2.
 % For the system described in equation 1, LQDG optimum control effort calculates from equation 2.
 \begin{equation}\label{LQDG_u}
-	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_i}}^\mathrm{T}\boldsymbol{\mathrm{P_{i}}}(t)\boldsymbol{\mathrm{x}}(t) = -\boldsymbol{\mathrm{K_{i}}}(t)\boldsymbol{\mathrm{x}}(t),\quad i = 1, 2
+	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{i}}}^{-1}\boldsymbol{\mathrm{B_i}}^\mathrm{T}\boldsymbol{\mathrm{P_{i}}}(t)\boldsymbol{\mathrm{x}}(t) = -\boldsymbol{\mathrm{K_{i}}}(t)\boldsymbol{\mathrm{x}}(t),\quad i = 1, 2, 3
 \end{equation}
-In equation \eqref{LQDG_u}, $\boldsymbol{\mathrm{K_{i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function equation \eqref{cost} of player number i.
+In equation \eqref{LQDG_u}, $\boldsymbol{\mathrm{K_{i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function equation \eqref{cost} of controller player for each control loop of quadrotor.
 \begin{equation}\label{cost}
     \begin{split}
-        J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x}}(t)+
-        &\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+\\
-        &\boldsymbol{\mathrm{u_j}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{ij} u_j}}(t)
-        \biggl )\mathrm{d}t
+        J_i( \boldsymbol{\mathrm{u_i}},  \boldsymbol{\mathrm{u_{i_d}}}) = \int_{0}^{T}\biggl (&\boldsymbol{\mathrm{x_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_i}}(t)+
+        \boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{i}}} \boldsymbol{\mathrm{u_i}}(t)+\\
+        &\boldsymbol{\mathrm{u_{i_d}}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{i_d} u_{i_d}}}(t)
+        \biggl )\mathrm{d}t, \quad i = 1, 2, 3 
     \end{split} 
 \end{equation}
-Here the matrices $\boldsymbol{\mathrm{Q_i}}$ and  $\boldsymbol{\mathrm{R_{ii}}}$ are assumed to be symmetric and $\boldsymbol{\mathrm{R_{ii}}}$ positive definite.
+Here the matrices $\boldsymbol{\mathrm{Q_i}}$ and  $\boldsymbol{\mathrm{R_{i}}}$ are assumed to be symmetric and $\boldsymbol{\mathrm{R_{i}}}$ positive definite.
 $\boldsymbol{\mathrm{P_{i}}}$ is found by solving the continuous time couple Riccati differential equation:
 \begin{equation}\label{coupled_riccatti_LQDG}
-	\begin{split}
-		&\begin{split}
-             \boldsymbol{\dot{\mathrm{P}}_1}(t) = -&\boldsymbol{\mathrm{A}}^\mathrm{T}\boldsymbol{\mathrm{P_1}}(t) - \boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{A}} - \boldsymbol{\mathrm{Q_1}} +\boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{S_1}}(t)\boldsymbol{\mathrm{P_1}}(t) +\\ &\boldsymbol{\mathrm{P_1}}(t)\boldsymbol{\mathrm{S_2}}(t)\boldsymbol{\mathrm{P_2}}(t)
-		\end{split}\\
-		&\begin{split}
-            \boldsymbol{\dot{\mathrm{P}}_2}(t) = -&\boldsymbol{\mathrm{A}}^\mathrm{T}\boldsymbol{\mathrm{P_2}}(t) - \boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{A}} - \boldsymbol{\mathrm{Q_2}} +\boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{S_2}}(t)\boldsymbol{\mathrm{P_2}}(t) +\\ &\boldsymbol{\mathrm{P_2}}(t)\boldsymbol{\mathrm{S_1}}(t)\boldsymbol{\mathrm{P_1}}(t)
-		\end{split}
-	\end{split}
+    \begin{split}
+        &\begin{split}
+             \boldsymbol{\dot{\mathrm{P}}_i}(t) = -&\boldsymbol{\mathrm{A_i}}^\mathrm{T}\boldsymbol{\mathrm{P_i}}(t) - \boldsymbol{\mathrm{P_i}}(t)\boldsymbol{\mathrm{A_i}} - \boldsymbol{\mathrm{Q_i}} +\boldsymbol{\mathrm{P_i}}(t)\boldsymbol{\mathrm{S_i}}(t)\boldsymbol{\mathrm{P_i}}(t) +\\ &\boldsymbol{\mathrm{P_i}}(t)\boldsymbol{\mathrm{S_{i_d}}}(t)\boldsymbol{\mathrm{P_{i_d}}}(t)
+        \end{split}\\
+        &\begin{split}
+            \boldsymbol{\dot{\mathrm{P}}_{i_d}}(t) = -&\boldsymbol{\mathrm{A_i}}^\mathrm{T}\boldsymbol{\mathrm{P_{i_d}}}(t) - \boldsymbol{\mathrm{P_{i_d}}}(t)\boldsymbol{\mathrm{A_i}} - \boldsymbol{\mathrm{Q_{i_d}}} +\\ & \boldsymbol{\mathrm{P_{i_d}}}(t)\boldsymbol{\mathrm{S_{i_d}}}(t)\boldsymbol{\mathrm{P_{i_d}}}(t) +\boldsymbol{\mathrm{P_{i_d}}}(t)\boldsymbol{\mathrm{S_i}}(t)\boldsymbol{\mathrm{P_i}}(t)
+        \end{split}
+    \end{split}
 \end{equation}
-Using the shorthand notation $\boldsymbol{S_i} := \boldsymbol{B_iR_{ii}}^{-1}\boldsymbol{B_i}^\mathrm{T}$. %?????????????????????
+Using the shorthand notation $\boldsymbol{S_i} := \boldsymbol{B_iR_{i}}^{-1}\boldsymbol{B_i}^\mathrm{T}$. %?????????????????????
 
 
 \subsection{LQIDG controller}
@@ -495,7 +502,10 @@ Where matrices $\boldsymbol{\mathrm{A_a}}$ and $\boldsymbol{\mathrm{B_a}}$ are d
 \end{equation}
 By introducing a new space state for the system, the remaining design phases of the LQIDG controller are comparable to those of the LQDG controller. LQIDG optimum control effort calculates from equation \eqref{LQIDG_u}.
 \begin{equation}\label{LQIDG_u}
-	\boldsymbol{\mathrm{u_i}}(t) = -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_{a_i}}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t) = - \boldsymbol{\mathrm{K_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t),~ i = 1, 2
+	\begin{split}
+		\boldsymbol{\mathrm{u_i}}(t) &= -\boldsymbol{\mathrm{R_{ii}}}^{-1}\boldsymbol{\mathrm{B_{a_i}}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t) \\
+		\boldsymbol{\mathrm{u_i}}(t) &= - \boldsymbol{\mathrm{K_{a_i}}}(t)\boldsymbol{\mathrm{x_a}}(t),~ i = 1, 2, 3
+	\end{split}
 \end{equation}
 
 
@@ -503,9 +513,9 @@ By introducing a new space state for the system, the remaining design phases of 
 In equation \eqref{LQIDG_u}, $\boldsymbol{\mathrm{K_{a_i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function, equation \eqref{cost_LQIDG}, of player number i.
 \begin{equation}\label{cost_LQIDG}
     \begin{split}
-        J_i( \boldsymbol{\mathrm{u_1}},  \boldsymbol{\mathrm{u_2}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x_a}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_a}}(t)+
-        &\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{ii}}} \boldsymbol{\mathrm{u_i}}(t)+\\
-        &\boldsymbol{\mathrm{u_j}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{ij} u_j}}(t)
+        J_i( \boldsymbol{\mathrm{u_i}},  \boldsymbol{\mathrm{u_{i_d}}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x_a}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_a}}(t)+
+        &\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{i}}} \boldsymbol{\mathrm{u_i}}(t)+\\
+        &\boldsymbol{\mathrm{u_{i_d}}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{i_d} u_{i_d}}}(t)
         \biggl )\mathrm{d}t
     \end{split} 
 \end{equation}
@@ -513,14 +523,14 @@ $\boldsymbol{\dot{\mathrm{P}}_{a_i}}$ is found by solving the continuous time co
 \begin{equation}\label{coupled_riccatti_LQIDG}
     \begin{split}
         &\begin{split}
-            \boldsymbol{\dot{\mathrm{P}}_{a_1}}(t) = -&\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_1}}}(t) - \boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_1}} +\\ &\boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{P_{a_1}}}(t) + \boldsymbol{\mathrm{P_{a_1}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{P_{a_2}}}(t)
+            \boldsymbol{\dot{\mathrm{P}}_{a_i}}(t) = -&\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_i}}}(t) - \boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_i}} +\\ &\boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{S_{a_i}}}(t)\boldsymbol{\mathrm{P_{a_i}}}(t) + \boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{S_{a_{i_d}}}}(t)\boldsymbol{\mathrm{P_{a_{i_d}}}}(t)
         \end{split}\\
         &\begin{split}
-            \boldsymbol{\dot{\mathrm{P}}_{a_2}}(t) = -&\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_2}}}(t) - \boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_2}} +\\ &\boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_2}}}(t)\boldsymbol{\mathrm{P_{a_2}}}(t) + \boldsymbol{\mathrm{P_{a_2}}}(t)\boldsymbol{\mathrm{S_{a_1}}}(t)\boldsymbol{\mathrm{P_{a_1}}}(t)
+            \boldsymbol{\dot{\mathrm{P}}_{a_{i_d}}}(t) = -&\boldsymbol{\mathrm{A_a}}^\mathrm{T}\boldsymbol{\mathrm{P_{a_{i_d}}}}(t) - \boldsymbol{\mathrm{P_{a_{i_d}}}}(t)\boldsymbol{\mathrm{A_a}} - \boldsymbol{\mathrm{Q_{i_d}}} +\\ &\boldsymbol{\mathrm{P_{a_{i_d}}}}(t)\boldsymbol{\mathrm{S_{a_{i_d}}}}(t)\boldsymbol{\mathrm{P_{a_{i_d}}}}(t) + \boldsymbol{\mathrm{P_{a_{i_d}}}}(t)\boldsymbol{\mathrm{S_{a_i}}}(t)\boldsymbol{\mathrm{P_{a_i}}}(t)
         \end{split}
     \end{split}
 \end{equation}
-Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}$. %?????????????????????
+Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{i}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}$. %?????????????????????
 
 
 
