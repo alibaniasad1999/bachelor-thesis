@@ -322,38 +322,38 @@ Here is a comparison between the states of the quadrotor in simulation and reali
 % Below is a comparison of how the quadrotor performed in simulations and real-life after modifying various parameters.
 % The state of the quadrotor stand in simulation and reality after modifying various parameters is compared below.
 
-% \begin{figure}[!h]
-% 	\centering
-% 	\subfloat[Roll Channel]{\includegraphics[width=2.5in]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S4.png}
-% 	\label{fig: roll PE}}
-% 	\hfil
-% 	\subfloat[Pitch Channel]{\includegraphics[width=2.5in]{../Figures/RCP/pitch_parameter_estimation/RCP_pitch_S1.png}
-% 	\label{fig: pitch PE}}
-% 	\hfil
-% 	\subfloat[Yaw Channel]{\includegraphics[width=2.5in]{../Figures/RCP/yaw_parameter_estimation/RCP_yaw_S2.png}
-% 	\label{fig: yaw PE}}
-% 	\caption{Comparison of quadrotor states in simulation and reality.} \label{fig_sim}
-% \end{figure}
+\begin{figure*}[!h]
+	\centering
+	\subfloat[Roll Channel]{\includegraphics[width=2.32in]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S4.png}
+	\label{fig: roll PE}}
+	\hfil
+	\subfloat[Pitch Channel]{\includegraphics[width=2.32in]{../Figures/RCP/pitch_parameter_estimation/RCP_pitch_S1.png}
+	\label{fig: pitch PE}}
+	\hfil
+	\subfloat[Yaw Channel]{\includegraphics[width=2.32in]{../Figures/RCP/yaw_parameter_estimation/RCP_yaw_S2.png}
+	\label{fig: yaw PE}}
+	\caption{Comparison of quadrotor states in simulation and reality.} \label{fig_sim}
+\end{figure*}
 
 
-% \begin{table}[!h]
-% 	\renewcommand{\arraystretch}{1.3}
-% 	\caption{Parameter Estimation Results}
-% 	\begin{center}
-% 	\begin{tabular}{c c c}
-% 	\hline
-% 	\textbf{Parameter} & \textbf{\textit{Initial Value}}& \textbf{\textit{Value After Estimation}} \\
-% 	\hline
-% 	$A_1$ & $7.312$ & $4.152$ \\
-% 	$A_3$  & $1.1\times10^{-4}$ & $5.47\times10^{-5}$\\
-% 	$B_1$  & $4.53$ & $4.36$ \\
-% 	$B_3$  & $1.1\times10^{-4}$ & $7.13\times10^{-5}$ \\ 
-% 	$C_2$  & $5.45\times10^{-5}$ & $1.3\times10^{-5}$ \\
-% 	\hline
-% 	\end{tabular}
-% 	\label{tab1}
-% 	\end{center}
-% \end{table}
+\begin{table}[!h]
+	\renewcommand{\arraystretch}{1.3}
+	\caption{Parameter Estimation Results}
+	\begin{center}
+	\begin{tabular}{c c c}
+	\hline
+	\textbf{Parameter} & \textbf{\textit{Initial Value}}& \textbf{\textit{Value After Estimation}} \\
+	\hline
+	$A_1$ & $7.312$ & $4.152$ \\
+	$A_3$  & $1.1\times10^{-4}$ & $5.47\times10^{-5}$\\
+	$B_1$  & $4.53$ & $4.36$ \\
+	$B_3$  & $1.1\times10^{-4}$ & $7.13\times10^{-5}$ \\ 
+	$C_2$  & $5.45\times10^{-5}$ & $1.3\times10^{-5}$ \\
+	\hline
+	\end{tabular}
+	\label{tab1}
+	\end{center}
+\end{table}
 
 
 
@@ -874,7 +874,6 @@ LQIDG weighting matrices are chosen like the method used in the LQR and LQDG sec
 
 \end{thebibliography}
 \vspace{12pt}
-\color{red}
-IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
+
 
 \end{document}
