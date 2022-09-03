@@ -153,98 +153,97 @@
 \section{مدل‌سازی چهارپره}
 در این فصل به مدل‌سازی استند چهارپره آزمایشگاهی پرداخته شده‌است. به این منظور، ابتدا فرضیات مربوط به مدل‌سازی چهارپره در بخش بیان می‌شود. سپس، در بخش معادلات حاکم بر حرکات دورانی چهارپره پرداخته می‌شود.
 
-\subsection{فرضیات مدل‌سازی}
-شماتیک استند چهارپره در شكل \ref{QuadAssum} نشان داده شده‌است. به ‌منظور استخراج معادلات حاکم بر سیستم، 
-فرض می‌شود که چهارپره صلب و متقارن است. همچنین ماتریس گشتاور اینرسی چهارپره به‌صورت قطری درنظر گرفته می‌شود. مرکز جرم سازه چهارپره روی نقطه $B$ و مرکز ثقل هر یک از پره‌ها به همراه قسمت دوار موتور روی نقاط 
-$B_1$
-تا
-$B_4$
-است. مبدأ دستگاه مختصات بدنی روی محل تقاطع بازوهای چهارپره یعنی نقطه 
-$B$
-در نظر گرفته شده است. از آنجایی ‌که مرکز ثقل پره‌ها بالاتر از مرکز ثقل سازه چهارپره است، مرکز ثقل کلی چهارپره جایی بین مرکز ثقل موتورها و سازه، یعنی نقطه‌ی 
-$C$
-می‌گیرد. همچنین قابل ذکر است که نقطه‌ی
-$D$
-محل اتصال کلی استند چهارپره است. جهت مثبت محور 
-$X^B$
-و
-$Y^B$
-دستگاه مختصات بدنی به ترتیب در راستای بازوی مربوط به موتور 1 و 4 فرض می‌شود. همچنین جهت مثبت محور
-$Z^B$
-با توجه به قانون دست راست حاصل می‌شود.
+%\subsection{فرضیات مدل‌سازی}
+%شماتیک استند چهارپره در شكل \ref{QuadAssum} نشان داده شده‌است. به ‌منظور استخراج معادلات حاکم بر سیستم، 
+%فرض می‌شود که چهارپره صلب و متقارن است. همچنین ماتریس گشتاور اینرسی چهارپره به‌صورت قطری درنظر گرفته می‌شود. مرکز جرم سازه چهارپره روی نقطه $B$ و مرکز ثقل هر یک از پره‌ها به همراه قسمت دوار موتور روی نقاط 
+%$B_1$
+%تا
+%$B_4$
+%است. مبدأ دستگاه مختصات بدنی روی محل تقاطع بازوهای چهارپره یعنی نقطه 
+%$B$
+%در نظر گرفته شده است. از آنجایی ‌که مرکز ثقل پره‌ها بالاتر از مرکز ثقل سازه چهارپره است، مرکز ثقل کلی چهارپره جایی بین مرکز ثقل موتورها و سازه، یعنی نقطه‌ی 
+%$C$
+%می‌گیرد. همچنین قابل ذکر است که نقطه‌ی
+%$D$
+%محل اتصال کلی استند چهارپره است. جهت مثبت محور 
+%$X^B$
+%و
+%$Y^B$
+%دستگاه مختصات بدنی به ترتیب در راستای بازوی مربوط به موتور 1 و 4 فرض می‌شود. همچنین جهت مثبت محور
+%$Z^B$
+%با توجه به قانون دست راست حاصل می‌شود.
 \begin{figure}[!h]
 	\includegraphics[width=6cm]{images/StandAssumations.png}
 	\centering
 	\caption{شماتیک استند چهارپره}
 	\label{QuadAssum}
 \end{figure}
-\subsection{گشتاورهای ناشی از آيرودينامیک پره‌ها}
-آیرودینامیک پره‌ها باعث ایجاد نیروی برآ و درنتیجه گشتاورهای رول و پیچ ناشی از اختلاف نیروی 
-برآ می‌شود. با استفاده از تفاضل نیروی برآی پره‌ها دو گشتاور رول و پیچ ایجاد می‌شود. با توجه به نظریه مومنتوم، نیروی برآی هر پره 
-% farsi momentum theory
-$(T_i)$
-از رابطه‌ی زیر حاصل می‌شود
-\cite{Sharifi}:
-\begin{equation}\label{trust}
-	T_i = b\omega_i^2
-\end{equation}
-در رابطه
-(\ref{trust})
-$b$
-و 
-$\omega_i$
-به ترتیب بیانگر فاکتور نیروی برآ و سرعت زاویه‌ای هر پره است؛ بنابراین مطابق شکل 
-\ref{QuadAssum}
-گشتاور رول حول محور
-$X^B$
-دستگاه مختصات بدنی از رابطه زیر حاصل می‌شود.
-\begin{equation}\label{roll}
-	m_X^B = d_{cg}(T_2-T_4) = d_{cg}b(\omega_2^2-\omega_4^2)
-\end{equation}
-در رابطه 
-(\ref{roll})
-عبارت 
-$d_{cg}$
-بیانگر فاصله مرکز هر پره از مرکز جرم چهارپره در راستای محور
-$X^B$
-دستگاه مختصات بدنی است. همچنین گشتاور پیچ حول محور 
-$Y^B$
-دستگاه مختصات بدنی با توجه به شكل
-\ref{QuadAssum}
-از رابطه زیر حاصل می‌شود:
-\begin{equation}\label{pitch}
-	m_Y^B = d_{cg}(T_1-T_3) = d_{cg}b(\omega_1^2-\omega_3^2)
-\end{equation}
-گشتاور یاو آیرودینامیكی از اختلاف گشتاور ناشی از پسای پره‌ها ایجاد می‌شود؛ بنابراین، جهت این 
-گشتاور همواره در جهت مخالف چرخش پره‌ها است. بنابراین، گشتاور یاو حول محور
-$Z^B$
-دستگاه مختصات بدنی با توجه به شكل
-\ref{QuadAssum},
-مطابق رابطه زیر حاصل می‌شود:
-\begin{equation}\label{yaw}
-	m_Z^B = d(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2)
-\end{equation}
-رابطه 
-(\ref{yaw})
-عبارت 
-$d$
-بیانگر فاکتور گشتاور پسای پره‌ها است. در نتیجه با توجه به معادلات
-(\ref{roll}),
-(\ref{pitch})
-و
-(\ref{yaw})
-بردار گشتاورهای خارجی ناشی از آیرودینامیک پره‌ها در دستگاه مختصات بدنی به‌صورت زیر حاصل می‌شود:
-\begin{equation}\label{finaltorque}
-	\left[m_A\right]^B = \begin{bmatrix}
-		m_X^B\\m_Y^B\\m_Z^B
-	\end{bmatrix}
-	=  \begin{bmatrix}
-		d_{cg}b(\omega_2^2-\omega_4^2)\\
-		d_{cg}b(\omega_1^2-\omega_3^2)\\
-		d(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2)
-	\end{bmatrix}
-\end{equation}
-\subsection{استخراج فرم فضای حالت}
+%آیرودینامیک پره‌ها باعث ایجاد نیروی برآ و درنتیجه گشتاورهای رول و پیچ ناشی از اختلاف نیروی 
+%برآ می‌شود. با استفاده از تفاضل نیروی برآی پره‌ها دو گشتاور رول و پیچ ایجاد می‌شود. با توجه به نظریه مومنتوم، نیروی برآی هر پره 
+%% farsi momentum theory
+%$(T_i)$
+%از رابطه‌ی زیر حاصل می‌شود
+%\cite{Sharifi}:
+%\begin{equation}\label{trust}
+%	T_i = b\omega_i^2
+%\end{equation}
+%در رابطه
+%(\ref{trust})
+%$b$
+%و 
+%$\omega_i$
+%به ترتیب بیانگر فاکتور نیروی برآ و سرعت زاویه‌ای هر پره است؛ بنابراین مطابق شکل 
+%\ref{QuadAssum}
+%گشتاور رول حول محور
+%$X^B$
+%دستگاه مختصات بدنی از رابطه زیر حاصل می‌شود.
+%\begin{equation}\label{roll}
+%	m_X^B = d_{cg}(T_2-T_4) = d_{cg}b(\omega_2^2-\omega_4^2)
+%\end{equation}
+%در رابطه 
+%(\ref{roll})
+%عبارت 
+%$d_{cg}$
+%بیانگر فاصله مرکز هر پره از مرکز جرم چهارپره در راستای محور
+%$X^B$
+%دستگاه مختصات بدنی است. همچنین گشتاور پیچ حول محور 
+%$Y^B$
+%دستگاه مختصات بدنی با توجه به شكل
+%\ref{QuadAssum}
+%از رابطه زیر حاصل می‌شود:
+%\begin{equation}\label{pitch}
+%	m_Y^B = d_{cg}(T_1-T_3) = d_{cg}b(\omega_1^2-\omega_3^2)
+%\end{equation}
+%گشتاور یاو آیرودینامیكی از اختلاف گشتاور ناشی از پسای پره‌ها ایجاد می‌شود؛ بنابراین، جهت این 
+%گشتاور همواره در جهت مخالف چرخش پره‌ها است. بنابراین، گشتاور یاو حول محور
+%$Z^B$
+%دستگاه مختصات بدنی با توجه به شكل
+%\ref{QuadAssum},
+%مطابق رابطه زیر حاصل می‌شود:
+%\begin{equation}\label{yaw}
+%	m_Z^B = d(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2)
+%\end{equation}
+%رابطه 
+%(\ref{yaw})
+%عبارت 
+%$d$
+%بیانگر فاکتور گشتاور پسای پره‌ها است. در نتیجه با توجه به معادلات
+%(\ref{roll}),
+%(\ref{pitch})
+%و
+%(\ref{yaw})
+%بردار گشتاورهای خارجی ناشی از آیرودینامیک پره‌ها در دستگاه مختصات بدنی به‌صورت زیر حاصل می‌شود:
+%\begin{equation}\label{finaltorque}
+%	\left[m_A\right]^B = \begin{bmatrix}
+%		m_X^B\\m_Y^B\\m_Z^B
+%	\end{bmatrix}
+%	=  \begin{bmatrix}
+%		d_{cg}b(\omega_2^2-\omega_4^2)\\
+%		d_{cg}b(\omega_1^2-\omega_3^2)\\
+%		d(\omega_1^2-\omega_2^2+\omega_3^2-\omega_4^2)
+%	\end{bmatrix}
+%\end{equation}
+\subsection{ فرم فضای حالت}
 به منظور استخراج فرم فضای حالت، متغیرهای حالت استند سه درجه آزادی چهارپره به‌صورت زیر تعریف می‌شود:
 \begin{equation}
 	\begin{bmatrix}
@@ -290,7 +289,7 @@ $d$
 %\item
 %تحلیل و ارزیابی روش پیشنهادی با ارایه یک ....
 %\end{itemize}
-در قسمت آخر نیز باید ساختار مقاله و فهرستی از مطالبی که در بخش‌های آینده وجود دارد، ارایه شود. دقت کنید که در این قسمت باید به بخش‌های بعدی مقاله در حد یک جمله اشاره‌ای کوتاه شود.
+%در قسمت آخر نیز باید ساختار مقاله و فهرستی از مطالبی که در بخش‌های آینده وجود دارد، ارایه شود. دقت کنید که در این قسمت باید به بخش‌های بعدی مقاله در حد یک جمله اشاره‌ای کوتاه شود.
 
 %\subsection{ویژگی‌های بخش مروری بر کارهای پیشین}
 %در این بخش نویسندگان می‌بایست مروری بر کارهای صورت پذیرفته در موضوع مقاله داشته‌باشند. در این بخش مقالاتی باید مورد بررسی قرار گیرد که از یک اعتبار به نسبت بالا برخوردار باشد.  ملاک معتبر بودن مقاله ارجاع‌های آن بالا باشد و یا در مجله و کنفرانس‌های معتبر چاپ شده باشند.  در ضمن نویسندگان حتما باید مقالات مربوط به سال‌های اخیر را نیز مورد بررسی قرار دهند. 
@@ -927,10 +926,10 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 %	\subfloat[Roll Channel]{\includegraphics[width=2.5in]{
 %		\label{fig: roll PE}}
 %	\hfil
-%	\subfloat[Pitch Channel]{\includegraphics[width=2.5in]{../Thesis/Figures/RCP/pitch_parameter_estimation/RCP_pitch_S1.png}
+%	\subfloat[Pitch Channel]{\includegraphics[width=2.5in]{../Figures/RCP/pitch_parameter_estimation/RCP_pitch_S1.png}
 %		\label{fig: pitch PE}}
 %	\hfil
-%	\subfloat[Yaw Channel]{\includegraphics[width=2.5in]{../Thesis/Figures/RCP/yaw_parameter_estimation/RCP_yaw_S2.png}
+%	\subfloat[Yaw Channel]{\includegraphics[width=2.5in]{../Figures/RCP/yaw_parameter_estimation/RCP_yaw_S2.png}
 %		\label{fig: yaw PE}}
 %	\caption{Comparison of quadrotor states in simulation and reality.} \label{fig_sim}
 %\end{figure}
@@ -953,14 +952,14 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 
 
 \begin{figure}[!h]
-	\includegraphics[width=6cm]{../Thesis/Figures/RCP/roll_parameter_estimation/RCP_roll_S4.png}
+	\includegraphics[width=6cm]{../Figures/RCP/roll_parameter_estimation/RCP_roll_S4.png}
 	\centering
 	\caption{شماتیک استند چهارپره}
 	\label{QuadAssum}
 \end{figure}
 
 \begin{figure}[h]
-	\includegraphics[width=6cm]{../Thesis/Figures/RCP/pitch_parameter_estimation/RCP_pitch_S1.png}
+	\includegraphics[width=6cm]{../Figures/RCP/pitch_parameter_estimation/RCP_pitch_S1.png}
 	\centering
 	\caption{شماتیک استند چهارپره}
 	\label{QuadAssum}
@@ -968,7 +967,7 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 
 
 \begin{figure}[h]
-	\includegraphics[width=6cm]{../Thesis/Figures/RCP/yaw_parameter_estimation/RCP_yaw_S2.png}
+	\includegraphics[width=6cm]{../Figures/RCP/yaw_parameter_estimation/RCP_yaw_S2.png}
 	\centering
 	\caption{شماتیک استند چهارپره}
 	\label{QuadAssum}
@@ -1052,7 +1051,7 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		\end{bmatrix}, \quad R_{LQR} =  0.0001
 	\end{equation} 
 	\begin{figure}[H]
-		\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQR/Roll/lqr_roll_nn.png}
+		\includegraphics[width=.48\linewidth]{../Figures/MIL/LQR/Roll/lqr_roll_nn.png}
 		\centering
 		\caption{عملكرد کنترل‌کننده \lr{LQR} در کنترل زاويه رول (تعقیب ورودی صفر)}
 		\label{lqr_roll_figure_simulation}
@@ -1061,11 +1060,11 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		\centering
 		\subfigure[موتور شماره دو]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQR/Roll/lqr_roll_Omega_2_nn.png}
+			\includegraphics[width=.45\linewidth]{../Figures/MIL/LQR/Roll/lqr_roll_Omega_2_nn.png}
 		}
 		\subfigure[موتور شماره چهار]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQR/Roll/lqr_roll_Omega_4_nn.png}
+			\includegraphics[width=.45\linewidth]{../Figures/MIL/LQR/Roll/lqr_roll_Omega_4_nn.png}
 		}
 		\caption{فرمان کنترلی موتورهای دو و چهار در کنترل زاویه رول (تعقیب ورودی صفر)}
 	\end{figure}
@@ -1119,7 +1118,7 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 	\end{equation}
 	
 	\begin{figure}[H]
-		\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQDG/Roll/lqdg_roll_nn.png}
+		\includegraphics[width=.48\linewidth]{../Figures/MIL/LQDG/Roll/lqdg_roll_nn.png}
 		\centering
 		\caption{عملكرد کنترل‌کننده \lr{LQDG} در کنترل زاويه رول (تعقیب ورودی صفر)}
 		\label{lqdg_roll_fig_simulation}
@@ -1128,11 +1127,11 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		\centering
 		\subfigure[موتور شماره دو]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQDG/Roll/lqdg_roll_Omega_2_nn.png}
+			\includegraphics[width=.45\linewidth]{../Figures/MIL/LQDG/Roll/lqdg_roll_Omega_2_nn.png}
 		}
 		\subfigure[موتور شماره چهار]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQDG/Roll/lqdg_roll_Omega_4_nn.png}
+			\includegraphics[width=.45\linewidth]{../Figures/MIL/LQDG/Roll/lqdg_roll_Omega_4_nn.png}
 		}
 		\caption{فرمان کنترلی موتورهای دو و چهار در کنترل زاویه رول (تعقیب ورودی صفر)}
 	\end{figure}
@@ -1190,7 +1189,7 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 	\end{equation}
 	
 	\begin{figure}[H]
-		\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQIDG/Roll/lqidg_rollnn_.png}
+		\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/Roll/lqidg_rollnn_.png}
 		\centering
 		\caption{عملكرد کنترل‌کننده \lr{LQIDG} در کنترل زاويه رول (تعقیب ورودی صفر)}
 		\label{lqidg_roll_fig_simulation}
@@ -1199,11 +1198,11 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		\centering
 		\subfigure[موتور شماره دو]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/Roll/lqidg_roll_Omega_2nn_.png}
+			\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/Roll/lqidg_roll_Omega_2nn_.png}
 		}
 		\subfigure[موتور شماره چهار]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/Roll/lqidg_roll_Omega_4nn_.png}
+			\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/Roll/lqidg_roll_Omega_4nn_.png}
 		}
 		\caption{فرمان کنترلی موتورهای دو و چهار در کنترل زاویه رول (تعقیب ورودی صفر)}
 	\end{figure}
@@ -1391,15 +1390,15 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		%	\centering
 		%	\subfigure[تغییرات زاویه رول]{
 			%		\centering
-			%		\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQIDG/MIMO/lqidg_roll_nn.png}
+			%		\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/MIMO/lqidg_roll_nn.png}
 			%	}
 		%	\subfigure[تغییرات زاویه پیچ]{
 			%		\centering
-			%		\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQIDG/MIMO/lqidg_pitch_nn.png}
+			%		\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/MIMO/lqidg_pitch_nn.png}
 			%	}
 		%	\subfigure[تغییرات زاویه یاو]{
 			%		\centering
-			%		\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQIDG/MIMO/lqidg_yaw_nn.png}
+			%		\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/MIMO/lqidg_yaw_nn.png}
 			%	}
 		%	\caption{عملکرد کنترل‌کننده \lr{LQIDG} در کنترل وضعیت (تعقیب ورودی صفر)}
 		%	\label{lqidg_roll_pitch_yaw_fig_simulation_MIMO}
@@ -1410,19 +1409,19 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		%	\centering
 		%	\subfigure[موتور شماره یک]{
 			%		\centering
-			%		\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/MIMO/lqidg_roll_pitch_Omega1_nn.png}
+			%		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/MIMO/lqidg_roll_pitch_Omega1_nn.png}
 			%	}
 		%	\subfigure[موتور شماره دو]{
 			%		\centering
-			%		\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/MIMO/lqidg_roll_pitch_Omega2_nn.png}
+			%		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/MIMO/lqidg_roll_pitch_Omega2_nn.png}
 			%	}
 		%	\subfigure[موتور شماره سه]{
 			%		\centering
-			%		\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/MIMO/lqidg_roll_pitch_Omega3_nn.png}
+			%		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/MIMO/lqidg_roll_pitch_Omega3_nn.png}
 			%	}
 		%	\subfigure[موتور شماره چهار]{
 			%		\centering
-			%		\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/MIMO/lqidg_roll_pitch_Omega4_nn.png}
+			%		\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/MIMO/lqidg_roll_pitch_Omega4_nn.png}
 			%	}
 		%	\caption{فرمان کنترلی موتورها در کنترل وضعیت (تعقیب ورودی صفر)}
 		%\end{figure}
@@ -1511,12 +1510,12 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		%	\centering
 		%	\begin{subfigure}[H]
 			%		\centering
-			%		\includegraphics[width=12cm]{../Thesis/Figures/MIL/LQIDG/3DOF/lqidg_roll.png}
+			%		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/3DOF/lqidg_roll.png}
 			%		\caption{تغییرات زاویه رول}
 			%	\end{subfigure}%
 		%	\begin{subfigure}
 			%		\centering
-			%		\includegraphics[width=12cm]{../Thesis/Figures/MIL/LQIDG/3DOF/lqidg_pitch.png}
+			%		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/3DOF/lqidg_pitch.png}
 			%		\caption{تغییرات زاویه پیچ}
 			%	\end{subfigure}
 		%	\caption{عملکرد کنترل‌کننده LQIDG در کنترل زاویه رول، پیچ و یاد (تعقیب ورودی صفر)}
@@ -1526,7 +1525,7 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		%	\centering
 		%	\begin{subfigure}[H]
 			%		\centering
-			%		\includegraphics[width=12cm]{../Thesis/Figures/MIL/LQIDG/3DOF/lqidg_yaw.png}
+			%		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/3DOF/lqidg_yaw.png}
 			%		\caption{تغییرات زاویه یاو}
 			%	\end{subfigure}
 		%	\caption{عملکرد کنترل‌کننده LQIDG در کنترل زاویه رول، پیچ و یاد (تعقیب ورودی صفر)}
@@ -1535,15 +1534,15 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 			\centering
 			\subfigure[تغییرات زاویه رول]{
 				\centering
-				\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQIDG/3DOF/lqidg_roll_nn.png}
+				\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll_nn.png}
 			}
 			\subfigure[تغییرات زاویه پیچ]{
 				\centering
-				\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQIDG/3DOF/lqidg_pitch_nn.png}
+				\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_pitch_nn.png}
 			}
 			\subfigure[تغییرات زاویه یاو]{
 				\centering
-				\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQIDG/3DOF/lqidg_yaw_nn.png}
+				\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_yaw_nn.png}
 			}
 			\caption{عملکرد کنترل‌کننده \lr{LQIDG} در کنترل وضعیت (تعقیب ورودی صفر)}
 			\label{lqidg_roll_pitch_yaw_fig_simulation_ll}
@@ -1556,19 +1555,19 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 			\centering
 			\subfigure[موتور شماره یک]{
 				\centering
-				\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_1_nn.png}
+				\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_1_nn.png}
 			}
 			\subfigure[موتور شماره دو]{
 				\centering
-				\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_2_nn.png}
+				\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_2_nn.png}
 			}
 			\subfigure[موتور شماره سه]{
 				\centering
-				\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_3_nn.png}
+				\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_3_nn.png}
 			}
 			\subfigure[موتور شماره چهار]{
 				\centering
-				\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_4_nn.png}
+				\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/3DOF/lqidg_roll_pitch_Omega_4_nn.png}
 			}
 			\caption{فرمان کنترلی موتورها در کنترل وضعیت (تعقیب ورودی صفر)}
 		\end{figure}
@@ -1604,12 +1603,12 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 	%	\centering
 	%	\begin{subfigure}
 		%		\centering
-		%		\includegraphics[width=12cm]{../Thesis/Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll.png}
+		%		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll.png}
 		%		\caption{تغییرات زاویه رول}
 		%	\end{subfigure}%
 	%	\begin{subfigure}
 		%		\centering
-		%		\includegraphics[width=12cm]{../Thesis/Figures/MIL/LQIDG/Roll_Pitch/lqidg_pitch.png}
+		%		\includegraphics[width=12cm]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_pitch.png}
 		%		\caption{تغییرات زاویه پیچ}
 		%	\end{subfigure}
 	%	
@@ -1618,11 +1617,11 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		\centering
 		\subfigure[تغییرات زاویه رول]{
 			\centering
-			\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_nn.png}
+			\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_nn.png}
 		}
 		\subfigure[تغییرات زاویه پیچ]{
 			\centering
-			\includegraphics[width=.48\linewidth]{../Thesis/Figures/MIL/LQIDG/Roll_Pitch/lqidg_pitch_nn.png}
+			\includegraphics[width=.48\linewidth]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_pitch_nn.png}
 		}
 		\caption{عملکرد کنترل‌کننده \lr{LQIDG} در کنترل زاویه رول و پیچ (تعقیب ورودی صفر)}
 		\label{lqidg_roll_pitch_fig_simulation}
@@ -1634,19 +1633,19 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		\centering
 		\subfigure[موتور شماره یک]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_1_nn.png}
+			\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_1_nn.png}
 		}
 		\subfigure[موتور شماره دو]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_2_nn.png}
+			\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_2_nn.png}
 		}
 		\subfigure[موتور شماره سه]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_3_nn.png}
+			\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_3_nn.png}
 		}
 		\subfigure[موتور شماره چهار]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_4_nn.png}
+			\includegraphics[width=.45\linewidth]{../Figures/MIL/LQIDG/Roll_Pitch/lqidg_roll_pitch_Omega_4_nn.png}
 		}
 		\caption{فرمان کنترلی موتورها در کنترل زاویه رول و پیچ (تعقیب ورودی صفر)}
 	\end{figure}
@@ -1689,7 +1688,7 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 	%شبیه‌سازی تک کانال استند چهارپره در حضور کنترل‌کننده \lr{LQR} انجام شد. در این بخش به پیاده‌سازی کنترل‌کننده \lr{LQR} برای کانال پیچ استند سه درجه آزادی پرداخته می‌شود. 
 	در پیاده‌سازی از ضرایب وزنی بهینه به دست آمده در قسمت شبیه‌سازی استفاده شده‌است.
 	\begin{figure}[H]
-		\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQR/Pitch/lqr_pitch.png}
+		\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQR/Pitch/lqr_pitch.png}
 		\centering
 		\caption{عملكرد کنترل‌کننده \lr{LQR} در کنترل زاويه پیچ (تعقیب ورودی صفر)}
 	\end{figure}
@@ -1699,12 +1698,12 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 	%	\centering
 	%	\begin{subfigure}
 		%		\centering
-		%		\includegraphics[width=12cm]{../Thesis/Figures/Calibration/LQR/Pitch/lqr_pitch_Omega_1.png}
+		%		\includegraphics[width=12cm]{../Figures/Calibration/LQR/Pitch/lqr_pitch_Omega_1.png}
 		%		\caption{موتور شماره یک}
 		%	\end{subfigure}
 	%	\begin{subfigure}
 		%		\centering
-		%		\includegraphics[width=12cm]{../Thesis/Figures/Calibration/LQR/Pitch/lqr_pitch_Omega_3.png}
+		%		\includegraphics[width=12cm]{../Figures/Calibration/LQR/Pitch/lqr_pitch_Omega_3.png}
 		%		\caption{موتور شماره سه}
 		%	\end{subfigure}
 	%	\caption{فرمان کنترل‌کننده موتور سه و چهار در کنترل زاویه رول و پیچ (تعقیب ورودی صفر)}
@@ -1713,11 +1712,11 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		\centering
 		\subfigure[موتور شماره یک]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQR/Pitch/lqr_pitch_Omega_1.png}
+			\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQR/Pitch/lqr_pitch_Omega_1.png}
 		}
 		\subfigure[موتور شماره سه]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQR/Pitch/lqr_pitch_Omega_3.png}
+			\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQR/Pitch/lqr_pitch_Omega_3.png}
 		}
 		\caption{فرمان کنترلی موتورهای یک و سه در کنترل زاویه پیچ (تعقیب ورودی صفر)}
 	\end{figure}
@@ -1733,7 +1732,7 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 	در ادامه به پیاده‌سازی کنترل‌کننده \lr{LQDG} بر رویه کانال پیچ استند سه درجه آزادی پرداخته می‌شود.
 	در پیاده‌سازی از ضرایب وزنی بهینه به دست آمده در قسمت شبیه‌سازی استفاده شده‌است.
 	\begin{figure}[H]
-		\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQDG/Pitch/lqdg_pitch.png}
+		\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQDG/Pitch/lqdg_pitch.png}
 		\centering
 		\caption{عملكرد کنترل‌کننده \lr{LQDG} در کنترل زاويه پیچ (تعقیب ورودی صفر)}
 	\end{figure}
@@ -1742,11 +1741,11 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 		\centering
 		\subfigure[موتور شماره یک]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQDG/Pitch/lqdg_pitch_Omega_1.png}
+			\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQDG/Pitch/lqdg_pitch_Omega_1.png}
 		}
 		\subfigure[موتور شماره سه]{
 			\centering
-			\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQDG/Pitch/lqdg_pitch_Omega_3.png}
+			\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQDG/Pitch/lqdg_pitch_Omega_3.png}
 		}
 		\caption{فرمان کنترلی موتورهای یک و سه در کنترل زاویه پیچ (تعقیب ورودی صفر)}
 	\end{figure}
@@ -1769,7 +1768,7 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 در ادامه به پیاده‌سازی کنترل‌کننده \lr{LQIDG} بر رویه کانال پیچ استند سه درجه آزادی پرداخته می‌شود.
 در پیاده‌سازی از ضرایب وزنی بهینه به دست آمده در قسمت شبیه‌سازی استفاده شده‌است.
 \begin{figure}[H]
-	\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQIDG/Pitch/lqidg_pitch.png}
+	\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQIDG/Pitch/lqidg_pitch.png}
 	\centering
 	\caption{عملكرد کنترل‌کننده  LQIDG در کنترل زاويه پیچ (تعقیب ورودی صفر)}
 \end{figure}
@@ -1779,12 +1778,12 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 %	\centering
 %	\begin{subfigure}
 	%		\centering
-	%		\includegraphics[width=12cm]{../Thesis/Figures/Calibration/LQIDG/Pitch/lqidg_Omega_1.png}
+	%		\includegraphics[width=12cm]{../Figures/Calibration/LQIDG/Pitch/lqidg_Omega_1.png}
 	%		\caption{موتور شماره یک}
 	%	\end{subfigure}
 %	\begin{subfigure}
 	%		\centering
-	%		\includegraphics[width=12cm]{../Thesis/Figures/Calibration/LQIDG/Pitch/lqidg_Omega_3.png}
+	%		\includegraphics[width=12cm]{../Figures/Calibration/LQIDG/Pitch/lqidg_Omega_3.png}
 	%		\caption{موتور شماره سه}
 	%	\end{subfigure}
 %	\caption{فرمان کنترل‌کننده موتور سه و چهار در کنترل زاویه رول و پیچ (تعقیب ورودی صفر)}
@@ -1794,11 +1793,11 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 	\centering
 	\subfigure[موتور شماره یک]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/Pitch/lqidg_Omega_1.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/Pitch/lqidg_Omega_1.png}
 	}
 	\subfigure[موتور شماره سه]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/Pitch/lqidg_Omega_3.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/Pitch/lqidg_Omega_3.png}
 	}
 	
 	\caption{فرمان کنترلی موتورهای یک و سه در کنترل زاویه پیچ (تعقیب ورودی صفر)}
@@ -1815,7 +1814,7 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 در ادامه به پیاده‌سازی کنترل‌کننده \lr{LQIDG} بر رویه کانال پیچ استند سه درجه آزادی پرداخته می‌شود.
 در پیاده‌سازی از ضرایب وزنی بهینه به دست آمده در قسمت شبیه‌سازی استفاده شده‌است.
 \begin{figure}[H]
-	\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQIDG/Pitch/lqidg_pitch.png}
+	\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQIDG/Pitch/lqidg_pitch.png}
 	\centering
 	\caption{عملكرد کنترل‌کننده  LQIDG در کنترل زاويه پیچ (تعقیب ورودی صفر)}
 \end{figure}
@@ -1825,12 +1824,12 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 %	\centering
 %	\begin{subfigure}
 	%		\centering
-	%		\includegraphics[width=12cm]{../Thesis/Figures/Calibration/LQIDG/Pitch/lqidg_Omega_1.png}
+	%		\includegraphics[width=12cm]{../Figures/Calibration/LQIDG/Pitch/lqidg_Omega_1.png}
 	%		\caption{موتور شماره یک}
 	%	\end{subfigure}
 %	\begin{subfigure}
 	%		\centering
-	%		\includegraphics[width=12cm]{../Thesis/Figures/Calibration/LQIDG/Pitch/lqidg_Omega_3.png}
+	%		\includegraphics[width=12cm]{../Figures/Calibration/LQIDG/Pitch/lqidg_Omega_3.png}
 	%		\caption{موتور شماره سه}
 	%	\end{subfigure}
 %	\caption{فرمان کنترل‌کننده موتور سه و چهار در کنترل زاویه رول و پیچ (تعقیب ورودی صفر)}
@@ -1840,11 +1839,11 @@ $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{ii}}^{-1}\boldsymbol{B_{a_i}}^\ma
 	\centering
 	\subfigure[موتور شماره یک]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/Pitch/lqidg_Omega_1.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/Pitch/lqidg_Omega_1.png}
 	}
 	\subfigure[موتور شماره سه]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/Pitch/lqidg_Omega_3.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/Pitch/lqidg_Omega_3.png}
 	}
 	
 	\caption{فرمان کنترلی موتورهای یک و سه در کنترل زاویه پیچ (تعقیب ورودی صفر)}
@@ -1873,11 +1872,11 @@ $\theta = -60^{\circ}$
 	\centering
 	\subfigure[تغییرات زاویه رول]{
 		\centering
-		\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQIDG/Roll_Pitch/lqidg_roll.png}
+		\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQIDG/Roll_Pitch/lqidg_roll.png}
 	}
 	\subfigure[تغییرات زاویه پیچ]{
 		\centering
-		\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQIDG/Roll_Pitch/lqidg_pitch.png}
+		\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQIDG/Roll_Pitch/lqidg_pitch.png}
 	}
 	\caption{عملکرد کنترل‌کننده \lr{LQIDG} در کنترل زاویه رول و پیچ (تعقیب ورودی صفر)}
 \end{figure}
@@ -1886,19 +1885,19 @@ $\theta = -60^{\circ}$
 	\centering
 	\subfigure[موتور شماره یک]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/Roll_Pitch/lqidg_Omega_1.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/Roll_Pitch/lqidg_Omega_1.png}
 	}
 	\subfigure[موتور شماره دو]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/Roll_Pitch/lqidg_Omega_2.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/Roll_Pitch/lqidg_Omega_2.png}
 	}
 	\subfigure[موتور شماره سه]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/Roll_Pitch/lqidg_Omega_3.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/Roll_Pitch/lqidg_Omega_3.png}
 	}
 	\subfigure[موتور شماره چهار]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/Roll_Pitch/lqidg_Omega_4.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/Roll_Pitch/lqidg_Omega_4.png}
 	}
 	\caption{فرمان کنترلی موتورها در کنترل زاویه رول و پیچ (تعقیب ورودی صفر)}
 \end{figure}
@@ -1915,15 +1914,15 @@ $\theta = -60^{\circ}$
 %	\centering
 %	\subfigure[تغییرات زاویه رول]{
 	%		\centering
-	%		\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQIDG/MIMO/lqidg_roll.png}
+	%		\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQIDG/MIMO/lqidg_roll.png}
 	%	}
 %	\subfigure[تغییرات زاویه پیچ]{
 	%		\centering
-	%		\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQIDG/MIMO/lqidg_pitch.png}
+	%		\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQIDG/MIMO/lqidg_pitch.png}
 	%	}
 %	\subfigure[تغییرات زاویه یاو]{
 	%		\centering
-	%		\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQIDG/MIMO/lqidg_yaw.png}
+	%		\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQIDG/MIMO/lqidg_yaw.png}
 	%	}
 %	\caption{عملکرد کنترل‌کننده \lr{LQIDG} در کنترل وضعیت (تعقیب ورودی صفر)}
 %\end{figure}
@@ -1934,19 +1933,19 @@ $\theta = -60^{\circ}$
 %	\centering
 %	\subfigure[موتور شماره یک]{
 	%		\centering
-	%		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/MIMO/lqidg_Omega_1.png}
+	%		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/MIMO/lqidg_Omega_1.png}
 	%	}
 %	\subfigure[موتور شماره دو]{
 	%		\centering
-	%		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/MIMO/lqidg_Omega_2.png}
+	%		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/MIMO/lqidg_Omega_2.png}
 	%	}
 %	\subfigure[موتور شماره سه]{
 	%		\centering
-	%		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/MIMO/lqidg_Omega_3.png}
+	%		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/MIMO/lqidg_Omega_3.png}
 	%	}
 %	\subfigure[موتور شماره چهار]{
 	%		\centering
-	%		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/MIMO/lqidg_Omega_4.png}
+	%		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/MIMO/lqidg_Omega_4.png}
 	%	}
 %	\caption{فرمان کنترلی موتورها در کنترل وضعیت (تعقیب ورودی صفر)}
 %\end{figure}
@@ -1966,15 +1965,15 @@ $\psi = 100^{\circ}$
 	\centering
 	\subfigure[تغییرات زاویه رول]{
 		\centering
-		\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQIDG/3DOF/lqidg_roll.png}
+		\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_roll.png}
 	}
 	\subfigure[تغییرات زاویه پیچ]{
 		\centering
-		\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQIDG/3DOF/lqidg_pitch.png}
+		\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_pitch.png}
 	}
 	\subfigure[تغییرات زاویه یاو]{
 		\centering
-		\includegraphics[width=.48\linewidth]{../Thesis/Figures/Calibration/LQIDG/3DOF/lqidg_yaw.png}
+		\includegraphics[width=.48\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_yaw.png}
 	}
 	\caption{عملکرد کنترل‌کننده \lr{LQIDG} در کنترل وضعیت (تعقیب ورودی صفر)}
 \end{figure}
@@ -1985,19 +1984,19 @@ $\psi = 100^{\circ}$
 	\centering
 	\subfigure[موتور شماره یک]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/3DOF/lqidg_Omega_1.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_1.png}
 	}
 	\subfigure[موتور شماره دو]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/3DOF/lqidg_Omega_2.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_2.png}
 	}
 	\subfigure[موتور شماره سه]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/3DOF/lqidg_Omega_3.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_3.png}
 	}
 	\subfigure[موتور شماره چهار]{
 		\centering
-		\includegraphics[width=.45\linewidth]{../Thesis/Figures/Calibration/LQIDG/3DOF/lqidg_Omega_4.png}
+		\includegraphics[width=.45\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_4.png}
 	}
 	\caption{فرمان کنترلی موتورها در کنترل وضعیت (تعقیب ورودی صفر)}
 \end{figure}

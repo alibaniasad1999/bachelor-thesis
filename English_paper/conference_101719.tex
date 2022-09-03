@@ -62,17 +62,17 @@ alibaniasad1999@yahoo.com}
 \maketitle
 
 \begin{abstract}
-    In this paper, a quadcopter stand with three degrees of freedom was controlled using game theory-based control. The first player tracks a desired input, and the second player creates a disturbance in the tracking of the first player to cause an error in the tracking. The control effort is chosen using the Nash equilibrium, which presupposes that the other player made the worst move. In addition to being resistant to input interruptions, this method may also be resilient to modeling system uncertainty. This method evaluated the performance through simulation in the Simulink environment and implementation on a three-degree-of-freedom stand.
+    In this paper, a quadcopter stand with three degrees of freedom was controlled using game theory-based control. The first player tracks the desired input, and the second player creates a disturbance in the tracking of the first player to cause an error in the tracking. The control effort is chosen using the Nash equilibrium, which presupposes that the other player made the worst move. In addition to being resistant to input interruptions, this method may also be resilient to modeling system uncertainty. This method evaluated the performance through simulation in the Simulink environment and implementation on a three-degree-of-freedom stand.
 \end{abstract}
 
 \begin{IEEEkeywords}
-    Quadcopter, Differential Game, Game Theory, Nash Equilibrium, Three Degree of Freedom Stand, Model Base Design, Linear Quadratic Regulator
+    Quadcopter, Differential Game, Game Theory, Three Degree of Freedom Stand, Linear Quadratic
 \end{IEEEkeywords}
 
 \section{Introduction}
 % This document is a model and instructions for \LaTeX.
 % Please observe the conference page limits. 
-Quadcopter is a type of helicopter with four rotors. % https://en.wikipedia.org/wiki/Quadcopter#cite_note-dasc04-1
+A quadcopter is a type of helicopter with four rotors. % https://en.wikipedia.org/wiki/Quadcopter#cite_note-dasc04-1
 Quadcopters have extensive applications due to their excellent maneuverability and the possibility of hover flight with high balance.
 % The outstanding maneuverability of quadcopters and the possibility of hover flight with a high balance make them very useful.
 In recent years, companies, universities, and research centers have attracted more to this type of UAV.
@@ -121,8 +121,15 @@ To avoid collisions with obstacles, the controller should control the quadrotor 
 
 
 \section{Mathematical modeling}
-In this section, first, a nonlinear dynamic model of the quadrotor is presented for control purposes.
-Then, the system linearized for three SISO systems. In dynamic modeling of the quadrotor, the vehicle is assumed to be rigid.
+First, this section presents a nonlinear dynamic model of the three degrees of freedom quadrotor, \figurename{\ref{quadlab}}, for control purposes.
+\begin{figure}[!htbp]
+	\includegraphics[width=6cm]{../Figures/introduction/3DOFQuad.png}
+	\centering
+	\caption{Three degrees of freedom quadrotor in laboratory}
+	\label{quadlab}
+\end{figure}
+
+Then, the system linearized for three SISO systems. The vehicle is assumed to be rigid in the dynamic modeling of the quadrotor.
 \begin{figure}[htbp]
 	\includegraphics[width=6cm]{../Figures/Forces/StandAssumations.png}
 	\centering
