@@ -536,8 +536,9 @@ Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{i}}^
 
 
 \section{Simulation}
-used Simulink
-\subsection{LQR}
+
+In this section, the quadrotor roll loop control is simulated in the presence of LQR, LQDG, and LQIDG controllers. Then, the simulation of two and three degrees of freedom was done in the presence of the LQIDG controller.
+\subsection{Roll Loop Control}
 
 LQR weighting matrices are optimized using the TCACS optimization method in the simulation.
 % In the simulation, the TCACS optimization method is used to optimize the LQR weighting matrices.
@@ -552,7 +553,7 @@ Here are the weighting matrices for the optimized output.
 	\end{bmatrix}, \quad R_{\text{LQR}} =  0.0001
 \end{equation} 
 
-\subsection{LQDG}
+% \subsection{LQDG}
 The weighting matrices used in the LQDG portion are chosen like that of the LOR.
 % LQDG weighting matrices are chosen like the method used in the LQR section.
 % In the LQDG section, weighting matrices are selected similarly to those used in the LOR section.
@@ -560,7 +561,7 @@ The weighting matrices used in the LQDG portion are chosen like that of the LOR.
 	\boldsymbol{\mathrm{Q}}_{\text{LQDG}} = \begin{bmatrix}
 		100 & 0\\
 		0 & 0.078
-	\end{bmatrix}, \quad R_{1_{\text{LQDG}}} =  1, \quad R_{2_{\text{LQDG}}} =  99.96
+	\end{bmatrix}, \quad R_{{\text{LQDG}}} =  1, \quad R_{d_{_\text{LQDG}}} =  99.96
 \end{equation}
 
 % \begin{equation}
@@ -577,10 +578,8 @@ The weighting matrices used in the LQDG portion are chosen like that of the LOR.
     \end{bmatrix}
 \end{equation}
 
-\subsection{LQIDG}
+% \subsection{LQIDG}
 LQIDG weighting matrices are chosen like the method used in the LQR and LQDG sections.
-
-Roll:
 \begin{equation}
     \begin{split}
         &\boldsymbol{\mathrm{Q_{{\text{LQIDG}}}}} = \begin{bmatrix}
@@ -590,7 +589,7 @@ Roll:
             0 & 0 & 0 & 756.1341
         \end{bmatrix}
         \\[1em]
-        &R_{1_{\text{LQIDG}}} =  1, \quad R_{2_{\text{LQIDG}}} =  7.7422
+        &R_{{\text{LQIDG}}} =  1, \quad R_{d_{_\text{LQIDG}}} =  7.7422
     \end{split}
 \end{equation}
 
@@ -607,7 +606,7 @@ Roll:
 		28.1410 &   8.4017  & 27.2223  & 11.6894
 	\end{bmatrix}
 \end{equation}
-Roll-Pitch:
+\subsection{Roll-Pitch Loop Control}
 \begin{equation}
 	\begin{split}
 		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{roll}}}} &= \begin{bmatrix}
@@ -622,11 +621,11 @@ Roll-Pitch:
 		0 & 0 & 2.22 & 0\\
 		0 & 0 & 0 & 0
 		\end{bmatrix}\\[1em]
-	 R_{1_{\text{LQIDG}}} &=  1, \quad R_{2_{\text{LQIDG}}} =  7.7422
+	 R_{{\text{LQIDG}}} &=  1, \quad R_{d_{\text{LQIDG}}} =  7.7422
 	\end{split}
 \end{equation}
 
-Roll-Pitch-Yaw:
+\subsection{Roll-Pitch-Yaw Loop Control}
 \begin{equation}
 	\begin{split}
 		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{roll}}}} &= \begin{bmatrix}
@@ -647,7 +646,7 @@ Roll-Pitch-Yaw:
 			0 & 0 & 1.81 & 0 \\ 
 			0 & 0 & 0 & 0.45 \\
 		\end{bmatrix}\times 10^{-4}\\[1em]
-          R_{1_{\text{LQIDG}}} &= 1, \quad  R_{2_{\text{LQIDG}}} = 1.2577
+          R_{{\text{LQIDG}}} &= 1, \quad  R_{d_{\text{LQIDG}}} = 1.2577
 	\end{split}
 \end{equation}
 
