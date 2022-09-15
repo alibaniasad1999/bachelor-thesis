@@ -123,7 +123,7 @@ To avoid collisions with obstacles, the controller should control the quadrotor 
 
 
 
-\section{Mathematical modeling}
+\section{Problem Statement}
 % First, this section presents a nonlinear dynamic model of the three degrees of freedom quadrotor, \figurename{\ref{quadlab}}, for control purposes.
 In this section, a nonlinear dynamic is presented for an experimental setup of a quadrotor, as shown in \figurename{\ref{quadlab}}.
 The quadrotor is free to rotate about its roll, pitch, and yaw axes. The Euler angle angles and angular velocities along three orthogonal axes are measured simultaneously using Attitude and Heading Reference Systems (AHRS). LQDG utilizes these noisy measurements for real-time control of the Euler angles. The block diagram of the control purpose is shown in \figurename{\ref{block_diagram}}.
@@ -141,8 +141,8 @@ The quadrotor is free to rotate about its roll, pitch, and yaw axes. The Euler a
 \end{figure}
 
 
-
-\subsection{Configuration of a Quadcopter}
+\section{Modeling of an Experimental Setup of a Quadrotor}
+\subsection{Configuration of the Quadrotor }
 The schematic of a quadrotor is given in \figurename{\ref{QuadAssum}}. Each rotor is considered a rigid disk is rotating about the axis $Z_B$ in the body fixed frame with an angular velocity $\Omega_i$.
 Rotors 1 and 3 rotate in the same direction, i.e., counterclockwise, while rotors 2 and 4 rotate in the opposite direction, i.e., clockwise, to cancel yawing moment of the quadrotor.
 \begin{figure}[!h]
@@ -151,7 +151,7 @@ Rotors 1 and 3 rotate in the same direction, i.e., counterclockwise, while rotor
 	\caption{Configuration of the quadrotor}
 	\label{QuadAssum}
 \end{figure}
-\subsection{Modeling of Quadrotor}
+\subsection{Dynamic Model}
 The dynamic model of the quadrotor, obtained from the Newton-Euler method, is stated as follows \cite{b15}, \cite{b16}:
 \begin{equation}
 	\begin{split}
@@ -192,6 +192,7 @@ Also, $b$ and $d$ are thrust and drag coefficients, respectively, and $d_{cg}$ i
 	\end{split}
 \end{equation}
 where $\Omega_{\text{mean}}$ is the average angular velocity of the rotors.
+\subsection{State-Space Form }
 Here, the state-space model of the experimental setup of the quadrotor is presented for the control purpose. by defining $x_1 = p$, $x_2 = q$, $x_3 = r$, $x_4 = \phi$, $x_5 = \theta$, and $x_6 = \psi$; the model of the experimental setup in state-space form are expressed as:
 \begin{equation}
 	\begin{split}
@@ -216,7 +217,7 @@ The measurement model is written as:
 	\end{split}
 \end{equation}
 
-
+\subsection{Linear Model}
 
 The continuous-time linear model is utilized to drive the control commands on the quadrotor. The linear state-space model is denoted as:
 \begin{equation}
