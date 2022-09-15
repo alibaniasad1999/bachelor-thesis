@@ -65,7 +65,7 @@ alibaniasad1999@yahoo.com}
     % In this paper, a quadcopter stand with three degrees of freedom was controlled using game theory-based control. The first player tracks the desired input, and the second player creates a disturbance in the tracking of the first player to cause an error in the tracking. The control effort is chosen using the Nash equilibrium, which presupposes that the other player made the worst move. In addition to being resistant to input interruptions, this method may also be resilient to modeling system uncertainty. This method evaluated the performance through simulation in the Simulink environment and implementation on a three-degree-of-freedom stand.
 	% In this study, a linear quadratic with integral action based on the differential game theory is implemented real-time for a three-degree-of-freedom experimental setup of a quadrotor. For this purpose, two players are considered for each of roll, pitch, and yaw channels of the quadrotor.
 	% First player searches the best control command for each channels of the setup of a quadrotor based on the minimization a quadratic criterion; when the worst disturbances are produced by the second player. Performance of the proposed controller is evaluated in level flight and compared to the LQR controller.
-	The accurate attitude control of a quadrotor is necessary, especially when facing disturbance. In this study, a linear quadratic with integral action based on the differential game theory is implemented on a three-degree-of-freedom experimental setup of a quadrotor. For this purpose, first, a continuous state-space model of the quadrotor is derived based on the linearization of the nonlinear equations of motion, and the parameters of the state-space model structure are identified with the experimental results. Then, the attitude control commands of the quadrotor are derived based on two players; one finds the best attitude control command, and the other creates the disturbance by minimizing a quadratic criterion, defined as the sum of outputs plus the control weighted effort. The performance of the proposed controller is evaluated in level flight and compared to the linear quadratic regulator controller. Results demonstrate that the proposed approach has an excellent performance in dissipating the disturbances created by the modeling error.
+	The accurate attitude control of a quadrotor is necessary, especially when facing disturbance. In this study, a linear quadratic with integral action based on the differential game theory is implemented on a three-degree-of-freedom experimental setup of a quadrotor. For this purpose, first, a continuous state-space model of the quadrotor is derived based on the linearization of the nonlinear equations of motion, and the parameters of the state-space model structure are identified with the experimental results. Then, the attitude control commands of the quadrotor are derived based on two players; one finds the best attitude control command, and the other creates the disturbance by minimizing a quadratic criterion, defined as the sum of outputs plus the weighted control effort. The performance of the proposed controller is evaluated in level flight and compared to the linear quadratic regulator controller. Results demonstrate that the proposed approach has an excellent performance in dissipating the disturbances created by the modeling error.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -827,7 +827,35 @@ LQIDG weighting matrices are chosen like the method used in the LQR and LQDG sec
 \end{equation}
 
 \section{Result and Discussion}
+Here, the results of the LQIR-DG controller method are devoted to the control loops of the roll, pitch, and yaw of the experimental setup of the quadrotor. First, the controller parameters are tuned using the results of numerical simulations. Moreover, the performance of the LQIR-DG controller is compared to an LQR control strategy. The LQR controller parameters are presented in Table \ref{table: control gain}.
+\begin{table}[!h]
+	\renewcommand{\arraystretch}{1.3}
+	\caption{Parameters of the LQR Controller}
+	\begin{center}
+	\begin{tabular}{c c c}
+	\hline
+	\textbf{Control Loop} & \textbf{\textit{Initial Value}}& \textbf{\textit{Value After Estimation}} \\
+	\hline
+	$A_1$ & $7.312$ & $4.152$ \\
+	$A_3$  & $1.1\times10^{-4}$ & $5.47\times10^{-5}$\\
+	$B_1$  & $4.53$ & $4.36$ \\
+	$B_3$  & $1.1\times10^{-4}$ & $7.13\times10^{-5}$ \\ 
+	$C_2$  & $5.45\times10^{-5}$ & $1.3\times10^{-5}$ \\
+	\hline
+	\end{tabular}
+	\label{table: control gain}
+	\end{center}
+\end{table}
 
+\subsection{Performance of the LQIR-DG Controller}
+
+The performance of the LQIR-DG controller is evaluated in Figure 8. The desired and actual outputs, including the roll, pitch, and yaw angles, are compared in Figures 8 (a) and (b). The desired scenario of the simulator is considered a level flight. These figures show that the attitude outputs of the quadrotor converge to the desired values in less than three seconds. Moreover, Figures 8 (c) and (d) show the angular velocity command of the quadrotor, respectively. These results illustrate that the LQIR-DG approach appropriately controls the attitude of the experimental setup of the quadrotor.
+
+
+%%% fig 
+
+\subsection{Comparison with Well-known Control Strategies}
+Here, the LQIR-DG controller performance is compared with famous control strategies such as the LQR Figure 10. Figure 10 (a) compares the quadrotor's desired and actual pitch angle in the presence of these controllers. These results indicate that the LQIR-DG controller can provide high tracking performance, such as good transient response and high rapid convergence relative to other controllers for pitch angle control of the experimental setup of the quadrotor.
 
 \begin{figure*}[!h]
 	\centering
@@ -846,6 +874,8 @@ LQIDG weighting matrices are chosen like the method used in the LQR and LQDG sec
 	\caption{implementation result}
 \end{figure*}
 
+\section{Conclusion}
+In this study, a linear quadratic with integral action based on the differential game theory, called LQIR-DG, was implemented for level attitude control in an experimental setup of a quadrotor. To implement the proposed controller structure, first, an accurate dynamic model of the quadrotor was linearized in the state-space form, and then the model parameters were estimated. Next, two players were considered for each of the quadrotor's roll, pitch, and yaw channels. The first player found the best control command for each channel of the setup of a quadrotor based on the minimization of a quadratic criterion; when the second player produced the disturbances. Finally, the performance of the proposed controller was evaluated in level flight and compared to the LQR controller. The implementation results verify the successful performance of the LQIR-DG method in the level of attitude control of the experimental setup of the quadrotor.
 
 \begin{figure*}[!h]
 	\centering
