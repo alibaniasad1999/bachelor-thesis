@@ -65,7 +65,7 @@ alibaniasad1999@yahoo.com}
     % In this paper, a quadcopter stand with three degrees of freedom was controlled using game theory-based control. The first player tracks the desired input, and the second player creates a disturbance in the tracking of the first player to cause an error in the tracking. The control effort is chosen using the Nash equilibrium, which presupposes that the other player made the worst move. In addition to being resistant to input interruptions, this method may also be resilient to modeling system uncertainty. This method evaluated the performance through simulation in the Simulink environment and implementation on a three-degree-of-freedom stand.
 	% In this study, a linear quadratic with integral action based on the differential game theory is implemented real-time for a three-degree-of-freedom experimental setup of a quadrotor. For this purpose, two players are considered for each of roll, pitch, and yaw channels of the quadrotor.
 	% First player searches the best control command for each channels of the setup of a quadrotor based on the minimization a quadratic criterion; when the worst disturbances are produced by the second player. Performance of the proposed controller is evaluated in level flight and compared to the LQR controller.
-	The accurate attitude control of a quadrotor is necessary especially when facing disturbance. In this study, a linear quadratic with integral action based on the differential game theory is implemented on a three-degree-of-freedom experimental setup of a quadrotor. For this purpose, first, a continuous state-space model of the quadrotor is derived based on the linearization of the nonlinear equations of motion and the parameters of the state-space model structure are identified with the experimental results. Then, the attitude control commands of the quadrotor are derived based on two players, one finds the best attitude control command and other creates the disturbance by minimization a quadratic criterion, defined as the sum of outputs plus the control weighted effort. Performance of the proposed controller is evaluated in level flight and compared to the linear quadratic regulator controller. Results demonstrate that the proposed approach has excellent performance in dissipating the disturbances created by the modeling error.
+	The accurate attitude control of a quadrotor is necessary, especially when facing disturbance. In this study, a linear quadratic with integral action based on the differential game theory is implemented on a three-degree-of-freedom experimental setup of a quadrotor. For this purpose, first, a continuous state-space model of the quadrotor is derived based on the linearization of the nonlinear equations of motion, and the parameters of the state-space model structure are identified with the experimental results. Then, the attitude control commands of the quadrotor are derived based on two players; one finds the best attitude control command, and the other creates the disturbance by minimizing a quadratic criterion, defined as the sum of outputs plus the control weighted effort. The performance of the proposed controller is evaluated in level flight and compared to the linear quadratic regulator controller. Results demonstrate that the proposed approach has an excellent performance in dissipating the disturbances created by the modeling error.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -826,7 +826,9 @@ LQIDG weighting matrices are chosen like the method used in the LQR and LQDG sec
 	\end{split}
 \end{equation}
 
-\section{Results}
+\section{Result and Discussion}
+
+
 \begin{figure*}[!h]
 	\centering
 	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_roll.png}
