@@ -312,145 +312,145 @@ Moreover, the state and input matrices are derived as:
 \end{equation}
 
 % Then, the system linearized for three SISO systems. The vehicle is assumed to be rigid in the dynamic modeling of the quadrotor.
-The space state of a three-degree-of-freedom quadcopter is defined as:
-\begin{equation}
-	\begin{bmatrix}
-		x_1\\x_2\\x_3\\x_4\\x_5\\x_6\\
-	\end{bmatrix} = 
-\begin{bmatrix}
-	\phi\\ \theta \\ \psi \\ p\\ q\\ r
-\end{bmatrix}
-\end{equation}
-For simplicity, the system's inputs have been changed from rotational speed to influential forces in roll, pitch, and yaw modes. This change makes the problem from multi-input and multi-output to three single-input problems.
-Then, the input vector is defined as
-\begin{equation}
-	\boldsymbol{\mathrm{u}} = \begin{bmatrix}
-		u_1&u_2&u_3
-	\end{bmatrix}^\mathrm{T}
-\end{equation}
-where 
-\begin{equation}\label{SISO_force}
-	u_1 = \omega_2^2 - \omega_4^2, ~
-	u_2 = \omega_1^2 - \omega_3^2, ~
-	u_3 = \omega_1^2 - \omega_2^2  + \omega_3^2 - \omega_4^2
-\end{equation}
-The dynamic model of the three-degree-of-freedom quadcopter stand can be described as
-\begin{equation}
-	\boldsymbol{\dot{\mathrm{x}}} = \boldsymbol{\mathrm{f}}(\boldsymbol{\mathrm{x}}, \boldsymbol{\mathrm{u}})
-\end{equation}
-where elements of $\boldsymbol{\mathrm{f}}$ are nonlinear functions of the state vector $\boldsymbol{\mathrm{x}}$
-and the input vector $\boldsymbol{\mathrm{u}}$.
-% $\boldsymbol{\mathrm{f}}$ is described below.
-\begin{equation}
-	\boldsymbol{\mathrm{f}} = \begin{bmatrix}
-		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
-		x_5\cos(x_1)- x_6\sin(x_1)\\
-		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
-		A_1\cos(x_2)\sin(x_1) + 
-		A_2x_5x_6 + A_3u_1
-		\\
-		B_1\sin(x_2) + 
-		B_2x_4x_6 + B_3u_2\\
-		C_1x_4x_5 + 
-		C_2u_3
-	\end{bmatrix}
-\end{equation} 
-\subsection{Linearization}
-Following are the steps of linearization of the system.
-\begin{equation}
-	\delta \dot{\boldsymbol{\mathrm{x}}} = \boldsymbol{\mathrm{A}}\delta \boldsymbol{\mathrm{x}} + \boldsymbol{\mathrm{B}}\delta \boldsymbol{\mathrm{u}}
-\end{equation}
-Where $(*)$ term represents incremental variations around this point. 
-
-\begin{equation}
-	\begin{split}
-		&\boldsymbol{\mathrm{x}^*} = \begin{bmatrix}
-			0& 0 & 0 & 0& 0& 0
-		\end{bmatrix}^\mathrm{T}\\
-		&\boldsymbol{\mathrm{u}^*} = \begin{bmatrix}
-			% 0&0&0&4\times2000^2
-			0&0&0
-		\end{bmatrix}^\mathrm{T}
-	\end{split}
-\end{equation}
+% The space state of a three-degree-of-freedom quadcopter is defined as:
+% \begin{equation}
+% 	\begin{bmatrix}
+% 		x_1\\x_2\\x_3\\x_4\\x_5\\x_6\\
+% 	\end{bmatrix} = 
+% \begin{bmatrix}
+% 	\phi\\ \theta \\ \psi \\ p\\ q\\ r
+% \end{bmatrix}
+% \end{equation}
+% For simplicity, the system's inputs have been changed from rotational speed to influential forces in roll, pitch, and yaw modes. This change makes the problem from multi-input and multi-output to three single-input problems.
+% Then, the input vector is defined as
+% \begin{equation}
+% 	\boldsymbol{\mathrm{u}} = \begin{bmatrix}
+% 		u_1&u_2&u_3
+% 	\end{bmatrix}^\mathrm{T}
+% \end{equation}
+% where 
+% \begin{equation}\label{SISO_force}
+% 	u_1 = \omega_2^2 - \omega_4^2, ~
+% 	u_2 = \omega_1^2 - \omega_3^2, ~
+% 	u_3 = \omega_1^2 - \omega_2^2  + \omega_3^2 - \omega_4^2
+% \end{equation}
+% The dynamic model of the three-degree-of-freedom quadcopter stand can be described as
+% \begin{equation}
+% 	\boldsymbol{\dot{\mathrm{x}}} = \boldsymbol{\mathrm{f}}(\boldsymbol{\mathrm{x}}, \boldsymbol{\mathrm{u}})
+% \end{equation}
+% where elements of $\boldsymbol{\mathrm{f}}$ are nonlinear functions of the state vector $\boldsymbol{\mathrm{x}}$
+% and the input vector $\boldsymbol{\mathrm{u}}$.
+% % $\boldsymbol{\mathrm{f}}$ is described below.
+% \begin{equation}
+% 	\boldsymbol{\mathrm{f}} = \begin{bmatrix}
+% 		x_4 + x_5\sin(x_1)\tan(x_2) + x_6\cos(x_1)\tan(x_2)\\
+% 		x_5\cos(x_1)- x_6\sin(x_1)\\
+% 		(x_5\sin(x_1) + x_6\cos(x_1))\sec(x_2)\\
+% 		A_1\cos(x_2)\sin(x_1) + 
+% 		A_2x_5x_6 + A_3u_1
+% 		\\
+% 		B_1\sin(x_2) + 
+% 		B_2x_4x_6 + B_3u_2\\
+% 		C_1x_4x_5 + 
+% 		C_2u_3
+% 	\end{bmatrix}
+% \end{equation} 
+% \subsection{Linearization}
+% Following are the steps of linearization of the system.
+% \begin{equation}
+% 	\delta \dot{\boldsymbol{\mathrm{x}}} = \boldsymbol{\mathrm{A}}\delta \boldsymbol{\mathrm{x}} + \boldsymbol{\mathrm{B}}\delta \boldsymbol{\mathrm{u}}
+% \end{equation}
+% Where $(*)$ term represents incremental variations around this point. 
 
 % \begin{equation}
-% 	\boldsymbol{\mathrm{A}} = \left.\dfrac{\partial \boldsymbol{\mathrm{f}}}{\partial \boldsymbol{\mathrm{x}}}\right\vert_{\boldsymbol{\mathrm{x}^*}}
+% 	\begin{split}
+% 		&\boldsymbol{\mathrm{x}^*} = \begin{bmatrix}
+% 			0& 0 & 0 & 0& 0& 0
+% 		\end{bmatrix}^\mathrm{T}\\
+% 		&\boldsymbol{\mathrm{u}^*} = \begin{bmatrix}
+% 			% 0&0&0&4\times2000^2
+% 			0&0&0
+% 		\end{bmatrix}^\mathrm{T}
+% 	\end{split}
 % \end{equation}
 
+% % \begin{equation}
+% % 	\boldsymbol{\mathrm{A}} = \left.\dfrac{\partial \boldsymbol{\mathrm{f}}}{\partial \boldsymbol{\mathrm{x}}}\right\vert_{\boldsymbol{\mathrm{x}^*}}
+% % \end{equation}
+
+% % \begin{equation}
+% % 	\boldsymbol{\mathrm{B}} = \left.\dfrac{\partial \boldsymbol{\mathrm{f}}}{\partial \boldsymbol{\mathrm{u}}}\right\vert_{\boldsymbol{\mathrm{u}^*}}
+% % \end{equation}
+% Three single-input systems for each mode are presented here. The Space state matrices for the roll channel are shown below.
 % \begin{equation}
-% 	\boldsymbol{\mathrm{B}} = \left.\dfrac{\partial \boldsymbol{\mathrm{f}}}{\partial \boldsymbol{\mathrm{u}}}\right\vert_{\boldsymbol{\mathrm{u}^*}}
+% 	\begin{split}
+% 		&\boldsymbol{\mathrm{A}}_{\text{roll}} = \begin{bmatrix}
+% 			\dfrac{\partial  f_1}{\partial  x_1}& \dfrac{\partial  f_1}{\partial  x_4}
+% 			\\[1em]
+% 			\dfrac{\partial  f_4}{\partial  x_1}& \dfrac{\partial  f_4}{\partial  x_4}
+% 		\end{bmatrix} = 
+% 		\begin{bmatrix}
+% 			0 & 1\\
+% 			A_1 & 0
+% 		\end{bmatrix} \\[1em]
+% 		&\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
+% 			\dfrac{\partial  f_1}{\partial  u_1}
+% 			\\[1em]
+% 			\dfrac{\partial  f_4}{\partial  u_1}
+% 		\end{bmatrix} = 
+% 		\begin{bmatrix}
+% 			0\\
+% 			A_3
+% 		\end{bmatrix}
+% 	\end{split}
 % \end{equation}
-Three single-input systems for each mode are presented here. The Space state matrices for the roll channel are shown below.
-\begin{equation}
-	\begin{split}
-		&\boldsymbol{\mathrm{A}}_{\text{roll}} = \begin{bmatrix}
-			\dfrac{\partial  f_1}{\partial  x_1}& \dfrac{\partial  f_1}{\partial  x_4}
-			\\[1em]
-			\dfrac{\partial  f_4}{\partial  x_1}& \dfrac{\partial  f_4}{\partial  x_4}
-		\end{bmatrix} = 
-		\begin{bmatrix}
-			0 & 1\\
-			A_1 & 0
-		\end{bmatrix} \\[1em]
-		&\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
-			\dfrac{\partial  f_1}{\partial  u_1}
-			\\[1em]
-			\dfrac{\partial  f_4}{\partial  u_1}
-		\end{bmatrix} = 
-		\begin{bmatrix}
-			0\\
-			A_3
-		\end{bmatrix}
-	\end{split}
-\end{equation}
-The Space state matrices for the pitch channel are shown below.
-\begin{equation}
-	\begin{split}
-		&\boldsymbol{\mathrm{A}}_{\text{pitch}}  = \begin{bmatrix}
-			\dfrac{\partial  f_2}{\partial  x_2}& \dfrac{\partial  f_2}{\partial  x_5}
-			\\[1em]
-			\dfrac{\partial  f_5}{\partial  x_2}& \dfrac{\partial  f_5}{\partial  x_5}
-		\end{bmatrix} = 
-		\begin{bmatrix}
-			0 & 1\\
-			B_1 & 0
-		\end{bmatrix}\\[1em]
-		&\boldsymbol{\mathrm{B}}_{\text{pitch}}  = \begin{bmatrix}
-			\dfrac{\partial  f_2}{\partial  u_2}
-			\\[1em]
-			\dfrac{\partial  f_5}{\partial  u_2}
-		\end{bmatrix} = 
-		\begin{bmatrix}
-			0\\
-			B_3
-		\end{bmatrix}
-	\end{split}
-\end{equation}
-The Space state matrices for the yaw channel are shown below.
-\begin{equation}
-	\begin{split}
-		&\boldsymbol{\mathrm{A}}_{\text{yaw}} = \begin{bmatrix}
-			\dfrac{\partial  f_3}{\partial  x_3}& \dfrac{\partial  f_3}{\partial  x_6}
-			\\[1em]
-			\dfrac{\partial  f_6}{\partial  x_3}& \dfrac{\partial  f_6}{\partial  x_6}
-		\end{bmatrix} = 
-		\begin{bmatrix}
-			0 & 1\\
-			0 & 0
-		\end{bmatrix}
-	\\[1em]
-	&\boldsymbol{\mathrm{B}}_{\text{yaw}} = \begin{bmatrix}
-		\dfrac{\partial  f_3}{\partial  u_3}
-		\\[1em]
-		\dfrac{\partial  f_6}{\partial  u_3}
-	\end{bmatrix} = 
-	\begin{bmatrix}
-		0\\
-		C_2
-	\end{bmatrix}
-\end{split}
-\end{equation}
+% The Space state matrices for the pitch channel are shown below.
+% \begin{equation}
+% 	\begin{split}
+% 		&\boldsymbol{\mathrm{A}}_{\text{pitch}}  = \begin{bmatrix}
+% 			\dfrac{\partial  f_2}{\partial  x_2}& \dfrac{\partial  f_2}{\partial  x_5}
+% 			\\[1em]
+% 			\dfrac{\partial  f_5}{\partial  x_2}& \dfrac{\partial  f_5}{\partial  x_5}
+% 		\end{bmatrix} = 
+% 		\begin{bmatrix}
+% 			0 & 1\\
+% 			B_1 & 0
+% 		\end{bmatrix}\\[1em]
+% 		&\boldsymbol{\mathrm{B}}_{\text{pitch}}  = \begin{bmatrix}
+% 			\dfrac{\partial  f_2}{\partial  u_2}
+% 			\\[1em]
+% 			\dfrac{\partial  f_5}{\partial  u_2}
+% 		\end{bmatrix} = 
+% 		\begin{bmatrix}
+% 			0\\
+% 			B_3
+% 		\end{bmatrix}
+% 	\end{split}
+% \end{equation}
+% The Space state matrices for the yaw channel are shown below.
+% \begin{equation}
+% 	\begin{split}
+% 		&\boldsymbol{\mathrm{A}}_{\text{yaw}} = \begin{bmatrix}
+% 			\dfrac{\partial  f_3}{\partial  x_3}& \dfrac{\partial  f_3}{\partial  x_6}
+% 			\\[1em]
+% 			\dfrac{\partial  f_6}{\partial  x_3}& \dfrac{\partial  f_6}{\partial  x_6}
+% 		\end{bmatrix} = 
+% 		\begin{bmatrix}
+% 			0 & 1\\
+% 			0 & 0
+% 		\end{bmatrix}
+% 	\\[1em]
+% 	&\boldsymbol{\mathrm{B}}_{\text{yaw}} = \begin{bmatrix}
+% 		\dfrac{\partial  f_3}{\partial  u_3}
+% 		\\[1em]
+% 		\dfrac{\partial  f_6}{\partial  u_3}
+% 	\end{bmatrix} = 
+% 	\begin{bmatrix}
+% 		0\\
+% 		C_2
+% 	\end{bmatrix}
+% \end{split}
+% \end{equation}
 
 % \begin{align}\label{4eq4ans}
 % 	\begin{split}
