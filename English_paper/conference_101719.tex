@@ -961,6 +961,14 @@ The performance of the LQIR-DG controller is evaluated in Figure 8. The desired 
 Here, the LQIR-DG controller performance is compared with famous control strategies such as the LQR Figure 10. Figure 10 (a) compares the quadrotor's desired and actual pitch angle in the presence of these controllers. These results indicate that the LQIR-DG controller can provide high tracking performance, such as good transient response and high rapid convergence relative to other controllers for pitch angle control of the experimental setup of the quadrotor.
 
 
+\begin{figure}[!h]
+	\centering
+	{\includegraphics[width=\linewidth]{../Figures/Calibration/LQIDGvsLQR/Pitch/lqidgvslqr_pitch.png}
+	}
+	\caption{Performance of the LQIR-DG controller vs LQR}
+\end{figure}
+
+
 \section{Conclusion}
 In this study, a linear quadratic with integral action based on the differential game theory, called LQIR-DG, was implemented for level attitude control in an experimental setup of a quadrotor. To implement the proposed controller structure, first, an accurate dynamic model of the quadrotor was linearized in the state-space form, and then the model parameters were estimated. Next, two players were considered for each of the quadrotor's roll, pitch, and yaw channels. The first player found the best control command for each channel of the setup of a quadrotor based on the minimization of a quadratic criterion; when the second player produced the disturbances. Finally, the performance of the proposed controller was evaluated in level flight and compared to the LQR controller. The implementation results verify the successful performance of the LQIR-DG method in the level of attitude control of the experimental setup of the quadrotor.
 
