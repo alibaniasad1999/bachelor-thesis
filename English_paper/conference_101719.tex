@@ -136,16 +136,16 @@ A quadrotor is a type of helicopter with four rotors that plays a significant ro
      In \cite{PID}, a Proportional Integral Derivative (PID) controller is used to control the attitude of the quadrotor. However, the control objectives have not been effectively achieved with this controllers category due to the nonlinearity of quadrotor dynamics, primarily when the disturbance occurs. The model-based approaches \cite{model_base} for controller design are needed to solve these problems. These controllers work based on information from the dynamic attitude model of the quadrotor and the disturbance to produce the best control command.
      Various model-based controllers can be found within the literature, the most well-known of which are intelligent control, nonlinear control, robust control, and optimal control to reduce the disturbance effect in the attitude control and provide a faster control algorithm in facing the modeling error. In the intelligent controller category, artificial intelligence computing approaches like fuzzy logic \cite{fuzzy}, iterative learning \cite{iterative_Learning}, machine learning \cite{machine_learning}, reinforcement learning \cite{Reinforcement_Learning}, and evolutionary computation \cite{Evolutionary} have been utilized to control the attitude of the quadrotor.
      Moreover, nonlinear control methods such as Sliding Mode Control (SMC) \cite{SMC} and Feedback Linearization (FBL) \cite{FBL} have been applied to control the roll, pitch, and yaw angles of the quadrotor. In the optimal controller category, a Linear Quadratic Regulator (LQR) \cite{LQR} and Linear Quadratic Gaussian (LQG) \cite{LQG} have been implemented on the wind turbine model based on the minimization of a quadratic criterion, including regulation performance and control effort to provide optimally controlled feedback gains. 
-     LQR-DG control approach [?] is a class of optimal and robust controller methods that controls the outputs of a system based on its linear model and minimization of a cost function. This approach has been utilized to stabilize and control various nonlinear and complex systems such as an ?? [?], a ?? [?], a ?? [?], and a ???. Moreover, in the LQR-DG control method, the control commands are analytically generated based on a pursuit-evasion of two players, one tracks the best attitude control command, and the other creates the disturbance. This is one of the distinctive features of the LQR-DG controller and an important difference from other optimal control methods.
+     LQDG control approach \cite{LQDG} is a class of optimal and robust controller methods that controls the outputs of a system based on its linear model and minimization of a cost function. This approach has been utilized to stabilize and control various nonlinear and complex systems such as a robust ship controller design \cite{LQDG_ship}, a min-max robust controller \cite{robust_LQDG}. Moreover, in the LQR-DG control method, the control commands are analytically generated based on a pursuit-evasion of two players, one tracks the best attitude control command, and the other creates the disturbance. This is one of the distinctive features of the LQR-DG controller and an important difference from other optimal control methods.
      In this study, an LQIR method based on the differential game theory, called LQIR-DG, is proposed to generate the most efficient control command for an experimental setup of the quadrotor when facing the disturbance. Since the LQIR-DG is affected by an accurate model of the system, first, the dynamic of the three-degree-of-freedom setup of a quadrotor is modeled. Then, the linear state-space form of the wind turbine tower model is extracted using the linearization of the nonlinear equations of motion to utilize in the predictive control problem. Moreover, the model's parameters are identified and verified against the experimental values. Next, the LQIR-DG technique is applied to the experimental setup of the quadrotor to reduce the effect of disturbance. The performance of the proposed controller is examined in the presence of the disturbance, including the modeling error. The results show the successful performance of the LQIR-DG scheme in reducing the disturbance.
-     This paper is organized as follows: The problem architecture is defined in section 2. In section 3, the dynamics model for the experimental setup of the quadrotor is derived in detail. In section 4, The LQIR-DG architecture is denoted in section 5. Numerical results are provided in section 6. Finally, a conclusion is made in section 7.
+     This paper is organized as follows: The problem architecture is defined in section \ref{sec:problem_statement}. In section \ref{sec:modeling}, the dynamics model for the experimental setup of the quadrotor is derived in detail. In section \ref{sec: diff game}, The LQIR-DG architecture is denoted. Numerical results are provided in section \ref{sec:results}. Finally, a conclusion is made in section \ref{sec:conclusion}.
 
 
 
 
 
 
-\section{Problem Statement}
+\section{Problem Statement}\label{sec:problem_statement}
 % First, this section presents a nonlinear dynamic model of the three degrees of freedom quadrotor, \figurename{\ref{quadlab}}, for control purposes.
 In this section, a nonlinear dynamic is presented for an experimental setup of a quadrotor, as shown in \figurename{\ref{quadlab}}.
 The quadrotor is free to rotate about its roll, pitch, and yaw axes. The Euler angle angles and angular velocities along three orthogonal axes are measured simultaneously using Attitude and Heading Reference Systems (AHRS). LQDG utilizes these noisy measurements for real-time control of the Euler angles. The block diagram of the control purpose is shown in \figurename{\ref{block_diagram}}.
@@ -163,7 +163,7 @@ The quadrotor is free to rotate about its roll, pitch, and yaw axes. The Euler a
 \end{figure}
 
 
-\section{Modeling of an Experimental Setup of a Quadrotor}
+\section{Modeling of an Experimental Setup of a Quadrotor}\label{sec:modeling}
 \subsection{Configuration of the Quadrotor }
 The schematic of a quadrotor is given in \figurename{\ref{QuadAssum}}. Each rotor is considered a rigid disk is rotating about the axis $Z_B$ in the body fixed frame with an angular velocity $\Omega_i$.
 Rotors 1 and 3 rotate in the same direction, i.e., counterclockwise, while rotors 2 and 4 rotate in the opposite direction, i.e., clockwise, to cancel yawing moment of the quadrotor.
@@ -573,7 +573,7 @@ Here is a comparison between the states of the quadrotor in simulation and reali
 
 
 
-\section{Differential Game}
+\section{Differential Game}\label{sec: diff game}
 Differential games are a series of problems that arise while examining and simulating dynamic systems in game theory.
 %  A differential game is a game in which the player who is trying to maximize the utility of his strategy is the opponent. The player who is trying to minimize the utility of his strategy is the player who is trying to maximize the utility of the opponent's strategy.
 % In the context of differential games, differential games in game theory address the modeling and analysis of dynamic systems.
@@ -590,20 +590,20 @@ This paper describes the state of two players in different loop control of a qua
 Three groups of players are identified: two players for roll loop control, two players for pitch loop control, and two players for yaw loop control.
 % Two players associated with roll loop control, two players associated with pitch loop control, and two players associated with yaw loop control are defined.
 % The space states of a continuous linear system are shown below.
-The space state of roll, pitch, and yaw are defined below.
+% The space state of roll, pitch, and yaw are defined below.
 %% fix i to italic
-\begin{equation}\label{system_dynamic}
-    \begin{split}
-             &\boldsymbol{\dot{\mathrm{x_i}}}(t) = \boldsymbol{\mathrm{A_ix_i}}(t) + \boldsymbol{\mathrm{B_iu_i}}(t) + \boldsymbol{\mathrm{B_{i_d}u_{i_d}}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0
-        \\
-        &\boldsymbol{\mathrm{y_i}}(t) = \boldsymbol{\mathrm{C_ix_i}}(t) + \boldsymbol{\mathrm{D_iu_i}}(t) + \boldsymbol{\mathrm{D_{i_d}u_{i_d}}}(t)\\
-		& i =1, 2, 3
-		%  \text{Roll, Pitch, Yaw}
-    \end{split}
-\end{equation}
-Where $\boldsymbol{\mathrm{x}}$ is the vector of the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u}}$ is the controller input vector, $\boldsymbol{\mathrm{u_d}}$ is the disturbance input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B}}$ is the controller input matrix, $\boldsymbol{\mathrm{B_d}}$ is the disturbance input matrix,
-$\boldsymbol{\mathrm{C}}$ is the output matrix, $\boldsymbol{\mathrm{D}}$ is controller the output matrix and $\boldsymbol{\mathrm{D_d}}$ is disturbance the output matrix.
-Equation \eqref{system_dynamic} demonstrates how both participants have an impact on the quadrotor's dynamics.
+% \begin{equation}\label{system_dynamic}
+%     \begin{split}
+%              &\boldsymbol{\dot{\mathrm{x_i}}}(t) = \boldsymbol{\mathrm{A_ix_i}}(t) + \boldsymbol{\mathrm{B_iu_i}}(t) + \boldsymbol{\mathrm{B_{i_d}u_{i_d}}}(t)%, \quad \boldsymbol{x}(0) = \boldsymbol{x}_0
+%         \\
+%         &\boldsymbol{\mathrm{y_i}}(t) = \boldsymbol{\mathrm{C_ix_i}}(t) + \boldsymbol{\mathrm{D_iu_i}}(t) + \boldsymbol{\mathrm{D_{i_d}u_{i_d}}}(t)\\
+% 		& i =1, 2, 3
+% 		%  \text{Roll, Pitch, Yaw}
+%     \end{split}
+% \end{equation}
+% Where $\boldsymbol{\mathrm{x}}$ is the vector of the state variables, $\boldsymbol{\dot{\mathrm{x}}}$ is the time derivative of the state vector, $\boldsymbol{\mathrm{u}}$ is the controller input vector, $\boldsymbol{\mathrm{u_d}}$ is the disturbance input vector, $\boldsymbol{\mathrm{y}}$ is the output vector, $\boldsymbol{\mathrm{A}}$ is the state matrix, $\boldsymbol{\mathrm{B}}$ is the controller input matrix, $\boldsymbol{\mathrm{B_d}}$ is the disturbance input matrix,
+% $\boldsymbol{\mathrm{C}}$ is the output matrix, $\boldsymbol{\mathrm{D}}$ is controller the output matrix and $\boldsymbol{\mathrm{D_d}}$ is disturbance the output matrix.
+% Equation \eqref{system_dynamic} demonstrates how both participants have an impact on the quadrotor's dynamics.
 % As shown in equation 1, both players affect the dynamics of the system.
 The second player may progress toward the goal as a result of the first player's exertion, or vice versa.
 % The first player's effort could push the second player away from the goal, or the other way around.
@@ -635,7 +635,7 @@ In equation \eqref{LQDG_u}, $\boldsymbol{\mathrm{K_{i}}}$ is the optimal feedbac
 \begin{equation}\label{cost}
     \begin{split}
         J_i( \boldsymbol{\mathrm{u_i}},  \boldsymbol{\mathrm{u_{i_d}}}) = \int_{0}^{T}\biggl (&\boldsymbol{\mathrm{x_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_i}}(t)+
-        \boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{i}}} \boldsymbol{\mathrm{u_i}}(t)+\\
+        \boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{i}}} \boldsymbol{\mathrm{u_i}}(t)-\\
         &\boldsymbol{\mathrm{u_{i_d}}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{i_d} u_{i_d}}}(t)
         \biggl )\mathrm{d}t, \quad i = 1, 2, 3 
     \end{split} 
@@ -708,11 +708,13 @@ By introducing a new space state for the system, the remaining design phases of 
 
 
 
+
+
 In equation \eqref{LQIDG_u}, $\boldsymbol{\mathrm{K_{a_i}}}$ is the optimal feedback gain. Assuming that the other players will make their worst move, this gain is calculated to minimize the quadratic cost function, equation \eqref{cost_LQIDG}, of player number i.
 \begin{equation}\label{cost_LQIDG}
     \begin{split}
         J_i( \boldsymbol{\mathrm{u_i}},  \boldsymbol{\mathrm{u_{i_d}}}) = \int_{0}^{T}\biggl (\boldsymbol{\mathrm{x_a}} ^\mathrm{T}(t) \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_a}}(t)+
-        &\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{i}}} \boldsymbol{\mathrm{u_i}}(t)+\\
+        &\boldsymbol{\mathrm{u_i}} ^\mathrm{T}(t) \boldsymbol{\mathrm{R_{i}}} \boldsymbol{\mathrm{u_i}}(t)-\\
         &\boldsymbol{\mathrm{u_{i_d}}} ^\mathrm{T}(t)\boldsymbol{\mathrm{ R_{i_d} u_{i_d}}}(t)
         \biggl )\mathrm{d}t
     \end{split} 
@@ -728,130 +730,133 @@ $\boldsymbol{\dot{\mathrm{P}}_{a_i}}$ is found by solving the continuous time co
         \end{split}
     \end{split}
 \end{equation}
-Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{i}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}$. %?????????????????????
+Using the shorthand notation $\boldsymbol{S_{a_i}} := \boldsymbol{B_{a_i}R_{i}}^{-1}\boldsymbol{B_{a_i}}^\mathrm{T}$. 
+
+%?????????????????????
 
 
 
 
-\section{Simulation}
+% \section{Simulation}
 
 
 
 
-In this section, the quadrotor roll loop control is simulated in the presence of LQR, LQDG, and LQIDG controllers. Then, the simulation of two and three degrees of freedom was done in the presence of the LQIDG controller.
-\subsection{Roll Loop Control}
+% In this section, the quadrotor roll loop control is simulated in the presence of LQR, LQDG, and LQIDG controllers. Then, the simulation of two and three degrees of freedom was done in the presence of the LQIDG controller.
+% \subsection{Roll Loop Control}
 
-LQR weighting matrices are optimized using the TCACS optimization method in the simulation.
-% In the simulation, the TCACS optimization method is used to optimize the LQR weighting matrices.
-ITSE is considered for the TCACS input cost function.
-% TCACS input cost function is considered as ITSE.
-Here are the weighting matrices for the optimized output.
-% The weighting matrices of the optimized output are given below.
-\begin{equation}
-	\boldsymbol{\mathrm{Q}}_{\text{LQR}} = \begin{bmatrix}
-		0.5215 & 0\\
-		0 & 0.0745
-	\end{bmatrix}, \quad R_{\text{LQR}} =  0.0001
-\end{equation} 
-
-% \subsection{LQDG}
-The weighting matrices used in the LQDG portion are chosen like that of the LOR.
-% LQDG weighting matrices are chosen like the method used in the LQR section.
-% In the LQDG section, weighting matrices are selected similarly to those used in the LOR section.
-\begin{equation}
-	\boldsymbol{\mathrm{Q}}_{\text{LQDG}} = \begin{bmatrix}
-		100 & 0\\
-		0 & 0.078
-	\end{bmatrix}, \quad R_{{\text{LQDG}}} =  1, \quad R_{d_{_\text{LQDG}}} =  99.96
-\end{equation}
-
+% LQR weighting matrices are optimized using the TCACS optimization method in the simulation.
+% % In the simulation, the TCACS optimization method is used to optimize the LQR weighting matrices.
+% ITSE is considered for the TCACS input cost function.
+% % TCACS input cost function is considered as ITSE.
+% Here are the weighting matrices for the optimized output.
+% % The weighting matrices of the optimized output are given below.
 % \begin{equation}
-% 	\boldsymbol{\dot{\mathrm{P}}_{1}} = \begin{bmatrix}
-		
-% 		286.0470  & 39.1188\\
-% 		39.1188   & 8.8510\\
-%     \end{bmatrix}    
+% 	\boldsymbol{\mathrm{Q}}_{\text{LQR}} = \begin{bmatrix}
+% 		0.5215 & 0\\
+% 		0 & 0.0745
+% 	\end{bmatrix}, \quad R_{\text{LQR}} =  0.0001
+% \end{equation} 
+
+% % \subsection{LQDG}
+% The weighting matrices used in the LQDG portion are chosen like that of the LOR.
+% % LQDG weighting matrices are chosen like the method used in the LQR section.
+% % In the LQDG section, weighting matrices are selected similarly to those used in the LOR section.
+% \begin{equation}
+% 	\boldsymbol{\mathrm{Q}}_{\text{LQDG}} = \begin{bmatrix}
+% 		100 & 0\\
+% 		0 & 0.078
+% 	\end{bmatrix}, \quad R_{{\text{LQDG}}} =  1, \quad R_{d_{_\text{LQDG}}} =  99.96
 % \end{equation}
 
-\begin{equation}
-    \boldsymbol{\mathrm{K_{1}}} = \begin{bmatrix}
-        39.1188   & 8.8510
-    \end{bmatrix}
-\end{equation}
-
-% \subsection{LQIDG}
-LQIDG weighting matrices are chosen like the method used in the LQR and LQDG sections.
-\begin{equation}
-    \begin{split}
-        &\boldsymbol{\mathrm{Q_{{\text{LQIDG}}}}} = \begin{bmatrix}
-            0.1707 &0& 0& 0\\
-            0 &  0.12 & 0 &0 \\
-            0 & 0 & 837.8606 & 0\\
-            0 & 0 & 0 & 756.1341
-        \end{bmatrix}
-        \\[1em]
-        &R_{{\text{LQIDG}}} =  1, \quad R_{d_{_\text{LQIDG}}} =  7.7422
-    \end{split}
-\end{equation}
+% % \begin{equation}
+% % 	\boldsymbol{\dot{\mathrm{P}}_{1}} = \begin{bmatrix}
+		
+% % 		286.0470  & 39.1188\\
+% % 		39.1188   & 8.8510\\
+% %     \end{bmatrix}    
+% % \end{equation}
 
 % \begin{equation}
-% 	\boldsymbol{\dot{\mathrm{P}}_{a_1}} = \begin{bmatrix}
-% 		10924.84&   39.83 & 1014.34 & -10629.93\\
-% 		39.83   &  8.40 & 27.22& 11.70\\
-% 		1014.34 &  27.22 & 1047.80 & -756.13\\
-% 		-10658.93 & 11.70 & -756.13 & 10658.93
+%     \boldsymbol{\mathrm{K_{1}}} = \begin{bmatrix}
+%         39.1188   & 8.8510
+%     \end{bmatrix}
+% \end{equation}
+
+% % \subsection{LQIDG}
+% LQIDG weighting matrices are chosen like the method used in the LQR and LQDG sections.
+% \begin{equation}
+%     \begin{split}
+%         &\boldsymbol{\mathrm{Q_{{\text{LQIDG}}}}} = \begin{bmatrix}
+%             0.1707 &0& 0& 0\\
+%             0 &  0.12 & 0 &0 \\
+%             0 & 0 & 837.8606 & 0\\
+%             0 & 0 & 0 & 756.1341
+%         \end{bmatrix}
+%         \\[1em]
+%         &R_{{\text{LQIDG}}} =  1, \quad R_{d_{_\text{LQIDG}}} =  7.7422
+%     \end{split}
+% \end{equation}
+
+% % \begin{equation}
+% % 	\boldsymbol{\dot{\mathrm{P}}_{a_1}} = \begin{bmatrix}
+% % 		10924.84&   39.83 & 1014.34 & -10629.93\\
+% % 		39.83   &  8.40 & 27.22& 11.70\\
+% % 		1014.34 &  27.22 & 1047.80 & -756.13\\
+% % 		-10658.93 & 11.70 & -756.13 & 10658.93
+% % 	\end{bmatrix}
+% % \end{equation}
+% \begin{equation}
+% 	\boldsymbol{\mathrm{K_{a_1}}} = \begin{bmatrix}
+% 		28.1410 &   8.4017  & 27.2223  & 11.6894
 % 	\end{bmatrix}
 % \end{equation}
-\begin{equation}
-	\boldsymbol{\mathrm{K_{a_1}}} = \begin{bmatrix}
-		28.1410 &   8.4017  & 27.2223  & 11.6894
-	\end{bmatrix}
-\end{equation}
-\subsection{Roll-Pitch Loop Control}
-\begin{equation}
-	\begin{split}
-		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{roll}}}} &= \begin{bmatrix}
-			585.9 &0& 0& 0\\
-			0 &  31.1 & 0 &0 \\
-			0 & 0 & 83.8 & 0\\
-			0 & 0 & 0 & 0
-		\end{bmatrix}\\[1em]
-	    \boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{pitch}}}} &= \begin{bmatrix}
-		546.5 &0& 0& 0\\
-		0 &  311.4 & 0 &0 \\
-		0 & 0 & 2.22 & 0\\
-		0 & 0 & 0 & 0
-		\end{bmatrix}\\[1em]
-	 R_{{\text{LQIDG}}} &=  1, \quad R_{d_{\text{LQIDG}}} =  7.7422
-	\end{split}
-\end{equation}
+% \subsection{Roll-Pitch Loop Control}
+% \begin{equation}
+% 	\begin{split}
+% 		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{roll}}}} &= \begin{bmatrix}
+% 			585.9 &0& 0& 0\\
+% 			0 &  31.1 & 0 &0 \\
+% 			0 & 0 & 83.8 & 0\\
+% 			0 & 0 & 0 & 0
+% 		\end{bmatrix}\\[1em]
+% 	    \boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{pitch}}}} &= \begin{bmatrix}
+% 		546.5 &0& 0& 0\\
+% 		0 &  311.4 & 0 &0 \\
+% 		0 & 0 & 2.22 & 0\\
+% 		0 & 0 & 0 & 0
+% 		\end{bmatrix}\\[1em]
+% 	 R_{{\text{LQIDG}}} &=  1, \quad R_{d_{\text{LQIDG}}} =  7.7422
+% 	\end{split}
+% \end{equation}
 
-\subsection{Roll-Pitch-Yaw Loop Control}
-\begin{equation}
-	\begin{split}
-		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{roll}}}} &= \begin{bmatrix}
-			631.85 & 0 & 0 & 0  \\ 
-			0 & 214.28 & 0 & 0  \\ 
-			0 & 0 & 7.91 & 0  \\ 
-			0 & 0 & 0 & 0.01  \\ 
-		\end{bmatrix} \\[1em]
-		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{pitch}}}} &= \begin{bmatrix}
-			0.01 & 0 & 0 & 0  \\
-			0 & 873.93 & 0 & 0  \\ 
-			0 & 0 & 9853.09 & 0 \\ 
-			0 & 0 & 0 & 0.12  \\ 
-		\end{bmatrix}\\[1em]
-		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{yaw}}}}  &= \begin{bmatrix}
-			0.03 & 0 & 0 & 0 \\ 
-			0 & 0.17 & 0 & 0 \\ 
-			0 & 0 & 1.81 & 0 \\ 
-			0 & 0 & 0 & 0.45 \\
-		\end{bmatrix}\times 10^{-4}\\[1em]
-          R_{{\text{LQIDG}}} &= 1, \quad  R_{d_{\text{LQIDG}}} = 1.2577
-	\end{split}
-\end{equation}
+% \subsection{Roll-Pitch-Yaw Loop Control}
+% \begin{equation}
+% 	\begin{split}
+% 		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{roll}}}} &= \begin{bmatrix}
+% 			631.85 & 0 & 0 & 0  \\ 
+% 			0 & 214.28 & 0 & 0  \\ 
+% 			0 & 0 & 7.91 & 0  \\ 
+% 			0 & 0 & 0 & 0.01  \\ 
+% 		\end{bmatrix} \\[1em]
+% 		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{pitch}}}} &= \begin{bmatrix}
+% 			0.01 & 0 & 0 & 0  \\
+% 			0 & 873.93 & 0 & 0  \\ 
+% 			0 & 0 & 9853.09 & 0 \\ 
+% 			0 & 0 & 0 & 0.12  \\ 
+% 		\end{bmatrix}\\[1em]
+% 		\boldsymbol{\mathrm{Q}}_{{\text{LQIDG}_{\text{yaw}}}}  &= \begin{bmatrix}
+% 			0.03 & 0 & 0 & 0 \\ 
+% 			0 & 0.17 & 0 & 0 \\ 
+% 			0 & 0 & 1.81 & 0 \\ 
+% 			0 & 0 & 0 & 0.45 \\
+% 		\end{bmatrix}\times 10^{-4}\\[1em]
+%           R_{{\text{LQIDG}}} &= 1, \quad  R_{d_{\text{LQIDG}}} = 1.2577
+% 	\end{split}
+% \end{equation}
 
-\section{Result and Discussion}
+\section{Result and Discussion}\label{sec:results}
+
 
 Here, the results of the LQIR-DG controller method are devoted to the control loops of the roll, pitch, and yaw of the experimental setup of the quadrotor. First, the controller parameters are tuned using the results of numerical simulations. Moreover, the performance of the LQIR-DG controller is compared to an LQR control strategy. 
 % The LQR controller parameters are presented in Table \ref{table: control gain}.
@@ -875,7 +880,9 @@ Here, the results of the LQIR-DG controller method are devoted to the control lo
 % \end{table}
 
 \subsection{Performance of the LQIR-DG Controller}
-\begin{figure*}[!h]
+
+The performance of the LQIR-DG controller is evaluated in Figure 8. The desired and actual outputs, including the roll, pitch, and yaw angles, are compared in Figures 8 (a) and (b). The desired scenario of the simulator is considered a level flight. These figures show that the attitude outputs of the quadrotor converge to the desired values in less than three seconds. Moreover, Figures 8 (c) and (d) show the angular velocity command of the quadrotor, respectively. These results illustrate that the LQIR-DG approach appropriately controls the attitude of the experimental setup of the quadrotor.
+\begin{figure*}[h]
 	\centering
 	\subfloat[]{\includegraphics[width=.32\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_roll.png}
 	}
@@ -891,7 +898,7 @@ Here, the results of the LQIR-DG controller method are devoted to the control lo
 	\caption{Performance of the LQIR-DG controller (a) Desired and actual roll angle (b) Desired and actual pitch angle (c) Desired and actual yaw angle.}
 \end{figure*}
 
-\begin{figure*}[!t]
+\begin{figure*}[h]
 	\centering
 	\subfloat[]{\includegraphics[width=.3\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_1.png}
 	}
@@ -904,8 +911,6 @@ Here, the results of the LQIR-DG controller method are devoted to the control lo
 	}
 	\caption{implementation result omega}
 \end{figure*}
-
-The performance of the LQIR-DG controller is evaluated in Figure 8. The desired and actual outputs, including the roll, pitch, and yaw angles, are compared in Figures 8 (a) and (b). The desired scenario of the simulator is considered a level flight. These figures show that the attitude outputs of the quadrotor converge to the desired values in less than three seconds. Moreover, Figures 8 (c) and (d) show the angular velocity command of the quadrotor, respectively. These results illustrate that the LQIR-DG approach appropriately controls the attitude of the experimental setup of the quadrotor.
 
 \begin{table}[!h]
 	\renewcommand{\arraystretch}{1.3}
@@ -969,7 +974,7 @@ Here, the LQIR-DG controller performance is compared with famous control strateg
 \end{figure}
 
 
-\section{Conclusion}
+\section{Conclusion}\label{sec:conclusion}
 In this study, a linear quadratic with integral action based on the differential game theory, called LQIR-DG, was implemented for level attitude control in an experimental setup of a quadrotor. To implement the proposed controller structure, first, an accurate dynamic model of the quadrotor was linearized in the state-space form, and then the model parameters were estimated. Next, two players were considered for each of the quadrotor's roll, pitch, and yaw channels. The first player found the best control command for each channel of the setup of a quadrotor based on the minimization of a quadratic criterion; when the second player produced the disturbances. Finally, the performance of the proposed controller was evaluated in level flight and compared to the LQR controller. The implementation results verify the successful performance of the LQIR-DG method in the level of attitude control of the experimental setup of the quadrotor.
 
 
@@ -1189,7 +1194,9 @@ In this study, a linear quadratic with integral action based on the differential
 \bibitem{FBL} A. Aboudonia, A. El-Badawy, and R. Rashad, “Disturbance observer-based feedback linearization control of an unmanned quadrotor helicopter,” Proceedings of the Institution of Mechanical Engineers, Part I: Journal of Systems and Control Engineering, vol. 230, no. 9, pp. 877–891, 2016, doi: 10.1177/0959651816656951.
 \bibitem{LQR} Z. Shulong, A. Honglei, Z. Daibing and S. Lincheng, "A new feedback linearization LQR control for attitude of quadrotor," 2014 13th International Conference on Control Automation Robotics \& Vision (ICARCV), 2014, pp. 1593-1597, doi: 10.1109/ICARCV.2014.7064553.
 \bibitem{LQG} E. Barzanooni, K. Salahshoor and A. Khaki-Sedigh, "Attitude flight control system design of UAV using LQG multivariable control with noise and disturbance," 2015 3rd RSI International Conference on Robotics and Mechatronics (ICROM), 2015, pp. 188-193, doi: 10.1109/ICRoM.2015.7367782.
-
+\bibitem{LQDG} Engwerda, J. C. (2006). Linear Quadratic Games: An Overview (CentER Discussion Paper, Vols. 2006–110) [WorkingPaper]. Macroeconomics.
+\bibitem{LQDG_ship} Z. Zwierzewicz, "On the ship course-keeping control system design by using robust and adaptive control," 2014 19th International Conference on Methods and Models in Automation and Robotics (MMAR), 2014, pp. 189-194, doi: 10.1109/MMAR.2014.6957349.
+\bibitem{robust_LQDG} Engwerda, J. Min-Max Robust Control in LQ-Differential Games. Dyn Games Appl (2022). https://doi.org/10.1007/s13235-021-00421-z
 
 
 % \bibitem{b2} Garcia, E., Casbeer, D. W., Pachter, M. (2020). Optimal Strategies for a Class of Multi-Player Reach-Avoid Differential Games in 3D Space. IEEE Robotics and Automation Letters, 5(3), 4257–4264. https://doi.org/10.1109/LRA.2020.2994023
