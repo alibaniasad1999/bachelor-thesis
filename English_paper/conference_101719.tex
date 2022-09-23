@@ -45,11 +45,8 @@ alireza\_sharifi@ae.sharif.edu}
 \maketitle
 
 \begin{abstract}
-	The accurate attitude control of a quadrotor is necessary, especially when facing disturbance. In this study, a linear quadratic with integral action based on the differential game theory is implemented on a quadrotor experimental setup.
-	% In this study, a linear quadratic with integral action based on the differential game theory is implemented on an experimental quadrotor system with three degrees of freedom.
-	For this purpose, first, a continuous state-space model of the setup is derived using the linearization of nonlinear equations of motion,
+	The accurate attitude control of a quadrotor is necessary, especially when facing disturbance. In this study, a linear quadratic with integral action based on the differential game theory is implemented on a quadrotor experimental setup. A continuous state-space model of the setup is derived using the linearization of nonlinear equations of motion,
 	and its parameters are identified with the experimental results.
-	% the experimental results indicate the parameters of the state-space model structure.
 	Then, the attitude control commands of the quadrotor are derived based on two players; one finds the best attitude control command, and the other creates the disturbance by mini-maximizing a quadratic criterion, defined as the sum of outputs plus the weighted control effort and disturbance. The performance of the proposed structure is investigated in level flight and compared to the linear quadratic regulator controller. Results demonstrate that the proposed approach has an excellent performance in dissipating the disturbances.
 \end{abstract}
 \begin{IEEEkeywords}
@@ -63,7 +60,7 @@ alireza\_sharifi@ae.sharif.edu}
      In \cite{PID}, a Proportional Integral Derivative (PID) controller is used to regulate the quadrotor attitude. However, the control objectives have not been effectively achieved with this controllers when the disturbance occurs. To solve this problem the model-based approaches \cite{model_base} are utilized for controller design. These controllers work based on information from the quadrotor's attitude model and disturbance to produce the best control command.
 
 
-     Various model-based controllers can be found within the literature, the most well-known of which are intelligent control, the nonlinear control, robust control, and optimal control to reduce the disturbance effect in the attitude control and provide a faster control algorithm in facing the modeling error. In the intelligent controller category, the artificial intelligence computing approaches like fuzzy logic \cite{fuzzy}, iterative learning \cite{iterative_Learning}, machine learning \cite{machine_learning}, reinforcement learning \cite{Reinforcement_Learning}, and evolutionary computation \cite{Evolutionary} have been utilized to regulate the quadrotor's attitude .
+     Various model-based controllers can be found within the literature, the most well-known of which are intelligent control, the nonlinear control, robust control, and optimal control to reduce the disturbance effect in the attitude control and provide a faster control algorithm in facing the modeling error. In the intelligent controller category, the artificial intelligence computing approaches like fuzzy logic \cite{fuzzy}, iterative learning \cite{iterative_Learning}, machine learning \cite{machine_learning}, reinforcement learning \cite{Reinforcement_Learning}, and evolutionary computation \cite{Evolutionary} have been utilized to regulate the quadrotor's attitude.
 
 
      Moreover, nonlinear control methods such as  Feedback Linearization (FBL) \cite{FBL} and Sliding Mode Control (SMC) \cite{SMC} have been applied to control the roll, pitch, and yaw angles of the quadrotor. In the optimal controller category, a Linear Quadratic Regulator (LQR) \cite{LQR} and Linear Quadratic Gaussian (LQG) \cite{LQG} have been implemented on the quadrotor based on the minimization of a quadratic criterion, including regulation performance and control effort to provide optimally controlled feedback gains. 
@@ -75,15 +72,12 @@ alireza\_sharifi@ae.sharif.edu}
      In this study, an LQR controller method based on the differential game theory, with an integral action called Linear Quadratic Integral Regulator Differential Game (LQIR-DG) controller, is proposed to generate the most efficient control command for an experimental setup of the quadrotor when facing the disturbance. Since the LQIR-DG is affected by an accurate model of the system, first, the dynamic of the three-degree-of-freedom setup of the quadrotor is modeled. Then, the linear state-space form the quadrotor model is extracted using the linearization of the nonlinear equations of motion to utilize in the proposed control problem. Moreover, the model's parameters are identified and verified against the experimental values. Next, the LQIR-DG technique is applied to the experimental setup of the quadrotor to reduce the effect of disturbance. The performance of the suggested controller is examined when the disturbance occurs. The results show the successful performance of the LQIR-DG scheme in reducing the disturbance.
 
 
-	In the remainder of this study, the problem
-	%  The structure of this essay is as follows:
+In the remainder of this study, the problem
  is defined in section \ref{sec:problem_statement}. The dynamics model for the experimental setup of the quadrotor is derived in details,  in section \ref{sec:modeling}. In section \ref{sec: diff game}, The LQIR-DG architecture is denoted. Finally, in sections \ref{sec:results} and \ref{sec:conclusion}, Numerical results and conclusion are provided, respectively.
 	% In section \ref{sec:results}, numerical results are presented.
 \section{Problem Statement}\label{sec:problem_statement}
 \noindent Here, a nonlinear dynamic is presented for the setup of the quadrotor, as illustrated in \figurename{\ref{quadlab}}.
-% The nonlinear dynamics of the quadrotor, as illustrated in Figure 1, will be presented in this section.
 The quadrotor is free to rotate about its roll, pitch, and yaw axes. The Euler angles and angular velocities along three orthogonal axes are measured simultaneously using the Attitude and Heading Reference Systems (AHRS). These noisy measurements are utilizes in the LQIR-DG for control of the Euler angles.
-% These noisy measurements are used by LQIR-DG to control the Euler angles in real-time.
 The block diagram of the controller structure is illustrated in \figurename{\ref{block_diagram}}.
 \vspace{-1cm}
 \begin{figure}[!h]
@@ -106,7 +100,7 @@ The block diagram of the controller structure is illustrated in \figurename{\ref
 \noindent Here, the model of the three-degree-of-freedom setup of the quadrotor is presented in details.
 % Here, the model of the quadrotor's experimental setup with three degrees of freedom is provided in detail.
 For this purpose, first, the configuration of the quadrotor is denoted. Then, the nonlinear model of the attitude dynamics is derived to denote the state-space form. Finally, the nonlinear model is linearized to utilize in the control purposes.
-\subsection{Configuration of the Quadrotor }
+\subsection{Configuration of the Quadrotor}
 \noindent  \figurename{\ref{QuadAssum}} denotes the quadrotor schematic.
 % Figure 3 provides the quadrotor's schematic.
 Each rotor has an angular velocity ,$\Omega_i$, rotating about the $z_B$ axis in the body coordinate system .
@@ -123,32 +117,22 @@ Rotors 1 and 3 rotate counterclockwise, while rotors 2 and 4 rotate clockwise, t
 \subsection{Dynamic Model}
 \noindent The quadrotor kinetic model, derived using the Newton-Euler method, is stated as  \cite{b15}, \cite{b16}
 % The Newton-Euler method, used to derive the dynamic model of the quadrotor, yields the following results
-\begin{equation}
-	\begin{split}
+	\begin{align}
 		&\dot p = \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}} qr + q \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{roll}}}{\mathrm{I}_{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}}
-	\end{split}
-\end{equation}
-\begin{equation}
-	\dot q = \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{yy}}} rp + p \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{pitch}}}{\mathrm{I}_{\text{yy}}} + \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}
-\end{equation}
-\begin{equation}
-	\dot r = \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} pq  +  \dfrac{u_{\text{yaw}}}{\mathrm{I}_{\text{zz}}} + \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}
-\end{equation}
+		\\
+	&\dot q = \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{yy}}} rp + p \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{pitch}}}{\mathrm{I}_{\text{yy}}} + \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}
+	\\
+	&\dot r = \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} pq  +  \dfrac{u_{\text{yaw}}}{\mathrm{I}_{\text{zz}}} + \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}
+	\end{align}
 where $(p, q, r)$ are the angular velocities. $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ are the disturbances, generated in $x_B$, $y_B$ and $z_B$, respectively. Moreover, $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the principal moment of inertia and $\mathrm{I}_{\text{rotor}}$ is a rotor  inertia  about its axis.
 % The angular velocities are (p, q, r), while the roll, pitch, and yaw angles are (,).
 The relation between the angular body rates and the Euler angles rates are obtained as
 % The following is how the Euler angles rates and angular body rates are related:
-\begin{equation}
-	\begin{split}
-		\dot\phi = p + (q\sin(\phi) + r\cos(\phi))\tan(\theta)
-	\end{split}
-\end{equation}
-\begin{equation}
-	\dot \theta = q\cos(\phi) - r\sin(\phi)
-\end{equation}
-\begin{equation}
-	\dot\psi = (q\sin(\phi) + r\cos(\phi))/{\cos(\theta)}
-\end{equation}
+\begin{align}
+		\dot\phi &= p + (q\sin(\phi) + r\cos(\phi))\tan(\theta)\\
+	\dot \theta &= q\cos(\phi) - r\sin(\phi)\\
+	\dot\psi &= (q\sin(\phi) + r\cos(\phi))/{\cos(\theta)}\\
+\end{align}
 where $(\phi, \theta, \psi)$ are roll, pitch, and yaw angles.
 Moreover, $\Omega_r$, called the overall residual rotor angular velocity, is computed as
 % Or is referred to as the overall residual propeller angular speed , is computed as
@@ -158,59 +142,34 @@ Moreover, $\Omega_r$, called the overall residual rotor angular velocity, is com
 \subsection{Control Commands}
 \noindent The control inputs $u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ are roll, pitch, and yaw moments, obtained from the rotors, defined as
 % The roll, pitch, and yaw moments produced by the propellers are the control inputs u1, u2, and u3.
-\begin{equation}
-	\begin{split}
-		u_{\text{roll}} = \mathrm{b\,d}_{\text{cg}} (\Omega_2^2 - \Omega_4^2)
-	\end{split}
-\end{equation}
-\begin{equation}
-	u_{\text{pitch}} = \mathrm{b\,d}_{\text{cg}} (\Omega_1^2 - \Omega_3^2) 
-\end{equation}
-\begin{equation}
-	u_{\text{yaw}} = \mathrm{d} (\Omega_1^2 - \Omega_2^2 + \Omega_3^2 - \Omega_4^2)
-\end{equation}
+\begin{align}
+		&u_{\text{roll}} = \mathrm{b\,d}_{\text{cg}} (\Omega_2^2 - \Omega_4^2)\\
+	&u_{\text{pitch}} = \mathrm{b\,d}_{\text{cg}} (\Omega_1^2 - \Omega_3^2) \\
+	&u_{\text{yaw}} = \mathrm{d} (\Omega_1^2 - \Omega_2^2 + \Omega_3^2 - \Omega_4^2)\\
+\end{align}
 
 Also, d and b are, respectively, drag and thrust coefficients. $\mathrm{d}_{\text{cg}}$ is the distance of rotors from the gravity center . Hence, the angular velocity commands are obtained as
-\begin{equation}
-	\begin{split}
-		\Omega_{c, 1}^2 = \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} 
-	\end{split}
-\end{equation}
-\begin{equation}
-	\Omega_{c, 2}^2 = \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}
-\end{equation}
-\begin{equation}
-	\Omega_{c, 3}^2 = \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} 
-\end{equation}
-\begin{equation}
-\Omega_{c, 4}^2 = \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}
-\end{equation}
+\begin{align}
+		\Omega_{c, 1}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
+	\Omega_{c, 2}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}\\
+	\Omega_{c, 3}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
+\Omega_{c, 4}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}
+\end{align}
 where $\Omega_{\text{mean}}$ is the nominal of the rotor angular velocities.
 \subsection{State-Space Form}
 \noindent Here, the state-space model is presented for the control purposes.
 % For control purposes, the state-space model of the quadrotor experimental setup is described.
 By defining $x_1 = p$, $x_2 = q$, $x_3 = r$, $x_4 = \phi$, $x_5 = \theta$, and $x_6 = \psi$; the model of in state-space form are denoted as
 % The state-space model of the experimental setup is given as
-\begin{equation}\label{eq:diffeq}
-	\begin{split}
-		\dot x_1 = \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}} x_2 x_3 + x_2 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{roll}}}{\mathrm{I}_{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}} 
-	\end{split}
-\end{equation}
-\begin{equation}
-	\dot x_2 = \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{yy}}} x_1 x_3 - x_1 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{pitch}}}{\mathrm{I}_{\text{yy}}} + \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}
-\end{equation}
-\begin{equation}
-	\dot x_3 = \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} x_1 x_2 + \dfrac{u_{\text{yaw}}}{\mathrm{I}_{\text{zz}}} + \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}
-\end{equation}
-\begin{equation}
-	\dot x_4 = x_1 + (x_2\sin(x_4) + x_3\cos(x_4))\tan(x_5)
-\end{equation}
-\begin{equation}
-	\dot x_5 = x_2\cos(x_4) - x_3\sin(x_4)
-\end{equation}
-\begin{equation}\label{eq:diffeq-end}
-	\dot x_6 = (x_2\sin(x_4) + x_3\cos(x_4))/\cos(x_5)
-\end{equation}
+\begin{align}\label{eq:diffeq}
+		\dot x_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}} x_2 x_3 + x_2 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{roll}}}{\mathrm{I}_{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}} \\
+	\dot x_2 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{yy}}} x_1 x_3 - x_1 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{pitch}}}{\mathrm{I}_{\text{yy}}} + \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}\\
+	\dot x_3 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} x_1 x_2 + \dfrac{u_{\text{yaw}}}{\mathrm{I}_{\text{zz}}} + \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}\\	
+	\dot x_4 &= x_1 + (x_2\sin(x_4) + x_3\cos(x_4))\tan(x_5)
+\\
+	\dot x_5 &= x_2\cos(x_4) - x_3\sin(x_4)\\
+	\dot x_6 &= (x_2\sin(x_4) + x_3\cos(x_4))/\cos(x_5) \label{eq:diffeq-end}
+\end{align}
 The measurement model is written as
 \begin{equation}
 	\begin{split}
