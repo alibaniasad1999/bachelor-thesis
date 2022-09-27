@@ -131,7 +131,7 @@ The relation between the angular body rates and the Euler angles rates are obtai
 \begin{align}
 		\dot\phi &= p + (q\sin(\phi) + r\cos(\phi))\tan(\theta)\\
 	\dot \theta &= q\cos(\phi) - r\sin(\phi)\\
-	\dot\psi &= (q\sin(\phi) + r\cos(\phi))/{\cos(\theta)}\\
+	\dot\psi &= (q\sin(\phi) + r\cos(\phi))/{\cos(\theta)}
 \end{align}
 where $(\phi, \theta, \psi)$ are roll, pitch, and yaw angles.
 Moreover, $\Omega_r$, called the overall residual rotor angular velocity, is computed as
@@ -145,7 +145,7 @@ Moreover, $\Omega_r$, called the overall residual rotor angular velocity, is com
 \begin{align}
 		&u_{\text{roll}} = \mathrm{b\,d}_{\text{cg}} (\Omega_2^2 - \Omega_4^2)\\
 	&u_{\text{pitch}} = \mathrm{b\,d}_{\text{cg}} (\Omega_1^2 - \Omega_3^2) \\
-	&u_{\text{yaw}} = \mathrm{d} (\Omega_1^2 - \Omega_2^2 + \Omega_3^2 - \Omega_4^2)\\
+	&u_{\text{yaw}} = \mathrm{d} (\Omega_1^2 - \Omega_2^2 + \Omega_3^2 - \Omega_4^2)
 \end{align}
 
 Also, d and b are, respectively, drag and thrust coefficients. $\mathrm{d}_{\text{cg}}$ is the distance of rotors from the gravity center . Hence, the angular velocity commands are obtained as
@@ -428,7 +428,7 @@ respectively. These results illustrate that the LQIR-DG approach appropriately c
 	\hfil
 	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_yaw.png}\label{fig:yaw}\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_yaw_e.png}
 	}
-	\caption{Performance of the LQIR-GT controller (a) roll angle (b) pitch angle (c) yaw angle}
+	\caption{Performance of the LQIR-DG controller (a) roll angle (b) pitch angle (c) yaw angle}
 	\label{fig:result}
 \end{figure}
 
