@@ -57,10 +57,10 @@ alireza\_sharifi@ae.sharif.edu}
 \noindent A quadrotor is a type of helicopter with four rotors that plays a significant role in today's society, including research, military, imaging, recreation, and agriculture. The performance of the quadrotor relies on the control system, including attitude, altitude, and position subsystems. In the attitude control of the quadrotor, it is vital to maintain the attitude outputs at the desired level using control commands such as the rotational speed of the rotors, when the disturbances occur suddenly. Therefore, much research is being conducted on the automatic control of the attitudes' quadrotor in facing the disturbance.
 
 
-     In \cite{PID}, a Proportional Integral Derivative (PID) controller is used to regulate the quadrotor attitude. However, the control objectives have not been effectively achieved with this controllers when the disturbance occurs. To solve this problem the model-based approaches \cite{model_base} are utilized for controller design. These controllers work based on information from the quadrotor's attitude model and disturbance to produce the best control command.
+     In \cite{PID}, a Proportional Integral Derivative (PID) controller is used to regulate the quadrotor attitude. However, the control objectives have not been effectively achieved with this controller when the disturbance occurs. To solve this problem the model-based approaches \cite{model_base} are utilized for controller design. These controllers work based on information from the quadrotor's attitude model and disturbance to produce the best control command.
 
 
-     Various model-based controllers can be found within the literature, the most well-known of which are intelligent control, the nonlinear control, robust control, and optimal control to reduce the disturbance effect in the attitude control and provide a faster control algorithm in facing the modeling error. In the intelligent controller category, the artificial intelligence computing approaches like fuzzy logic \cite{fuzzy}, iterative learning \cite{iterative_Learning}, machine learning \cite{machine_learning}, reinforcement learning \cite{Reinforcement_Learning}, and evolutionary computation \cite{Evolutionary} have been utilized to regulate the quadrotor's attitude.
+     Various model-based controllers can be found within the literature, the most well-known of which are intelligent control, nonlinear control, robust control, and optimal control to reduce the disturbance effect in the attitude control and provide a faster control algorithm in facing the modeling error. In the intelligent controller category, the artificial intelligence computing approaches like fuzzy logic \cite{fuzzy}, iterative learning \cite{iterative_Learning}, machine learning \cite{machine_learning}, reinforcement learning \cite{Reinforcement_Learning}, and evolutionary computation \cite{Evolutionary} have been utilized to regulate the quadrotor's attitude.
 
 
      Moreover, nonlinear control methods such as  Feedback Linearization (FBL) \cite{FBL} and Sliding Mode Control (SMC) \cite{SMC} have been applied to control the roll, pitch, and yaw angles of the quadrotor. In the optimal controller category, a Linear Quadratic Regulator (LQR) \cite{LQR} and Linear Quadratic Gaussian (LQG) \cite{LQG} have been implemented on the quadrotor based on the minimization of a quadratic criterion, including regulation performance and control effort to provide optimally controlled feedback gains. 
@@ -69,15 +69,15 @@ alireza\_sharifi@ae.sharif.edu}
      Linear Quadratic Regulator Differential Game (LQR-DG) control approach \cite{LQDG, robust_LQDG} is a class of optimal and robust controller methods that controls the outputs of a system based on its linear model and mini-maximization of a cost function. This approach has been utilized to stabilize and control various nonlinear and complex systems such as a ship controller \cite{LQDG_ship}. Moreover, in the LQR-DG control method, the control commands are analytically generated based on a pursuit-evasion of two players, one tracks the best control command, and the other creates the disturbance. This is one of the distinctive features of the LQR-DG controller and an important difference from other optimal control methods.
 
 
-     In this study, an LQR controller method based on the differential game theory, with an integral action called Linear Quadratic Integral Regulator Differential Game (LQIR-DG) controller, is proposed to generate the most efficient control command for an experimental setup of the quadrotor when facing the disturbance. Since the LQIR-DG is affected by an accurate model of the system, first, the dynamic of the three-degree-of-freedom setup of the quadrotor is modeled. Then, the linear state-space form the quadrotor model is extracted using the linearization of the nonlinear equations of motion to utilize in the proposed control problem. Moreover, the model's parameters are identified and verified against the experimental values. Next, the LQIR-DG technique is applied to the experimental setup of the quadrotor to reduce the effect of disturbance. The performance of the suggested controller is examined when the disturbance occurs. The results show the successful performance of the LQIR-DG scheme in reducing the disturbance.
+     In this study, an LQR controller method based on the differential game theory, with an integral action called Linear Quadratic Integral Regulator Differential Game (LQIR-DG) controller, is proposed to generate the most efficient control command for an experimental setup of the quadrotor when facing the disturbance. Since the LQIR-DG is affected by an accurate model of the system, first, the dynamic of the three-degree-of-freedom setup of the quadrotor is modeled. Then, the linear state-space form of the quadrotor model is extracted using the linearization of the nonlinear equations of motion to utilize in the proposed control problem. Moreover, the model's parameters are identified and verified against the experimental values. Next, the LQIR-DG technique is applied to the experimental setup of the quadrotor to reduce the effect of disturbance. The performance of the suggested controller is examined when the disturbance occurs. The results show the successful performance of the LQIR-DG scheme in reducing the disturbance.
 
 
 In the remainder of this study, the problem
- is defined in section \ref{sec:problem_statement}. The dynamics model for the experimental setup of the quadrotor is derived in details,  in section \ref{sec:modeling}. In section \ref{sec: diff game}, The LQIR-DG architecture is denoted. Finally, in sections \ref{sec:results} and \ref{sec:conclusion}, Numerical results and conclusion are provided, respectively.
+ is defined in section \ref{sec:problem_statement}. The dynamics model for the experimental setup of the quadrotor is derived in detail,  in section \ref{sec:modeling}. In section \ref{sec: diff game}, The LQIR-DG architecture is denoted. Finally, in sections \ref{sec:results} and \ref{sec:conclusion}, Numerical results and conclusion are provided, respectively.
 	% In section \ref{sec:results}, numerical results are presented.
 \section{Problem Statement}\label{sec:problem_statement}
 \noindent Here, a nonlinear dynamic is presented for the setup of the quadrotor, as illustrated in \figurename{\ref{quadlab}}.
-The quadrotor is free to rotate about its roll, pitch, and yaw axes. The Euler angles and angular velocities along three orthogonal axes are measured simultaneously using the Attitude and Heading Reference Systems (AHRS). These noisy measurements are utilizes in the LQIR-DG for control of the Euler angles.
+The quadrotor is free to rotate about its roll, pitch, and yaw axes. The Euler angles and angular velocities along three orthogonal axes are measured simultaneously using the Attitude and Heading Reference Systems (AHRS). These noisy measurements are utilized in the LQIR-DG for control of the Euler angles.
 The block diagram of the controller structure is illustrated in \figurename{\ref{block_diagram}}.
 \vspace{-1cm}
 \begin{figure}[!h]
@@ -99,11 +99,11 @@ The block diagram of the controller structure is illustrated in \figurename{\ref
 \section{Modeling of the Quadrotor  Setup}\label{sec:modeling}
 \noindent Here, the model of the three-degree-of-freedom setup of the quadrotor is presented in details.
 % Here, the model of the quadrotor's experimental setup with three degrees of freedom is provided in detail.
-For this purpose, first, the configuration of the quadrotor is denoted. Then, the nonlinear model of the attitude dynamics is derived to denote the state-space form. Finally, the nonlinear model is linearized to utilize in the control purposes.
+For this purpose, first, the configuration of the quadrotor is denoted. Then, the nonlinear model of the attitude dynamics is derived to denote the state-space form. Finally, the nonlinear model is linearized to utilize for the control purposes.
 \subsection{Configuration of the Quadrotor}
 \noindent  \figurename{\ref{QuadAssum}} denotes the quadrotor schematic.
 % Figure 3 provides the quadrotor's schematic.
-Each rotor has an angular velocity ,$\Omega_i$, rotating about the $z_B$ axis in the body coordinate system.
+Each rotor has an angular velocity, $\Omega_i$, rotating about the $z_B$ axis in the body coordinate system.
 % Each rotor, seen as a rigid disk, rotates with an angular velocity of $\Omega_i$ around the axis $z_B$ in the body-fixed frame.
 Rotors 1 and 3 rotate counterclockwise, while rotors 2 and 4 rotate clockwise, to cancel yawing moment.
 % To eliminate the quadrotor's yawing moment, rotors 1 and 3 revolve counterclockwise while rotors 2 and 4 rotate in the opposite direction, or clockwise.
@@ -126,7 +126,7 @@ Rotors 1 and 3 rotate counterclockwise, while rotors 2 and 4 rotate clockwise, t
 	\end{align}
 where $(p, q, r)$ are the angular velocities. $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ are the disturbances, generated in $x_B$, $y_B$ and $z_B$, respectively. Moreover, $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the principal moment of inertia and $\mathrm{I}_{\text{rotor}}$ is a rotor  inertia  about its axis.
 % The angular velocities are (p, q, r), while the roll, pitch, and yaw angles are (,).
-The relation between the angular body rates and the Euler angles rates are obtained as
+The relation between the angular body rates and the Euler angles rates is obtained as
 % The following is how the Euler angles rates and angular body rates are related:
 \begin{align}
 		\dot\phi &= p + (q\sin(\phi) + r\cos(\phi))\tan(\theta)\\
@@ -148,7 +148,7 @@ Moreover, $\Omega_r$, called the overall residual rotor angular velocity, is com
 	&u_{\text{yaw}} = \mathrm{d} (\Omega_1^2 - \Omega_2^2 + \Omega_3^2 - \Omega_4^2)
 \end{align}
 
-Also, d and b are, respectively, drag and thrust coefficients. $\mathrm{d}_{\text{cg}}$ is the distance of rotors from the gravity center . Hence, the angular velocity commands are obtained as
+Also, d and b are, respectively, drag and thrust coefficients. $\mathrm{d}_{\text{cg}}$ is the distance of rotors from the gravity center. Hence, the angular velocity commands are obtained as
 \begin{align}
 		\Omega_{c, 1}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
 	\Omega_{c, 2}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}\\
@@ -157,7 +157,7 @@ Also, d and b are, respectively, drag and thrust coefficients. $\mathrm{d}_{\tex
 \end{align}
 where $\Omega_{\text{mean}}$ is the nominal of the rotor angular velocities.
 \subsection{State-Space Form}
-\noindent Here, the state-space model is presented for the control purposes.
+\noindent Here, the state-space model is presented for control purposes.
 % For control purposes, the state-space model of the quadrotor experimental setup is described.
 By defining $x_1 = p$, $x_2 = q$, $x_3 = r$, $x_4 = \phi$, $x_5 = \theta$, and $x_6 = \psi$; the model of in state-space form are denoted as
 % The state-space model of the experimental setup is given as
@@ -412,7 +412,7 @@ Moreover, the parameters of LQIR-DG controller weight are denoted in table \ref{
 \subsection{Performance of the LQIR-DG Controller}
 
 \noindent Here,
-the performance of the LQIR-DG controller is evaluated. The desired and actual outputs, including the roll, pitch, and yaw angles, are compared in \figurename{\ref{fig:result}}. The desired scenario of the simulator is considered as a level flight. These figures show that the attitude outputs of the quadrotor converge to the desired values in less than three seconds. Moreover, \figurename{\ref{fig:omega}} show the angular velocity command of the quadrotor, 
+the performance of the LQIR-DG controller is evaluated. The desired and actual outputs, including the roll, pitch, and yaw angles, are compared in \figurename{\ref{fig:result}}. The desired scenario of the simulator is considered a level flight. These figures show that the attitude outputs of the quadrotor converge to the desired values in less than three seconds. Moreover, \figurename{\ref{fig:omega}} show the angular velocity command of the quadrotor, 
 respectively. These results illustrate that the LQIR-DG approach appropriately controls the attitude of the experimental setup of the quadrotor.
 
 
@@ -450,7 +450,7 @@ respectively. These results illustrate that the LQIR-DG approach appropriately c
 
 
 \subsection{Comparison with LQR}
-\noindent Here, the LQIR-DG controller performance is compared with famous control strategy such as LQR controller method. \figurename{\ref{fig:compare}} compares the quadrotor's desired and actual pitch angle in the presence of these controllers. This results indicates that the LQIR-DG controller can provide high tracking performance, such as good transient response and high rapid convergence relative to LQR controller for pitch angle control of the quadrotor setup.
+\noindent Here, the LQIR-DG controller performance is compared with famous control strategies such as the LQR controller method. \figurename{\ref{fig:compare}} compares the quadrotor's desired and actual pitch angle in the presence of these controllers. This result indicates that the LQIR-DG controller can provide high tracking performance, such as good transient response and high rapid convergence relative to the LQR controller for pitch angle control of the quadrotor setup.
 \begin{figure}[!h]
 	\centering
 	{\includegraphics[width=.9\linewidth]{../Figures/Calibration/LQIDGvsLQR/Pitch/lqidgvslqr_pitch.png}
