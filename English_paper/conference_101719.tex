@@ -14,6 +14,39 @@ t=sf,textfont=sf]{subfig}
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+%%%for header%%%
+\makeatletter
+\let\old@ps@headings\ps@headings
+\let\old@ps@IEEEtitlepagestyle\ps@IEEEtitlepagestyle
+\def\confheader#1{%
+	% % for all pages except the first
+	% \def\ps@headings{
+		% \old@ps@headings
+		% \def\@oddhead{\strut\hfill#1\hfill\strut}
+		% \def\@evenhead{\strut\hfill#1\hfill\strut}
+		% }
+	% for the first page
+	\def\ps@IEEEtitlepagestyle{
+		\old@ps@IEEEtitlepagestyle
+		\def\@oddhead{\strut\hfill#1\hfill\strut}
+		\def\@evenhead{\strut\hfill#1\hfill\strut}
+	}
+	\ps@headings
+}
+\makeatother
+\confheader{
+	\small{Proceedings of the 10th RSI International Conference on Robotics and Mechatronics (ICRoM 2022), Nov. 15-18, 2022, Tehran, Iran} 
+}
+%%%for footer%%%
+\usepackage[pscoord]{eso-pic}
+\newcommand{\placetextbox}[3]{
+	\setbox0=\hbox{#3}
+	\AddToShipoutPictureFG*{ \put(\LenToUnit{#1\paperwidth},\LenToUnit{#2\paperheight}){\vtop{{\null}\makebox[0pt][c]{#3}}}
+	}
+}
+\placetextbox{.23}{0.055}{\textbf{\small{978-1-6654-5452-0/22/\$31.00~\copyright 2022 IEEE}}}
+
 \begin{document}
 
 \title{Linear Quadratic Integral Differential Game applied to the Real-time Control of a Quadrotor Experimental setup\\
