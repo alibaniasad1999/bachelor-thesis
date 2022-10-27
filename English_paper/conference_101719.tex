@@ -61,7 +61,7 @@ t=sf,textfont=sf]{subfig}
 Tehran, Iran \\
 nobahari@sharif.edu}
 \and
-\IEEEauthorblockN{Ali BaniAsad}
+\IEEEauthorblockN{Ali Baniasad}
 \IEEEauthorblockA{\textit{Department of Aerospace Engineering} \\
 \textit{Sharif University of Technology}\\
 Tehran, Iran \\
@@ -87,7 +87,7 @@ alireza\_sharifi@ae.sharif.edu}
 \end{IEEEkeywords}
 \section{Introduction}
 
-\noindent A quadrotor is a type of helicopter with four rotors that plays a significant role in today's society, including research, military, imaging, recreation, and agriculture. The performance of the quadrotor relies on the control system, including attitude, altitude, and position subsystems. In the attitude control of the quadrotor, it is vital to maintain the attitude outputs at the desired level using control commands such as the rotational speed of the rotors, when the disturbances occur suddenly. Therefore, much research is being conducted on the automatic control of the attitudes' quadrotor in facing the disturbance.
+\noindent A quadrotor is a type of helicopter with four rotors that plays a significant role in today's society, including research, military, imaging, recreation, and agriculture. The performance of the quadrotor relies on the control system, including attitude, altitude, and position subsystems. In the attitude control of the quadrotor, it is vital to maintain the attitude outputs at the desired level using control commands such as the rotational speed of the rotors, when the disturbances occur suddenly. Therefore, much research is being conducted on the automatic control of the attitude's quadrotor in facing the disturbance.
 
 
      In \cite{PID}, a Proportional Integral Derivative (PID) controller is used to regulate the quadrotor attitude. However, the control objectives have not been effectively achieved with this controller when the disturbance occurs. To solve this problem the model-based approaches \cite{model_base} are utilized for controller design. These controllers work based on information from the quadrotor's attitude model and disturbance to produce the best control command.
@@ -115,14 +115,14 @@ The block diagram of the controller structure is illustrated in \figurename{\ref
 \vspace{-1cm}
 \begin{figure}[!h]
 	\vspace{0.1cm}
-	\includegraphics[width=\linewidth]{../Figures/introduction/3DOFQuad.png}
+	\includegraphics[width=\linewidth]{3DOFQuad.png}
 	\centering
 	\caption{3DoF setup of the quadrotor % Experimental quadrotor setup with 3 degrees of freedom
 	}
 	\label{quadlab}
 \end{figure}
 \begin{figure}[!h]
-	\includegraphics[width=\linewidth]{../Figures/introduction/schematic.pdf}
+	\includegraphics[width=\linewidth]{contrller_schematic.png}
 	\centering
 	\caption{Block diagram of the LQIR-DG controller structure}
 	\label{block_diagram}
@@ -142,7 +142,7 @@ Rotors 1 and 3 rotate counterclockwise, while rotors 2 and 4 rotate clockwise, t
 % To eliminate the quadrotor's yawing moment, rotors 1 and 3 revolve counterclockwise while rotors 2 and 4 rotate in the opposite direction, or clockwise.
 \vspace{-0.5cm}
 \begin{figure}[!h]
-	\includegraphics[width=\linewidth]{../Figures/introduction/fig17.pdf}
+	\includegraphics[width=\linewidth]{schematic.png}
 	\centering
 	\caption{Configuration of the quadrotor}
 	\label{QuadAssum}
@@ -451,15 +451,15 @@ respectively. These results illustrate that the LQIR-DG approach appropriately c
 
 \begin{figure}[!h]
 	\centering
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_roll.png}\label{fig:roll}\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_roll_e.png}
+	\subfloat[]{\includegraphics[width=.49\linewidth]{lqidg_roll.png}\label{fig:roll}\includegraphics[width=.49\linewidth]{lqidg_roll_e.png}
 	}
-	% \subfloat{\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_pitch.png}\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_pitch.png}
+	% \subfloat{\includegraphics[width=.49\linewidth]{lqidg_pitch.png}\includegraphics[width=.49\linewidth]{lqidg_pitch.png}
 	% }
 	\hfil
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_pitch.png}\label{fig:pitch}\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_pitch_e.png}
+	\subfloat[]{\includegraphics[width=.49\linewidth]{lqidg_pitch.png}\label{fig:pitch}\includegraphics[width=.49\linewidth]{lqidg_pitch_e.png}
 	}
 	\hfil
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_yaw.png}\label{fig:yaw}\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_yaw_e.png}
+	\subfloat[]{\includegraphics[width=.49\linewidth]{lqidg_yaw.png}\label{fig:yaw}\includegraphics[width=.49\linewidth]{lqidg_yaw_e.png}
 	}
 	\caption{Performance of the LQIR-DG controller (a) roll angle (b) pitch angle (c) yaw angle}
 	\label{fig:result}
@@ -467,14 +467,14 @@ respectively. These results illustrate that the LQIR-DG approach appropriately c
 
 \begin{figure}[!h]
 	\centering
-	\subfloat{\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_1.png}
+	\subfloat{\includegraphics[width=.49\linewidth]{lqidg_Omega_1.png}
 	}
-	\subfloat{\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_2.png}
+	\subfloat{\includegraphics[width=.49\linewidth]{lqidg_Omega_2.png}
 	}
 	\hfil
-	\subfloat{\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_3.png}
+	\subfloat{\includegraphics[width=.49\linewidth]{lqidg_Omega_3.png}
 	}
-	\subfloat{\includegraphics[width=.49\linewidth]{../Figures/Calibration/LQIDG/3DOF/lqidg_Omega_4.png}
+	\subfloat{\includegraphics[width=.49\linewidth]{lqidg_Omega_4.png}
 	}
 	\caption{Time history of angular velocity commands}
 	\label{fig:omega}
@@ -486,7 +486,7 @@ respectively. These results illustrate that the LQIR-DG approach appropriately c
 \noindent Here, the LQIR-DG controller performance is compared with famous control strategies such as the LQR controller method. \figurename{\ref{fig:compare}} compares the quadrotor's desired and actual pitch angle in the presence of these controllers. This result indicates that the LQIR-DG controller can provide high tracking performance, such as good transient response and high rapid convergence relative to the LQR controller for pitch angle control of the quadrotor setup.
 \begin{figure}[!h]
 	\centering
-	{\includegraphics[width=.9\linewidth]{../Figures/Calibration/LQIDGvsLQR/Pitch/lqidgvslqr_pitch.png}
+	{\includegraphics[width=.9\linewidth]{lqidgvslqr_pitch.png}
 	}
 	\caption{Comparison of the LQIR-DG to the LQR in control of the pitch angle of the experimental setup}
 	\label{fig:compare}
