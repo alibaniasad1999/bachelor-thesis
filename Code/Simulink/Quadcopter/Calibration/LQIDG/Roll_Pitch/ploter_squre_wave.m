@@ -1,23 +1,25 @@
-time = linspace(0, 80, length(pitch_LQIDG));
+load('test6.mat');
+time = linspace(0, 200, length(pitch_LQIDG));
 
 
-plot(time, -refrence(:, 1), '--k', 'linewidth', 2);
+plot(time-61, -refrence(:, 1), 'r', 'linewidth', 2);
 hold on;
-plot(time, pitch_LQIDG(:, 1)*180/pi, 'r', 'linewidth', 2);
+plot(time-61, pitch_LQIDG(:, 1)*180/pi, '--k', 'linewidth', 2);
 hold off;
 legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
-axis([0 80 -40 50])
+axis([0 100 -40 50])
 set(gca, 'FontSize', 16)
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\phi$(deg)', 'interpreter', 'latex', 'FontSize', 24);
+print('../../../../../../Figures/Calibration/LQIDG/Roll_Pitch/Square/lqidg_roll.png','-dpng','-r400');
 
-plot(time, refrence(:, 2), '--k', 'linewidth', 2);
+plot(time-60, refrence(:, 2), 'r', 'linewidth', 2);
 hold on;
-plot(time, pitch_LQIDG(:, 1)*180/pi, 'r', 'linewidth', 2);
+plot(time-60, pitch_LQIDG(:, 1)*180/pi, '--k', 'linewidth', 2);
 hold off;
 legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
-axis([0 80 -40 50])
+axis([0 100 -40 50])
 set(gca, 'FontSize', 16)
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\theta$(deg)', 'interpreter', 'latex', 'FontSize', 24);
-
+print('../../../../../../Figures/Calibration/LQIDG/Roll_Pitch/Square/lqidg_pitch.png','-dpng','-r400');
