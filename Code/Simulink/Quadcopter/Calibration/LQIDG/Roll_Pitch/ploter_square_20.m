@@ -1,14 +1,14 @@
 clc
 clear;
 
-load('data_film_squre_15.mat');
+load('data_film_squre_20.mat');
 time = 0:0.02:100;
 
 
 % square wave 
 freq=0.025;
 offset=0;
-amp=15;
+amp=20;
 duty=50;
 
 sq_wav=offset+amp*square(2*pi*freq.*time,duty);
@@ -25,7 +25,7 @@ axis([0 100 -40 50])
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\phi$(deg)', 'interpreter', 'latex', 'FontSize', 24);
-print('../../../../../../Figures/Calibration/LQIDG/Roll_Pitch/Square/lqidg_roll_15','-depsc');
+print('../../../../../../Figures/Calibration/LQIDG/Roll_Pitch/Square/lqidg_roll_20','-depsc');
 
 
 plot(time, -refrence, 'r', 'linewidth', 2);
@@ -36,4 +36,4 @@ hold off;
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\theta$(deg)', 'interpreter', 'latex', 'FontSize', 24);
-print('../../../../../../Figures/Calibration/LQIDG/Roll_Pitch/Square/lqidg_pitch_15','-depsc');
+print('../../../../../../Figures/Calibration/LQIDG/Roll_Pitch/Square/lqidg_pitch_20','-depsc');
