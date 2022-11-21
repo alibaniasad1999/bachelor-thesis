@@ -1,7 +1,7 @@
 clear;
 clc;
 %% plot data %%
-load('data_film_weight_1.mat')
+load('data_film_weight_4.mat')
 time = linspace(0, 100, length(simout));
 
 % pitch
