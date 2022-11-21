@@ -12,7 +12,7 @@ hold on;
 plot(time, 180/pi*simout(:, 1), '--k', 'linewidth', 2);
 hold off;
 legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
-axis([0 100 -40 20])
+% axis([0 100 -40 20])
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\phi$(deg)', 'interpreter', 'latex', 'FontSize', 24);
