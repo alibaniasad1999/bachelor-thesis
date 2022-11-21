@@ -44,7 +44,8 @@ p1 = p(1:n, :);
 p2 = p(n+1: end, :);
 
 % all player
-LQIDG_openloop_roll = (R1_inv * B' * p1)
+LQIDG_openloop_roll = (R1_inv * B' * p1);
+LQIDG_openloop_roll_d = (R2_inv * B' * p2);
 %% Functions %%
 function d = diff_eq_Riccati(~,p)
 global A Q n S1 S2
