@@ -15,4 +15,6 @@ weighting_matrix = [
     ];
 QuadConstants;
 OpenLoop_LQDG_riccati_solver_roll;
+Q_roll = Q;
 OpenLoop_LQDG_riccati_solver_pitch;
+Q_pitch = Q;
