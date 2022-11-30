@@ -201,6 +201,7 @@ plot(time, out.simout4(:, 3), 'k--', 'linewidth', 2);
 hold on;
 plot(time, data_V(:, 3), 'r', 'linewidth', 2);
 hold off;
+axis([0, 0.2, -3, -2])
 legend('Simulated', 'Measured', 'Location','northwest');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 16);
 ylabel('$\psi_{(rad)}$', 'interpreter', 'latex', 'FontSize', 18);
