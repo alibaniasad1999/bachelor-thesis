@@ -19,6 +19,7 @@ print('../../../../../../../English_Journal/Figure/parameter_estimation/3DOF/rol
 plot(time, out.simout4(:, 2)*180/pi, 'k--', 'linewidth', 2);
 hold on;
 plot(time, data_V(:, 2)*180/pi, 'r', 'linewidth', 2);
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 legend('Simulated', 'Measured', 'FontSize', 20);
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\theta_{(\textrm{deg})}$', 'interpreter', 'latex', 'FontSize', 24);
@@ -31,6 +32,7 @@ plot(time, out.simout4(:, 3)*180/pi, 'k--', 'linewidth', 2);
 hold on;
 plot(time, data_V(:, 3)*180/pi, 'r', 'linewidth', 2);
 hold off;
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 axis([0, 0.2, -3*180/pi, -2*180/pi])
 legend('Simulated', 'Measured', 'FontSize', 20);
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);

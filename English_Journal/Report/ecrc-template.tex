@@ -39,6 +39,9 @@
 %% The `ecrc' package must be called to make the CRC functionality available
 \usepackage{ecrc}
 \usepackage{amsmath}
+\usepackage{caption}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
 
 %% The ecrc package defines commands needed for running heads and logos.
 %% For running heads, you can set the journal name, the volume, the starting page and the authors
@@ -280,7 +283,7 @@ By defining $x_1 = p$, $x_2 = q$, $x_3 = r$, $x_4 = \phi$, $x_5 = \theta$, and $
 % The state-space model of the experimental setup is given as
 \begin{align}\label{eq:diffeq}
 		\dot x_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}} x_2 x_3 + x_2 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{roll}}}{\mathrm{I}_{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}} \\[0.5em]
-	\dot x_2 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{yy}}} x_1 x_3 - x_1 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{pitch}}}{\mathrm{I}_{\text{yy}}} + \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}\\[0.5em] \label{eq:diffeq-mid}
+	\dot x_2 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}} x_1 x_3 - x_1 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{pitch}}}{\mathrm{I}_{\text{yy}}} + \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}\\[0.5em] \label{eq:diffeq-mid}
 	\dot x_3 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} x_1 x_2 + \dfrac{u_{\text{yaw}}}{\mathrm{I}_{\text{zz}}} + \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}\\[0.5em] 
     \dot x_4 &= x_1 + (x_2\sin(x_4) + x_3\cos(x_4))\tan(x_5)
 \\[0.5em]
@@ -533,13 +536,152 @@ Moreover, the parameters of LQIR-DG controller weight are denoted in table \ref{
 	\label{tab:control weight_new}
 \end{table}
 
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=0.7\textwidth]{../Figure/parameter_estimation/roll/roll}
-    \caption{3DoF setup of the quadrotor.}
-    \label{fig:quadrotor}
-\end{figure}
 
+
+
+\subsection{Evaluation of the 3DoF experimental setup model}
+
+Here, the performance of the extracted model of the 3DoF experimental setup is evaluated un-der three scenarios: (i) each channel separately, (ii) coupling between roll and pitch channel, and (iii) coupling between roll, pitch, and yaw channel. In the first scenario, each channel's parame-ters are changed.
+%  The results of the first scenario are shown in figure \ref{fig:3dof model}. The results of the second scenario are shown in figure \ref{fig:3dof model2}. The results of the third scenario are shown in figure \ref{fig:3dof model3}
+
+
+\begin{minipage}[t]{0.95\linewidth}
+	\hfill
+    \begin{minipage}[b]{0.48\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/roll/roll}
+		\captionsetup{justification=centering}
+		\captionof{figure}{Comparison of roll channel states in simulation and 3DoF setup}
+	\end{minipage}
+	\begin{minipage}[b]{0.49\linewidth}
+		\centering
+		\begin{tabular}{ccc}\hline
+			Parameter & Value & Value after evaluation
+            \Tstrut\\ \hline
+			$\alpha_3$  & $1.1\times10^{-4}$ & $5.47\times10^{-5}$  \Tstrut\\ \hline
+			\\
+			\\\\\\\\\\\\\\\\\\
+		\end{tabular}
+	\captionsetup{justification=centering}
+		\captionof{table}{Comparison of roll channel parameter values before and after evaluation}
+	\end{minipage}
+    \vspace{1cm}
+\end{minipage}
+
+
+
+
+
+
+\begin{minipage}[t]{0.95\linewidth}
+	\hfill
+    \begin{minipage}[b]{0.48\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/pitch/pitch}
+		\captionsetup{justification=centering}
+		\captionof{figure}{Comparison of pitch channel states in simulation and 3DoF setup}
+	\end{minipage}
+	\begin{minipage}[b]{0.49\linewidth}
+		\centering
+		\begin{tabular}{ccc}\hline
+			Parameter & Value & Value after evaluation
+            \Tstrut\\ \hline
+			$\beta_3$  & $1.1\times10^{-4}$ & $7.13\times10^{-5}$  \Tstrut\\ \hline
+			\\
+			\\\\\\\\\\\\\\\\\\
+		\end{tabular}
+	\captionsetup{justification=centering}
+		\captionof{table}{Comparison of pitch channel parameter values before and after evaluation}
+	\end{minipage}
+\end{minipage}
+
+% \vspace{1cm}
+
+\begin{minipage}[t]{0.95\linewidth}
+	\hfill
+    \begin{minipage}[b]{0.48\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/yaw/yaw}
+		\captionsetup{justification=centering}
+		\captionof{figure}{Comparison of yaw channel states in simulation and 3DoF setup}
+	\end{minipage}
+	\begin{minipage}[b]{0.49\linewidth}
+		\centering
+		\begin{tabular}{ccc}\hline
+			Parameter & Value & Value after evaluation
+            \Tstrut\\ \hline
+			$\gamma_2$  & $5.5\times10^{-5}$ & $1.3\times10^{-6}$  \Tstrut\\ \hline
+			\\
+			\\\\\\\\\\\\\\\\\\
+		\end{tabular}
+	\captionsetup{justification=centering}
+		\captionof{table}{Comparison of yaw channel parameter values before and after evaluation}
+	\end{minipage}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\linewidth}
+	\hfill
+    \begin{minipage}[b]{0.48\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/roll-pitch/roll}
+		\captionsetup{justification=centering}
+		\captionof{figure}{Comparison of roll channel states in simulation and 3DoF setup}
+	\end{minipage}
+    \begin{minipage}[b]{0.48\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch}
+		\captionsetup{justification=centering}
+		\captionof{figure}{Comparison of pitch channel states in simulation and 3DoF setup}
+	\end{minipage}
+    \hfill
+    \begin{minipage}[b]{1\linewidth}
+		\centering
+		\begin{tabular}{ccc}\hline
+			Parameter & Value & Value after evaluation
+            \Tstrut\\ \hline
+			$\alpha_2$  & 0.0015 & 0.0020\Tstrut\\
+            $\beta_2$  & 0.0015 & 0.0027\Tstrut\\ \hline
+		\end{tabular}
+	\captionsetup{justification=centering}
+		\captionof{table}{Comparison of roll-pitch channel parameter values before and after evaluation}
+	\end{minipage}
+\end{minipage}
+
+\begin{minipage}[t]{0.95\linewidth}
+	\hfill
+    \begin{minipage}[b]{0.48\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/3DOF/roll}
+		\captionsetup{justification=centering}
+		\captionof{figure}{Comparison of roll channel states in simulation and 3DoF setup}
+	\end{minipage}
+    \begin{minipage}[b]{0.48\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/3DOF/pitch}
+		\captionsetup{justification=centering}
+		\captionof{figure}{Comparison of pitch channel states in simulation and 3DoF setup}
+	\end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.48\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/3DOF/yaw}
+		\captionsetup{justification=centering}
+		\captionof{figure}{Comparison of yaw channel states in simulation and 3DoF setup}
+	\end{minipage}
+    \begin{minipage}[b]{0.5\linewidth}
+		\centering
+		\begin{tabular}{ccc}\hline
+			Parameter & Value & Value after evaluation
+            \Tstrut\\ \hline
+			$\alpha_1$  & -0.9628 & -1.56\Tstrut\\
+            $\beta_1$  & 0.9629 & 1.57\Tstrut \\
+            $\gamma_1$  & -0.0017 &-0.085\Tstrut\\ \hline
+            \\\\\\\\\\\\\\\\
+		\end{tabular}
+	\captionsetup{justification=centering}
+		\captionof{table}{Comparison of 3DOF channel parameter values before and after evaluation}
+	\end{minipage}
+\end{minipage}
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
