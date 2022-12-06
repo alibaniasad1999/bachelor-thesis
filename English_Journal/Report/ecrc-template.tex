@@ -40,6 +40,7 @@
 \usepackage{ecrc}
 \usepackage{amsmath}
 \usepackage{caption}
+\usepackage{subfig}
 \newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
 \newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
 
@@ -682,6 +683,34 @@ Here, the performance of the extracted model of the 3DoF experimental setup is e
 		\captionof{table}{Comparison of 3DOF channel parameter values before and after evaluation}
 	\end{minipage}
 \end{minipage}
+
+
+\section{Performance of the LQIR-DG Controller}
+Here, the performance of the LQIR-DG controller is evaluated. The desired and actual outputs, including the roll, pitch, and yaw angles, are compared in figure \ref{fig:result}. The desired scenario of the simulator is considered a level flight. These figures show that the attitude outputs of the quadrotor converge to the desired values in less than three seconds. Moreover, figure \ref{fig:omega} shows the angular velocity command of the quadrotor, 
+respectively. These results illustrate that the LQIR-DG approach appropriately controls the attitude of the experimental setup of the quadrotor.
+
+
+\begin{figure}[!h]
+	\centering
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_roll}\label{fig:roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_pitch}
+	}
+	\hfil
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_yaw}\label{fig:pitch}
+	}
+	\caption{Performance of the LQIR-DG controller (a) roll angle (b) pitch angle (c) yaw angle}
+	\label{fig:result}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_1}\label{fig:roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_2}
+	}
+	\hfil
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_3}\label{fig:pitch}\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_4}
+	}
+	\caption{Time history of angular velocity commands}
+	\label{fig:omega}
+\end{figure}
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
