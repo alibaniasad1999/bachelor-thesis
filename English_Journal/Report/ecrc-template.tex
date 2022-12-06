@@ -648,8 +648,7 @@ Here, the performance of the extracted model of the 3DoF experimental setup is e
 	\end{minipage}
 \end{minipage}
 
-\begin{minipage}[t]{0.95\linewidth}
-	\hfill
+
     \begin{minipage}[b]{0.48\linewidth}
 		\centering
 		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/3DOF/roll}
@@ -669,7 +668,7 @@ Here, the performance of the extracted model of the 3DoF experimental setup is e
 		\captionsetup{justification=centering}
 		\captionof{figure}{Comparison of yaw channel states in simulation and 3DoF setup}
 	\end{minipage}
-    \begin{minipage}[b]{0.5\linewidth}
+    \begin{minipage}[b]{0.48\linewidth}
 		\centering
 		\begin{tabular}{ccc}\hline
 			Parameter & Value & Value after evaluation
@@ -682,7 +681,6 @@ Here, the performance of the extracted model of the 3DoF experimental setup is e
 	\captionsetup{justification=centering}
 		\captionof{table}{Comparison of 3DOF channel parameter values before and after evaluation}
 	\end{minipage}
-\end{minipage}
 
 
 \section{Performance of the LQIR-DG Controller}
@@ -692,7 +690,7 @@ respectively. These results illustrate that the LQIR-DG approach appropriately c
 
 \begin{figure}[!h]
 	\centering
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_roll}\label{fig:roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_pitch}
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_roll}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_pitch}
 	}
 	\hfil
 	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_yaw}\label{fig:pitch}
@@ -703,14 +701,66 @@ respectively. These results illustrate that the LQIR-DG approach appropriately c
 
 \begin{figure}[!h]
 	\centering
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_1}\label{fig:roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_2}
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_1}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_2}
 	}
 	\hfil
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_3}\label{fig:pitch}\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_4}
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_3}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_4}
 	}
 	\caption{Time history of angular velocity commands}
 	\label{fig:omega}
 \end{figure}
+
+
+Figure \ref{fig:square} illustrates the performance of the LQIR-DG controller in the coupling mode of the roll and pitch channels to track the desired angle as a square wave with a frequency of 0.02 Hz and an amplitude of 20 degrees.
+
+\begin{figure}[!ht]
+	\centering
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/square/lqidg_roll_20}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/square/lqidg_pitch_20}
+	}
+	\caption{LQIR-DDG controller performance in order to track the desired angles in the two-degree-of-freedom coupling mode (a) Comparison of the roll angle with the desired value (b) Comparison of the pitch angle with the desired}
+	\label{fig:square}
+\end{figure}
+
+\section{Investigating the possibility of disturbance rejection}
+
+This section investigates the possible rejection of input disturbances by the LQIR-DG controller in regulation. For this purpose, a disturbance with an amplitude of 0.5 N is added to the input from 20 to 60 seconds. As shown in figure \ref{fig:disturbance}, the LQIR-DG controller performs well in coupling the roll and screw channels to remove the input disturbance. \ref{fig:disturbance} (a), the performance of this controller is checked by comparing the desired roll angle with the actual roll angle. Also, \ref{fig:disturbance}  (b) compares the desired pitch angle with the actual pitch angle of the 3DoF experimental setup in removing the input disturbance. The results indicate the proper performance of the controller in removing the input disturbance.
+
+\begin{figure}[!ht]
+	\centering
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_roll}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_pitch}
+	}
+	\caption{The performance of the LQIR-DG controller in the presence of the input disturbance in the two-degree-of-freedom coupling mode (a) Comparison of the desired roll angle with the actual value (b) Comparison of the desired pitch angle with the actual value.}
+	\label{fig:disturbance}
+\end{figure}
+
+\subsection{Investigating the impact of uncertainty in modeling }
+This section examines the performance of the LQIR-DG controller designed by considering the uncertainty in 3DoF experimental setup modeling. The performance of the sliding mode con-troller in the coupling mode of the roll, pitch, and yaw channels is checked by considering the uncertainty in the 3DoF experimental setup modeling in figure \ref{fig:weight}. For this purpose, 50 grams is added to the roll axis and 100 grams to the pitch axis. In figure \ref{fig:weight} (a), the performance of this con-troller is checked by comparing the desired roll angle with the actual roll angle; In figure \ref{fig:weight} (b), the performance of this controller is checked by comparing the desired pitch angle to the actual pitch angle. Also, figure \ref{fig:weight} (c) compares the desired yaw angle with the actual yaw angle of the 3DoF experimental setup. The implementation results indicate the proper efficiency of the LQIR-DG controller in pursuit of the desired value, taking into account the uncertainty in the values of the moments of inertia around each axis of the body coordinate system.
+\begin{figure}[!h]
+	\centering
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_roll}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_pitch}
+	}
+	\hfil
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_yaw}
+	}
+	\caption{The performance of the LQIR-DG controller by adding weight to each of the roll and pitch axes in the three-degree-of-freedom coupling mode (a) Comparison of the roll angle with the actual value (b) Comparison of the pitch angle with the actual value (c) Comparison of the yaw angle with the actual value}
+	\label{fig:weight}
+\end{figure}
+
+\subsection{Comparison with LQR}
+\noindent Here, the LQIR-DG controller performance is compared with famous control strategies such as the LQR controller method. \figurename{\ref{fig:compare}} compares the quadrotor's desired and actual pitch angle in the presence of these controllers. This result indicates that the LQIR-DG controller can provide high tracking performance, such as good transient response and high rapid convergence relative to the LQR controller for pitch angle control of the quadrotor setup.
+\begin{figure}[!h]
+	\centering
+	{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidgvslqr/lqidgvslqr_pitch}
+	}
+	\caption{Comparison of the LQIR-DG to the LQR in control of the pitch angle of the experimental setup}
+	\label{fig:compare}
+\end{figure}
+\section{Conclusion}\label{sec:conclusion}
+\noindent In this study, a linear quadratic with integral action based on the differential game theory, called LQIR-DG, was implemented for level attitude control in an experimental setup of a quadrotor. To implement the proposed controller structure, first, an accurate model of the quadrotor was linearized in the state-space form, and then the model parameters were estimated. Next, two players were considered for each of the quadrotor's roll, pitch, and yaw channels. The first player found the best control command for each channel of the setup of a quadrotor based on the mini-maximization of a quadratic criterion; when the second player produced the worst disturbances. Finally, the performance of the proposed controller was investigated in level flight and compared to the LQR controller. The implementation results verify the successful performance of the LQIR-DG method in the level flight of the attitude control for the actual plant.
+
+
+
+
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
