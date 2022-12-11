@@ -12,4 +12,4 @@ boxplot(cost, {'LQIR-DG controller', 'PID controller'})
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 ylabel('Quadratic Cost', 'interpreter', 'latex', 'FontSize', 24);
 
-print('../../../../../../English_Journal/Figure/implementation/box_plot/lqidgvsboxplot','-depsc');
+print('../../../../../../Figures/Calibration/LQIDG/Roll_Pitch/lqidgvsboxplot','-depsc');
