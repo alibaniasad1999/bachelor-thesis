@@ -7,9 +7,9 @@ time = linspace(0, 100, length(simout));
 % pitch
 % subplot(2,1,1);
 set(gca, 'FontSize', 16)
-plot(time-5, zeros(1, length(time)), 'r', 'linewidth', 2);
+plot(time-7, zeros(1, length(time)), 'r', 'linewidth', 2);
 hold on;
-plot(time-5, 180/pi*simout(:, 1), '--k', 'linewidth', 2);
+plot(time-7, 180/pi*simout(:, 1), '--k', 'linewidth', 2);
 hold off;
 legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
 axis([0 20 -20 20])
@@ -28,9 +28,9 @@ print('../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_roll','-depsc');
 % legend('Setpoint', 'LQIR-DG', 'Location','northeast');
 % print('../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_roll.png','-dpng','-r400');
 
-plot(time-5, zeros(1, length(time)), 'r', 'linewidth', 2);
+plot(time-7, zeros(1, length(time)), 'r', 'linewidth', 2);
 hold on;
-plot(time-5, 180/pi*simout(:, 2), '--k', 'linewidth', 2);
+plot(time-7, 180/pi*simout(:, 2), '--k', 'linewidth', 2);
 hold off;
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
@@ -39,9 +39,9 @@ legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
 axis([0 20 -30 60])
 print('../../../../../../Figures/Calibration/LQIDG/3DOF/lqidg_pitch','-depsc');
 
-plot(time-5, zeros(1, length(time)), 'r', 'linewidth', 2);
+plot(time-7, zeros(1, length(time)), 'r', 'linewidth', 2);
 hold on;
-plot(time-5, 180/pi*simout(:, 3) - 1, '--k', 'linewidth', 2);
+plot(time-7, 180/pi*simout(:, 3) - 1, '--k', 'linewidth', 2);
 hold off;
 axis([0 20 -20 20])
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
