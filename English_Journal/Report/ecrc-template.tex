@@ -532,20 +532,20 @@ Moreover, the parameters of LQIR-DG controller weight are denoted in table \ref{
 
 \begin{table}[!h]
 	\renewcommand{\arraystretch}{1.3}
-	\caption{The Parameters of the LQIR-DG Controller?????????????}
+	\caption{The Parameters of the LQIR-DG Controller}
 	\begin{center}
 	\begin{tabular}{c c c}
 	\hline
 	\textbf{Control Loop} & \textbf{\textit{Weight}}& \textbf{\textit{Value}} \\
 	\hline
 	Roll & 
-	$\boldsymbol{{\mathrm{Q_{\text{roll}}}}}$ & diag([$7.91$, $0.01$, $631.85$, $214.28$])\\
+	$\boldsymbol{{\mathrm{Q_{\text{roll}}}}}$ & diag([$0.02$, $65.96$, $83.04$, $0.00$])\\
 	Pitch & 
-	$\boldsymbol{{\mathrm{Q_{\text{pitch}}}}}$ & diag([$9853.09$, $0.12$, $0.01$, $873.93$])\\
+	$\boldsymbol{{\mathrm{Q_{\text{pitch}}}}}$ & diag([$435.01$, $262.60$, $262.60$, $0.00$])\\
 	Yaw & 
-	$\boldsymbol{{\mathrm{Q_{\text{yaw}}}}}$ & diag([$1.81e\!-\!4$, $4.5e\!-\!4$, $3e\!-\!6$, $1.7e\!-\!5$])\\
+	$\boldsymbol{{\mathrm{Q_{\text{yaw}}}}}$ & diag([$4e\!-\!4$, $0.00$, $0.133$, $0$])\\
 	-& $R$ & 1\\
-	-& $R_{d}$ & 1.2577\\
+	-& $R_{d}$ & 1.2764\\
 	% $4.5e\!-\!5$])\\
 	%  & 
 	%  \\
@@ -734,6 +734,7 @@ respectively. These results illustrate that the LQIR-DG approach appropriately c
 
 Figure \ref{fig:square} illustrates the performance of the LQIR-DG controller in the coupling mode of the roll and pitch channels to track the desired angle as a square wave with a frequency of 0.02 Hz and an amplitude of 20 degrees.
 
+
 \begin{figure}[!ht]
 	\centering
 	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/square/lqidg_roll_20}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/square/lqidg_pitch_20}
@@ -749,6 +750,9 @@ Figure \ref{fig:square} illustrates the performance of the LQIR-DG controller in
 \begin{figure}[!ht]
 	\centering
 	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_roll}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_pitch}
+	}
+	\hfil
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/d_roll}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/d_pitch}
 	}
 	\caption{The performance of the LQIR-DG controller in the presence of the input disturbance in the two-degree-of-freedom coupling mode (a) Comparison of the desired roll angle with the actual value (b) Comparison of the desired pitch angle with the actual value.}
 	\label{fig:disturbance}

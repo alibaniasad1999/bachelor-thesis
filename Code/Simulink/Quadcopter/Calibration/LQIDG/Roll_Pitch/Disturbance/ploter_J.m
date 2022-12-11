@@ -13,7 +13,7 @@ hold off;
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\phi_{(deg)}$', 'interpreter', 'latex', 'FontSize', 24);
-legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
+legend('Setpoint', 'LQIR-DG Controller', 'Location','northeast');
 % axis([0 10 -1 0.2])
 xlim([0 80])
 % % pitch rate q
@@ -30,6 +30,41 @@ xlim([0 80])
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\theta_{(deg)}$', 'interpreter', 'latex', 'FontSize', 24);
-legend('Setpoint', 'LQIDG Controller', 'Location','northeast');
+legend('Setpoint', 'LQIR-DG Controller', 'Location','northeast');
 % print('../../../../../../../English_Journal/Figure/implementation/disturbance/lqidg_pitch.png','-dpng','-r400');
 print('../../../../../../../English_Journal/Figure/implementation/disturbance/lqidg_pitch','-depsc');
+
+
+disturbance_generator;
+
+subplot(2, 1, 1)
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
+plot(time, omega_1_d, 'k', 'linewidth', 2);
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{1}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+
+
+subplot(2, 1, 2)
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
+plot(time, omega_3_d, 'k', 'linewidth', 2);
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{3}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+
+print('../../../../../../../English_Journal/Figure/implementation/disturbance/d_pitch','-depsc');
+
+subplot(2, 1, 1)
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
+plot(time, omega_2_d, 'k', 'linewidth', 2);
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{2}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+
+subplot(2, 1, 2)
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
+plot(time, omega_4_d, 'k', 'linewidth', 2);
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{4}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+
+print('../../../../../../../English_Journal/Figure/implementation/disturbance/d_roll','-depsc');
+
+
+

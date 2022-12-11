@@ -8,7 +8,7 @@ omega_4_d = zeros(1, length(time));
 
 t_1 = 20;
 t_2 = 60;
-disturbance = 50;
+disturbance = 50*60/2/pi;
 
 for i=1:length(time)
     if time(i) > t_1 && time(i) < t_2

@@ -35,6 +35,7 @@ hold on;
 plot(time-20, roll_pitch_LQIDG(:, 2)*180/pi, '--k', 'linewidth', 2);
 hold off;
 xlim([0 80])
+legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\theta$(deg)', 'interpreter', 'latex', 'FontSize', 24);
