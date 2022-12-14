@@ -773,11 +773,12 @@ Figure \ref{fig:square} illustrates the performance of the LQIR-DG controller in
 
 \subsection{Comparison with LQR}
 \noindent Here, the LQIR-DG controller performance is compared with famous control strategies such as the LQR controller method. \figurename{\ref{fig:compare}} compares the quadrotor's desired and actual pitch angle in the presence of these controllers. This result indicates that the LQIR-DG controller can provide high tracking performance, such as good transient response and high rapid convergence relative to the LQR controller for pitch angle control of the quadrotor setup.
+
 \begin{figure}[!h]
 	\centering
-	{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidgvslqr/lqidgvslqr_pitch}
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidgvslqr/roll}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidgvslqr/pitch}
 	}
-	\caption{Comparison of the LQIR-DG to the LQR in control of the pitch angle of the experimental setup}
+	\caption{The performance of the LQIR-DG controller by adding weight to each of the roll and pitch axes in the three-degree-of-freedom coupling mode (a) Comparison of the roll angle with the actual value (b) Comparison of the pitch angle with the actual value (c) Comparison of the yaw angle with the actual value}
 	\label{fig:compare}
 \end{figure}
 

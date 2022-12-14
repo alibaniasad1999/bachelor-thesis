@@ -5,7 +5,7 @@ Time = seconds(0:0.02:30);
 load("LQIR_d_1")
 zero_state = zeros(1, length(LQIR_roll_pitch));
 sim_name = "LQIR_d_";
-cost = zeros(2, 10);
+cost = zeros(2, 5);
 for i=1:5
     load(append(sim_name, string(i)))
     a1 = timetable(LQIR_roll_pitch(:, 1), 'RowTimes', Time);

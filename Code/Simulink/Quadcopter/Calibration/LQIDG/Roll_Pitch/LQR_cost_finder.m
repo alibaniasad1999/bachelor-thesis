@@ -6,7 +6,7 @@ load("LQR_d_1.mat")
 roll_pitch_LQR = roll_pitch_LQR.signals.values;
 zero_state = zeros(1, length(roll_pitch_LQR));
 sim_name = "LQR_d_";
-cost = zeros(2, 10);
+cost = zeros(2, 5);
 for i=1:5
     load(append(sim_name, string(i)))
     roll_pitch_LQR = roll_pitch_LQR.signals.values;
