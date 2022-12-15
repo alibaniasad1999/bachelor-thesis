@@ -770,12 +770,9 @@ Figure \ref{fig:square} illustrates the performance of the LQIR-DG controller in
 \noindent This section examines the performance of the LQIR-DG controller designed by considering the uncertainty in 3DoF experimental setup modeling. The performance of the sliding mode controller in the coupling mode of the roll, pitch, and yaw channels is checked by considering the uncertainty in the 3DoF experimental setup modeling in figure \ref{fig:weight}. For this purpose, 50 grams is added to the roll axis and 100 grams to the pitch axis. In figure \ref{fig:weight} (a), the performance of this controller is checked by comparing the desired roll angle with the actual roll angle; In figure \ref{fig:weight} (b), the performance of this controller is checked by comparing the desired pitch angle to the actual pitch angle. Also, figure \ref{fig:weight} (c) compares the desired yaw angle with the actual yaw angle of the 3DoF experimental setup. The implementation results indicate the proper efficiency of the LQIR-DG controller in pursuit of the desired value, taking into account the uncertainty in the values of the moments of inertia around each axis of the body coordinate system.
 \begin{figure}[H]
 	\centering
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_roll}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_pitch}
+	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_roll_20}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_pitch_20}
 	}
-	\hfil
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_yaw}
-	}
-	\caption{The performance of the LQIR-DG controller by adding weight to each of the roll and pitch axes in the three-degree-of-freedom coupling mode (a) Comparison of the roll angle with the actual value (b) Comparison of the pitch angle with the actual value (c) Comparison of the yaw angle with the actual value}
+	\caption{The performance of the LQIR-DG controller by adding weight to each of the roll and pitch axes in the two-degree-of-freedom coupling mode (a) Comparison of the roll angle with the actual value (b) Comparison of the pitch angle with the actual value}
 	\label{fig:weight}
 \end{figure}
 
