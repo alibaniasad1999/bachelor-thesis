@@ -767,7 +767,13 @@ Figure \ref{fig:square} illustrates the performance of the LQIR-DG controller in
 \end{figure}
 
 \subsection{Investigating the impact of uncertainty in modeling }
-\noindent This section examines the performance of the LQIR-DG controller designed by considering the uncertainty in 3DoF experimental setup modeling. The performance of the sliding mode controller in the coupling mode of the roll, pitch, and yaw channels is checked by considering the uncertainty in the 3DoF experimental setup modeling in figure \ref{fig:weight}. For this purpose, 50 grams is added to the roll axis and 100 grams to the pitch axis. In figure \ref{fig:weight} (a), the performance of this controller is checked by comparing the desired roll angle with the actual roll angle; In figure \ref{fig:weight} (b), the performance of this controller is checked by comparing the desired pitch angle to the actual pitch angle. Also, figure \ref{fig:weight} (c) compares the desired yaw angle with the actual yaw angle of the 3DoF experimental setup. The implementation results indicate the proper efficiency of the LQIR-DG controller in pursuit of the desired value, taking into account the uncertainty in the values of the moments of inertia around each axis of the body coordinate system.
+\noindent This section examines the performance of the LQIR-DG controller designed by considering the uncertainty in 3DoF experimental setup modeling. The performance of the sliding mode controller in the coupling mode of the roll, pitch, and yaw channels is checked by considering the uncertainty in the 3DoF experimental setup modeling in figure \ref{fig:weight}. For this purpose, 50 grams is added to the roll axis and 100 grams to the pitch axis. In figure \ref{fig:weight} (a), the performance of this controller is checked by comparing the desired roll angle with the actual roll angle; In figure \ref{fig:weight} (b), the performance of this controller is checked by comparing the desired pitch angle to the actual pitch angle. The implementation results indicate the proper efficiency of the LQIR-DG controller in pursuit of the desired value, taking into account the uncertainty in the values of the moments of inertia around each axis of the body coordinate system.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.49\textwidth]{../Figure/implementation/weight/Quad_with_weight.jpg}
+	\caption{3DoF setup of the quadrotor with added weight}
+	\label{fig:quadrotor_with_weight}
+ \end{figure}
 \begin{figure}[H]
 	\centering
 	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_roll_20}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_pitch_20}
