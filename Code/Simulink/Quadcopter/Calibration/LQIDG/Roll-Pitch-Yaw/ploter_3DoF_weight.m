@@ -1,8 +1,8 @@
 clear;
 clc;
 %% plot data %%
-load('data_film_weight_4.mat')
-time = linspace(0, 100, length(simout));
+load('data_film_weight_5.mat')
+time = linspace(0, 25, length(simout));
 
 % pitch
 % subplot(2,1,1);
@@ -11,7 +11,7 @@ plot(time -7, zeros(1, length(time)), 'r', 'linewidth', 2);
 hold on;
 plot(time -7, 180/pi*simout(:, 1), '--k', 'linewidth', 2);
 hold off;
-% axis([0 20 -20 50])
+axis([0 20 -10 10])
 legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
 % axis([0 100 -40 20])
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
