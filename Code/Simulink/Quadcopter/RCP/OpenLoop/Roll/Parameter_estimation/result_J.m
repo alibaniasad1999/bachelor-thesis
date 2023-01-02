@@ -31,7 +31,7 @@ A3_array(10) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_9.Pa
 plot(0:length(A3_array)-1, A3_array, '*k', 'markersize', 10)
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
-ylabel('Value of $\Gamma_1$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('Value of $\Gamma_3$', 'interpreter', 'latex', 'FontSize', 24);
 print('../../../../../../../English_Journal/Figure/parameter_estimation/roll/roll_parameter','-depsc');
 
 
