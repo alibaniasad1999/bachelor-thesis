@@ -122,6 +122,8 @@
 
 % if you have landscape tables
 \usepackage[figuresright]{rotating}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows.meta, positioning}
 
 % put your own definitions here:
 %   \newcommand{\cZ}{\cal{Z}}
@@ -445,6 +447,108 @@ Since there is no closed-form solution for this system of equations, so iterativ
 \end{equation}
 Trust Region Reflective (TRR) has been devised to update $\rho$ efficiently. To increase the accuracy of system identification, at first, the parameters of each channel were estimated separately, and then the coupled parameters of the attitude channels were modified. In the parameter modification process, after each parameter modification step mentioned above, the estimated parameters of the previous step are assumed to be fixed, and other parameters are modified. To identification of each stage, several experiments with different scenarios have been performed.
 
+
+\begin{tikzpicture}[font=\small,thick]
+ 
+	% Start block
+	\node[draw, align=center,
+		minimum width=2.5cm,
+		minimum height=1cm] (block1) {\textbf{Experimental data} \\Input/output voltages and currents};
+	 
+	% Voltage and Current Measurement
+	\node[draw, align=center,
+		below=of block1,
+		minimum width=3.5cm,
+		minimum height=1cm
+	] (block2) {\textbf{Data preprocessing} \\ Synchronization experim, vs simulated data.};
+	 
+	% Power and voltage variation
+	
+	\node[draw, align=center,
+		below=of block2,
+		minimum width=3.5cm,
+		minimum height=1cm
+	] (block3) {NLS-TRRLS optimization process\\
+	Set upper and lower bounds ub and (b)\\
+	Set seed coint of all parameters\\
+	Define error cost unction\\};
+
+	\node[draw, align=center,
+	below right=of block3,
+	minimum width=3cm,
+	minimum height=2.5cm
+	] (block_p) {{Identified parameters}\\
+	$\boldsymbol\Gamma = \begin{bmatrix}\Gamma_1 &
+		\Gamma_2 & \Gamma_3 & \Gamma_4\\
+		\Gamma_5 & \Gamma_6 & \Gamma_7 & \Gamma_8
+	\end{bmatrix}$};
+
+	\node[draw, align=center,
+	below left=of block3,
+	minimum width=3cm,
+	minimum height=2.5cm
+	] (block_s) {{simulated model}\\\includegraphics[scale=.05]{All-six.png}};
+	 
+	% Conditions test
+	\node[draw,
+		diamond,
+		below =4cm of block3,
+		minimum width=2.5cm,
+		inner sep=0] (block4) { $Error < \delta$};
+	 
+	\node[draw,
+		below=of block4,
+		minimum height=1cm,
+		minimum width=2.5cm,
+		inner sep=0] (block5) { $\Delta V>0$};
+	 
+	\node[draw,
+		right=2cm of block4,
+		minimum height=1cm,
+		minimum width=2.5cm,
+		] (block6) { $\Delta V>0$};
+	 
+	 
+	 
+	% Arrows
+	\draw[-latex] (block1) edge (block2)
+		(block2) edge (block3)
+		(block3) -| (block_s);
+		% (block3) edge (block_p);
+
+	\draw[-latex] (block3) -| (block_p);
+
+	\draw[-latex] (block_s) -| (block4);
+
+	\draw[-latex] (block_p) -| (block4);
+
+	\draw[stealth-stealth] (block_s) -- (block_p);
+	 
+	\draw[-latex] (block4) -- (block5)
+		node[pos=0.5,fill=white,inner sep=0]{Yes};
+	 
+	\draw[-latex] (block4) -- (block6)
+		node[pos=0.5,fill=white,inner sep=0]{No};
+
+	\coordinate[left=5.5cm of block3] (aux);
+	% \draw[-latex] (block6) |- (block2);
+	\draw[-latex] (block1) -| (aux) |- (block4);
+	 
+	% \draw[-latex] (block5) edge node[pos=0.4,fill=white,inner sep=2pt]{No}(block7)
+	% 	(block5) -| (block8)
+	% 		node[pos=0.25,fill=white,inner sep=0]{Yes};
+	 
+	% \draw[-latex] (block6) edge node[pos=0.4,fill=white,inner sep=2pt]{No}(block9)
+	% 	(block6) -| (block10)
+	% 		node[pos=0.25,fill=white,inner sep=0]{Yes};
+	 
+	% \draw (block7) |- (block12);
+	% \draw (block9) |- (block12);
+	% \draw (block8) |- (block7|-block12);
+	% \draw (block10) |- (block9|-block12);
+	% \draw[-latex] (block12) -- (block11);
+	 
+	\end{tikzpicture}
 \section{Formulation of the Controller Design}\label{sec:controller}
 \noindent In the LQIR-DG controller structure, an integral action is added to the LQR-DG controller to cancel the steady-state errors for reference tracking. For this purpose, first, the augmented state space of the linear quadrotor model is defined to utilize in the controller architecture. Then, the LQR-DG controller design procedure is presented to produce the best control commands for the experimental setup of the quadrotor.
 
