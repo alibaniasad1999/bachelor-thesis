@@ -27,6 +27,6 @@ C2_array(4) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_3.Par
 plot(0:length(C2_array)-1, C2_array, '*k', 'markersize', 10)
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
-ylabel('Value of $\Gamma_7$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('Value of $\Gamma_8$', 'interpreter', 'latex', 'FontSize', 24);
 print('../../../../../../../English_Journal/Figure/parameter_estimation/yaw/yaw_parameter','-depsc');
 
