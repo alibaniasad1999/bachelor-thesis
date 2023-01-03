@@ -315,23 +315,30 @@ where $\Omega_{\text{mean}}$ is the nominal of the rotor angular velocities.
 % For control purposes, the state-space model of the quadrotor experimental setup is described.
 By defining $x_1 = p$, $x_2 = q$, $x_3 = r$, $x_4 = \phi$, $x_5 = \theta$, and $x_6 = \psi$; the model of in state-space form are denoted as
 % The state-space model of the experimental setup is given as
+% \begin{align}\label{eq:diffeq}
+% 	\dot x_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}} x_2 x_3 + x_2 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{roll}}}{\mathrm{I}_{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}} \\[0.5em]
+% \dot x_2 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}} x_1 x_3 - x_1 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{pitch}}}{\mathrm{I}_{\text{yy}}} + \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}\\[0.5em] \label{eq:diffeq-mid}
+% \dot x_3 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} x_1 x_2 + \dfrac{u_{\text{yaw}}}{\mathrm{I}_{\text{zz}}} + \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}\\[0.5em] 
+% \dot x_4 &= x_1 + (x_2\sin(x_4) + x_3\cos(x_4))\tan(x_5)
+% \\[0.5em]
+% \dot x_5 &= x_2\cos(x_4) - x_3\sin(x_4)\\[0.5em]
+% \dot x_6 &= (x_2\sin(x_4) + x_3\cos(x_4))/\cos(x_5) \label{eq:diffeq-end}
+% \end{align}
 \begin{align}\label{eq:diffeq}
-		\dot x_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}} x_2 x_3 + x_2 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{roll}}}{\mathrm{I}_{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}} \\[0.5em]
-	\dot x_2 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}} x_1 x_3 - x_1 \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{pitch}}}{\mathrm{I}_{\text{yy}}} + \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}\\[0.5em] \label{eq:diffeq-mid}
-	\dot x_3 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} x_1 x_2 + \dfrac{u_{\text{yaw}}}{\mathrm{I}_{\text{zz}}} + \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}\\[0.5em] 
-    \dot x_4 &= x_1 + (x_2\sin(x_4) + x_3\cos(x_4))\tan(x_5)
+	\dot x_1 &= \Gamma_1x_2 x_3 + \Gamma_2 x_2 \Omega_r + \Gamma_3u_{\text{roll}} + \Gamma_3d_{\text{roll}} \\[0.5em]
+\dot x_2 &= \Gamma_4 x_1 x_3 - \Gamma_5 x_1 \Omega_r +  \Gamma_6u_{\text{pitch}} + \Gamma_6d_{\text{pitch}}\\[0.5em] \label{eq:diffeq-mid}
+\dot x_3 &= \Gamma_7x_1 x_2 +  \Gamma_8u_{\text{yaw}} + \Gamma_8d_{\text{yaw}}\\[0.5em] 
+\dot x_4 &= x_1 + (x_2\sin(x_4) + x_3\cos(x_4))\tan(x_5)
 \\[0.5em]
-	\dot x_5 &= x_2\cos(x_4) - x_3\sin(x_4)\\[0.5em]
-	\dot x_6 &= (x_2\sin(x_4) + x_3\cos(x_4))/\cos(x_5) \label{eq:diffeq-end}
+\dot x_5 &= x_2\cos(x_4) - x_3\sin(x_4)\\[0.5em]
+\dot x_6 &= (x_2\sin(x_4) + x_3\cos(x_4))/\cos(x_5) \label{eq:diffeq-end}
 \end{align}
-
-Equations \eqref{eq:diffeq}-\eqref{eq:diffeq-mid} are rewritten in the following form:
-\begin{align}
-    \dot x_1 &= \alpha_1 x_2 x_3 + \alpha_2 x_2\Omega_r + \alpha_3 u_{\text{roll}} + \alpha_3 d_{\text{roll}} \\[0.5em]
-\dot x_2 &= \beta_1 x_1 x_3 - \beta_2 x_1\Omega_r + \beta_3 u_{\text{pitch}}+ \beta_3 d_{\text{pitch}}\\[0.5em]
-\dot x_3 &= \gamma_1 x_1 x_2 + \gamma_2u_{\text{yaw}} + \gamma_2d_{\text{yaw}}
-\end{align}
-
+Moreover, $\Gamma_i(i=1, ..., 8)$ is defined as
+\begin{equation}
+	\begin{split}
+		\Gamma_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_2 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_3 = \dfrac{1}{\mathrm{I}_{\text{xx}}}\\ \Gamma_4 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_5 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_6 = \dfrac{1}{\mathrm{I}_{\text{yy}}} \\ \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}}, \quad \Gamma_8 = \dfrac{1}{\mathrm{I}_{\text{zz}}}
+	\end{split}
+\end{equation}
 The measurement model is written as
 \begin{equation}
 	\begin{split}
@@ -424,133 +431,109 @@ Moreover, the state and input matrices are presented as
 	\end{split}
 \end{equation}
 
-\subsection{System Identification}
-
-\noindent Here, the system identification was made using the simulation of the roll, pitch, and yaw states and sensor data output from the quadrotor setup. For this purpose, the same input is given to the simulated model and setup. In the case of system identification, the cost function was defined as the sum square error between simulations and quadrotor setup measurements. Then, the Nonlinear Least Squares (NLS)  optimization technique minimizes the cost function. In NLS, the goal is to look for the model parameters vector $
-\rho = \begin{bmatrix}
-    \alpha_1 & \alpha_2 & \alpha_3 & \beta_1 & \beta_2 & \beta_3 & \gamma_1 & \gamma_2
-\end{bmatrix}
-$, which would minimize the sum of squares of residual errors. In other words, the following cost function has to minimize:
-
+\subsection{Identification of the Setup Parameters}
+\noindent In this section, the optimization technique based on the Nonlinear Least Squares (NLS) method is utilized to estimate the model parameters ($\Gamma$) for the 3DOF experimental setup from
+experimental data. Here, the NLS algorithm, that is based on the trust-region reflective least squares (TRRLS) method, finds iteratively the values of the model parameters based on the minimization of the cost function, so that the input/output signals provided by the simulation model are very similar to the experimental ones. Therefore, the least squares problem consists
+in finding a vector $\boldsymbol{\mathrm{\Gamma}}$ that minimizes a sum of squares function [?], as follows:
 \begin{equation}
-    \text{Residual sum of squares} = RSS = \sum_{i=1}^{n} \left(y_i - \hat y_i \right)^2
+	\min_{\Gamma_i}\left(\parallel e(\Gamma_i) \parallel^2\right) = 
+	\min_{\Gamma_i} = \left(\sum_{i=1}^{n}(y-\hat y)^2\right)
 \end{equation}
-where $y$ is the value of the variable to be predicted, and $ \hat y$ is the predicted value of  $y$, which $\hat y$ is a function of the 3DoF setup model parameters vector, $\rho$,  and the system states, $\boldsymbol{{\mathrm{x}}}$, i.e.:
-\begin{equation}
-    \hat y_i = f(\boldsymbol{{\mathrm{x}}}_i, \rho)
-\end{equation}
-One way to minimize RSS is to differentiate RSS with respect to $\rho$, then set the differentiation to zero and solve for  $\rho$,  i.e.:
-\begin{equation}
-    \dfrac{\partial }{\partial \rho_j} RSS = 0, \quad \forall j \in [1, n]
-\end{equation}
-Since there is no closed-form solution for this system of equations, so iterative optimization technique has to be used in which, at each iteration k, minor adjustments have been made to the values of  $\rho$ as shown below, and re-evaluate RSS:
-\begin{equation}
-    \rho_j^{(k)} = \rho_j^{(k-1)} + \delta \rho_j
-\end{equation}
-Trust Region Reflective (TRR) has been devised to update $\rho$ efficiently. To increase the accuracy of system identification, at first, the parameters of each channel were estimated separately, and then the coupled parameters of the attitude channels were modified. In the parameter modification process, after each parameter modification step mentioned above, the estimated parameters of the previous step are assumed to be fixed, and other parameters are modified. To identification of each stage, several experiments with different scenarios have been performed.
+where $y$ and $\hat y$ are the experimental and simulated output signals, when the same input signals are applied ones.
+The structure of the proposed identification approach is illustrated in Figure \ref{fig:identification}.
 
-
-\begin{tikzpicture}[font=\small,thick]
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[font=\small,thick]
  
-	% Start block
-	\node[draw, align=center,
-		minimum width=2.5cm,
-		minimum height=1cm] (block1) {\textbf{Experimental data} \\Input/output voltages and currents};
-	 
-	% Voltage and Current Measurement
-	\node[draw, align=center,
-		below=of block1,
-		minimum width=3.5cm,
-		minimum height=1cm
-	] (block2) {\textbf{Data preprocessing} \\ Synchronization experim, vs simulated data.};
-	 
-	% Power and voltage variation
+		% Start block
+		\node[draw, align=center,
+			minimum width=2.5cm,
+			minimum height=1cm] (block1) {\textbf{Experimental data} \\Input/output voltages and currents};
+		 
+		% Voltage and Current Measurement
+		\node[draw, align=center,
+			below=of block1,
+			minimum width=3.5cm,
+			minimum height=1cm
+		] (block2) {\textbf{Data preprocessing} \\ Synchronization experim, vs simulated data.};
+		 
+		% Power and voltage variation
+		
+		\node[draw, align=center,
+			below=of block2,
+			minimum width=3.5cm,
+			minimum height=1cm
+		] (block3) {NLS-TRRLS optimization process\\
+		Set upper and lower bounds ub and (b)\\
+		Set seed coint of all parameters\\
+		Define error cost unction\\};
 	
-	\node[draw, align=center,
-		below=of block2,
-		minimum width=3.5cm,
-		minimum height=1cm
-	] (block3) {NLS-TRRLS optimization process\\
-	Set upper and lower bounds ub and (b)\\
-	Set seed coint of all parameters\\
-	Define error cost unction\\};
+		\node[draw, align=center,
+		below right=of block3,
+		minimum width=3cm,
+		minimum height=2.5cm
+		] (block_p) {{Identified parameters}\\
+		$\boldsymbol\Gamma = \begin{bmatrix}\Gamma_1 &
+			\Gamma_2 & \Gamma_3 & \Gamma_4\\
+			\Gamma_5 & \Gamma_6 & \Gamma_7 & \Gamma_8
+		\end{bmatrix}$};
+	
+		\node[draw, align=center,
+		below left=of block3,
+		minimum width=3cm,
+		minimum height=2.5cm
+		] (block_s) {{simulated model}\\\includegraphics[scale=.05]{../Figure/All-six.png}};
+		 
+		% Conditions test
+		\node[draw,
+			diamond,
+			below =4cm of block3,
+			minimum width=2.5cm,
+			inner sep=0] (block4) { $Error < \delta$};
+		 
+		\node[draw,
+			below=1.5cm of block4,
+			minimum height=1cm,
+			minimum width=2.5cm,
+			inner sep=0] (block5) { $\Delta V>0$};
+		 
+		\node[draw,
+			right=2cm of block4,
+			minimum height=1cm,
+			minimum width=2.5cm,
+			] (block6) { $\Delta V>0$};
+		 
+		 
+		 
+		% Arrows
+		\draw[-latex] (block1) edge (block2)
+			(block2) edge (block3)
+			(block3) -| (block_s);
+			% (block3) edge (block_p);
+	
+		\draw[-latex] (block3) -| (block_p);
+	
+		\draw[-latex] (block_s) -| (block4);
+	
+		\draw[-latex] (block_p) -| (block4);
+	
+		\draw[stealth-stealth] (block_s) -- (block_p);
+		 
+		\draw[-latex] (block4) -- (block5)
+			node[pos=0.5,fill=white,inner sep=0]{Yes};
+		 
+		\draw[-latex] (block4) -- (block6)
+			node[pos=0.5,fill=white,inner sep=0]{No};
+	
+		\coordinate[left=5.5cm of block3] (aux);
+		% \draw[-latex] (block6) |- (block2);
+		\draw[-latex] (block1) -| (aux) |- (block4);
+		\end{tikzpicture}
+		\caption{Structure of TRRLS identification approach.}
+		\label{fig:identification}
+\end{figure}
 
-	\node[draw, align=center,
-	below right=of block3,
-	minimum width=3cm,
-	minimum height=2.5cm
-	] (block_p) {{Identified parameters}\\
-	$\boldsymbol\Gamma = \begin{bmatrix}\Gamma_1 &
-		\Gamma_2 & \Gamma_3 & \Gamma_4\\
-		\Gamma_5 & \Gamma_6 & \Gamma_7 & \Gamma_8
-	\end{bmatrix}$};
-
-	\node[draw, align=center,
-	below left=of block3,
-	minimum width=3cm,
-	minimum height=2.5cm
-	] (block_s) {{simulated model}\\\includegraphics[scale=.05]{../Figure/All-six.png}};
-	 
-	% Conditions test
-	\node[draw,
-		diamond,
-		below =4cm of block3,
-		minimum width=2.5cm,
-		inner sep=0] (block4) { $Error < \delta$};
-	 
-	\node[draw,
-		below=of block4,
-		minimum height=1cm,
-		minimum width=2.5cm,
-		inner sep=0] (block5) { $\Delta V>0$};
-	 
-	\node[draw,
-		right=2cm of block4,
-		minimum height=1cm,
-		minimum width=2.5cm,
-		] (block6) { $\Delta V>0$};
-	 
-	 
-	 
-	% Arrows
-	\draw[-latex] (block1) edge (block2)
-		(block2) edge (block3)
-		(block3) -| (block_s);
-		% (block3) edge (block_p);
-
-	\draw[-latex] (block3) -| (block_p);
-
-	\draw[-latex] (block_s) -| (block4);
-
-	\draw[-latex] (block_p) -| (block4);
-
-	\draw[stealth-stealth] (block_s) -- (block_p);
-	 
-	\draw[-latex] (block4) -- (block5)
-		node[pos=0.5,fill=white,inner sep=0]{Yes};
-	 
-	\draw[-latex] (block4) -- (block6)
-		node[pos=0.5,fill=white,inner sep=0]{No};
-
-	\coordinate[left=5.5cm of block3] (aux);
-	% \draw[-latex] (block6) |- (block2);
-	\draw[-latex] (block1) -| (aux) |- (block4);
-	 
-	% \draw[-latex] (block5) edge node[pos=0.4,fill=white,inner sep=2pt]{No}(block7)
-	% 	(block5) -| (block8)
-	% 		node[pos=0.25,fill=white,inner sep=0]{Yes};
-	 
-	% \draw[-latex] (block6) edge node[pos=0.4,fill=white,inner sep=2pt]{No}(block9)
-	% 	(block6) -| (block10)
-	% 		node[pos=0.25,fill=white,inner sep=0]{Yes};
-	 
-	% \draw (block7) |- (block12);
-	% \draw (block9) |- (block12);
-	% \draw (block8) |- (block7|-block12);
-	% \draw (block10) |- (block9|-block12);
-	% \draw[-latex] (block12) -- (block11);
-	 
-	\end{tikzpicture}
 \section{Formulation of the Controller Design}\label{sec:controller}
 \noindent In the LQIR-DG controller structure, an integral action is added to the LQR-DG controller to cancel the steady-state errors for reference tracking. For this purpose, first, the augmented state space of the linear quadrotor model is defined to utilize in the controller architecture. Then, the LQR-DG controller design procedure is presented to produce the best control commands for the experimental setup of the quadrotor.
 
