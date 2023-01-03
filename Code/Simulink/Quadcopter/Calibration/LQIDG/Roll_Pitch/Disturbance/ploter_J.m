@@ -42,6 +42,7 @@ set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 plot(time, omega_1_d, 'k', 'linewidth', 2);
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Omega_{1}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 
 
 subplot(2, 1, 2)
@@ -49,6 +50,7 @@ set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 plot(time, omega_3_d, 'k', 'linewidth', 2);
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Omega_{3}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 
 print('../../../../../../../English_Journal/Figure/implementation/disturbance/d_pitch','-depsc');
 
@@ -57,13 +59,13 @@ set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 plot(time, omega_2_d, 'k', 'linewidth', 2);
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Omega_{2}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
-
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 subplot(2, 1, 2)
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 plot(time, omega_4_d, 'k', 'linewidth', 2);
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Omega_{4}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
-
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 print('../../../../../../../English_Journal/Figure/implementation/disturbance/d_roll','-depsc');
 
 
