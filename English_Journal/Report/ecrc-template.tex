@@ -311,7 +311,7 @@ Also, d and b are, respectively, drag and thrust coefficients. $\mathrm{d}_{\tex
 \Omega_{c, 4}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}
 \end{align}
 where $\Omega_{\text{mean}}$ is the nominal of the rotor angular velocities.
-\subsection{State-Space Form}
+\subsection{State-Space Form}\label{sec:state-space}
 \noindent Here, the state-space model is presented for control purposes.
 % For control purposes, the state-space model of the quadrotor experimental setup is described.
 By defining $x_1 = p$, $x_2 = q$, $x_3 = r$, $x_4 = \phi$, $x_5 = \theta$, and $x_6 = \psi$; the model of in state-space form are denoted as
@@ -435,7 +435,7 @@ Moreover, the state and input matrices are presented as
 \subsection{Identification of the Setup Parameters}
 \noindent In this section, the optimization technique based on the Nonlinear Least Squares (NLS) method is utilized to estimate the model parameters ($\Gamma$) for the 3DOF experimental setup from
 experimental data. Here, the NLS algorithm, that is based on the trust-region reflective least squares (TRRLS) method, finds iteratively the values of the model parameters based on the minimization of the cost function, so that the input/output signals provided by the simulation model are very similar to the experimental ones. Therefore, the least squares problem consists
-in finding a vector $\boldsymbol{\mathrm{\Gamma}}$ that minimizes a sum of squares function [?], as follows:
+in finding a vector $\boldsymbol{\mathrm{\Gamma}}$ that minimizes a sum of squares function \cite{article_Eriksson}, as follows:
 \begin{equation}
 	\min_{\Gamma_i}\left(\parallel e(\Gamma_i) \parallel^2\right) = 
 	\min_{\Gamma_i} = \left(\sum_{i=1}^{n}(y-\hat y)^2\right)
@@ -661,11 +661,11 @@ Moreover, the parameters of LQIR-DG controller weight are denoted in table \ref{
 
 \subsection{Identification of the 3DoF experimental setup model}
 
-\noindent As denoted in section ?, the parameters of the quadrotor setup are $\Gamma_i(i=1, ..., 8)$ that need to be
-identified based on the NRS algorithm. The NLS-TRRLS algorithm is performed in the Matlab R2022b\textregistered. In order to increase accuracy identification of parameters, three scenarios, according to Error! Reference source not found., are considered and performed. When the stopping condition of the NLS algorithm is reached, the best values of the quadrotor parameters are computed, shown in Table 3. Moreover, the intelligent movement of the parameters during the optimization process for finding the true values is shown in Figure 5.
-In the first scenario, according to the Figure ?, the quadrotor is able to rotate about only one axis (roll, pitch or yaw axes) to identify $\Gamma_3$ , $\Gamma_6$ and $\Gamma_8$ parameters. In the second scenario,
-Figure ? shows $\Gamma_2$ and $\Gamma_5$ parameters are estimated based on the experimental setup, that is free to rotate around its roll and pitch axes. Finally, in the last scenario, according to the Figure
-?, $\Gamma_1$ , $\Gamma_4$ and $\Gamma_7$ parameters of the UAV model are identified by rotate the quadrotor setup
+\noindent As denoted in section \ref{sec:state-space}, the parameters of the quadrotor setup are $\Gamma_i(i=1, ..., 8)$ that need to be
+identified based on the NRS algorithm. The NLS-TRRLS algorithm is performed in the Matlab R2022b\textregistered. In order to increase accuracy identification of parameters, three scenarios, according to Error! Reference source not found., are considered and performed. When the stopping condition of the NLS algorithm is reached, the best values of the quadrotor parameters are computed, shown in Table \ref{tab:true_parameters}. Moreover, the intelligent movement of the parameters during the optimization process for finding the true values is shown in Figure \ref{fig:identification}.
+In the first scenario, according to the Figure \ref{fig:one_degree_identification}, the quadrotor is able to rotate about only one axis (roll, pitch or yaw axes) to identify $\Gamma_3$ , $\Gamma_6$ and $\Gamma_8$ parameters. In the second scenario,
+Figure \ref{fig:two_degree_identification} shows $\Gamma_2$ and $\Gamma_5$ parameters are estimated based on the experimental setup, that is free to rotate around its roll and pitch axes. Finally, in the last scenario, according to the Figure
+\ref{fig:three_degree_identification}, $\Gamma_1$ , $\Gamma_4$ and $\Gamma_7$ parameters of the UAV model are identified by rotate the quadrotor setup
 around three axis. These results illustrate that the outputs of the simulation results for the quadrotor model are consistent with reality.
 
 \begin{table}[H]
