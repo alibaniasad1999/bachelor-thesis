@@ -676,13 +676,27 @@ around three axis. These results illustrate that the outputs of the simulation r
 	\hline
 	\textbf{Scenario} & \textbf{\textit{Description}}& \textbf{\textit{Initial Conditions}} & \textbf{\textit{angular velocity Commands}}  \\
 	\hline
-	\multirow{3}{*}{I} & Roll free & 10 & 10 \\
-	& Pitch free & 10 & 10 \\
-	& Yaw free & 10 & 10 \\
+	\multirow{3}{*}{I} & Roll free & 38 & $\begin{matrix}
+		2000 & 2000 & 2000 & 3400
+	\end{matrix}$ \\
+	& Pitch free & -15 & $\begin{matrix}
+		3700 & 2000 & 2000 & 2000
+	\end{matrix}$ \\
+	& Yaw free & -75 & $\begin{matrix}
+		2000 & 3300 & 2000 & 3300
+	\end{matrix}$ \\
 	\hline
-	II & Roll and Pitch free & 10 & 10\\
+	II & Roll and Pitch free & $\begin{matrix}
+		8 & -5
+	\end{matrix}$ & $\begin{matrix}
+		1700 & 3800 & 2400 & 1700
+	\end{matrix}$\\
 	\hline
-	III & Roll, Pitch, and Yaw free & 10 & 10\\
+	III & Roll, Pitch, and Yaw free & $\begin{matrix}
+		8 & -3 & -146
+	\end{matrix}$ & $\begin{matrix}
+		1700 & 3800 & 2400 & 1700
+	\end{matrix}$\\
 	\hline
 	\end{tabular}
 	\label{tab:identification}
@@ -697,10 +711,13 @@ around three axis. These results illustrate that the outputs of the simulation r
 	\hline
 	\textbf{Parameter} & \textbf{\textit{Value}}& \textbf{Parameter} & \textbf{\textit{Value}}  \\
 	\hline
-	$\Gamma_1$ & 1 & $\Gamma_5$ & 1 \\
-	$\Gamma_2$ & 1 & $\Gamma_6$ & 1 \\
-	$\Gamma_3$ & 1 & $\Gamma_7$ & 1 \\
-	$\Gamma_4$ & 1 & $\Gamma_8$ & 1 \\
+	$\Gamma_1$ & $-0.9622$ & $\Gamma_5$ & $3.6441\times10^{-4}$ \\
+
+	$\Gamma_2$ & $-0.0154$ & $\Gamma_6$ & $7.5395\times10^{-5}$ \\
+
+	$\Gamma_3$ &$5.4716\times10^{-5}$ & $\Gamma_7$ & $0.1308$ \\
+
+	$\Gamma_4$ & $1.0457$ & $\Gamma_8$ & $4.3753\times10^{-5}$ \\
 	\hline
 	\end{tabular}
 	\label{tab:true_parameters}
