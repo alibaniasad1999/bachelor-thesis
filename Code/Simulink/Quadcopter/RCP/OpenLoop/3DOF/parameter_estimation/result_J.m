@@ -65,7 +65,7 @@ plot(0:length(B2_array)-1, B2_array, '*k', 'markersize', 10)
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('Value of $\Gamma_4$', 'interpreter', 'latex', 'FontSize', 24);
-print('../../../../../../../English_Journal/Figure/parameter_estimation/3DOF/roll_parameter','-depsc');
+print('../../../../../../../English_Journal/Figure/parameter_estimation/3DOF/pitch_parameter','-depsc');
 
 
 figure
@@ -73,7 +73,7 @@ plot(0:length(C1_array)-1, C1_array, '*k', 'markersize', 10)
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('Value of $\Gamma_7$', 'interpreter', 'latex', 'FontSize', 24);
-print('../../../../../../../English_Journal/Figure/parameter_estimation/3DOF/roll_parameter','-depsc');
+print('../../../../../../../English_Journal/Figure/parameter_estimation/3DOF/yaw_parameter','-depsc');
 
 
 

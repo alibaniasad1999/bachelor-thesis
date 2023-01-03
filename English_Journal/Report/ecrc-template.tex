@@ -125,6 +125,7 @@
 \usepackage[figuresright]{rotating}
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows.meta, positioning}
+\usepackage{multirow}
 
 % put your own definitions here:
 %   \newcommand{\cZ}{\cal{Z}}
@@ -658,147 +659,233 @@ Moreover, the parameters of LQIR-DG controller weight are denoted in table \ref{
 
 
 
-\subsection{Evaluation of the 3DoF experimental setup model}
+\subsection{Identification of the 3DoF experimental setup model}
 
-\noindent Here, the performance of the extracted model of the 3DoF experimental setup is evaluated under three scenarios: (i) each channel separately, (ii) coupling between roll and pitch channel, and (iii) coupling between roll, pitch, and yaw channel. In the first scenario, each channel's parameters are changed.
-%  The results of the first scenario are shown in figure \ref{fig:3dof model}. The results of the second scenario are shown in figure \ref{fig:3dof model2}. The results of the third scenario are shown in figure \ref{fig:3dof model3}
+\noindent As denoted in section ?, the parameters of the quadrotor setup are $\Gamma_i(i=1, ..., 8)$ that need to be
+identified based on the NRS algorithm. The NLS-TRRLS algorithm is performed in the Matlab R2022b\textregistered. In order to increase accuracy identification of parameters, three scenarios, according to Error! Reference source not found., are considered and performed. When the stopping condition of the NLS algorithm is reached, the best values of the quadrotor parameters are computed, shown in Table 3. Moreover, the intelligent movement of the parameters during the optimization process for finding the true values is shown in Figure 5.
+In the first scenario, according to the Figure ?, the quadrotor is able to rotate about only one axis (roll, pitch or yaw axes) to identify $\Gamma_3$ , $\Gamma_6$ and $\Gamma_8$ parameters. In the second scenario,
+Figure ? shows $\Gamma_2$ and $\Gamma_5$ parameters are estimated based on the experimental setup, that is free to rotate around its roll and pitch axes. Finally, in the last scenario, according to the Figure
+?, $\Gamma_1$ , $\Gamma_4$ and $\Gamma_7$ parameters of the UAV model are identified by rotate the quadrotor setup
+around three axis. These results illustrate that the outputs of the simulation results for the quadrotor model are consistent with reality.
 
+\begin{table}[H]
+	\renewcommand{\arraystretch}{1.3}
+	\caption{Scenarios for identification of quadrotor model.}
+	\begin{center}
+	\begin{tabular}{c c c c}
+	\hline
+	\textbf{Scenario} & \textbf{\textit{Description}}& \textbf{\textit{Initial Conditions}} & \textbf{\textit{angular velocity Commands}}  \\
+	\hline
+	\multirow{3}{*}{I} & Roll free & 10 & 10 \\
+	& Pitch free & 10 & 10 \\
+	& Yaw free & 10 & 10 \\
+	\hline
+	II & Roll and Pitch free & 10 & 10\\
+	\hline
+	III & Roll, Pitch, and Yaw free & 10 & 10\\
+	\hline
+	\end{tabular}
+	\label{tab:identification}
+	\end{center}
+\end{table}
 
-\begin{minipage}[t]{0.95\linewidth}
-	\hfill
-    \begin{minipage}[b]{0.48\linewidth}
-		\centering
-		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/roll/roll}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Comparison of roll channel states in simulation and 3DoF setup}
-	\end{minipage}
-	\begin{minipage}[b]{0.49\linewidth}
-		\centering
-		\begin{tabular}{ccc}\hline
-			Parameter & Value & Value after evaluation
-            \Tstrut\\ \hline
-			$\alpha_3$  & $1.1\times10^{-4}$ & $5.47\times10^{-5}$  \Tstrut\\ \hline
-			\\
-			\\\\\\\\\\\\\\\\\\
-		\end{tabular}
-	\captionsetup{justification=centering}
-		\captionof{table}{Comparison of roll channel parameter values before and after evaluation}
-	\end{minipage}
-    \vspace{1cm}
-\end{minipage}
-
-
-
-
-
-
-\begin{minipage}[t]{0.95\linewidth}
-	\hfill
-    \begin{minipage}[b]{0.48\linewidth}
-		\centering
-		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/pitch/pitch}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Comparison of pitch channel states in simulation and 3DoF setup}
-	\end{minipage}
-	\begin{minipage}[b]{0.49\linewidth}
-		\centering
-		\begin{tabular}{ccc}\hline
-			Parameter & Value & Value after evaluation
-            \Tstrut\\ \hline
-			$\beta_3$  & $1.1\times10^{-4}$ & $7.13\times10^{-5}$  \Tstrut\\ \hline
-			\\
-			\\\\\\\\\\\\\\\\\\
-		\end{tabular}
-	\captionsetup{justification=centering}
-		\captionof{table}{Comparison of pitch channel parameter values before and after evaluation}
-	\end{minipage}
-\end{minipage}
-
-% \vspace{1cm}
-
-\begin{minipage}[t]{0.95\linewidth}
-	\hfill
-    \begin{minipage}[b]{0.48\linewidth}
-		\centering
-		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/yaw/yaw}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Comparison of yaw channel states in simulation and 3DoF setup}
-	\end{minipage}
-	\begin{minipage}[b]{0.49\linewidth}
-		\centering
-		\begin{tabular}{ccc}\hline
-			Parameter & Value & Value after evaluation
-            \Tstrut\\ \hline
-			$\gamma_2$  & $5.5\times10^{-5}$ & $1.3\times10^{-6}$  \Tstrut\\ \hline
-			\\
-			\\\\\\\\\\\\\\\\\\
-		\end{tabular}
-	\captionsetup{justification=centering}
-		\captionof{table}{Comparison of yaw channel parameter values before and after evaluation}
-	\end{minipage}
-\end{minipage}
-
-\begin{minipage}[t]{0.95\linewidth}
-	\hfill
-    \begin{minipage}[b]{0.48\linewidth}
-		\centering
-		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/roll-pitch/roll}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Comparison of roll channel states in simulation and 3DoF setup}
-	\end{minipage}
-    \begin{minipage}[b]{0.48\linewidth}
-		\centering
-		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Comparison of pitch channel states in simulation and 3DoF setup}
-	\end{minipage}
-    \hfill
-    \begin{minipage}[b]{1\linewidth}
-		\centering
-		\begin{tabular}{ccc}\hline
-			Parameter & Value & Value after evaluation
-            \Tstrut\\ \hline
-			$\alpha_2$  & 0.0015 & 0.0020\Tstrut\\
-            $\beta_2$  & 0.0015 & 0.0027\Tstrut\\ \hline
-		\end{tabular}
-	\captionsetup{justification=centering}
-		\captionof{table}{Comparison of roll-pitch channel parameter values before and after evaluation}
-	\end{minipage}
-\end{minipage}
+\begin{table}[H]
+	\renewcommand{\arraystretch}{1.3}
+	\caption{True values of the quadrotor parameters.}
+	\begin{center}
+	\begin{tabular}{c c c c}
+	\hline
+	\textbf{Parameter} & \textbf{\textit{Value}}& \textbf{Parameter} & \textbf{\textit{Value}}  \\
+	\hline
+	$\Gamma_1$ & 1 & $\Gamma_5$ & 1 \\
+	$\Gamma_2$ & 1 & $\Gamma_6$ & 1 \\
+	$\Gamma_3$ & 1 & $\Gamma_7$ & 1 \\
+	$\Gamma_4$ & 1 & $\Gamma_8$ & 1 \\
+	\hline
+	\end{tabular}
+	\label{tab:true_parameters}
+	\end{center}
+\end{table}
 
 
-    \begin{minipage}[b]{0.48\linewidth}
-		\centering
-		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/3DOF/roll}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Comparison of roll channel states in simulation and 3DoF setup}
-	\end{minipage}
-    \begin{minipage}[b]{0.48\linewidth}
-		\centering
-		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/3DOF/pitch}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Comparison of pitch channel states in simulation and 3DoF setup}
-	\end{minipage}
-    \hfill
-    \begin{minipage}[b]{0.48\linewidth}
-		\centering
-		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/3DOF/yaw}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Comparison of yaw channel states in simulation and 3DoF setup}
-	\end{minipage}
-    \begin{minipage}[b]{0.48\linewidth}
-		\centering
-		\begin{tabular}{ccc}\hline
-			Parameter & Value & Value after evaluation
-            \Tstrut\\ \hline
-			$\alpha_1$  & -0.9628 & -1.56\Tstrut\\
-            $\beta_1$  & 0.9629 & 1.57\Tstrut \\
-            $\gamma_1$  & -0.0017 &-0.085\Tstrut\\ \hline
-            \\\\\\\\\\\\\\\\
-		\end{tabular}
-	\captionsetup{justification=centering}
-		\captionof{table}{Comparison of 3DOF channel parameter values before and after evaluation}
-	\end{minipage}
+% \begin{minipage}[t]{0.95\linewidth}
+% 	\hfill
+%     \begin{minipage}[b]{0.48\linewidth}
+% 		\centering
+% 		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/roll/roll}
+% 		\captionsetup{justification=centering}
+% 		\captionof{figure}{Comparison of roll channel states in simulation and 3DoF setup}
+% 	\end{minipage}
+% 	\begin{minipage}[b]{0.49\linewidth}
+% 		\centering
+% 		\begin{tabular}{ccc}\hline
+% 			Parameter & Value & Value after evaluation
+%             \Tstrut\\ \hline
+% 			$\alpha_3$  & $1.1\times10^{-4}$ & $5.47\times10^{-5}$  \Tstrut\\ \hline
+% 			\\
+% 			\\\\\\\\\\\\\\\\\\
+% 		\end{tabular}
+% 	\captionsetup{justification=centering}
+% 		\captionof{table}{Comparison of roll channel parameter values before and after evaluation}
+% 	\end{minipage}
+%     \vspace{1cm}
+% \end{minipage}
+
+\begin{figure}[H]
+	\centering
+	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll/roll}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll/roll_parameter}
+	}
+	\hfil
+	% \vspace{-0.25cm}
+	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/pitch/pitch}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/pitch/pitch_parameter}
+	}
+	\hfil
+	% \vspace{-0.25cm}
+	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw}\includegraphics[width=.425\linewidth]{../Figure/parameter_estimation/yaw/yaw_parameter}
+	}
+	\caption{Identification process results when the quadrotor rotates about only one axis: (a) Identification of $\Gamma_3$ in free roll. (b) Identification of $\Gamma_6$ in free pitch. (c) Identification of $\Gamma_8$
+	in free yaw.}
+	\label{fig:one_degree_identification}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll-pitch/roll}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch}
+	}
+	\hfil
+	% \vspace{-0.25cm}
+	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll-pitch/roll_parameter}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch_parameter}
+	}
+	\caption{Identification process results when the quadrotor rotates about its roll and pitch axes:
+	(a) Comparison of Simulation and experimental results. (b) Identification of $\Gamma_2$ and $\Gamma_5$.}
+	\label{fig:two_degree_identification}
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\centering
+	\subfloat[]{\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/roll}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/pitch}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/yaw}
+	}
+	\hfil
+	\subfloat[]{\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/roll_parameter}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/pitch_parameter}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/yaw_parameter}
+	}
+	\caption{Identification process results when the quadrotor rotates about its roll, pitch, and yaw axes: (a) Comparison of Simulation and experimental results. (b) Identification of $\Gamma_1$ , $\Gamma_4$ and
+	$\Gamma_7$ parameters.}
+	\label{fig:three_degree_identification}
+\end{figure}
+
+
+
+
+% \begin{minipage}[t]{0.95\linewidth}
+% 	\hfill
+%     \begin{minipage}[b]{0.48\linewidth}
+% 		\centering
+% 		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/pitch/pitch}
+% 		\captionsetup{justification=centering}
+% 		\captionof{figure}{Comparison of pitch channel states in simulation and 3DoF setup}
+% 	\end{minipage}
+% 	\begin{minipage}[b]{0.49\linewidth}
+% 		\centering
+% 		\begin{tabular}{ccc}\hline
+% 			Parameter & Value & Value after evaluation
+%             \Tstrut\\ \hline
+% 			$\beta_3$  & $1.1\times10^{-4}$ & $7.13\times10^{-5}$  \Tstrut\\ \hline
+% 			\\
+% 			\\\\\\\\\\\\\\\\\\
+% 		\end{tabular}
+% 	\captionsetup{justification=centering}
+% 		\captionof{table}{Comparison of pitch channel parameter values before and after evaluation}
+% 	\end{minipage}
+% \end{minipage}
+
+% % \vspace{1cm}
+
+% \begin{minipage}[t]{0.95\linewidth}
+% 	\hfill
+%     \begin{minipage}[b]{0.48\linewidth}
+% 		\centering
+% 		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/yaw/yaw}
+% 		\captionsetup{justification=centering}
+% 		\captionof{figure}{Comparison of yaw channel states in simulation and 3DoF setup}
+% 	\end{minipage}
+% 	\begin{minipage}[b]{0.49\linewidth}
+% 		\centering
+% 		\begin{tabular}{ccc}\hline
+% 			Parameter & Value & Value after evaluation
+%             \Tstrut\\ \hline
+% 			$\gamma_2$  & $5.5\times10^{-5}$ & $1.3\times10^{-6}$  \Tstrut\\ \hline
+% 			\\
+% 			\\\\\\\\\\\\\\\\\\
+% 		\end{tabular}
+% 	\captionsetup{justification=centering}
+% 		\captionof{table}{Comparison of yaw channel parameter values before and after evaluation}
+% 	\end{minipage}
+% \end{minipage}
+
+% \begin{minipage}[t]{0.95\linewidth}
+% 	\hfill
+%     \begin{minipage}[b]{0.48\linewidth}
+% 		\centering
+% 		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/roll-pitch/roll}
+% 		\captionsetup{justification=centering}
+% 		\captionof{figure}{Comparison of roll channel states in simulation and 3DoF setup}
+% 	\end{minipage}
+%     \begin{minipage}[b]{0.48\linewidth}
+% 		\centering
+% 		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch}
+% 		\captionsetup{justification=centering}
+% 		\captionof{figure}{Comparison of pitch channel states in simulation and 3DoF setup}
+% 	\end{minipage}
+%     \hfill
+%     \begin{minipage}[b]{1\linewidth}
+% 		\centering
+% 		\begin{tabular}{ccc}\hline
+% 			Parameter & Value & Value after evaluation
+%             \Tstrut\\ \hline
+% 			$\alpha_2$  & 0.0015 & 0.0020\Tstrut\\
+%             $\beta_2$  & 0.0015 & 0.0027\Tstrut\\ \hline
+% 		\end{tabular}
+% 	\captionsetup{justification=centering}
+% 		\captionof{table}{Comparison of roll-pitch channel parameter values before and after evaluation}
+% 	\end{minipage}
+% \end{minipage}
+
+
+%     \begin{minipage}[b]{0.48\linewidth}
+% 		\centering
+% 		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/3DOF/roll}
+% 		\captionsetup{justification=centering}
+% 		\captionof{figure}{Comparison of roll channel states in simulation and 3DoF setup}
+% 	\end{minipage}
+%     \begin{minipage}[b]{0.48\linewidth}
+% 		\centering
+% 		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/3DOF/pitch}
+% 		\captionsetup{justification=centering}
+% 		\captionof{figure}{Comparison of pitch channel states in simulation and 3DoF setup}
+% 	\end{minipage}
+%     \hfill
+%     \begin{minipage}[b]{0.48\linewidth}
+% 		\centering
+% 		\includegraphics[width=1\linewidth]{../Figure/parameter_estimation/3DOF/yaw}
+% 		\captionsetup{justification=centering}
+% 		\captionof{figure}{Comparison of yaw channel states in simulation and 3DoF setup}
+% 	\end{minipage}
+%     \begin{minipage}[b]{0.48\linewidth}
+% 		\centering
+% 		\begin{tabular}{ccc}\hline
+% 			Parameter & Value & Value after evaluation
+%             \Tstrut\\ \hline
+% 			$\alpha_1$  & -0.9628 & -1.56\Tstrut\\
+%             $\beta_1$  & 0.9629 & 1.57\Tstrut \\
+%             $\gamma_1$  & -0.0017 &-0.085\Tstrut\\ \hline
+%             \\\\\\\\\\\\\\\\
+% 		\end{tabular}
+% 	\captionsetup{justification=centering}
+% 		\captionof{table}{Comparison of 3DOF channel parameter values before and after evaluation}
+% 	\end{minipage}
 
 
 \subsection{Performance of the LQIR-DG Controller}
