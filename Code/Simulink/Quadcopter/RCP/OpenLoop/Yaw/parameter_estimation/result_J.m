@@ -16,11 +16,12 @@ ylabel('$\psi_{(\textrm{deg})}$', 'interpreter', 'latex', 'FontSize', 24);
 print('../../../../../../../English_Journal/Figure/parameter_estimation/yaw/yaw','-depsc');
 %% trajectory %%
 load('Quadcopter_nonlinear_spesession.mat')
-C2_array = zeros(1, 4);
+C2_array = zeros(1, 5);
 C2_array(1) = C2;
 C2_array(2) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Parameters.Value;
 C2_array(3) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters.Value;
 C2_array(4) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_3.Parameters.Value;
+C2_array(5) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_4.Parameters.Value;
 
 
 
