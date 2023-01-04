@@ -39,7 +39,7 @@ hold off
 
 %% video maker %%
 writeObj = VideoWriter('roll_square_wave_video');
-writeObj.FrameRate = length(F_roll)/20;
+writeObj.FrameRate = length(F_roll)/80;
 open(writeObj);
 for i=1:length(F_roll)
     frame = F_roll(i);
@@ -71,7 +71,7 @@ hold off;
 
 %% video maker %%
 writeObj = VideoWriter('pitch_square_wave_video');
-writeObj.FrameRate = length(F_pitch)/20;
+writeObj.FrameRate = length(F_pitch)/80;
 open(writeObj);
 for i=1:length(F_pitch)
     frame = F_pitch(i);
