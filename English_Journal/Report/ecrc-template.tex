@@ -348,7 +348,7 @@ Figure \ref{fig:schematic} illustrates the quadrotor schematic, depicting four r
 \begin{figure}[H]
     \centering
     \includegraphics[width=12cm]{../Figure/schematic.png}
-    \caption{Configuration of the quadrotor.}
+    \caption{Quadrotor Configuration Overview.}
     \label{fig:schematic}
 \end{figure}
 
@@ -482,7 +482,7 @@ Note that the vector is transposed using the superscript $\mathrm{T}$ to indicat
 	\boldsymbol{\dot{\mathrm{x}}}(t) = \boldsymbol{\mathrm{A\,x}}(t) + \boldsymbol{\mathrm{B\,u}}(t) + \boldsymbol{\mathrm{B_{d}\,d}}(t)
 \end{equation}
 % where $\boldsymbol{\mathrm{A}}$, $\boldsymbol{\mathrm{B}}$, and $\boldsymbol{\mathrm{B_d}}$ are the system, input and disturbance matrices, respectively. Moreover, $\boldsymbol{\mathrm{d}}$ is the disturbance. The measurements equation is stated as
-The system's input and disturbance matrices, denoted as $\boldsymbol{\mathrm{B}}$ and $\boldsymbol{\mathrm{B_d}}$ respectively, with $\boldsymbol{\mathrm{d}}$ representing the disturbance, are part of the system's dynamics, represented by the matrix $\boldsymbol{\mathrm{A}}$.
+The system's dynamics are represented by the matrix $\boldsymbol{\mathrm{A}}$, which includes the input matrix $\boldsymbol{\mathrm{B}}$ and disturbance matrix $\boldsymbol{\mathrm{B_d}}$. The disturbance is represented by the matrix $\boldsymbol{\mathrm{d}}$.
 The measurement equation is given by
 \begin{equation}
 	\boldsymbol{{\mathrm{z}}}(t) = \boldsymbol{\mathrm{x}}(t)
@@ -648,7 +648,7 @@ In summary, the NLS optimization technique is an effective approach for estimati
 \section{Optimal Control Strategy Formulation for a Nonlinear System}\label{sec:controller}
 % \noindent In the LQIR-DG controller structure, an integral action is added to the LQR-DG controller to cancel the steady-state errors for reference tracking. For this purpose, first, the augmented state space of the linear quadrotor model is defined to utilize in the controller architecture. Then, the LQR-DG controller design procedure is presented to produce the best control commands for the experimental setup of the quadrotor.
 
-\noindent The LQR-DG controller is augmented with an integral action to eliminate steady-state errors in desired following. The first stage of the controller design process involves developing the augmented state space representation of the linear quadrotor model to incorporate it into the overall control architecture. Later on, the LQR-DG controller design methodology is introduced to generate optimal control signals for the experimental quadrotor platform.
+\noindent The LQR-DG controller is augmented with an integral action to eliminate steady-state errors in desired following. The first stage of the controller design process entails the development of the augmented state space representation of the quadrotor system to integrate it into the broader control framework. Later on, the LQR-DG controller design methodology is introduced to generate optimal control signals for the experimental quadrotor platform.
 
 \subsection{Augmented State Space Development}
 \noindent To incorporate the integral action into the controller architecture, the augmented state variables are specified as follows:
@@ -660,7 +660,7 @@ In summary, the NLS optimization technique is an effective approach for estimati
 \end{equation}
 % where $i$ = roll, pitch, and yaw.
 % Then, the quadrotor dynamics model, denoted by Eq.\eqref{eq:linear}, is denoted in the augmented state-space model as
-The dynamics model of the quadrotor, as expressed by Eq. \eqref{eq:linear}, is reformulated into an augmented state-space model that incorporates the roll ($\phi$), pitch ($\theta$), and yaw ($\psi$) angles. The augmented state-space model provides a comprehensive description of the quadrotor's dynamic behavior, enabling the design of effective control strategies. The ensuing state-space model that integrates the augmented state variables is mathematically represented as follows:
+The dynamics model of the quadrotor, as expressed by Eq. \eqref{eq:linear}, is reformulated into an augmented state-space model that incorporates the roll ($\phi$), pitch ($\theta$), and yaw ($\psi$) angles. The augmented state-space model provides a comprehensive description of the quadrotor's dynamic behavior, enabling the design of effective control strategies. The ensuing state-space model that integrates the augmented state variables is mathematically represented defined in the following manner:
 
 \begin{equation}\label{systemlqidg}
 	\begin{split}
@@ -687,7 +687,7 @@ In the aforementioned expression, the notation $\boldsymbol{\mathrm{I}}$ denotes
 \subsection{LQIR-DG Control Scheme with Integral Action for Quadrotor}
 % \noindent The LQIR-DG controller is an optimal and robust method based on the differential game theory. This controller consists of two essential players: one finds the best control command, and the other creates the worst disturbance. 
 % For this purpose, the first player tries to minimize a cost function, while the second is assumed to maximize it. Therefore, the quadratic cost function equation is denoted using min-max operators as follows:
-\noindent In accordance with the principles of differential game theory, the LQIR-DG controller is a robust and optimal methodology. This controller involves two fundamental players, one of which is responsible for determining the optimal control command, while the other strives to generate the worst possible disturbance. The primary objective of the former player is to minimize a cost function, whereas the latter player seeks to maximize it. Thus, the quadratic cost function equation can be expressed using min-max operators, as follows:
+\noindent In accordance with the principles of differential game theory, the LQIR-DG controller is a robust and optimal methodology. This controller involves two fundamental players, one of which is responsible for determining the optimal control command, while the other strives to generate the worst possible disturbance. The primary objective of the former player is to minimize a cost function, whereas the latter player seeks to maximize it. The equation for the quadratic cost function can be expressed using the operator of min-max, as demonstrated below:
 \begin{equation}
     \min_{u} \max_{d} J(\boldsymbol{\mathrm{x_{a_i}}}, {u_i}, {d_i}) = J(\boldsymbol{\mathrm{x_{a_i}}}, {u^*_i}, {d^*_i})=\min_{u} \max_{d}
      \int_{0}^{\mathrm{t_f}}\biggl (\boldsymbol{\mathrm{x^\mathrm{T}_{a_i}}}  \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_{a_i}}}+
@@ -696,14 +696,13 @@ In the aforementioned expression, the notation $\boldsymbol{\mathrm{I}}$ denotes
     \biggl )\mathrm{d}t
 \end{equation}
 % where ${{ R}}$ and ${{R_{d}}}$ are symmetric nonnegative definite matrices and $\boldsymbol{\mathrm{Q_i}} $ is a symmetric positive definite matrix.  Moreover, $\mathrm{t_f}$ is the final time. To solve this problem, connections between the general optimal problem and the LQIR problem are considered \cite{LQDG}. Consequently, the optimum control effort is computed for each control loop as follows:
-In the aforementioned equation, the matrices $\boldsymbol{\mathrm{Q_i}}$ is a symmetric positive definite matrix, while ${{ R}}$ and ${{R_{d}}}$ are symmetric nonnegative definite matrices. The final time is denoted by $\mathrm{t_f}$. To address this issue, the connection between the general optimal problem and the LQIR problem is established \cite{LQDG}. As a result, the optimal control input for each control loop can be computed using the following formula:
+In the aforementioned equation, the matrices $\boldsymbol{\mathrm{Q_i}}$ is a positive symmetric definite matrix, while ${{ R}}$ and ${{R_{d}}}$ are nonnegative symmetric definite matrices. The final time is denoted by $\mathrm{t_f}$. In order to resolve this concern, the linkage between the comprehensive optimal problem and the LQIR problem is established, as discussed in previous works \cite{LQDG}. As a result, the optimal control input for each control loop can be computed using the following formula:
 
 \begin{align}
 		{{u_i}}(t) &= -\boldsymbol{{\mathrm{K}}_{i}}(t) \boldsymbol{{\mathrm{x_{a_i}}}}(t)\\
 	{{d_i}}(t) &=\boldsymbol{{\mathrm{K_{d_i}}}}(t)\boldsymbol{{\mathrm{x_{a_i}}}}(t)
 \end{align}
-where $\boldsymbol{{\mathrm{K_{d_i}}}}$  and $\boldsymbol{{\mathrm{K_i}}}$
-are a time-varying gain, defined as follows:
+where $\boldsymbol{{\mathrm{K_{d_i}}}}$ and $\boldsymbol{{\mathrm{K_i}}}$ are gain values that change over time and are defined as follows:
 \begin{align}
 	\boldsymbol{{\mathrm{K_i}}} &= {{{R}}^{-1}}\boldsymbol{{\mathrm{B}_{a_i}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_i}}(t)\\
 	\boldsymbol{{\mathrm{K_{d_i}}}} &= {{{R}}^{-1}_{d}}\boldsymbol{{\mathrm{B}_{a_{d_i}}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_{d_i}}}(t)
@@ -716,7 +715,7 @@ where $\boldsymbol{{\mathrm{P}}_{a_i}}(t)$ and $\boldsymbol{{\mathrm{P}}_{a_{d_i
 % where $\boldsymbol{\mathrm{S_{a_i}}} = \boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}$ and $\boldsymbol{\mathrm{S_{a_{d_i}}}} = \boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}$.
 % In the present study, the feedback control law is generated using the steady-state values of the aforementioned equations as $\mathrm{t_f}$ tends to infinity.
 
-In the current investigation, the feedback control law is developed utilizing the steady-state values of the previously mentioned equations as $\mathrm{t_f}$ approaches infinity. The matrices $\boldsymbol{\mathrm{S_{a_i}}}$ and $\boldsymbol{\mathrm{S_{a_{d_i}}}}$ are determined by utilizing the matrices $\boldsymbol{\mathrm{B_{a_i}}}$ and $\boldsymbol{\mathrm{B_{a_{d_i}}}}$ along with the symmetric nonnegative definite matrices ${{ R}}$ and ${{R_{d}}}$. Specifically, $\boldsymbol{\mathrm{S_{a_i}}}$ is defined as $\boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}$, while $\boldsymbol{\mathrm{S{a_{d_i}}}}$ is defined as $\boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}$.
+In this study, the feedback control law is developed using the asymptotic behavior of the equations as $t_f$ approaches infinity. The matrices $\boldsymbol{\mathrm{S_{a_i}}}$ and $\boldsymbol{\mathrm{S_{a_{d_i}}}}$ are determined by utilizing the matrices $\boldsymbol{\mathrm{B_{a_i}}}$ and $\boldsymbol{\mathrm{B_{a_{d_i}}}}$ along with the symmetric nonnegative definite matrices ${{ R}}$ and ${{R_{d}}}$. Specifically, $\boldsymbol{\mathrm{S_{a_i}}}$ is defined as $\boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}$, while $\boldsymbol{\mathrm{S{a_{d_i}}}}$ is defined as $\boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}$.
 % In this study, the steady-state values of the above equations $(\boldsymbol{{\mathrm{P}}} \text{ as } \mathrm{t_f} \to \infty)$ are utilized to generate a feedback control law.
 
 \section{Experimental Findings and Analysis}\label{sec:results}
@@ -727,9 +726,9 @@ In the current investigation, the feedback control law is developed utilizing th
 
 % Moreover, the parameters of LQIR-DG controller weight are denoted in table \ref{tab:control weight_new}.
 
-\noindent The current study presents an investigation of the efficacy of the LQIR-DG control strategy applied to the roll, pitch, and yaw control loops of an experimental quadrotor platform. To ensure optimal and robust performance, the controller parameters are tuned using the results of numerical simulations. The performance of the LQIR-DG controller is compared to that of other control strategies, including LQR, PID, and LQIR. The quadrotor's parameters are listed in Table \ref{tab:parameters}.
+\noindent The current study presents an investigation of the effectiveness of the LQIR-DG control approach in the regulation of an experimental quadrotor platform's roll, pitch, and yaw movements. For achieving optimal and resilient performance, the parameters of the controller are tuned using the outcomes of numerical simulations. The comparative performance analysis of the LQIR-DG controller is carried out with respect to other control strategies, namely LQR, PID, and LQIR. The quadrotor's parameters are listed in Table \ref{tab:parameters}.
 
-Furthermore, the weighting parameters of the LQIR-DG controller are provided in Table \ref{tab:control weight_new}.
+Furthermore, the weighting coefficients of the LQIR-DG controller are provided in Table \ref{tab:control weight_new}.
 
 \begin{table}[H]
 	\renewcommand{\arraystretch}{1.3}
@@ -1081,7 +1080,7 @@ Figure \ref{fig:square} demonstrates the efficacy of the LQIR-DG controller in r
 \subsubsection{Investigating the possibility of disturbance rejection}\label{sec:disturbance}
 
 % \noindent This section investigates the possible rejection of input disturbances by the LQIR-DG controller in regulation. For this purpose, a disturbance with an amplitude of 0.5 N is added to the input from 20 to 60 seconds. As shown in figure \ref{fig:disturbance}, the LQIR-DG controller performs well in coupling the roll and screw channels to remove the input disturbance. \ref{fig:disturbance}\ref{sub@fig:disturbance_roll}, the performance of this controller is checked by comparing the desired roll angle with the actual roll angle. Also, \ref{fig:disturbance}\ref{sub@fig:disturbance_pitch} compares the desired pitch angle with the actual pitch angle of the 3DoF experimental setup in removing the input disturbance. The results indicate the proper performance of the controller in removing the input disturbance.
-\noindent This section investigates the capability of the LQIR-DG controller in rejecting input disturbances during regulation. To this end, a disturbance with an amplitude of 0.5 N is added to the input signal from 20 to 60 seconds. As depicted in Figure \ref{fig:disturbance}, the LQIR-DG controller demonstrates proficient coupling of the roll and screw channels, resulting in effective removal of the input disturbance. The performance of the controller is further evaluated by comparing the desired and actual roll angles in Figure \ref{fig:disturbance}\ref{sub@fig:disturbance_roll}, as well as the desired and actual pitch angles in Figure \ref{fig:disturbance}\ref{sub@fig:disturbance_pitch}. The results indicate that the LQIR-DG controller performs appropriately in mitigating the input disturbance.
+\noindent This section examines the effectiveness of the LQIR-DG controller in attenuating input disturbances during regulation. To this end, a disturbance with an amplitude of 0.5 N is added to the input signal from 20 to 60 seconds. As depicted in Figure \ref{fig:disturbance}, the LQIR-DG controller demonstrates proficient coupling of the roll and screw channels, resulting in effective removal of the input disturbance. Figure \ref{fig:disturbance}\ref{sub@fig:disturbance_roll} depicts an evaluation of the controller's performance through a comparison between the desired and actual roll angles, while Figure \ref{fig:disturbance}\ref{sub@fig:disturbance_pitch} presents a similar analysis for the desired and actual pitch angles. The results indicate that the LQIR-DG controller performs appropriately in mitigating the input disturbance.
 
 \begin{figure}[H]
 	\centering
@@ -1097,7 +1096,7 @@ Figure \ref{fig:square} demonstrates the efficacy of the LQIR-DG controller in r
 \subsubsection{Investigating the impact of uncertainty in modeling}\label{sec:model-uncertainty}
 \noindent In this section, the performance of the LQIR-DG controller is investigated under the consideration of uncertainty in the 3DoF experimental setup modeling. Specifically, the controller's effectiveness in the coupling mode of the roll and pitch channels is evaluated while taking into account the uncertain values of the moments of inertia around each axis of the body coordinate system. The results of this investigation are presented in figure \ref{fig:weight}, where a disturbance of 50 grams is added to the roll axis and 100 grams to the pitch axis.
 
-Figure \ref{fig:weight}\ref{sub@fig:weight_roll} displays the performance of the LQIR-DG controller in terms of the comparison between the desired roll angle and the actual roll angle, while figure \ref{fig:weight}\ref{sub@fig:weight_pitch} presents a similar comparison for the desired and actual pitch angles. The implementation results indicate that the LQIR-DG controller performs efficiently in achieving the desired values, even with the uncertainty in the moments of inertia.
+Figure \ref{fig:weight}\ref{sub@fig:weight_roll} and \ref{sub@fig:weight_pitch} depict the evaluation of the LQIR-DG controller with emphasis on the comparison of desired and actual roll and pitch angles, respectively. The implementation results indicate that the LQIR-DG controller performs efficiently in achieving the desired values, even with the uncertainty in the moments of inertia.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.49\textwidth]{../Figure/implementation/weight/Quad_with_weight.jpg}
@@ -1125,12 +1124,12 @@ The LQIR-DG controller, which is based on game theory, considers both the system
 The implementation results indicate that the LQIR-DG controller outperforms the PID and LQR controllers in terms of accuracy and robustness in the presence of uncertainties and disturbances. The comparison results for the three controllers are summarized as follows:
 
 \begin{itemize}
-	\item PID
+	\item PID \newline
 	The PID controller can track the desired angles reasonably well in the absence of uncertainties and disturbances. However, its performance is significantly affected by the presence of uncertainty and disturbances, resulting in oscillations and overshoots in the response.
-	\item LQR and LQIR
+	\item LQR and LQIR \newline
 	The LQR and LQIR controller provides better performance than PID in the absence of uncertainties and disturbances. However, it is more sensitive to system uncertainties and disturbances, resulting in larger errors and oscillations in the response.
-	\item LQIR-DG
-	The LQIR-DG controller provides the best performance among the three controllers, as it can handle uncertainties, disturbances, and weight additions without requiring a re-design of the controller. The LQIR-DG controller provides accurate and robust control of the quadrotor system, with minimal errors and oscillations in the response.
+	\item LQIR-DG \newline
+	Among the three controllers compared, the LQIR-DG controller exhibits superior performance, exhibiting robustness to uncertainties, disturbances, and weight additions without necessitating a re-design of the control system. The LQIR-DG controller provides accurate and robust control of the quadrotor system, with minimal errors and oscillations in the response.
 \end{itemize}
 
 In summary, the LQIR-DG controller provides better performance than PID and LQR controllers, and is a promising control method for quadrotor systems in the presence of uncertainties and disturbances.
@@ -1147,7 +1146,7 @@ In summary, the LQIR-DG controller provides better performance than PID and LQR 
 	\centering
 	{\includegraphics[width=.49\linewidth]{../Figure/implementation/box_plot/lqidgvsboxplot}
 	}
-	\caption{Comparison of the LQIR-DG controller with LQR, LQIR, and PID controllers using a quadratic cost function}
+	\caption{Comparative Analysis of the LQIR-DG Controller against LQR, LQIR, and PID Controllers Using Quadratic Cost Function}
 	\label{fig:compare_boxplot}
 \end{figure}
 
@@ -1156,9 +1155,12 @@ In summary, the LQIR-DG controller provides better performance than PID and LQR 
 % \noindent In this study, a linear quadratic with integral action based on the differential game theory, called LQIR-DG, was implemented for level attitude control in an experimental setup of a quadrotor. To implement the proposed controller structure, first, an accurate model of the quadrotor was linearized in the state-space form, and then the model parameters were estimated. Next, two players were considered for each of the quadrotor's roll, pitch, and yaw channels. The first player found the best control command for each channel of the setup of a quadrotor based on the mini-maximization of a quadratic criterion; when the second player produced the worst disturbances. Finally, the performance of the proposed controller was investigated in level flight and compared to the LQR controller. The implementation results verify the successful performance of the LQIR-DG method in the level flight of the attitude control and tracking sware wave and disturbance rejection and model uncertanity for the actual plant.
 
 % \noindent This study presented the implementation and evaluation of a linear quadratic with integral action based on the differential game theory, named LQIR-DG, for level attitude control in an experimental setup of a quadrotor. The proposed controller structure required the linearization of an accurate model of the quadrotor in the state-space form and the estimation of the model parameters. The design of the LQIR-DG controller involved two players for each of the quadrotor's roll, pitch, and yaw channels. The first player optimized the control command for each channel based on the mini-maximization of a quadratic criterion, while the second player generated the worst disturbances. The evaluation of the LQIR-DG method was conducted in level flight and compared to the LQR controller. The results demonstrated the successful performance of the LQIR-DG method in level flight of the attitude control and tracking square wave, disturbance rejection, and model uncertainty in the actual plant.
-\noindent This study has presented a novel approach for the implementation and evaluation of a linear quadratic with integral action controller based on differential game theory for level attitude control in an experimental quadrotor setup. The proposed controller design required an accurate model of the quadrotor in state-space form, which was linearized, and the model parameters were estimated. The LQIR-DG controller involved two players for each of the roll, pitch, and yaw channels. The first player optimized the control command for each channel based on a quadratic criterion, while the second player generated the worst disturbances.
+\noindent This study has introduced a novel methodology for the implementation and assessment of a controller with integral action utilizing linear quadratic optimization, founded on the principles of differential game theory, with the aim of achieving level attitude control and reference tracking in an experimental platform of the quadrotor.
+The development of the proposed controller design necessitated the formulation of a precise state-space model for the quadrotor, which was then linearized. The estimation of the model parameters was subsequently conducted in accordance with the design process.
+The LQIR-DG controller implementation necessitated the coordination of two players, each dedicated to the yaw, pitch, and roll channels, respectively.
+The first player, utilizing a quadratic criterion, performed optimization of the control input for each channel, while the second player produced the most challenging disturbances.
 
-The performance of the LQIR-DG controller was evaluated in level flight and compared to the LQR controller. The results showed the successful performance of the LQIR-DG method in level flight for attitude control, tracking square wave, disturbance rejection, and model uncertainty in the actual plant. Overall, this study has demonstrated the effectiveness and potential of the LQIR-DG method in quadrotor attitude control, which can be extended to other aerospace systems.
+The efficacy of the LQIR-DG controller was assessed in level flight and compared against the LQR, LQIR, and PID controllers. The experimental findings demonstrated the efficacy of the LQIR-DG approach for achieving attitude control, square wave tracking, disturbance rejection, and robustness to model uncertainty in the actual quadrotor platform during level flight. Overall, this study has demonstrated the effectiveness and potential of the LQIR-DG method in quadrotor attitude control, which can be extended to other aerospace systems.
 
 
 
