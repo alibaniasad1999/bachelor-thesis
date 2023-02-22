@@ -338,24 +338,31 @@ A graphical representation of the LQIG-DG controller structure is depicted in Fi
 
 
 
-\section{Nonlinear Dynamic Model for the Quadrotor Platform}\label{sec:modeling}
+\section{Dynamic Model of the Quadrotor Platform}\label{sec:modeling}
 % Here, the model of the three-degree-of-freedom setup of the quadrotor is presented in detail. For this purpose, first, the configuration of the quadrotor is denoted. Then, the nonlinear model of the attitude dynamics is derived from denoting the state-space form. Finally, the nonlinear model is linearized to utilize for control purposes.
-This research paper presents an analysis of the three degrees of freedom for the quadrotor. Furthermore, a state-space model is developed to represent the nonlinear attitude dynamics. A linearization technique is subsequently applied to the model, enabling it to be used as a LQIR-DG control model.
-\subsection{Quadrotor Configuration and Attitude Dynamics Model}
+% This research paper presents an analysis of the three degrees of freedom for the quadrotor. Furthermore, a state-space model is developed to represent the nonlinear attitude dynamics. A linearization technique is subsequently applied to the model, enabling it to be used as a LQIR-DG control model.
+In this section, first, a nonlinear model for the quadrotor platform is derived. Then, a state-space model and a linear model are developed for control purposes to be utilized in a controller strategy. Finally, a linear identification method is applied to identify the parameters of the quadrotor
+\subsection{Quadrotor Configuration}
 % condidate "Characteristics of the Quadrotor Setup"
 % Figure \ref{fig:schematic} denotes the quadrotor schematic. Each rotor has an angular velocity, $\Omega_r$, rotating about the $z_B$ axis in the body coordinate system. Rotors 1 and 3 rotate counterclockwise, while rotors 2 and 4 rotate clockwise to cancel yawing moment.
 Figure \ref{fig:schematic} illustrates the quadrotor schematic, depicting four rotors with rotational velocity $\Omega_r$ rotating around the $z_B$ axis in the coordinate system of body. The rotational direction of Rotor 1 and Rotor 3 in the counterclockwise direction counteracts the yawing moment, whereas the clockwise rotation of Rotors 2 and 4 counteracts the yawing moment.
 
+% Four rotors, each with a rotational velocity of $\Omega_r$, rotate around the $z_B$ axis. The quadrotor platform, as shown in Figure \ref{fig:schematic}, has 3 degrees of freedom, including roll, pitch, and yaw motions, which are described by roll $(\phi)$, pitch $(\theta)$, and yaw $(\psi)$ angles, respectively. The counterclockwise rotation of Rotors 1 and 3 generates a moment that counteracts the yawing moment, while the clockwise rotation of Rotors 2 and 4 produces a moment that also counteracts the yawing moment.xx
+
+Figure \ref{fig:schematic} shows the quadrotor schematic. It depicts four rotors rotating around the $z_B$ axis in the coordinate system of the body. The rotors have a rotational velocity of $\Omega_r$.
+The quadrotor platform has 3 degrees of freedom, including roll, pitch, and yaw motions, which are described by roll $(\phi)$, pitch $(\theta)$, and yaw $(\psi)$ angles, respectively.
+The counterclockwise rotation of Rotors 1 and 3 generates a moment that counteracts the yawing moment, while the clockwise rotation of Rotors 2 and 4 produces a moment that also counteracts the yawing moment.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=12cm]{../Figure/schematic.png}
-    \caption{Quadrotor Configuration Overview.}
+    \caption{Quadrotor Configuration.}
     \label{fig:schematic}
 \end{figure}
 
 \subsection{Dynamic Modeling of the Quadrotor Platrorm}
 % The quadrotor kinetic model, derived using the Newton-Euler method, is stated as \cite{4399042, article_Bouabdallah}
-The dynamic model of the Quadrotor Platrorm is an essential component for control design. In this section, according to Newton-Euler, the dynamic model of a quadrotor can be derived as follows: \cite{4399042, article_Bouabdallah}.
+Here, according to Newton-Euler, the dynamic model of the quadrotor platform is derived as follows \cite{4399042, article_Bouabdallah}:
 
 
 
@@ -370,7 +377,8 @@ The dynamic model of the Quadrotor Platrorm is an essential component for contro
 
 % \noindent where $(p, q, r)$ are the angular velocities. $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ are the disturbances generated in $x_B$, $y_B$, and $z_B$, respectively. Moreover, $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the principal moment of inertia, and $\mathrm{I}_{\text{rotor}}$ is a rotor  inertia  about its axis.
 % The relation between the angular body rates and the Euler angles rates are obtained as
-\noindent The variables $(p, q, r)$ represent the rotational velocities, while the variables $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ denote the disturbances produced in $x_B$, $y_B$, and $z_B$, correspondingly. Additionally, $\mathrm{I}{\text{xx}}$, $\mathrm{I}{\text{yy}}$, and $\mathrm{I}{\text{zz}}$ are the principal moments of inertia, and $\mathrm{I}{\text{rotor}}$ is the rotor inertia about its axis. Euler angle rates are also determined from angular body rates:
+% \noindent The variables $(p, q, r)$ represent the rotational velocities, while the variables $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ denote the disturbances produced in $x_B$, $y_B$, and $z_B$, correspondingly. Additionally, $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the principal moments of inertia, and $\mathrm{I}{\text{rotor}}$ is the rotor inertia about its axis. Euler angle rates are also determined from angular body rates:
+\noindent The $(p, q, r)$ represent the rotational variables, and $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ denote the disturbances produced in the $x_B$, $y_B$, and $z_B$ axes, respectively. Additionally, $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the principal moments of inertia, and $\mathrm{I}_{\text{rotor}}$ is the rotor inertia about its axis. Euler angle rates are also determined from angular body rates as follows:
 % \begin{align}
 %     \dot\phi &= p + (q\sin(\phi) + r\cos(\phi))\tan(\theta)\\
 % \dot \theta &= q\cos(\phi) - r\sin(\phi)\\
@@ -398,7 +406,8 @@ The dynamic model of the Quadrotor Platrorm is an essential component for contro
 % \end{align}
 % where $(\phi, \theta, \psi)$ are roll, pitch, and yaw angles.
 % Moreover, $\Omega_r$, called the overall residual rotor angular velocity, is computed as
-The quadrotor system has three degrees of freedom: roll, pitch, and yaw. The rotational motion is described by the angles $(\phi, \theta, \psi)$, which represent roll, pitch, and yaw, respectively. The residual rotor velocity, denoted by $\omega_r$, is calculated as follows:
+% The quadrotor system has three degrees of freedom: roll, pitch, and yaw. The rotational motion is described by the angles $(\phi, \theta, \psi)$, which represent roll, pitch, and yaw, respectively.
+ The residual rotor velocity, denoted by $\Omega_r$, is calculated as follows:
 \begin{equation}
 	\Omega_r = -\Omega_1 + \Omega_2 - \Omega_3 + \Omega_4
 \end{equation}
@@ -406,7 +415,7 @@ The quadrotor system has three degrees of freedom: roll, pitch, and yaw. The rot
 % Control Strategy for Quadrotor
 
 % \noindent The control inputs $u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ are roll, pitch, and yaw moments, obtained from the rotors, defined as
-\noindent The control inputs $u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ correspond to the moments generated by the quadrotor's rotors along the roll, pitch, and yaw axes, respectively, and are defined as follows:
+\noindent The control inputs $u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ are to the moments generated by the quadrotor's rotors along the roll, pitch, and yaw axes, respectively, and are defined as follows:
 \begin{align}
 		&u_{\text{roll}} = \mathrm{b\,d}_{\text{cg}} (\Omega_2^2 - \Omega_4^2)\\
 	&u_{\text{pitch}} = \mathrm{b\,d}_{\text{cg}} (\Omega_1^2 - \Omega_3^2) \\
@@ -414,7 +423,7 @@ The quadrotor system has three degrees of freedom: roll, pitch, and yaw. The rot
 \end{align}
 
 % Also, d and b are, respectively, drag and thrust coefficients. $\mathrm{d}_{\text{cg}}$ is the distance of rotors from the gravity center. Hence, the angular velocity commands are obtained as
-The quadrotor's drag and thrust coefficients are denoted by d and b, respectively. The distance between the rotors and the gravity center is represented by $\mathrm{d}_{\text{cg}}$. The angular velocity commands can be computed as follows:
+where $\mathrm{d}_{\text{cg}}$, $\text{d}$, and $\text{b}$ represent the distance between the rotors and the gravity center, drag factor, and thrust factor, respectively. The rotational velocity commands are computed as follows:
 \begin{align}
 		\Omega_{c, 1}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
 	\Omega_{c, 2}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}\\
@@ -422,15 +431,17 @@ The quadrotor's drag and thrust coefficients are denoted by d and b, respectivel
 \Omega_{c, 4}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}
 \end{align}
 % where $\Omega_{\text{mean}}$ is the nominal of the rotor angular velocities.
-The nominal angular velocities of the rotors are denoted by $\Omega_{\text{mean}}$.
-\subsection{State-Space Representation of Quadrotor Dynamics}\label{sec:state-space}
+% The nominal angular velocities of the rotors are denoted by $\Omega_{\text{mean}}$.
+In the above equation, $\Omega_{\text{mean}}$ is nominal rotational velocities of the rotors.
+\subsection{State-Space Formulation}\label{sec:state-space}
 % \noindent Here, the state-space model is presented for control purposes.
-The formulation of a state-space model is crucial for the development of advanced control strategies. In this context, a state-space representation of the quadrotor system is provided in order to facilitate the design of control algorithms.
+% The formulation of a state-space model is crucial for the development of advanced control strategies. In this context, a state-space representation of the quadrotor system is provided in order to facilitate the design of control algorithms.
+\noindent Here, by defining $x_1 = p$, $x_2 = q$, $x_3 = r$, $x_4 = \phi$, $x_5 = \theta$, and $x_6 = \psi$, the formulation of the quadrotor platform is presented as follows:
 % For control purposes, the state-space model of the quadrotor experimental setup is described.
 % By defining $x_1 = p$, $x_2 = q$, $x_3 = r$, $x_4 = \phi$, $x_5 = \theta$, and $x_6 = \psi$; the model of in state-space form are denoted as
 % For the purpose of control, the quadrotor system can be modeled in state-space form as follows. Let $x_1 = p$, $x_2 = q$, $x_3 = r$, $x_4 = \phi$, $x_5 = \theta$, and $x_6 = \psi$ be the state variables. The state-space equations are given by:
 
-In order for the quadrotor to be controlled, it can be modelled in state-space by introducing the following variables: $ x_1 = p$, $ x_2 = q$, $ x_3 = r$, $ x_4 = \phi$, $ x_5 = \theta$, and $x_6 = \psi$.
+% In order for the quadrotor to be controlled, it can be modelled in state-space by introducing the following variables: 
 
 
 % The state-space model of the experimental setup is given as
@@ -452,85 +463,46 @@ In order for the quadrotor to be controlled, it can be modelled in state-space b
 \dot x_5 &= x_2\cos(x_4) - x_3\sin(x_4)\\[0.5em]
 \dot x_6 &= (x_2\sin(x_4) + x_3\cos(x_4))/\cos(x_5) \label{eq:diffeq-end}
 \end{align}
+% where $ x_1 = p$, $ x_2 = q$, $ x_3 = r$, $ x_4 = \phi$, $ x_5 = \theta$, and $x_6 = \psi$.
+
 % Moreover, $\Gamma_i(i=1, ..., 8)$ is defined as
-Furthermore, to facilitate the analysis, $\Gamma_i (i = 1, \ldots, 8)$ is introduced, which represents a set of coefficients related to the quadrotor's physical properties and external factors.
+% Furthermore, to facilitate the analysis, $\Gamma_i (i = 1, \ldots, 8)$ is introduced, which represents a set of coefficients related to the quadrotor's physical properties and external factors.
+% where $\Gamma_i (i = 1, \ldots, 8)$ is defined as follows:
+where $\Gamma_i (i = 1, \ldots, 8)$ is defined as follows:
 \begin{equation}
 	\begin{split}
 		\Gamma_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_2 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_3 = \dfrac{1}{\mathrm{I}_{\text{xx}}}\\ \Gamma_4 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_5 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_6 = \dfrac{1}{\mathrm{I}_{\text{yy}}} \\ \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}}, \quad \Gamma_8 = \dfrac{1}{\mathrm{I}_{\text{zz}}}
 	\end{split}
 \end{equation}
+Moreover, the measurement vector, obtained from the AHRS sensor is presented as follows:
 % The measurement model is written as
-The attitude states and gyro measurements are represented as vectors, denoted by $\boldsymbol{\mathrm{z}}$ and $\boldsymbol{\mathrm{m}}$, respectively. The attitude state vector is defined as follows:
+% The attitude states and gyro measurements are represented as vectors, denoted by $\boldsymbol{\mathrm{z}}$ and $\boldsymbol{\mathrm{m}}$, respectively. The attitude state vector is defined as follows:
 
 \begin{equation}
 \begin{split}
 \boldsymbol{\mathrm{z}} &= \begin{bmatrix}
-p_m \
-q_m \
-r_m \
-\phi_m \
-\theta_m \
-\psi_m
-\end{bmatrix}
+p \
+q \
+r \
+\phi \
+\theta \
+\psi
+\end{bmatrix}^\mathrm{T}
 \end{split}
 \end{equation}
 
-Note that the vector is transposed using the superscript $\mathrm{T}$ to indicate that it is a row vector.
-\subsection{Linearization of the Nonlinear Quadrotor Model}
+In the above equation, the superscripts $\mathrm{T}$ indicate the traspose notation.
+\subsection{Linear Model}
 % \noindent The continuous-time linear model is utilized to drive the control commands on the quadrotor. The linear state-space model is denoted as
-\noindent The application of a continuous-time linear model facilitates the efficient control of the quadrotor. The linear state-space model can be represented as follows:
+\noindent The linear continuous-time model of the quadrotor platform equilibrium points $(\boldsymbol{{\mathrm{x}}}_e\!=\!0 \text{ and } \boldsymbol{{\mathrm{u}}}_e\!=\!0)$ is represented as:
 \begin{equation}\label{eq:linear}
 	\boldsymbol{\dot{\mathrm{x}}}(t) = \boldsymbol{\mathrm{A\,x}}(t) + \boldsymbol{\mathrm{B\,u}}(t) + \boldsymbol{\mathrm{B_{d}\,d}}(t)
 \end{equation}
-% where $\boldsymbol{\mathrm{A}}$, $\boldsymbol{\mathrm{B}}$, and $\boldsymbol{\mathrm{B_d}}$ are the system, input and disturbance matrices, respectively. Moreover, $\boldsymbol{\mathrm{d}}$ is the disturbance. The measurements equation is stated as
-The system's dynamics are represented by the matrix $\boldsymbol{\mathrm{A}}$, which includes the input matrix $\boldsymbol{\mathrm{B}}$ and disturbance matrix $\boldsymbol{\mathrm{B_d}}$. The disturbance is represented by the matrix $\boldsymbol{\mathrm{d}}$.
-The measurement equation is given by
-\begin{equation}
-	\boldsymbol{{\mathrm{z}}}(t) = \boldsymbol{\mathrm{x}}(t)
-\end{equation}
-% According to equations\eqref{eq:diffeq}-\eqref{eq:diffeq-end}, the linear dynamic model around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e\!=\!0 \text{ and } \boldsymbol{{\mathrm{u}}}_e\!=\!0)$ of the Quadrotor Platrorm is denoted as
-% The linear dynamic model, which is derived around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e\!=\!0 \text{ and } \boldsymbol{{\mathrm{u}}}_e\!=\!0)$ of the Quadrotor Platrorm, is described by equations\eqref{eq:diffeq}-\eqref{eq:diffeq-end}.
-The differential equations presented in Equations \eqref{eq:diffeq}-\eqref{eq:diffeq-end} allow for the development of a corresponding linear dynamic model for the quadrotor platform at its equilibrium points $(\boldsymbol{{\mathrm{x}}}_e\!=\!0 \text{ and } \boldsymbol{{\mathrm{u}}}_e\!=\!0)$. This model can be expressed as follows:
-\begin{equation}
-	\begin{split}
-		\boldsymbol{{\mathrm{\dot x}}} = \begin{bmatrix}
-			\boldsymbol{{\mathrm{\dot x_{\text{roll}}}}}\\
-			\boldsymbol{{\mathrm{\dot x_{\text{pitch}}}}}\\
-			\boldsymbol{{\mathrm{\dot x_{\text{yaw}}}}}
-		\end{bmatrix} &= \begin{bmatrix}
-			\boldsymbol{{\mathrm{A_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
-			\boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{pitch}}}}} & \boldsymbol{0} \\
-			\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{yaw}}}}}
-		\end{bmatrix} \begin{bmatrix}
-			\boldsymbol{{\mathrm{x_{\text{roll}}}}}\\
-			\boldsymbol{{\mathrm{x_{\text{pitch}}}}}\\
-			\boldsymbol{{\mathrm{x_{\text{yaw}}}}}
-		\end{bmatrix}
-		\\[1em]
-		& + \begin{bmatrix}
-			\boldsymbol{{\mathrm{B_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
-			\boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{pitch}}}}} & \boldsymbol{0} \\
-			\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{yaw}}}}}
-		\end{bmatrix}
-		\begin{bmatrix}
-			\boldsymbol{{\mathrm{u_{\text{roll}}}}}\\
-			\boldsymbol{{\mathrm{u_{\text{pitch}}}}}\\
-			\boldsymbol{{\mathrm{u_{\text{yaw}}}}}
-		\end{bmatrix}\\[1em]
-		& + \begin{bmatrix}
-			\boldsymbol{{\mathrm{B_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
-			\boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{pitch}}}}} & \boldsymbol{0} \\
-			\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{yaw}}}}}
-		\end{bmatrix} \begin{bmatrix}
-			\boldsymbol{{\mathrm{d_{\text{roll}}}}}\\
-			\boldsymbol{{\mathrm{d_{\text{pitch}}}}}\\
-			\boldsymbol{{\mathrm{d_{\text{yaw}}}}}
-		\end{bmatrix}
-	\end{split}
-\end{equation}
-where $\boldsymbol{\mathrm{x}}_{\text{roll}}$, 
-$\boldsymbol{\mathrm{x}}_{\text{pitch}}$, and $\boldsymbol{\mathrm{x}}_{\text{yaw}}$ defined as below:
-
+where $\boldsymbol{\dot{\mathrm{x}}} = \begin{bmatrix}
+				\boldsymbol{{\mathrm{\dot x_{\text{roll}}}}}&
+				\boldsymbol{{\mathrm{\dot x_{\text{pitch}}}}}&
+				\boldsymbol{{\mathrm{\dot x_{\text{yaw}}}}}
+\end{bmatrix}$, defined as:
 \begin{equation}
 	\begin{split}
 		\boldsymbol{\mathrm{x}}_{\text{roll}} = \begin{bmatrix}
@@ -544,8 +516,72 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}}$, and $\boldsymbol{\mathrm{x}}_{\text{ya
 		\end{bmatrix}
 	\end{split}
 \end{equation}
+% where $\boldsymbol{\mathrm{A}}$, $\boldsymbol{\mathrm{B}}$, and $\boldsymbol{\mathrm{B_d}}$ are the system, input and disturbance matrices, respectively. Moreover, $\boldsymbol{\mathrm{d}}$ is the disturbance. The measurements equation is stated as
+where $\boldsymbol{\mathrm{A}}$ is the dynamic system matrix, denoted
+\begin{equation}
+	\boldsymbol{\mathrm{A}} = \begin{bmatrix}
+		\boldsymbol{{\mathrm{A_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
+		\boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{pitch}}}}} & \boldsymbol{0} \\
+		\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{yaw}}}}}
+	\end{bmatrix}
+\end{equation}
+Moreover, $\boldsymbol{\mathrm{B}}$ and $\boldsymbol{\mathrm{B_d}}$ are the input and disturbance matrices, defined as:
+\begin{equation}
+	\boldsymbol{\mathrm{B}} = \boldsymbol{\mathrm{B_d}} = 
+	\begin{bmatrix}
+		\boldsymbol{{\mathrm{B_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
+		\boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{pitch}}}}} & \boldsymbol{0} \\
+		\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{yaw}}}}}
+	\end{bmatrix}
+\end{equation}
 
-
+% The system's dynamics are represented by the matrix $\boldsymbol{\mathrm{A}}$, which includes the input matrix $\boldsymbol{\mathrm{B}}$ and disturbance matrix $\boldsymbol{\mathrm{B_d}}$. The disturbance is represented by the matrix $\boldsymbol{\mathrm{d}}$.
+% The measurement equation is given by
+% \begin{equation}
+% 	\boldsymbol{{\mathrm{z}}}(t) = \boldsymbol{\mathrm{x}}(t)
+% \end{equation}
+% According to equations\eqref{eq:diffeq}-\eqref{eq:diffeq-end}, the linear dynamic model around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e\!=\!0 \text{ and } \boldsymbol{{\mathrm{u}}}_e\!=\!0)$ of the Quadrotor Platrorm is denoted as
+% The linear dynamic model, which is derived around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e\!=\!0 \text{ and } \boldsymbol{{\mathrm{u}}}_e\!=\!0)$ of the Quadrotor Platrorm, is described by equations\eqref{eq:diffeq}-\eqref{eq:diffeq-end}.
+% The differential equations presented in Equations \eqref{eq:diffeq}-\eqref{eq:diffeq-end} allow for the development of a corresponding linear dynamic model for the quadrotor platform at its equilibrium points $(\boldsymbol{{\mathrm{x}}}_e\!=\!0 \text{ and } \boldsymbol{{\mathrm{u}}}_e\!=\!0)$. This model can be expressed as follows:
+% \begin{equation}
+% 	\begin{split}
+% 		\boldsymbol{{\mathrm{\dot x}}} = \begin{bmatrix}
+% 			\boldsymbol{{\mathrm{\dot x_{\text{roll}}}}}\\
+% 			\boldsymbol{{\mathrm{\dot x_{\text{pitch}}}}}\\
+% 			\boldsymbol{{\mathrm{\dot x_{\text{yaw}}}}}
+% 		\end{bmatrix} &= \begin{bmatrix}
+% 			\boldsymbol{{\mathrm{A_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
+% 			\boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{pitch}}}}} & \boldsymbol{0} \\
+% 			\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{yaw}}}}}
+% 		\end{bmatrix} \begin{bmatrix}
+% 			\boldsymbol{{\mathrm{x_{\text{roll}}}}}\\
+% 			\boldsymbol{{\mathrm{x_{\text{pitch}}}}}\\
+% 			\boldsymbol{{\mathrm{x_{\text{yaw}}}}}
+% 		\end{bmatrix}
+% 		\\[1em]
+% 		& + \begin{bmatrix}
+% 			\boldsymbol{{\mathrm{B_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
+% 			\boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{pitch}}}}} & \boldsymbol{0} \\
+% 			\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{yaw}}}}}
+% 		\end{bmatrix}
+% 		\begin{bmatrix}
+% 			\boldsymbol{{\mathrm{u_{\text{roll}}}}}\\
+% 			\boldsymbol{{\mathrm{u_{\text{pitch}}}}}\\
+% 			\boldsymbol{{\mathrm{u_{\text{yaw}}}}}
+% 		\end{bmatrix}\\[1em]
+% 		& + \begin{bmatrix}
+% 			\boldsymbol{{\mathrm{B_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
+% 			\boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{pitch}}}}} & \boldsymbol{0} \\
+% 			\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{yaw}}}}}
+% 		\end{bmatrix} \begin{bmatrix}
+% 			\boldsymbol{{\mathrm{d_{\text{roll}}}}}\\
+% 			\boldsymbol{{\mathrm{d_{\text{pitch}}}}}\\
+% 			\boldsymbol{{\mathrm{d_{\text{yaw}}}}}
+% 		\end{bmatrix}
+% 	\end{split}
+% \end{equation}
+% where $\boldsymbol{\mathrm{x}}_{\text{roll}}$, 
+% $\boldsymbol{\mathrm{x}}_{\text{pitch}}$, and $\boldsymbol{\mathrm{x}}_{\text{yaw}}$ defined as below:
 
 In addition, the input matrices and state are shown as
 \begin{equation}
@@ -575,39 +611,49 @@ In addition, the input matrices and state are shown as
 	\end{split}
 \end{equation}
 
-\subsection{Identification of the Setup Parameters}
+\subsection{Identification of the Platform Parameters}
 % \noindent In this section, the optimization technique based on the Nonlinear Least Squares (NLS) method is utilized to estimate the model parameters ($\Gamma$) for the 3DOF experimental setup from
 % experimental data. Here, the NLS algorithm, that is based on the trust-region reflective least squares (TRRLS) method, finds iteratively the values of the model parameters based on the minimization of the cost function, so that the input/output signals provided by the simulation model are very similar to the experimental ones. Therefore, the least squares problem consists
 % in finding a vector $\boldsymbol{\mathrm{\Gamma}}$ that minimizes a sum of squares function \cite{article_Eriksson}, as follows:
-\noindent This section presents an optimization technique for estimating the model parameters ($\Gamma$) of the 3DOF experimental setup from experimental data. The technique is based on the Nonlinear Least Squares (NLS) method, which is widely used in parameter estimation problems. The NLS algorithm utilizes the trust-region reflective least squares (TRRLS) method to iteratively find the values of the model parameters. The goal is to minimize a cost function, which is based on the sum of squares between the input/output signals provided by the simulation model and the experimental ones.
-
-The optimization process involves finding a vector $\boldsymbol{\mathrm{\Gamma}}$ that minimizes the cost function. This is achieved by iteratively updating the values of the model parameters until convergence is achieved. The NLS method is particularly useful for problems where the model is nonlinear and the measurement noise is known. The approach is based on a least squares problem, where the objective is to find the values of $\boldsymbol{\mathrm{\Gamma}}$ that minimize the sum of squares function \cite{article_Eriksson}:
-
+\noindent This section the Nonlinear Least Squares (NLS) algorithm is utilized for estimating the model parameter ($\Gamma$) of the 3DoF experimental platform using the experimental data. This technique is based on the Trust-Region Reflective Least Squares (TRRLS) method to the iteratively find the values of the model parameters based on the minimization of a cost function, defined as follows:
 \begin{equation}
 	\min_{\Gamma_i}\left(\parallel e(\Gamma_i) \parallel^2\right) = 
-	\min_{\Gamma_i} = \left(\sum_{i=1}^{n}(y-\hat y)^2\right)
+	\min_{\Gamma_i} = \left(\sum_{j=1}^{n}(\boldsymbol{z}_j- \hat{\boldsymbol{z}}_j)(\boldsymbol{z}_j- \hat{\boldsymbol{z}}_j)^\mathrm{T}\right)
 \end{equation}
-where $y$ and $\hat y$ are the experimental and simulated output signals, when the same input signals are applied ones.
-The structure of the proposed identification approach is illustrated in Figure \ref{fig:identification}.
+where $\boldsymbol{z}$ and $\hat{\boldsymbol{z}}$ are the experimental and simulated output signals, when the same input signals are applied ones.
 
 
-In summary, the NLS optimization technique is an effective approach for estimating the model parameters of the 3DOF experimental setup from experimental data. The technique utilizes the TRRLS method to iteratively update the values of the model parameters, with the goal of minimizing the difference between the simulation model and the experimental data.
+The optimization process involves finding a vector $\boldsymbol{\mathrm{\Gamma}}$ by iteratively updating the values of the model parameters until convergence is achieved. The structure of the proposed identification approach is illustrate in figure \ref{fig:identification}
+
+%  an optimization technique for estimating the model parameters  of the 3DOF experimental setup from experimental data. The technique is based on the Nonlinear Least Squares (NLS) method, which is widely used in parameter estimation problems. The NLS algorithm utilizes the trust-region reflective least squares (TRRLS) method to iteratively find the values of the model parameters. The goal is to minimize a cost function, which is based on the sum of squares between the input/output signals provided by the simulation model and the experimental ones.
+
+% The optimization process involves finding a vector $\boldsymbol{\mathrm{\Gamma}}$ that minimizes the cost function. This is achieved by iteratively updating the values of the model parameters until convergence is achieved. The NLS method is particularly useful for problems where the model is nonlinear and the measurement noise is known. The approach is based on a least squares problem, where the objective is to find the values of $\boldsymbol{\mathrm{\Gamma}}$ that minimize the sum of squares function \cite{article_Eriksson}:
+
+% The optimization process involves finding a vector $\boldsymbol{\mathrm{\Gamma}}$ by iteratively updating the values of the model parameters until convergence is achieved.
+%  The NLS method is particularly useful for problems where the model is nonlinear and the measurement noise is known. The approach is based on a least squares problem, where the objective is to find the values of $\boldsymbol{\mathrm{\Gamma}}$ that minimize the sum of squares function \cite{article_Eriksson}:
+
+
+
+
+% In summary, the NLS optimization technique is an effective approach for estimating the model parameters of the 3DOF experimental setup from experimental data. The technique utilizes the TRRLS method to iteratively update the values of the model parameters, with the goal of minimizing the difference between the simulation model and the experimental data \cite{article_Eriksson}.
+
 
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[font=\small,thick]
 		% Start block
-		\node[draw, align=center,		minimum width=2.5cm,		minimum height=1cm, fill=blue!10] (block1) {\textbf{Experimental data} \\Blade rotational speed as input variables \\ current attitude as output};
+		\node[draw, align=center,		minimum width=2.5cm,		minimum height=1cm, fill=blue!10] (block1) {\textbf{Experimental Data} \\Input: rotational velocity\\
+		Output: attitude};
 			
 		% Voltage and Current Measurement
-		\node[draw, align=center,		below=of block1,		minimum width=3.5cm,		minimum height=1cm, fill=blue!10	] (block2) {\textbf{Data preprocessing} \\ Synchronization experim, vs simulated data.};
+		\node[draw, align=center,		below=of block1,		minimum width=3.5cm,		minimum height=1cm, fill=blue!10	] (block2) {\textbf{Data Preprocessing} \\ Synchronization experimental, vs simulated data.};
 		
 		% Power and voltage variation
 		
 		\node[draw, align=center,		below=of block2,		minimum width=3.5cm,		minimum height=1cm, fill=blue!10	] (block3) {\textbf{NLS-TRRLS Optimization}\\
 		Set bounds for parameters\\
 		Set initial seed for all parameters\\
-		Define error cost function to minimize.};
+		Minimization of the cost function.};
 
 		\node[draw, align=center,	below right=of block3,	minimum width=3cm,	minimum height=2.5cm,	fill=green!10	] (block_p) {{Identified parameters}\\
 		$\boldsymbol\Gamma = \begin{bmatrix}\Gamma_1 &
@@ -618,11 +664,11 @@ In summary, the NLS optimization technique is an effective approach for estimati
 		\node[draw, align=center,	below left=of block3,	minimum width=3cm,	minimum height=2.5cm,	fill=red!10	] (block_s) {{simulated model}\\\includegraphics[scale=.05]{../Figure/All-six.png}};
 		
 		% Conditions test
-		\node[draw,		diamond,		below =4cm of block3,		minimum width=2.5cm,		inner sep=0,		fill=yellow!10	] (block4) { $Error < \delta$};
+		\node[draw,		diamond,		below =4cm of block3,		minimum width=2.5cm,		inner sep=0,		fill=yellow!10	] (block4) { Error $< \delta$};
 		
 		\node[draw,		below=1.5cm of block4,		minimum height=1cm,		minimum width=2.5cm,		inner sep=0,		fill=blue!10	] (block5) {End};
 		
-		\node[draw,		right=2cm of block4,		minimum height=1cm,		minimum width=2.5cm,		fill=red!10		] (block6) {Insufficient empirical data};
+		\node[draw,		right=2cm of block4,		minimum height=1cm,		minimum width=2.5cm,		fill=red!10		] (block6) {Insufficient experimental data};
 				
 		 
 		 
@@ -656,17 +702,18 @@ In summary, the NLS optimization technique is an effective approach for estimati
 		\label{fig:identification}
 \end{figure}
 
-\section{Optimal Control Strategy Formulation for a Nonlinear System}\label{sec:controller}
+\section{Formulation of the LQDG Controller}\label{sec:controller}
 % \noindent In the LQIR-DG controller structure, an integral action is added to the LQR-DG controller to cancel the steady-state errors for reference tracking. For this purpose, first, the augmented state space of the linear quadrotor model is defined to utilize in the controller architecture. Then, the LQR-DG controller design procedure is presented to produce the best control commands for the experimental setup of the quadrotor.
 
-\noindent The LQR-DG controller is augmented with an integral action to eliminate steady-state errors in desired following. The first stage of the controller design process entails the development of the augmented state space representation of the quadrotor system to integrate it into the broader control framework. Subsequently, the design methodology of LQR-DG controller is introduced to generate optimal control signals for the three-degree-of-freedom platform.
+% \noindent Here, the LQR-DG controller is augmented with an integral action to eliminate steady-state errors in desired following. The first stage of the controller design process entails the development of the augmented state space representation of the quadrotor system to integrate it into the broader control framework. Subsequently, the design methodology of LQR-DG controller is introduced to generate optimal control signals for the three-degree-of-freedom platform.
+\noindent Here, the LQR-DG controller is augmented with an integral action to eliminate steady-state errors. For this purpose, the augmented states of the quadrotor platform, including states and their integrals, are selected. The design methodology of the LQR-DG controller is introduced to generate optimal control signals for the three degrees of freedom platform.
 
 \subsection{Augmented State Space Development}
 \noindent To integrate the integgrator into the control strategy architecture, the augmented state variables are defined as below:
 \begin{equation}\label{lqidg_x}
     \boldsymbol{\mathrm{x_{a_i}}} = \begin{bmatrix}
-        \boldsymbol{\mathrm{x_i}} \\
-        \displaystyle \int \boldsymbol{\mathrm{x_i}}
+        \boldsymbol{\mathrm{x_i}} \\[1em]
+        \displaystyle\int\boldsymbol{\mathrm{x_i}}
     \end{bmatrix}
 \end{equation}
 % where $i$ = roll, pitch, and yaw.
@@ -696,10 +743,15 @@ $\boldsymbol{\mathrm{B_a}}$ and $\boldsymbol{\mathrm{A_a}}$, which are expressed
 % In the above equation $\boldsymbol{\mathrm{I}}$ denotes the identity matrix.
 In the aforementioned expression, the notation $\boldsymbol{\mathrm{I}}$ denotes the identity matrix.
 
-\subsection{LQIR-DG Control Scheme with Integral Action for Quadrotor}
+\subsection{LQR-DG Control Scheme with Integral Action}
 % \noindent The LQIR-DG controller is an optimal and robust method based on the differential game theory. This controller consists of two essential players: one finds the best control command, and the other creates the worst disturbance. 
 % For this purpose, the first player tries to minimize a cost function, while the second is assumed to maximize it. Therefore, the quadratic cost function equation is denoted using min-max operators as follows:
-\noindent In accordance with the principles of differential game theory, the LQIR-DG is a robust and optimal controller. This controller involves two fundamental players, one of which is responsible for determining the optimal control command, while the other strives to generate the worst possible disturbance. The primary objective of the premier player is to optimize a cost function through minimization, whereas the other player seeks to optimize the same cost function through maximization. The cost function with a quadratic form can be expressed using the min-max operator, as demonstrated below:
+% \noindent In accordance with the principles of differential game theory, the LQIR-DG is a robust and optimal controller. This controller involves two fundamental players, one of which is responsible for determining the optimal control command, while the other strives to generate the worst possible disturbance. The primary objexctive of the premier player is to optimize a cost function through minimization, whereas the other player seeks to optimize the same cost function through maximization. The cost function with a quadratic form can be expressed using the min-max operator, as demonstrated below:
+
+% \noindent In accordance with the principles of differential game theory, the LQIR-DG is a robust and optimal controller. In the LQIR-DG scheme, two fundamental players, primary for determining the control command, another for generating the worst possible disturbance are selected. To active the primary objective, the primary player must minimize the following cost function, but the other player maximize it:
+
+\noindent In accordance with the principles of differential game theory, the LQIR-DG controller is designed to be robust and optimal. In the LQIR-DG scheme, two fundamental players are selected, one for determining the control command and the other for generating the worst possible disturbance. The primary player must minimize the following cost function to achieve the primary objective, while the other player must maximize it:
+
 \begin{equation}
     \min_{u} \max_{d} J(\boldsymbol{\mathrm{x_{a_i}}}, {d_i}, {u_i}) = J(\boldsymbol{\mathrm{x_{a_i}}}, {u^*_i}, {d^*_i})=\min_{d} \max_{u}
      \int_{0}^{\mathrm{t_f}}\biggl (\boldsymbol{\mathrm{x^\mathrm{T}_{a_i}}}  \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_{a_i}}}+
@@ -708,12 +760,16 @@ In the aforementioned expression, the notation $\boldsymbol{\mathrm{I}}$ denotes
     \biggl )\mathrm{d}t
 \end{equation}
 % where ${{ R}}$ and ${{R_{d}}}$ are symmetric nonnegative definite matrices and $\boldsymbol{\mathrm{Q_i}} $ is a symmetric positive definite matrix.  Moreover, $\mathrm{t_f}$ is the final time. To solve this problem, connections between the general optimal problem and the LQIR problem are considered \cite{LQDG}. Consequently, the optimum control effort is computed for each control loop as follows:
-In the aforementioned equation, the matrix $\boldsymbol{\mathrm{Q_i}}$ is a definite positive symmetric matrix, while ${{R_{d}}}$ and ${{R}}$ are nonnegative definite symmetric matrices. The final time is denoted by $\mathrm{t_f}$. In order to address this concern, a connection between the comprehensive optimal control framework and the LQIR problem has been established, as previously discussed in the relevant literature \cite{LQDG}. As a result, the optimal control input for each control loop can be computed using the following formula:
-
-\begin{align}
-	{{d_i}}(t) &=\boldsymbol{{\mathrm{K_{d_i}}}}(t)\boldsymbol{{\mathrm{x_{a_i}}}}(t)\\
-		{{u_i}}(t) &= -\boldsymbol{{\mathrm{K}}_{i}}(t) \boldsymbol{{\mathrm{x_{a_i}}}}(t)
-\end{align}
+% In the aforementioned equation, the matrix $\boldsymbol{\mathrm{Q_i}}$ is a definite positive symmetric matrix, while ${{R_{d}}}$ and ${{R}}$ are nonnegative definite symmetric matrices. The final time is denoted by $\mathrm{t_f}$. In order to address this concern, a connection between the comprehensive optimal control framework and the LQIR problem has been established, as previously discussed in the relevant literature \cite{LQDG}. As a result, the optimal control input for each control loop can be computed using the following formula: 
+where $\boldsymbol{\mathrm{Q_i}}$, ${{R_{d}}}$, and ${{R}}$ are weight coefficients of the function. The final time is denoted by $\mathrm{t_f}$.
+By solving the above problem, the control command is computed as follows \cite{LQDG}:
+\begin{equation}
+	{{d_i}}(t) =\boldsymbol{{\mathrm{K_{d_i}}}}(t)\boldsymbol{{\mathrm{x_{a_i}}}}(t)
+\end{equation}
+Moreover, the worst disturbance is obtained as:
+\begin{equation}
+		{{u_i}}(t) = -\boldsymbol{{\mathrm{K}}_{i}}(t) \boldsymbol{{\mathrm{x_{a_i}}}}(t)
+\end{equation}
 where $\boldsymbol{{\mathrm{K_{d_i}}}}$ and $\boldsymbol{{\mathrm{K_i}}}$ are gain values that change over time and are defined as follows:
 \begin{align}
 	\boldsymbol{{\mathrm{K_i}}} &= {{{R}}^{-1}}\boldsymbol{{\mathrm{B}_{a_i}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_i}}(t)\\
