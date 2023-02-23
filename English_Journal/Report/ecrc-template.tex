@@ -43,6 +43,8 @@
 \usepackage{subfig}
 \usepackage{float}
 \usepackage{booktabs}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedright\centering\arraybackslash}X}
 \newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
 \newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
 
@@ -767,21 +769,26 @@ Moreover, the worst disturbance is obtained as:
 \begin{equation}
 		{{u_i}}(t) = -\boldsymbol{{\mathrm{K}}_{i}}(t) \boldsymbol{{\mathrm{x_{a_i}}}}(t)
 \end{equation}
-where $\boldsymbol{{\mathrm{K_{d_i}}}}$ and $\boldsymbol{{\mathrm{K_i}}}$ are gain values that change over time and are defined as follows:
+Here, $\boldsymbol{{\mathrm{K_{d_i}}}}$ and $\boldsymbol{{\mathrm{K_i}}}$ are gain values defined as follows:
 \begin{align}
 	\boldsymbol{{\mathrm{K_i}}} &= {{{R}}^{-1}}\boldsymbol{{\mathrm{B}_{a_i}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_i}}(t)\\
 	\boldsymbol{{\mathrm{K_{d_i}}}} &= {{{R}}^{-1}_{d}}\boldsymbol{{\mathrm{B}_{a_{d_i}}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_{d_i}}}(t)
 \end{align}
 where $\boldsymbol{{\mathrm{P}}_{a_i}}(t)$ and $\boldsymbol{{\mathrm{P}}_{a_{d_i}}}(t)$ satisfy
 \begin{align}\label{coupled_riccatti_LQIDG}
-	\boldsymbol{\dot{\mathrm{P}}_{a_{d_i}}}(t) &= -\boldsymbol{\mathrm{A^\mathrm{T}_a}}\boldsymbol{\mathrm{P_{a_{d_i}}}}(t) - \boldsymbol{\mathrm{Q_{i}}} - \boldsymbol{\mathrm{P_{a_{d_i}}}}(t)\boldsymbol{\mathrm{A_a}} + \boldsymbol{\mathrm{P_{a_{d_i}}}}(t)\boldsymbol{\mathrm{S_{a_i}}}(t)\boldsymbol{\mathrm{P_{a_i}}}(t) +\boldsymbol{\mathrm{P_{a_{d_i}}}}(t)\boldsymbol{\mathrm{S_{a_{d_i}}}}(t)\boldsymbol{\mathrm{P_{a_{d_i}}}}(t)
-	\\
-            \boldsymbol{\dot{\mathrm{P}}_{a_i}}(t) &= -\boldsymbol{\mathrm{A^\mathrm{T}_a}}\boldsymbol{\mathrm{P_{a_i}}}(t) - \boldsymbol{\mathrm{Q_i}} - \boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{A_a}}  + \boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{S_{a_{d_i}}}}(t)\boldsymbol{\mathrm{P_{a_{d_i}}}}(t) +\boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{S_{a_i}}}(t)\boldsymbol{\mathrm{P_{a_i}}}(t)
+	&-\boldsymbol{\mathrm{A^\mathrm{T}_a}}\boldsymbol{\mathrm{P_{a_{d_i}}}}(t) - \boldsymbol{\mathrm{Q_{i}}} - \boldsymbol{\mathrm{P_{a_{d_i}}}}(t)\boldsymbol{\mathrm{A_a}} + \boldsymbol{\mathrm{P_{a_{d_i}}}}(t)\boldsymbol{\mathrm{S_{a_i}}}(t)\boldsymbol{\mathrm{P_{a_i}}}(t) +\boldsymbol{\mathrm{P_{a_{d_i}}}}(t)\boldsymbol{\mathrm{S_{a_{d_i}}}}(t)\boldsymbol{\mathrm{P_{a_{d_i}}}}(t)
+	=\boldsymbol{\mathrm{0}}\\
+            &-\boldsymbol{\mathrm{A^\mathrm{T}_a}}\boldsymbol{\mathrm{P_{a_i}}}(t) - \boldsymbol{\mathrm{Q_i}} - \boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{A_a}}  + \boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{S_{a_{d_i}}}}(t)\boldsymbol{\mathrm{P_{a_{d_i}}}}(t) +\boldsymbol{\mathrm{P_{a_i}}}(t)\boldsymbol{\mathrm{S_{a_i}}}(t)\boldsymbol{\mathrm{P_{a_i}}}(t) =\boldsymbol{\mathrm{0}}
 \end{align}
 % where $\boldsymbol{\mathrm{S_{a_i}}} = \boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}$ and $\boldsymbol{\mathrm{S_{a_{d_i}}}} = \boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}$.
 % In the present study, the feedback control law is generated using the steady-state values of the aforementioned equations as $\mathrm{t_f}$ tends to infinity.
 
-In this study, the feedback control law is developed using the asymptotic behavior of the equations as $t_f$ approaches infinity. The matrices $\boldsymbol{\mathrm{S_{a_i}}}$ and $\boldsymbol{\mathrm{S_{a_{d_i}}}}$ are determined by utilizing the matrices $\boldsymbol{\mathrm{B_{a_i}}}$ and $\boldsymbol{\mathrm{B_{a_{d_i}}}}$ along with the symmetric nonnegative definite matrices ${{ R}}$ and ${{R_{d}}}$. Specifically, $\boldsymbol{\mathrm{S_{a_i}}}$ is defined as $\boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}$, while $\boldsymbol{\mathrm{S{a_{d_i}}}}$ is defined as $\boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}$.
+% In this study, the feedback control law is developed using the asymptotic behavior of the equations as $t_f$ approaches infinity. The matrices $\boldsymbol{\mathrm{S_{a_i}}}$ and $\boldsymbol{\mathrm{S_{a_{d_i}}}}$ are determined by utilizing the matrices $\boldsymbol{\mathrm{B_{a_i}}}$ and $\boldsymbol{\mathrm{B_{a_{d_i}}}}$ along with the symmetric nonnegative definite matrices ${{ R}}$ and ${{R_{d}}}$. Specifically, $\boldsymbol{\mathrm{S_{a_i}}}$ is defined as $\boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}$, while $\boldsymbol{\mathrm{S{a_{d_i}}}}$ is defined as $\boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}$.
+where
+\begin{align}
+	\boldsymbol{\mathrm{S_{a_i}}} &= \boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}\\
+	\boldsymbol{\mathrm{S{a_{d_i}}}} &= \boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}
+\end{align}
 % In this study, the steady-state values of the above equations $(\boldsymbol{{\mathrm{P}}} \text{ as } \mathrm{t_f} \to \infty)$ are utilized to generate a feedback control law.
 
 \section{Experimental Findings and Analysis}\label{sec:results}
@@ -833,8 +840,8 @@ Furthermore, the weighting coefficients of the LQIR-DG controller are provided i
 	Roll & $\mathbf{Q_{roll}}$ & $\text{diag}([0.02, 65.96, 83.04, 0.00])$ \\
 	Pitch & $\mathbf{Q_{pitch}}$ & $\text{diag}([435.01, 262.60, 262.60, 0.00])$ \\
 	Yaw & $\mathbf{Q_{yaw}}$ & $\text{diag}([4 \times 10^{-4}, 0.00, 0.133, 0])$ \\
-	\multicolumn{2}{l}{$\mathbf{R}$} & $1$ \\
-	\multicolumn{2}{l}{$\mathbf{R_d}$} & $1.2764$ \\
+	& $\mathbf{R}$ & $1$ \\
+	&$\mathbf{R_d}$ & $1.2764$ \\
 	\bottomrule
 	\end{tabular}
 	\label{tab:control weight_new}
@@ -851,44 +858,80 @@ Furthermore, the weighting coefficients of the LQIR-DG controller are provided i
 % Figure \ref{fig:two_degree_identification} shows $\Gamma_2$ and $\Gamma_5$ parameters are estimated based on the experimental setup, that is free to rotate around its roll and pitch axes. Finally, in the last scenario, according to the Figure
 % \ref{fig:three_degree_identification}, $\Gamma_1$ , $\Gamma_4$ and $\Gamma_7$ parameters of the UAV model are identified by rotate the quadrotor setup
 % around three axis. These results illustrate that the outputs of the simulation results for the quadrotor model are consistent with reality.
-\noindent As described in Section \ref{sec:state-space}, the parameters of the quadrotor setup, denoted by $\Gamma_i (i=1, ..., 8)$, must be identified using the NRS algorithm. The NLS-TRRLS algorithm is implemented in Matlab R2022b\textregistered to increase the accuracy of parameter identification. Three scenarios, as outlined in Table \ref{tab:identification}, are considered to ensure comprehensive parameter identification. When the stopping condition of the NLS algorithm is met, the optimal values of the quadrotor parameters are computed and presented in Table \ref{tab:true_parameters}. The intelligent movement of the parameters during the optimization process is illustrated in Figure \ref{fig:identification}.
-
-In the first scenario, shown in Figure \ref{fig:one_degree_identification}, the quadrotor is rotated about only one axis (roll, pitch, or yaw axes) to identify the parameters $\Gamma_3$, $\Gamma_6$, and $\Gamma_8$. In the second scenario, as illustrated in Figure \ref{fig:two_degree_identification}, the parameters $\Gamma_2$ and $\Gamma_5$ are estimated by allowing the experimental setup to freely rotate around its roll and pitch axes. Finally, in the last scenario, depicted in Figure \ref{fig:three_degree_identification}, the parameters $\Gamma_1$, $\Gamma_4$, and $\Gamma_7$ of the UAV model are identified by rotating the quadrotor setup around three axes. These results confirm the consistency between the outputs of the simulation results for the quadrotor model and the actual experimental setup.
+\noindent As described in section \ref{sec:state-space}, the parameters of the quadrotor platform, denoted by $\Gamma_i (i=1, ..., 8)$, are identified using the NRS algorithm. The NLS-TRRLS algorithm is implemented in Matlab R2022b\textregistered. To increase the accuracy of parameter identification, three scenarios according to Table \ref{tab:identification}.
+In the first scenario, depicted in Figure \ref{fig:one_degree_identification}, the quadrotor is rotated about only one axis (roll, pitch, or yaw axes) to identify the parameters $\Gamma_3$, $\Gamma_6$, and $\Gamma_8$. In the second scenario, as illustrated in Figure \ref{fig:two_degree_identification}, the parameters $\Gamma_2$ and $\Gamma_5$ are estimated by moving the experimental platform to freely rotate around its roll and pitch axes simultaneously. When the stopping condition of the NLS algorithm is met, the optimal values of the quadrotor parameters are computed and presented in Table \ref{tab:true_parameters}. These results illustrate that the outputs of the simulation results for the quadrotor model are consistent with reality.
+% \begin{table}[H]
+% 	\renewcommand{\arraystretch}{1.3}
+% 	\caption{Scenarios for Identification of Quadrotor Parameters.}
+% 	\begin{center}
+% 	\begin{tabularx}{0.95\textwidth}{cc c *{3}{Y} c *{4}{Y}}
+% 	% \cline{2-9}
+% 	\toprule
+% 	\multirow{2}{*}{\textbf{Scenario}} & \multirow{2}{*}{\textbf{\textit{Description}}}
+% 	& \multicolumn{3}{Y}{\textbf{\textit{Initial Condition (deg)}}} &
+% 	 \multicolumn{4}{Y}{\textbf{\textit{Rotational Velocity Commands}}}  \\
+% 	 \cmidrule(lr){3-5} \cmidrule(l){6-9}
+% 	& & $\phi$ & $\theta$ & $\psi$ & $\Omega_1$ & $\Omega_2$ & $\Omega_3$ & $\Omega_4$\\
+% 	\midrule
+% 	\multirow{3}{*}{I} & Roll free & 38 & - & - & 2000 & 2000 & 2000 & 3400\\
+% 	& Pitch free & - & -15 & - & 3700 & 2000 & 2000 & 2000 \\
+% 	& Yaw free & -& - &-75 & 2000 & 3300 & 2000 & 3300 \\
+% 	\hline
+% 	II & Roll and Pitch free &8 & -5 & - & 1700 & 3800 & 2400 & 1700\\
+% 	\hline
+% 	III & Roll, Pitch, and Yaw free &
+% 		8 & -3 & -146 & 1700 & 3800 & 2400 & 1700 \\
+% 		\bottomrule
+% 	\end{tabularx}
+% 	\label{tab:identification}
+% 	\end{center}
+% \end{table}
 
 \begin{table}[H]
-	\renewcommand{\arraystretch}{1.3}
-	\caption{Scenarios for identification of quadrotor model.}
-	\begin{center}
-	\begin{tabular}{c c c c}
-	\hline
-	\textbf{Scenario} & \textbf{\textit{Description}}& \textbf{\textit{Initial Conditions}} & \textbf{\textit{angular velocity Commands}}  \\
-	\hline
-	\multirow{3}{*}{I} & Roll free & 38 & $\begin{matrix}
-		2000 & 2000 & 2000 & 3400
-	\end{matrix}$ \\
-	& Pitch free & -15 & $\begin{matrix}
-		3700 & 2000 & 2000 & 2000
-	\end{matrix}$ \\
-	& Yaw free & -75 & $\begin{matrix}
-		2000 & 3300 & 2000 & 3300
-	\end{matrix}$ \\
-	\hline
-	II & Roll and Pitch free & $\begin{matrix}
-		8 & -5
-	\end{matrix}$ & $\begin{matrix}
-		1700 & 3800 & 2400 & 1700
-	\end{matrix}$\\
-	\hline
-	III & Roll, Pitch, and Yaw free & $\begin{matrix}
-		8 & -3 & -146
-	\end{matrix}$ & $\begin{matrix}
-		1700 & 3800 & 2400 & 1700
-	\end{matrix}$\\
-	\hline
+	\caption{Scenarios for Identification of Quadrotor Parameters.}
+	\centering
+	\begin{tabular}{*{9}{c}}
+	\toprule
+	\multirow{2}{*}{\textbf{Scenario}} & \multirow{2}{*}{\textbf{\textit{Description}}}
+	& \multicolumn{3}{c}{\textbf{\textit{Initial Condition (deg)}}} &
+	\multicolumn{4}{c}{\textbf{\textit{Rotational Velocity Commands}}} \\
+	\cmidrule(lr){3-5} \cmidrule(lr){6-9}
+	& & $\phi$ & $\theta$ & $\psi$ & $\Omega_1$ & $\Omega_2$ & $\Omega_3$ & $\Omega_4$\\
+	\midrule
+	\multirow{3}{*}{I} & Roll free & 38 & - & - & 2000 & 2000 & 2000 & 3400\\
+	& Pitch free & - & -15 & - & 3700 & 2000 & 2000 & 2000 \\
+	& Yaw free & -& - &-75 & 2000 & 3300 & 2000 & 3300 \\
+	\midrule
+	II & Roll and Pitch free &8 & -5 & - & 1700 & 3800 & 2400 & 1700\\
+	\midrule
+	III & Roll, Pitch, and Yaw free &
+	8 & -3 & -146 & 1700 & 3800 & 2400 & 1700 \\
+	\bottomrule
 	\end{tabular}
 	\label{tab:identification}
-	\end{center}
-\end{table}
+	\end{table}
+% \multirow{3}{*}{I} & Roll free & 38 & $\begin{matrix}
+% 	2000 & 2000 & 2000 & 3400
+% \end{matrix}$ \\
+% & Pitch free & -15 & $\begin{matrix}
+% 	3700 & 2000 & 2000 & 2000
+% \end{matrix}$ \\
+% & Yaw free & -75 & $\begin{matrix}
+% 	2000 & 3300 & 2000 & 3300
+% \end{matrix}$ \\
+% \hline
+% II & Roll and Pitch free & $\begin{bmatrix}
+% 	8 & -5
+% \end{bmatrix}$ & $\begin{matrix}
+% 	1700 & 3800 & 2400 & 1700
+% \end{matrix}$\\
+% \hline
+% III & Roll, Pitch, and Yaw free & $\begin{bmatrix}
+% 	8 & -3 & -146
+% \end{bmatrix}$ & $\begin{matrix}
+% 	1700 & 3800 & 2400 & 1700
+% \end{matrix}$\\
+% \hline
 
 \begin{table}[H]
 	\renewcommand{\arraystretch}{1.3}
@@ -947,8 +990,8 @@ In the first scenario, shown in Figure \ref{fig:one_degree_identification}, the 
 	% \vspace{-0.25cm}
 	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw_parameter}
 	}
-	\caption{Identification process results when the quadrotor rotates about only one axis: (a) Identification of $\Gamma_3$ in free roll. (b) Identification of $\Gamma_6$ in free pitch. (c) Identification of $\Gamma_8$
-	in free yaw.}
+	\caption{Identification process results when the quadrotor rotates about only one axis: (a) Identification of $\Gamma_3$ in free roll motion. (b) Identification of $\Gamma_6$ in free pitch motion. (c) Identification of $\Gamma_8$
+	in free yaw motion.}
 	\label{fig:one_degree_identification}
 \end{figure}
 
