@@ -1,7 +1,7 @@
 clc
 clear;
 
-load('data_film_squre_20_weight.mat');
+load('data_film_20_weight.mat');
 time = 0:0.02:100;
 
 
@@ -41,3 +41,37 @@ set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\theta$(deg)', 'interpreter', 'latex', 'FontSize', 24);
 print('../../../../../../English_Journal/Figure/implementation/weight/lqidg_pitch_20','-depsc');
+
+
+
+%% omega %%
+load('omega_weight.mat')
+time = 0:0.02:100;
+time =  time';
+plot(time , 60/2/pi*out.omega.Data(:, 1), 'k');
+set(gca, 'FontSize', 16)
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{1}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+% xlim([0 80])
+print('../../../../../../English_Journal/Figure/implementation/weight/lqidg_omega_1','-depsc');
+
+plot(time , 60/2/pi*out.omega.Data(:, 2), 'k');
+set(gca, 'FontSize', 16)
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{2}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+% xlim([0 80])
+print('../../../../../../English_Journal/Figure/implementation/weight/lqidg_omega_2','-depsc');
+
+plot(time , 60/2/pi*out.omega.Data(:, 3), 'k');
+set(gca, 'FontSize', 16)
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{3}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+% xlim([0 80])
+print('../../../../../../English_Journal/Figure/implementation/weight/lqidg_omega_3','-depsc');
+
+plot(time , 60/2/pi*out.omega.Data(:, 4), 'k');
+set(gca, 'FontSize', 16)
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{4}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+% xlim([0 80])
+print('../../../../../../English_Journal/Figure/implementation/weight/lqidg_omega_4','-depsc');

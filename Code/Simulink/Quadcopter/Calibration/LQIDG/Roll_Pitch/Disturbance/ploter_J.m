@@ -70,3 +70,36 @@ print('../../../../../../../English_Journal/Figure/implementation/disturbance/d_
 
 
 
+%% omega %%
+load('omega_disturbance.mat')
+time = 0:0.02:100;
+time =  time';
+plot(time , 60/2/pi*out.omega.Data(:, 1), 'k');
+set(gca, 'FontSize', 16)
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{1}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+% xlim([0 80])
+print('../../../../../../../English_Journal/Figure/implementation/disturbance/lqidg_omega_1','-depsc');
+
+plot(time , 60/2/pi*out.omega.Data(:, 2), 'k');
+set(gca, 'FontSize', 16)
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{2}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+% xlim([0 80])
+print('../../../../../../../English_Journal/Figure/implementation/disturbance/lqidg_omega_2','-depsc');
+
+plot(time , 60/2/pi*out.omega.Data(:, 3), 'k');
+set(gca, 'FontSize', 16)
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{3}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+% xlim([0 80])
+print('../../../../../../../English_Journal/Figure/implementation/disturbance/lqidg_omega_3','-depsc');
+
+plot(time , 60/2/pi*out.omega.Data(:, 4), 'k');
+set(gca, 'FontSize', 16)
+xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Omega_{4}$(rpm)', 'interpreter', 'latex', 'FontSize', 24);
+% xlim([0 80])
+print('../../../../../../../English_Journal/Figure/implementation/disturbance/lqidg_omega_4','-depsc');
+
+

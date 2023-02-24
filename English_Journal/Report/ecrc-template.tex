@@ -1175,30 +1175,27 @@ Finaly, the performance of the proposed controller is compared to the PID contro
 % \noindent This experiment assesses the efficacy of the LQIR-DG controller in regulating and following a square wave input for the quadrotor's attitude angles. The desired square wave input is generated for the roll and pitch angles, and the quadrotor's response to the input is measured. The results obtained demonstrate the robustness and precision of the LQIR-DG controller in accurately tracking the square wave input.
 \noindent Here, the results of the LQIR-DG controller method are presented for the control loops of the Euler angles of the experimental platform in Figures \ref{fig:result} and \ref{fig:omega}.
 Performance of the proposed controller is evaluated in Figure \ref{fig:result}.
-Figure 8a ??????????? compares the desired and output signals, i.e., the Euler angles during regulation. Figure 8b compares the desired square wave input with a frequency of 0.02 Hz and an amplitude of 20 degrees with the output signals in the two-degree-of-freedom coupling mode.
+Figure \ref{fig:result} \ref{sub@fig:regulation} compares the desired and output signals, i.e., the Euler angles during regulation. Figure \ref{fig:result} \ref{sub@fig:square} compares the desired square wave input with a frequency of 0.02 Hz and an amplitude of 20 degrees with the output signals in the two-degree-of-freedom coupling mode.
 
-Moreover, Figures 9a and b show the rotational velocity command of the quadrotor in the regulation and tracking problems, respectively. These results demonstrate that the roll, pitch, and yaw angles are accurately controlled by the proposed approach.
+Moreover, Figures \ref{fig:omega} \ref{sub@fig:omega_regulation} and \ref{sub@fig:omega_square} show the rotational velocity command of the quadrotor in the regulation and tracking problems, respectively. These results demonstrate that the roll, pitch, and yaw angles are accurately controlled by the proposed approach.
 
 
 \begin{figure}[H]
 	\centering
-	\subfloat[\label{fig:result_roll}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_roll}}\subfloat[\label{fig:result_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_pitch}
-	}
-	\hfil
-	\subfloat[\label{fig:result_yaw}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_yaw}\label{fig:pitch}
-	}
-	\caption{LQIR-DG Controller Efficiency Assessment for Euler Angles Attitude Angles (Roll \ref{sub@fig:result_roll}, Pitch \ref{sub@fig:result_pitch}, and Yaw \ref{sub@fig:result_yaw}    
-	respectively).}
+	\subfloat[\label{fig:regulation}]{{\includegraphics[width=.3\linewidth]{../Figure/implementation/lqidg_roll}}\includegraphics[width=.3\linewidth]{../Figure/implementation/lqidg_pitch}
+	\includegraphics[width=.3\linewidth]{../Figure/implementation/lqidg_yaw}}
+	\hfill
+	\subfloat[\label{fig:square}]{\includegraphics[width=.3\linewidth]{../Figure/implementation/square/lqidg_roll_20}\includegraphics[width=.3\linewidth]{../Figure/implementation/square/lqidg_pitch_20}}
+	\caption{Comparison of Euler angles in \ref{sub@fig:regulation} regulation \ref{sub@fig:square} Tracking Conditions}
 	\label{fig:result}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_1}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_2}
+	\subfloat[\label{fig:omega_regulation}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/lqidg_Omega_1}\includegraphics[width=.23\linewidth]{../Figure/implementation/lqidg_Omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/lqidg_Omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/lqidg_Omega_4}
 	}
 	\hfil
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_3}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidg_Omega_4}
-	}
+	\subfloat[\label{fig:omega_square}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/square/lqidg_squre_omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/square/lqidg_squre_omega_4}}
 	\caption{Temporal Evolution of Angular Velocity Commands for the LQIR-DG Controller}
 	\label{fig:omega}
 \end{figure}
@@ -1207,19 +1204,19 @@ Moreover, Figures 9a and b show the rotational velocity command of the quadrotor
 % Figure \ref{fig:square} The results of this experiment demonstrate the efficacy of the LQIR-DG control strategy in regulating the coupled roll and pitch channels, enabling accurate tracking of a desired square wave input with a frequency of 0.02 Hz and an amplitude of 20 degrees.
 
 
-\begin{figure}[H]
-	\centering
-	\subfloat[\label{fig:square_roll}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/square/lqidg_roll_20}}\subfloat[\label{fig:square_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/square/lqidg_pitch_20}
-	}
-	\caption{Performance Evaluation of the LQIR-DDG Control Strategy for Tracking Desired Angles in the Two-Degree-of-Freedom Coupling Mode. Subfigure \ref{sub@fig:square_roll} displays the comparison between the actual and desired roll angles, while subfigure \ref{sub@fig:square_pitch} shows the comparison between the actual and desired pitch angles.}
-	\label{fig:square}
-\end{figure}
+% \begin{figure}[H]
+% 	\centering
+% 	\subfloat[\label{fig:square_roll}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/square/lqidg_roll_20}}\subfloat[\label{fig:square_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/square/lqidg_pitch_20}
+% 	}
+% 	\caption{Performance Evaluation of the LQIR-DDG Control Strategy for Tracking Desired Angles in the Two-Degree-of-Freedom Coupling Mode. Subfigure \ref{sub@fig:square_roll} displays the comparison between the actual and desired roll angles, while subfigure \ref{sub@fig:square_pitch} shows the comparison between the actual and desired pitch angles.}
+% 	\label{fig:square}
+% \end{figure}
 
 \subsubsection{Performance of the LQIR-DG in Disturbance Rejection}\label{sec:disturbance}
 
 % \noindent This section investigates the possible rejection of input disturbances by the LQIR-DG controller in regulation. For this purpose, a disturbance with an amplitude of 0.5 N is added to the input from 20 to 60 seconds. As shown in figure \ref{fig:disturbance}, the LQIR-DG controller performs well in coupling the roll and screw channels to remove the input disturbance. \ref{fig:disturbance}\ref{sub@fig:disturbance_roll}, the performance of this controller is checked by comparing the desired roll angle with the actual roll angle. Also, \ref{fig:disturbance}\ref{sub@fig:disturbance_pitch} compares the desired pitch angle with the actual pitch angle of the 3DoF experimental setup in removing the input disturbance. The results indicate the proper performance of the controller in removing the input disturbance.
 % \noindent This section examines the effectiveness of the LQIR-DG controller in attenuating input disturbances during regulation. To this end, a disturbance with an amplitude of 0.5 N is added to the input signal from 20 to 60 seconds. As depicted in Figure \ref{fig:disturbance}, the LQIR-DG controller demonstrates proficient coupling of the roll and screw channels, resulting in effective removal of the input disturbance. Figure \ref{fig:disturbance}\ref{sub@fig:disturbance_roll} depicts an evaluation of the controller's performance through a comparison between the desired and actual roll angles, while Figure \ref{fig:disturbance}\ref{sub@fig:disturbance_pitch} presents a similar analysis for the desired and actual pitch angles. The results indicate that the LQIR-DG controller performs appropriately in mitigating the input disturbance.
-\noindent The performance of the proposed controller in the input disturbance is shown in Figure n?????. The input disturbance, $\mathrm{d\Omega_i}$, are considered as change in the command of the rotational velocity, modeled as:
+\noindent The performance of the proposed controller in the input disturbance is shown in Figure \ref{fig:disturbance}. The input disturbance, $\mathrm{d\Omega_i}$, are considered as change in the command of the rotational velocity, modeled as:
 \begin{equation}
 	\mathrm{d\Omega_1} = \mathrm{d\Omega_2} = -\mathrm{d\Omega_3} = -\mathrm{d\Omega_4} = \begin{cases}
 		500_{\mathrm{rpm}} \quad &20<t<60\\
@@ -1227,16 +1224,18 @@ Moreover, Figures 9a and b show the rotational velocity command of the quadrotor
 	\end{cases}
 \end{equation}
 
-Figure ??? illustrate the desired and the actual roll and pitch angles in regulation problem. Moreover, Figure???? show the rotational velocity command as experimental platform. The results indicate that the LQIR-DG controller can stabilize the quadrotor platform when the input disturbance is present.
+Figure \ref{fig:disturbance} \ref{sub@fig:disturbance_angle} illustrate the desired and the actual roll and pitch angles in regulation problem. Moreover, Figure \ref{fig:disturbance} \ref{sub@fig:omega_disturbance} show the rotational velocity command of the experimental platform. The results indicate that the LQIR-DG controller can stabilize the quadrotor platform when the input disturbance is present.
 
 \begin{figure}[H]
 	\centering
-	\subfloat[\label{fig:disturbance_roll}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_roll}}\subfloat[\label{fig:disturbance_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_pitch}
+	\subfloat[\label{fig:disturbance_angle}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_pitch}
 	}
-	\hfil
-	\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/d_roll}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/d_pitch}
-	}
-	\caption{Evaluation of the LQIR-DG control strategy performance under the influence of input disturbance in the two-degree-of-freedom coupling mode. \ref{sub@fig:disturbance_roll} illustrates the comparison between the desired roll angle and the actual value. Similarly, \ref{sub@fig:disturbance_pitch} shows the comparison between the desired pitch angle and the actual value."}
+	\hfill
+	\subfloat[\label{fig:omega_disturbance}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_1}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_4}}
+	% \hfil
+	% \subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/d_roll}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/d_pitch}
+	% }
+	\caption{Comparison of the desired and actual roll and pitch angle in the presence of the input disturbance.}
 	\label{fig:disturbance}
 \end{figure}
 
@@ -1245,7 +1244,9 @@ Figure ??? illustrate the desired and the actual roll and pitch angles in regula
 \noindent In this section, the performance of the LQIR-DG controller is investigated while considering uncertainty in the 3DoF experimental model. To achieve this, 50 and 100 grams were added to the roll and pitch axes, respectively, as shown in Figure \ref{fig:quadrotor_with_weight}.
 % \noindent In this section, the performance of the LQIR-DG controller is investigated under the consideration of uncertainty in the 3DoF experimental model. For this purpose, according to Figure \ref{fig:quadrotor_with_weight}, 50 and 100 grams are added to the roll and pitch axes, respectively.
 % Figure \ref{fig:weight}\ref{sub@fig:weight_roll} and \ref{sub@fig:weight_pitch} depict the evaluation of the LQIR-DG controller with emphasis on the comparison of desired and actual roll and pitch angles, respectively. The implementation results indicate that the LQIR-DG controller performs efficiently in achieving the desired values, even with the uncertainty in the moments of inertia.
-Figure \ref{fig:weight}(\ref{sub@fig:weight_roll}) compares the desired and the actual roll angle and Figure \ref{fig:weight}(\ref{sub@fig:weight_pitch}) shows the desired and the actual pitch angle when the uncertainty of moments of inertia is presented. The implementation results indicate that the LQIR-DG controller converges to the desired values in the presence of the modeling uncertainty.
+Figure \ref{fig:weight} \ref{sub@fig:weight_roll} compares the desired and the actual roll angle and Figure \ref{fig:weight} \ref{sub@fig:weight_pitch} shows the desired and the actual pitch angle when the uncertainty of moments of inertia is presented.
+Moreover, Figure \ref{fig:weight} \ref{sub@fig:omega_weight} shows the rotational velocity command of the experimental platform in the presence of model uncertainty.
+The implementation results indicate that the LQIR-DG controller converges to the desired values in the presence of the modeling uncertainty.
 
 
 \begin{figure}[H]
@@ -1258,7 +1259,9 @@ Figure \ref{fig:weight}(\ref{sub@fig:weight_roll}) compares the desired and the 
 	\centering
 	\subfloat[\label{fig:weight_roll}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_roll_20}}\subfloat[\label{fig:weight_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_pitch_20}
 	}
-	\caption{Performance Evaluation of the LQIR-DG Control Strategy under Uncertainty by Weighting Roll and Pitch Axes in Two-Degree-of-Freedom Coupling Mode. Subfigure \ref{sub@fig:weight_roll} depicts a comparison of the desired and actual roll angles, while subfigure \ref{sub@fig:weight_pitch} presents a comparison of the desired and actual pitch angles.}
+	\hfill
+	\subfloat[\label{fig:omega_weight}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/weight/lqidg_Omega_1}\includegraphics[width=.23\linewidth]{../Figure/implementation/weight/lqidg_Omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/weight/lqidg_Omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/weight/lqidg_Omega_4}}
+	\caption{Comparison of the LQIR-DG controller when the uncertainty of moment of inertia is presented}
 	\label{fig:weight}
 \end{figure}
 
