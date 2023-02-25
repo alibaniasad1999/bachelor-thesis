@@ -28,7 +28,7 @@ A3_array(9) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_8.Par
 A3_array(10) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_9.Parameters.Value;
 
 
-plot(0:length(A3_array)-1, A3_array, '*k', 'markersize', 10)
+plot(0:length(A3_array)-1, A3_array, '-*k', 'markersize', 10, 'LineWidth',2);
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Gamma_3$', 'interpreter', 'latex', 'FontSize', 24);

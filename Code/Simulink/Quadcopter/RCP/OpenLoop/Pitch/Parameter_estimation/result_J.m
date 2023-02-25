@@ -24,7 +24,7 @@ B3_array(3) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Par
 B3_array(4) = (SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters.Value + B3_array(3))/2;
 B3_array(5) = (SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters.Value);
 
-plot(0:length(B3_array)-1, B3_array, '*k', 'markersize', 10)
+plot(0:length(B3_array)-1, B3_array, '-*k', 'markersize', 10, 'LineWidth',2);
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Gamma_6$', 'interpreter', 'latex', 'FontSize', 24);

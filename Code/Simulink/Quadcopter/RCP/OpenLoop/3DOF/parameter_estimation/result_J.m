@@ -53,7 +53,7 @@ C1_array(1) = C1;
 % [A2_array(5), B2_array(5), C1_array(5)] =  SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_4.Parameters.Value;
 
 figure
-plot(0:length(A2_array)-1, A2_array, '*k', 'markersize', 10)
+plot(0:length(A2_array)-1, A2_array, '-*k', 'markersize', 10, 'LineWidth',2);
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Gamma_1$', 'interpreter', 'latex', 'FontSize', 24);
@@ -61,7 +61,7 @@ print('../../../../../../../English_Journal/Figure/parameter_estimation/3DOF/rol
 
 
 figure
-plot(0:length(B2_array)-1, B2_array, '*k', 'markersize', 10)
+plot(0:length(B2_array)-1, B2_array, '-*k', 'markersize', 10, 'LineWidth',2);
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Gamma_4$', 'interpreter', 'latex', 'FontSize', 24);
@@ -69,7 +69,7 @@ print('../../../../../../../English_Journal/Figure/parameter_estimation/3DOF/pit
 
 
 figure
-plot(0:length(C1_array)-1, C1_array, '*k', 'markersize', 10)
+plot(0:length(C1_array)-1, C1_array, '-*k', 'markersize', 10, 'LineWidth',2);
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Gamma_7$', 'interpreter', 'latex', 'FontSize', 24);

@@ -838,7 +838,7 @@ where
 	\renewcommand{\arraystretch}{1.3}
 	\begin{tabular}{@{}lll@{}}
 	\toprule
-	\textbf{Control Channel} & \textbf{Weighting Matrix} & \textbf{Matrix Values} \\
+	\textbf{Channel} & \textbf{Weighting Matrix} & \textbf{Matrix Values} \\
 	\midrule
 	Roll & $\mathbf{Q_{roll}}$ & $\text{diag}([0.02, 65.96, 83.04, 0.00])$ \\
 	Pitch & $\mathbf{Q_{pitch}}$ & $\text{diag}([435.01, 262.60, 262.60, 0.00])$ \\
@@ -1148,26 +1148,59 @@ In the first scenario, depicted in Figure \ref{fig:one_degree_identification}, t
 % \noindent Here, the performance of the LQIR-DG controller is evaluated using algorithms for regulation and tracking performance, disturbance rejection, and the impact of model uncertainty.
 Finaly, the performance of the proposed controller is compared to the PID controller and variants of the LQR controller. The parameters of the PID controller are presented in Table \ref{tab:PID_parameters}.
 
+% \begin{table}[H]
+% 	\renewcommand{\arraystretch}{1.3}
+% 	\caption{Parameters of PID Controller}
+% 	\begin{center}
+% 	\begin{tabular}{c |c c c}
+% 	\cmidrule{2-4}
+% 	 & \textbf{\textit{p}}& \textbf{i} & \textbf{\textit{d}}  \\
+% 	\hline
+% 	$\Gamma_1$ & $-0.9622$ & $\Gamma_5$ & $3.6441\times10^{-4}$ \\
+
+% 	$\Gamma_2$ & $-0.0154$ & $\Gamma_6$ & $7.5395\times10^{-5}$ \\
+
+% 	$\Gamma_3$ &$5.4716\times10^{-5}$ & $\Gamma_7$ & $0.1308$ \\
+
+% 	$\Gamma_4$ & $1.0457$ & $\Gamma_8$ & $4.3753\times10^{-5}$ \\
+% 	\hline
+% 	\end{tabular}
+% 	\label{tab:PID_parameters}
+% 	\end{center}
+% \end{table}
+
+
 \begin{table}[H]
 	\renewcommand{\arraystretch}{1.3}
 	\caption{Parameters of PID Controller}
 	\begin{center}
-	\begin{tabular}{c |c c c}
-	\cmidrule{2-4}
-	 & \textbf{\textit{p}}& \textbf{i} & \textbf{\textit{d}}  \\
-	\hline
-	$\Gamma_1$ & $-0.9622$ & $\Gamma_5$ & $3.6441\times10^{-4}$ \\
-
-	$\Gamma_2$ & $-0.0154$ & $\Gamma_6$ & $7.5395\times10^{-5}$ \\
-
-	$\Gamma_3$ &$5.4716\times10^{-5}$ & $\Gamma_7$ & $0.1308$ \\
-
-	$\Gamma_4$ & $1.0457$ & $\Gamma_8$ & $4.3753\times10^{-5}$ \\
-	\hline
-	\end{tabular}
-	\label{tab:PID_parameters}
+		\begin{tabular}{cccc}
+		\hline
+		\textbf{Channel} & \textbf{$K_p$} & \textbf{$K_i$} & \textbf{$K_d$} \\
+		\hline
+		Roll & 2.0 & 0.5 & 1.0 \\
+		Pitch & 1.5 & 0.4 & 0.8 \\
+		Yaw & 3.0 & 0.6 & 1.2 \\
+		\hline
+		\end{tabular}
+		\label{tab:PID_parameters}
 	\end{center}
 \end{table}
+
+% \begin{table}[H]{\arraystretch}{1.3}
+% 	\centering
+% 	\caption{PID Controller Parameters for Three Systems}
+% 	\begin{tabular}{cccc}
+% 	\hline
+% 	\textbf{Channel} & \textbf{$K_p$} & \textbf{$K_i$} & \textbf{$K_d$} \\
+% 	\hline
+% 	Roll & 2.0 & 0.5 & 1.0 \\
+% 	Pitch & 1.5 & 0.4 & 0.8 \\
+% 	Yaw & 3.0 & 0.6 & 1.2 \\
+% 	\hline
+% 	\end{tabular}
+% 	\label{tab:pid-parameters}
+% \end{table}
 
 
 
@@ -1224,14 +1257,14 @@ Moreover, Figures \ref{fig:omega} \ref{sub@fig:omega_regulation} and \ref{sub@fi
 	\end{cases}
 \end{equation}
 
-Figure \ref{fig:disturbance} \ref{sub@fig:disturbance_angle} illustrate the desired and the actual roll and pitch angles in regulation problem. Moreover, Figure \ref{fig:disturbance} \ref{sub@fig:omega_disturbance} show the rotational velocity command of the experimental platform. The results indicate that the LQIR-DG controller can stabilize the quadrotor platform when the input disturbance is present.
+Figure \ref{fig:disturbance} \ref{sub@fig:disturbance_angle} illustrate the desired and the actual roll and pitch angles in regulation problem. The results indicate that the LQIR-DG controller can stabilize the quadrotor platform when the input disturbance is present.
 
 \begin{figure}[H]
 	\centering
 	\subfloat[\label{fig:disturbance_angle}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_pitch}
 	}
-	\hfill
-	\subfloat[\label{fig:omega_disturbance}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_1}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_4}}
+	% \hfill
+	% \subfloat[\label{fig:omega_disturbance}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_1}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_4}}
 	% \hfil
 	% \subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/d_roll}}\subfloat[]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/d_pitch}
 	% }

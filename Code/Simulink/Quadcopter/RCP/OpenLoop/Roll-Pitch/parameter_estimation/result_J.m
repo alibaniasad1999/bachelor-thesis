@@ -37,13 +37,13 @@ B4_array(1) = B4;
 [A4_array(3), B4_array(3)] = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters.Value;
 [A4_array(4), B4_array(4)] = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_3.Parameters.Value;
 
-plot(0:length(A4_array)-1, A4_array, '*k', 'markersize', 10)
+plot(0:length(A4_array)-1, A4_array, '-*k', 'markersize', 10, 'LineWidth',2);
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Gamma_2$', 'interpreter', 'latex', 'FontSize', 24);
 print('../../../../../../../English_Journal/Figure/parameter_estimation/roll-pitch/roll_parameter','-depsc');
 
-plot(0:length(A4_array)-1, B4_array, '*k', 'markersize', 10)
+plot(0:length(A4_array)-1, B4_array, '-*k', 'markersize', 10, 'LineWidth',2);
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\Gamma_5$', 'interpreter', 'latex', 'FontSize', 24);
