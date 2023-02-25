@@ -345,7 +345,7 @@ The graphical representation of the proposed controller structure is depicted in
 \section{Dynamic Model of the Quadrotor Platform}\label{sec:modeling}
 % Here, the model of the three-degree-of-freedom setup of the quadrotor is presented in detail. For this purpose, first, the configuration of the quadrotor is denoted. Then, the nonlinear model of the attitude dynamics is derived from denoting the state-space form. Finally, the nonlinear model is linearized to utilize for control purposes.
 % This research paper presents an analysis of the three degrees of freedom for the quadrotor. Furthermore, a state-space model is developed to represent the nonlinear attitude dynamics. A linearization technique is subsequently applied to the model, enabling it to be used as a LQIR-DG control model.
-In this section, first, a nonlinear model for the quadrotor platform is derived. Then, a state-space model and a linear model are developed for control purposes to be utilized in a controller strategy. Finally, a linear identification method is applied to identify the parameters of the quadrotor
+In this section, first, a nonlinear model for the quadrotor platform is derived. Then, a state-space model and a linear model are developed for control purposes to be utilized in a controller strategy. Finally, a nonlinear identification method is applied to identify the parameters of the quadrotor.
 \subsection{Quadrotor Configuration}
 % condidate "Characteristics of the Quadrotor Setup"
 % Figure \ref{fig:schematic} denotes the quadrotor schematic. Each rotor has an angular velocity, $\Omega_r$, rotating about the $z_B$ axis in the body coordinate system. Rotors 1 and 3 rotate counterclockwise, while rotors 2 and 4 rotate clockwise to cancel yawing moment.
@@ -494,7 +494,7 @@ r \
 \end{bmatrix}^\mathrm{T} + \nu
 \end{split}
 \end{equation}
-where $\nu$ is a Gaussian white noise. In the above equation, the superscripts $\mathrm{T}$ indicate the traspose notation.
+where $\nu$ is a Gaussian white noise. In the above equation, the superscripts $\mathrm{T}$ indicate the transpose notation.
 \subsection{Linear Model}
 % \noindent The continuous-time linear model is utilized to drive the control commands on the quadrotor. The linear state-space model is denoted as
 \noindent The linear continuous-time model of the quadrotor platform about the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e!=!0$ and $\boldsymbol{{\mathrm{u}}}_e!=!0)$ is represented as:
@@ -528,7 +528,7 @@ where $\boldsymbol{\mathrm{A}}$ is the dynamic system matrix, denoted as:
 		\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{yaw}}}}}
 	\end{bmatrix}
 \end{equation}
-Moreover, $\boldsymbol{\mathrm{B}}$ and $\boldsymbol{\mathrm{B_d}}$ are the input and disturbance matrices, defined as:
+Moreover, $\boldsymbol{\mathrm{B}}$ and $\boldsymbol{\mathrm{B_d}}$ are the input and disturbance matrices, respectively, and are defined as:
 \begin{equation}
 	\boldsymbol{\mathrm{B}} = \boldsymbol{\mathrm{B_d}} = 
 	\begin{bmatrix}

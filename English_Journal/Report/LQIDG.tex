@@ -1,0 +1,458 @@
+%% 
+%% Copyright 2007-2020 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+%% Template article for Elsevier's document class `elsarticle'
+%% with harvard style bibliographic references
+
+\documentclass[preprint,12pt,authoryear]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times,authoryear]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn,authoryear]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage[figuresright]{rotating}
+\usepackage{tikz}
+\usepackage{multirow}
+\usetikzlibrary{shapes,arrows}
+\tikzstyle{block} = [rectangle, draw, text width=4.5em, text centered, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{decision} = [diamond, draw, text width=4.5em, text centered, inner sep=0pt]
+\tikzstyle{cloud} = [draw, ellipse, text width=4.5em, text centered, minimum height=4em]
+\usetikzlibrary{shapes, arrows.meta, positioning}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%% \usepackage{lineno}
+
+\journal{Franklin Institute}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \affiliation for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \affiliation{organization={},
+%%            addressline={}, 
+%%            city={},
+%%            postcode={}, 
+%%            state={},
+%%            country={}}
+%% \fntext[label3]{}
+
+\title{A Linear Quadratic Integral Differential Game Approach for Attitude Control of an Experimental Platform of a Quadrotor}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \affiliation[label1]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%%
+%% \affiliation[label2]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+
+\author{Hadi Nobahari}
+\ead{nobahari@sharif.edu}
+% \address{Department of Aerospace Engineering
+% Sharif University of Technology Tehran, Iran}
+\author{Ali BaniAsad}
+% \address{Department of Aerospace Engineering
+% Sharif University of Technology Tehran, Iran}
+\ead{ali.baniasad@ae.sharif.edu}
+\author{Reza Pordal}
+% \address{Department of Aerospace Engineering
+% Sharif University of Technology Tehran, Iran}
+\ead{email address}
+\author{Alireza Sharifi}
+\ead{alireza\_sharifi@ae.sharif.edu}
+
+
+
+\affiliation{organization={Department of Aerospace Engineering Sharif University of Technology},%Department and Organization
+            % addressline={}, 
+            city={Tehran},
+            % postcode={}, 
+            % state={},
+            country={Iran}}
+
+\begin{abstract}
+%% Text of abstract
+This research paper presents a novel approach to quadrotor attitude control that draws on differential game theory. The approach uses a linear quadratic Gaussian (LQG) controller with integral actions.
+Accurate attitude control is of utmost importance for safe and effective quadrotor flight, particularly in the presence of disturbances.
+To develop a dependable and effective control system, the motion equations with nonlinearity for the quadrotor's experimental setup are transformed into a continuous-time state-space model through linearization.
+Experimental data are used to identify model parameters, and attitude control commands are determined using two-player approaches.
+By mini-maximizing a quadratic set of criteria, which is the total of the outputs and disturbances weighted by the amount of control effort, one player minimizes the command while the other generates disturbances. The performance of the proposed approach is evaluated by comparing it to a linear quadratic regulator controller in level flight.
+The results demonstrate that the proposed approach effectively dissipates disturbances and outperforms linear quadratic regulator controllers, thereby contributing to the development of robust and effective attitude control systems for quadrotors.
+\end{abstract}
+
+%%Graphical abstract
+\begin{graphicalabstract}
+%\includegraphics{grabs}
+\end{graphicalabstract}
+
+%%Research highlights
+% \begin{highlights}
+% \item Research highlight 1
+% \item Research highlight 2
+% \end{highlights}
+
+\begin{keyword}
+%% keywords here, in the form: keyword \sep keyword
+
+%% PACS codes here, in the form: \PACS code \sep code
+Linear quadratic Gaussian controller \sep Differential game theory \sep Quadrotor \sep Continuous state-space model \sep three-degree-of-freedom experimental platform \sep Attitude Control Optimization \sep Robust disturbance rejection.
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+
+\end{keyword}
+
+\end{frontmatter}
+
+%% \linenumbers
+
+%% main text
+\section{Introduction}\label{sec:intro}
+\noindent The investigation, strategic operations, optical sensing, entertainment, and farming are all used by quadrotors in today's society \citep{drones5030059}.
+
+\section{Problem Formulation}\label{sec:problem}
+\noindent The experimental quadrotor platform rotates freely with rotational velocity about its roll, pitch, and yaw axes, as shown in Figure \ref{fig:quadrotor}.
+The Euler angles and their derivatives are measured using an Attitude Heading Reference System (AHRS), which is utilized in the structure of the LQIR-DG controller to stabilize the quadrotor platform.
+The graphical representation of the proposed controller structure is depicted in Figure \ref{fig:blockdiagram}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../Figure/3DOFQuad.png}
+    \caption{3DoF setup of the quadrotor.}
+    \label{fig:quadrotor}
+ \end{figure}
+ 
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../Figure/schematic.pdf}
+    \caption{Structure of the LQIG-DG Controller Illustrated in a Block Diagram.}
+    \label{fig:blockdiagram}
+ \end{figure}
+ \section{Dynamic Model of the Quadrotor Platform}\label{sec:modeling}
+ \noindent In this section, first, a nonlinear model for the quadrotor platform is derived. Then, a state-space model and a linear model are developed for control purposes to be utilized in a controller strategy. Finally, a nonlinear identification method is applied to identify the parameters of the quadrotor.
+ \subsection{Quadrotor Configuration}
+\noindent Figure \ref{fig:schematic} shows the quadrotor schematic. It depicts four rotors rotating around the $z_B$ axis in the coordinate system of the body. The rotors have a rotational velocity of $\Omega_r$.
+The quadrotor platform has 3 degrees of freedom, including roll, pitch, and yaw motions, which are described by roll $(\phi)$, pitch $(\theta)$, and yaw $(\psi)$ angles, respectively.
+The counterclockwise rotation of Rotors 1 and 3 generates a moment that counteracts the yawing moment, while the clockwise rotation of Rotors 2 and 4 produces a moment that also counteracts the yawing moment.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{../Figure/schematic.png}
+    \caption{Quadrotor Configuration.}
+    \label{fig:schematic}
+\end{figure}
+\subsection{Dynamic Modeling of the Quadrotor Platfrorm}
+\noindent Here, according to Newton-Euler, the dynamic model of the quadrotor platform is derived as follows \cite{4399042, article_Bouabdallah}:
+\begin{align}
+&\dot p = \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}
+{\mathrm{I}_{\text{xx}}} qr + q \dfrac{\mathrm{I}_{\text{rotor}}}
+{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{roll}}}{\mathrm{I}
+_{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}}
+\\
+&\dot q = \dfrac{\mathrm{I}_{\text{zz}} - 
+\mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}} rp +
+p \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + 
+\dfrac{u_{\text{pitch}}}{\mathrm{I}_{\text{yy}}} +
+\dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}
+\\
+&\dot r = \dfrac{\mathrm{I}_{\text{xx}} -
+\mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} pq 
++  \dfrac{u_{\text{yaw}}}{\mathrm{I}_{\text{zz}}} 
++ \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}
+\end{align}
+The $(p, q, r)$ represent the rotational variables, and $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ denote the disturbances produced in the $x_B$, $y_B$, and $z_B$ axes, respectively. Additionally, $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the principal moments of inertia, and $\mathrm{I}_{\text{rotor}}$ is the rotor inertia about its axis. Euler angle rates are also determined from angular body rates as follows:
+\begin{equation}
+	\begin{bmatrix}
+	\dot\phi \\
+	\dot\theta \\
+	\dot\psi
+	\end{bmatrix}
+	\begin{bmatrix}
+	1 & \sin(\phi)\tan(\theta) & \cos(\phi)\tan(\theta) \\
+	0 & \cos(\phi) & -\sin(\phi) \\
+	0 & \sin(\phi)/\cos(\theta) & \cos(\phi)/\cos(\theta)
+	\end{bmatrix}
+	\begin{bmatrix}
+	p \\
+	q \\
+	r
+	\end{bmatrix}
+\end{equation}
+The residual rotor velocity, denoted by $\Omega_r$, is calculated as follows:
+\begin{equation}
+	\Omega_r = -\Omega_1 + \Omega_2 - \Omega_3 + \Omega_4
+\end{equation}
+\subsection{Input of the Dynamic Model}
+\noindent The control inputs $u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ are to the moments generated by the quadrotor's rotors along the roll, pitch, and yaw axes, respectively, defined as follows:
+\begin{align}
+		&u_{\text{roll}} = \mathrm{b\,d}_{\text{cg}} (\Omega_2^2 - \Omega_4^2)\\
+	&u_{\text{pitch}} = \mathrm{b\,d}_{\text{cg}} (\Omega_1^2 - \Omega_3^2) \\
+	&u_{\text{yaw}} = \mathrm{d} (\Omega_1^2 - \Omega_2^2 + \Omega_3^2 - \Omega_4^2)
+\end{align}
+where $\mathrm{d}_{\text{cg}}$, $\text{d}$, and $\text{b}$ represent the distance between the rotors and the gravity center, drag factor, and thrust factor, respectively. The rotational velocity commands are computed as follows:
+\begin{align}
+    \Omega_{c, 1}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
+    \Omega_{c, 2}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}\\
+    \Omega_{c, 3}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
+    \Omega_{c, 4}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}
+\end{align}
+In the above equation, $\Omega_{\text{mean}}$ is nominal rotational velocities of the rotors.
+
+\subsection{State-Space Formulation}\label{sec:state-space}
+\noindent Here, by defining $x_1 = p$, $x_2 = q$, $x_3 = r$, $x_4 = \phi$, $x_5 = \theta$, and $x_6 = \psi$, the formulation of the quadrotor platform is presented as follows:
+\begin{align}\label{eq:diffeq}
+	\dot x_1 &= \Gamma_1x_2 x_3 + \Gamma_2 x_2 \Omega_r + \Gamma_3u_{\text{roll}} + \Gamma_3d_{\text{roll}} \\[0.5em]
+    \dot x_2 &= \Gamma_4 x_1 x_3 - \Gamma_5 x_1 \Omega_r +  \Gamma_6u_{\text{pitch}} + \Gamma_6d_{\text{pitch}}\\[0.5em] \label{eq:diffeq-mid}
+    \dot x_3 &= \Gamma_7x_1 x_2 +  \Gamma_8u_{\text{yaw}} + \Gamma_8d_{\text{yaw}}\\[0.5em] 
+    \dot x_4 &= x_1 + (x_2\sin(x_4) + x_3\cos(x_4))\tan(x_5)
+    \\[0.5em]
+    \dot x_5 &= x_2\cos(x_4) - x_3\sin(x_4)\\[0.5em]
+    \dot x_6 &= (x_2\sin(x_4) + x_3\cos(x_4))/\cos(x_5) \label{eq:diffeq-end}
+\end{align}
+where $\Gamma_i (i = 1, \ldots, 8)$ is defined as:
+\begin{equation}
+	\begin{split}
+		\Gamma_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_2 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_3 = \dfrac{1}{\mathrm{I}_{\text{xx}}}\\ \Gamma_4 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_5 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_6 = \dfrac{1}{\mathrm{I}_{\text{yy}}} \\ \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}}, \quad \Gamma_8 = \dfrac{1}{\mathrm{I}_{\text{zz}}}
+	\end{split}
+\end{equation}
+Moreover, the measurement vector, obtained from the AHRS sensor is presented as follows:
+\begin{equation}
+    \begin{split}
+        \boldsymbol{\mathrm{z}} &= \begin{bmatrix}
+        p \
+        q \
+        r \
+        \phi \
+        \theta \
+        \psi
+    \end{bmatrix}^\mathrm{T} + \boldsymbol{\nu}
+    \end{split}
+\end{equation}
+where $\boldsymbol{\nu}$ is a Gaussian white noise. In the above equation, the superscripts $\mathrm{T}$ indicate the transpose notation.
+\subsection{Linear Model}
+\noindent The linear continuous-time model of the quadrotor platform about the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e!=!0$ and $\boldsymbol{{\mathrm{u}}}_e!=!0)$ is represented as:
+\begin{equation}\label{eq:linear}
+	\boldsymbol{\dot{\mathrm{x}}}(t) = \boldsymbol{\mathrm{A\,x}}(t) + \boldsymbol{\mathrm{B\,u}}(t) + \boldsymbol{\mathrm{B_{d}\,d}}(t)
+\end{equation}
+where $\boldsymbol{\dot{\mathrm{x}}} = \begin{bmatrix}
+				\boldsymbol{{\mathrm{\dot x_{\text{roll}}}}}&
+				\boldsymbol{{\mathrm{\dot x_{\text{pitch}}}}}&
+				\boldsymbol{{\mathrm{\dot x_{\text{yaw}}}}}
+\end{bmatrix}$, defined as:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{\mathrm{x}}_{\text{roll}} = \begin{bmatrix}
+			p \\ \phi
+		\end{bmatrix}, \quad
+		\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
+			q \\ \theta \end{bmatrix} \quad
+		\boldsymbol{\mathrm{x}}_{\text{yaw}} = 
+		\begin{bmatrix}
+			r \\ \psi
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+Moreover, $\boldsymbol{\mathrm{B}}$ and $\boldsymbol{\mathrm{B_d}}$ are the input and disturbance matrices, respectively, and are defined as:
+\begin{equation}
+	\boldsymbol{\mathrm{B}} = \boldsymbol{\mathrm{B_d}} = 
+	\begin{bmatrix}
+		\boldsymbol{{\mathrm{B_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
+		\boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{pitch}}}}} & \boldsymbol{0} \\
+		\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{yaw}}}}}
+	\end{bmatrix}
+\end{equation}
+In addition, the input matrices and state are shown as:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{\mathrm{A}}_{\text{roll}}  =\boldsymbol{\mathrm{A}}_{\text{pitch}}  = \boldsymbol{\mathrm{A}}_{\text{yaw}}  = \begin{bmatrix}
+			0 & 0\\
+			1 & 0
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+\begin{equation}
+	\begin{split}
+		\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
+			\dfrac{1}{\mathrm{I}_{\text{xx}}}
+			\\[1em]
+			0
+		\end{bmatrix};~ \boldsymbol{\mathrm{B}}_{\text{pitch}}  = \begin{bmatrix}
+			\dfrac{1}{\mathrm{I}_{\text{yy}}}
+			\\[1em]
+			0
+		\end{bmatrix};~ \boldsymbol{\mathrm{B}}_{\text{yaw}}  = \begin{bmatrix}
+			\dfrac{1}{\mathrm{I}_{\text{zz}}}
+			\\[1em]
+			0
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+\subsection{Identification of the Platform Parameters}
+\noindent This section describes the utilization of the Nonlinear Least Squares (NLS) algorithm for estimating the model parameters ($\boldsymbol{\mathrm{\Gamma}}$) of the 3DoF experimental platform using experimental data.
+This technique is based on the Trust-Region Reflective Least Squares (TRRLS) method, which iteratively finds the values of the model parameters by minimizing a cost function, defined as follows:
+\begin{equation}
+	\min_{\Gamma_i}\left(\parallel e(\Gamma_i) \parallel^2\right) = 
+	\min_{\Gamma_i} = \left(\sum_{j=1}^{n}(\boldsymbol{z}_j- \hat{\boldsymbol{z}}_j)(\boldsymbol{z}_j- \hat{\boldsymbol{z}}_j)^\mathrm{T}\right)
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+    \resizebox{1\textwidth}{!}{
+	\begin{tikzpicture}[font=\small,thick]
+		% Start block
+		\node[draw, align=center,		minimum width=2.5cm,		minimum height=1cm, fill=blue!10] (block1) {\textbf{Experimental Data} \\Input: rotational velocity\\
+		Output: attitude};
+			
+		% Voltage and Current Measurement
+		\node[draw, align=center,		below=of block1,		minimum width=3.5cm,		minimum height=1cm, fill=blue!10	] (block2) {\textbf{Data Preprocessing} \\ Synchronization experimental, vs simulated data.};
+		
+		% Power and voltage variation
+		
+		\node[draw, align=center,		below=of block2,		minimum width=3.5cm,		minimum height=1cm, fill=blue!10	] (block3) {\textbf{NLS-TRRLS Optimization}\\
+		Set bounds for parameters\\
+		Set initial seed for all parameters\\
+		Minimization of the cost function.};
+
+		\node[draw, align=center,	below right=of block3,	minimum width=3cm,	minimum height=2.5cm,	fill=green!10	] (block_p) {{Identified parameters}\\
+		$\boldsymbol\Gamma = \begin{bmatrix}\Gamma_1 &
+			\Gamma_2 & \Gamma_3 & \Gamma_4\\
+			\Gamma_5 & \Gamma_6 & \Gamma_7 & \Gamma_8
+		\end{bmatrix}$};
+
+		\node[draw, align=center,	below left=of block3,	minimum width=3cm,	minimum height=2.5cm,	fill=red!10	] (block_s) {{simulated model}\\\includegraphics[scale=.05]{../Figure/All-six.png}};
+		
+		% Conditions test
+		\node[draw,		diamond,		below =4cm of block3,		minimum width=2.5cm,		inner sep=0,		fill=yellow!10	] (block4) { Error $< \delta$};
+		
+		\node[draw,		below=1.5cm of block4,		minimum height=1cm,		minimum width=2.5cm,		inner sep=0,		fill=blue!10	] (block5) {End};
+		
+		\node[draw,		right=2cm of block4,		minimum height=1cm,		minimum width=2.5cm,		fill=red!10		] (block6) {Insufficient experimental data};
+				
+		 
+		 
+		% Arrows
+		\draw[-latex] (block1) edge (block2)
+			(block2) edge (block3)
+			(block3) -| (block_s);
+			% (block3) edge (block_p);
+	
+		\draw[-latex] (block3) -| (block_p);
+	
+		\draw[-latex] (block_s) -| (block4);
+	
+		\draw[-latex] (block_p) -| (block4);
+	
+		\draw[stealth-stealth] (block_s) -- (block_p);
+		 
+		\draw[-latex] (block4) -- (block5)
+			node[pos=0.5,fill=white,inner sep=0]{Yes};
+		 
+		\draw[-latex] (block4) -- (block6)
+			node[pos=0.5,fill=white,inner sep=0]{No};
+	
+		\coordinate[left=5.5cm of block3] (aux);
+		\coordinate[right= of block_p] (aux1);
+		% \draw[-latex] (block6) |- (block2);
+		\draw[-latex] (block1) -| (aux) |- (block4);
+		\draw[-latex] (block6) -| (aux1) |- (block1);
+		\end{tikzpicture}
+        }
+		\caption{Structure of TRRLS identification approach.}
+		\label{fig:identification}
+\end{figure}
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+%% If you have bibdatabase file and want bibtex to generate the
+%% bibitems, please use
+%%
+ \bibliographystyle{elsarticle-harv} 
+ \bibliography{refs}
+
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
+
+% \begin{thebibliography}{00}
+
+%% \bibitem[Author(year)]{label}
+%% Text of bibliographic item
+
+% \bibitem[ ()]{}
+
+% \end{thebibliography}
+\end{document}
+
+\endinput
+%%
+%% End of file `elsarticle-template-harv.tex'.
