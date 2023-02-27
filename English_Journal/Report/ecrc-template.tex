@@ -313,7 +313,14 @@ This study proposes a new controller for quadrotors based on the LQG technique w
 In order to devise this control approach, a continuous state-space model for a quadrotor's experimental setup is formulated by linearizing the system's equations of motion, which are inherently nonlinear, and identifying its parameters based on experimental data. This approach involves transforming the nonlinear dynamics into a linear system that can be analyzed more readily.
 The proposed Linear Quadratic Regulator Differential Game (LQR-DG) controller offers an optimal control strategy for generating efficient control commands for quadrotors. The approach employs a two-player system, wherein one player optimizes the command while the other creates disturbances through mini-maximization of a quadratic criterion. This technique not only ensures efficient control but also offers a robust and versatile approach to handle complex control problems.
    The proposed approach is evaluated against a linear quadratic regulator controller in level flight. The results show that the LQIG-DG controller effectively dissipates disturbances and outperforms the linear quadratic regulator controller. This study presents an important contribution to the development of robust and effective attitude control systems for quadrotors.
-
+    
+In this paper, an LQIR method, called LQIR-DG controller is suggested to produce the optimal and robust control command, i.e. rotational velocity command using the game theory approach.
+Since the LQIR-DG controller is affected by an exact model of the plant, the quadrotor's experimental platform is modeled and its parameters are identified based on experimental data. 
+For control purposes, its linear state-space form is extracted using linearization of the equation of motion of UAV.
+then, the LQIR-DG technique is applied in real-time to the experimental platform.
+The performance of the LQIR-DG method is evaluated in the presence of the disturbance and modeling error for regulation and tracking purposes.
+A comparison is also performed between the results of classical PID, LQR, and LQIR and the proposed approach in real-time mode.
+The results show the proposed control structure is effective in the control of the quadrotor platform.
 
 
 % In the remainder of this study, the problem is defined in section \ref{sec:problem}. In sections \ref{sec:modeling}, the dynamics model for the experimental setup of the quadrotor and the estimation problem are derived in details, 
