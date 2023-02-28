@@ -144,9 +144,9 @@
 
 \begin{abstract}
 %% Text of abstract
-	In this study, a linear quadratic integral differential game approach is applied to regulate and track the attitude angle of an experimental setup of the quadrotor using two players.
+	In this study, a linear quadratic integral differential game approach is applied to regulate and track the attitude angle of an experimental platfrorm of the quadrotor using two players.
 	One produces commands for each channel of the quadrotor and another creates the worst disturbance by minimizing a quadratic criterion with integral action.
-	For this purpose, first, the attitude dynamics of the platform are modeled and its parameter is identified based on the Nonlinear Least Squares Trust-Region Reflective Least Squares method.
+	For this purpose, first, the attitude dynamics of the platform are modeled and its parameter is identified based on the Nonlinear Least Squares Trust-Region Reflective method.
 	The performance of the proposed controller is evaluated for regulation and tracking problems.
 	The ability of the controller is examined in the disturbance rejection.
 	Moreover, the influence of uncertainty modeling is studied on the obtained results.
@@ -366,7 +366,7 @@ In addition, the input matrices and state are shown as:
 \end{equation}
 \subsection{Identification of the Platform Parameters}
 \noindent This section describes the utilization of the Nonlinear Least Squares (NLS) algorithm for estimating the model parameters ($\boldsymbol{\mathrm{\Gamma}}$) of the 3DoF experimental platform using experimental data.
-This technique is based on the Trust-Region Reflective Least Squares (TRRLS) method, which iteratively finds the values of the model parameters by minimizing a cost function, defined as follows:
+This technique is based on the Trust-Region Reflective (TRR) method, which iteratively finds the values of the model parameters by minimizing a cost function, defined as follows:
 \begin{equation}
 	\min_{\Gamma_i}\left(\parallel e(\Gamma_i) \parallel^2\right) = 
 	\min_{\Gamma_i} = \left(\sum_{j=1}^{n}(\boldsymbol{z}_j- \hat{\boldsymbol{z}}_j)(\boldsymbol{z}_j- \hat{\boldsymbol{z}}_j)^\mathrm{T}\right)
