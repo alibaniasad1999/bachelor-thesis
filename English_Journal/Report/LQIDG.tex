@@ -180,7 +180,14 @@ Linear quadratic Gaussian controller \sep Differential game theory \sep Quadroto
 
 %% main text
 \section{Introduction}\label{sec:intro}
-\noindent The investigation, strategic operations, optical sensing, entertainment, and farming are all used by quadrotors in today's society \citep{drones5030059}.
+
+In this paper, an LQIR method, called LQIR-DG controller is suggested to produce the optimal and robust control command, i.e. rotational velocity command using the game theory approach.
+Since the LQIR-DG controller is affected by an exact model of the plant, the quadrotor's experimental platform is modeled and its parameters are identified based on experimental data. 
+For control purposes, its linear state-space form is extracted using linearization of the nonlinear UAV.
+then, the LQIR-DG technique is applied in real-time to the experimental platform.
+The performance of the LQIR-DG method is evaluated in the presence of the disturbance and modeling error for regulation and tracking purposes.
+A comparison is also performed between the results of classical PID, LQR, and LQIR and the proposed approach in real-time mode.
+The results show the proposed control structure is effective in the control of the quadrotor platform.
 
 \section{Problem Formulation}\label{sec:problem}
 \noindent The experimental quadrotor platform rotates freely with rotational velocity about its roll, pitch, and yaw axes, as shown in Figure \ref{fig:quadrotor}.
