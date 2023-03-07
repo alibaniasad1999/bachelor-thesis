@@ -197,10 +197,16 @@ The performance of the LQIR-DG method is evaluated in the presence of the distur
 A comparison is also performed between the results of the classical PID, LQR, and LQIR and the proposed approach in real-time mode.
 The results show the proposed control structure is effective in the control of the quadrotor platform.
 
-\section{Problem Formulation}\label{sec:problem}
-\noindent The experimental quadrotor platform rotates freely with rotational velocity about its roll, pitch, and yaw axes, as shown in Figure \ref{fig:quadrotor}.
-The Euler angles and their derivatives are measured using an Attitude Heading Reference System (AHRS), which is utilized in the structure of the LQIR-DG controller to stabilize the quadrotor platform.
-The graphical representation of the proposed controller structure is depicted in Figure \ref{fig:blockdiagram}.
+
+This research is organized as follows: section \ref{sec:problem} presents the problem statement.
+In section \ref{sec:modeling}, the dynamic platform is modeled. Then, the presented controller architecture is denoted in section \ref{sec:controller}. 
+In sections \ref{sec:results} and \ref{sec:conclusion}, numerical results and a conclusion are represented, respectively.
+
+\section{Problem Statement}\label{sec:problem}
+\noindent The experimental quadrotor platform rotates freely with rotational velocity about its roll, pitch, and yaw axes, according to Figure \ref{fig:quadrotor}.
+The Euler angles $(\phi, \theta, \psi)$ and the angular velocities in the body frame $(p, q, r)$ are measured using an Attitude Heading Reference System (AHRS).
+The measured states are utilized in the structure of the proposed controller to stabilize the quadrotor platform.
+The graphical abstract of the proposed controller structure is depicted in Figure \ref{fig:blockdiagram}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{../Figure/3DOFQuad.png}
@@ -211,11 +217,12 @@ The graphical representation of the proposed controller structure is depicted in
  \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{../Figure/schematic.pdf}
-    \caption{Structure of the LQIG-DG Controller Illustrated in a Block Diagram.}
+    \caption{Graphical Abstract of the LQIR-DG Controller}
     \label{fig:blockdiagram}
  \end{figure}
  \section{Dynamic Model of the Quadrotor Platform}\label{sec:modeling}
- \noindent In this section, first, a nonlinear model for the quadrotor platform is derived. Then, a state-space model and a linear model are developed for control purposes to be utilized in the controller strategy. Finally, a nonlinear identification method is applied to identify the parameters of the quadrotor.
+ \noindent Here, the nonlinear model for the quadrotor platform is presented.Then, a state-space model and a linear model are developed for control purposes to be utilized in the controller strategy.
+ Finally, a nonlinear identification method is applied to identify the parameters of the quadrotor.
  \subsection{Quadrotor Configuration}
 \noindent Figure \ref{fig:schematic} shows the quadrotor schematic. It depicts four rotors rotating around the $z_B$ axis in the coordinate system of the body. The rotors have a rotational velocity of $\Omega_r$.
 The quadrotor platform has 3 degrees of freedom, including roll, pitch, and yaw motions, which are described by roll $(\phi)$, pitch $(\theta)$, and yaw $(\psi)$ angles, respectively. %%%? two roll, pitch, yaw
@@ -231,18 +238,18 @@ To counteract the yawing moment, rotors 1 and 3 rotate counterclockwise, while r
 \begin{align}
 &\dot p = \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}
 {\mathrm{I}_{\text{xx}}} qr + q \dfrac{\mathrm{I}_{\text{rotor}}}
-{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{u_{\text{roll}}}{\mathrm{I}
+{\mathrm{I}_{\text{xx}}}\Omega_r + \dfrac{\mathrm{b\,d}_{\text{cg}} (\Omega_2^2 - \Omega_4^2)}{\mathrm{I}
 _{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}}
 \\
 &\dot q = \dfrac{\mathrm{I}_{\text{zz}} - 
 \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}} rp +
 p \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_r + 
-\dfrac{u_{\text{pitch}}}{\mathrm{I}_{\text{yy}}} +
+\dfrac{\mathrm{b\,d}_{\text{cg}} (\Omega_1^2 - \Omega_3^2)}{\mathrm{I}_{\text{yy}}} +
 \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}
 \\
 &\dot r = \dfrac{\mathrm{I}_{\text{xx}} -
 \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} pq 
-+  \dfrac{u_{\text{yaw}}}{\mathrm{I}_{\text{zz}}} 
++  \dfrac{\mathrm{d} (\Omega_1^2 - \Omega_2^2 + \Omega_3^2 - \Omega_4^2)}{\mathrm{I}_{\text{zz}}} 
 + \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}
 \end{align}
 The $(p, q, r)$ represent the rotational variables, and $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ denote the disturbances produced in the $x_B$, $y_B$, and $z_B$ axes, respectively. Additionally, $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the principal moments of inertia, and $\mathrm{I}_{\text{rotor}}$ is the rotor inertia about its axis. Euler angle rates are also determined from angular body rates as follows:
@@ -251,7 +258,7 @@ The $(p, q, r)$ represent the rotational variables, and $d_{\text{roll}}$, $d_{\
 	\dot\phi \\
 	\dot\theta \\
 	\dot\psi
-	\end{bmatrix}
+	\end{bmatrix} = 
 	\begin{bmatrix}
 	1 & \sin(\phi)\tan(\theta) & \cos(\phi)\tan(\theta) \\
 	0 & \cos(\phi) & -\sin(\phi) \\
