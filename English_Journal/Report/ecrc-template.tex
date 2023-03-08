@@ -668,8 +668,8 @@ The structure of the proposed identification approach is illustrate in figure \r
 		% Power and voltage variation
 		
 		\node[draw, align=center,		below=of block2,		minimum width=3.5cm,		minimum height=1cm, fill=blue!10	] (block3) {\textbf{NLS-TRRLS Optimization}\\
-		Set bounds for parameters\\
-		Set initial seed for all parameters\\
+		Set bounds for parameters.\\ %%%?
+		Set initial seed for all parameters.\\
 		Minimization of the cost function.};
 
 		\node[draw, align=center,	below right=of block3,	minimum width=3cm,	minimum height=2.5cm,	fill=green!10	] (block_p) {{Identified parameters}\\
@@ -719,7 +719,7 @@ The structure of the proposed identification approach is illustrate in figure \r
 		\label{fig:identification}
 \end{figure}
 
-\section{Formulation of the LQDG Controller}\label{sec:controller}
+\section{Structure of the LQDG Controller}\label{sec:controller}
 % \noindent In the LQIR-DG controller structure, an integral action is added to the LQR-DG controller to cancel the steady-state errors for reference tracking. For this purpose, first, the augmented state space of the linear quadrotor model is defined to utilize in the controller architecture. Then, the LQR-DG controller design procedure is presented to produce the best control commands for the experimental setup of the quadrotor.
 
 % \noindent Here, the LQR-DG controller is augmented with an integral action to eliminate steady-state errors in desired following. The first stage of the controller design process entails the development of the augmented state space representation of the quadrotor system to integrate it into the broader control framework. Subsequently, the design methodology of LQR-DG controller is introduced to generate optimal control signals for the three-degree-of-freedom platform.
