@@ -48,7 +48,6 @@
 \usepackage[figuresright]{rotating}
 \usepackage{tikz}
 \usepackage{multirow}
-\captionsetup[table]{skip=-10pt}
 \usetikzlibrary{shapes,arrows}
 \tikzstyle{block} = [rectangle, draw, text width=4.5em, text centered, minimum height=4em]
 \tikzstyle{line} = [draw, -latex']
@@ -529,8 +528,10 @@ $%%%? needd : or not
 \noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. Oerformance of the LQIR-DG structure is evaluated.
 Moreover, Tables \ref{tab:parameters} and \ref{tab:control weight_new} presents the quadrotor and LQIR-DG parameters, respectively.
 \begin{table}[H]
-	\renewcommand{\arraystretch}{1.3}
+	\centering
 	\caption{Quadrotor Parameters}
+	\vspace{-0.5cm}
+	\renewcommand{\arraystretch}{1.3}
 	\begin{center}
 	\begin{tabular}{c c c}
 	\hline
@@ -602,6 +603,7 @@ These results illustrate that the outputs of the simulation results for the quad
 \begin{table}[H]
 	\renewcommand{\arraystretch}{1.3}
 	\caption{True values of the quadrotor parameters.}
+	\vspace{-0.5cm}
 	\begin{center}
 	\begin{tabular}{c c c c}
 	\hline
@@ -665,6 +667,7 @@ The PID controller parameters are presented in Table \ref{tab:PID_parameters}.
 \begin{table}[H]
 	\renewcommand{\arraystretch}{1.3}
 	\caption{PID Controller Parameters}
+	\vspace{-0.5cm}
 	\begin{center}
 		\begin{tabular}{cccc}
 		\hline
