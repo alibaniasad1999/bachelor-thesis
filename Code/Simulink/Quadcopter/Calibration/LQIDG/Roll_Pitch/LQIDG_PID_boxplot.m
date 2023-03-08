@@ -16,6 +16,6 @@ boxplot(cost);
 boxplot(cost, {'LQIR-DG controller', 'PID controller', 'LQIR controller', ...
     'LQR controller'})
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
-ylabel('Quadratic Cost', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('Cost Function', 'interpreter', 'latex', 'FontSize', 24);
 
 print('../../../../../../English_Journal/Figure/implementation/box_plot/lqidgvsboxplot','-depsc');
