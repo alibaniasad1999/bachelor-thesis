@@ -240,7 +240,7 @@ The graphical abstract of the LQIR-DG controller structure is depicted in Figure
     \label{fig:blockdiagram}
  \end{figure}
  \section{Model of the Quadrotor Platform}\label{sec:modeling}
- \noindent Here, the quadrotor platform is modelled as nonlinear.
+ \noindent Here, the quadrotor platform is modeled as nonlinear.
  Then, a state-space model and a linear model are developed for control purposes to be utilized in the controller strategy.
  Finally, a nonlinear identification method is applied to identify the parameters of the quadrotor.
  \subsection{Quadrotor configuration}
@@ -255,7 +255,7 @@ The graphical abstract of the LQIR-DG controller structure is depicted in Figure
     \caption{Quadrotor Configuration.}
     \label{fig:schematic}
 \end{figure}
-\subsection{Dynamic Modeling of the Quadrotor Platfrorm}
+\subsection{Dynamic Modeling of the Quadrotor Platform}
 \noindent Here, according to Newton-Euler, the model of the quadrotor platform is presented as follows \cite{4399042, article_Bouabdallah}:
 \begin{align}
 &\dot p = \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}
@@ -542,7 +542,7 @@ where $
 	\boldsymbol{\mathrm{S{a_{d_i}}}} = \boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}.
 $%%%? needd : or not
 \section{Results}\label{sec:results}
-\noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. Oerformance of the LQIR-DG structure is evaluated.
+\noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. Performance of the LQIR-DG structure is evaluated.
 Moreover, Tables \ref{tab:parameters} and \ref{tab:control weight_new} presents the quadrotor and LQIR-DG parameters, respectively.
 \begin{table}[H]
 	\centering
@@ -730,7 +730,7 @@ The input disturbance, $\mathrm{d_{\Omega_i}}$, is considered as a change in the
 		0 \quad &\mathrm{other}
 	\end{cases}
 \end{equation}
-Figure \ref{fig:disturbance} illustrates the roll and pitch angles in the regulation problem when the input disturbance occors. These results indicate that the LQIR-DG controller can stabilize the quadrotor platform in the presence of input disturbance.
+Figure \ref{fig:disturbance} illustrates the roll and pitch angles in the regulation problem when the input disturbance occurs. These results indicate that the LQIR-DG controller can stabilize the quadrotor platform in the presence of input disturbance.
 \begin{figure}[H]
 	\centering
 	\subfloat{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_pitch}
@@ -764,7 +764,7 @@ The implementation results show that the proposed controller converges to the de
 \end{figure}
 \subsubsection{Comparison with the Control Strategies}
 \noindent Figure \ref{fig:compare} compares the LQIR-DG controller performance with the PID controller and variant of the LQR strategies such as the LQR and LQIR. 
-Moreover, the box plot of all controllers is ploted in Figure \ref{fig:compare_boxplot} for the cost function, introduced in equation \eqref{eq:min_max_cost_function}. %%%? two controller side by side
+Moreover, the box plot of all controllers is plotted in Figure \ref{fig:compare_boxplot} for the cost function, introduced in equation \eqref{eq:min_max_cost_function}. %%%? two controller side by side
 The median of RMSE is shown in the crossline in the box plot.
 These results indicate that the proposed controller is able to provide rapid convergence and excellent transient response relative to other controllers for attitude control of the experimental platform
 
