@@ -157,11 +157,11 @@
 	In this study, a linear quadratic integral differential game approach is applied to regulate and track the Euler angles for a quadrotor experimental platform using two players. %%%? long and hard to underestand.
 	One produces commands for each channel of the quadrotor and
 	another generates  the worst disturbance based on the mini-maximization of a quadratic criterion with integral action.
-	For this purpose, first, the attitude dynamics of the platform are modeled and its parameter is identified based on the Nonlinear Least Squares Trust-Region Reflective method.
+	For this purpose, first, the attitude dynamics of the platform is modeled and its parameters are identified based on the Nonlinear Least Squares Trust-Region Reflective method.
 	The performance of the proposed controller is evaluated for regulation and tracking problems.
-	The ability of the controller is examined in the disturbance rejection.
+	The ability of the controller is also examined in the disturbance rejection.
 	Moreover, the influence of uncertainty modeling is studied on the obtained results.
-	Then, the performance of the proposed controller is compared with the classic PID, Linear Quadratic Regulator, and Linear Quadratic Integral Regulator. The result demonstrates the effectiveness of the Game Theory on the Linear Quadratic Regulator approach when the input disturbance occurs.
+	Then, performance of the proposed controller is compared with the classic Proportional Integral Derivative, Linear Quadratic Regulator, and Linear Quadratic Integral Regulator. The results demonstrate the effectiveness of the Game Theory on the Linear Quadratic Regulator approach when the input disturbance occurs.
 \end{abstract}
 
 %%Graphical abstract
@@ -179,7 +179,7 @@
 %% keywords here, in the form: keyword \sep keyword
 
 %% PACS codes here, in the form: \PACS code \sep code
-Linear Quadratic controller \sep Differential Game Theory \sep Quadrotor  \sep three-degree-of-freedom Experimental Platform \sep Attitude Control. %%%? check --
+Linear Quadratic controller \sep Differential Game Theory \sep Quadrotor  \sep 3-DoF Experimental Platform \sep Attitude Control. %%%? check --
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
 
@@ -199,20 +199,20 @@ Linear Quadratic controller \sep Differential Game Theory \sep Quadrotor  \sep t
 % A comparison is also performed between the results of classical PID, LQR, and LQIR and the proposed approach in real-time mode.
 % The results show the proposed control structure is effective in the control of the quadrotor platform.
 \noindent Quadrotors are a type of Vertical Unmanned Aerial Vehicle (VUAV), that have various applications such as investigation, strategic operation, optical sensing, and entertainment.
-The safe flight of a quadrotor in the presence of disturbances relies on a precise control system, including, position, attitude, and altitude control subsystems. 
-A crucial subsystem of a control system for the quadrotor is the Attitude Control System (ACS) in the presence of disturbance inputs and modeling errors. 
-To regulate the quadrotor attitude, a Proportional Integral Derivative (PID) controller is utilized in \cite{article_Abdul, article_Bolandi}. Due to the nonlinearity dynamics of the quadrotor, the PID strategy is not effective in the presence of the disturbance.
-To reduce the disturbance effect in the attitude control and provide a faster control command in facing the modeling error, the model-based control strategies including nonlinear control, intelligent control, optimal control, and robust control have been implemented on the ACS of the quadrotor.
+The safe flight of the quadrotor in the presence of disturbances relies on a precise control. 
+A crucial subsystem of a control system for the quadrotor is the Attitude Control System (ACS). 
+To regulate the quadrotor attitude, a Proportional Integral Derivative (PID) controller is utilized in \cite{article_Abdul, article_Bolandi}. Due to the nonlinearity dynamics of the quadrotor, the PID strategy is not effective in the presence of the disturbance and modeling error.
+To provide a faster control command in facing the modeling error and reduce the disturbance effect in the attitude control, the model-based control strategies including nonlinear control, intelligent control, optimal control, and robust control have been implemented on the ACS of the quadrotor.
 
-Synergetic Control \cite{article_Chara}, Sliding Mode Control (SMC) \cite{7007285}, and Feedback Linearization (FBL) \cite{article_Aboudonia}, which are a group of the nonlinear control category, have been utilized to regulate the Euler angles (roll, pitch, and yaw angles) of the quadrotor. To control the attitude of the quadrotor intelligently, the controller strategies such as reinforcement learning \cite{LIN2020135}, iterative learning \cite{electronics10202474}, machine learning \cite{4564736}, and fuzzy logic \cite{KIM20211888} have been implemented. Moreover, to produce the optimal control commands, the optimal controller strategies including a Linear Quadratic Gaussian (LQG) \cite{7367782}, Linear Quadratic Regulator (LQR) \cite{7064553_LQR} and a Model Predictive Controller (MPC) approaches \cite{XUE20227992} have been implemented on a quadrotor.
+Synergetic Control \cite{article_Chara}, Feedback Linearization (FBL) \cite{article_Aboudonia}, and Sliding Mode Control (SMC) \cite{7007285}, which are a group of the nonlinear control category, have been utilized to regulate the Euler angles (roll, pitch, and yaw angles) of the quadrotor. To control attitude of the quadrotor intelligently, the controller strategies such as reinforcement learning \cite{LIN2020135}, iterative learning \cite{electronics10202474}, machine learning \cite{4564736}, and fuzzy logic \cite{KIM20211888} have been implemented. Moreover, to produce the optimal control commands, the controller strategies including Linear Quadratic Gaussian (LQG) \cite{7367782}, Linear Quadratic Regulator (LQR) \cite{7064553_LQR}, Linear Quadratic Integra Regulator (LQIR) \cite{article_LQIR}, and Model Predictive Controller (MPC) approaches \cite{XUE20227992} have been implemented on a quadrotor.
 
-In the robust control strategies, $H_{\infty}$, $\mu\text{-synthesis}$, and Linear Quadratic Regulator Differential Game (LQR-DG) \cite{10025263} have also been utilized to stabilize the Euler angles of the quadrotor attitudes based on the mini-maximization of a quadratic criterion including control effort and regulation performance in the worst-case scenario. In the LQR-DG controller, the control commands are analytically produced using a pursuit-evasion of two players \cite{GLIZER201522}, one tracks the best control command, and the other generates the input disturbance. For eliminating the steady-state error, In \cite{6957349, 6160768}, the LQR-DG controller with integral action, called LQIR-DG, is implemented on a model of the ship.
+In the robust control strategies, $H_{\infty}$, $\mu\text{-synthesis}$, and Linear Quadratic Regulator Differential Game (LQR-DG) \cite{10025263} have also been utilized to stabilize the Euler angles of the quadrotor using the mini-maximization of a quadratic criterion including control effort and regulation performance in a worst-case scenario. In the LQR-DG controller \cite{GLIZER201522, 6160768}, the control signals are produced using a pursuit-evasion game, one player tracks the best command, and second player generates the input disturbance. For eliminating the steady-state error, the LQR-DG controller with integral action, called LQIR-DG, is implemented on a model of the ship \cite{6957349}.
 
-In this paper, an LQIR-DG method is implemented real-time on the experimental platform of the quadrotor to produce the robust control commands, i.e. rotational velocity of the quadrotor.
+In this paper, an LQIR-DG method is implemented real-time on 3-DoF experimental platform of the quadrotor to produce the robust control commands, i.e. rotational velocity of the quadrotor.
 To this end, first, the experimental platform of the quadrotor is modeled using the Newton-Euler formulation and its linear state-space form is derived.
 Then, the parameters of the quadrotor are estimated by matching experimental data with results from the model simulation.
-In the next step, the proposed controller is implemented on the Arduino Mega2560 board based on the embedded coder platform of the MATLAB and its performance is investigated in regulation and tracking problems.
-Moreover, the rejection capability of the input disturbance and modeling error is tested to illustrate the ability of the proposed method.
+In the next step, the proposed controller is implemented on the Arduino Mega2560 board using the embedded coder platform in the MATLAB and its performance is investigated in regulation and tracking problems.
+Moreover, the rejection capability of the input disturbance and modeling error is tested.
 Finally, a comparison is also performed between the results of classical PID, LQR, and LQIR with the proposed method. The results demonstrate that this method has an excellent performance in the attitude control of the quadrotor platform.
 A demo video of the results is available online
 \href{https://drive.google.com/drive/folders/1DIJs3wmIpmwI8slyHeitA6Ebe-khKTCt?usp=share_link}{here}.
@@ -228,14 +228,14 @@ platform is modeled. Then, the presented controller architecture is denoted in s
 % In sections \ref{sec:results} and \ref{sec:conclusion}, numerical results and a conclusion are represented, respectively.
 
 \section{Problem Statement}\label{sec:problem}
-\noindent The experimental quadrotor platform rotates freely with rotational velocity about its roll, pitch, and yaw axes, according to Figure \ref{fig:quadrotor}.
+\noindent The experimental quadrotor platform rotates freely with rotational velocity ($\Omega_i, i = 1, 2, 3, 4$) about its roll, pitch, and yaw axes, according to Figure \ref{fig:quadrotor}.
 The angular velocities in the body frame $(p, q, r)$ and the Euler angles $(\phi, \theta, \psi)$ are measured using an Attitude Heading Reference System (AHRS).
 The measured states are utilized in the structure of the proposed controller to stabilize the quadrotor platform.
-The graphical abstract of the LQIR-DG controller structure is depicted in Figure \ref{fig:blockdiagram}.
+The graphical abstract of the LQIR-DG controller strategy is depicted in Figure \ref{fig:blockdiagram}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{../Figure/3DOFQuad.png}
-    \caption{3DoF Quadrotor platform.}
+    \caption{3-DoF Quadrotor platform.}
     \label{fig:quadrotor}
  \end{figure}
  
@@ -250,7 +250,7 @@ The graphical abstract of the LQIR-DG controller structure is depicted in Figure
  Then, a state-space model and a linear model are developed for control purposes to be utilized in the controller strategy.
  Finally, a nonlinear identification method is applied to identify the parameters of the quadrotor.
  \subsection{Quadrotor Configuration}
- \noindent According to Figure \ref{fig:schematic}, the 3DoF quadrotor schematic is including four rotors rotating the $z_B$ axis in the body frame with a rotational velocity, $\Omega$. To eliminate the yawing moment, rotors (2, 4) and (1, 3) rotate clockwise and counter counterclockwise, respectively.
+ \noindent According to Figure \ref{fig:schematic}, the 3-DoF quadrotor schematic is including four rotors rotating the $z_B$ axis in the body frame with a rotational velocity, $\Omega_i~(i=1, 2, 3, 4)$. To eliminate the yawing moment, rotors (2, 4) and (1, 3) rotate clockwise and counter counterclockwise, respectively.
 
 % \noindent Figure \ref{fig:schematic} shows the quadrotor schematic. It depicts four rotors rotating around the $z_B$ axis in the coordinate system of the body. The rotors have a rotational velocity of $\Omega_r$.
 % The quadrotor platform has 3 degrees of freedom, including roll, pitch, and yaw motions, which are described by roll $(\phi)$, pitch $(\theta)$, and yaw $(\psi)$ angles, respectively. %%%? two roll, pitch, yaw
@@ -289,7 +289,7 @@ where $\Omega_{c, i}~(i=1, 2, 3, 4)$ is the rotational velocity, computed as
 \end{align}
 In the above equation, $\Omega_{\text{mean}}$ is the rotational velocity of the rotors. Also, $\mathrm{d}_{\text{cg}}$, $\text{d}$, and $\text{b}$ represent the distance between the rotors and the gravity center, drag factor, and thrust factor, respectively.
 $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ denote the disturbances produced in the body coordinate frame. Additionally,
-$u_{\text{roll}}$, $u_{\text{pitch}}$, and $d_{\text{yaw}}$ are control commands generated by the LQIR-DG controller. $\mathrm{I}_{\text{rotor}}$ is rotor inertia, and $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the moments of inertia.
+$u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ are control commands generated by the LQIR-DG controller. $\mathrm{I}_{\text{rotor}}$ is rotor inertia, and $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the moments of inertia.
 Euler angle rates are also determined from angular body rates as follows:
 \begin{equation}
 	\begin{bmatrix}
@@ -320,6 +320,7 @@ The residual rotor velocity, denoted by $\Omega_{c,r}$, is calculated as follows
 \begin{bmatrix}
 	p & \phi
 \end{bmatrix}^{\mathrm{T}}$
+,
 $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
 	x_3 & x_4 \end{bmatrix}^{\mathrm{T}} = 
 	\begin{bmatrix}
@@ -410,14 +411,14 @@ where $\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
 	0
 \end{bmatrix}^{\mathrm{T}}$.
 \subsection{Identification of the Platform Parameters}
-\noindent In this section, the Nonlinear Least Squares (NLS) algorithm is utilized for estimating the model parameters ($\boldsymbol{\mathrm{\Gamma}}$) of the 3DoF experimental platform using experimental data.
-This technique is based on the Trust-Region Reflective (TRR) method, which finds the best values for $$\boldsymbol{\mathrm{\Gamma}}$$ by minimizing a cost function, defined as
+\noindent In this section, the Nonlinear Least Squares (NLS) algorithm is utilized for estimating the model parameters ($\boldsymbol{\mathrm{\Gamma}}$) of the 3-DoF experimental platform using experimental data.
+This technique is based on the Trust-Region Reflective (TRR) method, which finds the best values for $\boldsymbol{\mathrm{\Gamma}}$ by minimizing a cost function, defined as
 \begin{equation}
-	\min_{\Gamma_i}\left(\parallel e(\Gamma_i) \parallel^2\right) = 
-	\min_{\Gamma_i} \left(\sum_{j=1}^{n}(\boldsymbol{z}_j- \hat{\boldsymbol{z}}_j)(\boldsymbol{z}_j- \hat{\boldsymbol{z}}_j)^\mathrm{T}\right)
+	\min_{\Gamma}\left(\parallel e(\Gamma) \parallel^2\right) = 
+	\min_{\Gamma} \left(\sum_{j=1}^{n}(\boldsymbol{z}_j- \tilde{\boldsymbol{z}}_j)(\boldsymbol{z}_j- \tilde{\boldsymbol{z}}_j)^\mathrm{T}\right)
 \end{equation} %%%? what is j ??
-where $\boldsymbol{z}$ and $\hat{\boldsymbol{z}}$ are the experimental and simulated output signals when the same input signals are applied.
-Moreover, $j$ is the number of scenarios.
+where $\boldsymbol{z}$ and $\tilde{\boldsymbol{z}}$ are the experimental and simulated output signals when the same input signals are applied.
+Moreover, $n$ is the number of scenarios.
 To find a vector $\Gamma$, the optimization process performs until convergence is achieved. %%%?
 The structure of the identification approach is illustrated in figure \ref{fig:identification}.
 
@@ -487,12 +488,12 @@ The structure of the identification approach is illustrated in figure \ref{fig:i
 		\label{fig:identification}
 \end{figure}
 \section{LQIR-DG Controller Structure}\label{sec:controller}
-\noindent First, the augmented states of the quadrotor platform, including the states and their integrals are selected to use in the structure of the LQIR-DG controller for eliminating the steady states errors. Then, the design methodology of the controller structure is introduced to produce the optimal commands for the 3DoF quadrotor platform.
+\noindent First, the augmented states of the quadrotor platform, including the states and their integrals are selected to use in the structure of the LQIR-DG controller for eliminating the steady states errors. Then, the design methodology of the controller structure is introduced to produce the best commands for the 3-DoF quadrotor platform.
 \subsection{Augmented States}
 \noindent To augment an integral action into the control strategy architecture, the augmented states are defined as $\boldsymbol{\mathrm{x_{a}}} = \begin{bmatrix}
 	\boldsymbol{\mathrm{x}} &
 	\displaystyle\int\boldsymbol{\mathrm{x}}
-\end{bmatrix}^\mathrm{T}$. Then, the model of the quadrotor platform, utilized in the controller structure, is presented as
+\end{bmatrix}^\mathrm{T}$. Then, the quadrotor platform model, utilized in the controller structure, is presented as
 
 \begin{equation}\label{systemlqidg}
 	\begin{split}
@@ -506,7 +507,7 @@ The structure of the identification approach is illustrated in figure \ref{fig:i
 		 \left(\boldsymbol{\mathrm{u}} + \boldsymbol{\mathrm{d}}\right)%, \quad \boldsymbol{x}(0) = 
 	\end{split}
 \end{equation}
-where the notation $\boldsymbol{\mathrm{I}}$ denotes the identity matrix.
+The notation $\boldsymbol{\mathrm{I}}$ denotes the identity matrix.
 \subsection{LQIR-DG Control Scheme with Integral Action}
 \noindent In the proposed controller scheme, two fundamental players are selected in accordance with the game theory approach. The primary player determines the control commands, while another player generates the worst possible disturbance.
 To achieve the primary objective, the first player minimizes the following cost function but the other player maximizes it:
@@ -548,8 +549,8 @@ where $
 	\boldsymbol{\mathrm{S{a_{d_i}}}} = \boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}.
 $%%%? needd : or not
 \section{Results}\label{sec:results}
-\noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. The performance of the LQIR-DG structure is evaluated.
-Moreover, Tables \ref{tab:parameters} and \ref{tab:control weight_new} present the quadrotor and LQIR-DG parameters, respectively.
+\noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. The n,performance of the LQIR-DG structure is evaluated.
+Tables \ref{tab:parameters} and \ref{tab:control weight_new} present the quadrotor and LQIR-DG parameters, respectively.
 \begin{table}[H]
 	\centering
 	\caption{Quadrotor parameters}
@@ -560,12 +561,12 @@ Moreover, Tables \ref{tab:parameters} and \ref{tab:control weight_new} present t
 	\hline
 	Parameter & Unit & Value & Parameter & Unit & Value \\
 	\hline
-	$\mathrm{d}{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ \\ 
+	$\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ \\ 
 	$\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ &
 	$\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ \\
 	$\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ 
 	& $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ \\
-	$\Omega{\text{mean}}$ & $\mathrm{rpm}$ & $3000$ & $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ \\
+	$\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ \\
 	\hline
 \end{tabular}
 \label{tab:parameters}
@@ -589,11 +590,11 @@ Moreover, Tables \ref{tab:parameters} and \ref{tab:control weight_new} present t
 	\label{tab:control weight_new} %%%? R in above is not matrix i have changed
 	%%%? need to know where weighting matrix came from
 \end{table}
-\subsection{Identification of the 3DoF quadrotor platform model}
+\subsection{Identification of the 3-DoF quadrotor platform model}
 \noindent As described in section \ref{sec:state-space}, the parameters of the quadrotor platform, denoted by $\Gamma_i (i=1, ..., 8)$, are identified using the NLS-TRR algorithm.
 To increase the accuracy of parameter identification, three scenarios are considered according to Table \ref{tab:identification}.
 In the first scenario, depicted in Figure \ref{fig:one_degree_identification}, the quadrotor rotates about only one axis (roll, pitch, or yaw axes) to identify the parameters $\Gamma_3$, $\Gamma_6$, and $\Gamma_8$.
-In the second scenario, according to Figure \ref{fig:two_degree_identification}, the parameters $\Gamma_2$ and $\Gamma_5$ are estimated by rotating the experimental platform around its roll and pitch axes simultaneously. Finally, Figure \ref{fig:three_degree_identification} displays the results of the third scenario including the estimation of the parameters $\Gamma_1$, $\Gamma_4$, and $\Gamma_7$ for the UAV model when the platform freely rotates around three axes.
+In the second scenario, according to Figure \ref{fig:two_degree_identification}, the parameters $\Gamma_2$ and $\Gamma_5$ are estimated by rotating the experimental platform around its roll and pitch axes simultaneously. Finally, Figure \ref{fig:three_degree_identification} displays the results of the third scenario including the estimation of the parameters $\Gamma_1$, $\Gamma_4$, and $\Gamma_7$ for the UAV model, when the platform freely rotates around three axes.
 After the termination condition is met, the optimal values of the quadrotor parameters are computed and denoted in Table \ref{tab:true_parameters}. 
 These results illustrate that the outputs of the simulation results for the quadrotor model are consistent with reality.
 \begin{table}[H]
@@ -606,7 +607,7 @@ These results illustrate that the outputs of the simulation results for the quad
 	& \multicolumn{3}{c}{Initial Condition (deg)} &
 	\multicolumn{4}{c}{Rotational Velocity Commands (rpm)} \\
 	\cmidrule(lr){3-5} \cmidrule(lr){6-9}
-	& & $\phi$ & $\theta$ & $\psi$ & $\Omega_1$ & $\Omega_2$ & $\Omega_3$ & $\Omega_4$\\
+	& & $\phi_0$ & $\theta_0$ & $\psi_0$ & $\Omega_1$ & $\Omega_2$ & $\Omega_3$ & $\Omega_4$\\
 	\midrule
 	\multirow{3}{*}{I} & roll free & 38 & - & - & 2000 & 2000 & 2000 & 3400\\
 	& pitch free & - & -15 & - & 3700 & 2000 & 2000 & 2000 \\
@@ -662,17 +663,18 @@ These results illustrate that the outputs of the simulation results for the quad
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll-pitch/roll}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch}
+	\vspace{-2.2cm}
+	\subfloat[]{\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/roll}\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch}
 	}
 	\hfil
 	% \vspace{-0.25cm}
-	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll-pitch/roll_parameter}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch_parameter}
+	\subfloat[]{\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/roll_parameter}\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch_parameter}
 	}
 	\caption{Identification process results when the quadrotor rotates about its roll and pitch axes:
 	(a) Comparison of Simulation and experimental results. (b) Identification of $\Gamma_2$ and $\Gamma_5$.}
 	\label{fig:two_degree_identification}
-\end{figure}
-\begin{figure}[H]
+% \end{figure}
+% \begin{figure}[H]
 	\centering
 	\subfloat[]{\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/roll}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/pitch}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/yaw}
 	}
@@ -704,26 +706,31 @@ The PID controller parameters are presented in Table \ref{tab:PID_parameters}.
 	\end{center}
 \end{table}
 \subsubsection{Investigating of the Regulation and Tracking Problems}\label{sec:regulation}
-\noindent The results of the proposed approach are presented for tracking the desired roll and pitch angles of the experimental platform in Figures \ref{fig:result} and \ref{fig:omega}.
+\noindent The results of the proposed approach are presented for tracking the desired roll and pitch angles in Figures \ref{fig:result} and \ref{fig:omega}.
  %%%? so many of
-Figure \ref{fig:result} \ref{sub@fig:regulation} compares the desired and output signals, i.e., the Euler angles during regulation problem. Moreover, Figure \ref{fig:result} \ref{sub@fig:square} compares the desired square wave input with a frequency of 0.02 Hz and an amplitude of 20 degrees (with the output signals when the quadrotor platform freely rotates around roll and pitch simultaneity).
-Figures \ref{fig:omega} \ref{sub@fig:omega_regulation} and \ref{sub@fig:omega_square} show the rotational velocity command of the quadrotor in the regulation and tracking problems, respectively. These results demonstrate that the roll and pitch angles are accurately controlled by the proposed approach.
+Figure \ref{fig:result} \ref{sub@fig:regulation} compares the desired and output signals, i.e., the Euler angles during regulation problem. Moreover, Figure \ref{fig:result} \ref{sub@fig:square} compares the desired square wave signals with a frequency of 0.02 Hz and an amplitude of 20 degrees with the output signals, when the quadrotor platform freely rotates around roll and pitch simultaneity.
+Figures \ref{fig:omega} \ref{sub@fig:omega_regulation} and \ref{sub@fig:omega_square} show the rotational velocity commands of the quadrotor in the regulation and tracking problems, respectively. These results demonstrate that the roll and pitch angles are accurately controlled by the proposed approach.
+
+
+
 \begin{figure}[H]
 	\centering
-	\subfloat[\label{fig:regulation}]{{\includegraphics[width=.3\linewidth]{../Figure/implementation/lqidg_roll}}\includegraphics[width=.3\linewidth]{../Figure/implementation/lqidg_pitch}
-	\includegraphics[width=.3\linewidth]{../Figure/implementation/lqidg_yaw}}
+	\vspace{0.3cm}
+	\subfloat[\label{fig:regulation}]{{\includegraphics[width=.33\linewidth]{../Figure/implementation/lqidg_roll}}\includegraphics[width=.33\linewidth]{../Figure/implementation/lqidg_pitch}
+	\includegraphics[width=.33\linewidth]{../Figure/implementation/lqidg_yaw}}
 	\hfill
-	\subfloat[\label{fig:square}]{\includegraphics[width=.3\linewidth]{../Figure/implementation/square/lqidg_roll_20}\includegraphics[width=.3\linewidth]{../Figure/implementation/square/lqidg_pitch_20}}
+	\subfloat[\label{fig:square}]{\includegraphics[width=.35\linewidth]{../Figure/implementation/square/lqidg_roll_20}\includegraphics[width=.35\linewidth]{../Figure/implementation/square/lqidg_pitch_20}}
 	\caption{Comparison of actual roll and pitch angles with the desired values in \ref{sub@fig:regulation} Regulation \ref{sub@fig:square} Tracking problem.}
 	\label{fig:result}
 \end{figure}
 
 \begin{figure}[H]
+	\vspace{0.3cm}
 	\centering
-	\subfloat[\label{fig:omega_regulation}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/lqidg_Omega_1}\includegraphics[width=.23\linewidth]{../Figure/implementation/lqidg_Omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/lqidg_Omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/lqidg_Omega_4}
+	\subfloat[\label{fig:omega_regulation}]{\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_1}\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_3}\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_4}
 	}
 	\hfil
-	\subfloat[\label{fig:omega_square}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/square/lqidg_squre_omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/square/lqidg_squre_omega_4}} %%%? didnt describe a and b
+	\subfloat[\label{fig:omega_square}]{\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_3}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_4}} %%%? didnt describe a and b
 	\caption{Rotational velocity  commands in \ref{sub@fig:omega_regulation} Regulation \ref{sub@fig:omega_square} Tracking problems.}
 	\label{fig:omega}
 \end{figure}
@@ -736,7 +743,10 @@ The input disturbance, $\mathrm{d_{\Omega_i}}$, is considered as a change in the
 		0 \quad &\mathrm{other}
 	\end{cases}
 \end{equation}
-Figure \ref{fig:disturbance} illustrates the roll and pitch angles in the regulation problem when the input disturbance occurs. These results indicate that the LQIR-DG controller can stabilize the quadrotor platform in the presence of input disturbance.
+Figure \ref{fig:disturbance} illustrates the roll and pitch angles in the regulation problem, when the input disturbance occurs. These results indicate that the proposed controller can stabilize the quadrotor platform in the presence of input disturbance.
+
+
+
 \begin{figure}[H]
 	\centering
 	\subfloat{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_pitch}
@@ -750,28 +760,28 @@ Figure \ref{fig:disturbance} illustrates the roll and pitch angles in the regula
 \subsubsection{Investigating the Impact of Modeling Uncertainty}\label{sec:model-uncertainty}
 \noindent The effect of the modeling uncertainty is investigated on the performance of the proposed controller.
 To achieve this, 50 and 100 grams weights are added to the roll and pitch axes, respectively, as shown in Figure \ref{fig:quadrotor_with_weight}.
-Figure \ref{fig:weight} \ref{sub@fig:weight_roll} compares the desired and the actual roll angle and Figure \ref{fig:weight} \ref{sub@fig:weight_pitch} shows the desired and the actual pitch angle when the uncertainty of moments of inertia is present.
-Moreover, Figure \ref{fig:weight} \ref{sub@fig:omega_weight} shows the rotational velocity command of the experimental platform when the model uncertainty is applied.
-The implementation results show that the proposed controller converges to the desired values in the presence of the modeling uncertainty.
+Figure \ref{fig:weight} \ref{sub@fig:weight_roll} compares the desired and the actual roll angle and Figure \ref{fig:weight} \ref{sub@fig:weight_pitch} shows the desired and the actual pitch angle, when the uncertainty of moments of inertia is present.
+Moreover, Figure \ref{fig:weight} \ref{sub@fig:omega_weight} shows the rotational velocity commands of the experimental platform, when the model uncertainty is applied.
+The implementation results show that the platform outputs converge to the desired values in the presence of the modeling uncertainty.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.49\textwidth]{../Figure/implementation/weight/Quad_with_weight.jpg}
-	\caption{Quadrotor 3DoF platform with added weights.} %%%? is it okey
+	\includegraphics[width=0.45\textwidth]{../Figure/implementation/weight/Quad_with_weight.jpg}
+	\caption{Quadrotor 3-DoF platform with added weights.} %%%? is it okey
 	\label{fig:quadrotor_with_weight}
- \end{figure}
- \begin{figure}[H]
+%  \end{figure}
+%  \begin{figure}[H]
 	\centering
-	\subfloat[\label{fig:weight_roll}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_roll_20}}\subfloat[\label{fig:weight_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/weight/lqidg_pitch_20}
+	\subfloat[\label{fig:weight_roll}]{\includegraphics[width=.45\linewidth]{../Figure/implementation/weight/lqidg_roll_20}}\subfloat[\label{fig:weight_pitch}]{\includegraphics[width=.45\linewidth]{../Figure/implementation/weight/lqidg_pitch_20}
 	}
 	\hfill
-	\subfloat[\label{fig:omega_weight}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/weight/lqidg_Omega_1}\includegraphics[width=.23\linewidth]{../Figure/implementation/weight/lqidg_Omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/weight/lqidg_Omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/weight/lqidg_Omega_4}}
+	\subfloat[\label{fig:omega_weight}]{\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_1}\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_3}\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_4}}
 	\caption{Comparison of actual roll and pitch angles with desired values, when the modeling uncertainty is present.}
 	\label{fig:weight}
 \end{figure}
 \subsubsection{Comparison with the Control Strategies}
 \noindent Figure \ref{fig:compare} compares the LQIR-DG controller performance with the PID controller and variant of the LQR strategies such as the LQR and LQIR. 
 Moreover, the box plot of all controllers is plotted in Figure \ref{fig:compare_boxplot} for the cost function, introduced in equation \eqref{eq:min_max_cost_function}. %%%? two controller side by side
-The median of RMSE is shown in the crossline in the box plot.
+The median of Root Mean Square Error (RMSE) is shown in the crossline in the box plot.
 These results indicate that the proposed controller is able to provide rapid convergence and excellent transient response relative to other controllers for attitude control of the experimental platform.
 
 \begin{figure}[H]
@@ -784,18 +794,19 @@ These results indicate that the proposed controller is able to provide rapid con
 
 \begin{figure}[H]
 	\centering
-	{\includegraphics[width=.49\linewidth]{../Figure/implementation/box_plot/lqidgvsboxplot}
+	{\includegraphics[width=.55\linewidth]{../Figure/implementation/box_plot/lqidgvsboxplot}
 	}
 	\caption{Box plot of LQIR-DG, LQR, LQIR, and PID controllers.}
 	\label{fig:compare_boxplot}
 \end{figure}
 \section{Conclusion}\label{sec:conclusion}
-\noindent In this paper, the LQR controller with integral action based on the game theory called, LQIR-DG, was used in real-time for attitude control of the platform quadrotor. %%%? for quadrotor
+\noindent In this paper, the linear quadratic integral differential game approach, was used in real-time for attitude control of the platform quadrotor. %%%? for quadrotor
 For the implementation of the controller structure, an accurate dynamic model was considered for the experimental platform.
 Then, the model parameters were identified using the NSL method.
-For evaluation of the proposed method, the purposes where regulation and tracking problems were successfully performed.
-Moreover, the ability of the proposed method was investigated in the rejection of the input disturbance and modeling error in the laboratory experiment.
-The implementation results illustrated the excellent performance of the LQIR controller based on the game theory approach in attitude control for the quadrotor platform.
+For evaluation of the proposed method, the regulation and tracking  proposed were successfully performed.
+Moreover, the ability of the proposed method was investigated in the rejection of the input disturbance and modeling error in the experimental platform.
+Finally, a comparison
+was also performed between the results of classical PID, LQR, and LQIR with the proposed method.The implementation results illustrated the excellent performance of the LQIR controller based on the game theory approach in attitude control for the quadrotor platform.
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
 %% \appendix
