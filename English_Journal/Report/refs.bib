@@ -219,3 +219,44 @@ keywords = {Pursuit-evasion differential game, zero-sum linear-quadratic game, t
 abstract = {Pursuit-evasion zero-sum differential game with linear dynamics and quadratic cost functional is considered. The dynamics of each player is ideal, meaning that the controls of the players are their accelerations. The objective of the pursuer is minimizing the cost functional, while the evader has two objectives: maximizing the cost functional and keeping a given terminal inequality constraint. The game is solved both in open-loop and in feedback controls. Solution properties for small control penalties in the cost functional are analyzed. Simulation of the pursuit by the game optimal feedback control against a realistic bang-bang evader's control is presented.}
 }
 
+@article{XUE20227992,
+title = {Compound tracking control based on MPC for quadrotors with disturbances},
+journal = {Journal of the Franklin Institute},
+volume = {359},
+number = {15},
+pages = {7992-8013},
+year = {2022},
+issn = {0016-0032},
+doi = {https://doi.org/10.1016/j.jfranklin.2022.07.056},
+url = {https://www.sciencedirect.com/science/article/pii/S0016003222005336},
+author = {Ruochen Xue and Li Dai and Da Huo and Huahui Xie and Zhongqi Sun and Yuanqing Xia},
+abstract = {In this paper, a compound control strategy is proposed to realize the trajectory tracking task of quadrotors under operating constraints and disturbances. Disturbances caused by model uncertainties, environmental noises, and measurement disturbances are divided into matched disturbances and unmatched ones, which are compensated and suppressed separately by using two control components. The integral sliding mode control component is designed to actively reject the matched disturbances, and the control system is then transformed into an equivalent control system subject to equivalent disturbances only related to the unmatched disturbances. The remaining equivalent disturbances are treated by a robust model predictive control component based on the idea of constraints tightening, which minimizes the tracking error in an optimization framework and takes both state and input constraints into account explicitly. The derived compound control strategy is based on these two control components. Conditions are provided to guarantee the robust constraint satisfaction, recursive feasibility and closed-loop stability of the tracking error system. An illustrative example on the quadrotors shows the efficiency and robustness of this compound tracking control algorithm.}
+}
+
+@article{LIN2020135,
+title = {Event-triggered reinforcement learning control for the quadrotor UAV with actuator saturation},
+journal = {Neurocomputing},
+volume = {415},
+pages = {135-145},
+year = {2020},
+issn = {0925-2312},
+doi = {https://doi.org/10.1016/j.neucom.2020.07.042},
+url = {https://www.sciencedirect.com/science/article/pii/S0925231220311504},
+author = {Xiaobo Lin and Jian Liu and Yao Yu and Changyin Sun},
+keywords = {Quadrotor, UAV, Reinforcement learning, Flight control, Event-triggered control, Actuator saturation},
+abstract = {This paper proposes an event-triggered reinforcement learning (RL) control strategy to stabilize the quadrotor unmanned aerial vehicle (UAV) with actuator saturation. As the quadrotor UAV equips with a complex dynamic is difficult to be model accurately, a model free reinforcement learning scheme is designed. Due to the practical limitation of actuators, the end of controller is constrained with a bounded function. In order to reduce the calculation consumption for the onboard computer, an event-triggered mechanism is developed, which only update the controller when the triggered condition is satisfied. The proposed controller is implemented with two neural networks which are called critic and actor. Some advanced RL technologies are utilized for speeding up the train process, e.g. off-policy training, experience replay, etc. The stability of closed-loop system is proved by the Lyapunov analysis. The simulation results including a stability task and a tracking task verify the theoretical analysis, in which we find the updating frequency of controller is decreased greatly.}
+}
+
+@article{KIM20211888,
+title = {Decentralized sampled-data fuzzy controller design for a VTOL UAV},
+journal = {Journal of the Franklin Institute},
+volume = {358},
+number = {3},
+pages = {1888-1914},
+year = {2021},
+issn = {0016-0032},
+doi = {https://doi.org/10.1016/j.jfranklin.2020.12.025},
+url = {https://www.sciencedirect.com/science/article/pii/S0016003220308383},
+author = {Han Sol Kim and Kwangil Lee and Young Hoon Joo},
+abstract = {This study focuses on a sampled-data fuzzy decentralized tracking control problem for a quadrotor unmanned aerial vehicle (UAV) under the variable sampling rate condition. To this end, the overall dynamics of the quadrotor is expressed as a decentralized Takagi–Sugeno (T–S) fuzzy model interconnected with each other. Although the proposed decentralized control technique divides the overall UAV control system into attitude and position subsystems, the stability of the entire control system is guaranteed. Besides, in this paper, the model uncertainty, interconnection, and reference trajectory are considered as disturbances acting on the tracking error. To attenuate these disturbances, a novel sampled-data tracking control design technique is derived based on a linear reference model to be tracked and the time-dependent Lyapunov–Krasovskii functional (LKF). By doing so, both the stability of the tracking error dynamics and the minimization of tracking performance are guaranteed. Also, the proposed tracking control design method is derived as a linear matrix inequality (LMI)-based optimal problem. Finally, a simulation example is provided to demonstrate the effectiveness and feasibility of the proposed design methodology.}
+}
