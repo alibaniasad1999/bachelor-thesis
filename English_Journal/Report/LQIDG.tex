@@ -260,7 +260,7 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure 
 \begin{figure}[H]
     \centering
     \includegraphics[width=12cm]{../Figure/schematic.png}
-    \caption{Quadrotor Configuration.}
+    \caption{Quadrotor configuration.}
     \label{fig:schematic}
 \end{figure}
 \subsection{Dynamic Modeling of the Quadrotor Platform}
@@ -490,7 +490,7 @@ The structure of the identification approach is illustrated in figure \ref{fig:i
 		\label{fig:identification}
 \end{figure}
 \section{LQIR-DG Controller Structure}\label{sec:controller}
-\noindent First, the augmented states of the quadrotor platform, including the states and their integrals are selected to use in the structure of the LQIR-DG controller for eliminating the steady state errors. Then, the design methodology of the controller structure is introduced to produce the best commands for the 3-DoF quadrotor platform.
+\noindent First, the augmented states of the quadrotor platform, including the states and their integrals are selected to use in the structure of the LQIR-DG controller for eliminating the steady-state errors. Then, the design methodology of the controller structure is introduced to produce the best commands for the 3-DoF quadrotor platform.
 \subsection{Augmented States}
 \noindent To augment an integral action into the control strategy architecture, the augmented states are defined as $\boldsymbol{\mathrm{x_{a}}} = \begin{bmatrix}
 	\boldsymbol{\mathrm{x}} &
@@ -659,7 +659,7 @@ These results illustrate that the outputs of the simulation results for the quad
 	% \vspace{-0.25cm}
 	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw_parameter}
 	}
-	\caption{Identification process results when the quadrotor rotates about only one axis: (a) Identification of $\Gamma_3$ in free roll motion. (b) Identification of $\Gamma_6$ in free pitch motion. (c) Identification of $\Gamma_8$
+	\caption{Identification process results when the quadrotor rotates about only one axis: (a) identification of $\Gamma_3$ in free roll motion. (b) identification of $\Gamma_6$ in free pitch motion. (c) identification of $\Gamma_8$
 	in free yaw motion.}
 	\label{fig:one_degree_identification}
 \end{figure}
@@ -673,7 +673,7 @@ These results illustrate that the outputs of the simulation results for the quad
 	\subfloat[]{\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/roll_parameter}\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch_parameter}
 	}
 	\caption{Identification process results when the quadrotor rotates about its roll and pitch axes:
-	(a) Comparison of Simulation and experimental results. (b) Identification of $\Gamma_2$ and $\Gamma_5$.}
+	(a) somparison of simulation and experimental results. (b) identification of $\Gamma_2$ and $\Gamma_5$.}
 	\label{fig:two_degree_identification}
 % \end{figure}
 % \begin{figure}[H]
@@ -683,7 +683,7 @@ These results illustrate that the outputs of the simulation results for the quad
 	\hfil
 	\subfloat[]{\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/roll_parameter}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/pitch_parameter}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/yaw_parameter}
 	}
-	\caption{Identification process results when the quadrotor rotates about its roll, pitch, and yaw axes: (a) Comparison of Simulation and experimental results. (b) Identification of $\Gamma_1$ , $\Gamma_4$ and
+	\caption{Identification process results when the quadrotor rotates about its roll, pitch, and yaw axes: (a) somparison of simulation and experimental results. (b) identification of $\Gamma_1$ , $\Gamma_4$ and
 	$\Gamma_7$ parameters.}
 	\label{fig:three_degree_identification}
 \end{figure}
@@ -722,7 +722,7 @@ Figures \ref{fig:omega} \ref{sub@fig:omega_regulation} and \ref{sub@fig:omega_sq
 	\includegraphics[width=.33\linewidth]{../Figure/implementation/lqidg_yaw}}
 	\hfill
 	\subfloat[\label{fig:square}]{\includegraphics[width=.35\linewidth]{../Figure/implementation/square/lqidg_roll_20}\includegraphics[width=.35\linewidth]{../Figure/implementation/square/lqidg_pitch_20}}
-	\caption{Comparison of actual roll and pitch angles with the desired values in \ref{sub@fig:regulation} Regulation \ref{sub@fig:square} Tracking problem.}
+	\caption{Comparison of actual roll and pitch angles with the desired values in \ref{sub@fig:regulation} regulation and \ref{sub@fig:square} tracking problems.}
 	\label{fig:result}
 \end{figure}
 
@@ -733,7 +733,7 @@ Figures \ref{fig:omega} \ref{sub@fig:omega_regulation} and \ref{sub@fig:omega_sq
 	}
 	\hfil
 	\subfloat[\label{fig:omega_square}]{\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_3}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_4}} %%%? didnt describe a and b
-	\caption{Rotational velocity  commands in \ref{sub@fig:omega_regulation} Regulation \ref{sub@fig:omega_square} Tracking problems.}
+	\caption{Rotational velocity  commands in \ref{sub@fig:omega_regulation} regulation and \ref{sub@fig:omega_square} tracking problems.}
 	\label{fig:omega}
 \end{figure}
 \subsubsection{Investigating the Disturbance Rejection}\label{sec:disturbance}
@@ -790,7 +790,7 @@ These results indicate that the proposed controller is able to provide rapid con
 	\centering
 	\subfloat[\label{fig:all_roll}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidgvslqr/roll}}\subfloat[\label{fig:all_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidgvslqr/pitch}
 	}
-	\caption{Comparison of LQIR-DG structure with the variant of LQR and PID in regulation problem: \ref{sub@fig:all_roll} Roll Angle \ref{sub@fig:all_pitch} Pitch Angle.}
+	\caption{Comparison of LQIR-DG structure with the variant of LQR and PID in regulation problem: \ref{sub@fig:all_roll} roll angle \ref{sub@fig:all_pitch} pitch angle.}
 	\label{fig:compare}
 \end{figure}
 
