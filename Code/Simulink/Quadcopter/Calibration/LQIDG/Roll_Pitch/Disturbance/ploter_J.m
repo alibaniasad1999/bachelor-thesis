@@ -12,7 +12,7 @@ plot(time, roll_pitch_LQIDG_distubance(find(sim_time == 5):end, 1)*180/pi, '--k'
 hold off;
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
-ylabel('$\phi_{(deg)}$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\phi$(deg)', 'interpreter', 'latex', 'FontSize', 24);
 legend('Setpoint', 'LQIR-DG Controller', 'Location','northeast');
 % axis([0 10 -1 0.2])
 xlim([0 80])
@@ -29,7 +29,7 @@ hold off;
 xlim([0 80])
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
-ylabel('$\theta_{(deg)}$', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\theta$(deg)', 'interpreter', 'latex', 'FontSize', 24);
 legend('Setpoint', 'LQIR-DG Controller', 'Location','northeast');
 % print('../../../../../../../English_Journal/Figure/implementation/disturbance/lqidg_pitch.png','-dpng','-r400');
 print('../../../../../../../English_Journal/Figure/implementation/disturbance/lqidg_pitch','-depsc');

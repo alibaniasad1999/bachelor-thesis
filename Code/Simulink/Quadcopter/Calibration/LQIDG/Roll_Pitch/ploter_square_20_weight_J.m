@@ -1,7 +1,7 @@
 clc
 clear;
 
-load('data_film_20_weight.mat');
+load('data_film_squre_20_weight.mat');
 time = 0:0.02:100;
 
 
@@ -22,7 +22,7 @@ hold on;
 plot(time-20, roll_pitch_LQIDG(:, 1)*180/pi, '--k', 'linewidth', 2);
 hold off;
 
-legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
+legend('Setpoint', 'LQIR-DG', 'Location','northeast');
 axis([0 80 -40 60])
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
@@ -36,7 +36,7 @@ plot(time-20, roll_pitch_LQIDG(:, 2)*180/pi, '--k', 'linewidth', 2);
 hold off;
 xlim([0 80])
 ylim([-40 60])
-legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
+legend('Setpoint', 'LQIR-DG', 'Location','northeast');
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\theta$(deg)', 'interpreter', 'latex', 'FontSize', 24);
