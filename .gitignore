@@ -608,7 +608,7 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
-
+.vscode/
 # xwatermark package
 *.xwm
 *.avi
