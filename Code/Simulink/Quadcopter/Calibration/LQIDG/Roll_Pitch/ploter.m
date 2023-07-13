@@ -2,7 +2,7 @@ clear;
 clc;
 %% plot data %%
 time = 0:0.02:10; % set time from start
-load('roll_pitch.mat') % load data
+% load('roll_pitch.mat') % load data
 sim_time = 0:0.02:15;
 % pitch
 % subplot(2,1,1);

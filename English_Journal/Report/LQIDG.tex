@@ -77,7 +77,7 @@
 %% for the whole article with \linenumbers.
 %% \usepackage{lineno}
 
-\journal{Franklin Institute}
+%\journal{Franklin Institute}
 
 \begin{document}
 
@@ -126,13 +126,13 @@
 %%             state={},
 %%             country={}}
 
-\author{Ali BaniAsad}
-\ead{ali.baniasad@ae.sharif.edu}
-\author{Alireza Sharifi \corref{cor1}}
-\ead{ar.sharifi@sharif.edu}
-\author{Reza Pordal}
-\ead{Reza.pordal77@student.sharif.edu}
-\cortext[cor1]{Corresponding author}
+%\author{Ali BaniAsad}
+%\ead{ali.baniasad@ae.sharif.edu}
+%\author{Alireza Sharifi \corref{cor1}}
+%\ead{ar.sharifi@sharif.edu}
+%\author{Reza Pordal}
+%\ead{Reza.pordal77@student.sharif.edu}
+%\cortext[cor1]{Corresponding author}
 
 % \address{Department of Aerospace Engineering
 % Sharif University of Technology Tehran, Iran}
@@ -141,17 +141,17 @@
 % \address{Department of Aerospace Engineering
 % Sharif University of Technology Tehran, Iran}
 
-\author{Hadi Nobahari}
-\ead{nobahari@sharif.edu}
+%\author{Hadi Nobahari}
+%\ead{nobahari@sharif.edu}
 
 
 
-\affiliation{organization={Department of Aerospace Engineering Sharif University of Technology},%Department and Organization
-            % addressline={}, 
-            city={Tehran},
-            % postcode={}, 
-            % state={},
-            country={Iran}}
+%\affiliation{organization={Department of Aerospace Engineering Sharif University of Technology},%Department and Organization
+%            % addressline={}, 
+%            city={Tehran},
+%            % postcode={}, 
+%            % state={},
+%            country={Iran}}
 
 \begin{abstract}
 %% Text of abstract
@@ -205,10 +205,10 @@ A crucial subsystem of a control system for the quadrotor is the Attitude Contro
 To regulate the quadrotor attitude, a Proportional Integral Derivative (PID) controller is utilized in \cite{article_Abdul, article_Bolandi}. Due to the nonlinearity dynamics of the quadrotor, the PID strategy is not effective in the presence of disturbance and modeling error.
 To provide a faster control command in facing the modeling error and reduce the disturbance effect in the attitude control, the model-based control strategies including nonlinear control, intelligent control, optimal control, and robust control have been implemented on the ACS of the quadrotor.
 
-Synergetic Control \cite{article_Chara}, Feedback Linearization (FBL) \cite{article_Aboudonia}, and Sliding Mode Control (SMC) \cite{7007285}, which are a group of the nonlinear control category, have been utilized to regulate the Euler angles (roll, pitch, and yaw angles) of the quadrotor. To control attitude of the quadrotor intelligently, the controller strategies such as reinforcement learning \cite{LIN2020135}, iterative learning \cite{electronics10202474}, machine learning \cite{4564736}, and fuzzy logic \cite{KIM20211888} have been implemented. Moreover, to produce the optimal control commands, the controller strategies including Linear Quadratic Gaussian (LQG) \cite{7367782}, Linear Quadratic Regulator (LQR) \cite{7064553_LQR}, Linear Quadratic Integra Regulator (LQIR) \cite{article_LQIR}, and Model Predictive Controller (MPC) approaches \cite{XUE20227992} have been implemented on a quadrotor.
+Synergetic Control \cite{article_Chara}, Feedback Linearization (FBL) \cite{article_Aboudonia}, and Sliding Mode Control (SMC) \cite{LABBADI2020290, WU2022436, MOFID2022455}, which are a group of the nonlinear control category, have been utilized to regulate the Euler angles (roll, pitch, and yaw angles) of the quadrotor. To control attitude of the quadrotor intelligently, the controller strategies such as reinforcement learning \cite{LIN2020135}, iterative learning \cite{electronics10202474}, machine learning \cite{4564736}, and fuzzy logic \cite{GLIDA2022} have been implemented. Moreover, to produce the optimal control commands, the controller strategies including Linear Quadratic Gaussian (LQG) \cite{7367782}, Linear Quadratic Regulator (LQR) \cite{7064553_LQR}, Linear Quadratic Integral Regulator (LQIR) \cite{article_LQIR}, and Model Predictive Controller (MPC) \cite{YAN202335}  approaches have been implemented on a quadrotor.
 
 % \cite{GLIZER201522, 6160768}
-In the robust control strategies, $H_{\infty}$, $\mu\text{-synthesis}$, and Linear Quadratic Regulator Differential Game (LQR-DG) \cite{10025263} have also been utilized to stabilize the Euler angles of the quadrotor using the mini-maximization of a quadratic criterion including control effort and regulation performance in a worst-case scenario. In the LQR-DG controller \cite{GLIZER201522}, the control signals are produced using a pursuit-evasion game, one player tracks the best command, and the second player generates the input disturbance. For eliminating the steady-state error, the LQR-DG controller with integral action, called LQIR-DG, is implemented on a model of the ship \cite{6957349}.
+In the robust control strategies, $H_{\infty}$ \cite{WANG201910}, $\mu\text{-synthesis}$, and Linear Quadratic Regulator Differential Game (LQR-DG) \cite{10025263} have also been utilized to stabilize the Euler angles of the quadrotor using the mini-maximization of a quadratic criterion including control effort and regulation performance in a worst-case scenario. In the LQR-DG controller \cite{GLIZER201522}, the control signals are produced using a pursuit-evasion game, one player tracks the best command, and the second player generates the input disturbance. For eliminating the steady-state error, the LQR-DG controller with integral action, called LQIR-DG, is implemented on a model of the ship \cite{6957349}.
 
 In this paper, an LQIR-DG method is implemented real-time on 3-DoF experimental platform of the quadrotor to produce the robust control commands, i.e. rotational velocity of the quadrotor.
 To this end, first, the experimental platform of the quadrotor is modeled using the Newton-Euler formulation and its linear state-space form is derived.
