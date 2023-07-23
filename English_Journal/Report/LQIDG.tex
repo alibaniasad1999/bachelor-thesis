@@ -42,6 +42,7 @@
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{amsfonts}
 \usepackage{tikz}
 \usepackage{subfig}
 \usepackage{adjustbox}
@@ -257,6 +258,168 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure 
 \end{figure}
 \subsection{Dynamic Modeling of the Quadrotor Platform}
 \noindent Here, according to Newton-Euler, the model of the quadrotor platform is presented as follows \cite{4399042, article_Bouabdallah}:
+\begin{equation}
+	\begin{bmatrix}
+		\dot p \\
+		\dot q \\
+		\dot r
+	\end{bmatrix} = \begin{bmatrix}
+		\dfrac{J_z}{\Gamma} & 0 & \dfrac{J_{xy}}{\Gamma} \\
+		0 & \dfrac{1}{J_y} & 0 \\
+		\dfrac{J_{xy}}{\Gamma} & 0 & \dfrac{J_x}{\Gamma}
+	\end{bmatrix} \left(
+		\begin{bmatrix}
+			0 & r & -q \\
+			-r & 0 & p \\
+			q & -p & 0
+		\end{bmatrix}\begin{bmatrix}
+			J_x & 0 & -J_{xy} \\
+			0 & J_y & 0 \\
+			-J_{xy} & 0 & J_z
+		\end{bmatrix} +
+		\begin{bmatrix}
+			u_{\text{roll}} \\
+			u_{\text{pitch}} \\
+			u_{\text{yaw}}
+		\end{bmatrix} + \begin{bmatrix}
+			d_{\text{roll}} \\
+			d_{\text{pitch}} \\
+			d_{\text{yaw}}
+		\end{bmatrix}
+	\right)
+\end{equation}
+
+\begin{equation}
+	\begin{bmatrix}
+	\dot{p} \\
+	\dot{q} \\
+	\dot{r}
+	\end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
+	J_z & 0 & J_{xy} \\
+	0 & \frac{\Gamma}{J_y} & 0 \\
+	J_{xy} & 0 & J_x
+	\end{bmatrix} \left(
+	\begin{bmatrix}
+	0 & r & -q \\
+	-r & 0 & p \\
+	q & -p & 0
+	\end{bmatrix} \begin{bmatrix}
+	J_x & 0 & -J_{xy} \\
+	0 & J_y & 0 \\
+	-J_{xy} & 0 & J_z
+	\end{bmatrix} +
+	\begin{bmatrix}
+	u_{\text{roll}} \\
+	u_{\text{pitch}} \\
+	u_{\text{yaw}}
+	\end{bmatrix} + \begin{bmatrix}
+	d_{\text{roll}} \\
+	d_{\text{pitch}} \\
+	d_{\text{yaw}}
+	\end{bmatrix}
+	\right).
+\end{equation}
+
+% \begin{align*}
+% 	\begin{bmatrix}
+% 	\dot{p} \\
+% 	\dot{q} \\
+% 	\dot{r}
+% 	\end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
+% 	J_z & 0 & J_{xy} \\
+% 	0 & \frac{\Gamma}{J_y} & 0 \\
+% 	J_{xy} & 0 & J_x
+% 	\end{bmatrix} \left(&
+% 	\begin{bmatrix}
+% 	0 & r & -q \\
+% 	-r & 0 & p \\
+% 	q & -p & 0
+% 	\end{bmatrix} \begin{bmatrix}
+% 	J_x & 0 & -J_{xy} \\
+% 	0 & J_y & 0 \\
+% 	-J_{xy} & 0 & J_z
+% 	\end{bmatrix} +\right. \\
+% 	\left.&
+% 	\begin{bmatrix}
+% 	\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
+% 	\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
+% 	\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
+% 	\end{bmatrix}& + \begin{bmatrix}
+% 	d_{\text{roll}} \\
+% 	d_{\text{pitch}} \\
+% 	d_{\text{yaw}}
+% 	\end{bmatrix}
+% 	\right)
+% \end{align*}
+
+\begin{align*}
+	\begin{bmatrix}
+		\dot{p} \\
+		\dot{q} \\
+		\dot{r}
+	\end{bmatrix} &= \frac{1}{\Gamma} \begin{bmatrix}
+		J_z & 0 & J_{xy} \\
+		0 & \frac{\Gamma}{J_y} & 0 \\
+		J_{xy} & 0 & J_x
+	\end{bmatrix} \left(
+		\begin{bmatrix}
+			0 & r & -q \\
+			-r & 0 & p \\
+			q & -p & 0
+		\end{bmatrix} \begin{bmatrix}
+			J_x & 0 & -J_{xy} \\
+			0 & J_y & 0 \\
+			-J_{xy} & 0 & J_z
+		\end{bmatrix} +
+		\begin{bmatrix}
+			\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
+			\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
+			\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
+		\end{bmatrix} +
+		\begin{bmatrix}
+			d_{\text{roll}} \\
+			d_{\text{pitch}} \\
+			d_{\text{yaw}}
+		\end{bmatrix}
+	\right)
+\end{align*}
+
+\begin{equation}
+	\begin{aligned}
+		\begin{bmatrix}
+			\dot{p} \\
+			\dot{q} \\
+			\dot{r}
+		\end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
+			J_z & 0 & J_{xy} \\
+			0 & \frac{\Gamma}{J_y} & 0 \\
+			J_{xy} & 0 & J_x
+		\end{bmatrix} \Bigg(
+		&\begin{bmatrix}
+			0 & r & -q \\
+			-r & 0 & p \\
+			q & -p & 0
+		\end{bmatrix} \begin{bmatrix}
+			J_x & 0 & -J_{xy} \\
+			0 & J_y & 0 \\
+			-J_{xy} & 0 & J_z
+		\end{bmatrix} \\
+		\quad+ &\begin{bmatrix}
+			\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
+			\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
+			\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
+		\end{bmatrix} + \begin{bmatrix}
+			d_{\text{roll}} \\
+			d_{\text{pitch}} \\
+			d_{\text{yaw}}
+		\end{bmatrix}
+		\Bigg)
+	\end{aligned}
+\end{equation}
+
+
+%%%%%%%%%%%%%%%% J must be text and x and y %%%%%%%%%%%%%%%%%
+	
 \begin{align}
 &\dot p = \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}
 {\mathrm{I}_{\text{xx}}} qr + q \dfrac{\mathrm{I}_{\text{rotor}}}
@@ -274,16 +437,24 @@ p \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_{c, r} +
 +  \dfrac{\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)}{\mathrm{I}_{\text{zz}}} 
 + \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}
 \end{align}
-where $\Omega_{c, i}~(i=1, 2, 3, 4)$ is the rotational velocity, computed as
-\begin{align}
+where $\Gamma$ is defined as
+\begin{equation}
+	\Gamma = \mathrm{J}_{\text{x}}\mathrm{J}_{\text{z}} - \mathrm{J}_{\text{xy}}^2
+\end{equation}
+and $\Omega_{c, i}~(i=1, 2, 3, 4)$ is the rotational velocity, computed as
+ \begin{align}
     \Omega_{c, 1}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
     \Omega_{c, 2}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}\\
     \Omega_{c, 3}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
     \Omega_{c, 4}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}
 \end{align}
+
+
 In the above equation, $\Omega_{\text{mean}}$ is the rotational velocity of the rotors. Also, $\mathrm{d}_{\text{cg}}$, $\text{d}$, and $\text{b}$ represent the distance between the rotors and the gravity center, drag factor, and thrust factor, respectively.
 $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ denote the disturbances produced in the body coordinate frame. Additionally,
-$u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ are control commands generated by the LQIR-DG controller. $\mathrm{I}_{\text{rotor}}$ is rotor inertia, and $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the moments of inertia.
+$u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ are control commands generated by the LQIR-DG controller.
+%  $\mathrm{I}_{\text{rotor}}$ is rotor inertia, and 
+ $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the moments of inertia.
 Euler angle rates are also determined from angular body rates as follows:
 \begin{equation}
 	\begin{bmatrix}
@@ -302,10 +473,10 @@ Euler angle rates are also determined from angular body rates as follows:
 	r
 	\end{bmatrix}
 \end{equation}
-The residual rotor velocity, denoted by $\Omega_{c,r}$, is calculated as follows:
-\begin{equation}
-	\Omega_{c, r} = -\Omega_{c, 1} + \Omega_{c, 2} - \Omega_{c, 3} + \Omega_{c, 4}
-\end{equation}
+% The residual rotor velocity, denoted by $\Omega_{c,r}$, is calculated as follows:
+% \begin{equation}
+% 	\Omega_{c, r} = -\Omega_{c, 1} + \Omega_{c, 2} - \Omega_{c, 3} + \Omega_{c, 4}
+% \end{equation}
 
 \subsection{State-Space Formulation}\label{sec:state-space}
 \noindent By defining $\boldsymbol{\mathrm{x}}_{\text{roll}} = \begin{bmatrix}
@@ -343,6 +514,25 @@ where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
 		\Gamma_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_2 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_3 = \dfrac{1}{\mathrm{I}_{\text{xx}}}\\ \Gamma_4 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_5 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_6 = \dfrac{1}{\mathrm{I}_{\text{yy}}} \\ \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}}, \quad \Gamma_8 = \dfrac{1}{\mathrm{I}_{\text{zz}}}
 	\end{split}
 \end{equation}
+\begin{align}
+	\dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_4\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_3d_{\text{roll}}\\[2mm] \label{eq:eq_of_motion_start1}
+	\dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
+	\dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)+ \dfrac{1}{J_y}d_{\text{pitch}}\\
+	\dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
+	\dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)+\Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_8d_{\text{yaw}}\\[2mm]
+	\dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4) \label{eq:eq_of_motion_end1}
+\end{align}
+where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
+\begin{equation}
+	\begin{aligned}
+		\Gamma_1 &= \dfrac{J_{xz}(J_x-J_y+J_z)}{\Gamma}, & \Gamma_2 &= \dfrac{J_z(J_z-J_y)+J_{xz}^2}{\Gamma}, & \Gamma_3 &= \dfrac{J_z}{\Gamma}, \\
+		\Gamma_4 &= \dfrac{J_{xz}}{\Gamma}, & \Gamma_5 &= \dfrac{J_z-J_x}{J_y}, & \Gamma_6 &= \dfrac{J_{xz}}{J_y}, \\
+		\Gamma_7 &= \dfrac{J_x(J_x-J_y)+J_{xz}^2}{\Gamma}, & \Gamma_8 &= \dfrac{J_x}{\Gamma}.
+	\end{aligned}
+\end{equation}
+	
+
+
 The measurement vector, obtained from the AHRS, is presented as follows:
 \begin{equation}
     \begin{split}
@@ -359,6 +549,69 @@ The measurement vector, obtained from the AHRS, is presented as follows:
 where $\boldsymbol{\nu}$ is a Gaussian white noise. Moreover, the superscripts $\mathrm{T}$ indicate the transpose notation.
 %%%? capital or small G g ? 
 \subsection{Linear Model}
+In the previous section, it was shown that equations \eqref{eq:eq_of_motion_start1} to \eqref{eq:eq_of_motion_end1} represent nonlinear dynamics. To obtain a linearized model, these equations can be rewritten as follows:
+\begin{equation}
+	\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
+		\dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 u_{\text{roll}} + \Gamma_4u_{\text{yaw}}+\Gamma_3d_{\text{roll}}\\[2mm]
+		\dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
+		\dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}u_{\text{pitc}}+ \dfrac{1}{J_y}d_{\text{pitch}}\\
+		\dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
+		\dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4u_{\text{roll}}+\Gamma_8u_{\text{yaw}}+\Gamma_8d_{\text{yaw}}\\[2mm]
+		\dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)
+	\end{cases}
+\end{equation}
+	
+
+\begin{align}
+\dot{\mathbf{x}} &= \mathbf{f}(\mathbf{x}, \mathbf{u})
+\end{align}
+where $\mathbf{x} \in \mathbb{R}^n$ is the state vector representing the system's internal states,
+$\mathbf{u} \in \mathbb{R}^m$ is the input vector, and
+$\mathbf{f}(\mathbf{x}, \mathbf{u})$ is the nonlinear function governing the state dynamics.
+To linearize the system around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e^*\!=\!0$ and $\boldsymbol{{\mathrm{u}}}_e^*\!=\!0)$, small perturbations $\Delta \mathbf{x}$ and $\Delta \mathbf{u}$ are used:
+
+\begin{align}
+\mathbf{x} &= \mathbf{x}_0 + \Delta \mathbf{x}, \\
+\mathbf{u} &= \mathbf{u}_0 + \Delta \mathbf{u}.
+\end{align}
+
+Then, the linearized state-space representation can be expressed as:
+\begin{align}
+{\Delta \mathbf{\dot x}} &= \mathbf{A} \Delta \mathbf{x} + \mathbf{B} \Delta \mathbf{u}
+\end{align}
+where
+$\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the state matrix,
+$\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the input matrix.
+
+% \begin{equation}
+% 	\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} = \begin{bmatrix}
+% 		\Gamma_1x_3 & 0 & \Gamma_1x_1 -\Gamma_2x_5 & 0 & -\Gamma_2x_3 & 0 \\
+% 		1 & (x_3\cos(x_2) - x_3\sin(x_2))\tan(x_4) & (\sin(x_2) + \cos(x_2))\tan(x_4) & (x_3\sin(x_2) + x_3\cos(x_2))sec^2(x_4) & 0 & 0 \\
+% 		\Gamma_5x_5 & 0 & 0 & 0 & \Gamma_5x_1  - 2\Gamma_6x_5 & 0 \\
+% 		0 & 0 & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_2) & 0 \\
+% 		\Gamma_7x_3 & 0 & \Gamma_7x_1 & 0 & -\Gamma_1x_3 & 0 \\
+% 		0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
+% 	\end{bmatrix}
+% \end{equation}
+\begin{equation}
+	\left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
+		0 & 0 & 0 & 0 & 0 & 0 \\
+		1 & 0 & 0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0 & 0 & 0 \\
+		0 & 0 & 1 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0 & 1 & 0
+	\end{bmatrix}, \quad \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
+		\Gamma_3 & 0 & \Gamma_4 \\
+		0 & 0 & 0 \\
+		0 & \dfrac{1}{J_y} & 0 \\
+		0 & 0 & 0 \\
+		\Gamma_4 & 0 & \Gamma_8 \\
+		0 & 0 & 0
+	\end{bmatrix}
+\end{equation}
+
+
 \noindent By defining $\boldsymbol{\dot{\mathrm{x}}} = \begin{bmatrix}
 	\boldsymbol{{\mathrm{\dot x_{\text{roll}}}}}&
 	\boldsymbol{{\mathrm{\dot x_{\text{pitch}}}}}&
@@ -392,7 +645,7 @@ $. Also, $\boldsymbol{\mathrm{B}}$ is the input matrix defined as
 	\end{bmatrix}
 \end{equation}
 where $\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
-	\dfrac{1}{\mathrm{I}_{\text{xx}}}
+	\dfrac{1}{\Gamma_3}
 	&
 	0
 \end{bmatrix}^{\mathrm{T}}$, $\boldsymbol{\mathrm{B}}_{\text{pitch}}  = \begin{bmatrix}
@@ -400,7 +653,7 @@ where $\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
 	&
 	0
 \end{bmatrix}^{\mathrm{T}}$, and $\boldsymbol{\mathrm{B}}_{\text{yaw}}  = \begin{bmatrix}
-	\dfrac{1}{\mathrm{I}_{\text{zz}}}
+	\dfrac{1}{\Gamma_8}
 	&
 	0
 \end{bmatrix}^{\mathrm{T}}$.
@@ -542,6 +795,10 @@ where $
 	\boldsymbol{\mathrm{S_{a_i}}} = \boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}$ and $
 	\boldsymbol{\mathrm{S{a_{d_i}}}} = \boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}.
 $%%%? needd : or not
+
+% subsection for tunning weighta with TCACS optimization
+\subsection{TCACS Optimization for Tuning the Weighting Matrices}
+\noindent In this section, the TCACS optimization method is utilized to tune the weighting matrices of the LQIR-DG controller. 
 \section{Results}\label{sec:results}
 \noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. Then, performance of the LQIR-DG structure is evaluated.
 Tables \ref{tab:parameters} and \ref{tab:control weight_new} present the quadrotor and LQIR-DG parameters, respectively.
