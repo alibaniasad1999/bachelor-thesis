@@ -798,6 +798,13 @@ $%%%? needd : or not
 
 % subsection for tunning weighta with TCACS optimization
 \subsection{TCACS Optimization for Tuning the Weighting Matrices}
+\noindent To optimize the weighting matrix of the LQIR-DG (Linear Quadratic Integral Regulator with Disturbance Rejection) controller, the TCACS (Tabu Continuous Ant Colony System) \cite{10.1007/978-3-540-28646-2_27} optimization method was utilized. The objective was to tune the controller parameters for improved performance in a 3-degree-of-freedom simulation.
+
+In the optimization process, the cost function was formulated based on the LQIR-DG controller, where the state feedback matrix $\boldsymbol{\mathrm{Q}}$ and the disturbance rejection matrix $R_d$ were the key parameters to be determined. To simplify the problem, it was assumed that R (the penalty matrix for control inputs) was fixed at a value of 1.
+
+By employing the TCACS optimization method, the algorithm explored the search space to find the optimal values of $\boldsymbol{\mathrm{Q}}$ and $R_d$ for each channel. The objective was to achieve a balance between control effort and disturbance rejection while ensuring stable and robust control performance.
+
+The optimization process aimed to fine-tune the controller parameters for the specific dynamics of the system under consideration. The resulting weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ would enable the LQIR-DG controller to efficiently regulate the system while effectively rejecting disturbances in the simulation.
 \noindent In this section, the TCACS optimization method is utilized to tune the weighting matrices of the LQIR-DG controller. 
 \section{Results}\label{sec:results}
 \noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. Then, performance of the LQIR-DG structure is evaluated.
