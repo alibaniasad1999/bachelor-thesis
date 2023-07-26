@@ -1,5 +1,5 @@
 % roll pitch LQIDG
-clc; clear;
+% clc; clear;
 % load('11-Jan-2022-15-55-56-LQIDG_noise_ite1005.mat');
 % weighting_matrix = XOpt;
 weighting_matrix = [
@@ -15,4 +15,6 @@ weighting_matrix = [
     ];
 QuadConstants;
 OpenLoop_LQDG_riccati_solver_roll;
+Q_roll = Q;
 OpenLoop_LQDG_riccati_solver_pitch;
+Q_pitch = Q;
