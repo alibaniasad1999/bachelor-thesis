@@ -1,4 +1,4 @@
-clc;clear;
+% clc;clear;
 QuadConstants;
 A = [0 1;
     B1 0];
