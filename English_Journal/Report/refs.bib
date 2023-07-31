@@ -10,7 +10,7 @@ doi = {10.4236/ica.2013.43040}
 }
 
 @article{WANG201910,
-	title = {Robust H attitude tracking control of a quadrotor UAV on SO(3) via variation-based linearization and interval matrix approach},
+	title = {Robust H$_{\infty}$ attitude tracking control of a quadrotor UAV on SO(3) via variation-based linearization and interval matrix approach},
 	journal = {ISA Transactions},
 	volume = {87},
 	pages = {10-16},
@@ -448,3 +448,141 @@ abstract="A new method for global minimization of continuous functions has been 
 isbn="978-3-540-28646-2"
 }
 
+@article{CHEN2022114,
+title = {Robust adaptive recursive sliding mode attitude control for a quadrotor with unknown disturbances},
+journal = {ISA Transactions},
+volume = {122},
+pages = {114-125},
+year = {2022},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2021.04.046},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057821002433},
+author = {Lulu Chen and Zhenbao Liu and Honggang Gao and Guodong Wang},
+keywords = {Adaptive recursive sliding mode control (ARSMC), Finite-time control, Attitude control, Robust control, Quadrotor},
+abstract = {Model uncertainties, unknown disturbances, and sensors measurement noises affect the attitude tracking control performance of quadrotors. In this article, a novel robust adaptive recursive sliding mode control (ARSMC) strategy is proposed for the quadrotor to improve the attitude tracking performance and disturbance rejection. Firstly, recursive sliding mode control is introduced, including a two-layer sliding surface, an integral sliding surface, and a fast nonsingular terminal sliding surface, which are recursive. Both sliding surfaces converge to zero in turn. And the initial value of the integral sliding surface is designed to eliminate the reaching phase. Besides, the adaptive gain adjustment method is presented to make an estimate of the unknown upper bound of disturbances. It is proved that the attitude control system has the finite-time convergence and the attitude tracking error will converge to zero. A quadrotor attitude test platform is built to evaluate the proposed algorithm. For comparison, twisting controller (TC), cascade PID, and active disturbance rejection control (ADRC) algorithms are introduced. Ultimately, the efficiency and feasibility of the proposed algorithm are verified by simulation and experimental results.}
+}
+
+@article{XIE2023477,
+title = {Fixed-time convergence attitude control for a tilt trirotor unmanned aerial vehicle based on reinforcement learning},
+journal = {ISA Transactions},
+volume = {132},
+pages = {477-489},
+year = {2023},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2022.06.006},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057822003111},
+author = {Tian Xie and Bin Xian and Xu Gu},
+keywords = {Tilt trirotor UAV, Fixed-time convergence, Reinforcement learning, Modeling uncertainties, External disturbances},
+abstract = {This paper presents a new nonlinear robust attitude control strategy for the tilt trirotor unmanned aerial vehicle (UAV). Fixed-time convergence control of the UAV's attitude tracking errors under the effects of model uncertainties and unknown external disturbances is achieved by utilizing the proposed control design. Actor–critic (AC) structure based neural networks are trained only with the information of the UAV's inputs and outputs data, to handle the UAV's modeling uncertainties with bounded estimation error. Then a sliding-mode based fixed-time controller is designed to compensate the approximation error of the neural networks and the unknown external disturbances. Based on the Lyapunov stability theory, the stability analysis of the closed-loop system is presented. The performance of the presented nonlinear robust control strategy is validated through the real-time flight experiments.}
+}
+
+@article{SANTOS2022123,
+title = {Wayset-based guidance of multirotor aerial vehicles using robust tube-based model predictive control},
+journal = {ISA Transactions},
+volume = {128},
+pages = {123-135},
+year = {2022},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2021.12.002},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057821006182},
+author = {Davi A. Santos and Constantino M. Lagoa},
+keywords = {Wayset-based guidance, Multirotor aerial vehicle, Tube-based MPC},
+abstract = {The present paper is concerned with the wayset-based guidance of underactuated multirotor aerial vehicles (MAVs). A hierarchical guidance and control structure is first established, in which the guidance is realized as a supervisory loop. The lower-level stabilizing attitude and position control laws are assumed to be available. On the other hand, the outer-loop guidance is designed based on a fixed-horizon tube-based robust model predictive control (MPC), which conducts the MAV to visit a given sequence of waysets, without violating their state and control bounds, and allowing the vehicle to rest in each wayset for a specified period. The MPC is designed using a reduced-order closed-loop dynamic model describing the vehicle's translation, which is derived considering the stabilizing position and attitude control laws and the assumption of a time-scale separation between the closed-loop translational and rotational dynamics. This model is put into a discrete-time linear state-space representation subject to additive bounded random disturbance and measurement noise. The properties of the proposed method, which includes the MPC recursive feasibility and robust stability as well as the overall guidance feasibility, are analytically studied. The method is also numerically evaluated using a realistic quadrotor dynamic model, showing its effectiveness and confirming its properties.}
+}
+
+@article{SRINIVASARAO2022516,
+title = {Cascaded adaptive integral backstepping sliding mode and super-twisting controller for twin rotor system using bond graph model},
+journal = {ISA Transactions},
+volume = {130},
+pages = {516-532},
+year = {2022},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2022.03.023},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057822001458},
+author = {Gopisetti Srinivasarao and Arun K. Samantaray and Sanjoy K. Ghoshal},
+keywords = {Bond graph modeling, Multi-body dynamics, Twin-rotor system, Higher order sliding mode observer, Super-twisting cascaded controller},
+abstract = {This work presents a bond graph (BG) model and a robust cascaded controller for a twin-rotor system (TRS). The BG model accounts for all the energetic and dynamical couplings. An adaptive integral backstepping sliding mode (AIBSM) controller is used in the outer loop to control the slow yaw and pitch dynamics of the mechanical sub-system whereas a higher-order sliding mode (HOSM) observer-based super-twisting algorithm (STA) controller is used in the inner loop to control the fast electromechanical actuator dynamics. The gain of the discontinuous control term of the integral backstepping sliding mode (IBSM) controller is adjusted by using an adaptive switching gain law, where the adaptive gain decreases or increases as the system state variables move closer to or away from a sliding surface; thereby reducing chatter and discontinuities near the sliding manifold, and ensuring a nearly smooth reference signal to the inner-loop controller. The unavailable states are estimated by using an unscented Kalman filter. All the used controllers are shown to be Lyapunov stable. The performance of the developed controller is validated through simulation and experiment, and it is further compared with other existing robust controllers. The proposed controller is robust against un-modeled dynamics and external disturbances, and it performs better, in terms of trajectory tracking error and disturbance rejection, than presently existing controllers for the TRS.}
+}
+
+@article{ZHOU202185,
+title = {Trajectory tracking control for electro-optical tracking system based on fractional-order sliding mode controller with super-twisting extended state observer},
+journal = {ISA Transactions},
+volume = {117},
+pages = {85-95},
+year = {2021},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2021.01.062},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057821000732},
+author = {Xinli Zhou and Xingfei Li},
+keywords = {Electro-optical tracking system, Extended state observer, Super-twisting algorithm, Fractional-order, Nonsingular terminal sliding mode},
+abstract = {This paper investigates a trajectory tracking control scheme for electro-optical tracking systems subject to friction and other nonlinear disturbances. The proposed approach is based on a super-twisting extended state observer (ESO) and a fractional-order nonsingular terminal sliding mode (FONTSM) with a switching-type reaching law. The novel hybrid control scheme exhibits the following advantageous characteristics. First, the extended state observer injected with a super-twisting algorithm is capable of simultaneously estimating the friction and other nonlinear disturbances without detailed knowledge of the precise friction and disturbance models. Second, the FONTSM surface enhances the control accuracy and robustness, and provides a more flexible controller structure than its integer counterpart. Third, a novel switching-type reaching law is utilized to achieve fast response, constraining chattering in the system. Additionally, the finite-time convergence of the adopted ESO and the finite-time stability of the control system are demonstrated based on the rigorous Lyapunov criteria. Finally, the effectiveness of the proposed hybrid control scheme is demonstrated for an electro-optical tracking system via trajectory tracking experiments.}
+}
+
+@article{REKABI202081,
+title = {Distributed nonlinear H$_{\infty}$ control algorithm for multi-agent quadrotor formation flying},
+journal = {ISA Transactions},
+volume = {96},
+pages = {81-94},
+year = {2020},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2019.04.036},
+url = {https://www.sciencedirect.com/science/article/pii/S001905781930165X},
+author = {Fatemeh Rekabi and Farzad A. Shirazi and Mohammad Jafar Sadigh},
+keywords = {Distributed control, Nonlinear , Multi-agent system, Quadrotors},
+abstract = {A novel distributed formation control algorithm for nonlinear uncertain multi-agent systems is proposed in this paper. The algorithm is developed based on a nonlinear H∞ framework for a team of aerial robots with nonlinear dynamics and bounded parametric uncertainties. The multi-agent control algorithm reduces to local control laws dependent on agents information and their neighbors data. The proof of stability is presented analytically. Simulation results for two predefined scenarios verify the robust performance of the algorithm in the presence of external disturbances and bounded uncertainties, numerically. Additionally, the effects of communication network configuration are studied using numerical simulations. Calculated ISE and IADU indexes show the effectiveness of the distributed algorithm compared to independent performance of the agents.}
+}
+
+@article{HASHEMI2023160,
+title = {Robust Global stabilization of aerial continuum manipulation systems via hybrid feedback},
+journal = {ISA Transactions},
+volume = {138},
+pages = {160-167},
+year = {2023},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2023.03.021},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057823001295},
+author = {Seyed Hamed Hashemi and Farrokh Janabi-Sharifi and Amir Jalali},
+keywords = {Hybrid systems, Synergetic controllers, Continuum robots, Aerial manipulations, Cosserat rod},
+abstract = {In this paper, the control problem of aerial continuum manipulation systems (ACMSs) is considered. This study introduces a new platform for ACMSs in which a quadrotor is equipped with a tendon-bent concentric tube continuum robot. The decoupled dynamic modeling of ACMSs is utilized to derive the proposed feedback control law. The control design process is split into two distinct control loops. In the first loop, a terminal synergetic controller is presented to control the continuum robot's tip to track the desired trajectory. In the second loop, an improved synergetic controller is introduced to control the position and velocity of the quadrotor, which ensures asymptotic stability of the origin of the error dynamic. Moreover, in this loop a hybrid feedback law is designed to operate with the improved synergetic controller, which overcomes topological obstructions and globally stabilizes the attitude of the quadrotor. Furthermore, the stability of the resultant closed-loop system is verified utilizing the Lyapunov stability theorem. The efficiency and advantages of the proposed controller are verified by a comparative analysis in simulations.}
+}
+
+
+
+@article{Hwangbo_2017,
+	doi = {10.1109/lra.2017.2720851},
+  
+	url = {https://doi.org/10.1109%2Flra.2017.2720851},
+  
+	year = 2017,
+	month = {oct},
+  
+	publisher = {Institute of Electrical and Electronics Engineers ({IEEE})},
+  
+	volume = {2},
+  
+	number = {4},
+  
+	pages = {2096--2103},
+  
+	author = {Jemin Hwangbo and Inkyu Sa and Roland Siegwart and Marco Hutter},
+  
+	title = {Control of a Quadrotor With Reinforcement Learning},
+  
+	journal = {{IEEE} Robotics and Automation Letters}
+}
+
+
+
+@article{WANG2023222,
+title = {Cooperative USV-UAV marine search and rescue with visual navigation and reinforcement learning-based control},
+journal = {ISA Transactions},
+volume = {137},
+pages = {222-235},
+year = {2023},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2023.01.007},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057823000071},
+author = {Yuanda Wang and Wenzhang Liu and Jian Liu and Changyin Sun},
+keywords = {Unmanned surface vehicle, Unmanned aerial vehicle, Marine search and rescue, Convolutional neural network, Reinforcement learning},
+abstract = {This paper investigates visual navigation and control of a cooperative unmanned surface vehicle (USV)-unmanned aerial vehicle (UAV) system for marine search and rescue. First, a deep learning-based visual detection architecture is developed to extract positional information from the images taken by the UAV. With specially designed convolutional layers and spatial softmax layers, the visual positioning accuracy and computational efficiency are improved. Next, a reinforcement learning-based USV control strategy is proposed, which could learn a motion control policy with an enhanced ability to reject wave disturbances. The simulation experiment results show that the proposed visual navigation architecture can provide stable and accurate position and heading angle estimation in different weather and lighting conditions. The trained control policy also demonstrates satisfactory USV control ability under wave disturbances.}
+}
