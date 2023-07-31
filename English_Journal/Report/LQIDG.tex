@@ -15,7 +15,7 @@
 %% given in the file `manifest.txt'.
 %% 
 %% Template article for Elsevier's document class `elsarticle'
-%% with harvard style bibliographic references
+%% with Harvard style bibliographic references
 
 \documentclass[3p]{elsarticle}
 
@@ -68,7 +68,6 @@
 \tikzstyle{arrow} = [thick,->,>=stealth]
 \setlength\myleneiler{(\widthof{Initial Condition (deg)}-4\tabcolsep)/3}
 \setlength\mylenomega{(\widthof{Rotational Velocity Commands (rpm)}-4\tabcolsep)/4}
-
 
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
@@ -146,7 +145,6 @@
 %\ead{nobahari@sharif.edu}
 
 
-
 %\affiliation{organization={Department of Aerospace Engineering Sharif University of Technology},%Department and Organization
 %            % addressline={}, 
 %            city={Tehran},
@@ -156,14 +154,14 @@
 
 \begin{abstract}
 %% Text of abstract
-	In this study, a linear quadratic integral differential game approach is applied to regulate and track the Euler angles for a quadrotor experimental platform using two players. %%%? long and hard to underestand.
-	One produces commands for each channel of the quadrotor and
-	another generates the worst disturbance based on the mini-maximization of a quadratic criterion with integral action.
-	For this purpose, first, the attitude dynamics of the platform is modeled and its parameters are identified based on the Nonlinear Least Squares Trust-Region Reflective method.
-	The performance of the proposed controller is evaluated for regulation and tracking problems.
-	The ability of the controller is also examined in the disturbance rejection.
-	Moreover, the influence of uncertainty modeling is studied on the obtained results.
-	Then, performance of the proposed controller is compared with the classic Proportional Integral Derivative, Linear Quadratic Regulator, and Linear Quadratic Integral Regulator. The results demonstrate the effectiveness of the Game Theory on the Linear Quadratic Regulator approach when the input disturbance occurs.
+    In this study, a linear quadratic integral differential game approach is applied to regulate and track the Euler angles for a quadrotor experimental platform using two players. %%%? long and hard to underestand.
+    One produces commands for each channel of the quadrotor and
+    another generates the worst disturbance based on the mini-maximization of a quadratic criterion with integral action.
+    For this purpose, first, the attitude dynamics of the platform are modeled and its parameters are identified based on the Nonlinear Least Squares Trust-Region Reflective method.
+    The performance of the proposed controller is evaluated for regulation and tracking problems.
+    The ability of the controller is also examined in the disturbance rejection.
+    Moreover, the influence of uncertainty modeling is studied on the obtained results.
+    Then, the performance of the proposed controller is compared with the classic Proportional Integral Derivative, Linear Quadratic Regulator, and Linear Quadratic Integral Regulator. The results demonstrate the effectiveness of the Game Theory on the Linear Quadratic Regulator approach when the input disturbance occurs.
 \end{abstract}
 
 %%Graphical abstract
@@ -205,7 +203,7 @@ Linear Quadratic controller \sep~Differential Game Theory \sep~Quadrotor  \sep~3
 
 To address these challenges and enhance the quadrotor's attitude control, various model-based control strategies have been implemented on the ACS. These strategies encompass nonlinear control, intelligent control, optimal control, and robust control approaches.
 
-Nonlinear control methods such as Synergetic Control~\cite{article_Chara}, Feedback Linearization (FBL)~\cite{article_Aboudonia}, and Sliding Mode Control (SMC)~\cite{LABBADI2020290, WU2022436, MOFID2022455, CHEN2022114, SRINIVASARAO2022516, ZHOU202185} have been utilized to regulate the quadrotor's Euler angles (roll, pitch, and yaw angles) intelligently.
+Nonlinear control methods such as Synergetic Control~\cite{article_Chara}, Feedback Linearization (FBL)~\cite{article_Aboudonia}. Sliding Mode Control (SMC)~\cite{LABBADI2020290, WU2022436, MOFID2022455, CHEN2022114, SRINIVASARAO2022516, ZHOU202185} have been utilized to regulate the quadrotor's Euler angles (roll, pitch, and yaw angles) intelligently.
 
 Intelligent control approaches, including reinforcement learning~\cite{Hwangbo_2017, LIN2020135, XIE2023477, WANG2023222}, iterative learning~\cite{electronics10202474}, machine learning~\cite{4564736}, and fuzzy logic~\cite{GLIDA2022}, have also been employed to control the attitude of the quadrotor.
 
@@ -213,10 +211,9 @@ Optimal control strategies, such as Linear Quadratic Gaussian (LQG)~\cite{736778
 
 In the domain of robust control, techniques like $H_{\infty}$ control~\cite{WANG201910, REKABI202081}, $\mu$-synthesis, and Linear Quadratic Regulator Differential Game (LQR-DG)~\cite{10025263} have been used to stabilize the quadrotor's Euler angles, considering worst-case scenarios and mini-maximization of a quadratic criterion, which includes control effort and regulation performance.
 
-This paper presents a real-time implementation of the LQIR-DG method on a 3-DoF experimental platform of a quadrotor to produce robust control commands for its rotational velocity. The experimental platform of the quadrotor is modeled using the Newton-Euler formulation, and its linear state-space form is derived. Parameters of the quadrotor are estimated by matching experimental data with results from model simulations. The proposed controller is then implemented on the Arduino Mega2560 board using the embedded coder platform in MATLAB, and its performance is evaluated in regulation and tracking problems. Additionally, the controller's capability to reject input disturbances and modeling errors is tested. A comparison is made between the results of classical PID, LQR, LQIR, and the proposed method, demonstrating the superior performance of the LQIR-DG approach in attitude control for the quadrotor platform.
+In this paper, an LQIR-DG method is implemented real-time on 3-DoF experimental platform of the quadrotor to produce the robust control commands, i.e. rotational velocity of the quadrotor. To this end, first, the experimental platform of the quadrotor is modeled using the Newton-Euler formulation and its linear state-space form is derived. Then, the parameters of the quadrotor are estimated by matching experimental data with results from the model simulation. In the next step, the proposed controller is implemented on the Arduino Mega2560 board using the embedded coder platform in MATLAB and its performance is investigated in regulation and tracking problems. Moreover, the rejection capability of the input disturbance and modeling error is tested. Finally, a comparison is also performed between the results of classical PID, LQR, and LQIR with the proposed method. The results demonstrate that this method has an excellent performance in the attitude control of the quadrotor platform. A demo video of the results is available online here.
 
 The remainder of this research is organized as follows: Section~\ref{sec:problem} presents the problem statement. Section~\ref{sec:modeling} outlines the dynamic platform modeling process. The proposed controller architecture is described in Section~\ref{sec:controller}. Section~\ref{sec:results} presents the numerical results, and Section~\ref{sec:conclusion} concludes the paper. A demo video showcasing the results is available online~\footnote{Demo video link: \url{https://drive.google.com/drive/folders/1DIJs3wmIpmwI8slyHeitA6Ebe-khKTCt?usp=share_link}}.
-
 
 % This research is organized as follows: section~\ref{sec:problem} presents the problem statement.
 % In section~\ref{sec:modeling}, the dynamic platform is modeled. Then, the presented controller architecture is denoted in section~\ref{sec:controller}. 
@@ -259,167 +256,166 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
 \subsection{Dynamic Modeling of the Quadrotor Platform}
 \noindent Here, according to Newton-Euler, the model of the quadrotor platform is presented as follows~\cite{4399042, article_Bouabdallah}:
 \begin{equation}
-	\begin{bmatrix}
-		\dot p \\
-		\dot q \\
-		\dot r
-	\end{bmatrix} = \begin{bmatrix}
-		\dfrac{J_z}{\Gamma} & 0 & \dfrac{J_{xy}}{\Gamma} \\
-		0 & \dfrac{1}{J_y} & 0 \\
-		\dfrac{J_{xy}}{\Gamma} & 0 & \dfrac{J_x}{\Gamma}
-	\end{bmatrix} \left(
-		\begin{bmatrix}
-			0 & r & -q \\
-			-r & 0 & p \\
-			q & -p & 0
-		\end{bmatrix}\begin{bmatrix}
-			J_x & 0 & -J_{xy} \\
-			0 & J_y & 0 \\
-			-J_{xy} & 0 & J_z
-		\end{bmatrix} +
-		\begin{bmatrix}
-			u_{\text{roll}} \\
-			u_{\text{pitch}} \\
-			u_{\text{yaw}}
-		\end{bmatrix} + \begin{bmatrix}
-			d_{\text{roll}} \\
-			d_{\text{pitch}} \\
-			d_{\text{yaw}}
-		\end{bmatrix}
-	\right)
+    \begin{bmatrix}
+        \dot p \\
+        \dot q \\
+        \dot r
+    \end{bmatrix} = \begin{bmatrix}
+        \dfrac{J_z}{\Gamma} & 0 & \dfrac{J_{xy}}{\Gamma} \\
+        0 & \dfrac{1}{J_y} & 0 \\
+        \dfrac{J_{xy}}{\Gamma} & 0 & \dfrac{J_x}{\Gamma}
+    \end{bmatrix} \left(
+        \begin{bmatrix}
+            0 & r & -q \\
+            -r & 0 & p \\
+            q & -p & 0
+        \end{bmatrix}\begin{bmatrix}
+            J_x & 0 & -J_{xy} \\
+            0 & J_y & 0 \\
+            -J_{xy} & 0 & J_z
+        \end{bmatrix} +
+        \begin{bmatrix}
+            u_{\text{roll}} \\
+            u_{\text{pitch}} \\
+            u_{\text{yaw}}
+        \end{bmatrix} + \begin{bmatrix}
+            d_{\text{roll}} \\
+            d_{\text{pitch}} \\
+            d_{\text{yaw}}
+        \end{bmatrix}
+    \right)
 \end{equation}
 
 \begin{equation}
-	\begin{bmatrix}
-	\dot{p} \\
-	\dot{q} \\
-	\dot{r}
-	\end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
-	J_z & 0 & J_{xy} \\
-	0 & \frac{\Gamma}{J_y} & 0 \\
-	J_{xy} & 0 & J_x
-	\end{bmatrix} \left(
-	\begin{bmatrix}
-	0 & r & -q \\
-	-r & 0 & p \\
-	q & -p & 0
-	\end{bmatrix} \begin{bmatrix}
-	J_x & 0 & -J_{xy} \\
-	0 & J_y & 0 \\
-	-J_{xy} & 0 & J_z
-	\end{bmatrix} +
-	\begin{bmatrix}
-	u_{\text{roll}} \\
-	u_{\text{pitch}} \\
-	u_{\text{yaw}}
-	\end{bmatrix} + \begin{bmatrix}
-	d_{\text{roll}} \\
-	d_{\text{pitch}} \\
-	d_{\text{yaw}}
-	\end{bmatrix}
-	\right).
+    \begin{bmatrix}
+    \dot{p} \\
+    \dot{q} \\
+    \dot{r}
+    \end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
+    J_z & 0 & J_{xy} \\
+    0 & \frac{\Gamma}{J_y} & 0 \\
+    J_{xy} & 0 & J_x
+    \end{bmatrix} \left(
+    \begin{bmatrix}
+    0 & r & -q \\
+    -r & 0 & p \\
+    q & -p & 0
+    \end{bmatrix} \begin{bmatrix}
+    J_x & 0 & -J_{xy} \\
+    0 & J_y & 0 \\
+    -J_{xy} & 0 & J_z
+    \end{bmatrix} +
+    \begin{bmatrix}
+    u_{\text{roll}} \\
+    u_{\text{pitch}} \\
+    u_{\text{yaw}}
+    \end{bmatrix} + \begin{bmatrix}
+    d_{\text{roll}} \\
+    d_{\text{pitch}} \\
+    d_{\text{yaw}}
+    \end{bmatrix}
+    \right).
 \end{equation}
 
 % \begin{align*}
-% 	\begin{bmatrix}
-% 	\dot{p} \\
-% 	\dot{q} \\
-% 	\dot{r}
-% 	\end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
-% 	J_z & 0 & J_{xy} \\
-% 	0 & \frac{\Gamma}{J_y} & 0 \\
-% 	J_{xy} & 0 & J_x
-% 	\end{bmatrix} \left(&
-% 	\begin{bmatrix}
-% 	0 & r & -q \\
-% 	-r & 0 & p \\
-% 	q & -p & 0
-% 	\end{bmatrix} \begin{bmatrix}
-% 	J_x & 0 & -J_{xy} \\
-% 	0 & J_y & 0 \\
-% 	-J_{xy} & 0 & J_z
-% 	\end{bmatrix} +\right. \\
-% 	\left.&
-% 	\begin{bmatrix}
-% 	\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
-% 	\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
-% 	\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
-% 	\end{bmatrix}& + \begin{bmatrix}
-% 	d_{\text{roll}} \\
-% 	d_{\text{pitch}} \\
-% 	d_{\text{yaw}}
-% 	\end{bmatrix}
-% 	\right)
+%   \begin{bmatrix}
+%   \dot{p} \\
+%   \dot{q} \\
+%   \dot{r}
+%   \end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
+%   J_z & 0 & J_{xy} \\
+%   0 & \frac{\Gamma}{J_y} & 0 \\
+%   J_{xy} & 0 & J_x
+%   \end{bmatrix} \left(&
+%   \begin{bmatrix}
+%   0 & r & -q \\
+%   -r & 0 & p \\
+%   q & -p & 0
+%   \end{bmatrix} \begin{bmatrix}
+%   J_x & 0 & -J_{xy} \\
+%   0 & J_y & 0 \\
+%   -J_{xy} & 0 & J_z
+%   \end{bmatrix} +\right. \\
+%   \left.&
+%   \begin{bmatrix}
+%   \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
+%   \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
+%   \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
+%   \end{bmatrix}& + \begin{bmatrix}
+%   d_{\text{roll}} \\
+%   d_{\text{pitch}} \\
+%   d_{\text{yaw}}
+%   \end{bmatrix}
+%   \right)
 % \end{align*}
 
 \begin{align*}
-	\begin{bmatrix}
-		\dot{p} \\
-		\dot{q} \\
-		\dot{r}
-	\end{bmatrix} &= \frac{1}{\Gamma} \begin{bmatrix}
-		J_z & 0 & J_{xy} \\
-		0 & \frac{\Gamma}{J_y} & 0 \\
-		J_{xy} & 0 & J_x
-	\end{bmatrix} \left(
-		\begin{bmatrix}
-			0 & r & -q \\
-			-r & 0 & p \\
-			q & -p & 0
-		\end{bmatrix} \begin{bmatrix}
-			J_x & 0 & -J_{xy} \\
-			0 & J_y & 0 \\
-			-J_{xy} & 0 & J_z
-		\end{bmatrix} +
-		\begin{bmatrix}
-			\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
-			\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
-			\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
-		\end{bmatrix} +
-		\begin{bmatrix}
-			d_{\text{roll}} \\
-			d_{\text{pitch}} \\
-			d_{\text{yaw}}
-		\end{bmatrix}
-	\right)
+    \begin{bmatrix}
+        \dot{p} \\
+        \dot{q} \\
+        \dot{r}
+    \end{bmatrix} &= \frac{1}{\Gamma} \begin{bmatrix}
+        J_z & 0 & J_{xy} \\
+        0 & \frac{\Gamma}{J_y} & 0 \\
+        J_{xy} & 0 & J_x
+    \end{bmatrix} \left(
+        \begin{bmatrix}
+            0 & r & -q \\
+            -r & 0 & p \\
+            q & -p & 0
+        \end{bmatrix} \begin{bmatrix}
+            J_x & 0 & -J_{xy} \\
+            0 & J_y & 0 \\
+            -J_{xy} & 0 & J_z
+        \end{bmatrix} +
+        \begin{bmatrix}
+            \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
+            \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
+            \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
+        \end{bmatrix} +
+        \begin{bmatrix}
+            d_{\text{roll}} \\
+            d_{\text{pitch}} \\
+            d_{\text{yaw}}
+        \end{bmatrix}
+    \right)
 \end{align*}
 
 \begin{equation}
-	\begin{aligned}
-		\begin{bmatrix}
-			\dot{p} \\
-			\dot{q} \\
-			\dot{r}
-		\end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
-			J_z & 0 & J_{xy} \\
-			0 & \frac{\Gamma}{J_y} & 0 \\
-			J_{xy} & 0 & J_x
-		\end{bmatrix} \Bigg(
-		&\begin{bmatrix}
-			0 & r & -q \\
-			-r & 0 & p \\
-			q & -p & 0
-		\end{bmatrix} \begin{bmatrix}
-			J_x & 0 & -J_{xy} \\
-			0 & J_y & 0 \\
-			-J_{xy} & 0 & J_z
-		\end{bmatrix} \\
-		\quad+ &\begin{bmatrix}
-			\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
-			\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
-			\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
-		\end{bmatrix} + \begin{bmatrix}
-			d_{\text{roll}} \\
-			d_{\text{pitch}} \\
-			d_{\text{yaw}}
-		\end{bmatrix}
-		\Bigg)
-	\end{aligned}
+    \begin{aligned}
+        \begin{bmatrix}
+            \dot{p} \\
+            \dot{q} \\
+            \dot{r}
+        \end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
+            J_z & 0 & J_{xy} \\
+            0 & \frac{\Gamma}{J_y} & 0 \\
+            J_{xy} & 0 & J_x
+        \end{bmatrix} \Bigg(
+        &\begin{bmatrix}
+            0 & r & -q \\
+            -r & 0 & p \\
+            q & -p & 0
+        \end{bmatrix} \begin{bmatrix}
+            J_x & 0 & -J_{xy} \\
+            0 & J_y & 0 \\
+            -J_{xy} & 0 & J_z
+        \end{bmatrix} \\
+        \quad+ &\begin{bmatrix}
+            \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
+            \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
+            \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
+        \end{bmatrix} + \begin{bmatrix}
+            d_{\text{roll}} \\
+            d_{\text{pitch}} \\
+            d_{\text{yaw}}
+        \end{bmatrix}
+        \Bigg)
+    \end{aligned}
 \end{equation}
 
-
 %%%%%%%%%%%%%%%% J must be text and x and y %%%%%%%%%%%%%%%%%
-	
+    
 \begin{align}
 &\dot p = \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}
 {\mathrm{I}_{\text{xx}}} qr + q \dfrac{\mathrm{I}_{\text{rotor}}}
@@ -439,7 +435,7 @@ p \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_{c, r} +
 \end{align}
 where $\Gamma$ is defined as
 \begin{equation}
-	\Gamma = \mathrm{J}_{\text{x}}\mathrm{J}_{\text{z}} - \mathrm{J}_{\text{xy}}^2
+    \Gamma = \mathrm{J}_{\text{x}}\mathrm{J}_{\text{z}} - \mathrm{J}_{\text{xy}}^2
 \end{equation}
 and $\Omega_{c, i}~(i=1, 2, 3, 4)$ is the rotational velocity, computed as
  \begin{align}
@@ -449,7 +445,6 @@ and $\Omega_{c, i}~(i=1, 2, 3, 4)$ is the rotational velocity, computed as
     \Omega_{c, 4}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}
 \end{align}
 
-
 In the above equation, $\Omega_{\text{mean}}$ is the rotational velocity of the rotors. Also, $\mathrm{d}_{\text{cg}}$, $\text{d}$, and $\text{b}$ represent the distance between the rotors and the gravity center, drag factor, and thrust factor, respectively.
 $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ denote the disturbances produced in the body coordinate frame. Additionally,
 $u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ are control commands generated by the LQIR-DG controller.
@@ -457,81 +452,80 @@ $u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ are control commands
  $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the moments of inertia.
 Euler angle rates are also determined from angular body rates as follows:
 \begin{equation}
-	\begin{bmatrix}
-	\dot\phi \\
-	\dot\theta \\
-	\dot\psi
-	\end{bmatrix} = 
-	\begin{bmatrix}
-	1 & \sin(\phi)\tan(\theta) & \cos(\phi)\tan(\theta) \\
-	0 & \cos(\phi) & -\sin(\phi) \\
-	0 & \sin(\phi)/\cos(\theta) & \cos(\phi)/\cos(\theta)
-	\end{bmatrix}
-	\begin{bmatrix}
-	p \\
-	q \\
-	r
-	\end{bmatrix}
+    \begin{bmatrix}
+    \dot\phi \\
+    \dot\theta \\
+    \dot\psi
+    \end{bmatrix} = 
+    \begin{bmatrix}
+    1 & \sin(\phi)\tan(\theta) & \cos(\phi)\tan(\theta) \\
+    0 & \cos(\phi) & -\sin(\phi) \\
+    0 & \sin(\phi)/\cos(\theta) & \cos(\phi)/\cos(\theta)
+    \end{bmatrix}
+    \begin{bmatrix}
+    p \\
+    q \\
+    r
+    \end{bmatrix}
 \end{equation}
 % The residual rotor velocity, denoted by $\Omega_{c,r}$, is calculated as follows:
 % \begin{equation}
-% 	\Omega_{c, r} = -\Omega_{c, 1} + \Omega_{c, 2} - \Omega_{c, 3} + \Omega_{c, 4}
+%   \Omega_{c, r} = -\Omega_{c, 1} + \Omega_{c, 2} - \Omega_{c, 3} + \Omega_{c, 4}
 % \end{equation}
 
 \subsection{State-Space Formulation}\label{sec:state-space}
 \noindent By defining $\boldsymbol{\mathrm{x}}_{\text{roll}} = \begin{bmatrix}
-	x_1 & x_2
+    x_1 & x_2
 \end{bmatrix}^{\mathrm{T}}=
 \begin{bmatrix}
-	p & \phi
+    p & \phi
 \end{bmatrix}^{\mathrm{T}}$
 ,
 $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
-	x_3 & x_4 \end{bmatrix}^{\mathrm{T}} = 
-	\begin{bmatrix}
-	q & \theta \end{bmatrix}^{\mathrm{T}}
-	$
-	, and
-	$\boldsymbol{\mathrm{x}}_{\text{yaw}} = 
-	\begin{bmatrix}
-		x_5 & x_6
-	\end{bmatrix}^{\mathrm{T}} = 
-	\begin{bmatrix}
-		r & \psi
-	\end{bmatrix}^{\mathrm{T}}$, the formulation of the quadrotor platform is presented as follows:
+    x_3 & x_4 \end{bmatrix}^{\mathrm{T}} = 
+    \begin{bmatrix}
+    q & \theta \end{bmatrix}^{\mathrm{T}}
+    $
+    , and
+    $\boldsymbol{\mathrm{x}}_{\text{yaw}} = 
+    \begin{bmatrix}
+        x_5 & x_6
+    \end{bmatrix}^{\mathrm{T}} = 
+    \begin{bmatrix}
+        r & \psi
+    \end{bmatrix}^{\mathrm{T}}$, the formulation of the quadrotor platform is presented as follows:
 \begin{align}\label{eq:diffeq}
-	\dot x_1 &= \Gamma_1x_3 x_5 + \Gamma_2 x_3 \Omega_r + \Gamma_3\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_3d_{\text{roll}} \\[0.5em]
-	\dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)
+    \dot x_1 &= \Gamma_1x_3 x_5 + \Gamma_2 x_3 \Omega_r + \Gamma_3\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_3d_{\text{roll}} \\[0.5em]
+    \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)
     \\[0.5em]
     \dot x_3 &= \Gamma_4 x_1 x_5 - \Gamma_5 x_1 \Omega_r +  \Gamma_6\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_6d_{\text{pitch}}\\[0.5em]~\label{eq:diffeq-mid}
-	\dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[0.5em]
+    \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[0.5em]
     \dot x_5 &= \Gamma_7x_1 x_3 +  \Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_8d_{\text{yaw}}\\[0.5em] 
     \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:diffeq-end}
 \end{align}
 where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
 \begin{equation}
-	\begin{split}
-		\Gamma_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_2 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_3 = \dfrac{1}{\mathrm{I}_{\text{xx}}}\\ \Gamma_4 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_5 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_6 = \dfrac{1}{\mathrm{I}_{\text{yy}}} \\ \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}}, \quad \Gamma_8 = \dfrac{1}{\mathrm{I}_{\text{zz}}}
-	\end{split}
+    \begin{split}
+        \Gamma_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_2 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_3 = \dfrac{1}{\mathrm{I}_{\text{xx}}}\\ \Gamma_4 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_5 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_6 = \dfrac{1}{\mathrm{I}_{\text{yy}}} \\ \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}}, \quad \Gamma_8 = \dfrac{1}{\mathrm{I}_{\text{zz}}}
+    \end{split}
 \end{equation}
 \begin{align}
-	\dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_4\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_3d_{\text{roll}}\\[2mm]~\label{eq:eq_of_motion_start1}
-	\dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
-	\dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)+ \dfrac{1}{J_y}d_{\text{pitch}}\\
-	\dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
-	\dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)+\Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_8d_{\text{yaw}}\\[2mm]
-	\dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:eq_of_motion_end1}
+    \dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_4\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_3d_{\text{roll}}\\[2mm]~\label{eq:eq_of_motion_start1}
+    \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
+    \dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)+ \dfrac{1}{J_y}d_{\text{pitch}}\\
+    \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
+    \dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)+\Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_8d_{\text{yaw}}\\[2mm]
+    \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:eq_of_motion_end1}
 \end{align}
 where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
 \begin{equation}
-	\begin{aligned}
-		\Gamma_1 &= \dfrac{J_{xz}(J_x-J_y+J_z)}{\Gamma}, & \Gamma_2 &= \dfrac{J_z(J_z-J_y)+J_{xz}^2}{\Gamma}, & \Gamma_3 &= \dfrac{J_z}{\Gamma}, \\
-		\Gamma_4 &= \dfrac{J_{xz}}{\Gamma}, & \Gamma_5 &= \dfrac{J_z-J_x}{J_y}, & \Gamma_6 &= \dfrac{J_{xz}}{J_y}, \\
-		\Gamma_7 &= \dfrac{J_x(J_x-J_y)+J_{xz}^2}{\Gamma}, & \Gamma_8 &= \dfrac{J_x}{\Gamma}.
-	\end{aligned}
+    \begin{aligned}
+        \Gamma_1 &= \dfrac{J_{xz}(J_x-J_y+J_z)}{\Gamma}, & \Gamma_2 &= \dfrac{J_z(J_z-J_y)+J_{xz}^2}{\Gamma}, & \Gamma_3 &= \dfrac{J_z}{\Gamma}, \\
+        \Gamma_4 &= \dfrac{J_{xz}}{\Gamma}, & \Gamma_5 &= \dfrac{J_z-J_x}{J_y}, & \Gamma_6 &= \dfrac{J_{xz}}{J_y}, \\
+        \Gamma_7 &= \dfrac{J_x(J_x-J_y)+J_{xz}^2}{\Gamma}, & \Gamma_8 &= \dfrac{J_x}{\Gamma}.
+    \end{aligned}
 \end{equation}
-	
-
+    
 
 The measurement vector, obtained from the AHRS, is presented as follows:
 \begin{equation}
@@ -551,16 +545,16 @@ where $\boldsymbol{\nu}$ is a Gaussian white noise. Moreover, the superscripts $
 \subsection{Linear Model}
 In the previous section, it was shown that equations~\eqref{eq:eq_of_motion_start1} to~\eqref{eq:eq_of_motion_end1} represent nonlinear dynamics. To obtain a linearized model, these equations can be rewritten as follows:
 \begin{equation}
-	\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
-		\dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 u_{\text{roll}} + \Gamma_4u_{\text{yaw}}+\Gamma_3d_{\text{roll}}\\[2mm]
-		\dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
-		\dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}u_{\text{pitc}}+ \dfrac{1}{J_y}d_{\text{pitch}}\\
-		\dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
-		\dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4u_{\text{roll}}+\Gamma_8u_{\text{yaw}}+\Gamma_8d_{\text{yaw}}\\[2mm]
-		\dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)
-	\end{cases}
+    \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
+        \dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 u_{\text{roll}} + \Gamma_4u_{\text{yaw}}+\Gamma_3d_{\text{roll}}\\[2mm]
+        \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
+        \dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}u_{\text{pitc}}+ \dfrac{1}{J_y}d_{\text{pitch}}\\
+        \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
+        \dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4u_{\text{roll}}+\Gamma_8u_{\text{yaw}}+\Gamma_8d_{\text{yaw}}\\[2mm]
+        \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)
+    \end{cases}
 \end{equation}
-	
+    
 
 \begin{align}
 \dot{\mathbf{x}} &= \mathbf{f}(\mathbf{x}, \mathbf{u})
@@ -584,85 +578,84 @@ $\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\bo
 $\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the input matrix.
 
 % \begin{equation}
-% 	\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} = \begin{bmatrix}
-% 		\Gamma_1x_3 & 0 & \Gamma_1x_1 -\Gamma_2x_5 & 0 & -\Gamma_2x_3 & 0 \\
-% 		1 & (x_3\cos(x_2) - x_3\sin(x_2))\tan(x_4) & (\sin(x_2) + \cos(x_2))\tan(x_4) & (x_3\sin(x_2) + x_3\cos(x_2))sec^2(x_4) & 0 & 0 \\
-% 		\Gamma_5x_5 & 0 & 0 & 0 & \Gamma_5x_1  - 2\Gamma_6x_5 & 0 \\
-% 		0 & 0 & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_2) & 0 \\
-% 		\Gamma_7x_3 & 0 & \Gamma_7x_1 & 0 & -\Gamma_1x_3 & 0 \\
-% 		0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
-% 	\end{bmatrix}
+%   \dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} = \begin{bmatrix}
+%       \Gamma_1x_3 & 0 & \Gamma_1x_1 -\Gamma_2x_5 & 0 & -\Gamma_2x_3 & 0 \\
+%       1 & (x_3\cos(x_2) - x_3\sin(x_2))\tan(x_4) & (\sin(x_2) + \cos(x_2))\tan(x_4) & (x_3\sin(x_2) + x_3\cos(x_2))sec^2(x_4) & 0 & 0 \\
+%       \Gamma_5x_5 & 0 & 0 & 0 & \Gamma_5x_1  - 2\Gamma_6x_5 & 0 \\
+%       0 & 0 & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_2) & 0 \\
+%       \Gamma_7x_3 & 0 & \Gamma_7x_1 & 0 & -\Gamma_1x_3 & 0 \\
+%       0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
+%   \end{bmatrix}
 % \end{equation}
 \begin{equation}
-	\left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
-		0 & 0 & 0 & 0 & 0 & 0 \\
-		1 & 0 & 0 & 0 & 0 & 0 \\
-		0 & 0 & 0 & 0 & 0 & 0 \\
-		0 & 0 & 1 & 0 & 0 & 0 \\
-		0 & 0 & 0 & 0 & 0 & 0 \\
-		0 & 0 & 0 & 0 & 1 & 0
-	\end{bmatrix}, \quad \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
-		\Gamma_3 & 0 & \Gamma_4 \\
-		0 & 0 & 0 \\
-		0 & \dfrac{1}{J_y} & 0 \\
-		0 & 0 & 0 \\
-		\Gamma_4 & 0 & \Gamma_8 \\
-		0 & 0 & 0
-	\end{bmatrix}
+    \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 & 0
+    \end{bmatrix}, \quad \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
+        \Gamma_3 & 0 & \Gamma_4 \\
+        0 & 0 & 0 \\
+        0 & \dfrac{1}{J_y} & 0 \\
+        0 & 0 & 0 \\
+        \Gamma_4 & 0 & \Gamma_8 \\
+        0 & 0 & 0
+    \end{bmatrix}
 \end{equation}
 
-
 \noindent By defining $\boldsymbol{\dot{\mathrm{x}}} = \begin{bmatrix}
-	\boldsymbol{{\mathrm{\dot x_{\text{roll}}}}}&
-	\boldsymbol{{\mathrm{\dot x_{\text{pitch}}}}}&
-	\boldsymbol{{\mathrm{\dot x_{\text{yaw}}}}}
+    \boldsymbol{{\mathrm{\dot x_{\text{roll}}}}}&
+    \boldsymbol{{\mathrm{\dot x_{\text{pitch}}}}}&
+    \boldsymbol{{\mathrm{\dot x_{\text{yaw}}}}}
 \end{bmatrix}^{\mathrm{T}}$, the linear model of the quadrotor platform represented about the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e^*\!=\!0$ and $\boldsymbol{{\mathrm{u}}}_e^*\!=\!0)$ as
 \begin{equation}\label{eq:linear}
-	\boldsymbol{\dot{\mathrm{x}}} = \boldsymbol{\mathrm{A\,x}} + 
-	\boldsymbol{\mathrm{B}}
-	\left(\boldsymbol{\mathrm{u}} + \boldsymbol{\mathrm{d}}\right)
+    \boldsymbol{\dot{\mathrm{x}}} = \boldsymbol{\mathrm{A\,x}} + 
+    \boldsymbol{\mathrm{B}}
+    \left(\boldsymbol{\mathrm{u}} + \boldsymbol{\mathrm{d}}\right)
 \end{equation}
 $\boldsymbol{\mathrm{A}}$ is the dynamic system matrix, denoted as
 \begin{equation}
-	\boldsymbol{\mathrm{A}} = \begin{bmatrix}
-		\boldsymbol{{\mathrm{A_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
-		\boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{pitch}}}}} & \boldsymbol{0} \\
-		\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{yaw}}}}}
-	\end{bmatrix}
+    \boldsymbol{\mathrm{A}} = \begin{bmatrix}
+        \boldsymbol{{\mathrm{A_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
+        \boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{pitch}}}}} & \boldsymbol{0} \\
+        \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{A_{\text{yaw}}}}}
+    \end{bmatrix}
 \end{equation}
 $
-		\boldsymbol{\mathrm{A}}_{\text{roll}}  =\boldsymbol{\mathrm{A}}_{\text{pitch}}  = \boldsymbol{\mathrm{A}}_{\text{yaw}}  = \begin{bmatrix}
-			0 & 0\\
-			1 & 0
-		\end{bmatrix}
+        \boldsymbol{\mathrm{A}}_{\text{roll}}  =\boldsymbol{\mathrm{A}}_{\text{pitch}}  = \boldsymbol{\mathrm{A}}_{\text{yaw}}  = \begin{bmatrix}
+            0 & 0\\
+            1 & 0
+        \end{bmatrix}
 $. Also, $\boldsymbol{\mathrm{B}}$ is the input matrix defined as
 \begin{equation}
-	\boldsymbol{\mathrm{B}} =
-	\begin{bmatrix}
-		\boldsymbol{{\mathrm{B_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
-		\boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{pitch}}}}} & \boldsymbol{0} \\
-		\boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{yaw}}}}}
-	\end{bmatrix}
+    \boldsymbol{\mathrm{B}} =
+    \begin{bmatrix}
+        \boldsymbol{{\mathrm{B_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
+        \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{pitch}}}}} & \boldsymbol{0} \\
+        \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{yaw}}}}}
+    \end{bmatrix}
 \end{equation}
 where $\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
-	\dfrac{1}{\Gamma_3}
-	&
-	0
+    \dfrac{1}{\Gamma_3}
+    &
+    0
 \end{bmatrix}^{\mathrm{T}}$, $\boldsymbol{\mathrm{B}}_{\text{pitch}}  = \begin{bmatrix}
-	\dfrac{1}{\mathrm{I}_{\text{yy}}}
-	&
-	0
+    \dfrac{1}{\mathrm{I}_{\text{yy}}}
+    &
+    0
 \end{bmatrix}^{\mathrm{T}}$, and $\boldsymbol{\mathrm{B}}_{\text{yaw}}  = \begin{bmatrix}
-	\dfrac{1}{\Gamma_8}
-	&
-	0
+    \dfrac{1}{\Gamma_8}
+    &
+    0
 \end{bmatrix}^{\mathrm{T}}$.
 \subsection{Identification of the Platform Parameters}
 \noindent In this section, the Nonlinear Least Squares (NLS) algorithm is utilized for estimating the model parameters ($\boldsymbol{\mathrm{\Gamma}}$) of the 3-DoF experimental platform using experimental data.
 This technique is based on the Trust-Region Reflective (TRR) method, which finds the best values for $\boldsymbol{\mathrm{\Gamma}}$ by minimizing a cost function, defined as
 \begin{equation}
-	\min_{\Gamma}\left(\parallel e(\Gamma) \parallel^2\right) = 
-	\min_{\Gamma} \left(\sum_{j=1}^{n}(\boldsymbol{z}_j- \tilde{\boldsymbol{z}}_j)(\boldsymbol{z}_j- \tilde{\boldsymbol{z}}_j)^\mathrm{T}\right)
+    \min_{\Gamma}\left(\parallel e(\Gamma) \parallel^2\right) = 
+    \min_{\Gamma} \left(\sum_{j=1}^{n}(\boldsymbol{z}_j- \tilde{\boldsymbol{z}}_j)(\boldsymbol{z}_j- \tilde{\boldsymbol{z}}_j)^\mathrm{T}\right)
 \end{equation} %%%? what is j ??
 where $\boldsymbol{z}$ and $\tilde{\boldsymbol{z}}$ are the experimental and simulated output signals when the same input signals are applied.
 Moreover, $n$ is the number of scenarios.
@@ -670,89 +663,89 @@ To find a vector $\Gamma$, the optimization process performs until convergence i
 The structure of the identification approach is illustrated in figure~\ref{fig:identification}.
 
 \begin{figure}[H]
-	\centering
+    \centering
     \resizebox{1\textwidth}{!}{
-	\begin{tikzpicture}[font=\small,thick]
-		% Start block
-		\node[draw, align=center,		minimum width=2.5cm,		minimum height=1cm, fill=blue!10] (block1) {\textbf{Experimental Data} \\Input: rotational velocity\\
-		Output: attitude};
-			
-		% Voltage and Current Measurement
-		\node[draw, align=center,		below=of block1,		minimum width=3.5cm,		minimum height=1cm, fill=blue!10	] (block2) {\textbf{Data Preprocessing} \\ Synchronization experimental, vs simulated data.};
-		
-		% Power and voltage variation
-		
-		\node[draw, align=center,		below=of block2,		minimum width=3.5cm,		minimum height=1cm, fill=blue!10	] (block3) {\textbf{NLS-TRR Optimization}\\
-		Set bounds for parameters\\
-		The set initial seed for all parameters\\
-		Minimization of the cost function.};
+    \begin{tikzpicture}[font=\small,thick]
+        % Start block
+        \node[draw, align=center,       minimum width=2.5cm,        minimum height=1cm, fill=blue!10] (block1) {\textbf{Experimental Data} \\Input: rotational velocity\\
+        Output: attitude};
+            
+        % Voltage and Current Measurement
+        \node[draw, align=center,       below=of block1,        minimum width=3.5cm,        minimum height=1cm, fill=blue!10    ] (block2) {\textbf{Data Preprocessing} \\ Synchronization experimental, vs simulated data.};
+        
+        % Power and voltage variation
+        
+        \node[draw, align=center,       below=of block2,        minimum width=3.5cm,        minimum height=1cm, fill=blue!10    ] (block3) {\textbf{NLS-TRR Optimization}\\
+        Set bounds for parameters\\
+        The set initial seed for all parameters\\
+        Minimization of the cost function.};
 
-		\node[draw, align=center,	below right=of block3,	minimum width=3cm,	minimum height=2.5cm,	fill=green!10	] (block_p) {{Identified parameters}\\
-		$\boldsymbol\Gamma = \begin{bmatrix}\Gamma_1 &
-			\Gamma_2 & \Gamma_3 & \Gamma_4\\
-			\Gamma_5 & \Gamma_6 & \Gamma_7 & \Gamma_8
-		\end{bmatrix}$};
+        \node[draw, align=center,   below right=of block3,  minimum width=3cm,  minimum height=2.5cm,   fill=green!10   ] (block_p) {{Identified parameters}\\
+        $\boldsymbol\Gamma = \begin{bmatrix}\Gamma_1 &
+            \Gamma_2 & \Gamma_3 & \Gamma_4\\
+            \Gamma_5 & \Gamma_6 & \Gamma_7 & \Gamma_8
+        \end{bmatrix}$};
 
-		\node[draw, align=center,	below left=of block3,	minimum width=3cm,	minimum height=2.5cm,	fill=red!10	] (block_s) {{simulated model}\\\includegraphics[scale=.05]{../Figure/All-six.png}};
-		
-		% Conditions test
-		\node[draw,		diamond,		below =4cm of block3,		minimum width=2.5cm,		inner sep=0,		fill=yellow!10	] (block4) { Error $< \delta$};
-		
-		\node[draw,		below=1.5cm of block4,		minimum height=1cm,		minimum width=2.5cm,		inner sep=0,		fill=blue!10	] (block5) {End};
-		
-		\node[draw,		right=2cm of block4,		minimum height=1cm,		minimum width=2.5cm,		fill=red!10		] (block6) {Insufficient experimental data};
-				
-		 
-		 
-		% Arrows
-		\draw[-latex] (block1) edge (block2)
-			(block2) edge (block3)
-			(block3) -| (block_s);
-			% (block3) edge (block_p);
-	
-		\draw[-latex] (block3) -| (block_p);
-	
-		\draw[-latex] (block_s) -| (block4);
-	
-		\draw[-latex] (block_p) -| (block4);
-	
-		\draw[stealth-stealth] (block_s) -- (block_p);
-		 
-		\draw[-latex] (block4) -- (block5)
-			node[pos=0.5,fill=white,inner sep=0]{Yes};
-		 
-		\draw[-latex] (block4) -- (block6)
-			node[pos=0.5,fill=white,inner sep=0]{No};
-	
-		\coordinate[left=5.5cm of block3] (aux);
-		\coordinate[right= of block_p] (aux1);
-		% \draw[-latex] (block6) |- (block2);
-		\draw[-latex] (block1) -| (aux) |- (block4);
-		\draw[-latex] (block6) -| (aux1) |- (block1);
-		\end{tikzpicture}
+        \node[draw, align=center,   below left=of block3,   minimum width=3cm,  minimum height=2.5cm,   fill=red!10 ] (block_s) {{simulated model}\\\includegraphics[scale=.05]{../Figure/All-six.png}};
+        
+        % Conditions test
+        \node[draw,     diamond,        below =4cm of block3,       minimum width=2.5cm,        inner sep=0,        fill=yellow!10  ] (block4) { Error $< \delta$};
+        
+        \node[draw,     below=1.5cm of block4,      minimum height=1cm,     minimum width=2.5cm,        inner sep=0,        fill=blue!10    ] (block5) {End};
+        
+        \node[draw,     right=2cm of block4,        minimum height=1cm,     minimum width=2.5cm,        fill=red!10     ] (block6) {Insufficient experimental data};
+                
+         
+         
+        % Arrows
+        \draw[-latex] (block1) edge (block2)
+            (block2) edge (block3)
+            (block3) -| (block_s);
+            % (block3) edge (block_p);
+    
+        \draw[-latex] (block3) -| (block_p);
+    
+        \draw[-latex] (block_s) -| (block4);
+    
+        \draw[-latex] (block_p) -| (block4);
+    
+        \draw[stealth-stealth] (block_s) -- (block_p);
+         
+        \draw[-latex] (block4) -- (block5)
+            node[pos=0.5,fill=white,inner sep=0]{Yes};
+         
+        \draw[-latex] (block4) -- (block6)
+            node[pos=0.5,fill=white,inner sep=0]{No};
+    
+        \coordinate[left=5.5cm of block3] (aux);
+        \coordinate[right= of block_p] (aux1);
+        % \draw[-latex] (block6) |- (block2);
+        \draw[-latex] (block1) -| (aux) |- (block4);
+        \draw[-latex] (block6) -| (aux1) |- (block1);
+        \end{tikzpicture}
         }
-		\caption{Structure of TRRLS identification approach.}
-		\label{fig:identification}
+        \caption{Structure of TRRLS identification approach.}
+        \label{fig:identification}
 \end{figure}
 \section{LQIR-DG Controller Structure}\label{sec:controller}
 \noindent First, the augmented states of the quadrotor platform, including the states and their integrals are selected to use in the structure of the LQIR-DG controller for eliminating the steady-state errors. Then, the design methodology of the controller structure is introduced to produce the best commands for the 3-DoF quadrotor platform.
 \subsection{Augmented States}
 \noindent To augment an integral action into the control strategy architecture, the augmented states are defined as $\boldsymbol{\mathrm{x_{a}}} = \begin{bmatrix}
-	\boldsymbol{\mathrm{x}} &
-	\displaystyle\int\boldsymbol{\mathrm{x}}
+    \boldsymbol{\mathrm{x}} &
+    \displaystyle\int\boldsymbol{\mathrm{x}}
 \end{bmatrix}^\mathrm{T}$. Then, the quadrotor platform model, utilized in the controller structure, is presented as
 
 \begin{equation}\label{systemlqidg}
-	\begin{split}
-		\boldsymbol{\dot{\mathrm{x}}_a} &= \begin{bmatrix}
-			\boldsymbol{\mathrm{A}} & \boldsymbol{0}\\
-			\boldsymbol{\mathrm{I}} & \boldsymbol{0}
-		\end{bmatrix}\boldsymbol{\mathrm{x_a}} + \begin{bmatrix}
-			\boldsymbol{\mathrm{B}}\\
-			\boldsymbol{0}
-		\end{bmatrix}
-		 \left(\boldsymbol{\mathrm{u}} + \boldsymbol{\mathrm{d}}\right)%, \quad \boldsymbol{x}(0) = 
-	\end{split}
+    \begin{split}
+        \boldsymbol{\dot{\mathrm{x}}_a} &= \begin{bmatrix}
+            \boldsymbol{\mathrm{A}} & \boldsymbol{0}\\
+            \boldsymbol{\mathrm{I}} & \boldsymbol{0}
+        \end{bmatrix}\boldsymbol{\mathrm{x_a}} + \begin{bmatrix}
+            \boldsymbol{\mathrm{B}}\\
+            \boldsymbol{0}
+        \end{bmatrix}
+         \left(\boldsymbol{\mathrm{u}} + \boldsymbol{\mathrm{d}}\right)%, \quad \boldsymbol{x}(0) = 
+    \end{split}
 \end{equation}
 The notation $\boldsymbol{\mathrm{I}}$ denotes the identity matrix.
 \subsection{LQIR-DG Control Scheme with Integral Action}
@@ -768,32 +761,32 @@ To achieve the primary objective, the first player minimizes the following cost 
 where $\mathrm{t_f}$ is the stop time and $i$-index denotes the roll, pitch, and yaw channels of the quadrotor. $\boldsymbol{\mathrm{Q_i}}$, ${{R_{d}}}$, and ${{R}}$ are weight coefficients of the cost function.
 By solving the above problem, the optimal control command is computed as follows~\cite{LQDG}:
 \begin{equation}
-	{{u_i}} = -\boldsymbol{{\mathrm{K}}_{i}} \boldsymbol{{\mathrm{x_{a_i}}}}
+    {{u_i}} = -\boldsymbol{{\mathrm{K}}_{i}} \boldsymbol{{\mathrm{x_{a_i}}}}
 \end{equation}
 Moreover, the worst disturbance is obtained as
 \begin{equation}
-	{{d_i}} =\boldsymbol{{\mathrm{K_{d_i}}}}\boldsymbol{{\mathrm{x_{a_i}}}}
+    {{d_i}} =\boldsymbol{{\mathrm{K_{d_i}}}}\boldsymbol{{\mathrm{x_{a_i}}}}
 \end{equation}
 Here, $\boldsymbol{{\mathrm{K_{d_i}}}}$ and $\boldsymbol{{\mathrm{K_i}}}$ are gain values defined as follows:
 \begin{align}
-	\boldsymbol{{\mathrm{K_{d_i}}}} &= {{{R}}^{-1}_{d}}\boldsymbol{{\mathrm{B}_{a_{d_i}}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_{d_i}}}\\
-	\boldsymbol{{\mathrm{K_i}}} &= {{{R}}^{-1}}\boldsymbol{{\mathrm{B}_{a_i}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_i}}
+    \boldsymbol{{\mathrm{K_{d_i}}}} &= {{{R}}^{-1}_{d}}\boldsymbol{{\mathrm{B}_{a_{d_i}}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_{d_i}}}\\
+    \boldsymbol{{\mathrm{K_i}}} &= {{{R}}^{-1}}\boldsymbol{{\mathrm{B}_{a_i}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_i}}
 \end{align}
 $\boldsymbol{{\mathrm{P}}_{a_i}}$ and $\boldsymbol{{\mathrm{P}}_{a_{d_i}}}$ satisfy
 \begin{align}\label{coupled_riccatti_LQIDG}
-	&-\boldsymbol{\mathrm{A^\mathrm{T}_a}}\boldsymbol{\mathrm{P_{a_{d_i}}}}
-	 - \boldsymbol{\mathrm{Q_{i}}} - \boldsymbol{\mathrm{P_{a_{d_i}}}}\boldsymbol{\mathrm{A_a}} 
-	 + \boldsymbol{\mathrm{P_{a_{d_i}}}}\boldsymbol{\mathrm{S_{a_i}}}\boldsymbol{\mathrm{P_{a_i}}}
-	  +\boldsymbol{\mathrm{P_{a_{d_i}}}}\boldsymbol{\mathrm{S_{a_{d_i}}}}\boldsymbol{\mathrm{P_{a_{d_i}}}}
-	=\boldsymbol{\mathrm{0}}\\
+    &-\boldsymbol{\mathrm{A^\mathrm{T}_a}}\boldsymbol{\mathrm{P_{a_{d_i}}}}
+     - \boldsymbol{\mathrm{Q_{i}}} - \boldsymbol{\mathrm{P_{a_{d_i}}}}\boldsymbol{\mathrm{A_a}} 
+     + \boldsymbol{\mathrm{P_{a_{d_i}}}}\boldsymbol{\mathrm{S_{a_i}}}\boldsymbol{\mathrm{P_{a_i}}}
+      +\boldsymbol{\mathrm{P_{a_{d_i}}}}\boldsymbol{\mathrm{S_{a_{d_i}}}}\boldsymbol{\mathrm{P_{a_{d_i}}}}
+    =\boldsymbol{\mathrm{0}}\\
             &-\boldsymbol{\mathrm{A^\mathrm{T}_a}}\boldsymbol{\mathrm{P_{a_i}}} - \boldsymbol{\mathrm{Q_i}}
-			 - \boldsymbol{\mathrm{P_{a_i}}}\boldsymbol{\mathrm{A_a}}  +
-			  \boldsymbol{\mathrm{P_{a_i}}}\boldsymbol{\mathrm{S_{a_{d_i}}}}\boldsymbol{\mathrm{P_{a_{d_i}}}} 
-			  +\boldsymbol{\mathrm{P_{a_i}}}\boldsymbol{\mathrm{S_{a_i}}}\boldsymbol{\mathrm{P_{a_i}}} =\boldsymbol{\mathrm{0}}
+             - \boldsymbol{\mathrm{P_{a_i}}}\boldsymbol{\mathrm{A_a}}  +
+              \boldsymbol{\mathrm{P_{a_i}}}\boldsymbol{\mathrm{S_{a_{d_i}}}}\boldsymbol{\mathrm{P_{a_{d_i}}}} 
+              +\boldsymbol{\mathrm{P_{a_i}}}\boldsymbol{\mathrm{S_{a_i}}}\boldsymbol{\mathrm{P_{a_i}}} =\boldsymbol{\mathrm{0}}
 \end{align}
 where $
-	\boldsymbol{\mathrm{S_{a_i}}} = \boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}$ and $
-	\boldsymbol{\mathrm{S{a_{d_i}}}} = \boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}.
+    \boldsymbol{\mathrm{S_{a_i}}} = \boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}$ and $
+    \boldsymbol{\mathrm{S{a_{d_i}}}} = \boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}.
 $%%%? needd : or not
 
 % subsection for tunning weighta with TCACS optimization
@@ -807,46 +800,46 @@ By employing the TCACS optimization method, the algorithm explored the search sp
 The optimization process aimed to fine-tune the controller parameters for the specific dynamics of the system under consideration. The resulting weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ would enable the LQIR-DG controller to efficiently regulate the system while effectively rejecting disturbances in the simulation.
 \noindent In this section, the TCACS optimization method is utilized to tune the weighting matrices of the LQIR-DG controller. 
 \section{Results}\label{sec:results}
-\noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. Then, performance of the LQIR-DG structure is evaluated.
+\noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. Then, the performance of the LQIR-DG structure is evaluated.
 Tables~\ref{tab:parameters} and~\ref{tab:control weight_new} present the quadrotor and LQIR-DG parameters, respectively.
 \begin{table}[H]
-	\centering
-	\caption{Quadrotor parameters}
-	\vspace{-0.5cm}
-	\renewcommand{\arraystretch}{1.3}
-	\begin{center}
-	\begin{tabular}{c c c c c c}
-	\hline
-	Parameter & Unit & Value & Parameter & Unit & Value \\
-	\hline
-	$\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ \\ 
-	$\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ &
-	$\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ \\
-	$\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ 
-	& $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ \\
-	$\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ \\
-	\hline
+    \centering
+    \caption{Quadrotor parameters}
+    \vspace{-0.5cm}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{center}
+    \begin{tabular}{c c c c c c}
+    \hline
+    Parameter & Unit & Value & Parameter & Unit & Value \\
+    \hline
+    $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ \\ 
+    $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ &
+    $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ \\
+    $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ 
+    & $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ \\
+    $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ \\
+    \hline
 \end{tabular}
 \label{tab:parameters}
 \end{center}
 \end{table}
 \begin{table}[H]
-	\centering
-	\caption{LQIR-DG controller parameters}
-	\renewcommand{\arraystretch}{1.3}
-	\begin{tabular}{@{}ccc@{}}
-	\toprule
-	Channel & Weighting Matrix & Values \\
-	\midrule
-	Roll & $\mathbf{Q_{roll}}$ & $\text{diag}([0.02, 65.96, 83.04, 0.00])$ \\
-	Pitch & $\mathbf{Q_{pitch}}$ & $\text{diag}([435.01, 262.60, 262.60, 0.00])$ \\
-	Yaw & $\mathbf{Q_{yaw}}$ & $\text{diag}([4 \times 10^{-4}, 0.00, 0.133, 0])$ \\
-	-& $R$ & $1$ \\
-	-&$R_d$ & $1.2764$ \\
-	\bottomrule
-	\end{tabular}
-	\label{tab:control weight_new} %%%? R in above is not matrix i have changed
-	%%%? need to know where weighting matrix came from
+    \centering
+    \caption{LQIR-DG controller parameters}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{@{}ccc@{}}
+    \toprule
+    Channel & Weighting Matrix & Values \\
+    \midrule
+    Roll & $\mathbf{Q_{roll}}$ & $\text{diag}([0.02, 65.96, 83.04, 0.00])$ \\
+    Pitch & $\mathbf{Q_{pitch}}$ & $\text{diag}([435.01, 262.60, 262.60, 0.00])$ \\
+    Yaw & $\mathbf{Q_{yaw}}$ & $\text{diag}([4 \times 10^{-4}, 0.00, 0.133, 0])$ \\
+    -& $R$ & $1$ \\
+    -&$R_d$ & $1.2764$ \\
+    \bottomrule
+    \end{tabular}
+    \label{tab:control weight_new} %%%? R in above is not matrix i have changed
+    %%%? need to know where weighting matrix came from
 \end{table}
 \subsection{Identification of the 3-DoF quadrotor platform model}
 \noindent As described in section~\ref{sec:state-space}, the parameters of the quadrotor platform, denoted by $\Gamma_i (i=1, \ldots, 8)$, are identified using the NLS-TRR algorithm.
@@ -856,112 +849,111 @@ In the second scenario, according to Figure~\ref{fig:two_degree_identification},
 After the termination condition is met, the optimal values of the quadrotor parameters are computed and denoted in Table~\ref{tab:true_parameters}. 
 These results illustrate that the outputs of the simulation results for the quadrotor model are consistent with reality.
 \begin{table}[H]
-	\caption{Scenarios for identification of quadrotor parameters.}
-	\centering
-	\begin{adjustbox}{max width=\textwidth}
-	\begin{tabular}{c c *{3}{wc{\myleneiler}} *{4}{wc{\mylenomega}}}
-	\toprule
-	\multirow{2}{*}{Scenario} & \multirow{2}{*}{Description}
-	& \multicolumn{3}{c}{Initial Condition (deg)} &
-	\multicolumn{4}{c}{Rotational Velocity Commands (rpm)} \\
-	\cmidrule(lr){3-5} \cmidrule(lr){6-9}
-	& & $\phi_0$ & $\theta_0$ & $\psi_0$ & $\Omega_1$ & $\Omega_2$ & $\Omega_3$ & $\Omega_4$\\
-	\midrule
-	\multirow{3}{*}{I} & roll free & 38 & - & - & 2000 & 2000 & 2000 & 3400\\
-	& pitch free & - & -15 & - & 3700 & 2000 & 2000 & 2000 \\
-	& yaw free & -& - &-75 & 2000 & 3300 & 2000 & 3300 \\
-	\midrule
-	II & roll \& pitch free &8 & -5 & - & 1700 & 3800 & 2400 & 1700\\
-	\midrule
-	III & roll, pitch, \& yaw free &
-	8 & -3 & -146 & 1700 & 3800 & 2400 & 1700 \\
-	\bottomrule
-	\end{tabular}
-	\end{adjustbox}
-	\label{tab:identification}
+    \caption{Scenarios for identification of quadrotor parameters.}
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabular}{c c *{3}{wc{\myleneiler}} *{4}{wc{\mylenomega}}}
+    \toprule
+    \multirow{2}{*}{Scenario} & \multirow{2}{*}{Description}
+    & \multicolumn{3}{c}{Initial Condition (deg)} &
+    \multicolumn{4}{c}{Rotational Velocity Commands (rpm)} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-9}
+    & & $\phi_0$ & $\theta_0$ & $\psi_0$ & $\Omega_1$ & $\Omega_2$ & $\Omega_3$ & $\Omega_4$\\
+    \midrule
+    \multirow{3}{*}{I} & roll free & 38 & - & - & 2000 & 2000 & 2000 & 3400\\
+    & pitch free & - & -15 & - & 3700 & 2000 & 2000 & 2000 \\
+    & yaw free & -& - &-75 & 2000 & 3300 & 2000 & 3300 \\
+    \midrule
+    II & roll \& pitch free &8 & -5 & - & 1700 & 3800 & 2400 & 1700\\
+    \midrule
+    III & roll, pitch, \& yaw free &
+    8 & -3 & -146 & 1700 & 3800 & 2400 & 1700 \\
+    \bottomrule
+    \end{tabular}
+    \end{adjustbox}
+    \label{tab:identification}
 \end{table}
-
 
 \begin{table}[H]
-	\renewcommand{\arraystretch}{1.3}
-	\caption{True values of the quadrotor parameters.}
-	\vspace{-0.5cm}
-	\begin{center}
-	\begin{tabular}{c c c c}
-	\hline
-	Parameter & Value & Parameter & Value  \\
-	\hline
-	$\Gamma_1$ & $-0.9622$ & $\Gamma_5$ & $3.6441\times10^{-4}$ \\
+    \renewcommand{\arraystretch}{1.3}
+    \caption{True values of the quadrotor parameters.}
+    \vspace{-0.5cm}
+    \begin{center}
+    \begin{tabular}{c c c c}
+    \hline
+    Parameter & Value & Parameter & Value  \\
+    \hline
+    $\Gamma_1$ & $-0.9622$ & $\Gamma_5$ & $3.6441\times10^{-4}$ \\
 
-	$\Gamma_2$ & $-0.0154$ & $\Gamma_6$ & $7.5395\times10^{-5}$ \\
+    $\Gamma_2$ & $-0.0154$ & $\Gamma_6$ & $7.5395\times10^{-5}$ \\
 
-	$\Gamma_3$ &$5.4716\times10^{-5}$ & $\Gamma_7$ & $0.1308$ \\
+    $\Gamma_3$ &$5.4716\times10^{-5}$ & $\Gamma_7$ & $0.1308$ \\
 
-	$\Gamma_4$ & $1.0457$ & $\Gamma_8$ & $4.3753\times10^{-5}$ \\
-	\hline
-	\end{tabular}
-	\label{tab:true_parameters}
-	\end{center}
+    $\Gamma_4$ & $1.0457$ & $\Gamma_8$ & $4.3753\times10^{-5}$ \\
+    \hline
+    \end{tabular}
+    \label{tab:true_parameters}
+    \end{center}
 \end{table}
 \begin{figure}[H]
-	\centering
-	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll/roll}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll/roll_parameter}
-	}
-	\hfil
-	% \vspace{-0.25cm}
-	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/pitch/pitch}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/pitch/pitch_parameter}
-	}
-	\hfil
-	% \vspace{-0.25cm}
-	\subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw_parameter}
-	}
-	\caption{Identification process results when the quadrotor rotates about only one axis: (a) identification of $\Gamma_3$ in free roll motion. (b) identification of $\Gamma_6$ in free pitch motion. (c) identification of $\Gamma_8$
-	in free yaw motion.}
-	\label{fig:one_degree_identification}
+    \centering
+    \subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll/roll}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll/roll_parameter}
+    }
+    \hfil
+    % \vspace{-0.25cm}
+    \subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/pitch/pitch}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/pitch/pitch_parameter}
+    }
+    \hfil
+    % \vspace{-0.25cm}
+    \subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw_parameter}
+    }
+    \caption{Identification process results when the quadrotor rotates about only one axis: (a) identification of $\Gamma_3$ in free roll motion. (b) identification of $\Gamma_6$ in free pitch motion. (c) identification of $\Gamma_8$
+    in free yaw motion.}
+    \label{fig:one_degree_identification}
 \end{figure}
 \begin{figure}[H]
-	\centering
-	\vspace{-2.2cm}
-	\subfloat[]{\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/roll}\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch}
-	}
-	\hfil
-	% \vspace{-0.25cm}
-	\subfloat[]{\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/roll_parameter}\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch_parameter}
-	}
-	\caption{Identification process results when the quadrotor rotates about its roll and pitch axes:
-	(a) comparison of simulation and experimental results. (b) identification of $\Gamma_2$ and $\Gamma_5$.}
-	\label{fig:two_degree_identification}
+    \centering
+    \vspace{-2.2cm}
+    \subfloat[]{\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/roll}\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch}
+    }
+    \hfil
+    % \vspace{-0.25cm}
+    \subfloat[]{\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/roll_parameter}\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch_parameter}
+    }
+    \caption{Identification process results when the quadrotor rotates about its roll and pitch axes:
+    (a) comparison of simulation and experimental results. (b) identification of $\Gamma_2$ and $\Gamma_5$.}
+    \label{fig:two_degree_identification}
 % \end{figure}
 % \begin{figure}[H]
-	\centering
-	\subfloat[]{\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/roll}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/pitch}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/yaw}
-	}
-	\hfil
-	\subfloat[]{\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/roll_parameter}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/pitch_parameter}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/yaw_parameter}
-	}
-	\caption{Identification process results when the quadrotor rotates about its roll, pitch, and yaw axes: (a) comparison of simulation and experimental results. (b) identification of $\Gamma_1$ , $\Gamma_4$ and
-	$\Gamma_7$ parameters.}
-	\label{fig:three_degree_identification}
+    \centering
+    \subfloat[]{\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/roll}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/pitch}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/yaw}
+    }
+    \hfil
+    \subfloat[]{\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/roll_parameter}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/pitch_parameter}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/3DOF/yaw_parameter}
+    }
+    \caption{Identification process results when the quadrotor rotates about its roll, pitch, and yaw axes: (a) comparison of simulation and experimental results. (b) identification of $\Gamma_1$ , $\Gamma_4$ and
+    $\Gamma_7$ parameters.}
+    \label{fig:three_degree_identification}
 \end{figure}
 \subsection{Evaluation of LQIR-DG Performance}
 \noindent In this section, the LQIR-DG controller algorithm is evaluated in three scenarios i) regulation and tracking problems, ii) disturbance rejection, and iii) impact of model uncertainty.
 Finally, a comparison of the proposed controller is performed with a PID controller and variants of the LQR controller. 
 The PID controller parameters are presented in Table~\ref{tab:PID_parameters}.
 \begin{table}[H]
-	\renewcommand{\arraystretch}{1.3}
-	\caption{PID controller parameters}
-	\vspace{-0.5cm}
-	\begin{center}
-		\begin{tabular}{cccc}
-		\hline
-		\textbf{Channel} & \textbf{$K_p$} & \textbf{$K_i$} & \textbf{$K_d$} \\
-		\hline
-		roll & 18 & 6 & 9 \\
-		pitch & 22 & 15 & 16 \\
-		\hline
-		\end{tabular}
-		\label{tab:PID_parameters}
-	\end{center}
+    \renewcommand{\arraystretch}{1.3}
+    \caption{PID controller parameters}
+    \vspace{-0.5cm}
+    \begin{center}
+        \begin{tabular}{cccc}
+        \hline
+        \textbf{Channel} & \textbf{$K_p$} & \textbf{$K_i$} & \textbf{$K_d$} \\
+        \hline
+        roll & 18 & 6 & 9 \\
+        pitch & 22 & 15 & 16 \\
+        \hline
+        \end{tabular}
+        \label{tab:PID_parameters}
+    \end{center}
 \end{table}
 \subsubsection{Investigating of the Regulation and Tracking Problems}\label{sec:regulation}
 \noindent The results of the proposed approach are presented for tracking the desired roll and pitch angles in Figures~\ref{fig:result} and~\ref{fig:omega}.
@@ -970,50 +962,48 @@ Figure~\ref{fig:result}~\ref{sub@fig:regulation} compares the desired and output
 Figures~\ref{fig:omega}~\ref{sub@fig:omega_regulation} and~\ref{sub@fig:omega_square} show the rotational velocity commands of the quadrotor in the regulation and tracking problems, respectively. These results demonstrate that the roll and pitch angles are accurately controlled by the proposed approach.
 
 
-
 \begin{figure}[H]
-	\centering
-	\vspace{0.3cm}
-	\subfloat[\label{fig:regulation}]{{\includegraphics[width=.33\linewidth]{../Figure/implementation/lqidg_roll}}\includegraphics[width=.33\linewidth]{../Figure/implementation/lqidg_pitch}
-	\includegraphics[width=.33\linewidth]{../Figure/implementation/lqidg_yaw}}
-	\hfill
-	\subfloat[\label{fig:square}]{\includegraphics[width=.35\linewidth]{../Figure/implementation/square/lqidg_roll_20}\includegraphics[width=.35\linewidth]{../Figure/implementation/square/lqidg_pitch_20}}
-	\caption{Comparison of actual roll and pitch angles with the desired values in~\ref{sub@fig:regulation} regulation and~\ref{sub@fig:square} tracking problems.}
-	\label{fig:result}
+    \centering
+    \vspace{0.3cm}
+    \subfloat[\label{fig:regulation}]{{\includegraphics[width=.33\linewidth]{../Figure/implementation/lqidg_roll}}\includegraphics[width=.33\linewidth]{../Figure/implementation/lqidg_pitch}
+    \includegraphics[width=.33\linewidth]{../Figure/implementation/lqidg_yaw}}
+    \hfill
+    \subfloat[\label{fig:square}]{\includegraphics[width=.35\linewidth]{../Figure/implementation/square/lqidg_roll_20}\includegraphics[width=.35\linewidth]{../Figure/implementation/square/lqidg_pitch_20}}
+    \caption{Comparison of actual roll and pitch angles with the desired values in~\ref{sub@fig:regulation} regulation and~\ref{sub@fig:square} tracking problems.}
+    \label{fig:result}
 \end{figure}
 
 \begin{figure}[H]
-	\vspace{0.3cm}
-	\centering
-	\subfloat[\label{fig:omega_regulation}]{\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_1}\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_3}\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_4}
-	}
-	\hfil
-	\subfloat[\label{fig:omega_square}]{\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_3}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_4}} %%%? didnt describe a and b
-	\caption{Rotational velocity  commands in~\ref{sub@fig:omega_regulation} regulation and~\ref{sub@fig:omega_square} tracking problems.}
-	\label{fig:omega}
+    \vspace{0.3cm}
+    \centering
+    \subfloat[\label{fig:omega_regulation}]{\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_1}\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_3}\includegraphics[width=.25\linewidth]{../Figure/implementation/lqidg_Omega_4}
+    }
+    \hfil
+    \subfloat[\label{fig:omega_square}]{\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_3}\includegraphics[width=.25\linewidth]{../Figure/implementation/square/lqidg_squre_omega_4}} %%%? didnt describe a and b
+    \caption{Rotational velocity  commands in~\ref{sub@fig:omega_regulation} regulation and~\ref{sub@fig:omega_square} tracking problems.}
+    \label{fig:omega}
 \end{figure}
 \subsubsection{Investigating the Disturbance Rejection}\label{sec:disturbance}
 \noindent Here, the effect of the input disturbance is investigated on the performance of the proposed controller.
-The input disturbance, $\mathrm{d_{\Omega_i}}$, is considered as a change in the command of the rotational velocity, modeled as %%%? with or in for input disturbace
+The input disturbance, $\mathrm{d_{\Omega_i}}$, is considered as a change in command of the rotational velocity, modeled as %%%? with or in for input disturbance
 \begin{equation}
-	\mathrm{d_{\Omega_1}} = \mathrm{d_{\Omega_2}} = -\mathrm{d_{\Omega_3}} = -\mathrm{d_{\Omega_4}} = \begin{cases}
-		500~{\mathrm{rpm}} \quad &20<t<60\\
-		0 \quad &\mathrm{other}
-	\end{cases}
+    \mathrm{d_{\Omega_1}} = \mathrm{d_{\Omega_2}} = -\mathrm{d_{\Omega_3}} = -\mathrm{d_{\Omega_4}} = \begin{cases}
+        500~{\mathrm{rpm}} \quad &20<t<60\\
+        0 \quad &\mathrm{other}
+    \end{cases}
 \end{equation}
-Figure~\ref{fig:disturbance} illustrates the roll and pitch angles in the regulation problem, when the input disturbance occurs. These results indicate that the proposed controller can stabilize the quadrotor platform in the presence of input disturbance.
-
+Figure~\ref{fig:disturbance} illustrates the roll and pitch angles in the regulation problem when the input disturbance occurs. These results indicate that the proposed controller can stabilize the quadrotor platform in the presence of input disturbance.
 
 
 \begin{figure}[H]
-	\centering
-	\subfloat{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_compare_roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_compare_pitch}
-	}
-	% \hfill
-	% \subfloat[\label{fig:omega_disturbance}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_1}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_4}}
-	
-	\caption{Comparison of actual roll and pitch angles with the desired, when the input disturbance occurs.}
-	\label{fig:disturbance}
+    \centering
+    \subfloat{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_compare_roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_compare_pitch}
+    }
+    % \hfill
+    % \subfloat[\label{fig:omega_disturbance}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_1}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_4}}
+    
+    \caption{Comparison of actual roll and pitch angles with the desired, when the input disturbance occurs.}
+    \label{fig:disturbance}
 \end{figure}
 \subsubsection{Investigating the Impact of Modeling Uncertainty}\label{sec:model-uncertainty}
 \noindent The effect of the modeling uncertainty is investigated on the performance of the proposed controller.
@@ -1022,19 +1012,19 @@ Figure~\ref{fig:weight}~\ref{sub@fig:weight_roll} compares the desired and the a
 Moreover, Figure~\ref{fig:weight}~\ref{sub@fig:omega_weight} shows the rotational velocity commands of the experimental platform, when the model uncertainty is applied.
 The implementation results show that the platform outputs converge to the desired values in the presence of the modeling uncertainty.
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.45\textwidth]{../Figure/implementation/weight/Quad_with_weight.jpg}
-	\caption{Quadrotor 3-DoF platform with added weights.} %%%? is it okey
+    \centering
+    \includegraphics[width=0.45\textwidth]{../Figure/implementation/weight/Quad_with_weight.jpg}
+    \caption{Quadrotor 3-DoF platform with added weights.} %%%? is it okey
 ~\label{fig:quadrotor_with_weight}
 %  \end{figure}
 %  \begin{figure}[H]
-	\centering
-	\subfloat[\label{fig:weight_roll}]{\includegraphics[width=.45\linewidth]{../Figure/implementation/weight/lqidg_roll_20}}\subfloat[\label{fig:weight_pitch}]{\includegraphics[width=.45\linewidth]{../Figure/implementation/weight/lqidg_pitch_20}
-	}
-	\hfill
-	\subfloat[\label{fig:omega_weight}]{\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_1}\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_3}\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_4}}
-	\caption{Comparison of actual roll and pitch angles with desired values, when the modeling uncertainty is present.}
-	\label{fig:weight}
+    \centering
+    \subfloat[\label{fig:weight_roll}]{\includegraphics[width=.45\linewidth]{../Figure/implementation/weight/lqidg_roll_20}}\subfloat[\label{fig:weight_pitch}]{\includegraphics[width=.45\linewidth]{../Figure/implementation/weight/lqidg_pitch_20}
+    }
+    \hfill
+    \subfloat[\label{fig:omega_weight}]{\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_1}\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_2}\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_3}\includegraphics[width=.25\linewidth]{../Figure/implementation/weight/lqidg_Omega_4}}
+    \caption{Comparison of actual roll and pitch angles with desired values, when the modeling uncertainty is present.}
+    \label{fig:weight}
 \end{figure}
 \subsubsection{Comparison with the Control Strategies}
 \noindent Figure~\ref{fig:compare} compares the LQIR-DG controller performance with the PID controller and variant of the LQR strategies such as the LQR and LQIR. 
@@ -1043,19 +1033,19 @@ The median of Root Mean Square Error (RMSE) is shown in the crossline in the box
 These results indicate that the proposed controller is able to provide rapid convergence and excellent transient response relative to other controllers for attitude control of the experimental platform.
 
 \begin{figure}[H]
-	\centering
-	\subfloat[\label{fig:all_roll}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidgvslqr/roll}}\subfloat[\label{fig:all_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidgvslqr/pitch}
-	}
-	\caption{Comparison of LQIR-DG structure with the variant of LQR and PID in regulation problem:~\ref{sub@fig:all_roll} roll angle~\ref{sub@fig:all_pitch} pitch angle.}
-	\label{fig:compare}
+    \centering
+    \subfloat[\label{fig:all_roll}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidgvslqr/roll}}\subfloat[\label{fig:all_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/lqidgvslqr/pitch}
+    }
+    \caption{Comparison of LQIR-DG structure with the variant of LQR and PID in regulation problem:~\ref{sub@fig:all_roll} roll angle~\ref{sub@fig:all_pitch} pitch angle.}
+    \label{fig:compare}
 \end{figure}
 
 \begin{figure}[H]
-	\centering
-	{\includegraphics[width=.55\linewidth]{../Figure/implementation/box_plot/lqidgvsboxplot}
-	}
-	\caption{Box plot of LQIR-DG, LQR, LQIR, and PID controllers.}
-	\label{fig:compare_boxplot}
+    \centering
+    {\includegraphics[width=.55\linewidth]{../Figure/implementation/box_plot/lqidgvsboxplot}
+    }
+    \caption{Box plot of LQIR-DG, LQR, LQIR, and PID controllers.}
+    \label{fig:compare_boxplot}
 \end{figure}
 
 \newpage
@@ -1065,7 +1055,7 @@ These results indicate that the proposed controller is able to provide rapid con
 \noindent In this paper, the linear quadratic integral differential game approach, was used in real-time for attitude control of the platform quadrotor. %%%? for quadrotor
 For the implementation of the controller structure, an accurate dynamic model was considered for the experimental platform.
 Then, the model parameters were identified using the NSL method.
-For evaluation of the proposed method, the regulation and tracking  proposed were successfully performed.
+For evaluation of the proposed method, the regulation and tracking proposed were successfully performed.
 Moreover, the ability of the proposed method was investigated in the rejection of the input disturbance and modeling error in the experimental platform.
 Finally, a comparison
 was also performed between the results of classical PID, LQR, and LQIR with the proposed method.
@@ -1077,14 +1067,14 @@ The implementation results illustrated the excellent performance of the LQIR con
 %% \section{}
 %%~\label{}
 
-%% If you have bibdatabase file and want bibtex to generate the
-%% bibitems, please use
+%% If you have a bib database file and want BibTeX to generate the
+%% bib items, please use
 %%
 \vspace{-0.3cm}
  \bibliographystyle{elsarticle-harv} 
  \bibliography{refs}
 
-%% else use the following coding to input the bibitems directly in the
+%% else use the following coding to input the bib items directly in the
 %% TeX file.
 
 % \begin{thebibliography}{00}
@@ -1100,3 +1090,5 @@ The implementation results illustrated the excellent performance of the LQIR con
 \endinput
 %%
 %% End of file `elsarticle-template-harv.tex'.
+
+
