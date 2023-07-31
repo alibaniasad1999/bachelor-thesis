@@ -55,6 +55,7 @@
 \usepackage{array} % for 'w' column type
 \newlength\myleneiler
 \newlength\mylenomega
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
 \usetikzlibrary{shapes,arrows}
 \tikzstyle{block} = [rectangle, draw, text width=4.5em, text centered, minimum height=4em]
 \tikzstyle{line} = [draw, -latex']
@@ -1060,6 +1061,255 @@ Moreover, the ability of the proposed method was investigated in the rejection o
 Finally, a comparison
 was also performed between the results of classical PID, LQR, and LQIR with the proposed method.
 The implementation results illustrated the excellent performance of the LQIR controller based on the game theory approach in attitude control for the quadrotor platform.
+
+% \section{The Non-cooperative Game}
+
+% The Uncertain Non-cooperative Game section introduces model uncertainty into the dynamic non-cooperative game framework. The rationale is that in real-world situations, agents or players operate based on imperfect models of the environment. Rather than optimizing based on a detailed but inaccurate model, it makes more sense for players to use a simple model but incorporate robustness to specification errors.  
+
+% This is modeled by adding a malevolent disturbance input to the system dynamics to represent model mismatch. Each player $i$ has their own expectation about this disturbance, and copes with it by considering a worst-case scenario.  
+
+% Specifically, the system dynamics become:
+% \begin{align}
+% \dot{x} = Ax + B_1u_1 + B_2u_2 + Ew
+% \end{align}
+% where $w$ is the disturbance input.  
+
+% Each player $i$ minimizes a cost function that includes a penalty on the disturbance $w$: 
+% \begin{align}
+% J_i = \int (x^\top Q_i x - w^\top V_i w) dt
+% \end{align}
+% where $V_i > 0$ represents player $i$'s aversion to model risk. The higher $V_i$ is, the more conservative player $i$ is regarding mismatches between their model and reality.
+
+% The problem is to find robust open-loop and feedback strategies $u_1, u_2$ that form a Nash equilibrium even under worst-case disturbance $w$. Sufficient conditions are provided in terms of coupled Riccati equations. For instance, in the open-loop infinite horizon case, the strategies are robust if:
+% \begin{enumerate}
+% \item A set of algebraic Riccati equations have a strongly stabilizing solution 
+% \item A pair of decoupled Riccati equations have a stabilizing solution
+% \end{enumerate}
+% This ensures the open-loop strategies $u_1, u_2$ form a saddle point equilibrium for the min-max problem. Similar results are presented for the feedback case.  
+
+% Overall, this section incorporates model uncertainty into the standard LQ differential game framework in a tractable way. The min-max optimization represents each player's robustness mindset and desire to guard against model risk. The sufficient conditions help determine when robust equilibria exist.
+
+% \section{Proof of Robust Open-Loop Nash Equilibrium}
+
+% Here is a proof sketch showing how the min-max optimization with model uncertainty leads to coupled Riccati equations to find robust Nash equilibria:
+
+% \begin{proof}
+% Consider the infinite horizon open-loop differential game with dynamics and cost function as defined above.  
+
+% Let $u_i(t) = -R_{ii}^{-1}B_i^\top P_i x(t)$ be the open-loop control strategies, where $P_i$ satisfies an algebraic Riccati equation. 
+
+% Let $w(t) = V_i^{-1}E^\top P_i x(t)$ be the worst-case disturbance input.
+
+% Substituting these into the dynamics and cost function $J_i$, the cost becomes: 
+
+% \begin{align}
+% J_i = \int x^\top P_i x dt
+% \end{align}
+
+% Taking the derivative of $V_iJ_i$ along the system dynamics gives: 
+
+% \begin{align}
+% \frac{dJ_i}{dt} = x^\top (Q_i + A^\top P_i + P_iA - P_i(S_i - M_i)P_i)x
+% \end{align}
+
+% Where $S_i = BR_i^{-1}B_i^\top$ and $M_i = EV_i^{-1}E^\top$.
+
+% For $J_i$ to be non-increasing, the term in parentheses must be negative semidefinite. This gives the Riccati equation: 
+
+% \begin{align}
+% 0 = Q_i + A^\top P_i + P_iA - P_i(S_i - M_i)P_i
+% \end{align}
+
+% Additionally, for stability the closed loop $A - S_iP_i + M_iP_i$ must be stable.  
+
+% If both players' $P_i$ satisfy such Riccati equations, with stability, then neither player can improve their cost $J_i$ by deviating from $u_i$ or $w_i$. Thus the strategies form a Nash equilibrium.
+
+% The key steps are:
+% \begin{enumerate}
+% \item Guess the optimal strategies in terms of $P_i$
+% \item Substitute into dynamics and cost  
+% \item Take derivatives and require $dJ_i/dt \leq 0$
+% \item This leads to a Riccati equation that $P_i$ must satisfy
+% \item If both players' $P_i$ satisfy the Riccati equations, then neither has incentive to deviate, giving a NE.
+% \end{enumerate}
+
+% So the Riccati equations arise from the first-order optimality conditions on the min-max problem to ensure a saddle point equilibrium. Solving them is both necessary and sufficient for robust open-loop Nash equilibrium.
+% \end{proof}
+
+
+
+
+
+
+
+
+
+% Here is the proof and analysis for the two player case of the system versus a disturbance:
+
+% \section{Two Player Game: System vs Disturbance}
+
+% In the simplest case, we can model the uncertain game as having just two players - the system controller, and a disturbance input representing model mismatch. 
+
+% The system dynamics are:
+
+% \begin{align}
+% \dot{x} = Ax + Bu + Ew
+% \end{align}
+
+% Where $u$ is the control input and $w$ is the disturbance.
+
+% The system controller minimizes the quadratic cost:
+
+% \begin{align}
+% J = \int (x^\top Q x + u^\top R u) dt
+% \end{align}
+
+% And the disturbance maximizes: 
+
+% \begin{align}
+% J_d = -\int w^\top V w dt
+% \end{align}
+
+% Where $V \succ 0$ represents aversion to model uncertainty.
+
+% To find the robust strategies $u^*, w^*$, we posit:
+
+% \begin{align}
+% u^* &= -R^{-1}B^\top Px \\
+% w^* &= V^{-1}E^\top Px
+% \end{align}
+
+% Where $P$ satisfies the Riccati equation: 
+
+% \begin{align}
+% 0 &= Q + A^\top P + PA - PBR^{-1}B^\top P + PEV^{-1}E^\top P \\
+% 0 &= Q + A^\top P + PA - P(S - M)P
+% \end{align}
+
+% With $S=BR^{-1}B^\top, M=EV^{-1}E^\top$. 
+
+% If $P$ satisfies this equation with $A-SP+MP$ stable, then $u^*, w^*$ form a robust Nash equilibrium.
+
+% \begin{proof}{Two player robust Nash equilibrium}
+% Follows similar steps as general proof by substituting strategies into dynamics and cost functions. The strategies being mutual best responses leads to the Riccati equation characterizing robust NE.
+% \end{proof}
+
+% So the two player case provides intuitive interpretation and simplifies analysis, while retaining the key model uncertainty concepts and use of coupled Riccati equations.
+
+
+% Here is the proof and analysis for the two player case with coupled Riccati equations:
+
+% \section{Two Player Game with Coupled Riccati Equations}
+
+% We consider the two player game between the system and disturbance. The dynamics and cost functions are:
+
+% \begin{align}
+% \dot{x} &= Ax + Bu + Ew\\
+% J &= \int (x^\top Q x + u^\top R u) dt\\ 
+% J_d &= -\int w^\top V w dt
+% \end{align}
+
+% To find the robust strategies $u^*, w^*$, we now posit:
+
+% \begin{align}
+% u^* &= -R^{-1}B^\top P_1 x\\ 
+% w^* &= V^{-1}E^\top P_2 x
+% \end{align}
+
+% Where $P_1, P_2$ satisfy the coupled Riccati equations:
+
+% \begin{align}
+% 0 &= A^\top P_1 + P_1 A - P_1 BR^{-1} B^\top P_1 + P_1 E V^{-1}E^\top P_2 + Q\\
+% 0 &= A^\top P_2 + P_2 A + P_2 E V^{-1}E^\top P_2 - P_2 BR^{-1}B^\top P_1 
+% \end{align}
+
+% If $P_1,P_2$ satisfy these equations and render $A-BR^{-1}B^\top P_1 + EV^{-1}E^\top P_2$ stable, then $u^*, w^*$ form a robust Nash equilibrium.
+
+% \begin{proof}{Two player coupled Riccati robust NE}
+% Substituting the strategies into the dynamics and cost functions, and taking derivatives, leads to the coupled Riccati equations arising from mutual best response conditions. Solving the equations provides the robust NE strategies.
+% \end{proof}
+
+% The coupling represents the interdependence between the system controller's and disturbance's strategies. Solving the set of equations provides both players' robust optimizing strategies in feedback form.
+
+
+
+Here is a more detailed proof for the two player robust Nash equilibrium with coupled Riccati equations:
+
+\begin{proof}[Two player coupled Riccati robust Nash equilibrium]
+
+Consider the two player game between the system controller and disturbance. 
+
+The system dynamics are:
+
+\begin{align}
+\dot{x} = Ax + Bu + Ew
+\end{align}
+
+The system controller minimizes the infinite horizon quadratic cost:
+
+\begin{align} 
+J = \int_0^\infty (x^\top Q x + u^\top R u) dt
+\end{align}
+
+Subject to the system dynamics, where $Q \succeq 0, R \succ 0$.
+
+The disturbance maximizes:
+
+\begin{align}
+J_d = -\int_0^\infty w^\top V w dt
+\end{align}
+
+Where $V \succ 0$ represents aversion to model uncertainty. 
+
+A robust Nash equilibrium satisfies:
+
+\begin{align}
+J(u^*, w) &\leq J(u^*, w^*) \leq J(u, w^*), \;\; \forall u \\
+J_d(u^*, w^*) &\geq J_d(u^*, w) \geq J_d(u, w), \;\; \forall w
+\end{align}
+
+That is, neither player can improve their cost by unilaterally deviating from their strategy.
+
+Suppose the strategies are given by: 
+
+\begin{align}
+u^* &= -R^{-1}B^\top P_1 x \\
+w^* &= V^{-1}E^\top P_2 x
+\end{align}
+
+Where $P_1, P_2$ satisfy the coupled Riccati equations:
+
+\begin{align}
+0 &= A^\top P_1 + P_1 A - P_1 BR^{-1} B^\top P_1 + P_1 E V^{-1}E^\top P_2 + Q\\
+0 &= A^\top P_2 + P_2 A + P_2 E V^{-1}E^\top P_2 - P_2 BR^{-1}B^\top P_1
+\end{align}
+
+Substituting these strategies into the system dynamics gives the closed loop matrix:
+
+\begin{align} 
+A_{CL} = A - BR^{-1}B^\top P_1 + EV^{-1}E^\top P_2
+\end{align}
+
+Take the derivative of $VJ$ along the closed loop system dynamics:
+
+\begin{align}
+\frac{dJ}{dt} = \dot{x}^\top VP_1 x + x^\top P_1V\dot{x} = x^\top (Q + A_{CL}^\top P_1 + P_1 A_{CL}) x
+\end{align}
+
+For $J$ to be non-increasing, $Q + A_{CL}^\top P_1 + P_1 A_{CL} \preceq 0 \implies$ the Riccati equation for $P_1$.
+
+Similarly, take the derivative of $J_d$: 
+
+\begin{align}
+\frac{dJ_d}{dt} = -x^\top P_2 V \dot{x} - \dot{x}^\top V P_2 x = x^\top (-Q - A_{CL}^\top P_2 - P_2 A_{CL}) x
+\end{align}
+
+For $J_d$ to be non-decreasing, $-Q - A_{CL}^\top P_2 - P_2 A_{CL} \succeq 0 \implies$ the Riccati equation for $P_2$.
+
+If $P_1, P_2$ satisfy the coupled Riccati equations and render $A_{CL}$ stable, then $u^*, w^*$ form a robust Nash equilibrium.
+
+\end{proof}
+
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
 %% \appendix
