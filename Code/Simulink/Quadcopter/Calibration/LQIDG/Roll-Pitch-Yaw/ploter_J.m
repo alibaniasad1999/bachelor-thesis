@@ -1,18 +1,20 @@
 clear;
 clc;
 %% plot data %%
-load('data_film_1.mat')
-time = linspace(0, 100, length(simout));
+load('roll_pitch_yaw.mat');
+simout = roll_pitch_yaw;
+time = linspace(0, 30, length(simout));
 
 % pitch
 % subplot(2,1,1);
+%%
 set(gca, 'FontSize', 16)
-plot(time-3.5, zeros(1, length(time)), 'r', 'linewidth', 2);
+plot(time-5.5, zeros(1, length(time)), 'r', 'linewidth', 2);
 hold on;
-plot(time-3.5, 180/pi*simout(:, 1), '--k', 'linewidth', 2);
+plot(time-5.5, 180/pi*simout(:, 1), '--k', 'linewidth', 2);
 hold off;
 legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
-axis([0 20 -30 30])
+axis([0 20 -30 60])
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\phi$(deg)', 'interpreter', 'latex', 'FontSize', 24);
@@ -28,28 +30,28 @@ print('../../../../../../English_Journal/Figure/implementation/lqidg_roll','-dep
 % legend('Setpoint', 'LQIR-DG', 'Location','northeast');
 % print('../../../../../../English_Journal/Figure/implementation/lqidg_roll.png','-dpng','-r400');
 
-plot(time-3.5, zeros(1, length(time)), 'r', 'linewidth', 2);
+plot(time-5.5, zeros(1, length(time)), 'r', 'linewidth', 2);
 hold on;
-plot(time-3.5, 180/pi*simout(:, 2), '--k', 'linewidth', 2);
+plot(time-5.5, 180/pi*simout(:, 2), '--k', 'linewidth', 2);
 hold off;
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\theta$(deg)', 'interpreter', 'latex', 'FontSize', 24);
 legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
-axis([0 20 -50 60])
+axis([0 20 -40 20])
 print('../../../../../../English_Journal/Figure/implementation/lqidg_pitch','-depsc');
 
-plot(time-3.5, zeros(1, length(time)), 'r', 'linewidth', 2);
+plot(time-5.5, zeros(1, length(time)), 'r', 'linewidth', 2);
 hold on;
-plot(time-3.5, 180/pi*simout(:, 3) - 1, '--k', 'linewidth', 2);
+plot(time-5.5, 180/pi*simout(:, 3), '--k', 'linewidth', 2);
 hold off;
-axis([0 20 -20 20])
+axis([0 20 -30 10])
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\psi$(deg)', 'interpreter', 'latex', 'FontSize', 24);
 legend('Setpoint', 'LQIR-DG', 'Location','northeast', 'FontSize', 20);
 print('../../../../../../English_Journal/Figure/implementation/lqidg_yaw','-depsc');
-
+%%
 model = 'omega_finder';
 load_system(model)
 omega_data  = sim(model);
