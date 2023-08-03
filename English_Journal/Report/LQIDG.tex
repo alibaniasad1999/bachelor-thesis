@@ -428,8 +428,8 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
 _{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}}
 \\
 &\dot q = \dfrac{\mathrm{I}_{\text{zz}} - 
-\mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}} rp +
-p \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}\Omega_{c, r} + 
+\mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}} rp -
+p \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{yy}}}\Omega_{c, r} + 
 \dfrac{\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)}{\mathrm{I}_{\text{yy}}} +
 \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}
 \\
@@ -511,7 +511,7 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
 where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
 \begin{equation}
     \begin{split}
-        \Gamma_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_2 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_3 = \dfrac{1}{\mathrm{I}_{\text{xx}}}\\ \Gamma_4 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_5 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_6 = \dfrac{1}{\mathrm{I}_{\text{yy}}} \\ \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}}, \quad \Gamma_8 = \dfrac{1}{\mathrm{I}_{\text{zz}}}
+        \Gamma_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_2 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_3 = \dfrac{1}{\mathrm{I}_{\text{xx}}}\\ \Gamma_4 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_5 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_6 = \dfrac{1}{\mathrm{I}_{\text{yy}}} \\ \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}}, \quad \Gamma_8 = \dfrac{1}{\mathrm{I}_{\text{zz}}}
     \end{split}
 \end{equation}
 \begin{align}
@@ -949,9 +949,9 @@ These results illustrate that the outputs of the simulation results for the quad
     \hline
     Parameter & Value & Parameter & Value  \\
     \hline
-    $\Gamma_1$ & $-0.9622$ & $\Gamma_5$ & $3.6441\times10^{-4}$ \\
+    $\Gamma_1$ & $-0.9622$ & $\Gamma_5$ & $5.8336\times10^{-6}$ \\
 
-    $\Gamma_2$ & $-0.0154$ & $\Gamma_6$ & $7.5395\times10^{-5}$ \\
+    $\Gamma_2$ & $3.0516\times10^{-7}$ & $\Gamma_6$ & $7.5395\times10^{-5}$ \\
 
     $\Gamma_3$ &$5.4716\times10^{-5}$ & $\Gamma_7$ & $0.1308$ \\
 

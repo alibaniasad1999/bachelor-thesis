@@ -26,7 +26,7 @@ ylabel('$\theta_{(\textrm{deg})}$', 'interpreter', 'latex', 'FontSize', 24);
 hold off;
 print('../../../../../../../English_Journal/Figure/parameter_estimation/roll-pitch/pitch','-depsc');
 %% trajectory %%
-load('Quadcopter_nonlinear_Roll_Pitch_spesession_IV.mat')
+load('Quadcopter_nonlinear_Roll_Pitch_spesession_V.mat')
 A4_array = zeros(1, 4);
 B4_array = zeros(1, 4);
 
