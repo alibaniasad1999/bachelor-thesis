@@ -43,6 +43,10 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{subfig}
 \usepackage{adjustbox}
@@ -830,9 +834,50 @@ Tables~\ref{tab:parameters} and~\ref{tab:control weight_new} present the quadrot
 \label{tab:parameters}
 \end{center}
 \end{table}
-\subsection{TCACS Optimization of LQIR-DG Weighting Matrix using ITSE Cost Function}
+\subsection{Tuning of LQIR-DG Weighting Matrix}
 
-The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller. The objective was to enhance the controller's performance in a 3-degree-of-freedom simulation.
+The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller. The objective was to enhance the controller's performance in a 3-degree-of-freedom simulation. % add psudo code of TCACS
+The psudo code of TCACS is shown in Algorithm~\ref{alg:TCACS_code}.
+\begin{algorithm}
+    \caption{Tabu Continuous Ant Colony System (TCACS)}
+    \begin{algorithmic}[1]
+    \Procedure{TCACS}{}
+    \State Initialize parameters
+    \State Initialize tabu list $TL$ and promising list $PL$
+    
+    \While{termination condition not met}
+    \If{first iteration}
+    
+    \State Uniformly sample initial ant positions
+    \Else
+    \State Move ants to new locations
+    \EndIf
+    \State Update $TL$
+    \State Update $PL$
+    \State Update tabu ball radius $r_T$
+    \State Update coordinate transformation matrix
+    \State Update pheromone distribution
+    \EndWhile
+    \EndProcedure
+    \Procedure{MoveAnts}{}
+    \For{each ant $i$}
+    \Repeat
+    \For{each dimension $j$}
+    \State Sample new $x_j^i$ from normal distribution
+    \EndFor
+    \Until{$x^i$ not in tabu ball}
+    \EndFor
+    \EndProcedure
+    \Procedure{UpdatePheromone}{}
+    \State Update best solution $x^*$
+    
+    \For{each dimension $j$}
+    \State Update standard deviation $\sigma_j$
+    \EndFor
+    \EndProcedure
+    \end{algorithmic}
+    \label{alg:TCACS_code}
+\end{algorithm}
 
 The cost function for the optimization was formulated based on the Integral Squared Time Error (ITSE) criterion, given by:
 
@@ -1329,6 +1374,136 @@ For $J_d$ to be non-decreasing, $-Q - A_{CL}^\top P_2 - P_2 A_{CL} \succeq 0 \im
 If $P_1, P_2$ satisfy the coupled Riccati equations and render $A_{CL}$ stable, then $u^*, w^*$ form a robust Nash equilibrium.
 
 \end{proof}
+
+Here is a proof for the two player robust Nash equilibrium using Hamiltonian matrices:
+
+\begin{proof}[Robust Nash Equilibrium with Hamiltonian Matrix]
+
+Consider the two player uncertain dynamic game between the system controller and disturbance. 
+
+The system dynamics and cost functions are:
+
+\begin{align*}
+\dot{x} &= Ax + Bu + Ew \\
+J &= \int_0^\infty x^\top Q x + u^\top R u \\
+J_d &= -\int_0^\infty w^\top V w
+\end{align*}
+
+Where $Q \succeq 0, R \succ 0, V \succ 0$. 
+
+Suppose the strategies are given by:
+
+\begin{align*} 
+u &= -R^{-1}B^\top P_1 x \\
+w &= V^{-1}E^\top P_2 x
+\end{align*}
+
+Where $P_1, P_2$ satisfy coupled algebraic Riccati equations arising from the first-order optimality conditions.
+
+To derive these conditions, form the Hamiltonian:
+
+\begin{align*}
+H &= x^\top Q x + u^\top R u + \lambda^\top (Ax + Bu + Ew) \\
+&= x^\top (Q + A^\top \lambda) x + u^\top (R + B^\top \lambda) u + w^\top E^\top \lambda
+\end{align*}
+
+The optimality conditions are:
+
+\begin{align*}
+\frac{\partial H}{\partial u} = 0 &\Rightarrow R + B^\top \lambda = 0 \Rightarrow \lambda = -R^{-1}B^\top P_1 x\\
+\frac{\partial H}{\partial w} = 0 &\Rightarrow E^\top \lambda = -Vw = -V^{-1}E^\top P_2 x
+\end{align*}
+
+Substitute these back into the Hamiltonian to obtain the coupled algebraic Riccati equations.
+
+If $P_1, P_2$ satisfy these equations and render the closed-loop system stable, the strategies form a robust Nash equilibrium.
+\end{proof}
+
+This shows the basics of using the Hamiltonian approach to derive the conditions for robust strategic optimization in the two player uncertain dynamic game.
+
+
+Here is a detailed proof of the coupled algebraic Riccati equations for the linear quadratic inverse dynamic game:
+Let's consider a linear time-invariant system:
+\begin{align}
+\dot{\mathbf{x}}_a &= \mathbf{A}a\mathbf{x}a + \mathbf{B}{a_i}\mathbf{u}i + \mathbf{B}{a{d_i}}\mathbf{d}_i \\
+\mathbf{y}i &= \mathbf{C}{a_i}\mathbf{x}_a
+\end{align}
+Where $\mathbf{x}_a \in \mathbb{R}^n$ is the state, $\mathbf{u}_i \in \mathbb{R}^{m_i}$ is the control input of player $i$, $\mathbf{d}_i \in \mathbb{R}^{p_i}$ is the disturbance input of player $i$, $\mathbf{y}_i \in \mathbb{R}^{q_i}$ is the output for player $i$.
+The cost functions for the two players are:
+\begin{align}
+J_i(\mathbf{u}_i, \mathbf{d}_i) &= \int_0^{\infty} \big(\mathbf{x}_a^\top \mathbf{Q}_i \mathbf{x}_a + \mathbf{u}_i^\top \mathbf{R}_i \mathbf{u}i\big) \: dt \\
+J{d_i}(\mathbf{u}_i, \mathbf{d}_i) &= \int_0^{\infty} \big(\mathbf{x}a^\top \mathbf{Q}{d_i} \mathbf{x}_a - \mathbf{d}i^\top \mathbf{R}{d_i} \mathbf{d}_i\big) \: dt
+\end{align}
+Where $\mathbf{Q}i, \mathbf{Q}{d_i} \in \mathbb{R}^{n\times n}$ are positive semi-definite matrices and $\mathbf{R}i, \mathbf{R}{d_i} \in \mathbb{R}^{m_i\times m_i}, \mathbb{R}^{p_i\times p_i}$ are positive definite matrices.
+The optimal control law for player $i$ is given by:
+\begin{align}
+\mathbf{u}_i^* &= -\mathbf{K}_i \mathbf{x}_a
+\end{align}
+Where $\mathbf{K}_i \in \mathbb{R}^{m_i\times n}$ is the optimal feedback gain matrix.
+The worst case disturbance for player $i$ is given by:
+\begin{align}
+\mathbf{d}i^* &= \mathbf{K}{d_i}\mathbf{x}_a
+\end{align}
+Where $\mathbf{K}_{d_i} \in \mathbb{R}^{p_i\times n}$ is the optimal disturbance feedback matrix.
+The coupled algebraic Riccati equations to determine $\mathbf{K}i$ and $\mathbf{K}{d_i}$ are:
+\begin{align}
+\mathbf{A}a^\top \mathbf{P}{a_{d_i}} + \mathbf{P}{a{d_i}} \mathbf{A}a - \mathbf{P}{a_{d_i}}\mathbf{B}{a_i}\mathbf{R}i^{-1}\mathbf{B}{a_i}^\top\mathbf{P}{a_{d_i}} + \mathbf{Q}i + \mathbf{P}{a_{d_i}}\mathbf{B}{a{d_i}}\mathbf{R}{d_i}^{-1}\mathbf{B}{a_{d_i}}^\top\mathbf{P}{a{d_i}} &= 0 \\
+\mathbf{A}a^\top \mathbf{P}{a_i} + \mathbf{P}{a_i} \mathbf{A}a - \mathbf{P}{a_i}\mathbf{B}{a_{d_i}}\mathbf{R}{d_i}^{-1}\mathbf{B}{a_{d_i}}^\top\mathbf{P}{a{d_i}} + \mathbf{Q}i + \mathbf{P}{a_i}\mathbf{B}{a_i}\mathbf{R}i^{-1}\mathbf{B}{a_i}^\top\mathbf{P}{a_i} &= 0
+\end{align}
+The optimal gain matrices are then:
+\begin{align}
+\mathbf{K}{d_i} &= \mathbf{R}{d_i}^{-1}\mathbf{B}{a{d_i}}^\top \mathbf{P}{a{d_i}} \\
+\mathbf{K}i &= \mathbf{R}i^{-1}\mathbf{B}{a_i}^\top \mathbf{P}{a_i}
+\end{align}
+Therefore, the coupled algebraic Riccati equations arise from the necessary conditions for optimality of the linear quadratic inverse dynamic game problem. Solving these equations yields the optimal feedback control and disturbance gains.
+
+Here is a detailed derivation of the coupled algebraic Riccati equations for the linear quadratic inverse dynamic game:
+Consider the linear time-invariant system:
+\begin{align}
+\dot{\mathbf{x}}_a &= \mathbf{A}a\mathbf{x}a + \mathbf{B}{a_i}\mathbf{u}i + \mathbf{B}{a{d_i}}\mathbf{d}_i \
+\mathbf{y}i &= \mathbf{C}{a_i}\mathbf{x}_a
+\end{align}
+The cost functions for the two players are:
+\begin{align}
+J_i(\mathbf{u}_i, \mathbf{d}_i) &= \int_0^{\infty} \left(\mathbf{x}_a^\top \mathbf{Q}_i \mathbf{x}_a + \mathbf{u}_i^\top \mathbf{R}_i \mathbf{u}i \right) dt \
+J{d_i}(\mathbf{u}_i, \mathbf{d}_i) &= \int_0^{\infty} \left(\mathbf{x}a^\top \mathbf{Q}{d_i} \mathbf{x}_a - \mathbf{d}i^\top \mathbf{R}{d_i} \mathbf{d}_i\right) dt
+\end{align}
+The Hamiltonian for player $i$ is:
+\begin{align}
+H_i = \mathbf{x}_a^\top \mathbf{Q}_i \mathbf{x}_a + \mathbf{u}_i^\top \mathbf{R}_i \mathbf{u}_i + \boldsymbol{\lambda}^\top\left(\mathbf{A}a\mathbf{x}a + \mathbf{B}{a_i}\mathbf{u}i + \mathbf{B}{a{d_i}}\mathbf{d}_i\right)
+\end{align}
+Where $\boldsymbol{\lambda} \in \mathbb{R}^n$ is the costate vector.
+The optimality conditions are:
+\begin{align}
+\frac{\partial H_i}{\partial \mathbf{u}_i} = 0 &\Rightarrow \mathbf{u}_i = -\mathbf{R}i^{-1}\mathbf{B}{a_i}^\top\boldsymbol{\lambda} \
+\frac{d\boldsymbol{\lambda}}{dt} = -\frac{\partial H_i}{\partial \mathbf{x}_a} &\Rightarrow \dot{\boldsymbol{\lambda}} = -\mathbf{Q}_i\mathbf{x}_a - \mathbf{A}_a^\top\boldsymbol{\lambda}
+\end{align}
+Assuming steady-state optimal solution:
+\begin{align}
+\mathbf{u}_i &= -\mathbf{K}_i \mathbf{x}a \
+\boldsymbol{\lambda} &= \mathbf{P}{a_i}\mathbf{x}_a
+\end{align}
+Where $\mathbf{K}i \in \mathbb{R}^{m_i \times n}$ and $\mathbf{P}{a_i} \in \mathbb{R}^{n\times n}$ are constant gain matrices.
+Substituting these into the costate equation:
+\begin{align}
+0 &= -\mathbf{Q}_i\mathbf{x}_a - \mathbf{A}a^\top \mathbf{P}{a_i}\mathbf{x}_a \
+\Rightarrow \quad 0 &= -\mathbf{Q}i - \mathbf{A}a^\top \mathbf{P}{a_i} - \mathbf{P}{a_i}\mathbf{A}_a
+\end{align}
+Pre-multiplying by $\mathbf{P}_{a_i}^{-1}$:
+\begin{align}
+0 &= -\mathbf{P}_{a_i}^{-1}\mathbf{Q}i - \mathbf{A}a^\top  - \mathbf{P}{a_i}\mathbf{A}a\mathbf{P}{a_i}^{-1} \
+0 &= -\mathbf{P}{a_i}^{-1}\mathbf{Q}i - \mathbf{A}a^\top  - \mathbf{P}{a_i}\mathbf{A}a + \mathbf{P}{a_i}\mathbf{B}{a_i}\mathbf{R}i^{-1}\mathbf{B}{a_i}^\top
+\end{align}
+Where we have substituted $\mathbf{K}i = \mathbf{R}i^{-1}\mathbf{B}{a_i}^\top\mathbf{P}{a_i}$.
+This gives the first Riccati equation:
+\begin{align}
+\mathbf{A}a^\top \mathbf{P}{a_i} + \mathbf{P}{a_i}\mathbf{A}a - \mathbf{P}{a_i}\mathbf{B}{a_i}\mathbf{R}i^{-1}\mathbf{B}{a_i}^\top\mathbf{P}_{a_i} + \mathbf{Q}_i = 0
+\end{align}
+Repeating the steps above for the maximizing disturbance player gives:
+\begin{align}
+\mathbf{A}a^\top \mathbf{P}{a_{d_i}} + \mathbf{P}{a{d_i}}\mathbf{A}a - \mathbf{P}{a_{d_i}}\mathbf{B}{a{d_i}}\mathbf{R}{d_i}^{-1}\mathbf{B}{a_{d_i}}^\top\mathbf{P}{a{d_i}} + \mathbf{Q}_{d_i} = 0
+\end{align}
+Thus, we obtain two coupled algebraic Riccati equations that must be solved to find the optimal control and disturbance feedback gains. The cross-coupling occurs through the state dynamics.
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
