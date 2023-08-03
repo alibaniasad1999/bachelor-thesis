@@ -496,10 +496,10 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
         r & \psi
     \end{bmatrix}^{\mathrm{T}}$, the formulation of the quadrotor platform is presented as follows:
 \begin{align}\label{eq:diffeq}
-    \dot x_1 &= \Gamma_1x_3 x_5 + \Gamma_2 x_3 \Omega_r + \Gamma_3\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_3d_{\text{roll}} \\[0.5em]
+    \dot x_1 &= \Gamma_1x_3 x_5 + \Gamma_2 x_3 \Omega_r + \Gamma_3\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_3d_{\text{roll}} \\[0.5em]
     \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)
     \\[0.5em]
-    \dot x_3 &= \Gamma_4 x_1 x_5 - \Gamma_5 x_1 \Omega_r +  \Gamma_6\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_6d_{\text{pitch}}\\[0.5em]~\label{eq:diffeq-mid}
+    \dot x_3 &= \Gamma_4 x_1 x_5 - \Gamma_5 x_1 \Omega_r +  \Gamma_6\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_6d_{\text{pitch}}\\[0.5em]~\label{eq:diffeq-mid}
     \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[0.5em]
     \dot x_5 &= \Gamma_7x_1 x_3 +  \Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_8d_{\text{yaw}}\\[0.5em] 
     \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:diffeq-end}
@@ -511,11 +511,11 @@ where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
     \end{split}
 \end{equation}
 \begin{align}
-    \dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_4\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_3d_{\text{roll}}\\[2mm]~\label{eq:eq_of_motion_start1}
+    \dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_3d_{\text{roll}}\\[2mm]~\label{eq:eq_of_motion_start1}
     \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
-    \dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)+ \dfrac{1}{J_y}d_{\text{pitch}}\\
+    \dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)+ \dfrac{1}{J_y}d_{\text{pitch}}\\
     \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
-    \dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)+\Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_8d_{\text{yaw}}\\[2mm]
+    \dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)+\Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_8d_{\text{yaw}}\\[2mm]
     \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:eq_of_motion_end1}
 \end{align}
 where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
@@ -616,6 +616,7 @@ $\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\bo
     \boldsymbol{\mathrm{B}}
     \left(\boldsymbol{\mathrm{u}} + \boldsymbol{\mathrm{d}}\right)
 \end{equation}
+where $d = \text{diag}([d_{\text{roll}}, d_{\text{pitch}}, d_{\text{yaw}}])$ denotes the input disturbance.
 $\boldsymbol{\mathrm{A}}$ is the dynamic system matrix, denoted as
 \begin{equation}
     \boldsymbol{\mathrm{A}} = \begin{bmatrix}
@@ -803,6 +804,11 @@ The optimization process aimed to fine-tune the controller parameters for the sp
 \section{Results}\label{sec:results}
 \noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. Then, the performance of the LQIR-DG structure is evaluated.
 Tables~\ref{tab:parameters} and~\ref{tab:control weight_new} present the quadrotor and LQIR-DG parameters, respectively.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \begin{table}[H]
     \centering
     \caption{Quadrotor parameters}
@@ -824,6 +830,20 @@ Tables~\ref{tab:parameters} and~\ref{tab:control weight_new} present the quadrot
 \label{tab:parameters}
 \end{center}
 \end{table}
+\subsection{TCACS Optimization of LQIR-DG Weighting Matrix using ITSE Cost Function}
+
+The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller. The objective was to enhance the controller's performance in a 3-degree-of-freedom simulation.
+
+The cost function for the optimization was formulated based on the Integral Squared Time Error (ITSE) criterion, given by:
+
+%% ITSE cost function %%
+\begin{equation*}
+    \text{ITSE} = \int_{t_1}^{t_2} \left( e(t)^2t \right) \, dt
+\end{equation*}
+
+where $\mathbf{x}$ represents the state vector and $\mathbf{u}$ denotes the control input vector.
+
+Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{Roll}}, \boldsymbol{\mathrm{Q}}_{\text{Pitch}}, \boldsymbol{\mathrm{Q}}_{\text{Yaw}}])$, and $R_d$ is individually optimized for each channel. The optimization process was conducted for the weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ on a per-channel basis. The primary objective was to minimize the ITSE cost function concerning control effort and disturbance rejection, while simultaneously ensuring stable and robust control performance.
 \begin{table}[H]
     \centering
     \caption{LQIR-DG controller parameters}
@@ -848,7 +868,7 @@ To increase the accuracy of parameter identification, three scenarios are consid
 In the first scenario, depicted in Figure~\ref{fig:one_degree_identification}, the quadrotor rotates about only one axis (roll, pitch, or yaw axes) to identify the parameters $\Gamma_3$, $\Gamma_6$, and $\Gamma_8$.
 In the second scenario, according to Figure~\ref{fig:two_degree_identification}, the parameters $\Gamma_2$ and $\Gamma_5$ are estimated by rotating the experimental platform around its roll and pitch axes simultaneously. Finally, Figure~\ref{fig:three_degree_identification} displays the results of the third scenario including the estimation of the parameters $\Gamma_1$, $\Gamma_4$, and $\Gamma_7$ for the UAV model, when the platform freely rotates around three axes.
 After the termination condition is met, the optimal values of the quadrotor parameters are computed and denoted in Table~\ref{tab:true_parameters}. 
-These results illustrate that the outputs of the simulation results for the quadrotor model are consistent with reality.
+These results illustrate that the outputs of the simulation results for the quadrotor model are consITSEnt with reality.
 \begin{table}[H]
     \caption{Scenarios for identification of quadrotor parameters.}
     \centering
