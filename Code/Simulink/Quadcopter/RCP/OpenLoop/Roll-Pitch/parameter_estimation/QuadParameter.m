@@ -3,15 +3,15 @@ d_cg = 0.295;
 % Distance between D point to quad center (m)
 h_cg = 0.0078;
 % Thrust factor (non dimensional)
-b = 1.10794e-5;
+b = 3.12e-5;
 % Rotor torque drag factor (non dimensional)
 d = 3.2e-6;
 % Total mass (kg)
 m_tot = 1.774;
 % Quad Moment of inertia respect to axix X Body (kg.m^2)
-J_xx = 0.0297598;
+J_xx = 0.0298565;
 % Quad Moment of inertia respect to axix Y Body (kg.m^2)
-J_yy = 0.0298565;
+J_yy = 0.03066;
 % Quad Moment of inertia respect to axix Y Body (kg.m^2)
 J_zz = 0.058510;
 % Quad blade Moment (kg.m^2)

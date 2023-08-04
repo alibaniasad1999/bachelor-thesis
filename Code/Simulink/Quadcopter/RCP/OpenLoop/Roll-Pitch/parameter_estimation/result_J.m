@@ -26,16 +26,16 @@ ylabel('$\theta_{(\textrm{deg})}$', 'interpreter', 'latex', 'FontSize', 24);
 hold off;
 print('../../../../../../../English_Journal/Figure/parameter_estimation/roll-pitch/pitch','-depsc');
 %% trajectory %%
-load('Quadcopter_nonlinear_Roll_Pitch_spesession_V.mat')
+load('Quadcopter_nonlinear_Roll_Pitch_spesession_VI.mat')
 A4_array = zeros(1, 4);
 B4_array = zeros(1, 4);
 
 A4_array(1) = A4;
 B4_array(1) = B4;
 
-[A4_array(2), B4_array(2)] = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Parameters.Value;
-[A4_array(3), B4_array(3)] = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters.Value;
-[A4_array(4), B4_array(4)] = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_3.Parameters.Value;
+[A4_array(2), B4_array(2)] = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_0.Parameters.Value;
+[A4_array(3), B4_array(3)] = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Parameters.Value;
+[A4_array(4), B4_array(4)] = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters.Value;
 
 plot(0:length(A4_array)-1, A4_array, '-*k', 'markersize', 10, 'LineWidth',2);
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
