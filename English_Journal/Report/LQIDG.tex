@@ -548,67 +548,6 @@ The measurement vector, obtained from the AHRS, is presented as follows:
 where $\boldsymbol{\nu}$ is a Gaussian white noise. Moreover, the superscripts $\mathrm{T}$ indicate the transpose notation.
 %%%? capital or small G g ? 
 \subsection{Linear Model}
-In the previous section, it was shown that equations~\eqref{eq:eq_of_motion_start1} to~\eqref{eq:eq_of_motion_end1} represent nonlinear dynamics. To obtain a linearized model, these equations can be rewritten as follows:
-\begin{equation}
-    \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
-        \dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 u_{\text{roll}} + \Gamma_4u_{\text{yaw}}+\Gamma_3d_{\text{roll}}\\[2mm]
-        \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
-        \dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}u_{\text{pitc}}+ \dfrac{1}{J_y}d_{\text{pitch}}\\
-        \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
-        \dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4u_{\text{roll}}+\Gamma_8u_{\text{yaw}}+\Gamma_8d_{\text{yaw}}\\[2mm]
-        \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)
-    \end{cases}
-\end{equation}
-    
-
-\begin{align}
-\dot{\mathbf{x}} &= \mathbf{f}(\mathbf{x}, \mathbf{u})
-\end{align}
-where $\mathbf{x} \in \mathbb{R}^n$ is the state vector representing the system's internal states,
-$\mathbf{u} \in \mathbb{R}^m$ is the input vector, and
-$\mathbf{f}(\mathbf{x}, \mathbf{u})$ is the nonlinear function governing the state dynamics.
-To linearize the system around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e^*\!=\!0$ and $\boldsymbol{{\mathrm{u}}}_e^*\!=\!0)$, small perturbations $\Delta \mathbf{x}$ and $\Delta \mathbf{u}$ are used:
-
-\begin{align}
-\mathbf{x} &= \mathbf{x}_0 + \Delta \mathbf{x}, \\
-\mathbf{u} &= \mathbf{u}_0 + \Delta \mathbf{u}.
-\end{align}
-
-Then, the linearized state-space representation can be expressed as:
-\begin{align}
-{\Delta \mathbf{\dot x}} &= \mathbf{A} \Delta \mathbf{x} + \mathbf{B} \Delta \mathbf{u}
-\end{align}
-where
-$\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the state matrix,
-$\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the input matrix.
-
-% \begin{equation}
-%   \dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} = \begin{bmatrix}
-%       \Gamma_1x_3 & 0 & \Gamma_1x_1 -\Gamma_2x_5 & 0 & -\Gamma_2x_3 & 0 \\
-%       1 & (x_3\cos(x_2) - x_3\sin(x_2))\tan(x_4) & (\sin(x_2) + \cos(x_2))\tan(x_4) & (x_3\sin(x_2) + x_3\cos(x_2))sec^2(x_4) & 0 & 0 \\
-%       \Gamma_5x_5 & 0 & 0 & 0 & \Gamma_5x_1  - 2\Gamma_6x_5 & 0 \\
-%       0 & 0 & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_2) & 0 \\
-%       \Gamma_7x_3 & 0 & \Gamma_7x_1 & 0 & -\Gamma_1x_3 & 0 \\
-%       0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
-%   \end{bmatrix}
-% \end{equation}
-\begin{equation}
-    \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
-        0 & 0 & 0 & 0 & 0 & 0 \\
-        1 & 0 & 0 & 0 & 0 & 0 \\
-        0 & 0 & 0 & 0 & 0 & 0 \\
-        0 & 0 & 1 & 0 & 0 & 0 \\
-        0 & 0 & 0 & 0 & 0 & 0 \\
-        0 & 0 & 0 & 0 & 1 & 0
-    \end{bmatrix}, \quad \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
-        \Gamma_3 & 0 & \Gamma_4 \\
-        0 & 0 & 0 \\
-        0 & \dfrac{1}{J_y} & 0 \\
-        0 & 0 & 0 \\
-        \Gamma_4 & 0 & \Gamma_8 \\
-        0 & 0 & 0
-    \end{bmatrix}
-\end{equation}
 
 \noindent By defining $\boldsymbol{\dot{\mathrm{x}}} = \begin{bmatrix}
     \boldsymbol{{\mathrm{\dot x_{\text{roll}}}}}&
@@ -823,12 +762,13 @@ Tables~\ref{tab:parameters} and~\ref{tab:control weight_new} present the quadrot
     \hline
     Parameter & Unit & Value & Parameter & Unit & Value \\
     \hline
-    $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ \\ 
+    $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ \\ 
     $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ &
     $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ \\
     $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ 
     & $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ \\
-    $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ \\
+    $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ \\
+    $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & $\mathrm{I}_{\text{xz}}$ & $\mathrm{kg.m^2}$ & $6.87\times 10^{-7}$ \\
     \hline
 \end{tabular}
 \label{tab:parameters}
@@ -1050,16 +990,38 @@ Figures~\ref{fig:omega}~\ref{sub@fig:omega_regulation} and~\ref{sub@fig:omega_sq
     \label{fig:omega}
 \end{figure}
 \subsubsection{Investigating the Disturbance Rejection}\label{sec:disturbance}
-\noindent Here, the effect of the input disturbance is investigated on the performance of the proposed controller.
-The input disturbance, $\mathrm{d_{\Omega_i}}$, is considered as a change in command of the rotational velocity, modeled as %%%? with or in for input disturbance
+\noindent This section delves into the influence of input disturbance on the performance of the proposed controller. The input disturbance, denoted as $\mathrm{d_{\Omega_i}}$, represents a change in the command of the rotational velocity. The input disturbance is modeled as follows:
+
 \begin{equation}
     \mathrm{d_{\Omega_1}} = \mathrm{d_{\Omega_2}} = -\mathrm{d_{\Omega_3}} = -\mathrm{d_{\Omega_4}} = \begin{cases}
         500~{\mathrm{rpm}} \quad &20<t<60\\
-        0 \quad &\mathrm{other}
+        0 \quad &\mathrm{otherwise}
     \end{cases}
 \end{equation}
-Figure~\ref{fig:disturbance} illustrates the roll and pitch angles in the regulation problem when the input disturbance occurs. These results indicate that the proposed controller can stabilize the quadrotor platform in the presence of input disturbance.
 
+This disturbance profile simulates a sudden change in rotational velocity commands between time instants 20 seconds and 60 seconds. The aim is to assess the effectiveness of the proposed controller in stabilizing the quadrotor platform in the presence of such input disturbances.
+
+Additionally, a comparative analysis is conducted to evaluate the performance of the proposed Linear Quadratic Integral Differential Game (LQIR-DG) controller against two other well-known disturbance rejection methods: Active Disturbance Rejection Control (ADRC) and Disturbance Observer-Based Control (DOBC).
+
+\textbf{Active Disturbance Rejection Control (ADRC):}
+(ADRC) is a robust control method widely used to handle uncertainties and disturbances in dynamic systems. It relies on the concept of an extended state observer to estimate and compensate for disturbances, allowing for improved control performance. ADRC has gained popularity in various fields due to its ability to deal with disturbances in real-time and enhance system robustness.
+
+In ADRC, an extended state observer estimates the total disturbances affecting the system, including external disturbances and model uncertainties. By actively rejecting these disturbances, ADRC ensures accurate tracking and control of the system. The control law in ADRC is designed to incorporate the estimated disturbances and adjust the control inputs accordingly to minimize the effects of disturbances on the system.
+
+One of the key advantages of ADRC is its simplicity and ease of implementation, making it suitable for a wide range of control applications. The ability to handle uncertainties and disturbances in real-time allows ADRC to achieve better performance and stability compared to traditional control methods in challenging and dynamic environments.
+
+\textbf{Disturbance Observer-Based Control (DOBC):}
+(DOBC) is robust control strategy used to estimate and compensate for external disturbances affecting the system. DOBC employs a disturbance observer to accurately estimate the disturbances and uses this information to modify the control inputs accordingly.
+
+DOBC is designed to address disturbances that cannot be directly measured but can significantly affect the system's behavior. By accurately estimating and compensating for these disturbances, DOBC improves the system's tracking and control performance, especially in the presence of uncertainties and external perturbations.
+
+The implementation of DOBC involves designing an observer that accurately estimates the disturbances based on the system's dynamics and available measurements. The observer continuously updates its estimates, allowing the controller to adapt and respond to changing disturbance conditions.
+
+Both ADRC and DOBC are effective tools for disturbance rejection and robust control in dynamic systems. Their ability to estimate and compensate for disturbances contributes to improved system stability and tracking performance, making them valuable options for various control applications, including quadrotor platforms.
+
+Figure~\ref{fig:disturbance} illustrates the roll and pitch angles during the regulation problem when the input disturbance occurs. The results demonstrate the superior disturbance rejection capabilities of the proposed LQIR-DG controller compared to ADRC and DOBC. The LQIR-DG approach exhibits robust stabilization and superior tracking performance in the presence of input disturbances, further validating the effectiveness of our proposed method.
+
+Overall, the comparative analysis highlights the remarkable disturbance rejection capabilities of the LQIR-DG controller, positioning it as a promising and impactful choice for controlling quadrotor platforms in real-world scenarios.
 
 \begin{figure}[H]
     \centering
@@ -1518,6 +1480,75 @@ Thus, we obtain two coupled algebraic Riccati equations that must be solved to f
 \vspace{-0.3cm}
  \bibliographystyle{elsarticle-harv} 
  \bibliography{refs}
+
+ % appendix: linearization
+\newpage
+\appendix
+\section{Linearization}
+\label{sec:linearization}
+The linearized dynamics are:
+In the previous section, it was shown that equations~\eqref{eq:eq_of_motion_start1} to~\eqref{eq:eq_of_motion_end1} represent nonlinear dynamics. To obtain a linearized model, these equations can be rewritten as follows:
+\begin{equation}
+    \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
+        \dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 u_{\text{roll}} + \Gamma_4u_{\text{yaw}}+\Gamma_3d_{\text{roll}}\\[2mm]
+        \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
+        \dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}u_{\text{pitc}}+ \dfrac{1}{J_y}d_{\text{pitch}}\\
+        \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
+        \dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4u_{\text{roll}}+\Gamma_8u_{\text{yaw}}+\Gamma_8d_{\text{yaw}}\\[2mm]
+        \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)
+    \end{cases}
+\end{equation}
+    
+
+\begin{align}
+\dot{\mathbf{x}} &= \mathbf{f}(\mathbf{x}, \mathbf{u})
+\end{align}
+where $\mathbf{x} \in \mathbb{R}^n$ is the state vector representing the system's internal states,
+$\mathbf{u} \in \mathbb{R}^m$ is the input vector, and
+$\mathbf{f}(\mathbf{x}, \mathbf{u})$ is the nonlinear function governing the state dynamics.
+To linearize the system around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e^*\!=\!0$ and $\boldsymbol{{\mathrm{u}}}_e^*\!=\!0)$, small perturbations $\Delta \mathbf{x}$ and $\Delta \mathbf{u}$ are used:
+
+\begin{align}
+\mathbf{x} &= \mathbf{x}_0 + \Delta \mathbf{x}, \\
+\mathbf{u} &= \mathbf{u}_0 + \Delta \mathbf{u}.
+\end{align}
+
+Then, the linearized state-space representation can be expressed as:
+\begin{align}
+{\Delta \mathbf{\dot x}} &= \mathbf{A} \Delta \mathbf{x} + \mathbf{B} \Delta \mathbf{u}
+\end{align}
+where
+$\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the state matrix,
+$\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the input matrix.
+
+% \begin{equation}
+%   \dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} = \begin{bmatrix}
+%       \Gamma_1x_3 & 0 & \Gamma_1x_1 -\Gamma_2x_5 & 0 & -\Gamma_2x_3 & 0 \\
+%       1 & (x_3\cos(x_2) - x_3\sin(x_2))\tan(x_4) & (\sin(x_2) + \cos(x_2))\tan(x_4) & (x_3\sin(x_2) + x_3\cos(x_2))sec^2(x_4) & 0 & 0 \\
+%       \Gamma_5x_5 & 0 & 0 & 0 & \Gamma_5x_1  - 2\Gamma_6x_5 & 0 \\
+%       0 & 0 & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_2) & 0 \\
+%       \Gamma_7x_3 & 0 & \Gamma_7x_1 & 0 & -\Gamma_1x_3 & 0 \\
+%       0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
+%   \end{bmatrix}
+% \end{equation}
+\begin{equation}
+    \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 & 0
+    \end{bmatrix}, \quad \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
+        \Gamma_3 & 0 & \Gamma_4 \\
+        0 & 0 & 0 \\
+        0 & \dfrac{1}{J_y} & 0 \\
+        0 & 0 & 0 \\
+        \Gamma_4 & 0 & \Gamma_8 \\
+        0 & 0 & 0
+    \end{bmatrix}
+\end{equation}
+
 
 %% else use the following coding to input the bib items directly in the
 %% TeX file.
