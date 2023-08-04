@@ -263,7 +263,7 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
 ~\label{fig:schematic}
 \end{figure}
 \subsection{Dynamic Modeling of the Quadrotor Platform}
-\noindent Here, according to Newton-Euler, the model of the quadrotor platform is presented as follows~\cite{4399042, article_Bouabdallah}:
+\noindent Here, according to Newton-Euler, the model of the quadrotor platform is presented as follows~\cite{4399042, article_Bouabdallah, beard2012small}:
 \begin{equation}
     \begin{bmatrix}
         \dot p \\
@@ -778,6 +778,30 @@ Tables~\ref{tab:parameters} and~\ref{tab:control weight_new} present the quadrot
 \label{tab:parameters}
 \end{center}
 \end{table}
+
+\subsection{Challenges in Designing and Implementation}
+
+\noindent Developing and implementing advanced control strategies for unmanned aerial vehicles (UAVs) presents several challenges that need careful consideration to ensure successful deployment in real-world scenarios. In this subsection, we briefly highlight the key challenges encountered during the design and implementation of the proposed controller.
+
+\begin{enumerate}
+  \item \textbf{Nonlinear Dynamics}: quadrotors exhibit highly nonlinear and coupled dynamics, which demand sophisticated control algorithms to achieve precise and stable control.
+
+  \item \textbf{Model Uncertainty}: Accurate modeling of quadrotor dynamics is challenging due to uncertainties in aerodynamics, payload, and external disturbances. Robust control techniques are required to address model uncertainties effectively.
+
+  \item \textbf{Sensor Noise and Calibration}: Real-world sensors are prone to noise and calibration errors, affecting state estimation accuracy. Sensor fusion and calibration techniques are essential for reliable control.
+
+  \item \textbf{Real-time Computation}: quadrotor control systems must execute in real-time, necessitating computationally efficient algorithms to ensure low-latency response.
+
+  \item \textbf{Robustness to External Disturbances}: quadrotors operate in dynamic and unpredictable environments, making them susceptible to wind gusts and other disturbances. Robust control strategies are essential to maintain stability.
+
+  \item \textbf{Safety and Collision Avoidance}: Ensuring safety during quadrotor operation is critical, requiring collision avoidance algorithms and fail-safe mechanisms.
+
+  \item \textbf{Experimental Validation}: Real-world testing and validation of the controller pose logistical and safety challenges, requiring careful experimental setups.
+
+\end{enumerate}
+
+Addressing these challenges is crucial to ensure the successful deployment and practicality of the proposed controller in real-world applications.
+
 \subsection{Tuning of LQIR-DG Weighting Matrix}
 
 The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller. The objective was to enhance the controller's performance in a 3-degree-of-freedom simulation. % add psudo code of TCACS
