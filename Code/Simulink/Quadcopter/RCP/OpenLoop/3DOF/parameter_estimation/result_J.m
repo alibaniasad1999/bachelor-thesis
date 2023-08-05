@@ -39,7 +39,7 @@ xlabel('time($\sec)$', 'interpreter', 'latex', 'FontSize', 24);
 ylabel('$\psi_{(\textrm{deg})}$', 'interpreter', 'latex', 'FontSize', 24);
 print('../../../../../../../English_Journal/Figure/parameter_estimation/3DOF/yaw','-depsc');
 %% trajectory %%
-load('Quadcopter_nonlinear_spesession_parameter.mat')
+load('Quadcopter_nonlinear_spesession_I.mat');
 A2_array = zeros(1, 4);
 B2_array = zeros(1, 4);
 C1_array = zeros(1, 4);
@@ -47,9 +47,9 @@ A2_array(1) = A2;
 B2_array(1) = B2;
 C1_array(1) = C1;
 
-[A2_array(2), B2_array(2), C1_array(2)] =  SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Parameters.Value;
-[A2_array(3), B2_array(3), C1_array(3)] =  SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters.Value;
-[A2_array(4), B2_array(4), C1_array(4)] =  SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_3.Parameters.Value;
+[A2_array(2), B2_array(2), C1_array(2)] =  SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_0.Parameters.Value;
+[A2_array(3), B2_array(3), C1_array(3)] =  SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Parameters.Value;
+[A2_array(4), B2_array(4), C1_array(4)] =  SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters.Value;
 % [A2_array(5), B2_array(5), C1_array(5)] =  SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_4.Parameters.Value;
 
 figure

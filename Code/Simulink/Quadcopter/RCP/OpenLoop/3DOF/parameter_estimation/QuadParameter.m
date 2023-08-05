@@ -11,7 +11,7 @@ m_tot = 1.774;
 % Quad Moment of inertia respect to axix X Body (kg.m^2)
 J_xx = 0.0297598;
 % Quad Moment of inertia respect to axix Y Body (kg.m^2)
-J_yy = 0.0298565;
+J_yy = 0.03066;
 % Quad Moment of inertia respect to axix Y Body (kg.m^2)
 J_zz = 0.058510;
 % Quad blade Moment (kg.m^2)
