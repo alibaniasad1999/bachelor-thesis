@@ -263,68 +263,68 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
 ~\label{fig:schematic}
 \end{figure}
 \subsection{Dynamic Modeling of the Quadrotor Platform}
-\noindent Here, according to Newton-Euler, the model of the quadrotor platform is presented as follows~\cite{4399042, article_Bouabdallah, beard2012small}:
-\begin{equation}
-    \begin{bmatrix}
-        \dot p \\
-        \dot q \\
-        \dot r
-    \end{bmatrix} = \begin{bmatrix}
-        \dfrac{J_z}{\Gamma} & 0 & \dfrac{J_{xy}}{\Gamma} \\
-        0 & \dfrac{1}{J_y} & 0 \\
-        \dfrac{J_{xy}}{\Gamma} & 0 & \dfrac{J_x}{\Gamma}
-    \end{bmatrix} \left(
-        \begin{bmatrix}
-            0 & r & -q \\
-            -r & 0 & p \\
-            q & -p & 0
-        \end{bmatrix}\begin{bmatrix}
-            J_x & 0 & -J_{xy} \\
-            0 & J_y & 0 \\
-            -J_{xy} & 0 & J_z
-        \end{bmatrix} +
-        \begin{bmatrix}
-            u_{\text{roll}} \\
-            u_{\text{pitch}} \\
-            u_{\text{yaw}}
-        \end{bmatrix} + \begin{bmatrix}
-            d_{\text{roll}} \\
-            d_{\text{pitch}} \\
-            d_{\text{yaw}}
-        \end{bmatrix}
-    \right)
-\end{equation}
+\noindent Here, according to Newton-Euler, the model of the quadrotor platform is presented as follows~\cite{4399042, article_Bouabdallah}:
+% \begin{equation}
+%     \begin{bmatrix}
+%         \dot p \\
+%         \dot q \\
+%         \dot r
+%     \end{bmatrix} = \begin{bmatrix}
+%         \dfrac{J_z}{\Gamma} & 0 & \dfrac{J_{xy}}{\Gamma} \\
+%         0 & \dfrac{1}{J_y} & 0 \\
+%         \dfrac{J_{xy}}{\Gamma} & 0 & \dfrac{J_x}{\Gamma}
+%     \end{bmatrix} \left(
+%         \begin{bmatrix}
+%             0 & r & -q \\
+%             -r & 0 & p \\
+%             q & -p & 0
+%         \end{bmatrix}\begin{bmatrix}
+%             J_x & 0 & -J_{xy} \\
+%             0 & J_y & 0 \\
+%             -J_{xy} & 0 & J_z
+%         \end{bmatrix} +
+%         \begin{bmatrix}
+%             u_{\text{roll}} \\
+%             u_{\text{pitch}} \\
+%             u_{\text{yaw}}
+%         \end{bmatrix} + \begin{bmatrix}
+%             d_{\text{roll}} \\
+%             d_{\text{pitch}} \\
+%             d_{\text{yaw}}
+%         \end{bmatrix}
+%     \right)
+% \end{equation}
 
-\begin{equation}
-    \begin{bmatrix}
-    \dot{p} \\
-    \dot{q} \\
-    \dot{r}
-    \end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
-    J_z & 0 & J_{xy} \\
-    0 & \frac{\Gamma}{J_y} & 0 \\
-    J_{xy} & 0 & J_x
-    \end{bmatrix} \left(
-    \begin{bmatrix}
-    0 & r & -q \\
-    -r & 0 & p \\
-    q & -p & 0
-    \end{bmatrix} \begin{bmatrix}
-    J_x & 0 & -J_{xy} \\
-    0 & J_y & 0 \\
-    -J_{xy} & 0 & J_z
-    \end{bmatrix} +
-    \begin{bmatrix}
-    u_{\text{roll}} \\
-    u_{\text{pitch}} \\
-    u_{\text{yaw}}
-    \end{bmatrix} + \begin{bmatrix}
-    d_{\text{roll}} \\
-    d_{\text{pitch}} \\
-    d_{\text{yaw}}
-    \end{bmatrix}
-    \right).
-\end{equation}
+% \begin{equation}
+%     \begin{bmatrix}
+%     \dot{p} \\
+%     \dot{q} \\
+%     \dot{r}
+%     \end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
+%     J_z & 0 & J_{xy} \\
+%     0 & \frac{\Gamma}{J_y} & 0 \\
+%     J_{xy} & 0 & J_x
+%     \end{bmatrix} \left(
+%     \begin{bmatrix}
+%     0 & r & -q \\
+%     -r & 0 & p \\
+%     q & -p & 0
+%     \end{bmatrix} \begin{bmatrix}
+%     J_x & 0 & -J_{xy} \\
+%     0 & J_y & 0 \\
+%     -J_{xy} & 0 & J_z
+%     \end{bmatrix} +
+%     \begin{bmatrix}
+%     u_{\text{roll}} \\
+%     u_{\text{pitch}} \\
+%     u_{\text{yaw}}
+%     \end{bmatrix} + \begin{bmatrix}
+%     d_{\text{roll}} \\
+%     d_{\text{pitch}} \\
+%     d_{\text{yaw}}
+%     \end{bmatrix}
+%     \right).
+% \end{equation}
 
 % \begin{align*}
 %   \begin{bmatrix}
@@ -358,95 +358,112 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
 %   \right)
 % \end{align*}
 
-\begin{align*}
-    \begin{bmatrix}
-        \dot{p} \\
-        \dot{q} \\
-        \dot{r}
-    \end{bmatrix} &= \frac{1}{\Gamma} \begin{bmatrix}
-        J_z & 0 & J_{xy} \\
-        0 & \frac{\Gamma}{J_y} & 0 \\
-        J_{xy} & 0 & J_x
-    \end{bmatrix} \left(
-        \begin{bmatrix}
-            0 & r & -q \\
-            -r & 0 & p \\
-            q & -p & 0
-        \end{bmatrix} \begin{bmatrix}
-            J_x & 0 & -J_{xy} \\
-            0 & J_y & 0 \\
-            -J_{xy} & 0 & J_z
-        \end{bmatrix} +
-        \begin{bmatrix}
-            \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
-            \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
-            \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
-        \end{bmatrix} +
-        \begin{bmatrix}
-            d_{\text{roll}} \\
-            d_{\text{pitch}} \\
-            d_{\text{yaw}}
-        \end{bmatrix}
-    \right)
-\end{align*}
+% \begin{align*}
+%     \begin{bmatrix}
+%         \dot{p} \\
+%         \dot{q} \\
+%         \dot{r}
+%     \end{bmatrix} &= \frac{1}{\Gamma} \begin{bmatrix}
+%         J_z & 0 & J_{xy} \\
+%         0 & \frac{\Gamma}{J_y} & 0 \\
+%         J_{xy} & 0 & J_x
+%     \end{bmatrix} \left(
+%         \begin{bmatrix}
+%             0 & r & -q \\
+%             -r & 0 & p \\
+%             q & -p & 0
+%         \end{bmatrix} \begin{bmatrix}
+%             J_x & 0 & -J_{xy} \\
+%             0 & J_y & 0 \\
+%             -J_{xy} & 0 & J_z
+%         \end{bmatrix} +
+%         \begin{bmatrix}
+%             \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
+%             \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
+%             \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
+%         \end{bmatrix} +
+%         \begin{bmatrix}
+%             d_{\text{roll}} \\
+%             d_{\text{pitch}} \\
+%             d_{\text{yaw}}
+%         \end{bmatrix}
+%     \right)
+% \end{align*}
 
-\begin{equation}
-    \begin{aligned}
-        \begin{bmatrix}
-            \dot{p} \\
-            \dot{q} \\
-            \dot{r}
-        \end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
-            J_z & 0 & J_{xy} \\
-            0 & \frac{\Gamma}{J_y} & 0 \\
-            J_{xy} & 0 & J_x
-        \end{bmatrix} \Bigg(
-        &\begin{bmatrix}
-            0 & r & -q \\
-            -r & 0 & p \\
-            q & -p & 0
-        \end{bmatrix} \begin{bmatrix}
-            J_x & 0 & -J_{xy} \\
-            0 & J_y & 0 \\
-            -J_{xy} & 0 & J_z
-        \end{bmatrix} \\
-        \quad+ &\begin{bmatrix}
-            \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
-            \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
-            \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
-        \end{bmatrix} + \begin{bmatrix}
-            d_{\text{roll}} \\
-            d_{\text{pitch}} \\
-            d_{\text{yaw}}
-        \end{bmatrix}
-        \Bigg)
-    \end{aligned}
-\end{equation}
+% \begin{equation}
+%     \begin{aligned}
+%         \begin{bmatrix}
+%             \dot{p} \\
+%             \dot{q} \\
+%             \dot{r}
+%         \end{bmatrix} = \frac{1}{\Gamma} \begin{bmatrix}
+%             J_z & 0 & J_{xy} \\
+%             0 & \frac{\Gamma}{J_y} & 0 \\
+%             J_{xy} & 0 & J_x
+%         \end{bmatrix} \Bigg(
+%         &\begin{bmatrix}
+%             0 & r & -q \\
+%             -r & 0 & p \\
+%             q & -p & 0
+%         \end{bmatrix} \begin{bmatrix}
+%             J_x & 0 & -J_{xy} \\
+%             0 & J_y & 0 \\
+%             -J_{xy} & 0 & J_z
+%         \end{bmatrix} \\
+%         \quad+ &\begin{bmatrix}
+%             \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \\
+%             \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \\
+%             \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
+%         \end{bmatrix} + \begin{bmatrix}
+%             d_{\text{roll}} \\
+%             d_{\text{pitch}} \\
+%             d_{\text{yaw}}
+%         \end{bmatrix}
+%         \Bigg)
+%     \end{aligned}
+% \end{equation}
 
 %%%%%%%%%%%%%%%% J must be text and x and y %%%%%%%%%%%%%%%%%
-    
+
+% \begin{align}
+%     \dot p = \mathrm{\Gamma}_1pq - \mathrm{\Gamma}_2qr+ \mathrm{\Gamma}_3(\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \mathrm{\Gamma}_4\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \mathrm{\Gamma}_5\Omega_{c, r} + \mathrm{\Gamma}_3d_{\text{yaw}} + \mathrm{\Gamma}_4d_{\text{yaw}} \\
+%     \dot q = \mathrm{\Gamma}_6pr - \mathrm{\Gamma}_7(p^2 - r^2) + \mathrm{\Gamma}_8(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \mathrm{\Gamma}_9\Omega_{c, r} + \mathrm{\Gamma}_8d_{\text{pitch}}\\
+%     \dot r = \mathrm{\Gamma}_{10}pq - \mathrm{\Gamma}_{1}qr + \mathrm{\Gamma}_{11}(\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \mathrm{\Gamma}_{4}\mathrm{d} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \mathrm{\Gamma}_{11}d_{\text{roll}} + \mathrm{\Gamma}_{4}d_{\text{yaw}}
+% \end{align}
+
+
 \begin{align}
-&\dot p = \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}
-{\mathrm{I}_{\text{xx}}} qr + q \dfrac{\mathrm{I}_{\text{rotor}}}
-{\mathrm{I}_{\text{xx}}}\Omega_{c, r} + \dfrac{\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)}{\mathrm{I}
-_{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}}
-\\
-&\dot q = \dfrac{\mathrm{I}_{\text{zz}} - 
-\mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}} rp -
-p \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{yy}}}\Omega_{c, r} + 
-\dfrac{\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)}{\mathrm{I}_{\text{yy}}} +
-\dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}
-\\
-&\dot r = \dfrac{\mathrm{I}_{\text{xx}} -
-\mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} pq 
-+  \dfrac{\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)}{\mathrm{I}_{\text{zz}}} 
-+ \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}
+    \dot{p} &= \Gamma_1 pq - \Gamma_2 qr + \Gamma_3 (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_5 \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}} \\
+    \dot{q} &= \Gamma_6 pr - \Gamma_7 (p^2 - r^2) + \Gamma_8 (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_9 \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
+    \dot{r} &= \Gamma_{10} pq - \Gamma_{1} qr + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_{4} \mathrm{d} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{roll}} + \Gamma_{4} d_{\text{yaw}}
 \end{align}
-where $\Gamma$ is defined as
+% \begin{align}
+% &\dot p = \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}
+% {\mathrm{I}_{\text{xx}}} qr + q \dfrac{\mathrm{I}_{\text{rotor}}}
+% {\mathrm{I}_{\text{xx}}}\Omega_{c, r} + \dfrac{\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)}{\mathrm{I}
+% _{\text{xx}}} + \dfrac{d_{\text{roll}}}{\mathrm{I}_{\text{xx}}}
+% \\
+% &\dot q = \dfrac{\mathrm{I}_{\text{zz}} - 
+% \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}} rp -
+% p \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{yy}}}\Omega_{c, r} + 
+% \dfrac{\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)}{\mathrm{I}_{\text{yy}}} +
+% \dfrac{d_{\text{pitch}}}{\mathrm{I}_{\text{yy}}}
+% \\
+% &\dot r = \dfrac{\mathrm{I}_{\text{xx}} -
+% \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}} pq 
+% +  \dfrac{\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)}{\mathrm{I}_{\text{zz}}} 
+% + \dfrac{d_{\text{yaw}}}{\mathrm{I}_{\text{zz}}}
+% \end{align}
+In the above equations, $\Gamma_i (i = 1, \ldots, 8)$ is defined as
 \begin{equation}
-    \Gamma = \mathrm{J}_{\text{x}}\mathrm{J}_{\text{z}} - \mathrm{J}_{\text{xy}}^2
+    \begin{aligned}
+        \Gamma_1 &= \dfrac{\mathrm{I}_{\text{xz}}\left(\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}} + \mathrm{I}_{\text{zz}}\right)}{\mathrm{\Gamma}}, & \Gamma_2 &= \dfrac{\mathrm{I}_{\text{zz}}\left(\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{yy}}\right)+\mathrm{I}_{\text{xz}}^2}{\mathrm{\Gamma}}, & \Gamma_3 &= \dfrac{\mathrm{I}_{\text{zz}}}{\mathrm{\Gamma}}, & \Gamma_4 &= \dfrac{\mathrm{I}_{\text{xz}}}{\mathrm{\Gamma}} \\
+        \Gamma_5 &= \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, & \Gamma_6 &= \dfrac{\mathrm{I}_{\text{zz}}-\mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, & \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xz}}}{\mathrm{I}_{\text{yy}}}, & \Gamma_8 &= \dfrac{1}{\mathrm{I}_{\text{yy}}} \\
+        \Gamma_9 &= \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{yy}}}, & \Gamma_{10} &= \dfrac{\left(\mathrm{I}_{\text{xx}}-\mathrm{I}_{\text{yy}}\right)+\mathrm{I}_{\text{xz}}^2}{\mathrm{\Gamma}}, & \Gamma_{11} &= \dfrac{\mathrm{I}_{\text{xx}}}{\mathrm{\Gamma}} & &
+    \end{aligned}
 \end{equation}
-and $\Omega_{c, i}~(i=1, 2, 3, 4)$ is the rotational velocity, computed as
+Moreover $\Gamma = \mathrm{J}_{\text{x}}\mathrm{J}_{\text{z}} - \mathrm{J}_{\text{xy}}^2$.
+Where $\Omega_{c, i}~(i=1, 2, 3, 4)$ is the rotational velocity, computed as
  \begin{align}
     \Omega_{c, 1}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
     \Omega_{c, 2}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}\\
@@ -503,37 +520,59 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
     \begin{bmatrix}
         r & \psi
     \end{bmatrix}^{\mathrm{T}}$, the formulation of the quadrotor platform is presented as follows:
-\begin{align}\label{eq:diffeq}
-    \dot x_1 &= \Gamma_1x_3 x_5 + \Gamma_2 x_3 \Omega_r + \Gamma_3\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_3d_{\text{roll}} \\[0.5em]
-    \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)
-    \\[0.5em]
-    \dot x_3 &= \Gamma_4 x_1 x_5 - \Gamma_5 x_1 \Omega_r +  \Gamma_6\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_6d_{\text{pitch}}\\[0.5em]~\label{eq:diffeq-mid}
-    \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[0.5em]
-    \dot x_5 &= \Gamma_7x_1 x_3 +  \Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_8d_{\text{yaw}}\\[0.5em] 
-    \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:diffeq-end}
-\end{align}
-where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
-\begin{equation}
-    \begin{split}
-        \Gamma_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_2 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_3 = \dfrac{1}{\mathrm{I}_{\text{xx}}}\\ \Gamma_4 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_5 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_6 = \dfrac{1}{\mathrm{I}_{\text{yy}}} \\ \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}}, \quad \Gamma_8 = \dfrac{1}{\mathrm{I}_{\text{zz}}}
-    \end{split}
-\end{equation}
+% \begin{align}\label{eq:diffeq}
+%     \dot x_1 &= \Gamma_1x_3 x_5 + \Gamma_2 x_3 \Omega_r + \Gamma_3\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_3d_{\text{roll}} \\[0.5em]
+%     \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)
+%     \\[0.5em]
+%     \dot x_3 &= \Gamma_4 x_1 x_5 - \Gamma_5 x_1 \Omega_r +  \Gamma_6\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_6d_{\text{pitch}}\\[0.5em]~\label{eq:diffeq-mid}
+%     \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[0.5em]
+%     \dot x_5 &= \Gamma_7x_1 x_3 +  \Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_8d_{\text{yaw}}\\[0.5em] 
+%     \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:diffeq-end}
+% \end{align}
+% where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
+% \begin{equation}
+%     \begin{split}
+%         \Gamma_1 &= \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_2 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, \quad \Gamma_3 = \dfrac{1}{\mathrm{I}_{\text{xx}}}\\ \Gamma_4 &= \dfrac{\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_5 = \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{yy}}}, \quad \Gamma_6 = \dfrac{1}{\mathrm{I}_{\text{yy}}} \\ \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}}}{\mathrm{I}_{\text{zz}}}, \quad \Gamma_8 = \dfrac{1}{\mathrm{I}_{\text{zz}}}
+%     \end{split}
+% \end{equation}
+% \begin{align}
+%     \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3 (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_5 \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}} \\
+%     \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
+%     \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8 (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_9 \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
+%     \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\
+%     \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_{4} \mathrm{d} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{yaw}} + \Gamma_{4} d_{\text{roll}}\\
+%     \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:eq_of_motion_end1}
+% \end{align}
 \begin{align}
-    \dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_3d_{\text{roll}}\\[2mm]~\label{eq:eq_of_motion_start1}
-    \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
-    \dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)+ \dfrac{1}{J_y}d_{\text{pitch}}\\
-    \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
-    \dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)+\Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_8d_{\text{yaw}}\\[2mm]
-    \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:eq_of_motion_end1}
+    \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3 (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \nonumber \\
+    &\quad + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) \nonumber \\
+    &\quad + \Gamma_5 \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}}  \label{eq:eq_of_motion_start1} \\
+    \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4) \nonumber \\
+    \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8 (\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \nonumber \\
+    &\quad + \Gamma_9 \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
+    \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
+    \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) \nonumber \\
+    &\quad + \Gamma_{4} \mathrm{d} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{yaw}} + \Gamma_{4} d_{\text{roll}} \\
+    \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}~\label{eq:eq_of_motion_end1}
 \end{align}
-where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
-\begin{equation}
-    \begin{aligned}
-        \Gamma_1 &= \dfrac{J_{xz}(J_x-J_y+J_z)}{\Gamma}, & \Gamma_2 &= \dfrac{J_z(J_z-J_y)+J_{xz}^2}{\Gamma}, & \Gamma_3 &= \dfrac{J_z}{\Gamma}, \\
-        \Gamma_4 &= \dfrac{J_{xz}}{\Gamma}, & \Gamma_5 &= \dfrac{J_z-J_x}{J_y}, & \Gamma_6 &= \dfrac{J_{xz}}{J_y}, \\
-        \Gamma_7 &= \dfrac{J_x(J_x-J_y)+J_{xz}^2}{\Gamma}, & \Gamma_8 &= \dfrac{J_x}{\Gamma}.
-    \end{aligned}
-\end{equation}
+
+
+% \begin{align}
+%     \dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 \mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_3d_{\text{roll}}\\[2mm]~\label{eq:eq_of_motion_start1}
+%     \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
+%     \dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)+ \dfrac{1}{J_y}d_{\text{pitch}}\\
+%     \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
+%     \dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)+\Gamma_8\mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)+\Gamma_8d_{\text{yaw}}\\[2mm]
+%     \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:eq_of_motion_end1}
+% \end{align}
+% where $\Gamma_i (i = 1, \ldots, 8)$ is defined as
+% \begin{equation}
+%     \begin{aligned}
+%         \Gamma_1 &= \dfrac{J_{xz}(J_x-J_y+J_z)}{\Gamma}, & \Gamma_2 &= \dfrac{J_z(J_z-J_y)+J_{xz}^2}{\Gamma}, & \Gamma_3 &= \dfrac{J_z}{\Gamma}, \\
+%         \Gamma_4 &= \dfrac{J_{xz}}{\Gamma}, & \Gamma_5 &= \dfrac{J_z-J_x}{J_y}, & \Gamma_6 &= \dfrac{J_{xz}}{J_y}, \\
+%         \Gamma_7 &= \dfrac{J_x(J_x-J_y)+J_{xz}^2}{\Gamma}, & \Gamma_8 &= \dfrac{J_x}{\Gamma}.
+%     \end{aligned}
+% \end{equation}
     
 
 The measurement vector, obtained from the AHRS, is presented as follows:
@@ -579,26 +618,37 @@ $
         \end{bmatrix}
 $. Also, $\boldsymbol{\mathrm{B}}$ is the input matrix defined as
 \begin{equation}
-    \boldsymbol{\mathrm{B}} =
-    \begin{bmatrix}
-        \boldsymbol{{\mathrm{B_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
-        \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{pitch}}}}} & \boldsymbol{0} \\
-        \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{yaw}}}}}
+    \boldsymbol{\mathrm{B}} = 
+     \begin{bmatrix}
+        \Gamma_3 & 0 & \Gamma_4\\
+        0 & 0 & 0 \\
+        0 & \Gamma_8 & 0 \\
+        0 & 0 & 0 \\
+        \Gamma_4 & 0 & \Gamma_{11} \\
+        0 & 0 & 0
     \end{bmatrix}
 \end{equation}
-where $\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
-    \dfrac{1}{\Gamma_3}
-    &
-    0
-\end{bmatrix}^{\mathrm{T}}$, $\boldsymbol{\mathrm{B}}_{\text{pitch}}  = \begin{bmatrix}
-    \dfrac{1}{\mathrm{I}_{\text{yy}}}
-    &
-    0
-\end{bmatrix}^{\mathrm{T}}$, and $\boldsymbol{\mathrm{B}}_{\text{yaw}}  = \begin{bmatrix}
-    \dfrac{1}{\Gamma_8}
-    &
-    0
-\end{bmatrix}^{\mathrm{T}}$.
+% \begin{equation}
+%     \boldsymbol{\mathrm{B}} =
+%     \begin{bmatrix}
+%         \boldsymbol{{\mathrm{B_{\text{roll}}}}} & \boldsymbol{0} & \boldsymbol{0}\\
+%         \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{pitch}}}}} & \boldsymbol{0} \\
+%         \boldsymbol{0} & \boldsymbol{0} & \boldsymbol{{\mathrm{B_{\text{yaw}}}}}
+%     \end{bmatrix}
+% \end{equation}
+% where $\boldsymbol{\mathrm{B}}_{\text{roll}}  = \begin{bmatrix}
+%     \dfrac{1}{\Gamma_3}
+%     &
+%     0
+% \end{bmatrix}^{\mathrm{T}}$, $\boldsymbol{\mathrm{B}}_{\text{pitch}}  = \begin{bmatrix}
+%     \dfrac{1}{\mathrm{I}_{\text{yy}}}
+%     &
+%     0
+% \end{bmatrix}^{\mathrm{T}}$, and $\boldsymbol{\mathrm{B}}_{\text{yaw}}  = \begin{bmatrix}
+%     \dfrac{1}{\Gamma_8}
+%     &
+%     0
+% \end{bmatrix}^{\mathrm{T}}$.
 \subsection{Identification of the Platform Parameters}
 \noindent In this section, the Nonlinear Least Squares (NLS) algorithm is utilized for estimating the model parameters ($\boldsymbol{\mathrm{\Gamma}}$) of the 3-DoF experimental platform using experimental data.
 This technique is based on the Trust-Region Reflective (TRR) method, which finds the best values for $\boldsymbol{\mathrm{\Gamma}}$ by minimizing a cost function, defined as
@@ -1518,12 +1568,16 @@ The linearized dynamics are:
 In the previous section, it was shown that equations~\eqref{eq:eq_of_motion_start1} to~\eqref{eq:eq_of_motion_end1} represent nonlinear dynamics. To obtain a linearized model, these equations can be rewritten as follows:
 \begin{equation}
     \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
-        \dot x_1& = \Gamma_1x_1x_3 - \Gamma_2x_3x_5 + \Gamma_3 u_{\text{roll}} + \Gamma_4u_{\text{yaw}}+\Gamma_3d_{\text{roll}}\\[2mm]
-        \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)\\
-        \dot x_3 &= \Gamma_5x_1x_5 - \Gamma_6(x_1^2-x_5^2) + \dfrac{1}{J_y}u_{\text{pitc}}+ \dfrac{1}{J_y}d_{\text{pitch}}\\
-        \dot x_4 &= x_3\cos(x_4) - x_5\sin(x_2)\\[2mm]
-        \dot x_5 &= \Gamma_7x_1x_3 - \Gamma_1x_3x_5 + \Gamma_4u_{\text{roll}}+\Gamma_8u_{\text{yaw}}+\Gamma_8d_{\text{yaw}}\\[2mm]
-        \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)
+        \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3 (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)  \\
+        &\quad + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)  \\
+        &\quad + \Gamma_5 \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}}  \\
+        \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
+        \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8 (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)  \\
+        &\quad + \Gamma_9 \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
+        \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
+        \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)  \\
+        &\quad + \Gamma_{4} \mathrm{d} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{yaw}} + \Gamma_{4} d_{\text{roll}} \\
+        \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}
     \end{cases}
 \end{equation}
     
@@ -1567,14 +1621,15 @@ $\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\bo
         0 & 0 & 1 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 1 & 0
-    \end{bmatrix}, \quad \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
-        \Gamma_3 & 0 & \Gamma_4 \\
-        0 & 0 & 0 \\
-        0 & \dfrac{1}{J_y} & 0 \\
-        0 & 0 & 0 \\
-        \Gamma_4 & 0 & \Gamma_8 \\
-        0 & 0 & 0
-    \end{bmatrix}
+    \end{bmatrix}, \quad \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = 
+    \begin{bmatrix}
+       \Gamma_3 & 0 & \Gamma_4\\
+       0 & 0 & 0 \\
+       0 & \Gamma_8 & 0 \\
+       0 & 0 & 0 \\
+       \Gamma_4 & 0 & \Gamma_{11} \\
+       0 & 0 & 0
+   \end{bmatrix}
 \end{equation}
 
 % appendix proof of LQIR-DG
