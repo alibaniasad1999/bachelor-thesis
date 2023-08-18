@@ -16,16 +16,41 @@ ylabel('$\theta_{(\textrm{deg})}$', 'interpreter', 'latex', 'FontSize', 24);
 % hold off;
 print('../../../../../../../English_Journal/Figure/parameter_estimation/pitch/pitch','-depsc');
 %% trajectory %%
-load('Quad_Nonlinear_Pitch_OL_spesession.mat')
-B3_array = zeros(1, 3);
-B3_array(1) = B3;
-B3_array(2) = (B3 + SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Parameters.Value)/2;
-B3_array(3) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Parameters.Value;
-B3_array(4) = (SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters.Value + B3_array(3))/2;
-B3_array(5) = (SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters.Value);
+load('Pitch_RP_v01.mat');
+Gamma8_array = zeros(1, 9);
+Gamma8_array(1) = 1/Iyy;
+Gamma8_array(2) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Parameters(1).Value;
+Gamma8_array(3) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters(1).Value;
+Gamma8_array(4) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_3.Parameters(1).Value;
+Gamma8_array(5) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_4.Parameters(1).Value;
+Gamma8_array(6) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_5.Parameters(1).Value;
+Gamma8_array(7) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_6.Parameters(1).Value;
+Gamma8_array(8) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_7.Parameters(1).Value;
+Gamma8_array(9) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_8.Parameters(1).Value;
 
-plot(0:length(B3_array)-1, B3_array, '-*k', 'markersize', 10, 'LineWidth',2);
+
+plot(0:length(Gamma8_array)-1, Gamma8_array, '-*k', 'markersize', 10, 'LineWidth',2);
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
-ylabel('$\Gamma_6$', 'interpreter', 'latex', 'FontSize', 24);
-print('../../../../../../../English_Journal/Figure/parameter_estimation/pitch/pitch_parameter','-depsc');
+ylabel('$\Gamma_8$', 'interpreter', 'latex', 'FontSize', 24);
+print('../../../../../../../English_Journal/Figure/parameter_estimation/pitch/pitch_paramete_Gamma8','-depsc');
+
+
+
+Gamma9_array = zeros(1, 9);
+Gamma9_array(1) = I_rotor/Iyy;
+Gamma9_array(2) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Parameters(2).Value;
+Gamma9_array(3) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_2.Parameters(2).Value;
+Gamma9_array(4) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_3.Parameters(2).Value;
+Gamma9_array(5) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_4.Parameters(2).Value;
+Gamma9_array(6) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_5.Parameters(2).Value;
+Gamma9_array(7) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_6.Parameters(2).Value;
+Gamma9_array(8) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_7.Parameters(2).Value;
+Gamma9_array(9) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_8.Parameters(2).Value;
+
+plot(0:length(Gamma9_array)-1, Gamma9_array, '-*k', 'markersize', 10, 'LineWidth',2);
+set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
+xlabel('Iterations', 'interpreter', 'latex', 'FontSize', 24);
+ylabel('$\Gamma_9$', 'interpreter', 'latex', 'FontSize', 24);
+print('../../../../../../../English_Journal/Figure/parameter_estimation/pitch/pitch_paramete_Gamma9','-depsc');
+
