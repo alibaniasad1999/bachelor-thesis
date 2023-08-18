@@ -1,6 +1,6 @@
 % parameter estimation figure result
 load_data;
-load('result.mat');
+out = sim('Quad_Nonlinear_Roll_PS');
 %% scenario IV
 % subplot(2,1,1);
 % roll

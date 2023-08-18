@@ -1,6 +1,8 @@
 % parameter estimation figure result
 load_data;
-load('result.mat');
+load('Pitch_RP_v01.mat');
+b = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_8.Parameters(3).Value;
+out = sim("Quad_Nonlinear_Pitch_OL.slx");
 %% scenario I
 % subplot(2,1,1);
 % pitch
@@ -16,7 +18,7 @@ ylabel('$\theta_{(\textrm{deg})}$', 'interpreter', 'latex', 'FontSize', 24);
 % hold off;
 print('../../../../../../../English_Journal/Figure/parameter_estimation/pitch/pitch','-depsc');
 %% trajectory %%
-load('Pitch_RP_v01.mat');
+
 Gamma8_array = zeros(1, 9);
 Gamma8_array(1) = 1/Iyy;
 Gamma8_array(2) = SDOSessionData.Data.Workspace.LocalWorkspace.EstimatedParams_1.Parameters(1).Value;
