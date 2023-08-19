@@ -1,7 +1,7 @@
 % load data
 clc;
 clear;
-QuadConstants;
+QuadConstants_v1;
 time = 0:0.02:0.2;
 time = time';
 PS_I;
