@@ -10,3 +10,4 @@ Omega_mean = 2000; % rpm
 d_cg = 0.2; % m
 d = 3.2e-6;
 b = 3.13e-5;
+
