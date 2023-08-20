@@ -926,12 +926,13 @@ Due the relation between the weighting matrices is important, the $R$ matrix is 
     %%%? need to know where weighting matrix came from
 \end{table}
 \subsection{Identification of the 3-DoF quadrotor platform model}
-\noindent As described in section~\ref{sec:state-space}, the parameters of the quadrotor platform, denoted by $\Gamma_i (i=1, \ldots, 8)$, are identified using the NLS-TRR algorithm.
+\noindent As described in section~\ref{sec:state-space}, the parameters of the quadrotor platform, denoted by $\Gamma_i (i=1, \ldots, 11)$, are identified using the NLS-TRR algorithm.
 To increase the accuracy of parameter identification, three scenarios are considered according to Table~\ref{tab:identification}.
-In the first scenario, depicted in Figure~\ref{fig:one_degree_identification}, the quadrotor rotates about only one axis (roll, pitch, or yaw axes) to identify the parameters $\Gamma_3$, $\Gamma_6$, and $\Gamma_8$.
-In the second scenario, according to Figure~\ref{fig:two_degree_identification}, the parameters $\Gamma_2$ and $\Gamma_5$ are estimated by rotating the experimental platform around its roll and pitch axes simultaneously. Finally, Figure~\ref{fig:three_degree_identification} displays the results of the third scenario including the estimation of the parameters $\Gamma_1$, $\Gamma_4$, and $\Gamma_7$ for the UAV model, when the platform freely rotates around three axes.
+In the first scenario, depicted in Figure~\ref{fig:one_degree_identification}, the quadrotor rotates about only one axis (roll, pitch, or yaw axes) to identify the parameters $\Gamma_3$, $\Gamma_5$, $\Gamma_8$, $\Gamma_9$, and $\Gamma_{11}$.
+In the second scenario, according to Figure~\ref{fig:two_degree_identification}, the parameters $\Gamma_1$ and $\Gamma_7$ are estimated by rotating the experimental platform around its roll and pitch axes simultaneously. Finally, Figure~\ref{fig:three_degree_identification} displays the results of the third scenario including the estimation of the parameters $\Gamma_2$, $\Gamma_4$, $\Gamma_6$, and $\Gamma_{10}$ for the UAV model, when the platform freely rotates around three axes.
 After the termination condition is met, the optimal values of the quadrotor parameters are computed and denoted in Table~\ref{tab:true_parameters}. 
-These results illustrate that the outputs of the simulation results for the quadrotor model are consITSEnt with reality.
+These results illustrate that the outputs of the simulation results for the quadrotor model are consistent with reality.
+
 \begin{table}[H]
     \caption{Scenarios for identification of quadrotor parameters.}
     \centering
@@ -979,6 +980,35 @@ These results illustrate that the outputs of the simulation results for the quad
     \label{tab:true_parameters}
     \end{center}
 \end{table}
+
+
+
+\begin{table}[H]
+    \renewcommand{\arraystretch}{1.3}
+    \caption{True values of the quadrotor parameters.}
+    \vspace{-0.5cm}
+    \begin{center}
+    \begin{tabular}{c c c c}
+    \hline
+    Parameter & Value & Parameter & Value  \\
+    \hline
+    $\Gamma_1$ & $4.9895 \times 10^{-6}$ & $\Gamma_6$ & $2.5294$ \\
+    $\Gamma_2$ & $0.0029$ & $\Gamma_7$ & $0.0002$ \\
+    $\Gamma_3$ & $42.1805$ & $\Gamma_8$ & $1.8469 \times 10^{-5}$ \\
+    $\Gamma_4$ & $0.0002$ & $\Gamma_9$ & $0.0022$ \\
+    $\Gamma_5$ & $-0.0023$ & $\Gamma_{10}$ & $-1.4456 \times 10^{-5}$ \\
+    $\Gamma_{11}$ & $24.4567$ & & \\
+    \hline
+    \end{tabular}
+    \label{tab:true_parameters}
+    \end{center}
+\end{table}
+
+
+
+
+
+
 \begin{figure}[H]
     \centering
     \subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll/roll}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/roll/roll_parameter}
