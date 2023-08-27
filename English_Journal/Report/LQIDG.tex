@@ -852,11 +852,18 @@ Tables~\ref{tab:parameters} and~\ref{tab:control weight_new} present the quadrot
 
 Addressing these challenges is crucial to ensure the successful deployment and practicality of the proposed controller in real-world applications.
 
-\subsection{Tuning of LQIR-DG Weighting Matrix}
+\subsection{Tuning of LQIR-DG Weighting Matrices}
 
-The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller. The objective was to enhance the controller's performance in a 3-degree-of-freedom simulation. % add psudo code of TCACS
+The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the LQIR-DG weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller.
+Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{Roll}}, \boldsymbol{\mathrm{Q}}_{\text{Pitch}}, \boldsymbol{\mathrm{Q}}_{\text{Yaw}}])$, and $R_d$ is individually optimized for each channel.
+The primary objective was to enhance the controller's performance in a 3-degree-of-freedom simulation by minimizing the ITSE cost function, thereby ensuring stable and robust control performance while addressing control effort and disturbance rejection. % add psudo code of TCACS
 The psudo code of TCACS is shown in Algorithm~\ref{alg:TCACS_code}.
-\begin{algorithm}
+%% ITSE cost function %%
+\begin{equation}
+    \text{ITSE} = \int_{t_1}^{t_2} \left( e(t)^2t \right) \, dt
+\end{equation}
+where $\mathbf{x}$ represents the state vector and $\mathbf{u}$ denotes the control input vector. The result of the optimization process is presented in Table~\ref{tab:control weight_new}.
+\begin{algorithm}[H]
     \caption{Tabu Continuous Ant Colony System (TCACS)}
     \begin{algorithmic}[1]
     \Procedure{TCACS}{}
@@ -897,16 +904,10 @@ The psudo code of TCACS is shown in Algorithm~\ref{alg:TCACS_code}.
     \label{alg:TCACS_code}
 \end{algorithm}
 
-The cost function for the optimization was formulated based on the Integral Squared Time Error (ITSE) criterion, given by:
+% The cost function for the optimization was formulated based on the Integral Squared Time Error (ITSE) criterion, given by:
 
-%% ITSE cost function %%
-\begin{equation*}
-    \text{ITSE} = \int_{t_1}^{t_2} \left( e(t)^2t \right) \, dt
-\end{equation*}
 
-where $\mathbf{x}$ represents the state vector and $\mathbf{u}$ denotes the control input vector.
-
-Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{Roll}}, \boldsymbol{\mathrm{Q}}_{\text{Pitch}}, \boldsymbol{\mathrm{Q}}_{\text{Yaw}}])$, and $R_d$ is individually optimized for each channel. The optimization process was conducted for the weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ on a per-channel basis. The primary objective was to minimize the ITSE cost function concerning control effort and disturbance rejection, while simultaneously ensuring stable and robust control performance.
+% Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{Roll}}, \boldsymbol{\mathrm{Q}}_{\text{Pitch}}, \boldsymbol{\mathrm{Q}}_{\text{Yaw}}])$, and $R_d$ is individually optimized for each channel. The optimization process was conducted for the weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ on a per-channel basis. The primary objective was to minimize the ITSE cost function concerning control effort and disturbance rejection, while simultaneously ensuring stable and robust control performance.
 \begin{table}[H]
     \centering
     \caption{LQIR-DG controller parameters}
