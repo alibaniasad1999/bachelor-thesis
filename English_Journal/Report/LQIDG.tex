@@ -520,7 +520,13 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
     \end{bmatrix}^{\mathrm{T}} = 
     \begin{bmatrix}
         r & \psi
-    \end{bmatrix}^{\mathrm{T}}$, the formulation of the quadrotor platform is presented as follows:
+    \end{bmatrix}^{\mathrm{T}}$, as well as by considering the control inputs as $$\boldsymbol{u} = \begin{bmatrix}
+        u_{\text{roll}} & u_{\text{roll}} & u_{\text{roll}}
+    \end{bmatrix} = \\ \begin{bmatrix}
+        \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 2}^2 - \Omega_{c, 4}^2) & \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) &
+        \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 2}^2+ \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
+    \end{bmatrix}$$
+    The nonlinear model of the quadrotor platform in the state-space form $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$ is presented as follows:
 % \begin{align}\label{eq:diffeq}
 %     \dot x_1 &= \Gamma_1x_3 x_5 + \Gamma_2 x_3 \Omega_r + \Gamma_3\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_3d_{\text{roll}} \\[0.5em]
 %     \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)
@@ -545,16 +551,14 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
 %     \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:eq_of_motion_end1}
 % \end{align}
 \begin{align}
-    \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3  \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 2}^2 - \Omega_{c, 4}^2) \nonumber \\
-    &\quad + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) \nonumber \\
-    &\quad + \Gamma_5 \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}}  \label{eq:eq_of_motion_start1} \\
-    \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4) \nonumber \\
-    \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) \nonumber \\
-    &\quad + \Gamma_9 \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
-    \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
-    \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) \nonumber \\
-    &\quad + \Gamma_{4}  \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{yaw}} + \Gamma_{4} d_{\text{roll}} \\
-    \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}~\label{eq:eq_of_motion_end1}
+    f_1 = \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3  (u_{\text{roll}} + d_{\text{roll}})
+ + \Gamma_4 \mathrm{d} (u_{\text{yaw}} + u_{\text{yaw}}) 
++ \Gamma_5 \Omega_{c, r}  \label{eq:eq_of_motion_start1} \\
+    f_2 = \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
+    f_3 = \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 \Omega_{c, r} \\
+    f_4 = \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
+    f_5 = \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (u_{\text{yaw}} + d_{\text{yaw}}) + \Gamma_{4}(u_{\text{roll}} d_{\text{roll}})\\
+    f_6 = \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}~\label{eq:eq_of_motion_end1}
 \end{align}
 
 
