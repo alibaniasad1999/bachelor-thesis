@@ -1272,6 +1272,7 @@ The input disturbance, $\mathrm{d_{\Omega_i}}$, is considered as a change in com
         500~{\mathrm{rpm}} \quad &20<t<60\\
         0 \quad &\mathrm{otherwise}
     \end{cases}
+    \label{eq:disturbance}
 \end{equation}
 
 Figure~\ref{fig:disturbance} illustrates the roll and pitch angles in the regulation problem when the input disturbance occurs. These results indicate that the proposed controller can stabilize the quadrotor platform in the presence of input disturbance.
@@ -1331,6 +1332,7 @@ The implementation results show that the platform outputs converge to the desire
 \noindent Figure~\ref{fig:compare} compares the LQIR-DG controller performance with the PID controller and variant of the LQR strategies such as the LQR and LQIR. 
 Moreover, the box plot of all controllers is plotted in Figure~\ref{fig:compare_boxplot} for the cost function, introduced in equation \eqref{eq:min_max_cost_function}. %%%? two controller side by side
 The median of Root Mean Square Error (RMSE) is shown in the crossline in the box plot.
+Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) \cite{CHENG2023} and Disturbance Observer-Based Control (DOBC) \cite{AGHAYAN202320} are compared in Figure \ref{fig:compare_boxplot_ADR}, when the input disturbances occur according to equation \eqref{eq:disturbance}. For the cost function, denoted in equation \eqref{eq:min_max_cost_function}, the box plot of these robust controllers is illustrated in Figure ?. 
 These results indicate that the proposed controller is able to provide rapid convergence and excellent transient response relative to other controllers for attitude control of the experimental platform.
 
 \begin{figure}[H]
@@ -1352,10 +1354,10 @@ These results indicate that the proposed controller is able to provide rapid con
 
 \begin{figure}[H]
     \centering
-    \subfloat[\label{fig:ADR_vs}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_ADR_roll}}\subfloat[\label{fig:all_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_ADR_pitch}
+    \subfloat[\label{fig:ADR_vs}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_ADR_roll}{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_ADR_pitch}}
     }
     \hfill
-    \subfloat[\label{fig:DOB_vs}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_roll}}\subfloat[\label{fig:all_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_pitch}
+    \subfloat[\label{fig:DOB_vs}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_pitch}
     }
     \caption{Comparison of LQIR-DG structure with the famous disturbance rejection methods: \ref{sub@fig:ADR_vs}  Active Disturbance Rejection Control (ADRC) \ref{sub@fig:DOB_vs} Disturbance Observer-Based Control (DOBC).}
     \label{fig:compare}
@@ -1779,66 +1781,107 @@ Thus, we obtain two coupled algebraic Riccati equations that must be solved to f
  % appendix: linearization
 \newpage
 \appendix
-\section{Linearization}
+\section{Linearization Proof of the Quadrotor Nonlinear Model }
 \label{sec:linearization}
-The linearized dynamics are:
-In the previous section, it was shown that equations~\eqref{eq:eq_of_motion_start1} to~\eqref{eq:eq_of_motion_end1} represent nonlinear dynamics. To obtain a linearized model, these equations can be rewritten as follows:
+Here, the nonlinear model of the quadrotor, described in equations \eqref{eq:eq_of_motion_start1}-\eqref{eq:eq_of_motion_end1}, are linearized using first-order Taylor series expansion about the equilibrium points $(\boldsymbol{x}^* \text{ and } \boldsymbol{u}^*)$. For this purpose, the linear form of the nonlinear system, denoted as $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$, is computed as
 \begin{equation}
-    \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
-        \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3 (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)  \\
-        &\quad + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)  \\
-        &\quad + \Gamma_5 \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}}  \\
-        \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
-        \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8 (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)  \\
-        &\quad + \Gamma_9 \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
-        \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
-        \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)  \\
-        &\quad + \Gamma_{4} \mathrm{d} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{yaw}} + \Gamma_{4} d_{\text{roll}} \\
-        \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}
-    \end{cases}
+    \dot{\boldsymbol{x}} = \boldsymbol{\mathrm{A}}
+\boldsymbol{x} + \boldsymbol{\mathrm{B}}\boldsymbol{u}
 \end{equation}
-    
-
-\begin{align}
-\dot{\mathbf{x}} &= \mathbf{f}(\mathbf{x}, \mathbf{u})
-\end{align}
-where $\mathbf{x} \in \mathbb{R}^n$ is the state vector representing the system's internal states,
-$\mathbf{u} \in \mathbb{R}^m$ is the input vector, and
-$\mathbf{f}(\mathbf{x}, \mathbf{u})$ is the nonlinear function governing the state dynamics.
-To linearize the system around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e^*\!=\!0$ and $\boldsymbol{{\mathrm{u}}}_e^*\!=\!0)$, small perturbations $\Delta \mathbf{x}$ and $\Delta \mathbf{u}$ are used:
-
-\begin{align}
-\mathbf{x} &= \mathbf{x}_0 + \Delta \mathbf{x}, \\
-\mathbf{u} &= \mathbf{u}_0 + \Delta \mathbf{u}.
-\end{align}
-
-Then, the linearized state-space representation can be expressed as:
-\begin{align}
-{\Delta \mathbf{\dot x}} &= \mathbf{A} \Delta \mathbf{x} + \mathbf{B} \Delta \mathbf{u}
-\end{align}
-where
-$\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the state matrix,
-$\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the input matrix.
-
-% \begin{equation}
-%   \dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} = \begin{bmatrix}
-%       \Gamma_1x_3 & 0 & \Gamma_1x_1 -\Gamma_2x_5 & 0 & -\Gamma_2x_3 & 0 \\
-%       1 & (x_3\cos(x_2) - x_3\sin(x_2))\tan(x_4) & (\sin(x_2) + \cos(x_2))\tan(x_4) & (x_3\sin(x_2) + x_3\cos(x_2))sec^2(x_4) & 0 & 0 \\
-%       \Gamma_5x_5 & 0 & 0 & 0 & \Gamma_5x_1  - 2\Gamma_6x_5 & 0 \\
-%       0 & 0 & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_2) & 0 \\
-%       \Gamma_7x_3 & 0 & \Gamma_7x_1 & 0 & -\Gamma_1x_3 & 0 \\
-%       0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
-%   \end{bmatrix}
-% \end{equation}
+where $\boldsymbol{\mathrm{A}}$ and $\boldsymbol{\mathrm{B}}$ are, respectively, the states and input matrices, computed as \cite{simon2006optimal}
 \begin{equation}
-    \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
+    \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}
+\end{equation}
+\begin{equation}
+    \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}
+\end{equation}
+To linearize the nonlinear model of the quadrotor around the equilibrium points $(\boldsymbol{x}^* = 0 \text{ and } \boldsymbol{u}^* = 0)$, the Jacobian matrix of nonlinear model, denoted in equations \eqref{eq:eq_of_motion_start1}-\eqref{eq:eq_of_motion_end1}, is expressed as:
+\begin{align}
+    \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
+        \dfrac{f_1}{x_1} & \dots & \dfrac{f_1}{x_6} \\
+        \vdots & \ddots & \vdots \\
+        \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
+    \end{bmatrix} =\\ \begin{bmatrix}
+        \Gamma_1 x_3 & -\Gamma_2 x_5 & \Gamma_1 x_1 - \Gamma_2 x_3 & 0 & -\Gamma_2 x_3 & 0 \\
+        1 & x_3\cos(x_2)\tan(x_4) & (\sin(x_2)+\cos(x_2))\tan(x_4) & (x_3\sin(x_2)+x_3\cos(x_2))\sec^2(x_4) & 0 & 0 \\
+    \end{bmatrix}
+\end{align}
+
+
+\begin{align}
+    f_1 = \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3  (u_{\text{roll}} + d_{\text{roll}})
+ + \Gamma_4 \mathrm{d} (u_{\text{yaw}} + u_{\text{yaw}}) 
++ \Gamma_5 \Omega_{c, r}  \label{eq:eq_of_motion_start1} \\
+    f_2 = \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
+    f_3 = \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 \Omega_{c, r} \\
+    f_4 = \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
+    f_5 = \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (u_{\text{yaw}} + d_{\text{yaw}}) + \Gamma_{4}(u_{\text{roll}} d_{\text{roll}})\\
+    f_6 = \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}~\label{eq:eq_of_motion_end1}
+\end{align}
+
+
+\begin{equation}
+    \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
+        \dfrac{f_1}{u_\text{roll}} & \dfrac{f_1}{u_\text{pitch}} & \dfrac{f_1}{u_\text{yaw}}\\
+        \vdots & \vdots & \vdots \\
+        \dfrac{f_6}{u_\text{roll}} & \dfrac{f_6}{u_\text{pitch}} & \dfrac{f_6}{u_\text{yaw}}
+    \end{bmatrix} = 
+\end{equation}
+Finally, the linearized matrices defined at the equilibrium points are given as:
+% \begin{equation}
+%     \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
+%         \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3 (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)  \\
+%         &\quad + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)  \\
+%         &\quad + \Gamma_5 \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}}  \\
+%         \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
+%         \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8 (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)  \\
+%         &\quad + \Gamma_9 \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
+%         \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
+%         \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)  \\
+%         &\quad + \Gamma_{4} \mathrm{d} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{yaw}} + \Gamma_{4} d_{\text{roll}} \\
+%         \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}
+%     \end{cases}
+% \end{equation}
+% \begin{align}
+% \dot{\mathbf{x}} &= \mathbf{f}(\mathbf{x}, \mathbf{u})
+% \end{align}
+% where $\mathbf{x} \in \mathbb{R}^n$ is the state vector representing the system's internal states,
+% $\mathbf{u} \in \mathbb{R}^m$ is the input vector, and
+% $\mathbf{f}(\mathbf{x}, \mathbf{u})$ is the nonlinear function governing the state dynamics.
+% To linearize the system around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e^*\!=\!0$ and $\boldsymbol{{\mathrm{u}}}_e^*\!=\!0)$, small perturbations $\Delta \mathbf{x}$ and $\Delta \mathbf{u}$ are used:
+
+% \begin{align}
+% \mathbf{x} &= \mathbf{x}_0 + \Delta \mathbf{x}, \\
+% \mathbf{u} &= \mathbf{u}_0 + \Delta \mathbf{u}.
+% \end{align}
+
+% Then, the linearized state-space representation can be expressed as:
+% \begin{align}
+% {\Delta \mathbf{\dot x}} &= \mathbf{A} \Delta \mathbf{x} + \mathbf{B} \Delta \mathbf{u}
+% \end{align}
+% where
+% $\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the state matrix,
+% $\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the input matrix.
+
+% % \begin{equation}
+% %   \dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} = \begin{bmatrix}
+% %       \Gamma_1x_3 & 0 & \Gamma_1x_1 -\Gamma_2x_5 & 0 & -\Gamma_2x_3 & 0 \\
+% %       1 & (x_3\cos(x_2) - x_3\sin(x_2))\tan(x_4) & (\sin(x_2) + \cos(x_2))\tan(x_4) & (x_3\sin(x_2) + x_3\cos(x_2))sec^2(x_4) & 0 & 0 \\
+% %       \Gamma_5x_5 & 0 & 0 & 0 & \Gamma_5x_1  - 2\Gamma_6x_5 & 0 \\
+% %       0 & 0 & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_2) & 0 \\
+% %       \Gamma_7x_3 & 0 & \Gamma_7x_1 & 0 & -\Gamma_1x_3 & 0 \\
+% %       0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
+% %   \end{bmatrix}
+% % \end{equation}
+\begin{equation}
+    \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
         0 & 0 & 0 & 0 & 0 & 0 \\
         1 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 1 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 1 & 0
-    \end{bmatrix}, \quad \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = 
+    \end{bmatrix}, \quad \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = 
     \begin{bmatrix}
        \Gamma_3 & 0 & \Gamma_4\\
        0 & 0 & 0 \\
