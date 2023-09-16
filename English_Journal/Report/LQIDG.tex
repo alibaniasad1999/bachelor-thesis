@@ -801,7 +801,7 @@ The optimization process aimed to fine-tune the controller parameters for the sp
 \noindent In this section, the TCACS optimization method is utilized to tune the weighting matrices of the LQIR-DG controller. 
 \section{Results}\label{sec:results}
 \noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. Then, the performance of the LQIR-DG structure is evaluated.
-Tables~\ref{tab:parameters} and~\ref{tab:control weight_new} present the quadrotor and LQIR-DG parameters, respectively.
+Table~\ref{tab:parameters} present the quadrotor and LQIR-DG parameters, respectively.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -830,6 +830,134 @@ Tables~\ref{tab:parameters} and~\ref{tab:control weight_new} present the quadrot
 \end{center}
 \end{table}
 
+
+\begin{table}[H]
+    \centering
+    \caption{Quadrotor parameters}
+    \vspace{-0.5cm}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{center}
+    \begin{tabular}{c c c c c c c}
+    \hline
+    Description & Parameter & Unit & Value & Parameter & Unit & Value \\
+    \hline
+    Mass & $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ \\ 
+    Inertia & $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ &
+    $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ \\
+    Drag & $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ 
+    & $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ \\
+    CG Distance & $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ \\
+    Mean Rotor Speed & $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & $\mathrm{I}_{\text{xz}}$ & $\mathrm{kg.m^2}$ & $6.87\times 10^{-7}$ \\
+    \hline
+\end{tabular}
+\label{tab:parameters}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Quadrotor parameters}
+    \vspace{-0.5cm}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{center}
+    \begin{tabular}{cccccc}
+    \hline
+    Parameter & Unit & Value & Description \\
+    \hline
+    $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & Total Mass \\ 
+    $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ & Drag Factor \\
+    $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ & Thrust Factor \\
+    $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & CG Distance \\
+    $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & Mean Rotor Speed \\
+    \hline
+    $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ & Inertia about X-axis \\
+    $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ & Inertia about Y-axis \\
+    $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ & Inertia about Z-axis \\
+    $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ & Rotor Inertia \\
+    $\mathrm{I}_{\text{xz}}$ & $\mathrm{kg.m^2}$ & $6.87\times 10^{-7}$ & Inertia about XZ-axis \\
+    \hline
+\end{tabular}
+\label{tab:parameters}
+\end{center}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \caption{Quadrotor parameters}
+    \vspace{-0.5cm}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{center}
+    \begin{tabular}{c c c c c c}
+    \hline
+    Shape & Parameter & Unit & Value & Description \\
+    \hline
+    Mass & $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & Total mass of the quadrotor \\ 
+    Inertia & $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ & Moment of inertia about xx-axis \\
+    Inertia & $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ & Moment of inertia about yy-axis \\
+    Drag & $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ & Drag coefficient \\
+    CG Distance & $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & Center of gravity distance \\
+    Mean Rotor Speed & $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & Mean rotor speed \\
+    \hline
+\end{tabular}
+\label{tab:parameters}
+\end{center}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \caption{Quadrotor parameters}
+    \vspace{-0.5cm}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{center}
+    \begin{tabular}{cccccccc}
+    \hline
+    Parameter & Unit & Value & Description & Parameter & Unit & Value & Description \\
+    \hline
+    $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & Mass & $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ & Inertia X-axis \\ 
+    $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ & Drag Factor &
+    $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ & Inertia Y-axis \\
+    $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ & Thrust Factor &
+    $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ & Inertia Z-axis \\
+    $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & CG Distance &
+    $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ & Rotor Inertia\\
+    $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & Mean Rotor Speed &
+    $\mathrm{I}_{\text{xz}}$ & $\mathrm{kg.m^2}$ & $6.87\times 10^{-7}$ & Inertia about XZ-axis \\
+    \hline
+\end{tabular}
+\label{tab:parameters}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Quadrotor parameters}
+    \vspace{-0.5cm}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{center}
+    \begin{tabular}{cccc}
+    \hline
+    Parameter & Unit & Value & Description \\
+    \hline
+    $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & Mass \\ 
+    $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ & Drag Factor \\
+    $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ & Thrust Factor \\
+    $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & CG Distance \\
+    $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & Mean Rotor Speed \\
+    \hline
+    $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ & Inertia X-axis \\
+    $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ & Inertia Y-axis \\
+    $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ & Inertia Z-axis \\
+    $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ & Rotor Inertia \\
+    $\mathrm{I}_{\text{xz}}$ & $\mathrm{kg.m^2}$ & $6.87\times 10^{-7}$ & Inertia about XZ-axis \\
+    \hline
+\end{tabular}
+\label{tab:parameters}
+\end{center}
+\end{table}
+
+
 \subsection{Challenges in Designing and Implementation}
 
 \noindent Developing and implementing advanced control strategies for unmanned aerial vehicles (UAVs) presents several challenges that need careful consideration to ensure successful deployment in real-world scenarios. In this subsection, we briefly highlight the key challenges encountered during the design and implementation of the proposed controller.
@@ -856,59 +984,68 @@ Addressing these challenges is crucial to ensure the successful deployment and p
 \subsection{Tuning of LQIR-DG Weighting Matrices}
 
 The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the LQIR-DG weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller.
-Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{\mathrm{Q}}_{\text{yaw}}])$, and $R_d$ is individually optimized for each channel.
+Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}])$, and $R_d$ is individually optimized for each channel.
 The primary objective was to enhance the controller's performance in a 3-degree-of-freedom simulation by minimizing the ITSE cost function, thereby ensuring stable and robust control performance while addressing control effort and disturbance rejection. % add psudo code of TCACS
 The psudo code of TCACS is shown in Algorithm~\ref{alg:TCACS_code}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+The parameters of the LQIR-DG controller approach, including weight coefficients ($\boldsymbol{\mathrm{Q}}_i$ for $i=$ roll, pitch, yaw, $R_d$, and $R$) are tuned using a heuristic optimization algorithm based on the Tabu Continuous Ant Colony System (TCACS) \cite{article_TCACS} approach. In this method, ants utilize the concepts of promising list and tabu balls to move toward the goal ant gradually. The pseudo-code of TCACS is shown in Figure \ref{fig:TCACS_code}. For this purpose, ants find the promising areas to contain the global minimum and perform searching within tabu balls of the bad regions. TCACS parameters are shown in Table \ref{tab:TCAC_par}. Here, it is assumed that the value of $R$ is identical for all attitude channels and considered with the value of 1. Moreover, the initial values of the ants position ($ \boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}$ and $R_d$) for $l=1, \ldots, N$ is selected using a random distribution. The cost is denoted in iteration i using the quality of the tracking error between the set-point, $\boldsymbol{\mathrm{x}}_{sp}$, and the quadrotor states, $\boldsymbol{x} = \begin{bmatrix}
+    \boldsymbol{x}_{\text{roll}} & \boldsymbol{x}_{\text{pitch}} & \boldsymbol{x}_{\text{yaw}}
+\end{bmatrix}^{\mathrm{T}}$ as
+
 %% ITSE cost function %%
 \begin{equation}
-    \text{ITSE} = \int_{t_1}^{t_2} \left( e(t)^2t \right) \, dt
+    \text{ITSE} = \int_{0}^{t_f} t \left(
+        \boldsymbol{x}_{sp} - \boldsymbol{x} 
+        \right)^\mathrm{T} \left(\boldsymbol{x}_{sp} - \boldsymbol{x} \right) \, dt
 \end{equation}
-where $\mathbf{x}$ represents the state vector and $\mathbf{u}$ denotes the control input vector. The result of the optimization process is presented in Table~\ref{tab:control weight_new}.
-\begin{algorithm}[H]
-    \caption{Tabu Continuous Ant Colony System (TCACS)}
-    \begin{algorithmic}[1]
-    \Procedure{TCACS}{}
-    \State Initialize parameters
-    \State Initialize tabu list $TL$ and promising list $PL$
-    
-    \While{termination condition not met}
-    \If{first iteration}
-    
-    \State Uniformly sample initial ant positions
-    \Else
-    \State Move ants to new locations
-    \EndIf
-    \State Update $TL$
-    \State Update $PL$
-    \State Update tabu ball radius $r_T$
-    \State Update coordinate transformation matrix
-    \State Update pheromone distribution
-    \EndWhile
-    \EndProcedure
-    \Procedure{MoveAnts}{}
-    \For{each ant $i$}
-    \Repeat
-    \For{each dimension $j$}
-    \State Sample new $x_j^i$ from normal distribution
-    \EndFor
-    \Until{$x^i$ not in tabu ball}
-    \EndFor
-    \EndProcedure
-    \Procedure{UpdatePheromone}{}
-    \State Update best solution $x^*$
-    
-    \For{each dimension $j$}
-    \State Update standard deviation $\sigma_j$
-    \EndFor
-    \EndProcedure
-    \end{algorithmic}
-    \label{alg:TCACS_code}
-\end{algorithm}
-
-% The cost function for the optimization was formulated based on the Integral Squared Time Error (ITSE) criterion, given by:
+where $t$ and $t_f$ are the response time of the system and the final time, respectively. Finally, when the stopping condition of the TCACS algorithm is reached, the best values of the LQIR-DG parameters are computed, shown in Table \ref{tab:control weight_new}
 
 
-% Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{Roll}}, \boldsymbol{\mathrm{Q}}_{\text{Pitch}}, \boldsymbol{\mathrm{Q}}_{\text{Yaw}}])$, and $R_d$ is individually optimized for each channel. The optimization process was conducted for the weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ on a per-channel basis. The primary objective was to minimize the ITSE cost function concerning control effort and disturbance rejection, while simultaneously ensuring stable and robust control performance.
+
+\begin{figure}[H]
+    \begin{algorithm}[H]
+        \caption{Tabu Continuous Ant Colony System (TCACS)}
+        \begin{algorithmic}[1]
+            \Procedure{TCACS}{}
+            \State Initialize parameters, lists, and values
+            \While{not terminated}
+                \If{first iteration}
+                    \State Sample initial ant positions
+                \Else
+                    \State Move ants
+                \EndIf
+                \State Update structures and distributions
+            \EndWhile
+            \EndProcedure
+        \end{algorithmic}
+        \label{alg:TCACS_code}
+    \end{algorithm}
+    \vspace{-0.7cm}
+    \caption{Pseudo-code of the TCACS optimization algorithm \cite{article_TCACS}.}
+    \label{fig:TCACS_code}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Parameters of the TCACS optimization algorithm.}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{@{}ccc@{}}
+    \toprule
+    Parameter & Value & Description \\
+    \midrule
+    N & 15 & Number of Ants\\
+    $\mathrm{I}_{\max}$ & $10000$ & Maximum of Iteration \\
+    Tolerance &	$10^{-\!4}$ &	Maximum accepted error \\
+    \bottomrule
+\end{tabular}
+\label{tab:TCAC_par} %%%? R in above is not matrix i have changed
+%%%? need to know where weighting matrix came from
+\end{table}
+
 \begin{table}[H]
     \centering
     \caption{LQIR-DG controller parameters}
@@ -920,7 +1057,6 @@ where $\mathbf{x}$ represents the state vector and $\mathbf{u}$ denotes the cont
     Roll & $\mathbf{Q_{roll}}$ & $\text{diag}([0.02, 65.96, 83.04, 0.00])$ \\
     Pitch & $\mathbf{Q_{pitch}}$ & $\text{diag}([435.01, 262.60, 262.60, 0.00])$ \\
     Yaw & $\mathbf{Q_{yaw}}$ & $\text{diag}([4 \times 10^{-4}, 0.00, 0.133, 0])$ \\
-    -& $R$ & $1$ \\
     -&$R_d$ & $1.2764$ \\
     \bottomrule
     \end{tabular}
@@ -1047,7 +1183,7 @@ These results illustrate that the outputs of the simulation results for the quad
     % \vspace{-0.25cm}
     \subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw_parameter}
     }
-    \caption{Identification process results when the quadrotor rotates about only one axis: (a) identification of $\Gamma_3$ in free roll motion. (b) identification of $\Gamma_6$ in free pitch motion. (c) identification of $\Gamma_8$
+    \caption{Identification process results when the quadrotor rotates about only one axis: (a) identification of $\Gamma_3$ and $\Gamma_5$ in free roll motion. (b) identification of $\Gamma_6$ and $\Gamma_9$ in free pitch motion. (c) identification of $\Gamma_{11}$
     in free yaw motion.}
     \label{fig:one_degree_identification}
 \end{figure}
@@ -1058,10 +1194,10 @@ These results illustrate that the outputs of the simulation results for the quad
     }
     \hfil
     % \vspace{-0.25cm}
-    \subfloat[]{\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/roll_parameter}\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch_parameter}
+    \subfloat[]{\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch_parameter_Gamma1}\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/roll-pitch/pitch_parameter_Gamma7}
     }
     \caption{Identification process results when the quadrotor rotates about its roll and pitch axes:
-    (a) comparison of simulation and experimental results. (b) identification of $\Gamma_2$ and $\Gamma_5$.}
+    (a) comparison of simulation and experimental results. (b) identification of $\Gamma_1$ and $\Gamma_7$.}
     \label{fig:two_degree_identification}
 % \end{figure}
 % \begin{figure}[H]
@@ -1071,8 +1207,8 @@ These results illustrate that the outputs of the simulation results for the quad
     \hfil
     \subfloat[]{\includegraphics[width=.24\linewidth]{../Figure/parameter_estimation/3DOF/Gamma2}\includegraphics[width=.24\linewidth]{../Figure/parameter_estimation/3DOF/Gamma4}\includegraphics[width=.24\linewidth]{../Figure/parameter_estimation/3DOF/Gamma6}\includegraphics[width=.24\linewidth]{../Figure/parameter_estimation/3DOF/Gamma10}
     }
-    \caption{Identification process results when the quadrotor rotates about its roll, pitch, and yaw axes: (a) comparison of simulation and experimental results. (b) identification of $\Gamma_1$ , $\Gamma_4$ and
-    $\Gamma_7$ parameters.}
+    \caption{Identification process results when the quadrotor rotates about its roll, pitch, and yaw axes: (a) comparison of simulation and experimental results. (b) identification of $\Gamma_2$, $\Gamma_4$, $\Gamma_6$, and
+    $\Gamma_{10}$ parameters.}
     \label{fig:three_degree_identification}
 \end{figure}
 \subsection{Evaluation of LQIR-DG Performance}
@@ -1124,7 +1260,8 @@ Figures~\ref{fig:omega}~\ref{sub@fig:omega_regulation} and~\ref{sub@fig:omega_sq
     \label{fig:omega}
 \end{figure}
 \subsubsection{Investigating the Disturbance Rejection}\label{sec:disturbance}
-\noindent This section delves into the influence of input disturbance on the performance of the proposed controller. The input disturbance, denoted as $\mathrm{d_{\Omega_i}}$, represents a change in the command of the rotational velocity. The input disturbance is modeled as follows:
+\noindent Here, the effect of the input disturbance is investigated on the performance of the proposed controller.
+The input disturbance, $\mathrm{d_{\Omega_i}}$, is considered as a change in command of the rotational velocity, modeled as %%%? with or in for input disturbance
 
 \begin{equation}
     \mathrm{d_{\Omega_1}} = \mathrm{d_{\Omega_2}} = -\mathrm{d_{\Omega_3}} = -\mathrm{d_{\Omega_4}} = \begin{cases}
@@ -1133,36 +1270,34 @@ Figures~\ref{fig:omega}~\ref{sub@fig:omega_regulation} and~\ref{sub@fig:omega_sq
     \end{cases}
 \end{equation}
 
-This disturbance profile simulates a sudden change in rotational velocity commands between time instants 20 seconds and 60 seconds. The aim is to assess the effectiveness of the proposed controller in stabilizing the quadrotor platform in the presence of such input disturbances.
+Figure~\ref{fig:disturbance} illustrates the roll and pitch angles in the regulation problem when the input disturbance occurs. These results indicate that the proposed controller can stabilize the quadrotor platform in the presence of input disturbance.
 
-Additionally, a comparative analysis is conducted to evaluate the performance of the proposed Linear Quadratic Integral Differential Game (LQIR-DG) controller against two other well-known disturbance rejection methods: Active Disturbance Rejection Control (ADRC) and Disturbance Observer-Based Control (DOBC).
+% Additionally, a comparative analysis is conducted to evaluate the performance of the proposed Linear Quadratic Integral Differential Game (LQIR-DG) controller against two other well-known disturbance rejection methods: Active Disturbance Rejection Control (ADRC) and Disturbance Observer-Based Control (DOBC).
 
-\textbf{Active Disturbance Rejection Control (ADRC):}
-(ADRC) is a robust control method widely used to handle uncertainties and disturbances in dynamic systems. It relies on the concept of an extended state observer to estimate and compensate for disturbances, allowing for improved control performance. ADRC has gained popularity in various fields due to its ability to deal with disturbances in real-time and enhance system robustness.
+% \textbf{Active Disturbance Rejection Control (ADRC):}
+% (ADRC) is a robust control method widely used to handle uncertainties and disturbances in dynamic systems. It relies on the concept of an extended state observer to estimate and compensate for disturbances, allowing for improved control performance. ADRC has gained popularity in various fields due to its ability to deal with disturbances in real-time and enhance system robustness.
 
-In ADRC, an extended state observer estimates the total disturbances affecting the system, including external disturbances and model uncertainties. By actively rejecting these disturbances, ADRC ensures accurate tracking and control of the system. The control law in ADRC is designed to incorporate the estimated disturbances and adjust the control inputs accordingly to minimize the effects of disturbances on the system.
+% In ADRC, an extended state observer estimates the total disturbances affecting the system, including external disturbances and model uncertainties. By actively rejecting these disturbances, ADRC ensures accurate tracking and control of the system. The control law in ADRC is designed to incorporate the estimated disturbances and adjust the control inputs accordingly to minimize the effects of disturbances on the system.
 
-One of the key advantages of ADRC is its simplicity and ease of implementation, making it suitable for a wide range of control applications. The ability to handle uncertainties and disturbances in real-time allows ADRC to achieve better performance and stability compared to traditional control methods in challenging and dynamic environments.
+% One of the key advantages of ADRC is its simplicity and ease of implementation, making it suitable for a wide range of control applications. The ability to handle uncertainties and disturbances in real-time allows ADRC to achieve better performance and stability compared to traditional control methods in challenging and dynamic environments.
 
-\textbf{Disturbance Observer-Based Control (DOBC):}
-(DOBC) is robust control strategy used to estimate and compensate for external disturbances affecting the system. DOBC employs a disturbance observer to accurately estimate the disturbances and uses this information to modify the control inputs accordingly.
+% \textbf{Disturbance Observer-Based Control (DOBC):}
+% (DOBC) is robust control strategy used to estimate and compensate for external disturbances affecting the system. DOBC employs a disturbance observer to accurately estimate the disturbances and uses this information to modify the control inputs accordingly.
 
-DOBC is designed to address disturbances that cannot be directly measured but can significantly affect the system's behavior. By accurately estimating and compensating for these disturbances, DOBC improves the system's tracking and control performance, especially in the presence of uncertainties and external perturbations.
+% DOBC is designed to address disturbances that cannot be directly measured but can significantly affect the system's behavior. By accurately estimating and compensating for these disturbances, DOBC improves the system's tracking and control performance, especially in the presence of uncertainties and external perturbations.
 
-The implementation of DOBC involves designing an observer that accurately estimates the disturbances based on the system's dynamics and available measurements. The observer continuously updates its estimates, allowing the controller to adapt and respond to changing disturbance conditions.
+% The implementation of DOBC involves designing an observer that accurately estimates the disturbances based on the system's dynamics and available measurements. The observer continuously updates its estimates, allowing the controller to adapt and respond to changing disturbance conditions.
 
-Both ADRC and DOBC are effective tools for disturbance rejection and robust control in dynamic systems. Their ability to estimate and compensate for disturbances contributes to improved system stability and tracking performance, making them valuable options for various control applications, including quadrotor platforms.
+% Both ADRC and DOBC are effective tools for disturbance rejection and robust control in dynamic systems. Their ability to estimate and compensate for disturbances contributes to improved system stability and tracking performance, making them valuable options for various control applications, including quadrotor platforms.
 
-Figure~\ref{fig:disturbance} illustrates the roll and pitch angles during the regulation problem when the input disturbance occurs. The results demonstrate the superior disturbance rejection capabilities of the proposed LQIR-DG controller compared to ADRC and DOBC. The LQIR-DG approach exhibits robust stabilization and superior tracking performance in the presence of input disturbances, further validating the effectiveness of our proposed method.
+% Figure~\ref{fig:disturbance} illustrates the roll and pitch angles during the regulation problem when the input disturbance occurs. The results demonstrate the superior disturbance rejection capabilities of the proposed LQIR-DG controller compared to ADRC and DOBC. The LQIR-DG approach exhibits robust stabilization and superior tracking performance in the presence of input disturbances, further validating the effectiveness of our proposed method.
 
-Overall, the comparative analysis highlights the remarkable disturbance rejection capabilities of the LQIR-DG controller, positioning it as a promising and impactful choice for controlling quadrotor platforms in real-world scenarios.
+% Overall, the comparative analysis highlights the remarkable disturbance rejection capabilities of the LQIR-DG controller, positioning it as a promising and impactful choice for controlling quadrotor platforms in real-world scenarios.
 
 \begin{figure}[H]
     \centering
     \subfloat{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_compare_roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_compare_pitch}
     }
-    % \hfill
-    % \subfloat[\label{fig:omega_disturbance}]{\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_1}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_2}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_3}\includegraphics[width=.23\linewidth]{../Figure/implementation/disturbance/lqidg_Omega_4}}
     
     \caption{Comparison of actual roll and pitch angles with the desired, when the input disturbance occurs.}
     \label{fig:disturbance}
@@ -1209,6 +1344,27 @@ These results indicate that the proposed controller is able to provide rapid con
     \caption{Box plot of LQIR-DG, LQR, LQIR, and PID controllers.}
     \label{fig:compare_boxplot}
 \end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \subfloat[\label{fig:ADR_vs}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_ADR_roll}}\subfloat[\label{fig:all_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_ADR_pitch}
+    }
+    \hfill
+    \subfloat[\label{fig:DOB_vs}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_roll}}\subfloat[\label{fig:all_pitch}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_pitch}
+    }
+    \caption{Comparison of LQIR-DG structure with the famous disturbance rejection methods: \ref{sub@fig:ADR_vs}  Active Disturbance Rejection Control (ADRC) \ref{sub@fig:DOB_vs} Disturbance Observer-Based Control (DOBC).}
+    \label{fig:compare}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    {\includegraphics[width=.55\linewidth]{../Figure/implementation/box_plot/lqidgvsboxplot_ADR}
+    }
+    \caption{Box plot of LQIR-DG, ADRC, and DOBC methods.}
+    \label{fig:compare_boxplot_ADR}
+\end{figure}
+
 
 \newpage
 

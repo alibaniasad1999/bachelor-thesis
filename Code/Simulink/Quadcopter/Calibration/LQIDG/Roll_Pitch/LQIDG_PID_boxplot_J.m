@@ -14,11 +14,15 @@ load('PID_DOBC_cost.mat')
 cost_PID_DOBC = cost;
 
 cost = [cost_lqidg(1, 6:end); cost_pid(1, 6:end); cost_lqir(1, :);...
-    cost_lqr(1, :); cost_ADRC(1, :); cost_PID_DOBC(1, :)];
+    cost_lqr(1, :);
+    % cost_ADRC(1, :); cost_PID_DOBC(1, :)
+    ];
 cost = cost';
 boxplot(cost);
 boxplot(cost, {'LQIR-DG controller', 'PID controller', 'LQIR controller', ...
-    'LQR controller', 'ADR controller', 'DOB controller'})
+    'LQR controller' ...
+    % , 'ADR controller', 'DOB controller' ...
+    })
 set(gca, 'FontSize', 16, 'FontName', 'Times New Roman');
 ylabel('Cost Function', 'interpreter', 'latex', 'FontSize', 24);
 
