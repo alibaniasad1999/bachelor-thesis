@@ -557,7 +557,7 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
     f_2 = \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
     f_3 = \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 \Omega_{c, r} \\
     f_4 = \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
-    f_5 = \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (u_{\text{yaw}} + d_{\text{yaw}}) + \Gamma_{4}(u_{\text{roll}} d_{\text{roll}})\\
+    f_5 = \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (u_{\text{yaw}} + d_{\text{yaw}}) + \Gamma_{4}(u_{\text{roll}} + d_{\text{roll}})\\
     f_6 = \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}~\label{eq:eq_of_motion_end1}
 \end{align}
 
@@ -987,10 +987,10 @@ Addressing these challenges is crucial to ensure the successful deployment and p
 
 \subsection{Tuning of LQIR-DG Weighting Matrices}
 
-The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the LQIR-DG weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller.
-Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}])$, and $R_d$ is individually optimized for each channel.
-The primary objective was to enhance the controller's performance in a 3-degree-of-freedom simulation by minimizing the ITSE cost function, thereby ensuring stable and robust control performance while addressing control effort and disturbance rejection. % add psudo code of TCACS
-The psudo code of TCACS is shown in Algorithm~\ref{alg:TCACS_code}.
+% The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the LQIR-DG weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller.
+% Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}])$, and $R_d$ is individually optimized for each channel.
+% The primary objective was to enhance the controller's performance in a 3-degree-of-freedom simulation by minimizing the ITSE cost function, thereby ensuring stable and robust control performance while addressing control effort and disturbance rejection. % add psudo code of TCACS
+% The psudo code of TCACS is shown in Algorithm~\ref{alg:TCACS_code}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -1187,7 +1187,7 @@ These results illustrate that the outputs of the simulation results for the quad
     % \vspace{-0.25cm}
     \subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw_parameter}
     }
-    \caption{Identification process results when the quadrotor rotates about only one axis: (a) identification of $\Gamma_3$ and $\Gamma_5$ in free roll motion. (b) identification of $\Gamma_6$ and $\Gamma_9$ in free pitch motion. (c) identification of $\Gamma_{11}$
+    \caption{Identification process results when the quadrotor rotates about only one axis: (a) identification of $\Gamma_3$ and $\Gamma_5$ in free roll motion. (b) identification of $\Gamma_8$ and $\Gamma_9$ in free pitch motion. (c) identification of $\Gamma_{11}$
     in free yaw motion.}
     \label{fig:one_degree_identification}
 \end{figure}
@@ -1557,6 +1557,218 @@ The implementation results illustrated the excellent performance of the LQIR con
 
 
 
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%%~\label{}
+
+%% If you have a bib database file and want BibTeX to generate the
+%% bib items, please use
+%%
+% \vspace{-0.3cm}
+ \bibliographystyle{elsarticle-harv} 
+ \bibliography{refs}
+
+ % appendix: linearization
+\newpage
+\appendix
+\section{Linearization Proof of the Quadrotor Nonlinear Model }
+\label{sec:linearization}
+Here, the nonlinear model of the quadrotor, described in equations \eqref{eq:eq_of_motion_start1}-\eqref{eq:eq_of_motion_end1}, are linearized using first-order Taylor series expansion about the equilibrium points $(\boldsymbol{x}^* \text{ and } \boldsymbol{u}^*)$. For this purpose, the linear form of the nonlinear system, denoted as $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$, is computed as
+\begin{equation}
+    \dot{\boldsymbol{x}} = \boldsymbol{\mathrm{A}}
+\boldsymbol{x} + \boldsymbol{\mathrm{B}}\boldsymbol{u}
+\end{equation}
+where $\boldsymbol{\mathrm{A}}$ and $\boldsymbol{\mathrm{B}}$ are, respectively, the states and input matrices, computed as \cite{simon2006optimal}
+\begin{equation}
+    \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}
+\end{equation}
+\begin{equation}
+    \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}
+\end{equation}
+To linearize the nonlinear model of the quadrotor around the equilibrium points $(\boldsymbol{x}^* = 0 \text{ and } \boldsymbol{u}^* = 0)$, the Jacobian matrix of nonlinear model, denoted in equations \eqref{eq:eq_of_motion_start1}-\eqref{eq:eq_of_motion_end1}, is expressed as:
+
+\begin{align}
+    f_1 = \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3  (u_{\text{roll}} + d_{\text{roll}})
+ + \Gamma_4 \mathrm{d} (u_{\text{yaw}} + u_{\text{yaw}}) 
++ \Gamma_5 \Omega_{c, r} \\
+    f_2 = \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
+    f_3 = \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 \Omega_{c, r} \\
+    f_4 = \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
+    f_5 = \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (u_{\text{yaw}} + d_{\text{yaw}}) + \Gamma_{4}(u_{\text{roll}} + d_{\text{roll}})\\
+    f_6 = \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}~
+\end{align}
+
+\begin{align}
+    \mathbf{A} =& \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
+        \dfrac{f_1}{x_1} & \dots & \dfrac{f_1}{x_6} \\
+        \vdots & \ddots & \vdots \\
+        \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
+    \end{bmatrix} \\ =&\begin{bmatrix}
+        \Gamma_1 x_3 & -\Gamma_2 x_5 & \Gamma_1 x_1 - \Gamma_2 x_3 & 0 & -\Gamma_2 x_3 & 0 \\
+        1 & x_3\cos(x_2)\tan(x_4) & a_{23} & a_{24} & 0 & 0 \\
+        \Gamma_6 x_5 - 2\Gamma_7 x_1 & 0 & 0 & 0 & \Gamma_6 x_1 - 2\Gamma_7 x_5 & 0 \\
+        0 & -x_5\cos(x_4) & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_4) & 0 \\
+        \Gamma_{10} x_3 & 0 & \Gamma_{10} x_1 - \Gamma_1 x_5 & 0 & -\Gamma_1 x_3 & 0 \\
+        0 & \dfrac{-x_5\cos(x_2)}{\cos(x_4)} & \dfrac{\sin(x_2)}{\cos(x_4)} & a_{64} & \dfrac{\cos(x_2)}{\cos(x_4)} & 0
+    \end{bmatrix}
+\end{align}
+
+$$
+a_{24} = (x_3\sin(x_2)+x_3\cos(x_2))\sec^2(x_4)
+$$
+$$
+a_{64} = x_3 + \dfrac{\sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))}{\cos(x_4)^2}
+$$
+$$
+a_{23} = (\sin(x_2)+\cos(x_2))\tan(x_4)
+$$
+
+
+
+% \begin{align}
+%     \mathbf{A} =& \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
+%         \dfrac{f_1}{x_1^} & \dots & \dfrac{f_1}{x_6^} \\
+%         \vdots & \ddots & \vdots \\
+%         \dfrac{f_6}{x_1^} & \dots & \dfrac{f_6}{x_6^}
+%     \end{bmatrix} =\\ &\begin{bmatrix}
+%         \Gamma_1 x_3^* & -\Gamma_2 x_5^* & \Gamma_1 x_1^* - \Gamma_2 x_3^* & 0 & -\Gamma_2 x_3^* & 0 \\
+%         1 & {x_3^*}\cos(x_2^*)\tan(x_4^*) & a_{23} & a_{24} & 0 & 0 \\
+%         \Gamma_6 x_5^* - 2\Gamma_7 x_1^* & 0 & 0 & 0 & \Gamma_6 x_1^* - 2\Gamma_7 x_5^* & 0 \\
+%         0 & -x_5^*\cos(x_4^*) & \cos(x_4^*) & -x_3^*\sin(x_4^*) & -\sin(x_4^*) & 0 \\
+%         \Gamma_{10} x_3^* & 0 & \Gamma_{10} x_1^* - \Gamma_1 x_5^* & 0 & -\Gamma_1 x_3^* & 0 \\
+%         0 & \dfrac{-x_5^*\cos(x_2^*)}{\cos(x_4^*)} & \dfrac{\sin(x_2^*)}{\cos(x_4^*)} & a_{64} & \dfrac{\cos(x_2^*)}{\cos(x_4^*)} & 0
+%     \end{bmatrix}
+% \end{align}
+
+
+% $$
+% a_{24} = (x_3^*\sin(x_2^*)+x_3^*\cos(x_2^*))\sec^2(x_4^*)
+% $$
+% $$
+% a_{64} = x_3^* + \dfrac{\sin(x_4^*)(x_5^*\cos(x_2^*) + x_3^*\sin(x_4^*))}{\cos(x_4^*)^2}
+% $$
+% $$
+% a_{23} = (\sin(x_2^*)+\cos(x_2^*))\tan(x_4^*)
+% $$
+
+% \begin{align}
+%     \mathbf{A} =& \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
+%         \dfrac{\partial f_1}{\partial x_1^*} & \dots & \dfrac{\partial f_1}{\partial x_6^*} \\
+%         \vdots & \ddots & \vdots \\
+%         \dfrac{\partial f_6}{\partial x_1^*} & \dots & \dfrac{\partial f_6}{\partial x_6^*}
+%     \end{bmatrix} =\\ &\begin{bmatrix}
+%         \Gamma_1 x_3^* & -\Gamma_2 x_5^* & \Gamma_1 x_1^* - \Gamma_2 x_3^* & 0 & -\Gamma_2 x_3^* & 0 \\
+%         1 & {x_3^*}\cos(x_2^*)\tan(x_4^*) & a_{23} & a_{24} & 0 & 0 \\
+%         \Gamma_6 x_5^* - 2\Gamma_7 x_1^* & 0 & 0 & 0 & \Gamma_6 x_1^* - 2\Gamma_7 x_5^* & 0 \\
+%         0 & -x_5^*\cos(x_4^*) & \cos(x_4^*) & -x_3^*\sin(x_4^*) & -\sin(x_4^*) & 0 \\
+%         \Gamma_{10} x_3^* & 0 & \Gamma_{10} x_1^* - \Gamma_1 x_5^* & 0 & -\Gamma_1 x_3^* & 0 \\
+%         0 & \dfrac{-x_5^*\cos(x_2^*)}{\cos(x_4^*)} & \dfrac{\sin(x_2^*)}{\cos(x_4^*)} & a_{64} & \dfrac{\cos(x_2^*)}{\cos(x_4^*)} & 0
+%     \end{bmatrix}
+% \end{align}
+% where:
+% $$
+% a_{23} = (\sin(x_2^*)+\cos(x_2^*))\tan(x_4^*)
+% $$
+% $$
+% a_{24} = (x_3^*\sin(x_2^*)+x_3^*\cos(x_2^*))\sec^2(x_4^*)
+% $$
+% $$
+% a_{64} = x_3^* + \dfrac{\sin(x_4^*)(x_5^*\cos(x_2^*) + x_3^*\sin(x_4^*))}{\cos(x_4^*)^2}
+% $$
+
+
+
+
+
+
+
+
+
+\begin{equation}
+    \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
+        \dfrac{\partial f_1}{\partial u_\text{roll}} & \dfrac{\partial f_1}{\partial u_\text{pitch}} & \dfrac{\partial f_1}{\partial u_\text{yaw}}\\
+        \vdots & \vdots & \vdots \\
+        \dfrac{\partial f_6}{\partial u_\text{roll}} & \dfrac{\partial f_6}{\partial u_\text{pitch}} & \dfrac{\partial f_6}{\partial u_\text{yaw}}
+    \end{bmatrix} =     \begin{bmatrix}
+        \Gamma_3 & 0 & \Gamma_4\\
+        0 & 0 & 0 \\
+        0 & \Gamma_8 & 0 \\
+        0 & 0 & 0 \\
+        \Gamma_4 & 0 & \Gamma_{11} \\
+        0 & 0 & 0
+    \end{bmatrix}
+\end{equation}
+Finally, the linearized matrices defined at the equilibrium points are given as:
+% \begin{equation}
+%     \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
+%         \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3 (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)  \\
+%         &\quad + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)  \\
+%         &\quad + \Gamma_5 \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}}  \\
+%         \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
+%         \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8 (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)  \\
+%         &\quad + \Gamma_9 \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
+%         \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
+%         \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)  \\
+%         &\quad + \Gamma_{4} \mathrm{d} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{yaw}} + \Gamma_{4} d_{\text{roll}} \\
+%         \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}
+%     \end{cases}
+% \end{equation}
+% \begin{align}
+% \dot{\mathbf{x}} &= \mathbf{f}(\mathbf{x}, \mathbf{u})
+% \end{align}
+% where $\mathbf{x} \in \mathbb{R}^n$ is the state vector representing the system's internal states,
+% $\mathbf{u} \in \mathbb{R}^m$ is the input vector, and
+% $\mathbf{f}(\mathbf{x}, \mathbf{u})$ is the nonlinear function governing the state dynamics.
+% To linearize the system around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e^*\!=\!0$ and $\boldsymbol{{\mathrm{u}}}_e^*\!=\!0)$, small perturbations $\Delta \mathbf{x}$ and $\Delta \mathbf{u}$ are used:
+
+% \begin{align}
+% \mathbf{x} &= \mathbf{x}_0 + \Delta \mathbf{x}, \\
+% \mathbf{u} &= \mathbf{u}_0 + \Delta \mathbf{u}.
+% \end{align}
+
+% Then, the linearized state-space representation can be expressed as:
+% \begin{align}
+% {\Delta \mathbf{\dot x}} &= \mathbf{A} \Delta \mathbf{x} + \mathbf{B} \Delta \mathbf{u}
+% \end{align}
+% where
+% $\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the state matrix,
+% $\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the input matrix.
+
+% % \begin{equation}
+% %   \dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} = \begin{bmatrix}
+% %       \Gamma_1x_3 & 0 & \Gamma_1x_1 -\Gamma_2x_5 & 0 & -\Gamma_2x_3 & 0 \\
+% %       1 & (x_3\cos(x_2) - x_3\sin(x_2))\tan(x_4) & (\sin(x_2) + \cos(x_2))\tan(x_4) & (x_3\sin(x_2) + x_3\cos(x_2))sec^2(x_4) & 0 & 0 \\
+% %       \Gamma_5x_5 & 0 & 0 & 0 & \Gamma_5x_1  - 2\Gamma_6x_5 & 0 \\
+% %       0 & 0 & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_2) & 0 \\
+% %       \Gamma_7x_3 & 0 & \Gamma_7x_1 & 0 & -\Gamma_1x_3 & 0 \\
+% %       0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
+% %   \end{bmatrix}
+% % \end{equation}
+\begin{equation}
+    \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 & 0
+    \end{bmatrix}, \quad \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = 
+    \begin{bmatrix}
+       \Gamma_3 & 0 & \Gamma_4\\
+       0 & 0 & 0 \\
+       0 & \Gamma_8 & 0 \\
+       0 & 0 & 0 \\
+       \Gamma_4 & 0 & \Gamma_{11} \\
+       0 & 0 & 0
+   \end{bmatrix}
+\end{equation}
+
+
+
 Here is a more detailed proof for the two player robust Nash equilibrium with coupled Riccati equations:
 
 \begin{proof}[Two player coupled Riccati robust Nash equilibrium]
@@ -1764,133 +1976,6 @@ Repeating the steps above for the maximizing disturbance player gives:
 \end{align}
 Thus, we obtain two coupled algebraic Riccati equations that must be solved to find the optimal control and disturbance feedback gains. The cross-coupling occurs through the state dynamics.
 
-%% The Appendices part is started with the command \appendix;
-%% appendix sections are then done as normal sections
-%% \appendix
-
-%% \section{}
-%%~\label{}
-
-%% If you have a bib database file and want BibTeX to generate the
-%% bib items, please use
-%%
-\vspace{-0.3cm}
- \bibliographystyle{elsarticle-harv} 
- \bibliography{refs}
-
- % appendix: linearization
-\newpage
-\appendix
-\section{Linearization Proof of the Quadrotor Nonlinear Model }
-\label{sec:linearization}
-Here, the nonlinear model of the quadrotor, described in equations \eqref{eq:eq_of_motion_start1}-\eqref{eq:eq_of_motion_end1}, are linearized using first-order Taylor series expansion about the equilibrium points $(\boldsymbol{x}^* \text{ and } \boldsymbol{u}^*)$. For this purpose, the linear form of the nonlinear system, denoted as $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$, is computed as
-\begin{equation}
-    \dot{\boldsymbol{x}} = \boldsymbol{\mathrm{A}}
-\boldsymbol{x} + \boldsymbol{\mathrm{B}}\boldsymbol{u}
-\end{equation}
-where $\boldsymbol{\mathrm{A}}$ and $\boldsymbol{\mathrm{B}}$ are, respectively, the states and input matrices, computed as \cite{simon2006optimal}
-\begin{equation}
-    \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}
-\end{equation}
-\begin{equation}
-    \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}
-\end{equation}
-To linearize the nonlinear model of the quadrotor around the equilibrium points $(\boldsymbol{x}^* = 0 \text{ and } \boldsymbol{u}^* = 0)$, the Jacobian matrix of nonlinear model, denoted in equations \eqref{eq:eq_of_motion_start1}-\eqref{eq:eq_of_motion_end1}, is expressed as:
-\begin{align}
-    \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
-        \dfrac{f_1}{x_1} & \dots & \dfrac{f_1}{x_6} \\
-        \vdots & \ddots & \vdots \\
-        \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
-    \end{bmatrix} =\\ \begin{bmatrix}
-        \Gamma_1 x_3 & -\Gamma_2 x_5 & \Gamma_1 x_1 - \Gamma_2 x_3 & 0 & -\Gamma_2 x_3 & 0 \\
-        1 & x_3\cos(x_2)\tan(x_4) & (\sin(x_2)+\cos(x_2))\tan(x_4) & (x_3\sin(x_2)+x_3\cos(x_2))\sec^2(x_4) & 0 & 0 \\
-    \end{bmatrix}
-\end{align}
-
-
-\begin{align}
-    f_1 = \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3  (u_{\text{roll}} + d_{\text{roll}})
- + \Gamma_4 \mathrm{d} (u_{\text{yaw}} + u_{\text{yaw}}) 
-+ \Gamma_5 \Omega_{c, r}  \label{eq:eq_of_motion_start1} \\
-    f_2 = \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
-    f_3 = \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 \Omega_{c, r} \\
-    f_4 = \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
-    f_5 = \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (u_{\text{yaw}} + d_{\text{yaw}}) + \Gamma_{4}(u_{\text{roll}} d_{\text{roll}})\\
-    f_6 = \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}~\label{eq:eq_of_motion_end1}
-\end{align}
-
-
-\begin{equation}
-    \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
-        \dfrac{f_1}{u_\text{roll}} & \dfrac{f_1}{u_\text{pitch}} & \dfrac{f_1}{u_\text{yaw}}\\
-        \vdots & \vdots & \vdots \\
-        \dfrac{f_6}{u_\text{roll}} & \dfrac{f_6}{u_\text{pitch}} & \dfrac{f_6}{u_\text{yaw}}
-    \end{bmatrix} = 
-\end{equation}
-Finally, the linearized matrices defined at the equilibrium points are given as:
-% \begin{equation}
-%     \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
-%         \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3 (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)  \\
-%         &\quad + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)  \\
-%         &\quad + \Gamma_5 \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}}  \\
-%         \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
-%         \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8 (\Omega_{c, 1}^2 - \Omega_{c, 3}^2)  \\
-%         &\quad + \Gamma_9 \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
-%         \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
-%         \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)  \\
-%         &\quad + \Gamma_{4} \mathrm{d} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{yaw}} + \Gamma_{4} d_{\text{roll}} \\
-%         \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}
-%     \end{cases}
-% \end{equation}
-% \begin{align}
-% \dot{\mathbf{x}} &= \mathbf{f}(\mathbf{x}, \mathbf{u})
-% \end{align}
-% where $\mathbf{x} \in \mathbb{R}^n$ is the state vector representing the system's internal states,
-% $\mathbf{u} \in \mathbb{R}^m$ is the input vector, and
-% $\mathbf{f}(\mathbf{x}, \mathbf{u})$ is the nonlinear function governing the state dynamics.
-% To linearize the system around the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e^*\!=\!0$ and $\boldsymbol{{\mathrm{u}}}_e^*\!=\!0)$, small perturbations $\Delta \mathbf{x}$ and $\Delta \mathbf{u}$ are used:
-
-% \begin{align}
-% \mathbf{x} &= \mathbf{x}_0 + \Delta \mathbf{x}, \\
-% \mathbf{u} &= \mathbf{u}_0 + \Delta \mathbf{u}.
-% \end{align}
-
-% Then, the linearized state-space representation can be expressed as:
-% \begin{align}
-% {\Delta \mathbf{\dot x}} &= \mathbf{A} \Delta \mathbf{x} + \mathbf{B} \Delta \mathbf{u}
-% \end{align}
-% where
-% $\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the state matrix,
-% $\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*}$ is the input matrix.
-
-% % \begin{equation}
-% %   \dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} = \begin{bmatrix}
-% %       \Gamma_1x_3 & 0 & \Gamma_1x_1 -\Gamma_2x_5 & 0 & -\Gamma_2x_3 & 0 \\
-% %       1 & (x_3\cos(x_2) - x_3\sin(x_2))\tan(x_4) & (\sin(x_2) + \cos(x_2))\tan(x_4) & (x_3\sin(x_2) + x_3\cos(x_2))sec^2(x_4) & 0 & 0 \\
-% %       \Gamma_5x_5 & 0 & 0 & 0 & \Gamma_5x_1  - 2\Gamma_6x_5 & 0 \\
-% %       0 & 0 & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_2) & 0 \\
-% %       \Gamma_7x_3 & 0 & \Gamma_7x_1 & 0 & -\Gamma_1x_3 & 0 \\
-% %       0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
-% %   \end{bmatrix}
-% % \end{equation}
-\begin{equation}
-    \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
-        0 & 0 & 0 & 0 & 0 & 0 \\
-        1 & 0 & 0 & 0 & 0 & 0 \\
-        0 & 0 & 0 & 0 & 0 & 0 \\
-        0 & 0 & 1 & 0 & 0 & 0 \\
-        0 & 0 & 0 & 0 & 0 & 0 \\
-        0 & 0 & 0 & 0 & 1 & 0
-    \end{bmatrix}, \quad \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = 
-    \begin{bmatrix}
-       \Gamma_3 & 0 & \Gamma_4\\
-       0 & 0 & 0 \\
-       0 & \Gamma_8 & 0 \\
-       0 & 0 & 0 \\
-       \Gamma_4 & 0 & \Gamma_{11} \\
-       0 & 0 & 0
-   \end{bmatrix}
-\end{equation}
 
 % appendix proof of LQIR-DG
 \section{Proof of Theorem LQIR-DG}
@@ -2776,6 +2861,71 @@ u_2^*(t) &= R_2^{-1}B_2^\top K(t) x(t)
 \end{align*}
 
 And the costs are $J_1 = x_0^\top K(0) x_0$ and $J_2 = -J_1 = -x_0^\top K(0) x_0$.
+
+
+
+
+
+
+
+
+\section{Proof of the Linear Quadratic Regulator Control Problem}
+The Linear Quadratic Regulator (LQR) control problem is concerned with finding a control input that minimizes a quadratic cost function while ensuring the stability of a linear time-invariant system. It is described by the following problem statement:
+
+\begin{equation}
+\min_u J = \int_{0}^{\infty} \left( x^T Q x + u^T R u \right) dt
+\end{equation}
+subject to the system dynamics:
+\begin{equation}
+\dot{x} = Ax + Bu
+\end{equation}
+where $x \in \mathbb{R}^n$ is the state vector, $u \in \mathbb{R}^m$ is the control input, $Q$ and $R$ are positive definite matrices, and $A$ and $B$ are system matrices.
+
+To find the optimal control input $u^*$ that minimizes the cost function, we use the Hamiltonian function:
+
+\begin{equation}
+H = x^T Q x + u^T R u + \lambda^T (\dot{x} - Ax - Bu)
+\end{equation}
+
+where $\lambda \in \mathbb{R}^n$ is the vector of Lagrange multipliers. The necessary conditions for an optimal solution are given by the Pontryagin's minimum principle:
+
+\begin{align}
+\frac{\partial H}{\partial u} &= 2R u - B^T \lambda = 0 \label{eq:pontryagin1}\\
+\frac{\partial H}{\partial x} &= 2Q x - A^T \lambda - \dot{\lambda} = 0 \label{eq:pontryagin2}\\
+\dot{\lambda} &= -Qx \label{eq:costate}
+\end{align}
+
+Solving Equation \eqref{eq:pontryagin1} for $\lambda$ yields:
+
+\begin{equation}
+\lambda = R^{-1} B^T u
+\end{equation}
+
+Substituting this into Equation \eqref{eq:pontryagin2}, we get the costate equation:
+
+\begin{equation}
+\dot{\lambda} = -Qx
+\end{equation}
+
+Now, we need to find the optimal control $u^*$. Plugging the expression for $\lambda$ into Equation \eqref{eq:pontryagin1}, we have:
+
+\begin{equation}
+2R u^* - B^T (R^{-1} B^T u^*) = 0
+\end{equation}
+
+Simplifying this equation, we obtain the optimal control input:
+
+\begin{equation}
+u^* = -R^{-1} B^T \lambda
+\end{equation}
+
+Substituting $\lambda = R^{-1} B^T u^*$ into the costate equation \eqref{eq:costate}, we have:
+
+\begin{equation}
+\dot{\lambda} = -Qx
+\end{equation}
+
+Now, we have a coupled system of state and costate equations. To find the optimal solution, we need to solve these coupled differential equations along with the system dynamics. The optimal control input $u^*$ that minimizes the cost function is obtained by solving this system.
 
 % Conversely, if these equations have symmetric solutions, the strategies $u_i^*(t) = -R_i^{-1}B_i^\top K_i(t) x(t)$
 % \bibitem[ ()]{}
