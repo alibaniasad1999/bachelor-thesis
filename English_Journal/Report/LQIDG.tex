@@ -756,8 +756,8 @@ The notation $\boldsymbol{\mathrm{I}}$ denotes the identity matrix.
 \noindent In the proposed controller scheme, two fundamental players are selected in accordance with the game theory approach. The primary player determines the control commands, while another player generates the worst possible disturbance.
 To achieve the primary objective, the first player minimizes the following cost function but the other player maximizes it:
 \begin{equation}\label{eq:min_max_cost_function}
-    \min_{u} \max_{d} J(\boldsymbol{\mathrm{x_{a_i}}}, {d_i}, {u_i})= \min_{d} \max_{u}
-     \int_{0}^{\mathrm{t_f}}\biggl (\boldsymbol{\mathrm{x^\mathrm{T}_{a_i}}}  \boldsymbol{\mathrm{Q_i}} \boldsymbol{\mathrm{x_{a_i}}}+
+    \min_{u} \max_{d} J(\boldsymbol{\mathrm{x}}_{\textrm{a}_i}, {d_i}, {u_i})= \min_{d} \max_{u}
+     \int_{0}^{\mathrm{t_f}}\biggl (\boldsymbol{\mathrm{x}}^\mathrm{T}_{\textrm{a}_i}  \boldsymbol{\mathrm{Q}}_i \boldsymbol{\mathrm{x}}_{\textrm{a}_i}+
     {{u^\mathrm{T}_i}}  {{R}} {{u_i}}-
     {{d^\mathrm{T}_{i}}} {{ R_{d} d_{i}}}
     \biggl )\mathrm{d}t
@@ -765,32 +765,35 @@ To achieve the primary objective, the first player minimizes the following cost 
 where $\mathrm{t_f}$ is the stop time and $i$-index denotes the roll, pitch, and yaw channels of the quadrotor. $\boldsymbol{\mathrm{Q_i}}$, ${{R_{d}}}$, and ${{R}}$ are weight coefficients of the cost function.
 By solving the above problem, the optimal control command is computed as follows~\cite{LQDG}:
 \begin{equation}
-    {{u_i}} = -\boldsymbol{{\mathrm{K}}_{i}} \boldsymbol{{\mathrm{x_{a_i}}}}
+    {{u_i}} = -\boldsymbol{{\mathrm{K}}}_{i} \boldsymbol{{\mathrm{x}}}_{\textrm{a}_i}
 \end{equation}
 Moreover, the worst disturbance is obtained as
 \begin{equation}
-    {{d_i}} =\boldsymbol{{\mathrm{K_{d_i}}}}\boldsymbol{{\mathrm{x_{a_i}}}}
+    {{d_i}} =\boldsymbol{{\mathrm{K}}}_{\textrm{d}_i}\boldsymbol{{\mathrm{x}}}_{\mathrm{a}_i}
 \end{equation}
 Here, $\boldsymbol{{\mathrm{K_{d_i}}}}$ and $\boldsymbol{{\mathrm{K_i}}}$ are gain values defined as follows:
 \begin{align}
-    \boldsymbol{{\mathrm{K_{d_i}}}} &= {{{R}}^{-1}_{d}}\boldsymbol{{\mathrm{B}_{a_{d_i}}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_{d_i}}}\\
-    \boldsymbol{{\mathrm{K_i}}} &= {{{R}}^{-1}}\boldsymbol{{\mathrm{B}_{a_i}^\mathrm{T}}}\boldsymbol{{\mathrm{P}}_{a_i}}
+    \boldsymbol{{\mathrm{K}}}_{\textrm{d}_i} &= {{{R}}^{-1}_{d}}\boldsymbol{{\mathrm{B}}}_{\mathrm{a}_{\mathrm{d}_i}}^\mathrm{T}\boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{\mathrm{d}_i}}\\
+    \boldsymbol{{\mathrm{K}}}_{i} &= {{{R}}^{-1}}
+    \boldsymbol{{\mathrm{B}}}_{\mathrm{a}_{i}}^\mathrm{T}
+    \boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{i}}
 \end{align}
-$\boldsymbol{{\mathrm{P}}_{a_i}}$ and $\boldsymbol{{\mathrm{P}}_{a_{d_i}}}$ satisfy
+$\boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{i}}$ and $\boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{\mathrm{d}_i}}$ satisfy
 \begin{align}\label{coupled_riccatti_LQIDG}
-    &-\boldsymbol{\mathrm{A^\mathrm{T}_a}}\boldsymbol{\mathrm{P_{a_{d_i}}}}
-     - \boldsymbol{\mathrm{Q_{i}}} - \boldsymbol{\mathrm{P_{a_{d_i}}}}\boldsymbol{\mathrm{A_a}} 
-     + \boldsymbol{\mathrm{P_{a_{d_i}}}}\boldsymbol{\mathrm{S_{a_i}}}\boldsymbol{\mathrm{P_{a_i}}}
-      +\boldsymbol{\mathrm{P_{a_{d_i}}}}\boldsymbol{\mathrm{S_{a_{d_i}}}}\boldsymbol{\mathrm{P_{a_{d_i}}}}
-    =\boldsymbol{\mathrm{0}}\\
-            &-\boldsymbol{\mathrm{A^\mathrm{T}_a}}\boldsymbol{\mathrm{P_{a_i}}} - \boldsymbol{\mathrm{Q_i}}
-             - \boldsymbol{\mathrm{P_{a_i}}}\boldsymbol{\mathrm{A_a}}  +
-              \boldsymbol{\mathrm{P_{a_i}}}\boldsymbol{\mathrm{S_{a_{d_i}}}}\boldsymbol{\mathrm{P_{a_{d_i}}}} 
-              +\boldsymbol{\mathrm{P_{a_i}}}\boldsymbol{\mathrm{S_{a_i}}}\boldsymbol{\mathrm{P_{a_i}}} =\boldsymbol{\mathrm{0}}
+    &-\boldsymbol{\mathrm{A}}^\mathrm{T}_{\mathrm{a}}\boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}
+    - \boldsymbol{\mathrm{Q}}_{i} - \boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}\boldsymbol{\mathrm{A}}_a 
+    + \boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}\boldsymbol{\mathrm{S}}_{\mathrm{a}_i}\boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}
+    +\boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}\boldsymbol{\mathrm{S}}_{\mathrm{a}_{d_{i}}}\boldsymbol{\mathrm{P}}_{\mathrm{d_a}_{i}}
+         =\boldsymbol{\mathrm{0}}\\
+    &-\boldsymbol{\mathrm{A}}^\mathrm{T}_{\mathrm{a}}\boldsymbol{\mathrm{P}}_{\mathrm{a_d}_{i}}
+     - \boldsymbol{\mathrm{Q}}_{i} - \boldsymbol{\mathrm{P}}_{\mathrm{a_d}_{i}}\boldsymbol{\mathrm{A}}_a 
+     + \boldsymbol{\mathrm{P}}_{\mathrm{a_d}_{i}}\boldsymbol{\mathrm{S}}_{\mathrm{a}_i}\boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}
+      +\boldsymbol{\mathrm{P}}_{\mathrm{a_d}_{i}}\boldsymbol{\mathrm{S}}_{\mathrm{a_{d}}{_i}}\boldsymbol{\mathrm{P}}_{\mathrm{a_d}_{i}}
+    =\boldsymbol{\mathrm{0}}
 \end{align}
 where $
-    \boldsymbol{\mathrm{S_{a_i}}} = \boldsymbol{\mathrm{B_{a_i}}}R^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_i}}$ and $
-    \boldsymbol{\mathrm{S{a_{d_i}}}} = \boldsymbol{\mathrm{B}_{a_{d_i}}}R_{d}^{-1}\boldsymbol{\mathrm{B}^\mathrm{T}_{a_{d_i}}}.
+\boldsymbol{\mathrm{S}}_{\mathrm{a}_i} = \boldsymbol{\mathrm{B}}_{\textrm{a}_i}R^{-1}\boldsymbol{\mathrm{B}}^\mathrm{T}_{\mathrm{a}_i}$ and $
+    \boldsymbol{\mathrm{S}}_{\textrm{a}_{\textrm{d}_i}} = \boldsymbol{\mathrm{B}}_{\textrm{a}_{\textrm{d}_i}}R_{d}^{-1}\boldsymbol{\mathrm{B}}^\mathrm{T}_{\textrm{a}_{\textrm{d}_i}}.
 $%%%? needd : or not
 
 % subsection for tunning weighta with TCACS optimization
