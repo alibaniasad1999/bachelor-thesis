@@ -1772,1169 +1772,134 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
 
 
 
-Here is a more detailed proof for the two player robust Nash equilibrium with coupled Riccati equations:
 
-\begin{proof}[Two player coupled Riccati robust Nash equilibrium]
-
-Consider the two player game between the system controller and disturbance. 
-
-The system dynamics are:
-
-\begin{align}
-\dot{x} = Ax + Bu + Ew
-\end{align}
-
-The system controller minimizes the infinite horizon quadratic cost:
-
-\begin{align} 
-J = \int_0^\infty (x^\top Q x + u^\top R u) dt
-\end{align}
-
-Subject to the system dynamics, where $Q \succeq 0, R \succ 0$.
-
-The disturbance maximizes:
-
-\begin{align}
-J_d = -\int_0^\infty w^\top V w dt
-\end{align}
-
-Where $V \succ 0$ represents aversion to model uncertainty. 
-
-A robust Nash equilibrium satisfies:
-
-\begin{align}
-J(u^*, w) &\leq J(u^*, w^*) \leq J(u, w^*), \;\; \forall u \\
-J_d(u^*, w^*) &\geq J_d(u^*, w) \geq J_d(u, w), \;\; \forall w
-\end{align}
-
-That is, neither player can improve their cost by unilaterally deviating from their strategy.
-
-Suppose the strategies are given by: 
-
-\begin{align}
-u^* &= -R^{-1}B^\top P_1 x \\
-w^* &= V^{-1}E^\top P_2 x
-\end{align}
-
-Where $P_1, P_2$ satisfy the coupled Riccati equations:
-
-\begin{align}
-0 &= A^\top P_1 + P_1 A - P_1 BR^{-1} B^\top P_1 + P_1 E V^{-1}E^\top P_2 + Q\\
-0 &= A^\top P_2 + P_2 A + P_2 E V^{-1}E^\top P_2 - P_2 BR^{-1}B^\top P_1
-\end{align}
-
-Substituting these strategies into the system dynamics gives the closed loop matrix:
-
-\begin{align} 
-A_{CL} = A - BR^{-1}B^\top P_1 + EV^{-1}E^\top P_2
-\end{align}
-
-Take the derivative of $VJ$ along the closed loop system dynamics:
-
-\begin{align}
-\frac{dJ}{dt} = \dot{x}^\top VP_1 x + x^\top P_1V\dot{x} = x^\top (Q + A_{CL}^\top P_1 + P_1 A_{CL}) x
-\end{align}
-
-For $J$ to be non-increasing, $Q + A_{CL}^\top P_1 + P_1 A_{CL} \preceq 0 \implies$ the Riccati equation for $P_1$.
-
-Similarly, take the derivative of $J_d$: 
-
-\begin{align}
-\frac{dJ_d}{dt} = -x^\top P_2 V \dot{x} - \dot{x}^\top V P_2 x = x^\top (-Q - A_{CL}^\top P_2 - P_2 A_{CL}) x
-\end{align}
-
-For $J_d$ to be non-decreasing, $-Q - A_{CL}^\top P_2 - P_2 A_{CL} \succeq 0 \implies$ the Riccati equation for $P_2$.
-
-If $P_1, P_2$ satisfy the coupled Riccati equations and render $A_{CL}$ stable, then $u^*, w^*$ form a robust Nash equilibrium.
-
-\end{proof}
-
-Here is a proof for the two player robust Nash equilibrium using Hamiltonian matrices:
-
-\begin{proof}[Robust Nash Equilibrium with Hamiltonian Matrix]
-
-Consider the two player uncertain dynamic game between the system controller and disturbance. 
-
-The system dynamics and cost functions are:
-
-\begin{align*}
-\dot{x} &= Ax + Bu + Ew \\
-J &= \int_0^\infty x^\top Q x + u^\top R u \\
-J_d &= -\int_0^\infty w^\top V w
-\end{align*}
-
-Where $Q \succeq 0, R \succ 0, V \succ 0$. 
-
-Suppose the strategies are given by:
-
-\begin{align*} 
-u &= -R^{-1}B^\top P_1 x \\
-w &= V^{-1}E^\top P_2 x
-\end{align*}
-
-Where $P_1, P_2$ satisfy coupled algebraic Riccati equations arising from the first-order optimality conditions.
-
-To derive these conditions, form the Hamiltonian:
-
-\begin{align*}
-H &= x^\top Q x + u^\top R u + \lambda^\top (Ax + Bu + Ew) \\
-&= x^\top (Q + A^\top \lambda) x + u^\top (R + B^\top \lambda) u + w^\top E^\top \lambda
-\end{align*}
-
-The optimality conditions are:
-
-\begin{align*}
-\frac{\partial H}{\partial u} = 0 &\Rightarrow R + B^\top \lambda = 0 \Rightarrow \lambda = -R^{-1}B^\top P_1 x\\
-\frac{\partial H}{\partial w} = 0 &\Rightarrow E^\top \lambda = -Vw = -V^{-1}E^\top P_2 x
-\end{align*}
-
-Substitute these back into the Hamiltonian to obtain the coupled algebraic Riccati equations.
-
-If $P_1, P_2$ satisfy these equations and render the closed-loop system stable, the strategies form a robust Nash equilibrium.
-\end{proof}
-
-This shows the basics of using the Hamiltonian approach to derive the conditions for robust strategic optimization in the two player uncertain dynamic game.
-
-
-Here is a detailed proof of the coupled algebraic Riccati equations for the linear quadratic inverse dynamic game:
-Let's consider a linear time-invariant system:
-\begin{align}
-\dot{\mathbf{x}}_a &= \mathbf{A}a\mathbf{x}a + \mathbf{B}{a_i}\mathbf{u}i + \mathbf{B}{a{d_i}}\mathbf{d}_i \\
-\mathbf{y}i &= \mathbf{C}{a_i}\mathbf{x}_a
-\end{align}
-Where $\mathbf{x}_a \in \mathbb{R}^n$ is the state, $\mathbf{u}_i \in \mathbb{R}^{m_i}$ is the control input of player $i$, $\mathbf{d}_i \in \mathbb{R}^{p_i}$ is the disturbance input of player $i$, $\mathbf{y}_i \in \mathbb{R}^{q_i}$ is the output for player $i$.
-The cost functions for the two players are:
-\begin{align}
-J_i(\mathbf{u}_i, \mathbf{d}_i) &= \int_0^{\infty} \big(\mathbf{x}_a^\top \mathbf{Q}_i \mathbf{x}_a + \mathbf{u}_i^\top \mathbf{R}_i \mathbf{u}i\big) \: dt \\
-J{d_i}(\mathbf{u}_i, \mathbf{d}_i) &= \int_0^{\infty} \big(\mathbf{x}a^\top \mathbf{Q}{d_i} \mathbf{x}_a - \mathbf{d}i^\top \mathbf{R}{d_i} \mathbf{d}_i\big) \: dt
-\end{align}
-Where $\mathbf{Q}i, \mathbf{Q}{d_i} \in \mathbb{R}^{n\times n}$ are positive semi-definite matrices and $\mathbf{R}i, \mathbf{R}{d_i} \in \mathbb{R}^{m_i\times m_i}, \mathbb{R}^{p_i\times p_i}$ are positive definite matrices.
-The optimal control law for player $i$ is given by:
-\begin{align}
-\mathbf{u}_i^* &= -\mathbf{K}_i \mathbf{x}_a
-\end{align}
-Where $\mathbf{K}_i \in \mathbb{R}^{m_i\times n}$ is the optimal feedback gain matrix.
-The worst case disturbance for player $i$ is given by:
-\begin{align}
-\mathbf{d}i^* &= \mathbf{K}{d_i}\mathbf{x}_a
-\end{align}
-Where $\mathbf{K}_{d_i} \in \mathbb{R}^{p_i\times n}$ is the optimal disturbance feedback matrix.
-The coupled algebraic Riccati equations to determine $\mathbf{K}i$ and $\mathbf{K}{d_i}$ are:
-\begin{align}
-\mathbf{A}a^\top \mathbf{P}{a_{d_i}} + \mathbf{P}{a{d_i}} \mathbf{A}a - \mathbf{P}{a_{d_i}}\mathbf{B}{a_i}\mathbf{R}i^{-1}\mathbf{B}{a_i}^\top\mathbf{P}{a_{d_i}} + \mathbf{Q}i + \mathbf{P}{a_{d_i}}\mathbf{B}{a{d_i}}\mathbf{R}{d_i}^{-1}\mathbf{B}{a_{d_i}}^\top\mathbf{P}{a{d_i}} &= 0 \\
-\mathbf{A}a^\top \mathbf{P}{a_i} + \mathbf{P}{a_i} \mathbf{A}a - \mathbf{P}{a_i}\mathbf{B}{a_{d_i}}\mathbf{R}{d_i}^{-1}\mathbf{B}{a_{d_i}}^\top\mathbf{P}{a{d_i}} + \mathbf{Q}i + \mathbf{P}{a_i}\mathbf{B}{a_i}\mathbf{R}i^{-1}\mathbf{B}{a_i}^\top\mathbf{P}{a_i} &= 0
-\end{align}
-The optimal gain matrices are then:
-\begin{align}
-\mathbf{K}{d_i} &= \mathbf{R}{d_i}^{-1}\mathbf{B}{a{d_i}}^\top \mathbf{P}{a{d_i}} \\
-\mathbf{K}i &= \mathbf{R}i^{-1}\mathbf{B}{a_i}^\top \mathbf{P}{a_i}
-\end{align}
-Therefore, the coupled algebraic Riccati equations arise from the necessary conditions for optimality of the linear quadratic inverse dynamic game problem. Solving these equations yields the optimal feedback control and disturbance gains.
-
-Here is a detailed derivation of the coupled algebraic Riccati equations for the linear quadratic inverse dynamic game:
-Consider the linear time-invariant system:
-\begin{align}
-\dot{\mathbf{x}}_a &= \mathbf{A}a\mathbf{x}a + \mathbf{B}{a_i}\mathbf{u}i + \mathbf{B}{a{d_i}}\mathbf{d}_i \
-\mathbf{y}i &= \mathbf{C}{a_i}\mathbf{x}_a
-\end{align}
-The cost functions for the two players are:
-\begin{align}
-J_i(\mathbf{u}_i, \mathbf{d}_i) &= \int_0^{\infty} \left(\mathbf{x}_a^\top \mathbf{Q}_i \mathbf{x}_a + \mathbf{u}_i^\top \mathbf{R}_i \mathbf{u}i \right) dt \
-J{d_i}(\mathbf{u}_i, \mathbf{d}_i) &= \int_0^{\infty} \left(\mathbf{x}a^\top \mathbf{Q}{d_i} \mathbf{x}_a - \mathbf{d}i^\top \mathbf{R}{d_i} \mathbf{d}_i\right) dt
-\end{align}
-The Hamiltonian for player $i$ is:
-\begin{align}
-H_i = \mathbf{x}_a^\top \mathbf{Q}_i \mathbf{x}_a + \mathbf{u}_i^\top \mathbf{R}_i \mathbf{u}_i + \boldsymbol{\lambda}^\top\left(\mathbf{A}a\mathbf{x}a + \mathbf{B}{a_i}\mathbf{u}i + \mathbf{B}{a{d_i}}\mathbf{d}_i\right)
-\end{align}
-Where $\boldsymbol{\lambda} \in \mathbb{R}^n$ is the costate vector.
-The optimality conditions are:
-\begin{align}
-\frac{\partial H_i}{\partial \mathbf{u}_i} = 0 &\Rightarrow \mathbf{u}_i = -\mathbf{R}i^{-1}\mathbf{B}{a_i}^\top\boldsymbol{\lambda} \
-\frac{d\boldsymbol{\lambda}}{dt} = -\frac{\partial H_i}{\partial \mathbf{x}_a} &\Rightarrow \dot{\boldsymbol{\lambda}} = -\mathbf{Q}_i\mathbf{x}_a - \mathbf{A}_a^\top\boldsymbol{\lambda}
-\end{align}
-Assuming steady-state optimal solution:
-\begin{align}
-\mathbf{u}_i &= -\mathbf{K}_i \mathbf{x}a \
-\boldsymbol{\lambda} &= \mathbf{P}{a_i}\mathbf{x}_a
-\end{align}
-Where $\mathbf{K}i \in \mathbb{R}^{m_i \times n}$ and $\mathbf{P}{a_i} \in \mathbb{R}^{n\times n}$ are constant gain matrices.
-Substituting these into the costate equation:
-\begin{align}
-0 &= -\mathbf{Q}_i\mathbf{x}_a - \mathbf{A}a^\top \mathbf{P}{a_i}\mathbf{x}_a \
-\Rightarrow \quad 0 &= -\mathbf{Q}i - \mathbf{A}a^\top \mathbf{P}{a_i} - \mathbf{P}{a_i}\mathbf{A}_a
-\end{align}
-Pre-multiplying by $\mathbf{P}_{a_i}^{-1}$:
-\begin{align}
-0 &= -\mathbf{P}_{a_i}^{-1}\mathbf{Q}i - \mathbf{A}a^\top  - \mathbf{P}{a_i}\mathbf{A}a\mathbf{P}{a_i}^{-1} \
-0 &= -\mathbf{P}{a_i}^{-1}\mathbf{Q}i - \mathbf{A}a^\top  - \mathbf{P}{a_i}\mathbf{A}a + \mathbf{P}{a_i}\mathbf{B}{a_i}\mathbf{R}i^{-1}\mathbf{B}{a_i}^\top
-\end{align}
-Where we have substituted $\mathbf{K}i = \mathbf{R}i^{-1}\mathbf{B}{a_i}^\top\mathbf{P}{a_i}$.
-This gives the first Riccati equation:
-\begin{align}
-\mathbf{A}a^\top \mathbf{P}{a_i} + \mathbf{P}{a_i}\mathbf{A}a - \mathbf{P}{a_i}\mathbf{B}{a_i}\mathbf{R}i^{-1}\mathbf{B}{a_i}^\top\mathbf{P}_{a_i} + \mathbf{Q}_i = 0
-\end{align}
-Repeating the steps above for the maximizing disturbance player gives:
-\begin{align}
-\mathbf{A}a^\top \mathbf{P}{a_{d_i}} + \mathbf{P}{a{d_i}}\mathbf{A}a - \mathbf{P}{a_{d_i}}\mathbf{B}{a{d_i}}\mathbf{R}{d_i}^{-1}\mathbf{B}{a_{d_i}}^\top\mathbf{P}{a{d_i}} + \mathbf{Q}_{d_i} = 0
-\end{align}
-Thus, we obtain two coupled algebraic Riccati equations that must be solved to find the optimal control and disturbance feedback gains. The cross-coupling occurs through the state dynamics.
-
-
-% appendix proof of LQIR-DG
-\section{Proof of Theorem LQIR-DG}
-\label{appendix:proof_LQIR-DG}
-Here is the revised proof of Theorem 8.4 (Zero-sum differential game) with a full proof of Theorem 5.1:
-
-Proof of Theorem 8.4 (Zero-sum differential game):
-
-Consider the zero-sum differential game described by:
-
-\begin{align*}
-\dot{x}(t) &= Ax(t) + B_1u_1(t) + B_2u_2(t), \quad x(0)=x_0
-\end{align*}
-
-With cost functions:
-
-\begin{align*}
-J_1(u_1,u_2) &= \int_0^T \{x^\top (t)Qx(t) + u_1^\top(t) R_1u_1(t) - u_2^\top(t)R_2u_2(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-J_2(u_1,u_2) &= -J_1(u_1,u_2)
-\end{align*}
-
-Where $Q$, $Q_T$ are symmetric, and $R_1$, $R_2$ are positive definite.
-
-To prove this theorem, we will first prove Theorem 5.1:
-
-\begin{theorem}[Linear quadratic control problem]
-The linear quadratic control problem:
-
-\begin{align*}
-\text{minimize } &\int_0^T\{x^\top(t) Q x(t) + u^\top(t) R u(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-\text{subject to } &\dot{x}(t) = Ax(t) + Bu(t), \quad x(0) = x_0  
-\end{align*}
-
-has a solution for every $x_0$ if and only if the Riccati differential equation:
-
-\begin{align*}
-\dot{K}(t) = -A^\top K(t) - K(t)A + K(t)SK(t) - Q, \quad K(T) = Q_T  
-\end{align*}
-
-where $S=BR^{-1}B^\top$, has a symmetric solution $K(t)$ on $[0,T]$. 
-
-If the problem has a solution, it is unique with the optimal control:
-
-\begin{align*}
-u^*(t) = -R^{-1}B^\top K(t) x(t)
-\end{align*}
-
-And the optimal cost is $J^* = x_0^\top K(0) x_0$.
-\end{theorem}
-
-\begin{proof}
-First, assume the Riccati equation has a symmetric solution $K(t)$. Then:
-
-\begin{align*}
-J &= \int_0^T\{x^\top Qx + u^\top Ru + \frac{\mathrm{d}}{\mathrm{d}t}(x^\top K x)\}\,\mathrm{d}t + x_0^\top K(0) x_0 \\
-    &= \int_0^T (u + R^{-1}B^\top Kx)^\top R(u + R^{-1}B^\top Kx)\,\mathrm{d}t + x_0^\top K(0) x_0
-\end{align*}
-
-So $J \geq x_0^\top K(0) x_0$ with equality if $u=-R^{-1}B^\top Kx$.
-
-Conversely, assume $u^*(t)$ is optimal with cost $J^*$. Define $V(t,x) = \inf_{u} J(t,x;u)$. By dynamic programming, $V$ satisfies the HJB equation. It can be shown that $V(t,x) = x^\top P(t) x$ where $P(t)$ is symmetric. 
-
-Let $K(t)$ solve the Riccati equation on a maximal interval $(t_1,T]$. On this interval, $V(t,x) = J^*(t,x) = x^\top K(t) x$. Since $V$ is bounded on $[0,T]$, $K(t)$ is bounded on $(t_1,T]$. This implies the interval can be extended, contradicting maximality unless $t_1=0$.
-
-So the Riccati equation has a global solution $K(t)=P(t)$, and the result follows.
-\end{proof}
-
-For the zero-sum game, adding the coupled Riccati equations from Theorem 8.3 gives:
-
-\begin{align*}
-\dot{K}_1 + \dot{K}_2 &= - (K_1 + K_2)(A - S_1K_1 - S_2K_2) - (A - S_1K_1 - S_2K_2)^\top(K_1 + K_2) \\
-K_1(T) + K_2(T) &= 0
-\end{align*}
-
-The unique solution is
-
- $K_1 = -K_2$. Substituting into the first Riccati equation in Theorem 8.3 gives:
-
-\begin{align*}
-\dot{K} &= -A^\top K - KA + K(S_1-S_2)K - Q, \quad K(T) = Q_T  
-\end{align*}
-
-So the game has an equilibrium if this equation has a symmetric solution. The equilibrium strategies are:
-
-\begin{align*}
-u_1^*(t) &= -R_1^{-1}B_1^\top K(t) x(t) \\
-u_2^*(t) &= R_2^{-1}B_2^\top K(t) x(t)
-\end{align*}
-
-And the costs are as stated in the theorem. This completes the detailed proof.
-
-By presenting the complete proof of Theorem 8.4 and incorporating the proof of Theorem 5.1, the paper now provides a clear and cohesive flow of the theorem's derivation. This revised format ensures the logical progression of the proofs, making it suitable for a journal submission.
-
-
-
-
-
-
-
-Here is the merged proof of Theorem 8.4 (Zero-sum differential game) with the full proof of Theorem 5.1:
-
-Proof of Theorem 8.4 (Zero-sum differential game):
-
-Consider the zero-sum differential game described by:
-
-\begin{align*}
-\dot{x}(t) &= Ax(t) + B_1u_1(t) + B_2u_2(t), \quad x(0)=x_0
-\end{align*}
-
-With cost functions:
-
-\begin{align*}
-J_1(u_1,u_2) &= \int_0^T \{x^\top (t)Qx(t) + u_1^\top(t) R_1u_1(t) - u_2^\top(t)R_2u_2(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-J_2(u_1,u_2) &= -J_1(u_1,u_2)
-\end{align*}
-
-Where $Q$, $Q_T$ are symmetric, and $R_1$, $R_2$ are positive definite.
-
-To prove this theorem, we will first prove Theorem 5.1:
-
-\begin{theorem}[Linear quadratic control problem]
-The linear quadratic control problem:
-
-\begin{align*}
-\text{minimize } &\int_0^T\{x^\top(t) Q x(t) + u^\top(t) R u(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-\text{subject to } &\dot{x}(t) = Ax(t) + Bu(t), \quad x(0) = x_0  
-\end{align*}
-
-has a solution for every $x_0$ if and only if the Riccati differential equation:
-
-\begin{align*}
-\dot{K}(t) = -A^\top K(t) - K(t)A + K(t)SK(t) - Q, \quad K(T) = Q_T  
-\end{align*}
-
-where $S=BR^{-1}B^\top$, has a symmetric solution $K(t)$ on $[0,T]$. 
-
-If the problem has a solution, it is unique with the optimal control:
-
-\begin{align*}
-u^*(t) = -R^{-1}B^\top K(t) x(t)
-\end{align*}
-
-And the optimal cost is $J^* = x_0^\top K(0) x_0$.
-\end{theorem}
-
-\begin{proof}
-First, assume the Riccati equation has a symmetric solution $K(t)$. Then:
-
-\begin{align*}
-J &= \int_0^T\{x^\top Qx + u^\top Ru + \frac{\mathrm{d}}{\mathrm{d}t}(x^\top K x)\}\,\mathrm{d}t + x_0^\top K(0) x_0 \\
-    &= \int_0^T (u + R^{-1}B^\top Kx)^\top R(u + R^{-1}B^\top Kx)\,\mathrm{d}t + x_0^\top K(0) x_0
-\end{align*}
-
-So $J \geq x_0^\top K(0) x_0$ with equality if $u=-R^{-1}B^\top Kx$.
-
-Conversely, assume $u^*(t)$ is optimal with cost $J^*$. Define $V(t,x) = \inf_{u} J(t,x;u)$. By dynamic programming, $V$ satisfies the HJB equation. It can be shown that $V(t,x) = x^\top P(t) x$ where $P(t)$ is symmetric. 
-
-Let $K(t)$ solve the Riccati equation on a maximal interval $(t_1,T]$. On this interval, $V(t,x) = J^*(t,x) = x^\top K(t) x$. Since $V$ is bounded on $[0,T]$, $K(t)$ is bounded on $(t_1,T]$. This implies the interval can be extended, contradicting maximality unless $t_1=0$.
-
-So the Riccati equation has a global solution $K(t)=P(t)$, and the result follows.
-\end{proof}
-
-Now, for the zero-sum game, adding the coupled Riccati equations from Theorem 8.3 gives:
-
-\begin{align*}
-\dot{K}_1 + \dot{K}_2 &= - (K_1 + K_2)(A - S_1K_1 - S_2K_2) - (A - S_1K_1 - S_2K_2)^\top(K_1 + K_2) \\
-K_1(T) + K_2(T) &= 0
-\end{align*}
-
-The unique solution is $K_1 = -K_2$. Substituting into the first Riccati equation in Theorem 8.3 gives:
-
-\begin{align*}
-\dot{K}
- &= -A^\top K - KA + K(S_1-S_2)K - Q, \quad K(T) = Q_T  
-\end{align*}
-
-So the game has an equilibrium if this equation has a symmetric solution. The equilibrium strategies are:
-
-\begin{align*}
-u_1^*(t) &= -R_1^{-1}B_1^\top K(t) x(t) \\
-u_2^*(t) &= R_2^{-1}B_2^\top K(t) x(t)
-\end{align*}
-
-And the costs are as stated in the theorem. This completes the proof. The merged proof ensures a clear and compact presentation of the theorem, making it suitable for a journal submission.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Here is a detailed proof of the zero-sum differential game theorem, with a full proof of Theorem 8.3 included:
-
-Proof of Theorem 8.4 (Zero-sum differential game):
-
-Consider the zero-sum differential game described by:
-
-\begin{align*}
-\dot{x}(t) &= Ax(t) + B_1u_1(t) + B_2u_2(t), \quad x(0)=x_0  
-\end{align*}
-
-With cost functions: 
-
-\begin{align*}
-J_1(u_1,u_2) &= \int_0^T \{x^\top (t)Qx(t) + u_1^\top(t) R_1u_1(t) - u_2^\top(t)R_2u_2(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-J_2(u_1,u_2) &= -J_1(u_1,u_2)
-\end{align*}
-
-Where $Q$, $Q_T$ are symmetric and $R_1$, $R_2$ are positive definite.
-
-To prove this theorem, we will first prove Theorem 8.3:
-
-\begin{theorem}
-The two-player linear quadratic differential game has, for every initial state, a linear feedback Nash equilibrium if and only if the following coupled Riccati equations have a set of symmetric solutions $K_1(t)$, $K_2(t)$ on $[0,T]$:
-
-\begin{align*} 
-\dot{K}_1(t) &= -(A-S_2K_2(t))^\top K_1(t) - K_1(t)(A-S_2K_2(t)) + K_1(t)S_1K_1(t) - Q_1 - K_2(t)S_{21}K_2(t) \\
-K_1(T) &= Q_{1T}
-\end{align*}
-
-\begin{align*}
-\dot{K}_2(t) &= -(A-S_1K_1(t))^\top K_2(t) - K_2(t)(A-S_1K_1(t)) + K_2(t)S_2K_2(t) - Q_2 - K_1(t)S_{12}K_1(t) \\  
-K_2(T) &= Q_{2T}
-\end{align*}
-
-Moreover, the equilibrium actions are:
-
-\begin{align*} 
-u_1^*(t) &= -R_1^{-1}B_1^\top K_1(t) x(t) \\
-u_2^*(t) &= -R_2^{-1}B_2^\top K_2(t) x(t)
-\end{align*}
-
-And the costs incurred are $J_i = x_0^\top K_i(0) x_0$, $i=1,2$.
-\end{theorem}
-
-\begin{proof}
-Assume $u_i^*(t) = F_i^*(t) x(t)$, $t \in [0,T]$, $i=1,2$, is a linear feedback equilibrium. Then by definition of linear feedback equilibrium, $u_1^*(t)$ solves the LQR problem:
-
-\begin{align*}
-\text{min} \quad & \int_0^T \{ x_1^\top(s) (Q_1 + F_{2}^{*\top}(s)R_{12}F_2^*(s)) x_1(s) + u_1^\top(s) R_1 u_1(s) \}\,\mathrm{d}s + x_1^\top(T) Q_{1T} x_1(T) \\
-\text{s.t.} \quad & \dot{x}_1(t) = (A + B_2 F_2^*(t)) x_1(t) + B_1 u_1(t), \quad x_1(0) = x_0
-\end{align*}
-
-By Theorem 5.1, this has a solution if and only if the Riccati equation:
-
-\begin{align*}
-\dot{K}_1(t) &= -(A+B_2F_2^*(t))^\top K_1(t) - K_1(t)(A+B_2F_2^*(t)) + K_1(t)S_1K_1(t) \\
-&\quad - (Q_1 + F_{2}^{*\top}(t)R_{12}F_2^*(t)), \quad K_1(T) = Q_{1T}  
-\end{align*}
-
-has a symmetric solution $K_1(t)$ on $[0,T]$. The optimal control is $u_1^*(t) = -R_1^{-1}B_1^\top K_1(t) x_1(t)$, so $F_1^*(t) = -R_1^{-1}B_1^\top K_1(t)$.
-
-Similarly, $u_2^*(t)$ solves an LQR problem implying $F_2^*(t) = -R_2^{-1}B_2^\top K_2(t)$ where $K_2(t)$ satisfies: 
-
-\begin{align*}
-\dot{K}_2(t) &= -(A+B_1F_1^*(t))^\top K_2(t) - K_2(t)(A+B_1F_1^*(t)) + K_2(t)S_2K_2(t) \\  
-&\quad - (Q_2 + F_{1}^{*\top}(t)R_{21}F_1^*(t)), \quad K_2(T) = Q_{2T}
-\end{align*}
-
-Substituting $F_1^*(t)$, $F_2^*(t)$ into the Riccati equations gives the coupled equations in the theorem statement.
-
-Conversely, if these equations have symmetric solutions, the strategies $u_i^*(t) = -R_i^{-1}B_i^\top K_i(t) x(t)$ form an equilibrium by Theorem 8.2. Uniqueness follows from the LQR problems having unique solutions. The costs $J_i = x_0^\top K_i(0) x_0$ also follow from Theorem 8.2.
-\end{proof}
-
-Now consider the zero-sum game. Adding the coupled Riccati equations in Theorem 8.3 gives:
-
-\begin{align*}
-\dot{K}_1(t) + \dot{K}_2(t) &= -(K_1(t) + K_2(t))(A - S_1K_1(t) - S_2K_2(t)) \\  
-&\quad - (A - S_1K_1(t) - S_2K_2(t))^\top(K_1(t) + K_2(t)) \\
-K_1(T) + K_2(T) &= 0
-\end{align*}
-
-Since this game is zero-sum, the costs must satisfy $J_1 + J_2 = 0$ for any equilibrium. The unique solution to the above Riccati equation is $K_1(t) = -K_2(t)$. Substituting this into the first Riccati equation in Theorem 8.3 gives:
-
-\begin{align*} 
-\dot{K}(t) &= -A^\top K(t) - K(t)A + K(t)(S_1-S_2)K(t) - Q \\
-K(T) &= Q_T
-\end{align*}
-
-Where $K(t) = K_1(t)$. So the game has a linear feedback Nash equilibrium if and only if this single Riccati equation has a symmetric solution $K(t)$ on $[0,T]$. 
-
-The equilibrium strategies are:
-
-\begin{align*}
-u_1^*(t) &= -R_1^{-1}B_1^\top K(t) x(t) \\ 
-u_2^*(t) &= R_2^{-1}B_2^\top K(t) x(t)
-\end{align*}
-
-And the costs are $J_1 = x_0^\top K(0) x_0$ and $J_2 = -J_1 = -x_0^\top K(0) x_0$.
-
-This completes the detailed proof of Theorem 8.4.
-%% else use the following coding to input the bib items directly in the
-%% TeX file.
-
-% \begin{thebibliography}{00}
-
-%% \bibitem[Author(year)]{label}
-%% Text of bibliographic item
-
-kkkkkkkk
-
-\section*{Proof of Theorem 1 (Zero-sum differential game):}
-
-Consider the zero-sum differential game described by:
-
-\begin{align*}
-\dot{x}(t) &= Ax(t) + B_1u_1(t) + B_2u_2(t), \quad x(0)=x_0
-\end{align*}
-
-With cost functions:
-
-\begin{align*}
-J_1(u_1,u_2) &= \int_0^T \{x^\top (t)Qx(t) + u_1^\top(t) R_1u_1(t) - u_2^\top(t)R_2u_2(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-J_2(u_1,u_2) &= -J_1(u_1,u_2)
-\end{align*}
-
-Where $Q$, $Q_T$ are symmetric, and $R_1$, $R_2$ are positive definite.
-
-To prove this theorem, we will first prove Theorem 2:
-
-\begin{theorem}
-The two-player linear quadratic differential game has, for every initial state, a linear feedback Nash equilibrium if and only if the following coupled Riccati equations have a set of symmetric solutions $K_1(t)$, $K_2(t)$ on $[0,T]$:
-
-\begin{align*} 
-\dot{K}_1(t) &= -(A-S_2K_2(t))^\top K_1(t) - K_1(t)(A-S_2K_2(t)) + K_1(t)S_1K_1(t) - Q_1 - K_2(t)S_{21}K_2(t) \\
-K_1(T) &= Q_{1T}
-\end{align*}
-
-\begin{align*}
-\dot{K}_2(t) &= -(A-S_1K_1(t))^\top K_2(t) - K_2(t)(A-S_1K_1(t)) + K_2(t)S_2K_2(t) - Q_2 - K_1(t)S_{12}K_1(t) \\  
-K_2(T) &= Q_{2T}
-\end{align*}
-
-Moreover, the equilibrium actions are:
-
-\begin{align*} 
-u_1^*(t) &= -R_1^{-1}B_1^\top K_1(t) x(t) \\
-u_2^*(t) &= -R_2^{-1}B_2^\top K_2(t) x(t)
-\end{align*}
-
-And the costs incurred are $J_1 = x_0^\top K_1(0) x_0$, $J_2 = x_0^\top K_2(0) x_0$.
-\end{theorem}
-
-\begin{proof}
-Assume $u_i^*(t) = F_i^*(t) x(t)$, $t \in [0,T]$, $i=1,2$, is a linear feedback equilibrium. Then by definition of linear feedback equilibrium, $u_1^*(t)$ solves the LQR problem:
-
-\begin{align*}
-\text{minimize } & \int_0^T \{ x_1^\top(s) (Q_1 + F_{2}^{*\top}(s)R_{12}F_2^*(s)) x_1(s) + u_1^\top(s) R_1 u_1(s) \}\,\mathrm{d}s + x_1^\top(T) Q_{1T} x_1(T) \\
-\text{subject to } & \dot{x}_1(t) = (A + B_2 F_2^*(t)) x_1(t) + B_1 u_1(t), \quad x_1(0) = x_0
-\end{align*}
-
-By Theorem 5.1, this has a solution if and only if the Riccati equation:
-
-\begin{align*}
-\dot{K}_1(t) &= -(A+B_2F_2^*(t))^\top K_1(t) - K_1(t)(A+B_2F_2^*(t)) + K_1(t)S_1K_1(t) \\
-&\quad - (Q_1 + F_{2}^{*\top}(t)R_{12}F_2^*(t)), \quad K_1(T) = Q_{1T}  
-\end{align*}
-
-has a symmetric solution $K_1(t)$ on $[0,T]$. The optimal control is $u_1^*(t) = -R_1^{-1}B_1^\top K_1(t) x_1(t)$, so $F_1^*(t) = -R_1^{-1}B_1^\top K_1(t)$.
-
-Similarly, $u_2^*(t)$ solves an LQR problem implying $F_2^*(t) = -R_2^{-1}B_2^\top K_2(t)$ where $K_2(t)$ satisfies: 
-
-\begin{align*}
-\dot{K}_2(t) &= -(A+B_1F_1^*(t))^\top K_2(t) - K_2(t)(A+B_1F_1^*(t)) + K_2(t)S_2K_2(t) \\  
-&\quad - (Q_2 + F_{1}^{*\top}(t)R_{21}F_1^*(t)), \quad K_2(T) = Q_{2T}
-\end{align*}
-
-Substituting $F_1^*(t)$, $F_2^*(t)$ into the Riccati equations gives the coupled equations in the theorem statement.
-
-Conversely, if these equations have symmetric solutions, the strategies $u_i^*(t) = -R_i^{-1}B_i^\top K_i(t) x(t)$ form an equilibrium by Theorem 8.2. Uniqueness follows from the LQR problems having unique solutions. The costs $J_i = x_0^\top K_i(0) x_0$ also follow from Theorem 8.2.
-\end{proof}
-
-\section*{Back to Theorem 1:}
-
-Now for the zero-sum game, adding the coupled Riccati equations in Theorem 2 gives:
-
-\begin{align*}
-\dot{K}_1(t) + \dot{K}_2(t) &= -(K_1(t) + K_2(t))(A - S_1K_1(t) - S_2K_2(t)) \\  
-&\quad - (A - S_1K_1(t) - S_2K_2(t))^\top(K_1(t) + K_2(t)) \\
-K_1(T) + K_2(T) &= 0
-\end{align*}
-
-Since this game is zero-sum, the costs must satisfy $J_1 + J_2 = 0$ for any equilibrium. The unique solution to the above Riccati equation is $K_1(t) = -K_2(t)$. Substituting this into the first Riccati equation in Theorem 2 gives:
-
-\begin{align*} 
-\dot{K}(t) &= -A^\top K(t) - K(t)A + K(t)(S_1-S_2)K(t) - Q \\
-K(T) &= Q_T
-\end{align*}
-
-Where $K(t) = K_1(t)$. So the game has a linear feedback Nash equilibrium if and only if this single Riccati equation has a symmetric solution $K(t)$ on $[0,T]$. 
-
-The equilibrium strategies are:
-
-\begin{align*}
-u_1^*(t) &= -R_1^{-1}B_1^\top K(t) x(t) \\ 
-u_2^*(t) &= R_2^{-1}B_2^\top K(t) x(t)
-\end{align*}
-
-And the costs are $J_1 = x_0^\top K(0) x_0$ and $J_2 = -J_1 = -x_0^\top K(0) x_0$.
-
-jjjjjjjjjjj
-\section*{Proof of Theorem 1 (Zero-sum differential game):}
-
-Consider the zero-sum differential game described by:
-
-\begin{align*}
-\dot{x}(t) &= Ax(t) + B_1u_1(t) + B_2u_2(t), \quad x(0)=x_0
-\end{align*}
-
-With cost functions:
-
-\begin{align*}
-J_1(u_1,u_2) &= \int_0^T \{x^\top (t)Qx(t) + u_1^\top(t) R_1u_1(t) - u_2^\top(t)R_2u_2(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-J_2(u_1,u_2) &= -J_1(u_1,u_2)
-\end{align*}
-
-Where $Q$, $Q_T$ are symmetric, and $R_1$, $R_2$ are positive definite.
-
-To prove this theorem, we will first prove Theorem 2:
-
-\begin{theorem}
-The two-player linear quadratic differential game has, for every initial state, a linear feedback Nash equilibrium if and only if the following coupled Riccati equations have a set of symmetric solutions $K_1(t)$, $K_2(t)$ on $[0,T]$:
-
-\begin{align*} 
-\dot{K}_1(t) &= -(A-S_2K_2(t))^\top K_1(t) - K_1(t)(A-S_2K_2(t)) + K_1(t)S_1K_1(t) - Q_1 - K_2(t)S_{21}K_2(t) \\
-K_1(T) &= Q_{1T}
-\end{align*}
-
-\begin{align*}
-\dot{K}_2(t) &= -(A-S_1K_1(t))^\top K_2(t) - K_2(t)(A-S_1K_1(t)) + K_2(t)S_2K_2(t) - Q_2 - K_1(t)S_{12}K_1(t) \\  
-K_2(T) &= Q_{2T}
-\end{align*}
-
-Moreover, the equilibrium actions are:
-
-\begin{align*} 
-u_1^*(t) &= -R_1^{-1}B_1^\top K_1(t) x(t) \\
-u_2^*(t) &= -R_2^{-1}B_2^\top K_2(t) x(t)
-\end{align*}
-
-And the costs incurred are $J_1 = x_0^\top K_1(0) x_0$, $J_2 = x_0^\top K_2(0) x_0$.
-\end{theorem}
-
-\begin{proof}
-Assume $u_i^*(t) = F_i^*(t) x(t)$, $t \in [0,T]$, $i=1,2$, is a linear feedback equilibrium. Then by definition of linear feedback equilibrium, $u_1^*(t)$ solves the LQR problem:
-
-\begin{align*}
-\text{minimize } & \int_0^T \{ x_1^\top(s) (Q_1 + F_{2}^{*\top}(s)R_{12}F_2^*(s)) x_1(s) + u_1^\top(s) R_1 u_1(s) \}\,\mathrm{d}s + x_1^\top(T) Q_{1T} x_1(T) \\
-\text{subject to } & \dot{x}_1(t) = (A + B_2 F_2^*(t)) x_1(t) + B_1 u_1(t), \quad x_1(0) = x_0
-\end{align*}
-
-By Theorem 5.1, this has a solution if and only if the Riccati equation:
-
-\begin{align*}
-\dot{K}_1(t) &= -(A+B_2F_2^*(t))^\top K_1(t) - K_1(t)(A+B_2F_2^*(t)) + K_1(t)S_1K_1(t) \\
-&\quad - (Q_1 + F_{2}^{*\top}(t)R_{12}F_2^*(t)), \quad K_1(T) = Q_{1T}  
-\end{align*}
-
-has a symmetric solution $K_1(t)$ on $[0,T]$. The optimal control is $u_1^*(t) = -R_1^{-1}B_1^\top K_1(t) x_1(t)$, so $F_1^*(t) = -R_1^{-1}B_1^\top K_1(t)$.
-
-Similarly, $u_2^*(t)$ solves an LQR problem implying $F_2^*(t) = -R_2^{-1}B_2^\top K_2(t)$ where $K_2(t)$ satisfies: 
-
-\begin{align*}
-\dot{K}_2(t) &= -(A+B_1F_1^*(t))^\top K_2(t) - K_2(t)(A+B_1F_1^*(t)) + K_2(t)S_2K_2(t) \\  
-&\quad - (Q_2 + F_{1}^{*\top}(t)R_{21}F_1^*(t)), \quad K_2(T) = Q_{2T}
-\end{align*}
-
-Substituting $F_1^*(t)$, $F_2^*(t)$ into the Riccati equations gives the coupled equations in the theorem statement.
-
-Conversely, if these equations have symmetric solutions, the strategies $u_i^*(t) = -R_i^{-1}B_i^\top K_i(t) x(t)$ form an equilibrium by Theorem 8.2. Uniqueness follows from the LQR problems having unique solutions. The costs $J_i = x_0^\top K_i(0) x_0$ also follow from Theorem 8.2.
-\end{proof}
-
-Now, for the zero-sum game, adding the coupled Riccati equations in Theorem 2 gives:
-
-\begin{align*}
-\dot{K}_1(t) + \dot{K}_2(t) &= -(K_1(t) + K_2(t))(A - S_1K_1(t) - S_2K_2(t)) \\  
-&\quad - (A - S_1K_1(t) - S_2K_2(t))^\top(K_1(t) + K_2(t)) \\
-K_1(T) + K_2(T) &= 0
-\end{align*}
-
-Since this game is zero-sum, the costs must satisfy $J_1 + J_2 = 0$ for any equilibrium. The unique solution to the above Riccati equation is $K_1(t) = -K_2(t)$. Substituting this into the first Riccati equation in Theorem 2 gives:
-
-\begin{align*} 
-\dot{K}(t) &= -A^\top K(t) - K(t)A + K(t)(S_1-S_2)K(t) - Q \\
-K(T) &= Q_T
-\end{align*}
-
-Where $K(t) = K_1(t)$. So the game has a linear feedback Nash equilibrium if and only if this single Riccati equation has a symmetric solution $K(t)$ on $[0,T]$. 
-
-The equilibrium strategies are:
-
-\begin{align*}
-u_1^*(t) &= -R_1^{-1}B_1^\top K(t) x(t) \\ 
-u_2^*(t) &= R_2^{-1}B_2^\top K(t) x(t)
-\end{align*}
-
-And the costs are $J_1 = x_0^\top K(0) x_0$ and $J_2 = -J_1 = -x_0^\top K(0) x_0$.
-
-
-llllllllllll
-
-\section{Proof of Theorem 1: Zero-sum Differential Game}
-
-Consider the zero-sum differential game described by:
-
-\begin{align*}
-\dot{x}(t) &= Ax(t) + B_1u_1(t) + B_2u_2(t), \quad x(0)=x_0
-\end{align*}
-
-With cost functions:
-
-\begin{align*}
-J_1(u_1,u_2) &= \int_0^T \{x^\top (t)Qx(t) + u_1^\top(t) R_1u_1(t) - u_2^\top(t)R_2u_2(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-J_2(u_1,u_2) &= -J_1(u_1,u_2)
-\end{align*}
-
-where $Q$, $Q_T$ are symmetric, and $R_1$, $R_2$ are positive definite.
-
-\begin{theorem}
-The two-player linear quadratic differential game has, for every initial state, a linear feedback Nash equilibrium if and only if the following coupled Riccati equations have a set of symmetric solutions $K_1(t)$, $K_2(t)$ on $[0,T]$:
-
-\begin{align*} 
-\dot{K}_1(t) &= -(A-S_2K_2(t))^\top K_1(t) - K_1(t)(A-S_2K_2(t)) + K_1(t)S_1K_1(t) - Q_1 - K_2(t)S_{21}K_2(t) \\
-K_1(T) &= Q_{1T}
-\end{align*}
-
-\begin{align*}
-\dot{K}_2(t) &= -(A-S_1K_1(t))^\top K_2(t) - K_2(t)(A-S_1K_1(t)) + K_2(t)S_2K_2(t) - Q_2 - K_1(t)S_{12}K_1(t) \\  
-K_2(T) &= Q_{2T}
-\end{align*}
-
-Moreover, the equilibrium actions are:
-
-\begin{align*} 
-u_1^*(t) &= -R_1^{-1}B_1^\top K_1(t) x(t) \\
-u_2^*(t) &= -R_2^{-1}B_2^\top K_2(t) x(t)
-\end{align*}
-
-And the costs incurred are $J_1 = x_0^\top K_1(0) x_0$, $J_2 = x_0^\top K_2(0) x_0$.
-\end{theorem}
-
-% \begin{proof}
-Assume $u_i^*(t) = F_i^*(t) x(t)$, $t \in [0,T]$, $i=1,2$, is a linear feedback equilibrium. Then by definition of linear feedback equilibrium, $u_1^*(t)$ solves the LQR problem:
-
-\begin{align*}
-\text{minimize } & \int_0^T \{ x_1^\top(s) (Q_1 + F_{2}^{*\top}(s)R_{12}F_2^*(s)) x_1(s) + u_1^\top(s) R_1 u_1(s) \}\,\mathrm{d}s + x_1^\top(T) Q_{1T} x_1(T) \\
-\text{subject to } & \dot{x}_1(t) = (A + B_2 F_2^*(t)) x_1(t) + B_1 u_1(t), \quad x_1(0) = x_0
-\end{align*}
-
-By Theorem 5.1, this has a solution if and only if the Riccati equation:
-
-\begin{align*}
-\dot{K}_1(t) &= -(A+B_2F_2^*(t))^\top K_1(t) - K_1(t)(A+B_2F_2^*(t)) + K_1(t)S_1K_1(t) \\
-&\quad - (Q_1 + F_{2}^{*\top}(t)R_{12}F_2^*(t)), \quad K_1(T) = Q_{1T}  
-\end{align*}
-
-has a symmetric solution $K_1(t)$ on $[0,T]$. The optimal control is $u_1^*(t) = -R_1^{-1}B_1^\top K_1(t) x_1(t)$, so $F_1^*(t) = -R_1^{-1}B_1^\top K_1(t)$.
-
-Similarly, $u_2^*(t)$ solves an LQR problem implying $F_2^*(t) = -R_2^{-1}B_2^\top K_2(t)$ where $K_2(t)$ satisfies: 
-
-\begin{align*}
-\dot{K}_2(t) &= -(A+B_1F_1^*(t))^\top K_2(t) - K_2(t)(A+B_1F_1^*(t)) + K_2(t)S_2K_2(t) \\  
-&\quad - (Q_2 + F_{1}^{*\top}(t)R_{21}F_1^*(t)), \quad K_2(T) = Q_{2T}
-\end{align*}
-
-Substituting $F_1^*(t)$, $F_2^*(t)$ into the Riccati equations gives the coupled equations in the theorem statement.
-
-
-
-
-mmmmmmmmmm
-
-\section*{Proof of Theorem 1 (Zero-sum differential game):}
-
-Consider the zero-sum differential game described by:
-
-\begin{align*}
-\dot{x}(t) &= Ax(t) + B_1u_1(t) + B_2u_2(t), \quad x(0)=x_0
-\end{align*}
-
-With cost functions:
-
-\begin{align*}
-J_1(u_1,u_2) &= \int_0^T \{x^\top (t)Qx(t) + u_1^\top(t) R_1u_1(t) - u_2^\top(t)R_2u_2(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-J_2(u_1,u_2) &= -J_1(u_1,u_2)
-\end{align*}
-
-Where $Q$, $Q_T$ are symmetric, and $R_1$, $R_2$ are positive definite.
-
-\begin{theorem}
-The two-player linear quadratic differential game has, for every initial state, a linear feedback Nash equilibrium if and only if the following coupled Riccati equations have a set of symmetric solutions $K_1(t)$, $K_2(t)$ on $[0,T]$:
-
-\begin{align*} 
-\dot{K}_1(t) &= -(A-S_2K_2(t))^\top K_1(t) - K_1(t)(A-S_2K_2(t)) + K_1(t)S_1K_1(t) - Q_1 - K_2(t)S_{21}K_2(t) \\
-K_1(T) &= Q_{1T}
-\end{align*}
-
-\begin{align*}
-\dot{K}_2(t) &= -(A-S_1K_1(t))^\top K_2(t) - K_2(t)(A-S_1K_1(t)) + K_2(t)S_2K_2(t) - Q_2 - K_1(t)S_{12}K_1(t) \\  
-K_2(T) &= Q_{2T}
-\end{align*}
-
-Moreover, the equilibrium actions are:
-
-\begin{align*} 
-u_1^*(t) &= -R_1^{-1}B_1^\top K_1(t) x(t) \\
-u_2^*(t) &= -R_2^{-1}B_2^\top K_2(t) x(t)
-\end{align*}
-
-And the costs incurred are $J_1 = x_0^\top K_1(0) x_0$, $J_2 = x_0^\top K_2(0) x_0$.
-\end{theorem}
-
-\begin{proof}
-Assume $u_i^*(t) = F_i^*(t) x(t)$, $t \in [0,T]$, $i=1,2$, is a linear feedback equilibrium. Then by definition of linear feedback equilibrium, $u_1^*(t)$ solves the LQR problem:
-
-\begin{align*}
-\text{minimize } & \int_0^T \{ x_1^\top(s) (Q_1 + F_{2}^{*\top}(s)R_{12}F_2^*(s)) x_1(s) + u_1^\top(s) R_1 u_1(s) \}\,\mathrm{d}s + x_1^\top(T) Q_{1T} x_1(T) \\
-\text{subject to } & \dot{x}_1(t) = (A + B_2 F_2^*(t)) x_1(t) + B_1 u_1(t), \quad x_1(0) = x_0
-\end{align*}
-
-By Theorem 5.1, this has a solution if and only if the Riccati equation:
-
-\begin{align*}
-\dot{K}_1(t) &= -(A+B_2F_2^*(t))^\top K_1(t) - K_1(t)(A+B_2F_2^*(t)) + K_1(t)S_1K_1(t) \\
-&\quad - (Q_1 + F_{2}^{*\top}(t)R_{12}F_2^*(t)), \quad K_1(T) = Q_{1T}  
-\end{align*}
-
-has a symmetric solution $K_1(t)$ on $[0,T]$. The optimal control is $u_1^*(t) = -R_1^{-1}B_1^\top K_1(t) x_1(t)$, so $F_1^*(t) = -R_1^{-1}B_1^\top K_1(t)$.
-
-Similarly, $u_2^*(t)$ solves an LQR problem implying $F_2^*(t) = -R_2^{-1}B_2^\top K_2(t)$ where $K_2(t)$ satisfies: 
-
-\begin{align*}
-\dot{K}_2(t) &= -(A+B_1F_1^*(t))^\top K_2(t) - K_2(t)(A+B_1F_1^*(t)) + K_2(t)S_2K_2(t) \\  
-&\quad - (Q_2 + F_{1}^{*\top}(t)R_{21}F_1^*(t)), \quad K_2(T) = Q_{2T}
-\end{align*}
-
-Substituting $F_1^*(t)$, $F_2^*(t)$ into the Riccati equations gives the coupled equations in the theorem statement.
-
-Conversely, if these equations have symmetric solutions, the strategies $u_i^*(t) = -R_i^{-1}B_i^\top K_i(t) x(t)$ form an equilibrium by Theorem 8.2. Uniqueness follows from the LQR problems having unique solutions. The costs $J_i = x_0^\top K_i(0) x_0$ also follow from Theorem 8.2.
-\end{proof}
-
-Now, for the zero-sum game, adding the coupled Riccati equations in Theorem 2 gives:
-
-\begin{align*}
-\dot{K}_1(t) + \dot{K}_2(t) &= -(K_1(t) + K_2(t))(A - S_1K_1(t) - S_2K_2(t)) \\  
-&\quad - (A - S_1K_1(t) - S_2K_2(t))^\top(K_1(t) + K_2(t)) \\
-K_1(T) + K_2(T) &= 0
-\end{align*}
-
-Since this game is zero-sum, the costs must satisfy $J_1 + J_2 = 0$ for any equilibrium. The unique solution to the above Riccati equation is $K_1(t) = -K_2(t)$. Substituting this into the first Riccati equation in Theorem 2 gives:
-
-\begin{align*} 
-\dot{K}(t) &= -A^\top K(t) - K(t)A + K(t)(S_1-S_2)K(t) - Q \\
-K(T) &= Q_T
-\end{align*}
-
-Where $K(t) = K_1(t)$. So the game has a linear feedback Nash equilibrium if and only if this single Riccati equation has a symmetric solution $K(t)$ on $[0,T]$. 
-
-The equilibrium strategies are:
-
-\begin{align*}
-u_1^*(t) &= -R_1^{-1}B_1^\top K(t) x(t) \\ 
-u_2^*(t) &= R_2^{-1}B_2^\top K(t) x(t)
-\end{align*}
-
-And the costs are $J_1 = x_0^\top K(0) x_0$ and $J_2 = -J_1 = -x_0^\top K(0) x_0$.
-
-
-
-
-\section*{Proof of Theorem 1 (Zero-sum differential game):}
-
-Consider the zero-sum differential game described by:
-
-\begin{align*}
-\dot{x}(t) &= Ax(t) + B_1u_1(t) + B_2u_2(t), \quad x(0)=x_0
-\end{align*}
-
-With cost functions:
-
-\begin{align*}
-J_1(u_1,u_2) &= \int_0^T \{x^\top (t)Qx(t) + u_1^\top(t) R_1u_1(t) - u_2^\top(t)R_2u_2(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-J_2(u_1,u_2) &= -J_1(u_1,u_2)
-\end{align*}
-
-Where $Q$, $Q_T$ are symmetric, and $R_1$, $R_2$ are positive definite.
-
-\begin{definition}
-A linear feedback Nash equilibrium for this game consists of control policies $u_1^*(t)$ and $u_2^*(t)$ such that no player can improve their cost by unilaterally changing their control policy.
-\end{definition}
-
-\begin{theorem}
-The zero-sum differential game described above has a linear feedback Nash equilibrium if and only if the following coupled Riccati equations have a set of symmetric solutions $K_1(t)$, $K_2(t)$ on $[0,T]$:
-
-\begin{align*} 
-\dot{K}_1(t) &= -(A-S_2K_2(t))^\top K_1(t) - K_1(t)(A-S_2K_2(t)) + K_1(t)S_1K_1(t) - Q_1 - K_2(t)S_{21}K_2(t) \\
-K_1(T) &= Q_{1T}
-\end{align*}
-
-\begin{align*}
-\dot{K}_2(t) &= -(A-S_1K_1(t))^\top K_2(t) - K_2(t)(A-S_1K_1(t)) + K_2(t)S_2K_2(t) - Q_2 - K_1(t)S_{12}K_1(t) \\  
-K_2(T) &= Q_{2T}
-\end{align*}
-
-Moreover, the equilibrium actions are:
-
-\begin{align*} 
-u_1^*(t) &= -R_1^{-1}B_1^\top K_1(t) x(t) \\
-u_2^*(t) &= -R_2^{-1}B_2^\top K_2(t) x(t)
-\end{align*}
-
-And the costs incurred are $J_1 = x_0^\top K_1(0) x_0$, $J_2 = x_0^\top K_2(0) x_0$.
-\end{theorem}
-
-\begin{proof}
-Assume $u_i^*(t) = F_i^*(t) x(t)$, $t \in [0,T]$, $i=1,2$, is a linear feedback equilibrium. Then by definition of linear feedback equilibrium, $u_1^*(t)$ solves the LQR problem:
-
-\begin{align*}
-\text{minimize } & \int_0^T \{ x_1^\top(s) (Q_1 + F_{2}^{*\top}(s)R_{12}F_2^*(s)) x_1(s) + u_1^\top(s) R_1 u_1(s) \}\,\mathrm{d}s + x_1^\top(T) Q_{1T} x_1(T) \\
-\text{subject to } & \dot{x}_1(t) = (A + B_2 F_2^*(t)) x_1(t) + B_1 u_1(t), \quad x_1(0) = x_0
-\end{align*}
-
-By Theorem 1, this has a solution if and only if the Riccati equation:
-
-\begin{align*}
-\dot{K}_1(t) &= -(A+B_2F_2^*(t))^\top K_1(t) - K_1(t)(A+B_2F_2^*(t)) + K_1(t)S_1K_1(t) \\
-&\quad - (Q_1 + F_{2}^{*\top}(t)R_{12}F_2^*(t)), \quad K_1(T) = Q_{1T}  
-\end{align*}
-
-has a symmetric solution $K_1(t)$ on $[0,T]$. The optimal control is $u_1^*(t) = -R_1^{-1}B_1^\top K_1(t) x_1(t)$, so $F_1^*(t) = -R_1^{-1}B_1^\top K_1(t)$.
-
-Similarly, $u_2^*(t)$ solves an LQR problem implying $F_2^*(t) = -R_2^{-1}B_2^\top K_2(t)$ where $K_2(t)$ satisfies: 
-
-\begin{align*}
-\dot{K}_2(t) &= -(A+B_1F_1^*(t))^\top K_2(t) - K_2(t)(A+B_1F_1^*(t)) + K_2(t)S_2K_2(t) \\  
-&\quad - (Q_2 + F_{1}^{*\top}(t)R_{21}F_1^*(t)), \quad K_2(T) = Q_{2T}
-\end{align*}
-
-Substituting $F_1^*(t)$, $F_2^*(t)$ into the Riccati equations gives the coupled equations in Theorem 1.
-
-Conversely, if these equations have symmetric solutions, the strategies $u_i^*(t) = -R_i^{-1}B_i^\top K_i(t) x(t)$ form an equilibrium by Theorem 1. Uniqueness follows from the LQR problems having unique solutions. The costs $J_i = x_0^\top K_i(0) x_0$ also follow from Theorem 1.
-\end{proof}
-
-Now, for the zero-sum game, adding the coupled Riccati equations gives:
-
-\begin{align*}
-\dot{K}_1(t) + \dot{K}_2(t) &= -(K_1(t) + K_2(t))(A - S_1K_1(t) - S_2K_2(t)) \\  
-&\quad - (A - S_1K_1(t) - S_2K_2(t))^\top(K_1(t) + K_2(t)) \\
-K_1(T) + K_2(T) &= 0
-\end{align*}
-
-Since this game is zero-sum, the costs must satisfy $J_1 + J_2 = 0$ for any equilibrium. The unique solution to the above Riccati equation is $K_1(t) = -K_2(t)$. Substituting this into the first Riccati equation gives:
-
-\begin{align*} 
-\dot{K}(t) &= -A^\top K(t) - K(t)A + K(t)(S_1-S_2)K(t) - Q \\
-K(T) &= Q_T
-\end{align*}
-
-Where $K(t) = K_1(t)$. So the game has a linear feedback Nash equilibrium if and only if this single Riccati equation has a symmetric solution $K(t)$ on $[0,T]$. 
-
-The equilibrium strategies are:
-
-\begin{align*}
-u_1^*(t) &= -R_1^{-1}B_1^\top K(t) x(t) \\ 
-u_2^*(t) &= R_2^{-1}B_2^\top K(t) x(t)
-\end{align*}
-
-And the costs are $J_1 = x_0^\top K(0) x_0$ and $J_2 = -J_1 = -x_0^\top K(0) x_0$.
-
-
-
-
-
-
-
-\section*{Proof of Theorem 1 (Zero-sum differential game):}
-
-Consider the zero-sum differential game described by:
-
-\begin{align*}
-\dot{x}(t) &= Ax(t) + B_1u_1(t) + B_2u_2(t), \quad x(0)=x_0
-\end{align*}
-
-With cost functions:
-
-\begin{align*}
-J_1(u_1,u_2) &= \int_0^T \{x^\top (t)Qx(t) + u_1^\top(t) R_1u_1(t) - u_2^\top(t)R_2u_2(t)\}\,\mathrm{d}t + x^\top(T)Q_Tx(T) \\
-J_2(u_1,u_2) &= -J_1(u_1,u_2)
-\end{align*}
-
-Where $Q$, $Q_T$ are symmetric, and $R_1$, $R_2$ are positive definite.
-
-\begin{definition}
-A linear feedback Nash equilibrium for this game consists of control policies $u_1^*(t)$ and $u_2^*(t)$ such that no player can improve their cost by unilaterally changing their control policy.
-\end{definition}
-
-\begin{theorem}
-The zero-sum differential game described above has a linear feedback Nash equilibrium if and only if the following coupled Riccati equations have a set of symmetric solutions $K_1(t)$, $K_2(t)$ on $[0,T]$:
-
-\begin{align*} 
-\dot{K}_1(t) &= -(A-S_2K_2(t))^\top K_1(t) - K_1(t)(A-S_2K_2(t)) + K_1(t)S_1K_1(t) - Q_1 - K_2(t)S_{21}K_2(t) \\
-K_1(T) &= Q_{1T}
-\end{align*}
-
-\begin{align*}
-\dot{K}_2(t) &= -(A-S_1K_1(t))^\top K_2(t) - K_2(t)(A-S_1K_1(t)) + K_2(t)S_2K_2(t) - Q_2 - K_1(t)S_{12}K_1(t) \\  
-K_2(T) &= Q_{2T}
-\end{align*}
-
-Moreover, the equilibrium actions are:
-
-\begin{align*} 
-u_1^*(t) &= -R_1^{-1}B_1^\top K_1(t) x(t) \\
-u_2^*(t) &= -R_2^{-1}B_2^\top K_2(t) x(t)
-\end{align*}
-
-And the costs incurred are $J_1 = x_0^\top K_1(0) x_0$, $J_2 = x_0^\top K_2(0) x_0$.
-\end{theorem}
-
-\begin{proof}
-Assume $u_i^*(t) = F_i^*(t) x(t)$, $t \in [0,T]$, $i=1,2$, is a linear feedback equilibrium. Then by definition of linear feedback equilibrium, $u_1^*(t)$ solves the LQR problem:
-
-\begin{align*}
-\text{minimize } & \int_0^T \{ x_1^\top(s) (Q_1 + F_{2}^{*\top}(s)R_{12}F_2^*(s)) x_1(s) + u_1^\top(s) R_1 u_1(s) \}\,\mathrm{d}s + x_1^\top(T) Q_{1T} x_1(T) \\
-\text{subject to } & \dot{x}_1(t) = (A + B_2 F_2^*(t)) x_1(t) + B_1 u_1(t), \quad x_1(0) = x_0
-\end{align*}
-
-By Theorem 1, this has a solution if and only if the Riccati equation:
-
-\begin{align*}
-\dot{K}_1(t) &= -(A+B_2F_2^*(t))^\top K_1(t) - K_1(t)(A+B_2F_2^*(t)) + K_1(t)S_1K_1(t) \\
-&\quad - (Q_1 + F_{2}^{*\top}(t)R_{12}F_2^*(t)), \quad K_1(T) = Q_{1T}  
-\end{align*}
-
-has a symmetric solution $K_1(t)$ on $[0,T]$. The optimal control is $u_1^*(t) = -R_1^{-1}B_1^\top K_1(t) x_1(t)$, so $F_1^*(t) = -R_1^{-1}B_1^\top K_1(t)$.
-
-Similarly, $u_2^*(t)$ solves an LQR problem implying $F_2^*(t) = -R_2^{-1}B_2^\top K_2(t)$ where $K_2(t)$ satisfies: 
-
-\begin{align*}
-\dot{K}_2(t) &= -(A+B_1F_1^*(t))^\top K_2(t) - K_2(t)(A+B_1F_1^*(t)) + K_2(t)S_2K_2(t) \\  
-&\quad - (Q_2 + F_{1}^{*\top}(t)R_{21}F_1^*(t)), \quad K_2(T) = Q_{2T}
-\end{align*}
-
-Substituting $F_1^*(t)$, $F_2^*(t)$ into the Riccati equations gives the coupled equations in Theorem 1.
-
-Conversely, if these equations have symmetric solutions, the strategies $u_i^*(t) = -R_i^{-1}B_i^\top K_i(t) x(t)$ form an equilibrium by Theorem 1. Uniqueness follows from the LQR problems having unique solutions. The costs $J_i = x_0^\top K_i(0) x_0$ also follow from Theorem 1.
-\end{proof}
-
-Now, for the zero-sum game, adding the coupled Riccati equations gives:
-
-\begin{align*}
-\dot{K}_1(t) + \dot{K}_2(t) &= -(K_1(t) + K_2(t))(A - S_1K_1(t) - S_2K_2(t)) \\  
-&\quad - (A - S_1K_1(t) - S_2K_2(t))^\top(K_1(t) + K_2(t)) \\
-K_1(T) + K_2(T) &= 0
-\end{align*}
-
-Since this game is zero-sum, the costs must satisfy $J_1 + J_2 = 0$ for any equilibrium. The unique solution to the above Riccati equation is $K_1(t) = -K_2(t)$. Substituting this into the first Riccati equation gives:
-
-\begin{align*} 
-\dot{K}(t) &= -A^\top K(t) - K(t)A + K(t)(S_1-S_2)K(t) - Q \\
-K(T) &= Q_T
-\end{align*}
-
-Where $K(t) = K_1(t)$. So the game has a linear feedback Nash equilibrium if and only if this single Riccati equation has a symmetric solution $K(t)$ on $[0,T]$. 
-
-The equilibrium strategies are:
-
-\begin{align*}
-u_1^*(t) &= -R_1^{-1}B_1^\top K(t) x(t) \\ 
-u_2^*(t) &= R_2^{-1}B_2^\top K(t) x(t)
-\end{align*}
-
-And the costs are $J_1 = x_0^\top K(0) x_0$ and $J_2 = -J_1 = -x_0^\top K(0) x_0$.
-
-
-
-
-
-
-
-
-\section{Proof of the Linear Quadratic Regulator Control Problem}
-The Linear Quadratic Regulator (LQR) control problem is concerned with finding a control input that minimizes a quadratic cost function while ensuring the stability of a linear time-invariant system. It is described by the following problem statement:
-
+\section{Linear Quadratic Differential Game Proof}
+Consider the differential game described by
 \begin{equation}
-\min_u J = \int_{0}^{\infty} \left( x^T Q x + u^T R u \right) dt
+    \dot{\mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{d}
 \end{equation}
-subject to the system dynamics:
+with for player one, the quadratic cost function:
 \begin{equation}
-\dot{x} = Ax + Bu
+    J_1(u, d) = \dfrac{1}{2}\int (\mathbf{x}^\mathrm{T} \mathbf{Q}_1 \mathbf{x} + \mathbf{u}^\mathrm{T} \mathbf{R} \mathbf{u} - \mathbf{d}^\mathrm{T} \mathbf{R}_d \mathbf{d}) dt
 \end{equation}
-where $x \in \mathbb{R}^n$ is the state vector, $u \in \mathbb{R}^m$ is the control input, $Q$ and $R$ are positive definite matrices, and $A$ and $B$ are system matrices.
-
-To find the optimal control input $u^*$ that minimizes the cost function, we use the Hamiltonian function:
-
+and for player two, the opposit objective function:
 \begin{equation}
-H = x^T Q x + u^T R u + \lambda^T (\dot{x} - Ax - Bu)
+    J_2(u, d) = -J_1(u, d)
 \end{equation}
 
-where $\lambda \in \mathbb{R}^n$ is the vector of Lagrange multipliers. The necessary conditions for an optimal solution are given by the Pontryagin's minimum principle:
-
-\begin{align}
-\frac{\partial H}{\partial u} &= 2R u - B^T \lambda = 0 \label{eq:pontryagin1}\\
-\frac{\partial H}{\partial x} &= 2Q x - A^T \lambda - \dot{\lambda} = 0 \label{eq:pontryagin2}\\
-\dot{\lambda} &= -Qx \label{eq:costate}
-\end{align}
-
-Solving Equation \eqref{eq:pontryagin1} for $\lambda$ yields:
-
+Hamiltonian for player one:
 \begin{equation}
-\lambda = R^{-1} B^T u
+    \mathcal{H} = g + \lambda_1^\mathrm{T}a = \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{Q} \mathbf{x} + \dfrac{1}{2}\mathbf{u}^\mathrm{T} \mathbf{R} \mathbf{u} - \dfrac{1}{2}\mathbf{d}^\mathrm{T} \mathbf{R}_d \mathbf{d} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{d})
 \end{equation}
 
-Substituting this into Equation \eqref{eq:pontryagin2}, we get the costate equation:
-
+The solution for this optimization problem is unique and is given by
 \begin{equation}
-\dot{\lambda} = -Qx
+    \mathbf{u}^* = \mathbf{F}_1 \mathbf{x} \textrm{~ and ~} \mathbf{d}^* = \mathbf{F}_2 \mathbf{x}
 \end{equation}
 
-Now, we need to find the optimal control $u^*$. Plugging the expression for $\lambda$ into Equation \eqref{eq:pontryagin1}, we have:
-
 \begin{equation}
-2R u^* - B^T (R^{-1} B^T u^*) = 0
+    \mathcal{H} = \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{Q} \mathbf{x} + \dfrac{1}{2}\mathbf{u}^\mathrm{T} \mathbf{R} \mathbf{u} - \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{F}_2^\mathrm{T} \mathbf{R}_d \mathbf{F}_2 \mathbf{x} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{F}_2\mathbf{x})
 \end{equation}
 
-Simplifying this equation, we obtain the optimal control input:
-
 \begin{equation}
-u^* = -R^{-1} B^T \lambda
+    \dot{\mathbf{x}} = \dfrac{\partial \mathcal{H}}{\partial \lambda_1} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{F}_2\mathbf{x}
 \end{equation}
 
-Substituting $\lambda = R^{-1} B^T u^*$ into the costate equation \eqref{eq:costate}, we have:
-
 \begin{equation}
-\dot{\lambda} = -Qx
+    \dot{\lambda}_1 = -\dfrac{\partial \mathcal{H}}{\partial \mathbf{x}} = -( \mathbf{Q} \mathbf{x} - \mathbf{F}_2^\mathrm{T} \mathbf{R}_d \mathbf{F}_2 \mathbf{x}) - \lambda_1^\mathrm{T}(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)
+\end{equation}
+\begin{equation}
+    \dfrac{\partial \mathcal{H}}{\partial \mathbf{u}} = 0 \Rightarrow \mathbf{R}\mathbf{u} + \mathbf{B}^\mathrm{T}\lambda_1 = 0 \Rightarrow \mathbf{u} = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\lambda_1
 \end{equation}
 
-Now, we have a coupled system of state and costate equations. To find the optimal solution, we need to solve these coupled differential equations along with the system dynamics. The optimal control input $u^*$ that minimizes the cost function is obtained by solving this system.
+Assume that $\lambda_1 = \mathbf{K}_1\mathbf{x}$, then
+\begin{equation}
+    \dot{\lambda} = \dot{\mathbf{K}_1} \mathbf{x} + \mathbf{K}_1 \dot{\mathbf{x}}
+\end{equation}
+in infinite horizon assumed $\dot{\lambda} = 0$, so
+\begin{equation}
+    \dot{\lambda} = \mathbf{K}_1( \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{F}_2\mathbf{x}) \xRightarrow[    \dot{\lambda}_1 = -\dfrac{\partial \mathcal{H}}{\partial \mathbf{x}} = -( \mathbf{Q} \mathbf{x} - \mathbf{F}_2^\mathrm{T} \mathbf{R}_d \mathbf{F}_2 \mathbf{x}) - \lambda_1^\mathrm{T}(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)]
+    {\mathbf{u} = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\lambda_1,~d = \mathbf{F}_2\mathbf{x},~ \lambda=\mathbf{K}_1\mathbf{x}}
+\end{equation}
+\begin{equation}
+    \mathbf{K_1}( \mathbf{A}\mathbf{x} - \mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1\mathbf{x} + \mathbf{B}_d\mathbf{F}_2\mathbf{x}) = \mathbf{Q}\mathbf{x} - \mathbf{F}_2^\mathrm{T}\mathbf{R}_d\mathbf{F}_2\mathbf{x} - (\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)^\mathrm{T}\mathbf{K}_1\mathbf{x}
+\end{equation}
+equation above is simplified to
+\begin{equation}
+    -(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)^\mathrm{T}\mathbf{K}_1 - \mathbf{K}_1(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2) + \mathbf{K}_1\mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1 
+    - \mathbf{Q} + \mathbf{F}_2^\mathrm{T}\mathbf{R}_d\mathbf{F}_2 = 0 
+\end{equation}
 
-% Conversely, if these equations have symmetric solutions, the strategies $u_i^*(t) = -R_i^{-1}B_i^\top K_i(t) x(t)$
-% \bibitem[ ()]{}
 
+For the second player also use above method.
+\begin{equation}
+    \mathcal{H} = g + \lambda_2^\mathrm{T}a = -\dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{Q} \mathbf{x} - \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x} + \dfrac{1}{2}\mathbf{d}^\mathrm{T} \mathbf{R}_d \mathbf{d} + \lambda_2^\mathrm{T}(\mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{d}) 
+\end{equation}
+
+\begin{equation}
+    \dot{\mathbf{x}} = \dfrac{\partial \mathcal{H}}{\partial \lambda_2} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{d}
+\end{equation}
+
+\begin{equation}
+    \dot{\lambda}_2 = -\dfrac{\partial \mathcal{H}}{\partial \mathbf{x}} = ( \mathbf{Q} \mathbf{x} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x}) - \lambda_2^\mathrm{T}(\mathbf{A} + \mathbf{B}\mathbf{F}_1)
+\end{equation}
+
+\begin{equation}
+    \dfrac{\partial \mathcal{H}}{\partial \mathbf{d}} = 0 \Rightarrow \mathbf{R}_d\mathbf{d} + \mathbf{B}_d^\mathrm{T}\lambda_2 = 0 \Rightarrow \mathbf{d} = -\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\lambda_2
+\end{equation}
+Assume that $\lambda_2 = \mathbf{K}_2\mathbf{x}$, then
+\begin{equation}
+    \dot{\lambda}_2 = \dot{\mathbf{K}_2} \mathbf{x} + \mathbf{K}_2 \dot{\mathbf{x}}
+\end{equation}
+in infinite horizon assumed $\dot{\lambda} = 0$, so
+\begin{equation}
+    \dot{\lambda}_2 = \mathbf{K}_2( \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2\mathbf{x}) 
+\end{equation}
+also:
+\begin{equation}
+        \dot{\lambda}_2 = (\mathbf{Q} \mathbf{x} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x}) - \lambda_2^\mathrm{T}(\mathbf{A} + \mathbf{B}\mathbf{F}_1)
+\end{equation}
+then:
+\begin{equation}
+    \mathbf{K}_2( \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2\mathbf{x}) = (\mathbf{Q} \mathbf{x} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x}) - \mathbf{K}_2(\mathbf{A} + \mathbf{B}\mathbf{F}_1)
+\end{equation}
+
+\begin{equation}
+    -(\mathbf{A} + \mathbf{B}\mathbf{F}_1)^\mathrm{T}\mathbf{K}_2 - \mathbf{K}_2(\mathbf{A} + \mathbf{B}\mathbf{F}_1) + \mathbf{K}_2\mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2 + \mathbf{Q} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 = 0
+\end{equation}
+
+In above calculated $\mathbf{u}, ~ \mathbf{d}$:
+\begin{equation}
+    \mathbf{u} = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1\mathbf{x} \textrm{~ and ~} \mathbf{d} = -\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2\mathbf{x}
+\end{equation}
+then $\mathbf{u} = \mathbf{F}_1\mathbf{x}$ and $\mathbf{d} = \mathbf{F}_2\mathbf{x}$, so
+\begin{equation}
+    \mathbf{F}_1 = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1 \textrm{~ and ~} \mathbf{F}_2 = -\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2
+\end{equation}
+% final equation %
+with implementation to above equation:
+\begin{equation}
+    -(\mathbf{A} - \mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1)^\mathrm{T}\mathbf{K}_2 - \mathbf{K}_2(\mathbf{A} - \mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1) + \mathbf{K}_2\mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2 + \mathbf{Q} + \mathbf{K}_1^\mathrm{T} \mathbf{B} \mathbf{R}^{-1} \mathbf{B}^\mathrm{T} \mathbf{K}_1 = 0
+\end{equation}
+\begin{equation}
+    -(\mathbf{A} - \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2)^\mathrm{T}\mathbf{K}_1 - \mathbf{K}_1(\mathbf{A} - \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2) + \mathbf{K}_1\mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1 - \mathbf{Q} + \mathbf{K}_2^\mathrm{T} \mathbf{B}_d \mathbf{R}_d^{-1} \mathbf{B}_d^\mathrm{T} \mathbf{K}_2 = 0
+\end{equation}
+by adding two equation there is:
+\begin{equation}
+    -(\mathbf{K}_1 + \mathbf{K}_2)\left[
+        \mathbf{A} - \mathbf{S}\mathbf{K}_1 - \mathbf{S}_d \mathbf{K}_2
+    \right] - \left[
+        \mathbf{A} - \mathbf{S}\mathbf{K}_1 - \mathbf{S}_d \mathbf{K}_2
+        \right]^\mathrm{T}(\mathbf{K}_1 + \mathbf{K}_2)=0 \to \mathbf{K}_1 = -\mathbf{K}_2 
+\end{equation}
+
+The two riccatti differential equation have solution:
+\begin{equation}
+    -\mathbf{A}^\mathrm{T}\mathbf{K} - \mathbf{K}\mathbf{A} + \mathbf{K}\mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K} - \mathbf{Q} - \mathbf{K}^\mathrm{T} \mathbf{B}_d \mathbf{R}_d^{-1} \mathbf{B}_d^\mathrm{T} \mathbf{K} = 0
+\end{equation}
 % \end{thebibliography}
 \end{document}
+
 
 \endinput
 %%
