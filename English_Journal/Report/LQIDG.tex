@@ -734,23 +734,24 @@ The structure of the identification approach is illustrated in figure~\ref{fig:i
 \section{LQIR-DG Controller Structure}\label{sec:controller}
 \noindent First, the augmented states of the quadrotor platform, including the states and their integrals are selected to use in the structure of the LQIR-DG controller for eliminating the steady-state errors. Then, the design methodology of the controller structure is introduced to produce the best commands for the 3-DoF quadrotor platform.
 \subsection{Augmented States}
-\noindent To augment an integral action into the control strategy architecture, the augmented states are defined as $\boldsymbol{\mathrm{x_{a}}} = \begin{bmatrix}
+\noindent To augment an integral action into the control strategy architecture, the augmented states are defined as $\boldsymbol{\mathrm{x}}_{a} = \begin{bmatrix}
     \boldsymbol{\mathrm{x}} &
     \displaystyle\int\boldsymbol{\mathrm{x}}
 \end{bmatrix}^\mathrm{T}$. Then, the quadrotor platform model, utilized in the controller structure, is presented as
 
 \begin{equation}\label{systemlqidg}
     \begin{split}
-        \boldsymbol{\dot{\mathrm{x}}_a} &= \begin{bmatrix}
-            \boldsymbol{\mathrm{A}} & \boldsymbol{0}\\
-            \boldsymbol{\mathrm{I}} & \boldsymbol{0}
-        \end{bmatrix}\boldsymbol{\mathrm{x_a}} + \begin{bmatrix}
-            \boldsymbol{\mathrm{B}}\\
-            \boldsymbol{0}
-        \end{bmatrix}
+        \boldsymbol{\dot{\mathrm{x}}}_a &= \mathbf{A}_a \boldsymbol{\mathrm{x}}_a + \mathbf{B}_a
          \left(\boldsymbol{\mathrm{u}} + \boldsymbol{\mathrm{d}}\right)%, \quad \boldsymbol{x}(0) = 
     \end{split}
 \end{equation}
+where $\mathbf{A}_a = \begin{bmatrix}
+\boldsymbol{\mathrm{A}} & \boldsymbol{0}\\
+\boldsymbol{\mathrm{I}} & \boldsymbol{0}
+\end{bmatrix}$ and $\mathbf{B}_a=\begin{bmatrix}
+    \boldsymbol{\mathrm{B}}\\
+    \boldsymbol{0}
+\end{bmatrix}$.
 The notation $\boldsymbol{\mathrm{I}}$ denotes the identity matrix.
 \subsection{LQIR-DG Control Scheme with Integral Action}
 \noindent In the proposed controller scheme, two fundamental players are selected in accordance with the game theory approach. The primary player determines the control commands, while another player generates the worst possible disturbance.
