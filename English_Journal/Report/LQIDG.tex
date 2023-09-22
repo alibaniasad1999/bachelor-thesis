@@ -774,28 +774,22 @@ Moreover, the worst disturbance is obtained as
 \end{equation}
 Here, $\boldsymbol{{\mathrm{K_{d_i}}}}$ and $\boldsymbol{{\mathrm{K_i}}}$ are gain values defined as follows:
 \begin{align}
-    \boldsymbol{{\mathrm{K}}}_{\textrm{d}_i} &= {{{R}}^{-1}_{d}}\boldsymbol{{\mathrm{B}}}_{\mathrm{a}_{\mathrm{d}_i}}^\mathrm{T}\boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{\mathrm{d}_i}}\\
+    \boldsymbol{{\mathrm{K}}}_{\textrm{d}_i} &= {{{R}}^{-1}_{d}}\boldsymbol{{\mathrm{B}}}_{\mathrm{a}_{i}}^\mathrm{T}\boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{i}}\\
     \boldsymbol{{\mathrm{K}}}_{i} &= {{{R}}^{-1}}
     \boldsymbol{{\mathrm{B}}}_{\mathrm{a}_{i}}^\mathrm{T}
     \boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{i}}
 \end{align}
-$\boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{i}}$ and $\boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{\mathrm{d}_i}}$ satisfy
+$\boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{i}}$ satisfy
 \begin{align}\label{coupled_riccatti_LQIDG}
-    &-\boldsymbol{\mathrm{A}}^\mathrm{T}_{\mathrm{a}}\boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}
-    - \boldsymbol{\mathrm{Q}}_{i} - \boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}\boldsymbol{\mathrm{A}}_a 
-    + \boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}\boldsymbol{\mathrm{S}}_{\mathrm{a}_i}\boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}
-    +\boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}\boldsymbol{\mathrm{S}}_{\mathrm{a}_{d_{i}}}\boldsymbol{\mathrm{P}}_{\mathrm{d_a}_{i}}
-         =\boldsymbol{\mathrm{0}}\\
-    &-\boldsymbol{\mathrm{A}}^\mathrm{T}_{\mathrm{a}}\boldsymbol{\mathrm{P}}_{\mathrm{a_d}_{i}}
-     - \boldsymbol{\mathrm{Q}}_{i} - \boldsymbol{\mathrm{P}}_{\mathrm{a_d}_{i}}\boldsymbol{\mathrm{A}}_a 
-     + \boldsymbol{\mathrm{P}}_{\mathrm{a_d}_{i}}\boldsymbol{\mathrm{S}}_{\mathrm{a}_i}\boldsymbol{\mathrm{P}}_{\mathrm{a}_{i}}
-      +\boldsymbol{\mathrm{P}}_{\mathrm{a_d}_{i}}\boldsymbol{\mathrm{S}}_{\mathrm{a_{d}}{_i}}\boldsymbol{\mathrm{P}}_{\mathrm{a_d}_{i}}
-    =\boldsymbol{\mathrm{0}}
+    -\mathbf{A}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{P}_{\mathrm{a}_{i}}\mathbf{A} + \mathbf{P}_{\mathrm{a}_{i}}(\mathbf{S}_{\mathrm{a}_i} - \mathbf{S}_{\mathrm{a_d}_i}) \mathbf{P}_{\mathrm{a}_{i}} - \mathbf{Q}_{i} = 0 
 \end{align}
-where $
-\boldsymbol{\mathrm{S}}_{\mathrm{a}_i} = \boldsymbol{\mathrm{B}}_{\textrm{a}_i}R^{-1}\boldsymbol{\mathrm{B}}^\mathrm{T}_{\mathrm{a}_i}$ and $
-    \boldsymbol{\mathrm{S}}_{\textrm{a}_{\textrm{d}_i}} = \boldsymbol{\mathrm{B}}_{\textrm{a}_{\textrm{d}_i}}R_{d}^{-1}\boldsymbol{\mathrm{B}}^\mathrm{T}_{\textrm{a}_{\textrm{d}_i}}.
-$%%%? needd : or not
+ where $\mathbf{S}_{\mathrm{a}_i} = \mathbf{B}_{\mathrm{a}_i}{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$ and $\mathbf{S}_{\mathrm{a_d}_i} = \mathbf{B}_{\mathrm{a}_i}{R}_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$
+
+% where $\mathbf{S}_{\mathrm{a}_i} = \mathbf{B}_{\mathrm{a}_i}\mathbf{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$ and $\mathbf{S}_{\mathrm{a_d}_i} = \mathbf{B}_{\mathrm{a}_i}\mathbf{R}_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$. Therefore, $\mathbf{P}_{\mathrm{a}_i} = -\mathbf{P}_{\mathrm{a}_{d_i}}$ and two Ricatti equations have a following solution:
+
+% \begin{equation}
+
+% \end{equation}
 
 % subsection for tunning weighta with TCACS optimization
 \subsection{TCACS Optimization for Tuning the Weighting Matrices}
@@ -1840,7 +1834,7 @@ By assuming $\lambda_2 = \mathbf{P}_{\mathrm{a}_{d_i}}\mathbf{x}_{\mathrm{a}_i}$
         \mathbf{A} - \mathbf{S}_{\mathrm{a}_i}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{S}_{\mathrm{a}_i} \mathbf{P}_{\mathrm{a}_i}
         \right)^\mathrm{T}(\mathbf{P}_{\mathrm{a}_{i}} + \mathbf{P}_{\mathrm{a}_{d_i}})=0
     \end{equation}
-    where $\mathbf{S}_{\mathrm{a}_i} = \mathbf{B}_{\mathrm{a}_i}\mathbf{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$ and $\mathbf{S}_{\mathrm{a_d}_i} = \mathbf{B}_{\mathrm{a}_i}\mathbf{R}_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$. Therefore, $\mathbf{P}_{\mathrm{a}_i} = -\mathbf{P}_{\mathrm{a}_{d_i}}$ and two Ricatti equations have a following solution:
+    where $\mathbf{S}_{\mathrm{a}_i} = \mathbf{B}_{\mathrm{a}_i}{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$ and $\mathbf{S}_{\mathrm{a_d}_i} = \mathbf{B}_{\mathrm{a}_i}{R}_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$. Therefore, $\mathbf{P}_{\mathrm{a}_i} = -\mathbf{P}_{\mathrm{a}_{d_i}}$ and two Ricatti equations have a following solution:
 
 \begin{equation}
     -\mathbf{A}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{P}_{\mathrm{a}_{i}}\mathbf{A} + \mathbf{P}_{\mathrm{a}_{i}}(\mathbf{S}_{\mathrm{a}_i} - \mathbf{S}_{\mathrm{a_d}_i}) \mathbf{P}_{\mathrm{a}_{i}} - \mathbf{Q}_{i} = 0 
