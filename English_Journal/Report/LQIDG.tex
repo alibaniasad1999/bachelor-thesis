@@ -1774,131 +1774,205 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
 
 
 
-\section{Linear Quadratic Differential Game Proof}
-Consider the differential game described by
+\section{Proof of the LQIR-DG controller}
+Since, the first player determines the control commands, while second player generates the worst possible disturbance, a performance index of the differential game, described by equation \eqref{eq:min_max_cost_function}, rearrange as
 \begin{equation}
-    \dot{\mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{d}
+    \max_{d_i}\min{u_i} J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i) = \min_{d_i}\left(-J(\mathbf{x}_{_i}, d_i, u_i)\right)\min_{u_i}J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i)
 \end{equation}
-with for player one, the quadratic cost function:
+and subject to the augmented system, denoted in equation \eqref{systemlqidg}. To fine the optimal control policy function, $u_i$, it is assumed that the solution for above optimization problem is unique and $d_i = \mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_1}$.
+Moreover, the Pontryagin's maximum principle \cite{kirk2004optimal} are utilized to minimize the following Hamiltonian related to first player
 \begin{equation}
-    J_1(u, d) = \dfrac{1}{2}\int (\mathbf{x}^\mathrm{T} \mathbf{Q}_1 \mathbf{x} + \mathbf{u}^\mathrm{T} \mathbf{R} \mathbf{u} - \mathbf{d}^\mathrm{T} \mathbf{R}_d \mathbf{d}) dt
-\end{equation}
-and for player two, the opposit objective function:
-\begin{equation}
-    J_2(u, d) = -J_1(u, d)
+    \mathcal{H}_1 = \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} + \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i - \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i}) \end{equation}
+    where $\lambda_1$ is the Lagrangian variable related to the first player. Hence, the first-order necessary conditions for a minimize of this Hamiltonian are given by
+    \begin{equation}\label{eq:Hamiltonian_u}
+        \dfrac{\partial \mathcal{H}_1}{\partial u_i} = 0 \Rightarrow Ru_i + \mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_1 = 0 \Rightarrow u_i = -R^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_1
+    \end{equation}
+
+\begin{equation}\label{eq:Hamiltonian_lambda}
+    \dot{\lambda}_1 = -\dfrac{\partial \mathcal{H}_1}{\partial \mathbf{x}_{\mathrm{a}_i}} = -( \mathbf{Q}_i - 
+    \mathbf{K}_{d_i}^\mathrm{T} R_{d} \mathbf{K}_{d_i} -\lambda_1^\mathrm{T}(\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i})) \mathbf{x}_{\mathrm{a}_i} 
 \end{equation}
 
-Hamiltonian for player one:
+\begin{equation}\label{eq:Hamiltonian_x}
+    \dot{\mathbf{x}}_{\mathrm{a}_i}  = \dfrac{\partial \mathcal{H}_1}{\partial \lambda_1} = \mathbf{A}_{\mathrm{a}_i} \mathbf{x}_{\mathrm{a}_i}  + \mathbf{B}_{\mathrm{a}_i} \mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i} \mathbf{K}_{d_i} \mathbf{x}_{\mathrm{a}_i} 
+\end{equation}
+By assuming $\lambda_1 = \mathbf{P}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}$, 
+ and $\dot{\mathbf{P}}_{\mathrm{a}_i} = 0$, and combining equations \eqref{eq:Hamiltonian_u}, \eqref{eq:Hamiltonian_lambda} and \eqref{eq:Hamiltonian_x}, the Riccati equation for first player is obtained as follows:
+\begin{equation}\label{eq:riccatti}
+    -( \mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i})^\mathrm{T} \mathbf{P}_{\mathrm{a}_i} - \mathbf{P}_{\mathrm{a}_i} (\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}) + \mathbf{P}_{\mathrm{a}_i} \mathbf{B}_{\mathrm{a}_i} \mathbf{R}^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T} \mathbf{P}_{\mathrm{a}_i} - \mathbf{Q}_{\mathrm{a}_i}  + \mathbf{K}_{d_i}^\mathrm{T} R_{d} \mathbf{K}_{d_i} = 0 
+\end{equation}
+Moreover, the optimal control is obtained as follows:
 \begin{equation}
-    \mathcal{H} = g + \lambda_1^\mathrm{T}a = \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{Q} \mathbf{x} + \dfrac{1}{2}\mathbf{u}^\mathrm{T} \mathbf{R} \mathbf{u} - \dfrac{1}{2}\mathbf{d}^\mathrm{T} \mathbf{R}_d \mathbf{d} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{d})
+    u_i = -\mathbf{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}
+\end{equation}
+Assume that $\mathbf{K}_{\mathrm{a}_i} = -R^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_i}$, then $u_i = \mathbf{K}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}$. Similarly, second player is obtained using the following Hamiltonian 
+\begin{equation}
+    \mathcal{H}_2 = -\dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} - \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i + \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i}) 
+\end{equation}
+Here $\lambda_2$ is the Lagrangian variable related to the second player. Therefore, necessary conditions for a maximum worst case are computed as
+\begin{equation}\label{eq:Hamiltonian_d}
+    \dfrac{\partial \mathcal{H}_2}{\partial d_i} = 0 \Rightarrow R_d d_i + \mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_2 = 0 \Rightarrow d_i = -R_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_2
 \end{equation}
 
-The solution for this optimization problem is unique and is given by
-\begin{equation}
-    \mathbf{u}^* = \mathbf{F}_1 \mathbf{x} \textrm{~ and ~} \mathbf{d}^* = \mathbf{F}_2 \mathbf{x}
+\begin{equation}\label{eq:Hamiltonian_lambda_d}
+    \dot{\lambda}_2 = -\dfrac{\partial \mathcal{H}_1}{\partial \mathbf{x}_{\mathrm{a}_i}} = ( \mathbf{Q}_i - 
+    \mathbf{K}_{d_i}^\mathrm{T} R \mathbf{K}_{d_i} -\lambda_2^\mathrm{T}(\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i})) \mathbf{x}_{\mathrm{a}_i} 
 \end{equation}
 
-\begin{equation}
-    \mathcal{H} = \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{Q} \mathbf{x} + \dfrac{1}{2}\mathbf{u}^\mathrm{T} \mathbf{R} \mathbf{u} - \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{F}_2^\mathrm{T} \mathbf{R}_d \mathbf{F}_2 \mathbf{x} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{F}_2\mathbf{x})
+\begin{equation}\label{eq:Hamiltonian_x_d}
+    \dot{\mathbf{x}}_{\mathrm{a}_i}  = \dfrac{\partial \mathcal{H}_2}{\partial \lambda_2} = \mathbf{A}_{\mathrm{a}_i} \mathbf{x}_{\mathrm{a}_i}  +  \mathbf{B}_{\mathrm{a}_i} \mathbf{K}_{d_i} \mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i} \mathbf{d}_i 
 \end{equation}
+By assuming $\lambda_2 = \mathbf{P}_{\mathrm{a}_{d_i}}\mathbf{x}_{\mathrm{a}_i}$, 
+ and $\dot{\mathbf{P}}_{\mathrm{a}_{d_i}} = 0$, and combining equations \eqref{eq:Hamiltonian_d}, \eqref{eq:Hamiltonian_lambda_d} and \eqref{eq:Hamiltonian_x_d}, the Riccati equation for first player is obtained as follows:
+ \begin{equation}\label{eq:riccatti_d}
+    -( \mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{\mathrm{a}_i})^\mathrm{T} \mathbf{P}_{\mathrm{a}_{d_i}} - \mathbf{P}_{\mathrm{a}_{d_i}} (\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{\mathrm{a}_i}) + \mathbf{P}_{\mathrm{a}_{d_i}} \mathbf{B}_{\mathrm{a}_i} \mathbf{R}_d^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T} \mathbf{P}_{\mathrm{a}_{d_i}} + \mathbf{Q}_{\mathrm{a}_i}  + \mathbf{K}_{\mathrm{a}_i}^\mathrm{T} R \mathbf{K}_{\mathrm{a}_i} = 0
+ \end{equation}
+ Moreover, the worst disturbance is obtained as follows:
+    \begin{equation}
+        d_i = -R_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{d_i}}\mathbf{x}_{\mathrm{a}_i}
+    \end{equation}
+    Therefore, $\mathbf{K}_{\mathrm{d}_i} = -R_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{d_i}}$.
+     By combining two Riccati equations (\eqref{eq:riccatti} and \eqref{eq:riccatti_d}), the following equation is computed:
+     \begin{equation}
+        -(\mathbf{P}_{\mathrm{a}_{i}} + \mathbf{P}_{\mathrm{a}_{d_i}})\left(
+        \mathbf{A}_{\mathrm{a}_i} - \mathbf{S}_{\mathrm{a}_i}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{S}_{\mathrm{a}_i} \mathbf{P}_{\mathrm{a}_i}
+        \right) - \left(
+        \mathbf{A} - \mathbf{S}_{\mathrm{a}_i}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{S}_{\mathrm{a}_i} \mathbf{P}_{\mathrm{a}_i}
+        \right)^\mathrm{T}(\mathbf{P}_{\mathrm{a}_{i}} + \mathbf{P}_{\mathrm{a}_{d_i}})=0
+    \end{equation}
+    where $\mathbf{S}_{\mathrm{a}_i} = \mathbf{B}_{\mathrm{a}_i}\mathbf{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$ and $\mathbf{S}_{\mathrm{a_d}_i} = \mathbf{B}_{\mathrm{a}_i}\mathbf{R}_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$. Therefore, $\mathbf{P}_{\mathrm{a}_i} = -\mathbf{P}_{\mathrm{a}_{d_i}}$ and two Ricatti equations have a following solution:
 
 \begin{equation}
-    \dot{\mathbf{x}} = \dfrac{\partial \mathcal{H}}{\partial \lambda_1} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{F}_2\mathbf{x}
-\end{equation}
-
-\begin{equation}
-    \dot{\lambda}_1 = -\dfrac{\partial \mathcal{H}}{\partial \mathbf{x}} = -( \mathbf{Q} \mathbf{x} - \mathbf{F}_2^\mathrm{T} \mathbf{R}_d \mathbf{F}_2 \mathbf{x}) - \lambda_1^\mathrm{T}(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)
-\end{equation}
-\begin{equation}
-    \dfrac{\partial \mathcal{H}}{\partial \mathbf{u}} = 0 \Rightarrow \mathbf{R}\mathbf{u} + \mathbf{B}^\mathrm{T}\lambda_1 = 0 \Rightarrow \mathbf{u} = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\lambda_1
-\end{equation}
-
-Assume that $\lambda_1 = \mathbf{K}_1\mathbf{x}$, then
-\begin{equation}
-    \dot{\lambda} = \dot{\mathbf{K}_1} \mathbf{x} + \mathbf{K}_1 \dot{\mathbf{x}}
-\end{equation}
-in infinite horizon assumed $\dot{\lambda} = 0$, so
-\begin{equation}
-    \dot{\lambda} = \mathbf{K}_1( \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{F}_2\mathbf{x}) \xRightarrow[    \dot{\lambda}_1 = -\dfrac{\partial \mathcal{H}}{\partial \mathbf{x}} = -( \mathbf{Q} \mathbf{x} - \mathbf{F}_2^\mathrm{T} \mathbf{R}_d \mathbf{F}_2 \mathbf{x}) - \lambda_1^\mathrm{T}(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)]
-    {\mathbf{u} = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\lambda_1,~d = \mathbf{F}_2\mathbf{x},~ \lambda=\mathbf{K}_1\mathbf{x}}
-\end{equation}
-\begin{equation}
-    \mathbf{K_1}( \mathbf{A}\mathbf{x} - \mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1\mathbf{x} + \mathbf{B}_d\mathbf{F}_2\mathbf{x}) = \mathbf{Q}\mathbf{x} - \mathbf{F}_2^\mathrm{T}\mathbf{R}_d\mathbf{F}_2\mathbf{x} - (\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)^\mathrm{T}\mathbf{K}_1\mathbf{x}
-\end{equation}
-equation above is simplified to
-\begin{equation}
-    -(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)^\mathrm{T}\mathbf{K}_1 - \mathbf{K}_1(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2) + \mathbf{K}_1\mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1 
-    - \mathbf{Q} + \mathbf{F}_2^\mathrm{T}\mathbf{R}_d\mathbf{F}_2 = 0 
+    -\mathbf{A}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{P}_{\mathrm{a}_{i}}\mathbf{A} + \mathbf{P}_{\mathrm{a}_{i}}(\mathbf{S}_{\mathrm{a}_i} - \mathbf{S}_{\mathrm{a_d}_i}) \mathbf{P}_{\mathrm{a}_{i}} - \mathbf{Q}_{i} = 0 
 \end{equation}
 
 
-For the second player also use above method.
-\begin{equation}
-    \mathcal{H} = g + \lambda_2^\mathrm{T}a = -\dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{Q} \mathbf{x} - \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x} + \dfrac{1}{2}\mathbf{d}^\mathrm{T} \mathbf{R}_d \mathbf{d} + \lambda_2^\mathrm{T}(\mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{d}) 
-\end{equation}
 
-\begin{equation}
-    \dot{\mathbf{x}} = \dfrac{\partial \mathcal{H}}{\partial \lambda_2} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{d}
-\end{equation}
 
-\begin{equation}
-    \dot{\lambda}_2 = -\dfrac{\partial \mathcal{H}}{\partial \mathbf{x}} = ( \mathbf{Q} \mathbf{x} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x}) - \lambda_2^\mathrm{T}(\mathbf{A} + \mathbf{B}\mathbf{F}_1)
-\end{equation}
 
-\begin{equation}
-    \dfrac{\partial \mathcal{H}}{\partial \mathbf{d}} = 0 \Rightarrow \mathbf{R}_d\mathbf{d} + \mathbf{B}_d^\mathrm{T}\lambda_2 = 0 \Rightarrow \mathbf{d} = -\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\lambda_2
-\end{equation}
-Assume that $\lambda_2 = \mathbf{K}_2\mathbf{x}$, then
-\begin{equation}
-    \dot{\lambda}_2 = \dot{\mathbf{K}_2} \mathbf{x} + \mathbf{K}_2 \dot{\mathbf{x}}
-\end{equation}
-in infinite horizon assumed $\dot{\lambda} = 0$, so
-\begin{equation}
-    \dot{\lambda}_2 = \mathbf{K}_2( \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2\mathbf{x}) 
-\end{equation}
-also:
-\begin{equation}
-        \dot{\lambda}_2 = (\mathbf{Q} \mathbf{x} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x}) - \lambda_2^\mathrm{T}(\mathbf{A} + \mathbf{B}\mathbf{F}_1)
-\end{equation}
-then:
-\begin{equation}
-    \mathbf{K}_2( \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2\mathbf{x}) = (\mathbf{Q} \mathbf{x} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x}) - \mathbf{K}_2(\mathbf{A} + \mathbf{B}\mathbf{F}_1)
-\end{equation}
+% \begin{equation}
+%     \dot{\mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{d}
+% \end{equation}
+% with for player one, the quadratic cost function:
+% \begin{equation}
+%     J_1(u, d) = \dfrac{1}{2}\int (\mathbf{x}^\mathrm{T} \mathbf{Q}_1 \mathbf{x} + \mathbf{u}^\mathrm{T} \mathbf{R} \mathbf{u} - \mathbf{d}^\mathrm{T} \mathbf{R}_d \mathbf{d}) dt
+% \end{equation}
+% and for player two, the opposit objective function:
+% \begin{equation}
+%     J_2(u, d) = -J_1(u, d)
+% \end{equation}
 
-\begin{equation}
-    -(\mathbf{A} + \mathbf{B}\mathbf{F}_1)^\mathrm{T}\mathbf{K}_2 - \mathbf{K}_2(\mathbf{A} + \mathbf{B}\mathbf{F}_1) + \mathbf{K}_2\mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2 + \mathbf{Q} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 = 0
-\end{equation}
+% Hamiltonian for player one:
+% \begin{equation}
+%     \mathcal{H} = g + \lambda_1^\mathrm{T}a = \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{Q} \mathbf{x} + \dfrac{1}{2}\mathbf{u}^\mathrm{T} \mathbf{R} \mathbf{u} - \dfrac{1}{2}\mathbf{d}^\mathrm{T} \mathbf{R}_d \mathbf{d} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{d})
+% \end{equation}
 
-In above calculated $\mathbf{u}, ~ \mathbf{d}$:
-\begin{equation}
-    \mathbf{u} = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1\mathbf{x} \textrm{~ and ~} \mathbf{d} = -\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2\mathbf{x}
-\end{equation}
-then $\mathbf{u} = \mathbf{F}_1\mathbf{x}$ and $\mathbf{d} = \mathbf{F}_2\mathbf{x}$, so
-\begin{equation}
-    \mathbf{F}_1 = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1 \textrm{~ and ~} \mathbf{F}_2 = -\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2
-\end{equation}
-% final equation %
-with implementation to above equation:
-\begin{equation}
-    -(\mathbf{A} - \mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1)^\mathrm{T}\mathbf{K}_2 - \mathbf{K}_2(\mathbf{A} - \mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1) + \mathbf{K}_2\mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2 + \mathbf{Q} + \mathbf{K}_1^\mathrm{T} \mathbf{B} \mathbf{R}^{-1} \mathbf{B}^\mathrm{T} \mathbf{K}_1 = 0
-\end{equation}
-\begin{equation}
-    -(\mathbf{A} - \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2)^\mathrm{T}\mathbf{K}_1 - \mathbf{K}_1(\mathbf{A} - \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2) + \mathbf{K}_1\mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1 - \mathbf{Q} + \mathbf{K}_2^\mathrm{T} \mathbf{B}_d \mathbf{R}_d^{-1} \mathbf{B}_d^\mathrm{T} \mathbf{K}_2 = 0
-\end{equation}
-by adding two equation there is:
-\begin{equation}
-    -(\mathbf{K}_1 + \mathbf{K}_2)\left[
-        \mathbf{A} - \mathbf{S}\mathbf{K}_1 - \mathbf{S}_d \mathbf{K}_2
-    \right] - \left[
-        \mathbf{A} - \mathbf{S}\mathbf{K}_1 - \mathbf{S}_d \mathbf{K}_2
-        \right]^\mathrm{T}(\mathbf{K}_1 + \mathbf{K}_2)=0 \to \mathbf{K}_1 = -\mathbf{K}_2 
-\end{equation}
+% The solution for this optimization problem is unique and is given by
+% \begin{equation}
+%     \mathbf{u}^* = \mathbf{F}_1 \mathbf{x} \textrm{~ and ~} \mathbf{d}^* = \mathbf{F}_2 \mathbf{x}
+% \end{equation}
 
-The two riccatti differential equation have solution:
-\begin{equation}
-    -\mathbf{A}^\mathrm{T}\mathbf{K} - \mathbf{K}\mathbf{A} + \mathbf{K}\mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K} - \mathbf{Q} - \mathbf{K}^\mathrm{T} \mathbf{B}_d \mathbf{R}_d^{-1} \mathbf{B}_d^\mathrm{T} \mathbf{K} = 0
-\end{equation}
-% \end{thebibliography}
+% \begin{equation}
+%     \mathcal{H} = \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{Q} \mathbf{x} + \dfrac{1}{2}\mathbf{u}^\mathrm{T} \mathbf{R} \mathbf{u} - \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{F}_2^\mathrm{T} \mathbf{R}_d \mathbf{F}_2 \mathbf{x} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{F}_2\mathbf{x})
+% \end{equation}
+
+% \begin{equation}
+%     \dot{\mathbf{x}} = \dfrac{\partial \mathcal{H}}{\partial \lambda_1} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{F}_2\mathbf{x}
+% \end{equation}
+
+% \begin{equation}
+%     \dot{\lambda}_1 = -\dfrac{\partial \mathcal{H}}{\partial \mathbf{x}} = -( \mathbf{Q} \mathbf{x} - \mathbf{F}_2^\mathrm{T} \mathbf{R}_d \mathbf{F}_2 \mathbf{x}) - \lambda_1^\mathrm{T}(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)
+% \end{equation}
+% \begin{equation}
+%     \dfrac{\partial \mathcal{H}}{\partial \mathbf{u}} = 0 \Rightarrow \mathbf{R}\mathbf{u} + \mathbf{B}^\mathrm{T}\lambda_1 = 0 \Rightarrow \mathbf{u} = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\lambda_1
+% \end{equation}
+
+% Assume that $\lambda_1 = \mathbf{K}_1\mathbf{x}$, then
+% \begin{equation}
+%     \dot{\lambda} = \dot{\mathbf{K}_1} \mathbf{x} + \mathbf{K}_1 \dot{\mathbf{x}}
+% \end{equation}
+% in infinite horizon assumed $\dot{\lambda} = 0$, so
+% \begin{equation}
+%     \dot{\lambda} = \mathbf{K}_1( \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} + \mathbf{B}_d\mathbf{F}_2\mathbf{x}) \xRightarrow[    \dot{\lambda}_1 = -\dfrac{\partial \mathcal{H}}{\partial \mathbf{x}} = -( \mathbf{Q} \mathbf{x} - \mathbf{F}_2^\mathrm{T} \mathbf{R}_d \mathbf{F}_2 \mathbf{x}) - \lambda_1^\mathrm{T}(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)]
+%     {\mathbf{u} = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\lambda_1,~d = \mathbf{F}_2\mathbf{x},~ \lambda=\mathbf{K}_1\mathbf{x}}
+% \end{equation}
+% \begin{equation}
+%     \mathbf{K_1}( \mathbf{A}\mathbf{x} - \mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1\mathbf{x} + \mathbf{B}_d\mathbf{F}_2\mathbf{x}) = \mathbf{Q}\mathbf{x} - \mathbf{F}_2^\mathrm{T}\mathbf{R}_d\mathbf{F}_2\mathbf{x} - (\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)^\mathrm{T}\mathbf{K}_1\mathbf{x}
+% \end{equation}
+% equation above is simplified to
+% \begin{equation}
+%     -(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2)^\mathrm{T}\mathbf{K}_1 - \mathbf{K}_1(\mathbf{A} + \mathbf{B}_d\mathbf{F}_2) + \mathbf{K}_1\mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1 
+%     - \mathbf{Q} + \mathbf{F}_2^\mathrm{T}\mathbf{R}_d\mathbf{F}_2 = 0 
+% \end{equation}
+
+
+% For the second player also use above method.
+% \begin{equation}
+%     \mathcal{H} = g + \lambda_2^\mathrm{T}a = -\dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{Q} \mathbf{x} - \dfrac{1}{2}\mathbf{x}^\mathrm{T} \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x} + \dfrac{1}{2}\mathbf{d}^\mathrm{T} \mathbf{R}_d \mathbf{d} + \lambda_2^\mathrm{T}(\mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{d}) 
+% \end{equation}
+
+% \begin{equation}
+%     \dot{\mathbf{x}} = \dfrac{\partial \mathcal{H}}{\partial \lambda_2} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{d}
+% \end{equation}
+
+% \begin{equation}
+%     \dot{\lambda}_2 = -\dfrac{\partial \mathcal{H}}{\partial \mathbf{x}} = ( \mathbf{Q} \mathbf{x} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x}) - \lambda_2^\mathrm{T}(\mathbf{A} + \mathbf{B}\mathbf{F}_1)
+% \end{equation}
+
+% \begin{equation}
+%     \dfrac{\partial \mathcal{H}}{\partial \mathbf{d}} = 0 \Rightarrow \mathbf{R}_d\mathbf{d} + \mathbf{B}_d^\mathrm{T}\lambda_2 = 0 \Rightarrow \mathbf{d} = -\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\lambda_2
+% \end{equation}
+% Assume that $\lambda_2 = \mathbf{K}_2\mathbf{x}$, then
+% \begin{equation}
+%     \dot{\lambda}_2 = \dot{\mathbf{K}_2} \mathbf{x} + \mathbf{K}_2 \dot{\mathbf{x}}
+% \end{equation}
+% in infinite horizon assumed $\dot{\lambda} = 0$, so
+% \begin{equation}
+%     \dot{\lambda}_2 = \mathbf{K}_2( \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2\mathbf{x}) 
+% \end{equation}
+% also:
+% \begin{equation}
+%         \dot{\lambda}_2 = (\mathbf{Q} \mathbf{x} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x}) - \lambda_2^\mathrm{T}(\mathbf{A} + \mathbf{B}\mathbf{F}_1)
+% \end{equation}
+% then:
+% \begin{equation}
+%     \mathbf{K}_2( \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{F}_1\mathbf{x} + \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2\mathbf{x}) = (\mathbf{Q} \mathbf{x} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 \mathbf{x}) - \mathbf{K}_2(\mathbf{A} + \mathbf{B}\mathbf{F}_1)
+% \end{equation}
+
+% \begin{equation}
+%     -(\mathbf{A} + \mathbf{B}\mathbf{F}_1)^\mathrm{T}\mathbf{K}_2 - \mathbf{K}_2(\mathbf{A} + \mathbf{B}\mathbf{F}_1) + \mathbf{K}_2\mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2 + \mathbf{Q} + \mathbf{F}_1^\mathrm{T} \mathbf{R} \mathbf{F}_1 = 0
+% \end{equation}
+
+% In above calculated $\mathbf{u}, ~ \mathbf{d}$:
+% \begin{equation}
+%     \mathbf{u} = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1\mathbf{x} \textrm{~ and ~} \mathbf{d} = -\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2\mathbf{x}
+% \end{equation}
+% then $\mathbf{u} = \mathbf{F}_1\mathbf{x}$ and $\mathbf{d} = \mathbf{F}_2\mathbf{x}$, so
+% \begin{equation}
+%     \mathbf{F}_1 = -\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1 \textrm{~ and ~} \mathbf{F}_2 = -\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2
+% \end{equation}
+% % final equation %
+% with implementation to above equation:
+% \begin{equation}
+%     -(\mathbf{A} - \mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1)^\mathrm{T}\mathbf{K}_2 - \mathbf{K}_2(\mathbf{A} - \mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1) + \mathbf{K}_2\mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2 + \mathbf{Q} + \mathbf{K}_1^\mathrm{T} \mathbf{B} \mathbf{R}^{-1} \mathbf{B}^\mathrm{T} \mathbf{K}_1 = 0
+% \end{equation}
+% \begin{equation}
+%     -(\mathbf{A} - \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2)^\mathrm{T}\mathbf{K}_1 - \mathbf{K}_1(\mathbf{A} - \mathbf{B}_d\mathbf{R}_d^{-1}\mathbf{B}_d^\mathrm{T}\mathbf{K}_2) + \mathbf{K}_1\mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{K}_1 - \mathbf{Q} + \mathbf{K}_2^\mathrm{T} \mathbf{B}_d \mathbf{R}_d^{-1} \mathbf{B}_d^\mathrm{T} \mathbf{K}_2 = 0
+% \end{equation}
+% by adding two equation there is:
+% \begin{equation}
+%     -(\mathbf{K}_1 + \mathbf{K}_2)\left[
+%         \mathbf{A} - \mathbf{S}\mathbf{K}_1 - \mathbf{S}_d \mathbf{K}_2
+%     \right] - \left[
+%         \mathbf{A} - \mathbf{S}\mathbf{K}_1 - \mathbf{S}_d \mathbf{K}_2
+%         \right]^\mathrm{T}(\mathbf{K}_1 + \mathbf{K}_2)=0 \to \mathbf{K}_1 = -\mathbf{K}_2 
+% \end{equation}
+
+% The two riccatti differential equation have solution:
+% \begin{equation}
+%     -\mathbf{A}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{P}_{\mathrm{a}_{i}}\mathbf{A} + \mathbf{P}_{\mathrm{a}_{i}}\mathbf{B}\mathbf{R}^{-1}\mathbf{B}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{Q} - \mathbf{P}_{\mathrm{a}_{i}}^\mathrm{T} \mathbf{B}_d \mathbf{R}_d^{-1} \mathbf{B}_d^\mathrm{T} \mathbf{P}_{\mathrm{a}_{i}} = 0
+% \end{equation}
+% % \end{thebibliography}
 \end{document}
 
 
