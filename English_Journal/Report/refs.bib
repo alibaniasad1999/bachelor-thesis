@@ -358,7 +358,7 @@ issn = {0016-0032},
 doi = {https://doi.org/10.1016/j.jfranklin.2020.12.025},
 url = {https://www.sciencedirect.com/science/article/pii/S0016003220308383},
 author = {Han Sol Kim and Kwangil Lee and Young Hoon Joo},
-abstract = {This study focuses on a sampled-data fuzzy decentralized tracking control problem for a quadrotor unmanned aerial vehicle (UAV) under the variable sampling rate condition. To this end, the overall dynamics of the quadrotor is expressed as a decentralized Takagi–Sugeno (T–S) fuzzy model interconnected with each other. Although the proposed decentralized control technique divides the overall UAV control system into attitude and position subsystems, the stability of the entire control system is guaranteed. Besides, in this paper, the model uncertainty, interconnection, and reference trajectory are considered as disturbances acting on the tracking error. To attenuate these disturbances, a novel sampled-data tracking control design technique is derived based on a linear reference model to be tracked and the time-dependent Lyapunov–Krasovskii functional (LKF). By doing so, both the stability of the tracking error dynamics and the minimization of tracking performance are guaranteed. Also, the proposed tracking control design method is derived as a linear matrix inequality (LMI)-based optimal problem. Finally, a simulation example is provided to demonstrate the effectiveness and feasibility of the proposed design methodology.}
+abstract = {This study focuses on a sampled-data fuzzy decentralized tracking control problem for a quadrotor unmanned aerial vehicle (UAV) under the variable sampling rate condition. To this end, the overall dynamics of the quadrotor is expressed as a decentralized Takagi\-Sugeno (T\-S) fuzzy model interconnected with each other. Although the proposed decentralized control technique divides the overall UAV control system into attitude and position subsystems, the stability of the entire control system is guaranteed. Besides, in this paper, the model uncertainty, interconnection, and reference trajectory are considered as disturbances acting on the tracking error. To attenuate these disturbances, a novel sampled-data tracking control design technique is derived based on a linear reference model to be tracked and the time-dependent Lyapunov\-Krasovskii functional (LKF). By doing so, both the stability of the tracking error dynamics and the minimization of tracking performance are guaranteed. Also, the proposed tracking control design method is derived as a linear matrix inequality (LMI)-based optimal problem. Finally, a simulation example is provided to demonstrate the effectiveness and feasibility of the proposed design methodology.}
 }
 
 @article{article_LQIR,
@@ -373,19 +373,6 @@ doi = {10.1016/j.protcy.2016.08.083}
 }
 
 
-@article{MIRANDACOLORADO202047,
-	title = {Robust PID control of quadrotors with power reduction analysis},
-	journal = {ISA Transactions},
-	volume = {98},
-	pages = {47-62},
-	year = {2020},
-	issn = {0019-0578},
-	doi = {https://doi.org/10.1016/j.isatra.2019.08.045},
-	url = {https://www.sciencedirect.com/science/article/pii/S001905781930391X},
-	author = {Roger Miranda-Colorado and Luis T. Aguilar},
-	keywords = {Robust proportional integral derivative control, Quadrotor unmanned aerial vehicle, Cuckoo search algorithm, Reduction of power consumption, Sliding modes, Quadrotor nonlinear dynamic model},
-	abstract = {This paper presents a novel robust controller applied to a quadrotor vehicle for regulation and trajectory tracking tasks. In the proposed scheme, the quadrotor position is controlled by a proportional integral derivative (PID) controller, while the orientation control is achieved through a model-based controller. The proposed controller is combined with a power reduction methodology, which includes a controller-gains tuning stage using the cuckoo search algorithm, and a minimum jerk trajectory design stage. The performance of the new controller is assessed in a free-disturbance case and under the effect of parametric uncertainty and aero-dynamical disturbances. The new controller is compared against two linear PID controllers and a nonlinear sliding mode-based controller. Numerical simulations demonstrate the superiority of the proposed scheme as well as its robustness against different types of perturbations. Also, it is proven that the power demanded by any controller is reduced when using the power reduction methodology.}
-}
 
 @article{LABBADI2020290,
 	title = {Robust adaptive nonsingular fast terminal sliding-mode tracking control for an uncertain quadrotor UAV subjected to disturbances},
@@ -652,4 +639,148 @@ abstract = {This work addresses the stabilization of variable fractional-order (
   url={https://books.google.nl/books?id=fCh2SAtWIdwC},
   year={2004},
   publisher={Dover Publications}
+}
+
+@article{DING2022580,
+title = {Neural network-based robust integral error sign control for servo motor systems with enhanced disturbance rejection performance},
+journal = {ISA Transactions},
+volume = {129},
+pages = {580-591},
+year = {2022},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2021.12.026},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057821006431},
+author = {Runze Ding and Chenyang Ding and Yunlang Xu and Weike Liu and Xiaofeng Yang},
+keywords = {Neural network control, Adaptive control, Robust control, Servo system},
+abstract = {Uncertain dynamics and unknown time-varying disturbances always exist in servo systems and deteriorate tracking accuracy significantly. To tackle the problem, this paper presents a novel adaptive robust control scheme based on neural networks and the robust integral of the sign of the error (RISE) method. In the proposed scheme, a new neural network compensator is developed, where a reference-driven neural network and an error-driven neural network are employed to compensate for uncertain system dynamics and unknown time-varying disturbances, respectively. And an RISE-based robust feedback controller is designed to suppress uncompensated dynamics. Asymptotic tracking control of the servo system with uncertain dynamics and unknown time-varying disturbances is guaranteed by using the Lyapunov theory. Comparative experiments and simulations with different reference signals and various types of external disturbances were conducted based on a linear motor-driven stage. Experimental and simulational results verify the superior tracking performance and powerful disturbance rejection ability of the proposed method.}
+}
+
+
+@article{CORTESROMERO202063,
+title = {Robust fractional Active Disturbance Rejection Control: A unified approach},
+journal = {ISA Transactions},
+volume = {107},
+pages = {63-77},
+year = {2020},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2020.08.003},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057820303268},
+author = {John Cortés-Romero and Efredy Delgado-Aguilera and Alexander Jimenez-Triana},
+keywords = {Robust fractional order control, ADRC, Ultimate bound analysis, Analog realization, Fractional extended-state observer},
+abstract = {This paper presents an adaptation of the Active Disturbance Rejection Control (ADRC) method within the fractional calculus context. This ADRC version is characterized by a single active cancellation of the lumped effects of all the unmodeled dynamics, external disturbances and parameter uncertainty associated with the linear model of commensurate fractional order. This methodology proposes suitable simplifications to fit the resulting system to one of appropriate commensurate fractional order. The design is reduced to a linear observer-based control of fractional order that estimates the unified disturbance. A numerical stability analysis is presented to quantify the tracking and estimate errors bounds and provide guidelines in the parameters of observer-based controller configuration. The proposed control strategy is experimentally validated in linear and nonlinear cases of fractional order by means of approximate analog implementations.}
+}
+
+@article{WEI2022599,
+title = {Active disturbance rejection control for nanopositioning: A robust U-model approach},
+journal = {ISA Transactions},
+volume = {128},
+pages = {599-610},
+year = {2022},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2021.11.035},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057821006066},
+author = {Wei Wei and Bowen Duan and Weicun Zhang and Min Zuo},
+keywords = {Piezoelectric actuator, Nanopositioning, Hysteresis, LADRC, U-model control},
+abstract = {Hysteresis severely reduces positioning performance of a piezoelectric nanopositioning stage. Linear active disturbance rejection control (LADRC) is a practical solution to improve the positioning accuracy. However, the PD controller utilized in the LADRC is not effective enough to suppress the uncancelled total disturbance, and high-order pure integrators are difficult to be stabilized just by a PD controller. In this work, a robust U-model active disturbance rejection control (RUADRC) is proposed by incorporating the core idea of the U-model control and the Glover–McFarlane control. Then, the controlled plant can be dynamically transformed to a unit. Difficulties in stabilizing high-order pure integrators are decreased, the phase lag between the input and output of a controlled plant is reduced, and the closed-loop responses is sped up. In addition, the influence of both inaccurate total disturbance estimation and imperfect approximation is also minimized by the Glover–McFarlane control Closed-loop stability, steady-state tracking error, and the phase advantage of the RUADRC have been analysed. Theoretical results show that the RUADRC promises a timelier and more accurate positioning. Experimental results still confirm the advantages of the RUADRC over the LADRC on both reference tracking speed, accuracy and disturbance rejection ability.}
+}
+
+
+
+@article{YANG2021175,
+title = {Output feedback adaptive super-twisting sliding mode control of hydraulic systems with disturbance compensation},
+journal = {ISA Transactions},
+volume = {109},
+pages = {175-185},
+year = {2021},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2020.09.014},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057820303888},
+author = {Xiaowei Yang and Jianyong Yao and Wenxiang Deng},
+keywords = {Output feedback, Super-twisting sliding mode control (SSMC), Extended state observer (ESO), Adaptive control, Hydraulic system},
+abstract = {This paper presents an output feedback adaptive super-twisting sliding mode controller (SSMC) for hydraulic systems with unmodeled disturbances via utilizing an extended state observer (ESO). Both unmeasured system states and unmodeled disturbances are estimated by ESO based on output position signal, which avoids using noise-polluted signals and eliminates most of the disturbance effects on control performance simultaneously. Moreover, a SSMC is developed to further suppress the residual error of disturbance compensation, in which feedback gains are adapted online to further reduce the high-gain feedback. In addition, this proposed controller is continuous and chattering-free, which is beneficial to practical applications. Theoretical analysis indicates that the proposed controller ensures an asymptotic stability when existing constant disturbances, and ultimately bounded tracking performance for the time-variant disturbance case. Comparative experimental results reveal the validity of the developed approach.}
+}
+
+
+@article{JIN202012241,
+title = {Robust adaptive neural network-based compensation control of a class of quadrotor aircrafts},
+journal = {Journal of the Franklin Institute},
+volume = {357},
+number = {17},
+pages = {12241-12263},
+year = {2020},
+issn = {0016-0032},
+doi = {https://doi.org/10.1016/j.jfranklin.2020.09.009},
+url = {https://www.sciencedirect.com/science/article/pii/S0016003220306281},
+author = {Xiao-Zheng Jin and Tao He and Xiao-Ming Wu and Hai Wang and Jing Chi},
+abstract = {In this paper, the position and attitude trajectory tracking problem of a class of quadrotor aircrafts with bounded external disturbances and state-dependent internal uncertainties is addressed. Neural network (NN)-based methods are adopted to approximate the unknown uncertainties, while adaptive technique is used to estimate the unknown bounds of disturbances. Then, an adaptive compensation control scheme based on neural networks is proposed to compensate for the effects of disturbances and uncertainties. On the basis of Lyapunov stability theorem, bounded trajectory tracking of a position subsystem and asymptotic trajectory tracking of an attitude subsystem can be achieved by using the NN-based adaptive compensation control scheme in the presence of internal uncertainties and external disturbances. A numerical simulation is carried out to verify the effectiveness of the designed control method of quadrotor aircrafts.}
+}
+
+
+
+@article{RODRIGUEZMARTINEZ2023739,
+title = {Asymptotic stabilization of a transformed quadrotor model using energy-shaping method: Theory and experiments},
+journal = {ISA Transactions},
+volume = {139},
+pages = {739-749},
+year = {2023},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2023.04.034},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057823002033},
+author = {Gumer Rodríguez-Martínez and Jose Guadalupe Romero and A. Mosco-Luciano and H. Rodríguez-Cortés},
+keywords = {Quadrotor model, PI controllers, Lyapunov functions, Asymptotic stability, Real-time control},
+abstract = {This note presents a new passivity-based controller that ensures asymptotic stability for quadrotor position without solving partial differential equations or performing a partial dynamic inversion. After a resourceful change of coordinates, a pre-feedback controller, and a backstepping stage on the yaw angle dynamic, it is possible to identify new quadrotor cyclo passive outputs. Then, a simple proportional-integral controller of these cyclo-passive outputs completes the design. The cyclo-passive outputs allow the construction of an energy-based Lyapunov function that includes five out of six quadrotor degrees of freedom and guarantees asymptotic stability of the desired equilibrium. Moreover, the constant velocity reference tracking problem is solved with a slight modification to the proposed controller. Finally, the approach is validated through simulations and real-time experimental results.}
+}
+
+@article{robust_LQR,
+author = {Elkhatem, Aisha and Engin, Seref},
+year = {2021},
+month = {12},
+pages = {},
+title = {Robust LQR and LQR-PI control strategies based on adaptive weighting matrix selection for a UAV position and attitude tracking control},
+volume = {61},
+journal = {Alexandria Engineering Journal},
+doi = {10.1016/j.aej.2021.11.057}
+}
+
+@article{XU202084,
+title = {Information fusion estimation-based path following control of quadrotor UAVs subjected to Gaussian random disturbance},
+journal = {ISA Transactions},
+volume = {99},
+pages = {84-94},
+year = {2020},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2019.10.003},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057819304574},
+author = {Qingzheng Xu and Zhisheng Wang and Ziyang Zhen},
+keywords = {Quadrotor UAVs, Path following, Information fusion, Optimal control, Gaussian random disturbance},
+abstract = {Random disturbance has a detrimental effect on the reliability and safety of quadrotor unmanned aerial vehicles (UAVs). This paper proposes an anti-Gaussian random disturbance control method for the path following of a quadrotor UAV. The quadrotor system is linearized and divided into two subsystems, i.e., a translational subsystem and a rotational subsystem, and hierarchical strategy is used to design the overall control architecture. In order to suppress the negative effects of Gaussian random disturbances and simplify the design process of linear–quadratic optimal output tracking control problem, a new information fusion estimation based robust control named Gaussian information fusion control (GIFC) scheme is proposed. The convergence of the output tracking errors of GIFC system is proved via Lyapunov theory. The proposed GIFC control scheme is employed for position and attitude controller designs to enhance the robustness of the quadrotor system to Gaussian random perturbations. Finally numerical simulation experiments illustrate the effectiveness and robustness of the proposed control strategy.}
+}
+
+@article{CAMARA20231,
+title = {Robust decoupling MPC for linear systems with bounded disturbances},
+journal = {ISA Transactions},
+volume = {139},
+pages = {1-12},
+year = {2023},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2023.05.004},
+url = {https://www.sciencedirect.com/science/article/pii/S0019057823002215},
+author = {Rodrigo Galvão de Souza Câmara and Tito Luís Maia Santos},
+keywords = {Decoupling control, Model predictive control, Constrained systems, Robustness},
+abstract = {This paper presents a robust decoupling Model Predictive Controller (MPC) for constrained linear systems with bounded disturbances. The usual explicit decouplers are combined with a suitable augmented state–space representation in order to ensure recursive feasibility, robust constraint satisfaction, and cross-coupling reduction during set-point changes. The proposed approach is flexible with respect to the decoupler choice and the robust MPC algorithm. A robust MPC for tracking piecewise constant references with an artificial target based on nominal prediction is proposed in order to achieve offset-free piecewise constant reference tracking. Two case studies are presented to illustrate the effectiveness of the proposed decoupling strategy.}
+}
+
+
+@article{MIRANDACOLORADO202047,
+title = {Robust PID control of quadrotors with power reduction analysis},
+journal = {ISA Transactions},
+volume = {98},
+pages = {47-62},
+year = {2020},
+issn = {0019-0578},
+doi = {https://doi.org/10.1016/j.isatra.2019.08.045},
+url = {https://www.sciencedirect.com/science/article/pii/S001905781930391X},
+author = {Roger Miranda-Colorado and Luis T. Aguilar},
+keywords = {Robust proportional integral derivative control, Quadrotor unmanned aerial vehicle, Cuckoo search algorithm, Reduction of power consumption, Sliding modes, Quadrotor nonlinear dynamic model},
+abstract = {This paper presents a novel robust controller applied to a quadrotor vehicle for regulation and trajectory tracking tasks. In the proposed scheme, the quadrotor position is controlled by a proportional integral derivative (PID) controller, while the orientation control is achieved through a model-based controller. The proposed controller is combined with a power reduction methodology, which includes a controller-gains tuning stage using the cuckoo search algorithm, and a minimum jerk trajectory design stage. The performance of the new controller is assessed in a free-disturbance case and under the effect of parametric uncertainty and aero-dynamical disturbances. The new controller is compared against two linear PID controllers and a nonlinear sliding mode-based controller. Numerical simulations demonstrate the superiority of the proposed scheme as well as its robustness against different types of perturbations. Also, it is proven that the power demanded by any controller is reduced when using the power reduction methodology.}
 }
