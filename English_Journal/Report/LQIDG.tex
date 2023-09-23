@@ -494,8 +494,8 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
 
 
 \begin{align}
-    \dot{p} &= \Gamma_1 pq - \Gamma_2 qr + \Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_5 \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}} \\
-    \dot{q} &= \Gamma_6 pr - \Gamma_7 (p^2 - r^2) + \Gamma_8  \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_9 \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
+    \dot{p} &= \Gamma_1 pq - \Gamma_2 qr + \Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_5 q \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}} \\
+    \dot{q} &= \Gamma_6 pr - \Gamma_7 (p^2 - r^2) + \Gamma_8  \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_9 p \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
     \dot{r} &= \Gamma_{10} pq - \Gamma_{1} qr + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_{4}  \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{roll}} + \Gamma_{4} d_{\text{yaw}}
 \end{align}
 % \begin{align}
@@ -580,12 +580,13 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
     \end{bmatrix}^{\mathrm{T}} = 
     \begin{bmatrix}
         r & \psi
-    \end{bmatrix}^{\mathrm{T}}$, as well as by considering the control inputs as $$\boldsymbol{u} = \begin{bmatrix}
+    \end{bmatrix}^{\mathrm{T}}$, as well as by considering the control inputs as 
+    $\boldsymbol{u} = \begin{bmatrix}
         u_{\text{roll}} & u_{\text{roll}} & u_{\text{roll}}
     \end{bmatrix} = \\ \begin{bmatrix}
         \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 2}^2 - \Omega_{c, 4}^2) & \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) &
         \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 2}^2+ \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
-    \end{bmatrix}$$
+    \end{bmatrix}$
     The nonlinear model of the quadrotor platform in the state-space form $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$ is presented as follows:
 % \begin{align}\label{eq:diffeq}
 %     \dot x_1 &= \Gamma_1x_3 x_5 + \Gamma_2 x_3 \Omega_r + \Gamma_3\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_3d_{\text{roll}} \\[0.5em]
@@ -612,13 +613,13 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
 % \end{align}
 \begin{align}
     f_1 = \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3  (u_{\text{roll}} + d_{\text{roll}})
- + \Gamma_4 \mathrm{d} (u_{\text{yaw}} + u_{\text{yaw}}) 
-+ \Gamma_5 \Omega_{c, r}  \label{eq:eq_of_motion_start1} \\
-    f_2 = \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
-    f_3 = \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 \Omega_{c, r} \\
-    f_4 = \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
+ + \Gamma_4  (u_{\text{yaw}} + u_{\text{yaw}}) 
++ \Gamma_5 x_3\Omega_{c, r}  \label{eq:eq_of_motion_start1} \\
+    f_2 = \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_5\cos(x_2))\tan(x_4)  \\
+    f_3 = \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 x_1 \Omega_{c, r} \\
+    f_4 = \dot{x}_4 &= x_3\cos(x_2) - x_5\sin(x_2) \\
     f_5 = \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (u_{\text{yaw}} + d_{\text{yaw}}) + \Gamma_{4}(u_{\text{roll}} + d_{\text{roll}})\\
-    f_6 = \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}~\label{eq:eq_of_motion_end1}
+    f_6 = \dot{x}_6 &= \dfrac{x_3\sin(x_2) + x_5\cos(x_2)}{\cos(x_4)}~\label{eq:eq_of_motion_end1}
 \end{align}
 
 
@@ -852,15 +853,15 @@ $\boldsymbol{{\mathrm{P}}}_{\mathrm{a}_{i}}$ satisfy
 % \end{equation}
 
 % subsection for tunning weighta with TCACS optimization
-\subsection{TCACS Optimization for Tuning the Weighting Matrices}
-\noindent To optimize the weighting matrix of the LQIR-DG (Linear Quadratic Integral Regulator with Disturbance Rejection) controller, the TCACS (Tabu Continuous Ant Colony System)~\cite{10.1007/978-3-540-28646-2_27} optimization method was utilized. The objective was to tune the controller parameters for improved performance in a 3-degree-of-freedom simulation.
+% \subsection{TCACS Optimization for Tuning the Weighting Matrices}
+% \noindent To optimize the weighting matrix of the LQIR-DG (Linear Quadratic Integral Regulator with Disturbance Rejection) controller, the TCACS (Tabu Continuous Ant Colony System)~\cite{10.1007/978-3-540-28646-2_27} optimization method was utilized. The objective was to tune the controller parameters for improved performance in a 3-degree-of-freedom simulation.
 
-In the optimization process, the cost function was formulated based on the LQIR-DG controller, where the state feedback matrix $\boldsymbol{\mathrm{Q}}$ and the disturbance rejection matrix $R_d$ were the key parameters to be determined. To simplify the problem, it was assumed that R (the penalty matrix for control inputs) was fixed at a value of 1.
+% In the optimization process, the cost function was formulated based on the LQIR-DG controller, where the state feedback matrix $\boldsymbol{\mathrm{Q}}$ and the disturbance rejection matrix $R_d$ were the key parameters to be determined. To simplify the problem, it was assumed that R (the penalty matrix for control inputs) was fixed at a value of 1.
 
-By employing the TCACS optimization method, the algorithm explored the search space to find the optimal values of $\boldsymbol{\mathrm{Q}}$ and $R_d$ for each channel. The objective was to achieve a balance between control effort and disturbance rejection while ensuring stable and robust control performance.
+% By employing the TCACS optimization method, the algorithm explored the search space to find the optimal values of $\boldsymbol{\mathrm{Q}}$ and $R_d$ for each channel. The objective was to achieve a balance between control effort and disturbance rejection while ensuring stable and robust control performance.
 
-The optimization process aimed to fine-tune the controller parameters for the specific dynamics of the system under consideration. The resulting weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ would enable the LQIR-DG controller to efficiently regulate the system while effectively rejecting disturbances in the simulation.
-\noindent In this section, the TCACS optimization method is utilized to tune the weighting matrices of the LQIR-DG controller. 
+% The optimization process aimed to fine-tune the controller parameters for the specific dynamics of the system under consideration. The resulting weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ would enable the LQIR-DG controller to efficiently regulate the system while effectively rejecting disturbances in the simulation.
+% \noindent In this section, the TCACS optimization method is utilized to tune the weighting matrices of the LQIR-DG controller. 
 \section{Results}\label{sec:results}
 \noindent The results of the parameter identification and the LQIR-DG Controller for the quadrotor platform are presented. First, the quadrotor parameters are estimated based on the NLS method. Then, the performance of the LQIR-DG structure is evaluated.
 Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respectively.
@@ -1022,26 +1023,6 @@ Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respec
 
 \subsection{Challenges in Designing and Implementation}
 
-\noindent Developing and implementing advanced control strategies for unmanned aerial vehicles (UAVs) presents several challenges that need careful consideration to ensure successful deployment in real-world scenarios. In this subsection, we briefly highlight the key challenges encountered during the design and implementation of the proposed controller.
-
-\begin{enumerate}
-  \item \textbf{Nonlinear Dynamics}: quadrotors exhibit highly nonlinear and coupled dynamics, which demand sophisticated control algorithms to achieve precise and stable control.
-
-  \item \textbf{Model Uncertainty}: Accurate modeling of quadrotor dynamics is challenging due to uncertainties in aerodynamics, payload, and external disturbances. Robust control techniques are required to address model uncertainties effectively.
-
-  \item \textbf{Sensor Noise and Calibration}: Real-world sensors are prone to noise and calibration errors, affecting state estimation accuracy. Sensor fusion and calibration techniques are essential for reliable control.
-
-  \item \textbf{Real-time Computation}: quadrotor control systems must execute in real-time, necessitating computationally efficient algorithms to ensure a low-latency response.
-
-  \item \textbf{Robustness to External Disturbances}: quadrotors operate in dynamic and unpredictable environments, making them susceptible to wind gusts and other disturbances. Robust control strategies are essential to maintain stability.
-
-  \item \textbf{Safety and Collision Avoidance}: Ensuring safety during quadrotor operation is critical, requiring collision avoidance algorithms and fail-safe mechanisms.
-
-  \item \textbf{Experimental Validation}: Real-world testing and validation of the controller pose logistical and safety challenges, requiring careful experimental setups.
-
-\end{enumerate}
-
-Addressing these challenges is crucial to ensure the successful deployment and practicality of the proposed controller in real-world applications.
 
 \subsection{Tuning of LQIR-DG Weighting Matrices}
 
@@ -1060,11 +1041,11 @@ The parameters of the LQIR-DG controller approach, including weight coefficients
 
 %% ITSE cost function %%
 \begin{equation}
-    \text{ITSE} = \int_{0}^{t_f} t \left(
+    c = \int_{0}^{t_f} t \left(
         \boldsymbol{x}_{sp} - \boldsymbol{x} 
         \right)^\mathrm{T} \left(\boldsymbol{x}_{sp} - \boldsymbol{x} \right) \, dt
 \end{equation}
-where $t$ and $t_f$ are the response time of the system and the final time, respectively. Finally, when the stopping condition of the TCACS algorithm is reached, the best values of the LQIR-DG parameters are computed, shown in Table \ref{tab:control weight_new}
+where $t$ and $t_f$ are the response time of the system and the final time, respectively. Finally, when the stopping condition of the TCACS algorithm is reached, the best values of the LQIR-DG parameters are computed, shown in Table~\ref{tab:control weight_new}.
 
 
 
@@ -1651,13 +1632,13 @@ To linearize the nonlinear model of the quadrotor around the equilibrium points 
 
 \begin{align}
     f_1 = \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3  (u_{\text{roll}} + d_{\text{roll}})
- + \Gamma_4 \mathrm{d} (u_{\text{yaw}} + u_{\text{yaw}}) 
-+ \Gamma_5 \Omega_{c, r} \\
-    f_2 = \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)  \\
-    f_3 = \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 \Omega_{c, r} \\
-    f_4 = \dot{x}_4 &= x_3\cos(x_4) - x_5\sin(x_2) \\
+ + \Gamma_4  (u_{\text{yaw}} + u_{\text{yaw}}) 
++ \Gamma_5 x_3\Omega_{c, r}  \label{eq:eq_of_motion_start1} \\
+    f_2 = \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_5\cos(x_2))\tan(x_4)  \\
+    f_3 = \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 x_1 \Omega_{c, r} \\
+    f_4 = \dot{x}_4 &= x_3\cos(x_2) - x_5\sin(x_2) \\
     f_5 = \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (u_{\text{yaw}} + d_{\text{yaw}}) + \Gamma_{4}(u_{\text{roll}} + d_{\text{roll}})\\
-    f_6 = \dot{x}_6 &= \dfrac{x_3\sin(x_4) + x_5\cos(x_2)}{\cos(x_4)}~
+    f_6 = \dot{x}_6 &= \dfrac{x_3\sin(x_2) + x_5\cos(x_2)}{\cos(x_4)}~\label{eq:eq_of_motion_end1}
 \end{align}
 
 \begin{align}
@@ -1666,24 +1647,28 @@ To linearize the nonlinear model of the quadrotor around the equilibrium points 
         \vdots & \ddots & \vdots \\
         \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
     \end{bmatrix} \\ =&\begin{bmatrix}
-        \Gamma_1 x_3 & -\Gamma_2 x_5 & \Gamma_1 x_1 - \Gamma_2 x_3 & 0 & -\Gamma_2 x_3 & 0 \\
-        1 & x_3\cos(x_2)\tan(x_4) & a_{23} & a_{24} & 0 & 0 \\
-        \Gamma_6 x_5 - 2\Gamma_7 x_1 & 0 & 0 & 0 & \Gamma_6 x_1 - 2\Gamma_7 x_5 & 0 \\
-        0 & -x_5\cos(x_4) & \cos(x_4) & -x_3\sin(x_4) & -\sin(x_4) & 0 \\
+        \Gamma_1 x_3 & 0 & -\Gamma_2 x_5  + \Gamma_5 \Omega_{c, r} & 0 &  - \Gamma_2 x_3 & 0 \\
+        1 & a_{21} & \sin(x_2)\tan(x4) & a_{24} & \cos(x_2)\tan(x4) & 0 \\
+        a_{31} & 0 & 0 & 0 & \Gamma_6 x_1 + 2\Gamma_7 x_5 & 0 \\
+        0 & -x_3\sin(x_2) - x_5\cos(x_2)  & \cos(x_2) & 0 & -\sin(x_2) & 0 \\
         \Gamma_{10} x_3 & 0 & \Gamma_{10} x_1 - \Gamma_1 x_5 & 0 & -\Gamma_1 x_3 & 0 \\
-        0 & \dfrac{-x_5\cos(x_2)}{\cos(x_4)} & \dfrac{\sin(x_2)}{\cos(x_4)} & a_{64} & \dfrac{\cos(x_2)}{\cos(x_4)} & 0
+        0 & \dfrac{x_3\cos(x_2)-x_5\sin(x_2)}{\cos(x_4)} & \dfrac{\sin(x_2)}{\cos(x_4)} & a_{64} & \dfrac{\cos(x_2)}{\cos(x_4)} & 0
     \end{bmatrix}
 \end{align}
 
 $$
-a_{24} = (x_3\sin(x_2)+x_3\cos(x_2))\sec^2(x_4)
+a_{21} = (x_3\cos(x_2)-x_5\sin(x_2))\tan(x_4)
+$$
+$$
+a_{24} = (x_3\sin(x_2)+x_5\cos(x_2))\sec^2(x_4)
+$$
+$$
+a_{31} = \Gamma_6 x_5 - 2\Gamma_7 x_1 - \Gamma_9\Omega_{c, r}
 $$
 $$
 a_{64} = x_3 + \dfrac{\sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))}{\cos(x_4)^2}
 $$
-$$
-a_{23} = (\sin(x_2)+\cos(x_2))\tan(x_4)
-$$
+
 
 
 
@@ -1808,9 +1793,9 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
 % % \end{equation}
 \begin{equation}
     \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
-        0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & \Gamma_5 \Omega_{c, r} & 0 & 0 & 0 \\
         1 & 0 & 0 & 0 & 0 & 0 \\
-        0 & 0 & 0 & 0 & 0 & 0 \\
+        -\Gamma_9 \Omega_{c, r} & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 1 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 1 & 0
@@ -1891,13 +1876,13 @@ By assuming $\lambda_2 = \mathbf{P}_{\mathrm{a}_{d_i}}\mathbf{x}_{\mathrm{a}_i}$
         -(\mathbf{P}_{\mathrm{a}_{i}} + \mathbf{P}_{\mathrm{a}_{d_i}})\left(
         \mathbf{A}_{\mathrm{a}_i} - \mathbf{S}_{\mathrm{a}_i}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{S}_{\mathrm{a}_i} \mathbf{P}_{\mathrm{a}_i}
         \right) - \left(
-        \mathbf{A} - \mathbf{S}_{\mathrm{a}_i}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{S}_{\mathrm{a}_i} \mathbf{P}_{\mathrm{a}_i}
+        \mathbf{A}_{\mathrm{a}_i}  - \mathbf{S}_{\mathrm{a}_i}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{S}_{\mathrm{a}_i} \mathbf{P}_{\mathrm{a}_i}
         \right)^\mathrm{T}(\mathbf{P}_{\mathrm{a}_{i}} + \mathbf{P}_{\mathrm{a}_{d_i}})=0
     \end{equation}
     where $\mathbf{S}_{\mathrm{a}_i} = \mathbf{B}_{\mathrm{a}_i}{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$ and $\mathbf{S}_{\mathrm{a_d}_i} = \mathbf{B}_{\mathrm{a}_i}{R}_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$. Therefore, $\mathbf{P}_{\mathrm{a}_i} = -\mathbf{P}_{\mathrm{a}_{d_i}}$ and two Ricatti equations have a following solution:
 
 \begin{equation}
-    -\mathbf{A}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{P}_{\mathrm{a}_{i}}\mathbf{A} + \mathbf{P}_{\mathrm{a}_{i}}(\mathbf{S}_{\mathrm{a}_i} - \mathbf{S}_{\mathrm{a_d}_i}) \mathbf{P}_{\mathrm{a}_{i}} - \mathbf{Q}_{i} = 0 
+    -\mathbf{A}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{P}_{\mathrm{a}_{i}}\mathbf{A}_{\mathrm{a}_i}  + \mathbf{P}_{\mathrm{a}_{i}}(\mathbf{S}_{\mathrm{a}_i} - \mathbf{S}_{\mathrm{a_d}_i}) \mathbf{P}_{\mathrm{a}_{i}} - \mathbf{Q}_{i} = 0 
 \end{equation}
 
 
