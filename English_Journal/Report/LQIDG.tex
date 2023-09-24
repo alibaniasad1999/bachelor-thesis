@@ -506,11 +506,11 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
 % \end{align}
 
 
-\begin{align}
-    \dot{p} &= \Gamma_1 pq - \Gamma_2 qr + \Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_5 q \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}} \\
-    \dot{q} &= \Gamma_6 pr - \Gamma_7 (p^2 - r^2) + \Gamma_8  \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_9 p \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
-    \dot{r} &= \Gamma_{10} pq - \Gamma_{1} qr + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_{4}  \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{roll}} + \Gamma_{4} d_{\text{yaw}}
-\end{align}
+% \begin{align}
+%     \dot{p} &= \Gamma_1 pq - \Gamma_2 qr + \Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_5 q \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}} \\
+%     \dot{q} &= \Gamma_6 pr - \Gamma_7 (p^2 - r^2) + \Gamma_8  \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_9 p \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
+%     \dot{r} &= \Gamma_{10} pq - \Gamma_{1} qr + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_{4}  \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{roll}} + \Gamma_{4} d_{\text{yaw}}
+% \end{align}
 
 \begin{align}
     &\colorbox{yellow}{$\dot{p} = \Gamma_1 pq - \Gamma_2 qr + \Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_5 q \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}}$} \\
@@ -568,23 +568,30 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
 In the above equations, $\Gamma_i (i = 1, \ldots, 8)$ is defined as
 \begin{equation}
     \begin{aligned}
-        \Gamma_1 &= \dfrac{\mathrm{I}_{\text{xz}}\left(\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}} + \mathrm{I}_{\text{zz}}\right)}{\mathrm{\Gamma}}, & \Gamma_2 &= \dfrac{\mathrm{I}_{\text{zz}}\left(\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{yy}}\right)+\mathrm{I}_{\text{xz}}^2}{\mathrm{\Gamma}}, & \Gamma_3 &= \dfrac{\mathrm{I}_{\text{zz}}}{\mathrm{\Gamma}}, & \Gamma_4 &= \dfrac{\mathrm{I}_{\text{xz}}}{\mathrm{\Gamma}} \\
-        \Gamma_5 &= \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}, & \Gamma_6 &= \dfrac{\mathrm{I}_{\text{zz}}-\mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}, & \Gamma_7 &= \dfrac{\mathrm{I}_{\text{xz}}}{\mathrm{I}_{\text{yy}}}, & \Gamma_8 &= \dfrac{1}{\mathrm{I}_{\text{yy}}} \\
-        \Gamma_9 &= \dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{yy}}}, & \Gamma_{10} &= \dfrac{\left(\mathrm{I}_{\text{xx}}-\mathrm{I}_{\text{yy}}\right)+\mathrm{I}_{\text{xz}}^2}{\mathrm{\Gamma}}, & \Gamma_{11} &= \dfrac{\mathrm{I}_{\text{xx}}}{\mathrm{\Gamma}} & &
+        \colorbox{yellow}{$\Gamma_1$} &= \colorbox{yellow}{$\dfrac{\mathrm{I}_{\text{xz}}\left(\mathrm{I}_{\text{xx}} - \mathrm{I}_{\text{yy}} + \mathrm{I}_{\text{zz}}\right)}{\mathrm{\Gamma}}$}, & \colorbox{yellow}{$\Gamma_2$} &= \colorbox{yellow}{$\dfrac{\mathrm{I}_{\text{zz}}\left(\mathrm{I}_{\text{zz}} - \mathrm{I}_{\text{yy}}\right)+\mathrm{I}_{\text{xz}}^2}{\mathrm{\Gamma}}$}, & \colorbox{yellow}{$\Gamma_3$} &= \colorbox{yellow}{$\dfrac{\mathrm{I}_{\text{zz}}}{\mathrm{\Gamma}}$}, & \colorbox{yellow}{$\Gamma_4$} &= \colorbox{yellow}{$\dfrac{\mathrm{I}_{\text{xz}}}{\mathrm{\Gamma}}$} \\
+        \colorbox{yellow}{$\Gamma_5$} &= \colorbox{yellow}{$\dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{xx}}}$}, & \colorbox{yellow}{$\Gamma_6$} &= \colorbox{yellow}{$\dfrac{\mathrm{I}_{\text{zz}}-\mathrm{I}_{\text{xx}}}{\mathrm{I}_{\text{yy}}}$}, & \colorbox{yellow}{$\Gamma_7$} &= \colorbox{yellow}{$\dfrac{\mathrm{I}_{\text{xz}}}{\mathrm{I}_{\text{yy}}}$}, & \colorbox{yellow}{$\Gamma_8$} &= \colorbox{yellow}{$\dfrac{1}{\mathrm{I}_{\text{yy}}}$} \\
+        \colorbox{yellow}{$\Gamma_9$} &= \colorbox{yellow}{$\dfrac{\mathrm{I}_{\text{rotor}}}{\mathrm{I}_{\text{yy}}}$}, & \colorbox{yellow}{$\Gamma_{10}$} &= \colorbox{yellow}{$\dfrac{\left(\mathrm{I}_{\text{xx}}-\mathrm{I}_{\text{yy}}\right)+\mathrm{I}_{\text{xz}}^2}{\mathrm{\Gamma}}$}, & \colorbox{yellow}{$\Gamma_{11}$} &= \colorbox{yellow}{$\dfrac{\mathrm{I}_{\text{xx}}}{\mathrm{\Gamma}}$} &
     \end{aligned}
 \end{equation}
-Moreover $\Gamma = \mathrm{J}_{\text{x}}\mathrm{J}_{\text{z}} - \mathrm{J}_{\text{xy}}^2$.
+
+\hl{Moreover $\Gamma = \mathrm{J}_{\text{x}}\mathrm{J}_{\text{z}} - \mathrm{J}_{\text{xy}}^2$.}
 where $\Omega_{c, i}~(i=1, 2, 3, 4)$ is the rotational velocity, computed as
- \begin{align}
-    \Omega_{c, 1}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
-    \Omega_{c, 2}^2 &= \Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}\\
-    \Omega_{c, 3}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}} \\
-    \Omega_{c, 4}^2 &= \Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}
+\begin{align}
+    \colorbox{yellow}{$\Omega_{c, 1}^2$} &= \colorbox{yellow}{$\Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}}$} \\
+    \colorbox{yellow}{$\Omega_{c, 2}^2$} &= \colorbox{yellow}{$\Omega_{\text{mean}}^2 + \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}$} \\
+    \colorbox{yellow}{$\Omega_{c, 3}^2$} &= \colorbox{yellow}{$\Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{pitch}} + \dfrac{1}{4d}u_{\text{yaw}}$} \\
+    \colorbox{yellow}{$\Omega_{c, 4}^2$} &= \colorbox{yellow}{$\Omega_{\text{mean}}^2 - \dfrac{1}{2\mathrm{b\,d}_{\text{cg}}}u_{\text{roll}} - \dfrac{1}{4d}u_{\text{yaw}}$}
 \end{align}
+
+
+
+
+
+
 
 In the above equation, $\Omega_{\text{mean}}$ is the rotational velocity of the rotors. Also, $\mathrm{d}_{\text{cg}}$, $\text{d}$, and $\text{b}$ represent the distance between the rotors and the gravity center, drag factor, and thrust factor, respectively.
 $d_{\text{roll}}$, $d_{\text{pitch}}$, and $d_{\text{yaw}}$ denote the disturbances produced in the body coordinate frame. Additionally,
-$u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$ are control commands generated by the LQIR-DG controller.
+\hl{$u_{\text{roll}}$, $u_{\text{pitch}}$, and $u_{\text{yaw}}$} are control commands generated by the LQIR-DG controller.
 %  $\mathrm{I}_{\text{rotor}}$ is rotor inertia, and 
  $\mathrm{I}_{\text{xx}}$, $\mathrm{I}_{\text{yy}}$, and $\mathrm{I}_{\text{zz}}$ are the moments of inertia.
 Euler angle rates are also determined from angular body rates as follows:
@@ -714,13 +721,13 @@ where $\boldsymbol{\nu}$ is a Gaussian white noise. Moreover, the superscripts $
     \boldsymbol{{\mathrm{\dot x_{\text{roll}}}}}&
     \boldsymbol{{\mathrm{\dot x_{\text{pitch}}}}}&
     \boldsymbol{{\mathrm{\dot x_{\text{yaw}}}}}
-\end{bmatrix}^{\mathrm{T}}$, the linear model of the quadrotor platform represented about the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e^*\!=\!0$ and $\boldsymbol{{\mathrm{u}}}_e^*\!=\!0)$ as
+\end{bmatrix}^{\mathrm{T}}$, the \hl{affine} model of the quadrotor platform \hl{is} represented about the equilibrium points $(\boldsymbol{{\mathrm{x}}}_e^*\!=\!0$ and $\boldsymbol{{\mathrm{u}}}_e^*\!=\!0)$ as
 \begin{equation}\label{eq:linear}
     \boldsymbol{\dot{\mathrm{x}}} = \boldsymbol{\mathrm{A\,x}} + 
     \boldsymbol{\mathrm{B}}
     \left(\boldsymbol{\mathrm{u}} + \boldsymbol{\mathrm{d}}\right)
 \end{equation}
-where $\boldsymbol{\mathrm{d}} = \text{diag}([d_{\text{roll}}, d_{\text{pitch}}, d_{\text{yaw}}])$ denotes the input disturbance.
+\hl{where $\boldsymbol{\mathrm{d}} = \text{diag}([d_{\text{roll}}, d_{\text{pitch}}, d_{\text{yaw}}])$ denotes the input disturbance.}
 $\boldsymbol{\mathrm{A}}$ is the dynamic system matrix, denoted as
 \begin{equation}
     \boldsymbol{\mathrm{A}} = \begin{bmatrix}
@@ -735,7 +742,9 @@ $
             1 & 0
         \end{bmatrix}
 $. Also, $\boldsymbol{\mathrm{B}}$ is the input matrix defined as
-\begin{equation}
+
+\begin{align}
+    \colorbox{yellow}{$
     \boldsymbol{\mathrm{B}} = 
      \begin{bmatrix}
         \Gamma_3 & 0 & \Gamma_4\\
@@ -745,7 +754,8 @@ $. Also, $\boldsymbol{\mathrm{B}}$ is the input matrix defined as
         \Gamma_4 & 0 & \Gamma_{11} \\
         0 & 0 & 0
     \end{bmatrix}
-\end{equation}
+$}
+\end{align}
 % \begin{equation}
 %     \boldsymbol{\mathrm{B}} =
 %     \begin{bmatrix}
@@ -969,32 +979,99 @@ Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respec
 % \end{center}
 % \end{table}
 
+% \begin{table}[H]
+%     \centering
+%     \caption{Quadrotor parameters}
+%     \vspace{-0.5cm}
+%     \renewcommand{\arraystretch}{1.3}
+%     \begin{center}
+%     \begin{tabular}{cccccc}
+%     \hline
+%     Parameter & Unit & Value & Description \\
+%     \hline
+%     $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & Total Mass \\ 
+%     $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ & Drag Factor \\
+%     $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ & Thrust Factor \\
+%     $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & CG Distance \\
+%     $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & Mean Rotor Speed \\
+%     \hline
+%     $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ & Inertia about X-axis \\
+%     $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ & Inertia about Y-axis \\
+%     $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ & Inertia about Z-axis \\
+%     $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ & Rotor Inertia \\
+%     $\mathrm{I}_{\text{xz}}$ & $\mathrm{kg.m^2}$ & $6.87\times 10^{-7}$ & Inertia about XZ-axis \\
+%     \hline
+% \end{tabular}
+% \label{tab:parameters}
+% \end{center}
+% \end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{table}[H]
     \centering
-    \caption{Quadrotor parameters}
-    \vspace{-0.5cm}
-    \renewcommand{\arraystretch}{1.3}
-    \begin{center}
-    \begin{tabular}{cccccc}
-    \hline
-    Parameter & Unit & Value & Description \\
-    \hline
-    $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & Total Mass \\ 
-    $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ & Drag Factor \\
-    $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ & Thrust Factor \\
-    $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & CG Distance \\
-    $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & Mean Rotor Speed \\
-    \hline
-    $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ & Inertia about X-axis \\
-    $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ & Inertia about Y-axis \\
-    $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ & Inertia about Z-axis \\
-    $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ & Rotor Inertia \\
-    $\mathrm{I}_{\text{xz}}$ & $\mathrm{kg.m^2}$ & $6.87\times 10^{-7}$ & Inertia about XZ-axis \\
-    \hline
-\end{tabular}
-\label{tab:parameters}
-\end{center}
+    \colorbox{yellow}{ % Apply the highlight color to the entire table
+    \begin{minipage}{\linewidth} % Ensure the highlight spans the entire line width
+        \centering
+        \caption{Quadrotor parameters}
+        % \vspace{-0.5cm}
+        \renewcommand{\arraystretch}{1.3}
+        % \begin{center}
+        \begin{tabular}{cccccc}
+        \hline
+        Parameter & Unit & Value & Description \\
+        \hline
+        $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & Total Mass \\ 
+        $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ & Drag Factor \\
+        $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ & Thrust Factor \\
+        $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & CG Distance \\
+        $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & Mean Rotor Speed \\
+        \hline
+        $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ & Inertia about X-axis \\
+        $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ & Inertia about Y-axis \\
+        $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ & Inertia about Z-axis \\
+        $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ & Rotor Inertia \\
+        $\mathrm{I}_{\text{xz}}$ & $\mathrm{kg.m^2}$ & $6.87\times 10^{-7}$ & Inertia about XZ-axis \\
+        \hline
+    \end{tabular}
+    \label{tab:parameters}
+    \end{minipage}
+    }
 \end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 % \begin{table}[H]
@@ -1225,13 +1302,16 @@ where $t$ and $t_f$ are the response time of the system and the final time, resp
 \end{table}
 
 \begin{table}[H]
+    \label{tab:control weight_new}
     \centering
     \colorbox{yellow}{ % Apply the highlight color to the entire table
     \begin{minipage}{\linewidth} % Ensure the highlight spans the entire line width
+        \label{tab:control weight_new}
         \caption{LQIR-DG controller parameters}
         \renewcommand{\arraystretch}{1.3}
         \centering
         \begin{tabular}{@{}ccc@{}}
+            
         \toprule
         Channel & Weighting Matrix & Values \\
         \midrule
@@ -1241,9 +1321,10 @@ where $t$ and $t_f$ are the response time of the system and the final time, resp
         -&$R_d$ & $1.2764$ \\
         \bottomrule
         \end{tabular}
-        \label{tab:control_weight_new}
     \end{minipage}
+    \label{tab:control weight_new}
     }
+    \label{tab:control weight_new}
 \end{table}
 
 
@@ -1284,11 +1365,11 @@ where $t$ and $t_f$ are the response time of the system and the final time, resp
 
 
 \subsection{Identification of the 3-DoF quadrotor platform model}
-\noindent As described in section~\ref{sec:state-space}, the parameters of the quadrotor platform, denoted by $\Gamma_i (i=1, \ldots, 11)$, are identified using the NLS-TRR algorithm.
+\noindent As described in section~\ref{sec:state-space}, the parameters of the quadrotor platform, denoted by $\Gamma_i (i=1, \ldots$, \hl{$11$}), are identified using the NLS-TRR algorithm.
 To increase the accuracy of parameter identification, three scenarios are considered according to Table~\ref{tab:identification}.
-In the first scenario, depicted in Figure~\ref{fig:one_degree_identification}, the quadrotor rotates about only one axis (roll, pitch, or yaw axes) to identify the parameters $\Gamma_3$, $\Gamma_5$, $\Gamma_8$, $\Gamma_9$, and $\Gamma_{11}$.
-In the second scenario, according to Figure~\ref{fig:two_degree_identification}, the parameters $\Gamma_1$ and $\Gamma_7$ are estimated by rotating the experimental platform around its roll and pitch axes simultaneously. Finally, Figure~\ref{fig:three_degree_identification} displays the results of the third scenario including the estimation of the parameters $\Gamma_2$, $\Gamma_4$, $\Gamma_6$, and $\Gamma_{10}$ for the UAV model, when the platform freely rotates around three axes.
-After the termination condition is met, the optimal values of the quadrotor parameters are computed and denoted in Table~\ref{tab:true_parameters}. 
+In the first scenario, depicted in \hl{Figure~{\ref{fig:one_degree_identification}}}, the quadrotor rotates about only one axis (roll, pitch, or yaw axes) to identify the parameters \hl{$\Gamma_3$, $\Gamma_5$, $\Gamma_8$, $\Gamma_9$, and $\Gamma_{11}$.}
+In the second scenario, according to \hl{Figure~{\ref{fig:two_degree_identification}}}, the parameters \hl{$\Gamma_1$ and $\Gamma_7$} are estimated by rotating the experimental platform around its roll and pitch axes simultaneously. Finally, \hl{Figure~{\ref{fig:three_degree_identification}}} displays the results of the third scenario including the estimation of the parameters \hl{$\Gamma_2$, $\Gamma_4$, $\Gamma_6$, and $\Gamma_{10}$} for the UAV model, when the platform freely rotates around three axes.
+After the termination condition is met, the optimal values of the quadrotor parameters are computed and denoted in \hl{Table~{\ref{tab:true_parameters}}}. 
 These results illustrate that the outputs of the simulation results for the quadrotor model are consistent with reality.
 
 \begin{table}[H]
@@ -1381,6 +1462,13 @@ These results illustrate that the outputs of the simulation results for the quad
     \label{tab:true_parameters}
     \end{center}
 \end{table}
+
+
+
+
+
+
+
 
 
 
@@ -1549,10 +1637,10 @@ The implementation results show that the platform outputs converge to the desire
 \end{figure}
 \subsubsection{Comparison with the Control Strategies}
 \noindent Figure~\ref{fig:compare} compares the LQIR-DG controller performance with the PID controller and variant of the LQR strategies such as the LQR and LQIR. 
-Moreover, the box plot of all controllers is plotted in Figure~\ref{fig:compare_boxplot} for the cost function, introduced in equation \eqref{eq:min_max_cost_function}. %%%? two controller side by side
+\hl{Moreover, the box plot of all controllers is plotted in Figure~{\ref{fig:compare_boxplot}} for the cost function, introduced in equation~{\eqref{eq:min_max_cost_function}}. %%%? two controller side by side
 The median of Root Mean Square Error (RMSE) is shown in the crossline in the box plot.
-Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) {\cite{CHENG2023}} and Disturbance Observer-Based Control (DOBC) \cite{AGHAYAN202320} are compared in Figure \ref{fig:compare_boxplot_ADR}, when the input disturbances occur according to equation \eqref{eq:disturbance}. For the cost function, denoted in equation \eqref{eq:min_max_cost_function}, the box plot of these robust controllers is illustrated in Figure ?. 
-These results indicate that the proposed controller is able to provide rapid convergence and excellent transient response relative to other controllers for attitude control of the experimental platform.
+Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) {\cite{CHENG2023}} and Disturbance Observer-Based Control (DOBC) {\cite{AGHAYAN202320}} are compared in Figure~{\ref{fig:compare_boxplot_ADR}}, when the input disturbances occur according to equation{\eqref{eq:disturbance}}. For the cost function, denoted in equation {\eqref{eq:min_max_cost_function}}, the box plot of these robust controllers is illustrated in Figure~{\ref{fig:compare_boxplot}}. }
+These results indicate that the proposed controller is able to provide rapid convergence\hl{,} excellent transient response \hl{and robustness to disturbances} relative to other controllers for attitude control of the experimental platform.
 
 \begin{figure}[H]
     \centering
@@ -1853,10 +1941,10 @@ Here, the nonlinear model of the quadrotor, described in equations~{\eqref{eq:eq
     
 
 \begin{align}
-    a_{21} &= \colorbox{yellow}{$(x_3\cos(x_2)-x_5\sin(x_2))\tan(x_4)$} \\
-    a_{24} &= \colorbox{blue!20}{$(x_3\sin(x_2)+x_5\cos(x_2))\sec^2(x_4)$} \\
-    a_{31} &= \colorbox{green!20}{$\Gamma_6 x_5 - 2\Gamma_7 x_1 - \Gamma_9\Omega_{c, r}$} \\
-    a_{64} &= \colorbox{red!20}{$x_3 + \dfrac{\sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))}{\cos(x_4)^2}$}
+    &\colorbox{yellow}{$a_{21} = (x_3\cos(x_2)-x_5\sin(x_2))\tan(x_4)$} \\
+    &\colorbox{yellow}{$a_{24} = (x_3\sin(x_2)+x_5\cos(x_2))\sec^2(x_4)$} \\
+    &\colorbox{yellow}{$a_{31} = \Gamma_6 x_5 - 2\Gamma_7 x_1 - \Gamma_9\Omega_{c, r}$} \\
+    &\colorbox{yellow}{$a_{64} = x_3 + \dfrac{\sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))}{\cos(x_4)^2}$}
 \end{align}
 
 
@@ -1932,6 +2020,7 @@ Here, the nonlinear model of the quadrotor, described in equations~{\eqref{eq:eq
 
 
 \begin{equation}
+    \colorbox{yellow}{$
     \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
         \dfrac{\partial f_1}{\partial u_\text{roll}} & \dfrac{\partial f_1}{\partial u_\text{pitch}} & \dfrac{\partial f_1}{\partial u_\text{yaw}}\\
         \vdots & \vdots & \vdots \\
@@ -1943,9 +2032,20 @@ Here, the nonlinear model of the quadrotor, described in equations~{\eqref{eq:eq
         0 & 0 & 0 \\
         \Gamma_4 & 0 & \Gamma_{11} \\
         0 & 0 & 0
-    \end{bmatrix}
+    \end{bmatrix}$}
 \end{equation}
-Finally, the linearized matrices defined at the equilibrium points are given as:
+
+
+
+
+
+
+
+
+
+
+
+\hl{Finally, the linearized matrices defined at the equilibrium points are given as:}
 % \begin{equation}
 %     \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
 %         \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3 (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)  \\
@@ -1991,7 +2091,9 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
 % %       0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
 % %   \end{bmatrix}
 % % \end{equation}
+
 \begin{equation}
+    \colorbox{yellow}{$
     \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
         0 & 0 & \Gamma_5 \Omega_{c, r} & 0 & 0 & 0 \\
         1 & 0 & 0 & 0 & 0 & 0 \\
@@ -2007,7 +2109,7 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
        0 & 0 & 0 \\
        \Gamma_4 & 0 & \Gamma_{11} \\
        0 & 0 & 0
-   \end{bmatrix}
+   \end{bmatrix}$}
 \end{equation}
 
 
