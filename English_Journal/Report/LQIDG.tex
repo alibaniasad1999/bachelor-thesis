@@ -1444,10 +1444,13 @@ The PID controller parameters are presented in Table~\ref{tab:PID_parameters}.
     \end{center}
 \end{table}
 \subsubsection{Investigating of the Regulation and Tracking Problems}\label{sec:regulation}
-\noindent The results of the proposed approach are presented for tracking the desired roll and pitch angles in Figures~\ref{fig:result} and~\ref{fig:omega}.
+\noindent The results of the proposed approach are presented for tracking the desired roll and pitch angles in 
+\hl{Figures~{\ref{fig:result}} and~{\ref{fig:omega}}.
  %%%? so many of
-Figure~\ref{fig:result}~\ref{sub@fig:regulation} compares the desired and output signals, i.e., the Euler angles during the regulation problem. Moreover, Figure~\ref{fig:result}~\ref{sub@fig:square} compares the desired square wave signals with a frequency of 0.02 Hz and an amplitude of 20 degrees with the output signals, when the quadrotor platform freely rotates around roll and pitch simultaneity.
-Figures~\ref{fig:omega}~\ref{sub@fig:omega_regulation} and~\ref{sub@fig:omega_square} show the rotational velocity commands of the quadrotor in the regulation and tracking problems, respectively. These results demonstrate that the roll and pitch angles are accurately controlled by the proposed approach.
+Figure~{\ref{fig:result}}~{\ref{sub@fig:regulation}} }
+compares the desired and output signals, i.e., the Euler angles during the regulation problem. Moreover, Figure~\ref{fig:result}~\ref{sub@fig:square} compares the desired square wave signals with a frequency of 0.02 Hz and an amplitude of 20 degrees with the output signals, when the quadrotor platform freely rotates around roll and pitch simultaneity.
+\hl{Figures~{\ref{fig:omega}}~{\ref{sub@fig:omega_regulation}} and~{\ref{sub@fig:omega_square}} }
+show the rotational velocity commands of the quadrotor in the regulation and tracking problems, respectively. These results demonstrate that the roll and pitch angles are accurately controlled by the proposed approach.
 
 
 \begin{figure}[H]
@@ -1972,14 +1975,22 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
 
 
 \section{Proof of the LQIR-DG controller}
-Since, the first player determines the control commands, while the second player generates the worst possible disturbance, a performance index of the differential game, described by equation \eqref{eq:min_max_cost_function}, rearranges as
+\hl{Since, the first player determines the control commands, while the second player generates the worst possible disturbance, a performance index of the differential game, described by equation~{\eqref{eq:min_max_cost_function}}, rearranges as}
+
+% \begin{equation}
+%     \max_{d_i}\min{u_i} J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i) = \min_{d_i}\left(-J(\mathbf{x}_{_i}, d_i, u_i)\right)\min_{u_i}J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i)
+% \end{equation}
 \begin{equation}
-    \max_{d_i}\min{u_i} J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i) = \min_{d_i}\left(-J(\mathbf{x}_{_i}, d_i, u_i)\right)\min_{u_i}J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i)
+    \colorbox{yellow}{$\max_{d_i}\min{u_i} J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i) = \min_{d_i}\left(-J(\mathbf{x}_{_i}, d_i, u_i)\right)\min_{u_i}J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i)$}
 \end{equation}
-and subject to the augmented system, denoted in equation \eqref{systemlqidg}. To find the optimal control policy function, $u_i$, it is assumed that the solution for the above optimization problem is unique and $d_i = \mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_1}$.
-Moreover, Pontryagin's maximum principle \cite{kirk2004optimal} is utilized to minimize the following Hamiltonian related to the first player
+\hl{and subject to the augmented system, denoted in equation {\eqref{systemlqidg}}. To find the optimal control policy function, $u_i$, it is assumed that the solution for the above optimization problem is unique and $d_i = \mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_1}$.
+Moreover, Pontryagin's maximum principle~{\cite{kirk2004optimal}} is utilized to minimize the following Hamiltonian related to the first player}
 \begin{equation}
-    \mathcal{H}_1 = \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} + \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i - \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i}) \end{equation}
+    \mathcal{H}_1 = \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} + \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i - \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i}) 
+\end{equation}
+\begin{equation}
+    \colorbox{yellow}{$\mathcal{H}_1 = \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} + \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i - \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i})$}
+\end{equation}
     where $\lambda_1$ is the Lagrangian variable related to the first player. Hence, the first-order necessary conditions for a minimize of this Hamiltonian are given by
     \begin{equation}\label{eq:Hamiltonian_u}
         \dfrac{\partial \mathcal{H}_1}{\partial u_i} = 0 \Rightarrow Ru_i + \mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_1 = 0 \Rightarrow u_i = -R^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_1
