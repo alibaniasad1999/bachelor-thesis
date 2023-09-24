@@ -219,10 +219,10 @@ Linear Quadratic Controller \sep~Differential Game Theory \sep~Quadrotor  \sep~3
 To provide a faster control command in facing the modeling error and reduce the disturbance effect in the attitude control, \hl{the approaches such as Active Disturbance Rejection Control (ADRC)~{\cite{CHENG2023}}, nonlinear, and robust~\mbox{\cite{DING2022580, CORTESROMERO202063}}
  techniques can be found in the literature.} ADRC is a model-free control technique used for systems with disturbances and unknown dynamics. In Ref~\cite{WEI2022599}, the authors propose a robust U-model active disturbance rejection control (RUADRC) that incorporates the core concepts of U-model control and Glover-McFarlane control to improve the positioning accuracy of a piezoelectric nanopositioning stage, reducing phase lag and enhancing disturbance rejection ability, leading to more accurate and faster positioning compared to linear active disturbance rejection control (LADRC). 
 
-\hl{In the nonlinear control category, a Sliding Mode Control (SMC)~\mbox{\cite{LABBADI2020290, MOFID2022455}} law is applied based on the }mathematical model of the plant and adopted for parameters perturbations. Moreover, this strategy is able to eliminate the disturbances of the system related to its high-gain feedback~\cite{YANG2021175}. In Refs~\cite{WU2022436}, SMC method has been implemented to solve the nonlinear tracking problem for attitude control of the quadrotor, while the mismodelling error including time-varying mass is considered. Moreover, in another strategy of nonlinear control, the intelligent approaches such as Reinforcement Learning (RL)~\mbox{\cite{Hwangbo_2017, LIN2020135}}, iterative learning~\cite{electronics10202474}, neural network~\cite{JIN202012241}, and fuzzy logic~\cite{GLIDA2022} have also been employed to control the attitude of the quadrotor. Besides, reinforcement learning has been utilized to train the control policy for the attitude of the quadrotor when the disturbance occurs~\cite{WANG2023222}.
+\hl{In the nonlinear control category, a Sliding Mode Control (SMC)~\mbox{\cite{LABBADI2020290, MOFID2022455}} law is applied based on the mathematical model of the plant and adopted for parameters perturbations. Moreover, this strategy is able to eliminate the disturbances of the system related to its high-gain feedback~{\cite{YANG2021175}}. In Refs~{\cite{WU2022436}}, SMC method has been implemented to solve the nonlinear tracking problem for attitude control of the quadrotor, while the mismodelling error including time-varying mass is considered. Moreover, in another strategy of nonlinear control, the intelligent approaches such as Reinforcement Learning (RL)~\mbox{\cite{Hwangbo_2017, LIN2020135}}, iterative learning~{\cite{electronics10202474}}, neural network~{\cite{JIN202012241}}, and fuzzy logic~{\cite{GLIDA2022}} have also been employed to control the attitude of the quadrotor. Besides, reinforcement learning has been utilized to train the control policy for the attitude of the quadrotor when the disturbance occurs~{\cite{WANG2023222}}.}
 
 
-The robust control strategy explicitly deals with parameters or disturbances. The robust algorithms can be categorized into two approaches: robust methods and robust control structure. Robust methods are utilized in linear and nonlinear control systems to achieve robust stability and/or performance in the presence of bounded modelling errors. In Ref~\cite{MIRANDACOLORADO202047}, a Robust-PID strategy has been utilized to control the attitude dynamics of the quadrotor in presence of the aerodynamic disturbances like wind. In another approach such as H$_{\infty}$~\cite{WANG201910, REKABI202081} and $\mu$-synthesis~\cite{RODRIGUEZMARTINEZ2023739}, a minimaximization of the cost function including control effort and regulation performance is utilized to produce the angular velocity commands for the attitude dynamics of the quadrotor while a worst-case scenario related to maximum uncertainty and disturbance is considered. 
+\hl{The robust control strategy explicitly deals with parameters or disturbances. The robust algorithms can be categorized into two approaches: robust methods and robust control structure. Robust methods are utilized in linear and nonlinear control systems to achieve robust stability and/or performance in the presence of bounded modelling errors. In Ref~{\cite{MIRANDACOLORADO202047}}, a Robust-PID strategy has been utilized to control the attitude dynamics of the quadrotor in presence of the aerodynamic disturbances like wind. In another approach such as H$_{\infty}$~\mbox{\cite{WANG201910, REKABI202081}} and $\mu$-synthesis~{\cite{RODRIGUEZMARTINEZ2023739}}, a minimaximization of the cost function including control effort and regulation performance is utilized to produce the angular velocity commands for the attitude dynamics of the quadrotor while a worst-case scenario related to maximum uncertainty and disturbance is considered.}
 
 \hl{In contrast with the policy of the robust control structure, the optimal control categories such as }
 Linear Quadratic Gaussian (LQG)~\cite{7367782}, Linear Quadratic Regulator (LQR)~\cite{7064553_LQR}, Linear Quadratic Integral Regulator (LQIR)~\cite{article_LQIR}, and Model Predictive Controller (MPC)~\cite{SANTOS2022123, CAMARA20231} \hl{have been utilized}
@@ -511,6 +511,37 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
     \dot{q} &= \Gamma_6 pr - \Gamma_7 (p^2 - r^2) + \Gamma_8  \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_9 p \Omega_{c, r} + \Gamma_8 d_{\text{pitch}} \\
     \dot{r} &= \Gamma_{10} pq - \Gamma_{1} qr + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_{4}  \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{roll}} + \Gamma_{4} d_{\text{yaw}}
 \end{align}
+
+
+\begin{align}
+    \colorbox{yellow}{$\dot{p}$} &= \colorbox{yellow}{$\Gamma_1 pq$} - \colorbox{yellow}{$\Gamma_2 qr$} + \colorbox{yellow}{$\Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_5 q \Omega_{c, r}$} + \colorbox{yellow}{$\Gamma_3 d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_4 d_{\text{yaw}}$} \\
+    \colorbox{yellow}{$\dot{q}$} &= \colorbox{yellow}{$\Gamma_6 pr$} - \colorbox{yellow}{$\Gamma_7 (p^2 - r^2)$} + \colorbox{yellow}{$\Gamma_8 \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2)$} + \colorbox{yellow}{$\Gamma_9 p \Omega_{c, r}$} + \colorbox{yellow}{$\Gamma_8 d_{\text{pitch}}$} \\
+    \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
+\end{align}
+
+\begin{align}
+    \colorbox{yellow}{$\dot{p}$} &= \colorbox{yellow}{$\Gamma_1 pq$} - \colorbox{yellow}{$\Gamma_2 qr$} + \colorbox{yellow}{$\Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_5 q \Omega_{c, r}$} - \colorbox{yellow}{$\Gamma_3 d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_4 d_{\text{yaw}}$} \\
+    \colorbox{yellow}{$\dot{q}$} &= \colorbox{yellow}{$\Gamma_6 pr$} - \colorbox{yellow}{$\Gamma_7 (p^2 - r^2)$} + \colorbox{yellow}{$\Gamma_8 \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2)$} + \colorbox{yellow}{$\Gamma_9 p \Omega_{c, r}$} \colorbox{yellow}{$\Gamma_8 d_{\text{pitch}}$}  \\
+    \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} - \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
+\end{align}
+
+
+% \begin{align}
+%     \colorbox{yellow}{$\dot{p}$} &= \colorbox{yellow}{$\Gamma_1 pq$} - \colorbox{yellow}{$\Gamma_2 qr$} + \colorbox{yellow}{$\Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_5 q \Omega_{c, r}$} - \colorbox{yellow}{$\Gamma_3 d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_4 d_{\text{yaw}}$} \\
+%     \colorbox{yellow}{$\dot{q}$} &= \colorbox{yellow}{$\Gamma_6 pr$} - \colorbox{yellow}{$\Gamma_7 (p^2 - r^2)$} + \colorbox{yellow}{$\Gamma_8 \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2)$} + \colorbox{yellow}{$\Gamma_9 p \Omega_{c, r}$} - \colorbox{yellow}{$\Gamma_8 d_{\text{pitch}}$} \\
+%     \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} - \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
+% \end{align}
+
+\begin{align}
+    \colorbox{yellow}{$\dot{p}$} &= \colorbox{yellow}{$\Gamma_1 pq$} - \colorbox{yellow}{$\Gamma_2 qr$} + \colorbox{yellow}{$\Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} \notag \\
+    &\quad + \colorbox{yellow}{$\Gamma_5 q \Omega_{c, r}$} - \colorbox{yellow}{$\Gamma_3 d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_4 d_{\text{yaw}}$} \\
+    \colorbox{yellow}{$\dot{q}$} &= \colorbox{yellow}{$\Gamma_6 pr$} - \colorbox{yellow}{$\Gamma_7 (p^2 - r^2)$} + \colorbox{yellow}{$\Gamma_8 \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2)$} + \colorbox{yellow}{$\Gamma_9 p \Omega_{c, r}$} \notag \\
+    &\quad - \colorbox{yellow}{$\Gamma_8 d_{\text{pitch}}$} \\
+    \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} \notag \\
+    &\quad + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} - \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
+\end{align}
+
+
 % \begin{align}
 % &\dot p = \dfrac{\mathrm{I}_{\text{yy}} - \mathrm{I}_{\text{zz}}}
 % {\mathrm{I}_{\text{xx}}} qr + q \dfrac{\mathrm{I}_{\text{rotor}}}
@@ -1034,10 +1065,10 @@ Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respec
 % \end{table}
 
 
-\subsection{Challenges in Designing and Implementation}
+% \subsection{Challenges in Designing and Implementation}
 
 
-\subsection{Tuning of LQIR-DG Weighting Matrices}
+\subsection{Setting of the LQIR-DG controller parameters}
 
 % The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the LQIR-DG weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller.
 % Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}])$, and $R_d$ is individually optimized for each channel.
@@ -1047,78 +1078,203 @@ Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respec
 
 
 
-
-The parameters of the LQIR-DG controller approach, including weight coefficients ($\boldsymbol{\mathrm{Q}}_i$ for $i=$ roll, pitch, yaw, $R_d$, and $R$) are tuned using a heuristic optimization algorithm based on the Tabu Continuous Ant Colony System (TCACS) \cite{article_TCACS} approach. In this method, ants utilize the concepts of promising lists and tabu balls to move toward the goal of ants gradually. The pseudocode of TCACS is shown in Figure \ref{fig:TCACS_code}. For this purpose, ants find promising areas to contain the global minimum and perform searching within tabu balls of the bad regions. TCACS parameters are shown in Table \ref{tab:TCAC_par}. Here, it is assumed that the value of $R$ is identical for all attitude channels and considered with the value of 1. Moreover, the initial values of the ants position ($ \boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}$ and $R_d$) for $l=1, \ldots, N$ is selected using a random distribution. The cost is denoted in iteration i using the quality of the tracking error between the set-point, $\boldsymbol{\mathrm{x}}_{sp}$, and the quadrotor states, $\boldsymbol{x} = \begin{bmatrix}
+\hl{
+The parameters of the LQIR-DG controller approach, including weight coefficients ($\boldsymbol{\mathrm{Q}}_i$ for $i=$ roll, pitch, yaw, $R_d$, and $R$) are tuned using a heuristic optimization algorithm based on the Tabu Continuous Ant Colony System (TCACS) {\cite{article_TCACS}} approach. In this method, ants utilize the concepts of promising lists and tabu balls to move toward the goal of ants gradually. The pseudocode of TCACS is shown in Figure {\ref{fig:TCACS_code}}. For this purpose, ants find promising areas to contain the global minimum and perform searching within tabu balls of the bad regions. TCACS parameters are shown in Table {\ref{tab:TCAC_par}}.
+Here, it is assumed that the value of $R$ is identical for all attitude channels and considered with the value of 1. Moreover, the initial values of the ants position ($ \boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}$ and $R_d$) for $l=1, \ldots, N$ is selected using a random distribution. The cost is denoted in iteration i using the quality of the tracking error between the set-point, $\boldsymbol{\mathrm{x}}_{sp}$, and the quadrotor states, $\boldsymbol{x} = \begin{bmatrix}
     \boldsymbol{x}_{\text{roll}} & \boldsymbol{x}_{\text{pitch}} & \boldsymbol{x}_{\text{yaw}}
-\end{bmatrix}^{\mathrm{T}}$ as
+\end{bmatrix}^{\mathrm{T}}$ as}
 
 %% ITSE cost function %%
+% \begin{equation}
+%     c = \int_{0}^{t_f} t \left(
+%         \boldsymbol{x}_{sp} - \boldsymbol{x} 
+%         \right)^\mathrm{T} \left(\boldsymbol{x}_{sp} - \boldsymbol{x} \right) \, dt
+% \end{equation}
+
+% \begin{equation}
+%     \textcolor{yellow}{c = \int_{0}^{t_f} t \left(
+%         \boldsymbol{x}_{sp} - \boldsymbol{x} 
+%         \right)^\mathrm{T} \left(\boldsymbol{x}_{sp} - \boldsymbol{x} \right) \, dt}
+% \end{equation}
+
 \begin{equation}
-    c = \int_{0}^{t_f} t \left(
+    \colorbox{yellow}{$c = \int_{0}^{t_f} t \left(
         \boldsymbol{x}_{sp} - \boldsymbol{x} 
-        \right)^\mathrm{T} \left(\boldsymbol{x}_{sp} - \boldsymbol{x} \right) \, dt
+        \right)^\mathrm{T} \left(\boldsymbol{x}_{sp} - \boldsymbol{x} \right) \, dt$}
 \end{equation}
-where $t$ and $t_f$ are the response time of the system and the final time, respectively. Finally, when the stopping condition of the TCACS algorithm is reached, the best values of the LQIR-DG parameters are computed, shown in Table~\ref{tab:control weight_new}.
 
 
+\hl{
+where $t$ and $t_f$ are the response time of the system and the final time, respectively. Finally, when the stopping condition of the TCACS algorithm is reached, the best values of the LQIR-DG parameters are computed, shown in Table~{\ref{tab:control weight_new}}.
+}
+
+
+% \begin{figure}[H]
+%     \begin{algorithm}[H]
+%         \caption{\hl{Tabu Continuous Ant Colony System (TCACS)}}
+%         \begin{algorithmic}[1]
+%             \Procedure{TCACS}{}
+%             \State Initialize parameters, lists, and values
+%             \While{not terminated}
+%                 \If{first iteration}
+%                     \State Sample initial ant positions
+%                 \Else
+%                     \State Move ants
+%                 \EndIf
+%                 \State Update structures and distributions
+%             \EndWhile
+%             \EndProcedure
+%         \end{algorithmic}
+%         \label{alg:TCACS_code}
+%     \end{algorithm}
+%     \vspace{-0.7cm}
+%     \caption{Pseudo-code of the TCACS optimization algorithm \cite{article_TCACS}.}
+%     \label{fig:TCACS_code}
+% \end{figure}
 
 \begin{figure}[H]
-    \begin{algorithm}[H]
-        \caption{Tabu Continuous Ant Colony System (TCACS)}
-        \begin{algorithmic}[1]
-            \Procedure{TCACS}{}
-            \State Initialize parameters, lists, and values
-            \While{not terminated}
-                \If{first iteration}
-                    \State Sample initial ant positions
-                \Else
-                    \State Move ants
-                \EndIf
-                \State Update structures and distributions
-            \EndWhile
-            \EndProcedure
-        \end{algorithmic}
-        \label{alg:TCACS_code}
-    \end{algorithm}
-    \vspace{-0.7cm}
-    \caption{Pseudo-code of the TCACS optimization algorithm \cite{article_TCACS}.}
-    \label{fig:TCACS_code}
+    \colorbox{yellow}{ % Apply the highlight color to the entire algorithm
+    \begin{minipage}{\linewidth} % Ensure the highlight spans the entire line width
+        \begin{algorithm}[H]
+            \caption{Tabu Continuous Ant Colony System (TCACS)}
+            \begin{algorithmic}[1]
+                \Procedure{TCACS}{}
+                \State Initialize parameters, lists, and values
+                \While{not terminated}
+                    \If{first iteration}
+                        \State Sample initial ant positions
+                    \Else
+                        \State Move ants
+                    \EndIf
+                    \State Update structures and distributions
+                \EndWhile
+                \EndProcedure
+            \end{algorithmic}
+            \label{alg:TCACS_code}
+        \end{algorithm}
+        \vspace{-0.7cm}
+        \caption{Pseudo-code of the TCACS optimization algorithm \cite{article_TCACS}.}
+        \label{fig:TCACS_code}
+    \end{minipage}
+    }
 \end{figure}
 
+
+% \begin{table}[H]
+%     \centering
+%     \caption{\hl{Parameters of the TCACS optimization algorithm.}}
+%     \renewcommand{\arraystretch}{1.3}
+%     \begin{tabular}{@{}ccc@{}}
+%     \toprule
+%     Parameter & Value & Description \\
+%     \midrule
+%     N & 15 & Number of Ants\\
+%     $\mathrm{I}_{\max}$ & $10000$ & Maximum of Iteration \\
+%     Tolerance &	$10^{-\!4}$ &	Maximum accepted error \\
+%     \bottomrule
+% \end{tabular}
+% \label{tab:TCAC_par} %%%? R in above is not matrix i have changed
+% %%%? need to know where weighting matrix came from
+% \end{table}
+
+% \begin{table}[H]
+%     \centering
+%     \caption{LQIR-DG controller parameters}
+%     \renewcommand{\arraystretch}{1.3}
+%     \begin{tabular}{@{}ccc@{}}
+%     \toprule
+%     Channel & Weighting Matrix & Values \\
+%     \midrule
+%     Roll & $\mathbf{Q_{roll}}$ & $\text{diag}([0.02, 65.96, 83.04, 0.00])$ \\
+%     Pitch & $\mathbf{Q_{pitch}}$ & $\text{diag}([435.01, 262.60, 262.60, 0.00])$ \\
+%     Yaw & $\mathbf{Q_{yaw}}$ & $\text{diag}([4 \times 10^{-4}, 0.00, 0.133, 0])$ \\
+%     -&$R_d$ & $1.2764$ \\
+%     \bottomrule
+%     \end{tabular}
+%     \label{tab:control weight_new} %%%? R in above is not matrix i have changed
+%     %%%? need to know where weighting matrix came from
+% \end{table}
+
 \begin{table}[H]
     \centering
-    \caption{Parameters of the TCACS optimization algorithm.}
-    \renewcommand{\arraystretch}{1.3}
-    \begin{tabular}{@{}ccc@{}}
-    \toprule
-    Parameter & Value & Description \\
-    \midrule
-    N & 15 & Number of Ants\\
-    $\mathrm{I}_{\max}$ & $10000$ & Maximum of Iteration \\
-    Tolerance &	$10^{-\!4}$ &	Maximum accepted error \\
-    \bottomrule
-\end{tabular}
-\label{tab:TCAC_par} %%%? R in above is not matrix i have changed
-%%%? need to know where weighting matrix came from
+    \colorbox{yellow}{ % Apply the highlight color to the entire table
+    \begin{minipage}{\linewidth} % Ensure the highlight spans the entire line width
+        \caption{Parameters of the TCACS optimization algorithm.}
+        \renewcommand{\arraystretch}{1.3}
+        \centering
+        \begin{tabular}{@{}ccc@{}}
+        \toprule
+        Parameter & Value & Description \\
+        \midrule
+        N & 15 & Number of Ants\\
+        $\mathrm{I}_{\max}$ & $10000$ & Maximum of Iteration \\
+        Tolerance &	$10^{-4}$ &	Maximum accepted error \\
+        \bottomrule
+        \end{tabular}
+        \label{tab:TCAC_par}
+    \end{minipage}
+    }
 \end{table}
 
 \begin{table}[H]
     \centering
-    \caption{LQIR-DG controller parameters}
-    \renewcommand{\arraystretch}{1.3}
-    \begin{tabular}{@{}ccc@{}}
-    \toprule
-    Channel & Weighting Matrix & Values \\
-    \midrule
-    Roll & $\mathbf{Q_{roll}}$ & $\text{diag}([0.02, 65.96, 83.04, 0.00])$ \\
-    Pitch & $\mathbf{Q_{pitch}}$ & $\text{diag}([435.01, 262.60, 262.60, 0.00])$ \\
-    Yaw & $\mathbf{Q_{yaw}}$ & $\text{diag}([4 \times 10^{-4}, 0.00, 0.133, 0])$ \\
-    -&$R_d$ & $1.2764$ \\
-    \bottomrule
-    \end{tabular}
-    \label{tab:control weight_new} %%%? R in above is not matrix i have changed
-    %%%? need to know where weighting matrix came from
+    \colorbox{yellow}{ % Apply the highlight color to the entire table
+    \begin{minipage}{\linewidth} % Ensure the highlight spans the entire line width
+        \caption{LQIR-DG controller parameters}
+        \renewcommand{\arraystretch}{1.3}
+        \centering
+        \begin{tabular}{@{}ccc@{}}
+        \toprule
+        Channel & Weighting Matrix & Values \\
+        \midrule
+        Roll & $\mathbf{Q_{roll}}$ & $\text{diag}([0.02, 65.96, 83.04, 0.00])$ \\
+        Pitch & $\mathbf{Q_{pitch}}$ & $\text{diag}([435.01, 262.60, 262.60, 0.00])$ \\
+        Yaw & $\mathbf{Q_{yaw}}$ & $\text{diag}([4 \times 10^{-4}, 0.00, 0.133, 0])$ \\
+        -&$R_d$ & $1.2764$ \\
+        \bottomrule
+        \end{tabular}
+        \label{tab:control_weight_new}
+    \end{minipage}
+    }
 \end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Identification of the 3-DoF quadrotor platform model}
 \noindent As described in section~\ref{sec:state-space}, the parameters of the quadrotor platform, denoted by $\Gamma_i (i=1, \ldots, 11)$, are identified using the NLS-TRR algorithm.
 To increase the accuracy of parameter identification, three scenarios are considered according to Table~\ref{tab:identification}.
