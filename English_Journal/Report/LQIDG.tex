@@ -1985,74 +1985,79 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
 \end{equation}
 \hl{and subject to the augmented system, denoted in equation {\eqref{systemlqidg}}. To find the optimal control policy function, $u_i$, it is assumed that the solution for the above optimization problem is unique and $d_i = \mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_1}$.
 Moreover, Pontryagin's maximum principle~{\cite{kirk2004optimal}} is utilized to minimize the following Hamiltonian related to the first player}
-\begin{equation}
-    \mathcal{H}_1 = \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} + \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i - \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i}) 
-\end{equation}
+% \begin{equation}
+%     \mathcal{H}_1 = \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} + \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i - \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i}) 
+% \end{equation}
 \begin{equation}
     \colorbox{yellow}{$\mathcal{H}_1 = \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} + \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i - \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i})$}
 \end{equation}
-    where $\lambda_1$ is the Lagrangian variable related to the first player. Hence, the first-order necessary conditions for a minimize of this Hamiltonian are given by
+    \hl{where $\lambda_1$ is the Lagrangian variable related to the first player. Hence, the first-order necessary conditions for a minimize of this Hamiltonian are given by}
     \begin{equation}\label{eq:Hamiltonian_u}
-        \dfrac{\partial \mathcal{H}_1}{\partial u_i} = 0 \Rightarrow Ru_i + \mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_1 = 0 \Rightarrow u_i = -R^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_1
+        \colorbox{yellow}{$\dfrac{\partial \mathcal{H}_1}{\partial u_i} = 0 \Rightarrow Ru_i + \mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_1 = 0 \Rightarrow u_i = -R^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_1$}
     \end{equation}
+    
 
-\begin{equation}\label{eq:Hamiltonian_lambda}
-    \dot{\lambda}_1 = -\dfrac{\partial \mathcal{H}_1}{\partial \mathbf{x}_{\mathrm{a}_i}} = -( \mathbf{Q}_i - 
-    \mathbf{K}_{d_i}^\mathrm{T} R_{d} \mathbf{K}_{d_i} -\lambda_1^\mathrm{T}(\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i})) \mathbf{x}_{\mathrm{a}_i} 
-\end{equation}
-
-\begin{equation}\label{eq:Hamiltonian_x}
-    \dot{\mathbf{x}}_{\mathrm{a}_i}  = \dfrac{\partial \mathcal{H}_1}{\partial \lambda_1} = \mathbf{A}_{\mathrm{a}_i} \mathbf{x}_{\mathrm{a}_i}  + \mathbf{B}_{\mathrm{a}_i} \mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i} \mathbf{K}_{d_i} \mathbf{x}_{\mathrm{a}_i} 
-\end{equation}
-By assuming $\lambda_1 = \mathbf{P}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}$, 
- and $\dot{\mathbf{P}}_{\mathrm{a}_i} = 0$, and combining equations \eqref{eq:Hamiltonian_u}, \eqref{eq:Hamiltonian_lambda} and \eqref{eq:Hamiltonian_x}, the Riccati equation for first player is obtained as follows:
-\begin{equation}\label{eq:riccatti}
-    -( \mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i})^\mathrm{T} \mathbf{P}_{\mathrm{a}_i} - \mathbf{P}_{\mathrm{a}_i} (\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}) + \mathbf{P}_{\mathrm{a}_i} \mathbf{B}_{\mathrm{a}_i} \mathbf{R}^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T} \mathbf{P}_{\mathrm{a}_i} - \mathbf{Q}_{\mathrm{a}_i}  + \mathbf{K}_{d_i}^\mathrm{T} R_{d} \mathbf{K}_{d_i} = 0 
-\end{equation}
-Moreover, the optimal control is obtained as follows:
+    \begin{equation}\label{eq:Hamiltonian_lambda}
+        \colorbox{yellow}{$\dot{\lambda}_1 = -\dfrac{\partial \mathcal{H}_1}{\partial \mathbf{x}_{\mathrm{a}_i}} = -( \mathbf{Q}_i - 
+        \mathbf{K}_{d_i}^\mathrm{T} R_{d} \mathbf{K}_{d_i} -\lambda_1^\mathrm{T}(\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i})) \mathbf{x}_{\mathrm{a}_i}$}
+    \end{equation}
+    
+    \begin{equation}\label{eq:Hamiltonian_x}
+        \colorbox{yellow}{$\dot{\mathbf{x}}_{\mathrm{a}_i}  = \dfrac{\partial \mathcal{H}_1}{\partial \lambda_1} = \mathbf{A}_{\mathrm{a}_i} \mathbf{x}_{\mathrm{a}_i}  + \mathbf{B}_{\mathrm{a}_i} \mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i} \mathbf{K}_{d_i} \mathbf{x}_{\mathrm{a}_i}$}
+    \end{equation}
+    
+    \hl{By assuming $\lambda_1 = \mathbf{P}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}$, 
+    and $\dot{\mathbf{P}}_{\mathrm{a}_i} = 0$, and combining equations~{\eqref{eq:Hamiltonian_u}},~{\eqref{eq:Hamiltonian_lambda}}, and~{\eqref{eq:Hamiltonian_x}}, the Riccati equation for the first player is obtained as follows:}
+    
+    \begin{equation}\label{eq:riccatti}
+        \colorbox{yellow}{$-( \mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i})^\mathrm{T} \mathbf{P}_{\mathrm{a}_i} - \mathbf{P}_{\mathrm{a}_i} (\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}) + \mathbf{P}_{\mathrm{a}_i} \mathbf{B}_{\mathrm{a}_i} \mathbf{R}^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T} \mathbf{P}_{\mathrm{a}_i} - \mathbf{Q}_{\mathrm{a}_i}  + \mathbf{K}_{d_i}^\mathrm{T} R_{d} \mathbf{K}_{d_i} = 0$}
+    \end{equation}
+\hl{Moreover, the optimal control is obtained as follows:}
 \begin{equation}
-    u_i = -\mathbf{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}
+    \colorbox{yellow}{$u_i = -\mathbf{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}$}
 \end{equation}
-Assume that $\mathbf{K}_{\mathrm{a}_i} = -R^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_i}$, then $u_i = \mathbf{K}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}$. Similarly, the second player is obtained using the following Hamiltonian 
+\hl{Assume that $\mathbf{K}_{\mathrm{a}_i} = -R^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_i}$, then $u_i = \mathbf{K}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}$. Similarly, the second player is obtained using the following Hamiltonian }
 \begin{equation}
-    \mathcal{H}_2 = -\dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} - \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i + \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i}) 
+    \colorbox{yellow}{$\mathcal{H}_2 = -\dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} - \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i + \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i})$}
 \end{equation}
-Here $\lambda_2$ is the Lagrangian variable related to the second player. Therefore, the necessary conditions for a maximum worst case are computed as
+\hl{Here $\lambda_2$ is the Lagrangian variable related to the second player. Therefore, the necessary conditions for a maximum worst case are computed as}
 \begin{equation}\label{eq:Hamiltonian_d}
-    \dfrac{\partial \mathcal{H}_2}{\partial d_i} = 0 \Rightarrow R_d d_i + \mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_2 = 0 \Rightarrow d_i = -R_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_2
+    \colorbox{yellow}{$\dfrac{\partial \mathcal{H}_2}{\partial d_i} = 0 \Rightarrow R_d d_i + \mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_2 = 0 \Rightarrow d_i = -R_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\lambda_2$}
 \end{equation}
 
 \begin{equation}\label{eq:Hamiltonian_lambda_d}
-    \dot{\lambda}_2 = -\dfrac{\partial \mathcal{H}_1}{\partial \mathbf{x}_{\mathrm{a}_i}} = ( \mathbf{Q}_i - 
-    \mathbf{K}_{d_i}^\mathrm{T} R \mathbf{K}_{d_i} -\lambda_2^\mathrm{T}(\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i})) \mathbf{x}_{\mathrm{a}_i} 
+    \colorbox{yellow}{$\dot{\lambda}_2 = -\dfrac{\partial \mathcal{H}_2}{\partial \mathbf{x}_{\mathrm{a}_i}} = ( \mathbf{Q}_i - 
+    \mathbf{K}_{d_i}^\mathrm{T} R \mathbf{K}_{d_i} -\lambda_2^\mathrm{T}(\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i})) \mathbf{x}_{\mathrm{a}_i}$}
 \end{equation}
 
 \begin{equation}\label{eq:Hamiltonian_x_d}
-    \dot{\mathbf{x}}_{\mathrm{a}_i}  = \dfrac{\partial \mathcal{H}_2}{\partial \lambda_2} = \mathbf{A}_{\mathrm{a}_i} \mathbf{x}_{\mathrm{a}_i}  +  \mathbf{B}_{\mathrm{a}_i} \mathbf{K}_{d_i} \mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i} \mathbf{d}_i 
+    \colorbox{yellow}{$\dot{\mathbf{x}}_{\mathrm{a}_i}  = \dfrac{\partial \mathcal{H}_2}{\partial \lambda_2} = \mathbf{A}_{\mathrm{a}_i} \mathbf{x}_{\mathrm{a}_i}  +  \mathbf{B}_{\mathrm{a}_i} \mathbf{K}_{d_i} \mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i} \mathbf{d}_i$}
 \end{equation}
-By assuming $\lambda_2 = \mathbf{P}_{\mathrm{a}_{d_i}}\mathbf{x}_{\mathrm{a}_i}$, 
- and $\dot{\mathbf{P}}_{\mathrm{a}_{d_i}} = 0$, and combining equations \eqref{eq:Hamiltonian_d}, \eqref{eq:Hamiltonian_lambda_d} and \eqref{eq:Hamiltonian_x_d}, the Riccati equation for first player is obtained as follows:
+\hl{By assuming $\lambda_2 = \mathbf{P}_{\mathrm{a}_{d_i}}\mathbf{x}_{\mathrm{a}_i}$, 
+ and $\dot{\mathbf{P}}_{\mathrm{a}_{d_i}} = 0$, and combining equations~{\eqref{eq:Hamiltonian_d}},~{\eqref{eq:Hamiltonian_lambda_d}} and~{\eqref{eq:Hamiltonian_x_d}}, the Riccati equation for first player is obtained as follows:}
  \begin{equation}\label{eq:riccatti_d}
-    -( \mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{\mathrm{a}_i})^\mathrm{T} \mathbf{P}_{\mathrm{a}_{d_i}} - \mathbf{P}_{\mathrm{a}_{d_i}} (\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{\mathrm{a}_i}) + \mathbf{P}_{\mathrm{a}_{d_i}} \mathbf{B}_{\mathrm{a}_i} \mathbf{R}_d^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T} \mathbf{P}_{\mathrm{a}_{d_i}} + \mathbf{Q}_{\mathrm{a}_i}  + \mathbf{K}_{\mathrm{a}_i}^\mathrm{T} R \mathbf{K}_{\mathrm{a}_i} = 0
- \end{equation}
- Moreover, the worst disturbance is obtained as follows:
-    \begin{equation}
-        d_i = -R_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{d_i}}\mathbf{x}_{\mathrm{a}_i}
-    \end{equation}
-    Therefore, $\mathbf{K}_{\mathrm{d}_i} = -R_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{d_i}}$.
-     By combining two Riccati equations (\eqref{eq:riccatti} and \eqref{eq:riccatti_d}), the following equation is computed:
+    \colorbox{yellow}{$-( \mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{\mathrm{a}_i})^\mathrm{T} \mathbf{P}_{\mathrm{a}_{d_i}} - \mathbf{P}_{\mathrm{a}_{d_i}} (\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{\mathrm{a}_i}) + \mathbf{P}_{\mathrm{a}_{d_i}} \mathbf{B}_{\mathrm{a}_i} \mathbf{R}_d^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T} \mathbf{P}_{\mathrm{a}_{d_i}} + \mathbf{Q}_{\mathrm{a}_i}  + \mathbf{K}_{\mathrm{a}_i}^\mathrm{T} R \mathbf{K}_{\mathrm{a}_i} = 0$}
+\end{equation}
+
+\hl{ Moreover, the worst disturbance is obtained as follows:}
+\begin{equation}
+    \colorbox{yellow}{$d_i = -R_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{d_i}}\mathbf{x}_{\mathrm{a}_i}$}
+\end{equation}
+    \hl{Therefore, $\mathbf{K}_{\mathrm{d}_i} = -R_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{d_i}}$.
+     By combining two Riccati equations ({\eqref{eq:riccatti}} and~{\eqref{eq:riccatti_d}}), the following equation is computed:}
      \begin{equation}
-        -(\mathbf{P}_{\mathrm{a}_{i}} + \mathbf{P}_{\mathrm{a}_{d_i}})\left(
+        \colorbox{yellow}{$-(\mathbf{P}_{\mathrm{a}_{i}} + \mathbf{P}_{\mathrm{a}_{d_i}})\left(
         \mathbf{A}_{\mathrm{a}_i} - \mathbf{S}_{\mathrm{a}_i}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{S}_{\mathrm{a}_i} \mathbf{P}_{\mathrm{a}_i}
         \right) - \left(
         \mathbf{A}_{\mathrm{a}_i}  - \mathbf{S}_{\mathrm{a}_i}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{S}_{\mathrm{a}_i} \mathbf{P}_{\mathrm{a}_i}
-        \right)^\mathrm{T}(\mathbf{P}_{\mathrm{a}_{i}} + \mathbf{P}_{\mathrm{a}_{d_i}})=0
+        \right)^\mathrm{T}(\mathbf{P}_{\mathrm{a}_{i}} + \mathbf{P}_{\mathrm{a}_{d_i}})=0$}
     \end{equation}
-    where $\mathbf{S}_{\mathrm{a}_i} = \mathbf{B}_{\mathrm{a}_i}{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$ and $\mathbf{S}_{\mathrm{a_d}_i} = \mathbf{B}_{\mathrm{a}_i}{R}_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$. Therefore, $\mathbf{P}_{\mathrm{a}_i} = -\mathbf{P}_{\mathrm{a}_{d_i}}$ and two Ricatti equations have a following solution:
+    \hl{where $\mathbf{S}_{\mathrm{a}_i} = \mathbf{B}_{\mathrm{a}_i}{R}^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$ and $\mathbf{S}_{\mathrm{a_d}_i} = \mathbf{B}_{\mathrm{a}_i}{R}_d^{-1}\mathbf{B}_{\mathrm{a}_i}^\mathrm{T}$. Therefore, $\mathbf{P}_{\mathrm{a}_i} = -\mathbf{P}_{\mathrm{a}_{d_i}}$ and two Ricatti equations have a following solution:}
 
-\begin{equation}
-    -\mathbf{A}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{P}_{\mathrm{a}_{i}}\mathbf{A}_{\mathrm{a}_i}  + \mathbf{P}_{\mathrm{a}_{i}}(\mathbf{S}_{\mathrm{a}_i} - \mathbf{S}_{\mathrm{a_d}_i}) \mathbf{P}_{\mathrm{a}_{i}} - \mathbf{Q}_{i} = 0 
-\end{equation}
+    \begin{equation}
+        \colorbox{yellow}{$-\mathbf{A}_{\mathrm{a}_i}^\mathrm{T}\mathbf{P}_{\mathrm{a}_{i}} - \mathbf{P}_{\mathrm{a}_{i}}\mathbf{A}_{\mathrm{a}_i}  + \mathbf{P}_{\mathrm{a}_{i}}(\mathbf{S}_{\mathrm{a}_i} - \mathbf{S}_{\mathrm{a_d}_i}) \mathbf{P}_{\mathrm{a}_{i}} - \mathbf{Q}_{i} = 0$}
+    \end{equation}
+    
 
 
 
