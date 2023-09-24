@@ -215,7 +215,7 @@ Linear Quadratic Controller \sep~Differential Game Theory \sep~Quadrotor  \sep~3
 % A comparison is also performed between the results of classical PID, LQR, and LQIR and the proposed approach in real-time mode.
 % The results show the proposed control structure is effective in the control of the quadrotor platform.
 
-\noindent Quadrotors are a type of Vertical Unmanned Aerial Vehicle (VUAV), that have various applications such as investigation, strategic operation, optical sensing, and entertainment. The safe flight of the quadrotor in the presence of disturbances \hl{and mismodelling errors} relies on a precise \hl{Attitude Control System (ACS).} To regulate the quadrotor attitude, a Proportional Integral Derivative (PID) controller is utilized in~\cite{article_Abdul, article_Bolandi}. Due to the nonlinearity dynamics of the quadrotor, the PID strategy is not effective in the presence of disturbance and modeling error.
+\noindent Quadrotors are a type of Vertical Unmanned Aerial Vehicle (VUAV), that have various applications such as investigation, strategic operation, optical sensing, and entertainment. The safe flight of the quadrotor in the presence of disturbances \hl{and mismodelling errors} relies on a precise \hl{Attitude Control System (ACS).} To regulate the quadrotor attitude, a Proportional Integral Derivative (PID) controller is utilized in~\mbox{\cite{article_Abdul, article_Bolandi}}. Due to the nonlinearity dynamics of the quadrotor, the PID strategy is not effective in the presence of disturbance and modeling error.
 To provide a faster control command in facing the modeling error and reduce the disturbance effect in the attitude control, \hl{the approaches such as Active Disturbance Rejection Control (ADRC)~{\cite{CHENG2023}}, nonlinear, and robust~\mbox{\cite{DING2022580, CORTESROMERO202063}}
  techniques can be found in the literature.} ADRC is a model-free control technique used for systems with disturbances and unknown dynamics. In Ref~\cite{WEI2022599}, the authors propose a robust U-model active disturbance rejection control (RUADRC) that incorporates the core concepts of U-model control and Glover-McFarlane control to improve the positioning accuracy of a piezoelectric nanopositioning stage, reducing phase lag and enhancing disturbance rejection ability, leading to more accurate and faster positioning compared to linear active disturbance rejection control (LADRC). 
 
@@ -512,18 +512,24 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
     \dot{r} &= \Gamma_{10} pq - \Gamma_{1} qr + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_{4}  \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{roll}} + \Gamma_{4} d_{\text{yaw}}
 \end{align}
 
-
 \begin{align}
-    \colorbox{yellow}{$\dot{p}$} &= \colorbox{yellow}{$\Gamma_1 pq$} - \colorbox{yellow}{$\Gamma_2 qr$} + \colorbox{yellow}{$\Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_5 q \Omega_{c, r}$} + \colorbox{yellow}{$\Gamma_3 d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_4 d_{\text{yaw}}$} \\
-    \colorbox{yellow}{$\dot{q}$} &= \colorbox{yellow}{$\Gamma_6 pr$} - \colorbox{yellow}{$\Gamma_7 (p^2 - r^2)$} + \colorbox{yellow}{$\Gamma_8 \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2)$} + \colorbox{yellow}{$\Gamma_9 p \Omega_{c, r}$} + \colorbox{yellow}{$\Gamma_8 d_{\text{pitch}}$} \\
-    \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
+    &\colorbox{yellow}{$\dot{p} = \Gamma_1 pq - \Gamma_2 qr + \Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_5 q \Omega_{c, r} + \Gamma_3 d_{\text{roll}} + \Gamma_4 d_{\text{yaw}}$} \\
+    &\colorbox{yellow}{$\dot{q} = \Gamma_6 pr - \Gamma_7 (p^2 - r^2) + \Gamma_8  \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) + \Gamma_9 p \Omega_{c, r} + \Gamma_8 d_{\text{pitch}}$} \\
+    &\colorbox{yellow}{$\dot{r} = \Gamma_{10} pq - \Gamma_{1} qr + \Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2) + \Gamma_{4}  \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_{11} d_{\text{roll}} + \Gamma_{4} d_{\text{yaw}}$}
 \end{align}
 
-\begin{align}
-    \colorbox{yellow}{$\dot{p}$} &= \colorbox{yellow}{$\Gamma_1 pq$} - \colorbox{yellow}{$\Gamma_2 qr$} + \colorbox{yellow}{$\Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_5 q \Omega_{c, r}$} - \colorbox{yellow}{$\Gamma_3 d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_4 d_{\text{yaw}}$} \\
-    \colorbox{yellow}{$\dot{q}$} &= \colorbox{yellow}{$\Gamma_6 pr$} - \colorbox{yellow}{$\Gamma_7 (p^2 - r^2)$} + \colorbox{yellow}{$\Gamma_8 \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2)$} + \colorbox{yellow}{$\Gamma_9 p \Omega_{c, r}$} \colorbox{yellow}{$\Gamma_8 d_{\text{pitch}}$}  \\
-    \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} - \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
-\end{align}
+
+% \begin{align}
+%     \colorbox{yellow}{$\dot{p}$} &= \colorbox{yellow}{$\Gamma_1 pq$} - \colorbox{yellow}{$\Gamma_2 qr$} + \colorbox{yellow}{$\Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_5 q \Omega_{c, r}$} + \colorbox{yellow}{$\Gamma_3 d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_4 d_{\text{yaw}}$} \\
+%     \colorbox{yellow}{$\dot{q}$} &= \colorbox{yellow}{$\Gamma_6 pr$} - \colorbox{yellow}{$\Gamma_7 (p^2 - r^2)$} + \colorbox{yellow}{$\Gamma_8 \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2)$} + \colorbox{yellow}{$\Gamma_9 p \Omega_{c, r}$} + \colorbox{yellow}{$\Gamma_8 d_{\text{pitch}}$} \\
+%     \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
+% \end{align}
+
+% \begin{align}
+%     \colorbox{yellow}{$\dot{p}$} &= \colorbox{yellow}{$\Gamma_1 pq$} - \colorbox{yellow}{$\Gamma_2 qr$} + \colorbox{yellow}{$\Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_5 q \Omega_{c, r}$} - \colorbox{yellow}{$\Gamma_3 d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_4 d_{\text{yaw}}$} \\
+%     \colorbox{yellow}{$\dot{q}$} &= \colorbox{yellow}{$\Gamma_6 pr$} - \colorbox{yellow}{$\Gamma_7 (p^2 - r^2)$} + \colorbox{yellow}{$\Gamma_8 \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2)$} + \colorbox{yellow}{$\Gamma_9 p \Omega_{c, r}$} \colorbox{yellow}{$\Gamma_8 d_{\text{pitch}}$}  \\
+%     \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} - \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
+% \end{align}
 
 
 % \begin{align}
@@ -532,14 +538,14 @@ The graphical abstract of the LQIR-DG controller strategy is depicted in Figure~
 %     \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} - \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
 % \end{align}
 
-\begin{align}
-    \colorbox{yellow}{$\dot{p}$} &= \colorbox{yellow}{$\Gamma_1 pq$} - \colorbox{yellow}{$\Gamma_2 qr$} + \colorbox{yellow}{$\Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} \notag \\
-    &\quad + \colorbox{yellow}{$\Gamma_5 q \Omega_{c, r}$} - \colorbox{yellow}{$\Gamma_3 d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_4 d_{\text{yaw}}$} \\
-    \colorbox{yellow}{$\dot{q}$} &= \colorbox{yellow}{$\Gamma_6 pr$} - \colorbox{yellow}{$\Gamma_7 (p^2 - r^2)$} + \colorbox{yellow}{$\Gamma_8 \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2)$} + \colorbox{yellow}{$\Gamma_9 p \Omega_{c, r}$} \notag \\
-    &\quad - \colorbox{yellow}{$\Gamma_8 d_{\text{pitch}}$} \\
-    \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} \notag \\
-    &\quad + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} - \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
-\end{align}
+% \begin{align}
+%     \colorbox{yellow}{$\dot{p}$} &= \colorbox{yellow}{$\Gamma_1 pq$} - \colorbox{yellow}{$\Gamma_2 qr$} + \colorbox{yellow}{$\Gamma_3 \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} + \colorbox{yellow}{$\Gamma_4 \mathrm{d} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} \notag \\
+%     &\quad + \colorbox{yellow}{$\Gamma_5 q \Omega_{c, r}$} - \colorbox{yellow}{$\Gamma_3 d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_4 d_{\text{yaw}}$} \\
+%     \colorbox{yellow}{$\dot{q}$} &= \colorbox{yellow}{$\Gamma_6 pr$} - \colorbox{yellow}{$\Gamma_7 (p^2 - r^2)$} + \colorbox{yellow}{$\Gamma_8 \mathrm{b}\mathrm{d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2)$} + \colorbox{yellow}{$\Gamma_9 p \Omega_{c, r}$} \notag \\
+%     &\quad - \colorbox{yellow}{$\Gamma_8 d_{\text{pitch}}$} \\
+%     \colorbox{yellow}{$\dot{r}$} &= \colorbox{yellow}{$\Gamma_{10} pq$} - \colorbox{yellow}{$\Gamma_{1} qr$} + \colorbox{yellow}{$\Gamma_{11} (\Omega_{c, 1}^2 - \Omega_{c, 2}^2 + \Omega_{c, 3}^2 - \Omega_{c, 4}^2)$} \notag \\
+%     &\quad + \colorbox{yellow}{$\Gamma_{4} \mathrm{b}\mathrm{d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)$} - \colorbox{yellow}{$\Gamma_{11} d_{\text{roll}}$} + \colorbox{yellow}{$\Gamma_{4} d_{\text{yaw}}$}
+% \end{align}
 
 
 % \begin{align}
@@ -624,14 +630,16 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
     \end{bmatrix}^{\mathrm{T}} = 
     \begin{bmatrix}
         r & \psi
-    \end{bmatrix}^{\mathrm{T}}$, as well as by considering the control inputs as 
+    \end{bmatrix}^{\mathrm{T}}$, \colorbox{yellow}{as well as by considering the control inputs as 
     $\boldsymbol{u} = \begin{bmatrix}
         u_{\text{roll}} & u_{\text{roll}} & u_{\text{roll}}
-    \end{bmatrix} = \\ \begin{bmatrix}
+    \end{bmatrix}$ =} 
+    
+    \colorbox{yellow}{$\begin{bmatrix}
         \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 2}^2 - \Omega_{c, 4}^2) & \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) &
         \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 2}^2+ \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
-    \end{bmatrix}$
-    The nonlinear model of the quadrotor platform in the state-space form $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$ is presented as follows:
+    \end{bmatrix}$}
+    The \hl{nonlinear model} of the quadrotor platform \hl{in the state-space form $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$} is presented as follows:
 % \begin{align}\label{eq:diffeq}
 %     \dot x_1 &= \Gamma_1x_3 x_5 + \Gamma_2 x_3 \Omega_r + \Gamma_3\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_3d_{\text{roll}} \\[0.5em]
 %     \dot x_2 &= x_1 + (x_3\sin(x_2) + x_3\cos(x_2))\tan(x_4)
@@ -656,14 +664,14 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
 %     \dot x_6 &= (x_3\sin(x_4) + x_5\cos(x_2))/\cos(x_4)~\label{eq:eq_of_motion_end1}
 % \end{align}
 \begin{align}
-    f_1 = \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3  (u_{\text{roll}} + d_{\text{roll}})
+    &\colorbox{yellow}{$f_1 = \dot{x}_1 = \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3  (u_{\text{roll}} + d_{\text{roll}})
  + \Gamma_4  (u_{\text{yaw}} + u_{\text{yaw}}) 
-+ \Gamma_5 x_3\Omega_{c, r}  \label{eq:eq_of_motion_start1} \\
-    f_2 = \dot{x}_2 &= x_1 + (x_3\sin(x_2) + x_5\cos(x_2))\tan(x_4)  \\
-    f_3 = \dot{x}_3 &= \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 x_1 \Omega_{c, r} \\
-    f_4 = \dot{x}_4 &= x_3\cos(x_2) - x_5\sin(x_2) \\
-    f_5 = \dot{x}_5 &= \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (u_{\text{yaw}} + d_{\text{yaw}}) + \Gamma_{4}(u_{\text{roll}} + d_{\text{roll}})\\
-    f_6 = \dot{x}_6 &= \dfrac{x_3\sin(x_2) + x_5\cos(x_2)}{\cos(x_4)}~\label{eq:eq_of_motion_end1}
++ \Gamma_5 x_3\Omega_{c, r}$} \label{eq:eq_of_motion_start1} \\
+&\colorbox{yellow}{$f_2 = \dot{x}_2 = x_1 + (x_3\sin(x_2) + x_5\cos(x_2))\tan(x_4)$} \\
+&\colorbox{yellow}{$f_3 = \dot{x}_3 = \Gamma_6 x_1 x_5 - \Gamma_7 (x_1^2 - x_5^2) + \Gamma_8  (u_{\text{pitch}} + d_{\text{pitch}})- \Gamma_9 x_1 \Omega_{c, r}$} \\
+&\colorbox{yellow}{$f_4 = \dot{x}_4 = x_3\cos(x_2) - x_5\sin(x_2)$} \\
+&\colorbox{yellow}{$f_5 = \dot{x}_5 = \Gamma_{10} x_1 x_3 - \Gamma_{1} x_3 x_5 + \Gamma_{11} (u_{\text{yaw}} + d_{\text{yaw}}) + \Gamma_{4}(u_{\text{roll}} + d_{\text{roll}})$} \\
+&\colorbox{yellow}{$f_6 = \dot{x}_6 = \dfrac{x_3\sin(x_2) + x_5\cos(x_2)}{\cos(x_4)}$} \label{eq:eq_of_motion_end1}
 \end{align}
 
 
@@ -1543,7 +1551,7 @@ The implementation results show that the platform outputs converge to the desire
 \noindent Figure~\ref{fig:compare} compares the LQIR-DG controller performance with the PID controller and variant of the LQR strategies such as the LQR and LQIR. 
 Moreover, the box plot of all controllers is plotted in Figure~\ref{fig:compare_boxplot} for the cost function, introduced in equation \eqref{eq:min_max_cost_function}. %%%? two controller side by side
 The median of Root Mean Square Error (RMSE) is shown in the crossline in the box plot.
-Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) \cite{CHENG2023} and Disturbance Observer-Based Control (DOBC) \cite{AGHAYAN202320} are compared in Figure \ref{fig:compare_boxplot_ADR}, when the input disturbances occur according to equation \eqref{eq:disturbance}. For the cost function, denoted in equation \eqref{eq:min_max_cost_function}, the box plot of these robust controllers is illustrated in Figure ?. 
+Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) {\cite{CHENG2023}} and Disturbance Observer-Based Control (DOBC) \cite{AGHAYAN202320} are compared in Figure \ref{fig:compare_boxplot_ADR}, when the input disturbances occur according to equation \eqref{eq:disturbance}. For the cost function, denoted in equation \eqref{eq:min_max_cost_function}, the box plot of these robust controllers is illustrated in Figure ?. 
 These results indicate that the proposed controller is able to provide rapid convergence and excellent transient response relative to other controllers for attitude control of the experimental platform.
 
 \begin{figure}[H]
@@ -1786,49 +1794,80 @@ The implementation results illustrated the excellent performance of the LQIR con
  % appendix: linearization
 \newpage
 \appendix
+\hl{
 \section{Linearization Proof of the Quadrotor Nonlinear Model }
 \label{sec:linearization}
-Here, the nonlinear model of the quadrotor, described in equations \eqref{eq:eq_of_motion_start1}-\eqref{eq:eq_of_motion_end1}, are linearized using first-order Taylor series expansion about the equilibrium points $(\boldsymbol{x}^* \text{ and } \boldsymbol{u}^*)$. For this purpose, the linear form of the nonlinear system denoted as $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$, is computed as
+Here, the nonlinear model of the quadrotor, described in equations~{\eqref{eq:eq_of_motion_start1}}-{\eqref{eq:eq_of_motion_end1}}, are linearized using first-order Taylor series expansion about the equilibrium points $(\boldsymbol{x}^* \text{ and } \boldsymbol{u}^*)$. For this purpose, the linear form of the nonlinear system denoted as $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$, is computed as}
 \begin{equation}
-    \dot{\boldsymbol{x}} = \boldsymbol{\mathrm{A}}
-\boldsymbol{x} + \boldsymbol{\mathrm{B}}\boldsymbol{u}
+    \colorbox{yellow}{$\dot{\boldsymbol{x}} = \boldsymbol{\mathrm{A}} \boldsymbol{x} + \boldsymbol{\mathrm{B}} \boldsymbol{u}$}
 \end{equation}
-where $\boldsymbol{\mathrm{A}}$ and $\boldsymbol{\mathrm{B}}$ are, respectively, the states and input matrices, computed as \cite{simon2006optimal}
+{where $\boldsymbol{\mathrm{A}}$ and $\boldsymbol{\mathrm{B}}$ are, respectively, the states and input matrices, computed as~{{\cite{simon2006optimal}}}}
 \begin{equation}
-    \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}
+    \colorbox{yellow}{$\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}$}
 \end{equation}
+
 \begin{equation}
-    \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}
+    \colorbox{yellow}{$\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}$}
 \end{equation}
-To linearize the nonlinear model of the quadrotor around the equilibrium points $(\boldsymbol{x}^* = 0 \text{ and } \boldsymbol{u}^* = 0)$, the Jacobian matrix of nonlinear model, denoted in equations \eqref{eq:eq_of_motion_start1}-\eqref{eq:eq_of_motion_end1}, is expressed as:
+\hl{To linearize the nonlinear model of the quadrotor around the equilibrium points $(\boldsymbol{x}^* = 0 \text{ and } \boldsymbol{u}^* = 0)$, the Jacobian matrix of nonlinear model, denoted in equations {\eqref{eq:eq_of_motion_start1}}-{\eqref{eq:eq_of_motion_end1}}, is expressed as:}
+
+% \begin{align}
+%     \mathbf{A} =& \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
+%         \dfrac{f_1}{x_1} & \dots & \dfrac{f_1}{x_6} \\
+%         \vdots & \ddots & \vdots \\
+%         \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
+%     \end{bmatrix} \\ =&\begin{bmatrix}
+%         \Gamma_1 x_3 & 0 & -\Gamma_2 x_5  + \Gamma_5 \Omega_{c, r} & 0 &  - \Gamma_2 x_3 & 0 \\
+%         1 & a_{21} & \sin(x_2)\tan(x4) & a_{24} & \cos(x_2)\tan(x4) & 0 \\
+%         a_{31} & 0 & 0 & 0 & \Gamma_6 x_1 + 2\Gamma_7 x_5 & 0 \\
+%         0 & -x_3\sin(x_2) - x_5\cos(x_2)  & \cos(x_2) & 0 & -\sin(x_2) & 0 \\
+%         \Gamma_{10} x_3 & 0 & \Gamma_{10} x_1 - \Gamma_1 x_5 & 0 & -\Gamma_1 x_3 & 0 \\
+%         0 & \dfrac{x_3\cos(x_2)-x_5\sin(x_2)}{\cos(x_4)} & \dfrac{\sin(x_2)}{\cos(x_4)} & a_{64} & \dfrac{\cos(x_2)}{\cos(x_4)} & 0
+%     \end{bmatrix}
+% \end{align}
+
+
+
 
 \begin{align}
-    \mathbf{A} =& \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
-        \dfrac{f_1}{x_1} & \dots & \dfrac{f_1}{x_6} \\
-        \vdots & \ddots & \vdots \\
-        \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
-    \end{bmatrix} \\ =&\begin{bmatrix}
-        \Gamma_1 x_3 & 0 & -\Gamma_2 x_5  + \Gamma_5 \Omega_{c, r} & 0 &  - \Gamma_2 x_3 & 0 \\
-        1 & a_{21} & \sin(x_2)\tan(x4) & a_{24} & \cos(x_2)\tan(x4) & 0 \\
-        a_{31} & 0 & 0 & 0 & \Gamma_6 x_1 + 2\Gamma_7 x_5 & 0 \\
-        0 & -x_3\sin(x_2) - x_5\cos(x_2)  & \cos(x_2) & 0 & -\sin(x_2) & 0 \\
-        \Gamma_{10} x_3 & 0 & \Gamma_{10} x_1 - \Gamma_1 x_5 & 0 & -\Gamma_1 x_3 & 0 \\
-        0 & \dfrac{x_3\cos(x_2)-x_5\sin(x_2)}{\cos(x_4)} & \dfrac{\sin(x_2)}{\cos(x_4)} & a_{64} & \dfrac{\cos(x_2)}{\cos(x_4)} & 0
-    \end{bmatrix}
+    \begin{minipage}[c][1.5cm][c]{\linewidth}
+        \colorbox{yellow}{$\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
+            \dfrac{f_1}{x_1} & \dots & \dfrac{f_1}{x_6} \\
+            \vdots & \ddots & \vdots \\
+            \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
+        \end{bmatrix}$}
+    \end{minipage} \\[10pt]
+    \begin{minipage}[c][2cm][c]{\linewidth}
+        \colorbox{yellow}{$=\begin{bmatrix}
+            \Gamma_1 x_3 & 0 & -\Gamma_2 x_5  + \Gamma_5 \Omega_{c, r} & 0 &  - \Gamma_2 x_3 & 0 \\
+            1 & a_{21} & \sin(x_2)\tan(x4) & a_{24} & \cos(x_2)\tan(x4) & 0 \\
+            a_{31} & 0 & 0 & 0 & \Gamma_6 x_1 + 2\Gamma_7 x_5 & 0 \\
+            0 & -x_3\sin(x_2) - x_5\cos(x_2)  & \cos(x_2) & 0 & -\sin(x_2) & 0 \\
+            \Gamma_{10} x_3 & 0 & \Gamma_{10} x_1 - \Gamma_1 x_5 & 0 & -\Gamma_1 x_3 & 0 \\
+            0 & \dfrac{x_3\cos(x_2)-x_5\sin(x_2)}{\cos(x_4)} & \dfrac{\sin(x_2)}{\cos(x_4)} & a_{64} & \dfrac{\cos(x_2)}{\cos(x_4)} & 0
+        \end{bmatrix}$}
+    \end{minipage}
 \end{align}
 
-$$
-a_{21} = (x_3\cos(x_2)-x_5\sin(x_2))\tan(x_4)
-$$
-$$
-a_{24} = (x_3\sin(x_2)+x_5\cos(x_2))\sec^2(x_4)
-$$
-$$
-a_{31} = \Gamma_6 x_5 - 2\Gamma_7 x_1 - \Gamma_9\Omega_{c, r}
-$$
-$$
-a_{64} = x_3 + \dfrac{\sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))}{\cos(x_4)^2}
-$$
+
+    
+
+\begin{align}
+    a_{21} &= \colorbox{yellow}{$(x_3\cos(x_2)-x_5\sin(x_2))\tan(x_4)$} \\
+    a_{24} &= \colorbox{blue!20}{$(x_3\sin(x_2)+x_5\cos(x_2))\sec^2(x_4)$} \\
+    a_{31} &= \colorbox{green!20}{$\Gamma_6 x_5 - 2\Gamma_7 x_1 - \Gamma_9\Omega_{c, r}$} \\
+    a_{64} &= \colorbox{red!20}{$x_3 + \dfrac{\sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))}{\cos(x_4)^2}$}
+\end{align}
+
+
+
+
+
+
+
+
+
+
 
 
 
