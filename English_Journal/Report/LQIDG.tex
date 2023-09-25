@@ -217,7 +217,7 @@ Linear Quadratic Controller \sep~Differential Game Theory \sep~Quadrotor  \sep~3
 
 \noindent Quadrotors are a type of Vertical Unmanned Aerial Vehicle (VUAV), that have various applications such as investigation, strategic operation, optical sensing, and entertainment. The safe flight of the quadrotor in the presence of disturbances \hl{and mismodelling errors} relies on a precise \hl{Attitude Control System (ACS).} To regulate the quadrotor attitude, a Proportional Integral Derivative (PID) controller is utilized in~\mbox{\cite{article_Abdul, article_Bolandi}}. Due to the nonlinearity dynamics of the quadrotor, the PID strategy is not effective in the presence of disturbance and modeling error.
 To provide a faster control command in facing the modeling error and reduce the disturbance effect in the attitude control, \hl{the approaches such as Active Disturbance Rejection Control (ADRC)~{\cite{CHENG2023}}, nonlinear, and robust~\mbox{\cite{DING2022580, CORTESROMERO202063}}
- techniques can be found in the literature.} ADRC is a model-free control technique used for systems with disturbances and unknown dynamics. In Ref~\cite{WEI2022599}, the authors propose a robust U-model active disturbance rejection control (RUADRC) that incorporates the core concepts of U-model control and Glover-McFarlane control to improve the positioning accuracy of a piezoelectric nanopositioning stage, reducing phase lag and enhancing disturbance rejection ability, leading to more accurate and faster positioning compared to linear active disturbance rejection control (LADRC). 
+ techniques can be found in the literature.} ADRC is a model-free control technique used for systems with disturbances and unknown dynamics. \hl{In Ref~{\cite{WEI2022599}}, the authors propose a robust U-model active disturbance rejection control (RUADRC) that incorporates the core concepts of U-model control and Glover-McFarlane control to improve the positioning accuracy of a piezoelectric nanopositioning stage, reducing phase lag and enhancing disturbance rejection ability, leading to more accurate and faster positioning compared to linear active disturbance rejection control (LADRC). }
 
 \hl{In the nonlinear control category, a Sliding Mode Control (SMC)~\mbox{\cite{LABBADI2020290, MOFID2022455}} law is applied based on the mathematical model of the plant and adopted for parameters perturbations. Moreover, this strategy is able to eliminate the disturbances of the system related to its high-gain feedback~{\cite{YANG2021175}}. In Refs~{\cite{WU2022436}}, SMC method has been implemented to solve the nonlinear tracking problem for attitude control of the quadrotor, while the mismodelling error including time-varying mass is considered. Moreover, in another strategy of nonlinear control, the intelligent approaches such as Reinforcement Learning (RL)~\mbox{\cite{Hwangbo_2017, LIN2020135}}, iterative learning~{\cite{electronics10202474}}, neural network~{\cite{JIN202012241}}, and fuzzy logic~{\cite{GLIDA2022}} have also been employed to control the attitude of the quadrotor. Besides, reinforcement learning has been utilized to train the control policy for the attitude of the quadrotor when the disturbance occurs~{\cite{WANG2023222}}.}
 
@@ -226,7 +226,7 @@ To provide a faster control command in facing the modeling error and reduce the 
 
 \hl{In contrast with the policy of the robust control structure, the optimal control categories such as }
 Linear Quadratic Gaussian (LQG)~\cite{7367782}, Linear Quadratic Regulator (LQR)~\cite{7064553_LQR}, Linear Quadratic Integral Regulator (LQIR)~\cite{article_LQIR}, and Model Predictive Controller (MPC)~\cite{SANTOS2022123, CAMARA20231} \hl{have been utilized}
- to produce the optimal control commands for a quadrotor without considering the disturbance. Several methods with adding robust technique including xRobust-LQR~{\cite{robust_LQR}}, Robust-LQG~{\cite{XU202084}}, Robust-MPC~{\cite{YAN202335}} and LQR-SMC can be found in the literature to solve this problem. In another approach, the game theory technique is added to optimal control categories to provide a mathematical framework for analyzing decision-making in the presence of disturbance and modeling error.
+ to produce the optimal control commands for a quadrotor \hl{without considering the disturbance. Several methods with adding robust technique including xRobust-LQR~{\cite{robust_LQR}}, Robust-LQG~{\cite{XU202084}}, Robust-MPC~{\cite{YAN202335}} and LQR-SMC can be found in the literature to solve this problem. In another approach, the game theory technique is added to optimal control categories to provide a mathematical framework for analyzing decision-making} in the presence of disturbance and modeling error.
 \hl{In this method,} the control signals are produced using a pursuit-evasion game \hl{and the interactions and conflicts between two players are considered. The first player produces the control commands, and another player generates the worst disturbance based on the optimization of the desired objectives. An example of this category is} the Linear Quadratic Regulator-Differential Game (LQR-DG) controller\hl{. }The LQR-DG controller is implemented on a model of the ship~\cite{6957349}.
 
 
@@ -1187,8 +1187,6 @@ Here, it is assumed that the value of $R$ is identical for all attitude channels
         \boldsymbol{x}_{sp} - \boldsymbol{x} 
         \right)^\mathrm{T} \left(\boldsymbol{x}_{sp} - \boldsymbol{x} \right) \, dt$}
 \end{equation}
-
-
 \hl{
 where $t$ and $t_f$ are the response time of the system and the final time, respectively. Finally, when the stopping condition of the TCACS algorithm is reached, the best values of the LQIR-DG parameters are computed, shown in Table~{\ref{tab:control weight_new}}.
 }
@@ -1663,9 +1661,9 @@ The implementation results show that the platform outputs converge to the desire
 \end{figure}
 \subsubsection{Comparison with the Control Strategies}
 \noindent Figure~\ref{fig:compare} compares the LQIR-DG controller performance with the PID controller and variant of the LQR strategies such as the LQR and LQIR. 
-\hl{Moreover, the box plot of all controllers is plotted in Figure~{\ref{fig:compare_boxplot}} for the cost function, introduced in equation~{\eqref{eq:min_max_cost_function}}. %%%? two controller side by side
+Moreover, the box plot of all controllers is plotted in Figure~{\ref{fig:compare_boxplot}} for the cost function, introduced in equation~{\eqref{eq:min_max_cost_function}}. %%%? two controller side by side
 The median of Root Mean Square Error (RMSE) is shown in the crossline in the box plot.
-Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) {\cite{CHENG2023}} and Disturbance Observer-Based Control (DOBC) {\cite{AGHAYAN202320}} are compared in Figure~{\ref{fig:compare_boxplot_ADR}}, when the input disturbances occur according to equation{\eqref{eq:disturbance}}. For the cost function, denoted in equation {\eqref{eq:min_max_cost_function}}, the box plot of these robust controllers is illustrated in Figure~{\ref{fig:compare_boxplot}}. }
+\hl{Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) {\cite{CHENG2023}} and Disturbance Observer-Based Control (DOBC) {\cite{AGHAYAN202320}} are compared in Figure~{\ref{fig:compare_boxplot_ADR}}, when the input disturbances occur according to equation{\eqref{eq:disturbance}}. For the cost function, denoted in equation {\eqref{eq:min_max_cost_function}}, the box plot of these robust controllers is illustrated in Figure~{\ref{fig:compare_boxplot}}. }
 These results indicate that the proposed controller is able to provide rapid convergence\hl{,} excellent transient response \hl{and robustness to disturbances} relative to other controllers for attitude control of the experimental platform.
 
 \begin{figure}[H]
@@ -1908,14 +1906,14 @@ The implementation results illustrated the excellent performance of the LQIR con
  % appendix: linearization
 \newpage
 \appendix
-\hl{
+
 \section{Linearization Proof of the Quadrotor Nonlinear Model }
 \label{sec:linearization}
-Here, the nonlinear model of the quadrotor, described in equations~{\eqref{eq:eq_of_motion_start1}}-{\eqref{eq:eq_of_motion_end1}}, are linearized using first-order Taylor series expansion about the equilibrium points $(\boldsymbol{x}^* \text{ and } \boldsymbol{u}^*)$. For this purpose, the linear form of the nonlinear system denoted as $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$, is computed as}
+\noindent \hl{Here, the nonlinear model of the quadrotor, described in equations~{\eqref{eq:eq_of_motion_start1}}-{\eqref{eq:eq_of_motion_end1}}, are linearized using first-order Taylor series expansion about the equilibrium points $(\boldsymbol{x}^* \text{ and } \boldsymbol{u}^*)$. For this purpose, the linear form of the nonlinear system denoted as $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$, is computed as}
 \begin{equation}
     \colorbox{yellow}{$\dot{\boldsymbol{x}} = \boldsymbol{\mathrm{A}} \boldsymbol{x} + \boldsymbol{\mathrm{B}} \boldsymbol{u}$}
 \end{equation}
-{where $\boldsymbol{\mathrm{A}}$ and $\boldsymbol{\mathrm{B}}$ are, respectively, the states and input matrices, computed as~{{\cite{simon2006optimal}}}}
+\hl{where $\boldsymbol{\mathrm{A}}$ and $\boldsymbol{\mathrm{B}}$ are, respectively, the states and input matrices, computed as~{{\cite{simon2006optimal}}}}
 \begin{equation}
     \colorbox{yellow}{$\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}$}
 \end{equation}
@@ -1923,6 +1921,8 @@ Here, the nonlinear model of the quadrotor, described in equations~{\eqref{eq:eq
 \begin{equation}
     \colorbox{yellow}{$\mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}^*, \boldsymbol{{\mathrm{u}}}^*}$}
 \end{equation}
+
+
 \hl{To linearize the nonlinear model of the quadrotor around the equilibrium points $(\boldsymbol{x}^* = 0 \text{ and } \boldsymbol{u}^* = 0)$, the Jacobian matrix of nonlinear model, denoted in equations {\eqref{eq:eq_of_motion_start1}}-{\eqref{eq:eq_of_motion_end1}}, is expressed as:}
 
 % \begin{align}
@@ -1950,7 +1950,7 @@ Here, the nonlinear model of the quadrotor, described in equations~{\eqref{eq:eq
             \vdots & \ddots & \vdots \\
             \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
         \end{bmatrix}$}
-    \end{minipage} \\[10pt]
+    \end{minipage} \\[10pt] \nonumber
     \begin{minipage}[c][2cm][c]{\linewidth}
         \colorbox{yellow}{$=\begin{bmatrix}
             \Gamma_1 x_3 & 0 & -\Gamma_2 x_5  + \Gamma_5 \Omega_{c, r} & 0 &  - \Gamma_2 x_3 & 0 \\
@@ -1966,12 +1966,12 @@ Here, the nonlinear model of the quadrotor, described in equations~{\eqref{eq:eq
 
     
 
-\begin{align}
+\begin{align*}
     &\colorbox{yellow}{$a_{21} = (x_3\cos(x_2)-x_5\sin(x_2))\tan(x_4)$} \\
     &\colorbox{yellow}{$a_{24} = (x_3\sin(x_2)+x_5\cos(x_2))\sec^2(x_4)$} \\
     &\colorbox{yellow}{$a_{31} = \Gamma_6 x_5 - 2\Gamma_7 x_1 - \Gamma_9\Omega_{c, r}$} \\
     &\colorbox{yellow}{$a_{64} = x_3 + \dfrac{\sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))}{\cos(x_4)^2}$}
-\end{align}
+\end{align*}
 
 
 
@@ -2142,7 +2142,7 @@ Here, the nonlinear model of the quadrotor, described in equations~{\eqref{eq:eq
 
 
 \section{Proof of the LQIR-DG controller}
-\hl{Since, the first player determines the control commands, while the second player generates the worst possible disturbance, a performance index of the differential game~{{\cite{book_gth}}}, described by equation~{\eqref{eq:min_max_cost_function}}, rearranges as}
+\noindent \hl{Since, the first player determines the control commands, while the second player generates the worst possible disturbance, a performance index of the differential game~{{\cite{book_gth}}}, described by equation~{\eqref{eq:min_max_cost_function}}, rearranges as}
 
 % \begin{equation}
 %     \max_{d_i}\min{u_i} J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i) = \min_{d_i}\left(-J(\mathbf{x}_{_i}, d_i, u_i)\right)\min_{u_i}J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i)
