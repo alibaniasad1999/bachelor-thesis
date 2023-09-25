@@ -1372,7 +1372,7 @@ The implementation results show that the platform outputs converge to the desire
 Moreover, the box plot of all controllers is plotted in Figure~\ref{fig:compare_boxplot} for the cost function, introduced in equation \eqref{eq:min_max_cost_function}. %%%? two controller side by side
 The median of Root Mean Square Error (RMSE) is shown in the crossline in the box plot.
 Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) \cite{CHENG2023} and Disturbance Observer-Based Control (DOBC) \cite{AGHAYAN202320} are compared in Figure \ref{fig:compare_boxplot_ADR}, when the input disturbances occur according to equation \eqref{eq:disturbance}. For the cost function, denoted in equation \eqref{eq:min_max_cost_function}, the box plot of these robust controllers is illustrated in Figure ?. 
-These results indicate that the proposed controller is able to provide rapid convergence and excellent transient response relative to other controllers for attitude control of the experimental platform.
+These results indicate that the proposed controller is able to provide rapid convergence, excellent transient, and robustness to disturbances relative to other controllers for attitude control of the experimental platform.
 
 \begin{figure}[H]
     \centering
@@ -1803,7 +1803,7 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
 
 
 \section{Proof of the LQIR-DG controller}
-Since, the first player determines the control commands, while the second player generates the worst possible disturbance, a performance index of the differential game, described by equation \eqref{eq:min_max_cost_function}, rearranges as
+Since, the first player determines the control commands, while the second player generates the worst possible disturbance, a performance index of the differential game \cite{book_gth}, described by equation \eqref{eq:min_max_cost_function}, rearranges as
 \begin{equation}
     \max_{d_i}\min{u_i} J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i) = \min_{d_i}\left(-J(\mathbf{x}_{_i}, d_i, u_i)\right)\min_{u_i}J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i)
 \end{equation}
