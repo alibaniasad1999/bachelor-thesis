@@ -601,7 +601,7 @@ $\boldsymbol{\mathrm{x}}_{\text{pitch}} = \begin{bmatrix}
     \end{bmatrix} = \\ \begin{bmatrix}
         \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 2}^2 - \Omega_{c, 4}^2) & \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 3}^2) &
         \mathrm{b\,d}_{\text{cg}}(\Omega_{c, 1}^2 - \Omega_{c, 2}^2+ \Omega_{c, 3}^2 - \Omega_{c, 4}^2)
-    \end{bmatrix}$
+    \end{bmatrix}$.
     The nonlinear model of the quadrotor platform in the state-space form $\dot{\boldsymbol{x}} = \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{u})$ is presented as follows:
 % \begin{align}\label{eq:diffeq}
 %     \dot x_1 &= \Gamma_1x_3 x_5 + \Gamma_2 x_3 \Omega_r + \Gamma_3\mathrm{b\,d}_{\text{cg}} (\Omega_{c, 2}^2 - \Omega_{c, 4}^2) + \Gamma_3d_{\text{roll}} \\[0.5em]
@@ -1405,10 +1405,10 @@ These results indicate that the proposed controller is able to provide rapid con
 
 \begin{figure}[H]
     \centering
-    \subfloat[\label{fig:ADR_vs}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_ADR_roll}{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_ADR_pitch}}
+    \subfloat[\label{fig:ADR_vs}]{\includegraphics[width=.45\linewidth]{../Figure/implementation/disturbance/lqidg_dis_ADR_roll}{\includegraphics[width=.45\linewidth]{../Figure/implementation/disturbance/lqidg_dis_ADR_pitch}}
     }
     \hfill
-    \subfloat[\label{fig:DOB_vs}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_pitch}
+    \subfloat[\label{fig:DOB_vs}]{\includegraphics[width=.45\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_roll}\includegraphics[width=.45\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_pitch}
     }
     \caption{Comparison of LQIR-DG structure with the famous disturbance rejection methods: \ref{sub@fig:ADR_vs}  Active Disturbance Rejection Control (ADRC) \ref{sub@fig:DOB_vs} Disturbance Observer-Based Control (DOBC).}
     \label{fig:compare_adrc}
@@ -1417,7 +1417,7 @@ These results indicate that the proposed controller is able to provide rapid con
 \begin{figure}[H]
     \label{fig:compare_boxplot_ADR}
     \centering
-    {\includegraphics[width=.55\linewidth]{../Figure/implementation/box_plot/lqidgvsboxplot_ADR}
+    {\includegraphics[width=.5\linewidth]{../Figure/implementation/box_plot/lqidgvsboxplot_ADR}
     }
     \caption{Box plot of LQIR-DG, ADRC, and DOBC methods.}
     \label{fig:compare_boxplot_ADR}
