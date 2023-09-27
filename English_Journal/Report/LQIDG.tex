@@ -78,6 +78,19 @@
 \tikzstyle{arrow} = [thick,->,>=stealth]
 \setlength\myleneiler{(\widthof{Initial Condition (deg)}-4\tabcolsep)/3}
 \setlength\mylenomega{(\widthof{Rotational Velocity Commands (rpm)}-4\tabcolsep)/4}
+% \newcommand\highlightReference[1]{%
+%   \expandafter\newcommand\csname highlightReference-#1\endcsname{}%
+% }
+% \let\oldbibitem\bibitem
+% \def\bibitem#1 #2\par{%
+%   \expandafter\ifx\csname highlightReference-#1\endcsname\relax
+%     \oldbibitem{#1}#2\par
+%   \else
+%     \oldbibitem{#1}\highlight{#2}\par
+%   \fi
+% }
+% \usepackage{color,soul}
+% \newcommand\highlight[1]{\hl{#1}}
 
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
@@ -921,7 +934,7 @@ Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respec
 
 \begin{table}[H]
     \centering
-    \caption{Quadrotor parameters}
+    \caption{Parameters of the Quadrotor Setup}
     \vspace{-0.5cm}
     \renewcommand{\arraystretch}{1.3}
     \begin{center}
@@ -1023,7 +1036,7 @@ Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respec
 % \end{table}
 
 
-\subsection{Tuning of LQIR-DG Weighting Matrices}
+\subsection{Setting of the LQIR-DG controller parameters}
 
 % The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the LQIR-DG weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller.
 % Due the relation between the weighting matrices is important, the $R$ matrix is assumed as 1, while the weighting matrix $\boldsymbol{\mathrm{Q}}$ is represented as $\text{diag}([\boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}])$, and $R_d$ is individually optimized for each channel.
@@ -1034,7 +1047,8 @@ Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respec
 
 
 
-The parameters of the LQIR-DG controller approach, including weight coefficients ($\boldsymbol{\mathrm{Q}}_i$ for $i=$ roll, pitch, yaw, $R_d$, and $R$) are tuned using a heuristic optimization algorithm including the Tabu Continuous Ant Colony System (TCACS) \cite{article_TCACS} approach. In this method, ants utilize the concepts of promising lists and tabu balls to move toward the goal of ants gradually. The pseudocode of TCACS is shown in Figure \ref{fig:TCACS_code}. For this purpose, ants find promising areas to contain the global minimum and perform searching within tabu balls of the bad regions. TCACS parameters are shown in Table \ref{tab:TCAC_par}. Here, it is assumed that the value of $R$ is identical for all attitude channels and considered with the value of 1. Moreover, the initial values of the ants position ($ \boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}$ and $R_d$) for $l=1, \ldots, N$ is selected using a random distribution. The cost is denoted in iteration i using the quality of the tracking error between the set-point, $\boldsymbol{\mathrm{x}}_{sp}$, and the quadrotor states, $\boldsymbol{x} = \begin{bmatrix}
+
+The parameters of the LQIR-DG controller approach, including weight coefficients ($\boldsymbol{\mathrm{Q}}_i$ for $i=$ roll, pitch, yaw, $R_d$, and $R$) are tuned using a heuristic optimization algorithm including the Tabu Continuous Ant Colony System (TCACS) \cite{article_TCACS} approach. In this method, ants utilize the concepts of promising lists and tabu balls to move toward the goal of ants gradually. The pseudocode of TCACS is shown in Algorithm \ref{alg:TCACS_code}. For this purpose, ants find promising areas to contain the global minimum and perform searching within tabu balls of the bad regions. TCACS parameters are shown in Table \ref{tab:TCAC_par}. Here, it is assumed that the value of $R$ is identical for all attitude channels and considered with the value of 1. Moreover, the initial values of the ants position ($ \boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}$ and $R_d$) for $l=1, \ldots, N$ is selected using a random distribution. The cost is denoted in iteration i using the quality of the tracking error between the set-point, $\boldsymbol{\mathrm{x}}_{sp}$, and the quadrotor states, $\boldsymbol{x} = \begin{bmatrix}
     \boldsymbol{x}_{\text{roll}} & \boldsymbol{x}_{\text{pitch}} & \boldsymbol{x}_{\text{yaw}}
 \end{bmatrix}^{\mathrm{T}}$ as
 
@@ -1048,9 +1062,8 @@ where $t$ and $t_f$ are the response time of the system and the final time, resp
 
 
 
-\begin{figure}[H]
     \begin{algorithm}[H]
-        \caption{Tabu Continuous Ant Colony System (TCACS)}
+        \caption{Pseudo-code of the TCACS optimization algorithm \cite{article_TCACS}.}
         \begin{algorithmic}[1]
             \Procedure{TCACS}{}
             \State Initialize parameters, lists, and values
@@ -1065,11 +1078,11 @@ where $t$ and $t_f$ are the response time of the system and the final time, resp
             \EndProcedure
         \end{algorithmic}
         \label{alg:TCACS_code}
-    \end{algorithm}
-    \vspace{-0.7cm}
-    \caption{Pseudo-code of the TCACS optimization algorithm \cite{article_TCACS}.}
-    \label{fig:TCACS_code}
-\end{figure}
+\end{algorithm}
+%     \vspace{-0.7cm}
+%     \caption{}
+%     \label{fig:TCACS_code}
+% \end{figure}
 
 \begin{table}[H]
     \centering
@@ -1090,7 +1103,7 @@ where $t$ and $t_f$ are the response time of the system and the final time, resp
 
 \begin{table}[H]
     \centering
-    \caption{LQIR-DG controller parameters}
+    \caption{Optimal Values of the LQIR-DG controller parameters}
     \renewcommand{\arraystretch}{1.3}
     \begin{tabular}{@{}ccc@{}}
     \toprule
@@ -1215,15 +1228,15 @@ These results illustrate that the outputs of the simulation results for the quad
 
 \begin{figure}[H]
     \centering
-    \subfloat[]{\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/roll/roll}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/roll/roll_parameter_Gamma3}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/roll/roll_parameter_Gamma5}
+    \subfloat[]{\includegraphics[width=.30\linewidth]{../Figure/parameter_estimation/roll/roll}\includegraphics[width=.30\linewidth]{../Figure/parameter_estimation/roll/roll_parameter_Gamma3}\includegraphics[width=.3\linewidth]{../Figure/parameter_estimation/roll/roll_parameter_Gamma5}
     }
     \hfil
     % \vspace{-0.25cm}
-    \subfloat[]{\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/pitch/pitch}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/pitch/pitch_paramete_Gamma8}\includegraphics[width=.33\linewidth]{../Figure/parameter_estimation/pitch/pitch_paramete_Gamma9}
+    \subfloat[]{\includegraphics[width=.3\linewidth]{../Figure/parameter_estimation/pitch/pitch}\includegraphics[width=.3\linewidth]{../Figure/parameter_estimation/pitch/pitch_paramete_Gamma8}\includegraphics[width=.3\linewidth]{../Figure/parameter_estimation/pitch/pitch_paramete_Gamma9}
     }
     \hfil
     % \vspace{-0.25cm}
-    \subfloat[]{\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw}\includegraphics[width=.45\linewidth]{../Figure/parameter_estimation/yaw/yaw_parameter}
+    \subfloat[]{\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/yaw/yaw}\includegraphics[width=.4\linewidth]{../Figure/parameter_estimation/yaw/yaw_parameter}
     }
     \caption{Identification process results when the quadrotor rotates about only one axis: (a) identification of $\Gamma_3$ and $\Gamma_5$ in free roll motion. (b) identification of $\Gamma_8$ and $\Gamma_9$ in free pitch motion. (c) identification of $\Gamma_{11}$
     in free yaw motion.}
@@ -1370,7 +1383,7 @@ The implementation results show that the platform outputs converge to the desire
 \noindent Figure~\ref{fig:compare} compares the LQIR-DG controller performance with the PID controller and variant of the LQR strategies such as the LQR and LQIR. 
 Moreover, the box plot of all controllers is plotted in Figure~\ref{fig:compare_boxplot} for the cost function, introduced in equation \eqref{eq:min_max_cost_function}. %%%? two controller side by side
 The median of Root Mean Square Error (RMSE) is shown in the crossline in the box plot.
-Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) \cite{CHENG2023} and Disturbance Observer-Based Control (DOBC) \cite{AGHAYAN202320} are compared in Figure \ref{fig:compare_boxplot_ADR}, when the input disturbances occur according to equation \eqref{eq:disturbance}. For the cost function, denoted in equation \eqref{eq:min_max_cost_function}, the box plot of these robust controllers is illustrated in Figure \ref{fig:compare_boxplot_ADR}. 
+Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) \cite{CHENG2023} and Disturbance Observer-Based Control (DOBC) \cite{AGHAYAN202320} are compared in Figure \ref{fig:compare_adrc}, when the input disturbances occur according to equation \eqref{eq:disturbance}. For the cost function, denoted in equation \eqref{eq:min_max_cost_function}, the box plot of these robust controllers is illustrated in Figure \ref{fig:compare_boxplot_ADR}. 
 These results indicate that the proposed controller is able to provide rapid convergence, excellent transient, and robustness to disturbances relative to other controllers for attitude control of the experimental platform.
 
 \begin{figure}[H]
@@ -1398,7 +1411,7 @@ These results indicate that the proposed controller is able to provide rapid con
     \subfloat[\label{fig:DOB_vs}]{\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_roll}\includegraphics[width=.49\linewidth]{../Figure/implementation/disturbance/lqidg_dis_DOB_pitch}
     }
     \caption{Comparison of LQIR-DG structure with the famous disturbance rejection methods: \ref{sub@fig:ADR_vs}  Active Disturbance Rejection Control (ADRC) \ref{sub@fig:DOB_vs} Disturbance Observer-Based Control (DOBC).}
-    \label{fig:compare}
+    \label{fig:compare_adrc}
 \end{figure}
 
 \begin{figure}[H]
@@ -1409,9 +1422,6 @@ These results indicate that the proposed controller is able to provide rapid con
     \caption{Box plot of LQIR-DG, ADRC, and DOBC methods.}
     \label{fig:compare_boxplot_ADR}
 \end{figure}
-
-
-\newpage
 
 \section{Conclusion}\label{sec:conclusion}
 \vspace{-0.15cm}
@@ -1648,19 +1658,18 @@ To linearize the nonlinear model of the quadrotor around the equilibrium points 
         0 & \dfrac{x_3\cos(x_2)-x_5\sin(x_2)}{\cos(x_4)} & \dfrac{\sin(x_2)}{\cos(x_4)} & a_{64} & \dfrac{\cos(x_2)}{\cos(x_4)} & 0
     \end{bmatrix}
 \end{align}
-
-$$
+Here, 
+$
 a_{21} = (x_3\cos(x_2)-x_5\sin(x_2))\tan(x_4)
-$$
-$$
+$,
+$
 a_{24} = (x_3\sin(x_2)+x_5\cos(x_2))\sec^2(x_4)
-$$
-$$
+$,
+$
 a_{31} = \Gamma_6 x_5 - 2\Gamma_7 x_1
-$$
-$$
-a_{64} = x_3 + \dfrac{\sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))}{\cos(x_4)^2}
-$$
+$, and 
+$
+a_{64} = x_3 + \sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))\sec(x_4)^2$.
 
 
 
@@ -1784,7 +1793,7 @@ Finally, the linearized matrices, defined at the equilibrium points, are given a
 % %       0 & -x_5\sin(x_2)/\cos(x_4) & \tan(x_4) & x_3 \sec^2(x_4) & \cos(x_2)/\cos(x_4) & 0
 % %   \end{bmatrix}
 % % \end{equation}
-\begin{equation}
+\begin{align}
     \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
         0 & 0 & 0 & 0 & 0 & 0 \\
         1 & 0 & 0 & 0 & 0 & 0 \\
@@ -1792,7 +1801,7 @@ Finally, the linearized matrices, defined at the equilibrium points, are given a
         0 & 0 & 1 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 1 & 0
-    \end{bmatrix}, \quad \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = 
+    \end{bmatrix}\\ \quad \mathbf{B} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{u}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = 
     \begin{bmatrix}
        \Gamma_3 & 0 & \Gamma_4\\
        0 & 0 & 0 \\
@@ -1801,7 +1810,7 @@ Finally, the linearized matrices, defined at the equilibrium points, are given a
        \Gamma_4 & 0 & \Gamma_{11} \\
        0 & 0 & 0
    \end{bmatrix}
-\end{equation}
+\end{align}
 
 
 
