@@ -1636,7 +1636,7 @@ To linearize the nonlinear model of the quadrotor around the equilibrium points 
         \vdots & \ddots & \vdots \\
         \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
     \end{bmatrix} \\ =&\begin{bmatrix}
-        \Gamma_1 x_3 & 0 & -\Gamma_2 x_5  + \Gamma_5 \Omega_{c, r} & 0 &  - \Gamma_2 x_3 & 0 \\
+        \Gamma_1 x_3 & 0 & -\Gamma_2 x_5  & 0 &  - \Gamma_2 x_3 & 0 \\
         1 & a_{21} & \sin(x_2)\tan(x4) & a_{24} & \cos(x_2)\tan(x4) & 0 \\
         a_{31} & 0 & 0 & 0 & \Gamma_6 x_1 + 2\Gamma_7 x_5 & 0 \\
         0 & -x_3\sin(x_2) - x_5\cos(x_2)  & \cos(x_2) & 0 & -\sin(x_2) & 0 \\
@@ -1652,7 +1652,7 @@ $$
 a_{24} = (x_3\sin(x_2)+x_5\cos(x_2))\sec^2(x_4)
 $$
 $$
-a_{31} = \Gamma_6 x_5 - 2\Gamma_7 x_1 - \Gamma_9\Omega_{c, r}
+a_{31} = \Gamma_6 x_5 - 2\Gamma_7 x_1
 $$
 $$
 a_{64} = x_3 + \dfrac{\sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))}{\cos(x_4)^2}
@@ -1782,9 +1782,9 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
 % % \end{equation}
 \begin{equation}
     \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
-        0 & 0 & \Gamma_5 \Omega_{c, r} & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
         1 & 0 & 0 & 0 & 0 & 0 \\
-        -\Gamma_9 \Omega_{c, r} & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 1 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 1 & 0
@@ -1798,7 +1798,6 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
        0 & 0 & 0
    \end{bmatrix}
 \end{equation}
-Assume that $\Gamma_9 \Omega_{c, r} \approx 0$ and $\Gamma_5 \Omega_{c, r} \approx 0$.
 
 
 
