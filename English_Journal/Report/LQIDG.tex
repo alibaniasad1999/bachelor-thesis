@@ -1944,25 +1944,32 @@ The implementation results illustrated the excellent performance of the LQIR con
 
 
 \begin{align}
-    \begin{minipage}[c][1.5cm][c]{\linewidth}
-        \colorbox{yellow}{$\mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
-            \dfrac{f_1}{x_1} & \dots & \dfrac{f_1}{x_6} \\
-            \vdots & \ddots & \vdots \\
-            \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
-        \end{bmatrix}$}
-    \end{minipage} \\[10pt] \nonumber
-    \begin{minipage}[c][2cm][c]{\linewidth}
-        \colorbox{yellow}{$=\begin{bmatrix}
-            \Gamma_1 x_3 & 0 & -\Gamma_2 x_5  + \Gamma_5 \Omega_{c, r} & 0 &  - \Gamma_2 x_3 & 0 \\
-            1 & a_{21} & \sin(x_2)\tan(x4) & a_{24} & \cos(x_2)\tan(x4) & 0 \\
-            a_{31} & 0 & 0 & 0 & \Gamma_6 x_1 + 2\Gamma_7 x_5 & 0 \\
-            0 & -x_3\sin(x_2) - x_5\cos(x_2)  & \cos(x_2) & 0 & -\sin(x_2) & 0 \\
-            \Gamma_{10} x_3 & 0 & \Gamma_{10} x_1 - \Gamma_1 x_5 & 0 & -\Gamma_1 x_3 & 0 \\
-            0 & \dfrac{x_3\cos(x_2)-x_5\sin(x_2)}{\cos(x_4)} & \dfrac{\sin(x_2)}{\cos(x_4)} & a_{64} & \dfrac{\cos(x_2)}{\cos(x_4)} & 0
-        \end{bmatrix}$}
-    \end{minipage}
+    \mathbf{A} =& \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
+        \dfrac{f_1}{x_1} & \dots & \dfrac{f_1}{x_6} \\
+        \vdots & \ddots & \vdots \\
+        \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
+    \end{bmatrix} \\ =&\begin{bmatrix}
+        \Gamma_1 x_3 & 0 & -\Gamma_2 x_5  & 0 &  - \Gamma_2 x_3 & 0 \\
+        1 & a_{21} & \sin(x_2)\tan(x4) & a_{24} & \cos(x_2)\tan(x4) & 0 \\
+        a_{31} & 0 & 0 & 0 & \Gamma_6 x_1 + 2\Gamma_7 x_5 & 0 \\
+        0 & -x_3\sin(x_2) - x_5\cos(x_2)  & \cos(x_2) & 0 & -\sin(x_2) & 0 \\
+        \Gamma_{10} x_3 & 0 & \Gamma_{10} x_1 - \Gamma_1 x_5 & 0 & -\Gamma_1 x_3 & 0 \\
+        0 & \dfrac{x_3\cos(x_2)-x_5\sin(x_2)}{\cos(x_4)} & \dfrac{\sin(x_2)}{\cos(x_4)} & a_{64} & \dfrac{\cos(x_2)}{\cos(x_4)} & 0
+    \end{bmatrix}
 \end{align}
 
+$$
+a_{21} = (x_3\cos(x_2)-x_5\sin(x_2))\tan(x_4)
+$$
+$$
+a_{24} = (x_3\sin(x_2)+x_5\cos(x_2))\sec^2(x_4)
+$$
+$$
+a_{31} = \Gamma_6 x_5 - 2\Gamma_7 x_1
+$$
+$$
+a_{64} = x_3 + \dfrac{\sin(x_4)(x_5\cos(x_2) + x_3\sin(x_4))}{\cos(x_4)^2}
+$$
 
     
 
@@ -2121,9 +2128,9 @@ The implementation results illustrated the excellent performance of the LQIR con
 \begin{equation}
     \colorbox{yellow}{$
     \mathbf{A} = \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}_e^*, \boldsymbol{{\mathrm{u}}}_e^*} = \begin{bmatrix}
-        0 & 0 & \Gamma_5 \Omega_{c, r} & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
         1 & 0 & 0 & 0 & 0 & 0 \\
-        -\Gamma_9 \Omega_{c, r} & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 1 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 1 & 0
@@ -2137,7 +2144,6 @@ The implementation results illustrated the excellent performance of the LQIR con
        0 & 0 & 0
    \end{bmatrix}$}
 \end{equation}
-Assume that $\Gamma_9 \Omega_{c, r} \approx 0$ and $\Gamma_5 \Omega_{c, r} \approx 0$.
 
 
 
