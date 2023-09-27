@@ -209,12 +209,14 @@ Linear Quadratic Controller \sep~Differential Game Theory \sep~Quadrotor  \sep~3
 % A comparison is also performed between the results of classical PID, LQR, and LQIR and the proposed approach in real-time mode.
 % The results show the proposed control structure is effective in the control of the quadrotor platform.
 
-\noindent Quadrotors are a type of Vertical Unmanned Aerial Vehicle (VUAV), that have various applications such as investigation, strategic operation, optical sensing, and entertainment. The safe flight of the quadrotor in the presence of disturbances and mismodelling errors relies on a precise Attitude Control System (ACS). To regulate the quadrotor attitude, a Proportional Integral Derivative (PID) controller is utilized in~\cite{article_Abdul, article_Bolandi}. Due to the nonlinearity dynamics of the quadrotor, the PID strategy is not effective in the presence of disturbance and modeling error. To provide a faster control command in facing the modeling error and reduce the disturbance effect in the attitude control, the approaches such as Active Disturbance Rejection Control (ADRC)~\cite{CHENG2023}, nonlinear, and robust~\cite{DING2022580, CORTESROMERO202063} techniques can be found in the literature. ADRC is a model-free control technique used for systems with disturbances and unknown dynamics. In Ref~\cite{WEI2022599}, the authors propose a robust U-model active disturbance rejection control (RUADRC) that incorporates the core concepts of U-model control and Glover–McFarlane control to improve the positioning accuracy of a piezoelectric nanopositioning stage, reducing phase lag and enhancing disturbance rejection ability, leading to more accurate and faster positioning compared to linear active disturbance rejection control (LADRC). 
+\noindent Quadrotors are a type of Vertical Unmanned Aerial Vehicle (VUAV), that have various applications such as investigation, strategic operation, optical sensing, and entertainment. The safe flight of the quadrotor in the presence of disturbances and mismodelling errors relies on a precise Attitude Control System (ACS). To regulate the quadrotor attitude, a Proportional Integral Derivative (PID) controller is utilized in~\cite{article_Abdul, article_Bolandi}. Due to the nonlinearity dynamics of the quadrotor, the PID strategy is not effective in the presence of disturbance and modeling error. To provide a faster control command in facing the modeling error and reduce the disturbance effect in the attitude control, the approaches such as Active Disturbance Rejection Control (ADRC)~\cite{CHENG2023}, nonlinear, and robust~\cite{DING2022580, CORTESROMERO202063} techniques can be found in the literatures.
+ADRC is a model-free control technique used for systems with disturbances and unknown dynamics. In ref~\cite{WEI2022599}, ADRC method and a robust U-model active disturbance rejection control (RUADRC) have been proposed to reduce the phase lag and enhance the disturbance rejection ability. 
 
-In the nonlinear control category, a Sliding Mode Control (SMC)~\cite{LABBADI2020290, MOFID2022455} law is applied based on the mathematical model of the plant and adopted for parameters perturbations. Moreover, this strategy is able to eliminate the disturbances of the system related to its high-gain feedback~\cite{YANG2021175}. In Refs~\cite{WU2022436}, SMC method has been implemented to solve the nonlinear tracking problem for attitude control of the quadrotor, while the mismodelling error including time-varying mass is considered. Moreover, in another strategy of nonlinear control, the intelligent approaches such as Reinforcement Learning (RL)~\cite{Hwangbo_2017, LIN2020135}, iterative learning~\cite{electronics10202474}, neural network~\cite{JIN202012241}, and fuzzy logic~\cite{GLIDA2022} have also been employed to control the attitude of the quadrotor. Besides, reinforcement learning has been utilized to train the control policy for the attitude of the quadrotor when the disturbance occurs~\cite{WANG2023222}.
-The robust control strategy explicitly deals with parameters or disturbances. The robust algorithms can be categorized into two approaches: robust methods and robust control structure. Robust methods are utilized in linear and nonlinear control systems to achieve robust stability and/or performance in the presence of bounded modelling errors. In Ref~\cite{MIRANDACOLORADO202047}, a Robust-PID strategy has been utilized to control the attitude dynamics of the quadrotor in presence of the aerodynamic disturbances like wind. In another approach such as H$_{\infty}$~\cite{WANG201910, REKABI202081} and $\mu$-synthesis~\cite{RODRIGUEZMARTINEZ2023739}, a minimaximization of the cost function including control effort and regulation performance is utilized to produce the angular velocity commands for the attitude dynamics of the quadrotor while a worst-case scenario related to maximum uncertainty and disturbance is considered. 
+In the nonlinear control category, a Sliding Mode Control (SMC)~\cite{LABBADI2020290, MOFID2022455} law is applied based on the mathematical model of the plant and adopted for parameters perturbations. Moreover, this strategy is able to eliminate the disturbances of the system related to its high-gain feedback~\cite{YANG2021175}. In refs~\cite{WU2022436}, SMC method has been implemented to solve the nonlinear tracking problem for attitude control of the quadrotor, while the mismodelling error including time-varying mass has been considered. Moreover, in another strategy of nonlinear control, the intelligent approaches such as Reinforcement Learning (RL)~\cite{Hwangbo_2017, LIN2020135}, iterative learning~\cite{electronics10202474}, neural network~\cite{JIN202012241}, and fuzzy logic~\cite{GLIDA2022} have also been employed to control the attitude of the quadrotor. Besides, reinforcement learning has been utilized to train the control policy for the attitude of the quadrotor when the disturbance occurs~\cite{WANG2023222}.
 
-In contrast with the policy of the robust control structure, the optimal control categories such as Linear Quadratic Gaussian (LQG)~\cite{7367782}, Linear Quadratic Regulator (LQR)~\cite{7064553_LQR}, Linear Quadratic Integral Regulator (LQIR)~\cite{article_LQIR}, and Model Predictive Controller (MPC)~\cite{SANTOS2022123, CAMARA20231} have been utilized to produce the optimal control commands for a quadrotor without considering the disturbance. Several methods with adding robust technique including Robust-LQR~\cite{robust_LQR}, Robust-LQG~\cite{XU202084}, Robust-MPC~\cite{YAN202335} and LQR-SMC can be found in the literature to solve this problem. In another approach, the game theory technique is added to optimal control categories to provide a mathematical framework for analyzing decision-making in the presence of disturbance and modeling error. In this method, the control signals are produced using a pursuit-evasion game and the interactions and conflicts between two players are considered. The first player produces the control commands, and another player generates the worst disturbance based on the optimization of the desired objectives. An example of this category is the Linear Quadratic Regulator-Differential Game (LQR-DG) controller. The LQR-DG controller is implemented on a model of the ship~\cite{6957349}.
+The robust control strategy explicitly deals with parameters or disturbances. The robust algorithms can be categorized into two approaches: robust methods and robust control structures. The robust methods are utilized in linear and nonlinear control systems to achieve robust stability and/or performance in the presence of bounded modelling errors. In ref~\cite{MIRANDACOLORADO202047}, a Robust-PID strategy has been utilized to control the attitude dynamics of the quadrotor in presence of the aerodynamic disturbances like wind. In another approach such as H$_{\infty}$~\cite{WANG201910, REKABI202081} and $\mu$-synthesis~\cite{RODRIGUEZMARTINEZ2023739}, a minimaximization of the cost function including control effort and regulation performance have been utilized to produce the angular velocity commands for the attitude dynamics of the quadrotor while a worst-case scenario related to maximum uncertainty and disturbance is considered. 
+
+In contrast with the policy of the robust control structure, the optimal control categories such as Linear Quadratic Gaussian (LQG)~\cite{7367782}, Linear Quadratic Regulator (LQR)~\cite{7064553_LQR}, Linear Quadratic Integral Regulator (LQIR)~\cite{article_LQIR}, and Model Predictive Controller (MPC)~\cite{SANTOS2022123, CAMARA20231} have been utilized to produce the optimal control commands for a quadrotor without considering the disturbance. Several methods with adding robust technique including Robust-LQR~\cite{robust_LQR}, Robust-LQG~\cite{XU202084}, Robust-MPC~\cite{YAN202335} and LQR-SMC can be found in the literature to reduce the disturbance effect. In another approach, the game theory technique is added to optimal control categories to provide a mathematical framework for analyzing decision-making in the presence of disturbance and modeling error. In this method, the control signals are produced using a pursuit-evasion game as well as the interactions and conflicts between two players are considered. The first player produces the control commands, and another player generates the worst disturbance based on the optimization of the desired objectives. An example of this category is the Linear Quadratic Regulator-Differential Game (LQR-DG) controller. The LQR-DG controller is implemented on a model of the ship~\cite{6957349}.
 
 
 
@@ -278,7 +280,7 @@ In contrast with the policy of the robust control structure, the optimal control
 
 % In the domain of robust control, techniques like $H_{\infty}$ control~\cite{WANG201910, REKABI202081}, $\mu$-synthesis, and Linear Quadratic Regulator Differential Game (LQR-DG)~\cite{10025263} have been used to stabilize the quadrotor's Euler angles, considering worst-case scenarios and mini-maximization of a quadratic criterion, which includes control effort and regulation performance.
 
-The implementation of the optimal control category based on the game theory still does not exist in any of the previous works. In this study, an LQR-DG method with an integral action is implemented in real-time on the 3-DoF experimental platform of the quadrotor to produce the robust control commands, i.e. rotational velocity of the quadrotor. Since this control strategy is a model-based method, first, the experimental platform of the quadrotor is modeled using the Newton-Euler formulation and its linear state-space form is derived. Then, the parameters of the quadrotor are estimated by matching experimental data with results from the model simulation. In the next step, the proposed controller is implemented on the Arduino Mega2560 board using the embedded coder platform in MATLAB and its performance is investigated in regulation and tracking problems. Moreover, the rejection capability of the input disturbance and modeling error is tested. Finally, a comparison is also performed between the results of classical PID, LQR, and LQIR with the proposed method. Moreover, the performance of the proposed structure has been investigated in flight and compared to the robust controller structures including ADRC. The results demonstrate that this method has an excellent performance in the attitude control of the quadrotor platform. A demo video of the results is available online \href{https://youtu.be/SXZACxGaE1A?si=jxF7Uxh1Ed5-WX1J}{here}.
+The implementation of the optimal control category based on the game theory still does not exist in any of the previous works. In this study, an LQR-DG method with an integral action is implemented as real-time on the 3-DoF experimental platform of the quadrotor to produce the robust control commands, i.e., rotational velocity of the quadrotor. Since this control strategy is a model-based method, first, the experimental platform of the quadrotor is modeled using the Newton-Euler formulation and its linear state-space form is derived. Then, the parameters of the quadrotor are estimated by matching experimental data with results from the model simulation. In the next step, the proposed controller is implemented on the Arduino Mega2560 board using the embedded coder platform in MATLAB and its performance is investigated in regulation and tracking problems. Moreover, the rejection capability of the input disturbance and modeling error is tested. Finally, a comparison is also performed between the results of classical PID, LQR, and LQIR with the proposed method. Moreover, the performance of the proposed structure has been investigated in flight and compared to the robust controller structures including ADRC and Disturbance Observer-Based Control (DOBC). The results demonstrate that this method has an excellent performance in the attitude control of the quadrotor platform. A demo video of the results is available online \href{https://youtu.be/SXZACxGaE1A?si=jxF7Uxh1Ed5-WX1J}{here}.
 
 
 The innovation of this study mainly includes the following two aspects: (1) Proof of the proposed optimal-robust structure without steady-state error; For this purpose, first, the problem of an optimal control category based on the game theory approach with two players, one player tracks the best command, and the second player generates the input disturbance, is converted to the robust control problems. Then, an action integral is added to the linear quadratic regulator based on the game theory to eliminate the steady-state errors. Finally, proof of the proposed controller scheme based on the integral action is presented. (2) Implementation of the proposed optimal-robust structure; For this purpose, an optimal control strategy with integral action based on differential game theory is implemented on a 3-DOF quadrotor experimental setup. Then, the parameters of a quadrotor experimental setup have been identified with the experimental results. The performance of the proposed structure has been evaluated in flight and compared to the robust controller structures. Finally, the rejection capability of the input disturbance and modeling error is evaluated successfully.
@@ -870,28 +872,28 @@ Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respec
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{table}[H]
-    \centering
-    \caption{Quadrotor parameters}
-    \vspace{-0.5cm}
-    \renewcommand{\arraystretch}{1.3}
-    \begin{center}
-    \begin{tabular}{c c c c c c}
-    \hline
-    Parameter & Unit & Value & Parameter & Unit & Value \\
-    \hline
-    $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ \\ 
-    $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ &
-    $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ \\
-    $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ 
-    & $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ \\
-    $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ \\
-    $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & $\mathrm{I}_{\text{xz}}$ & $\mathrm{kg.m^2}$ & $6.87\times 10^{-7}$ \\
-    \hline
-\end{tabular}
-\label{tab:parameters}
-\end{center}
-\end{table}
+% \begin{table}[H]
+%     \centering
+%     \caption{Quadrotor parameters}
+%     \vspace{-0.5cm}
+%     \renewcommand{\arraystretch}{1.3}
+%     \begin{center}
+%     \begin{tabular}{c c c c c c}
+%     \hline
+%     Parameter & Unit & Value & Parameter & Unit & Value \\
+%     \hline
+%     $\mathrm{m}_{\text{total}}$ & $\mathrm{kg}$ & $1.074$ & $\mathrm{I}_{\text{xx}}$ & $\mathrm{kg.m^2}$ & $0.02839$ \\ 
+%     $\mathrm{d}$ & $\mathrm{N.m.\sec^2/rad^2}$ & $3.2\times10^{-6}$ &
+%     $\mathrm{I}_{\text{yy}}$ & $\mathrm{kg.m^2}$ & $0.03066$ \\
+%     $\mathrm{b}$ & $\mathrm{N.\sec^2/rad^2}$ & $3.13\times10^{-5}$ 
+%     & $\mathrm{I}_{\text{zz}}$ & $\mathrm{kg.m^2}$ & $0.0439$ \\
+%     $\mathrm{d}_{\text{cg}}$ & $\mathrm{m}$ & $0.2$ & $\mathrm{I}_{\text{rotor}}$ & $\mathrm{kg.m^2}$ & $4.4398\times 10^{-5}$ \\
+%     $\Omega_{\text{mean}}$ & $\mathrm{rpm}$ & $2000$ & $\mathrm{I}_{\text{xz}}$ & $\mathrm{kg.m^2}$ & $6.87\times 10^{-7}$ \\
+%     \hline
+% \end{tabular}
+% \label{tab:parameters}
+% \end{center}
+% \end{table}
 
 
 % \begin{table}[H]
@@ -1021,9 +1023,6 @@ Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respec
 % \end{table}
 
 
-\subsection{Challenges in Designing and Implementation}
-
-
 \subsection{Tuning of LQIR-DG Weighting Matrices}
 
 % The TCACS (Tabu Continuous Ant Colony System) optimization method was employed to fine-tune the LQIR-DG weighting matrices $\boldsymbol{\mathrm{Q}}$ and $R_d$ of the LQIR-DG controller.
@@ -1035,7 +1034,7 @@ Table~\ref{tab:parameters} presents the quadrotor and LQIR-DG parameters, respec
 
 
 
-The parameters of the LQIR-DG controller approach, including weight coefficients ($\boldsymbol{\mathrm{Q}}_i$ for $i=$ roll, pitch, yaw, $R_d$, and $R$) are tuned using a heuristic optimization algorithm based on the Tabu Continuous Ant Colony System (TCACS) \cite{article_TCACS} approach. In this method, ants utilize the concepts of promising lists and tabu balls to move toward the goal of ants gradually. The pseudocode of TCACS is shown in Figure \ref{fig:TCACS_code}. For this purpose, ants find promising areas to contain the global minimum and perform searching within tabu balls of the bad regions. TCACS parameters are shown in Table \ref{tab:TCAC_par}. Here, it is assumed that the value of $R$ is identical for all attitude channels and considered with the value of 1. Moreover, the initial values of the ants position ($ \boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}$ and $R_d$) for $l=1, \ldots, N$ is selected using a random distribution. The cost is denoted in iteration i using the quality of the tracking error between the set-point, $\boldsymbol{\mathrm{x}}_{sp}$, and the quadrotor states, $\boldsymbol{x} = \begin{bmatrix}
+The parameters of the LQIR-DG controller approach, including weight coefficients ($\boldsymbol{\mathrm{Q}}_i$ for $i=$ roll, pitch, yaw, $R_d$, and $R$) are tuned using a heuristic optimization algorithm including the Tabu Continuous Ant Colony System (TCACS) \cite{article_TCACS} approach. In this method, ants utilize the concepts of promising lists and tabu balls to move toward the goal of ants gradually. The pseudocode of TCACS is shown in Figure \ref{fig:TCACS_code}. For this purpose, ants find promising areas to contain the global minimum and perform searching within tabu balls of the bad regions. TCACS parameters are shown in Table \ref{tab:TCAC_par}. Here, it is assumed that the value of $R$ is identical for all attitude channels and considered with the value of 1. Moreover, the initial values of the ants position ($ \boldsymbol{\mathrm{Q}}_{\text{roll}}, \boldsymbol{\mathrm{Q}}_{\text{pitch}}, \boldsymbol{{Q}}_{\text{yaw}}$ and $R_d$) for $l=1, \ldots, N$ is selected using a random distribution. The cost is denoted in iteration i using the quality of the tracking error between the set-point, $\boldsymbol{\mathrm{x}}_{sp}$, and the quadrotor states, $\boldsymbol{x} = \begin{bmatrix}
     \boldsymbol{x}_{\text{roll}} & \boldsymbol{x}_{\text{pitch}} & \boldsymbol{x}_{\text{yaw}}
 \end{bmatrix}^{\mathrm{T}}$ as
 
@@ -1277,7 +1276,7 @@ The PID controller parameters are presented in Table~\ref{tab:PID_parameters}.
 \subsubsection{Investigating of the Regulation and Tracking Problems}\label{sec:regulation}
 \noindent The results of the proposed approach are presented for tracking the desired roll and pitch angles in Figures~\ref{fig:result} and~\ref{fig:omega}.
  %%%? so many of
-Figure~\ref{fig:result}~\ref{sub@fig:regulation} compares the desired and output signals, i.e., the Euler angles during the regulation problem. Moreover, Figure~\ref{fig:result}~\ref{sub@fig:square} compares the desired square wave signals with a frequency of 0.02 Hz and an amplitude of 20 degrees with the output signals, when the quadrotor platform freely rotates around roll and pitch simultaneity.
+Figure~\ref{fig:result}~\ref{sub@fig:regulation} compares the desired and output signals, i.e., the Euler angles during the regulation problem. Moreover, Figure~\ref{fig:result}~\ref{sub@fig:square} compares the desired square wave signals with a frequency of 0.02 Hz and an amplitude of 20 degrees with the output signals, when the quadrotor platform freely rotates around roll and pitch, simultaneity.
 Figures~\ref{fig:omega}~\ref{sub@fig:omega_regulation} and~\ref{sub@fig:omega_square} show the rotational velocity commands of the quadrotor in the regulation and tracking problems, respectively. These results demonstrate that the roll and pitch angles are accurately controlled by the proposed approach.
 
 
@@ -1371,7 +1370,7 @@ The implementation results show that the platform outputs converge to the desire
 \noindent Figure~\ref{fig:compare} compares the LQIR-DG controller performance with the PID controller and variant of the LQR strategies such as the LQR and LQIR. 
 Moreover, the box plot of all controllers is plotted in Figure~\ref{fig:compare_boxplot} for the cost function, introduced in equation \eqref{eq:min_max_cost_function}. %%%? two controller side by side
 The median of Root Mean Square Error (RMSE) is shown in the crossline in the box plot.
-Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) \cite{CHENG2023} and Disturbance Observer-Based Control (DOBC) \cite{AGHAYAN202320} are compared in Figure \ref{fig:compare_boxplot_ADR}, when the input disturbances occur according to equation \eqref{eq:disturbance}. For the cost function, denoted in equation \eqref{eq:min_max_cost_function}, the box plot of these robust controllers is illustrated in Figure ?. 
+Moreover, the LQIR-DG controller performance with famous disturbance rejection methods, such as Active Disturbance Rejection Control (ADRC) \cite{CHENG2023} and Disturbance Observer-Based Control (DOBC) \cite{AGHAYAN202320} are compared in Figure \ref{fig:compare_boxplot_ADR}, when the input disturbances occur according to equation \eqref{eq:disturbance}. For the cost function, denoted in equation \eqref{eq:min_max_cost_function}, the box plot of these robust controllers is illustrated in Figure \ref{fig:compare_boxplot_ADR}. 
 These results indicate that the proposed controller is able to provide rapid convergence, excellent transient, and robustness to disturbances relative to other controllers for attitude control of the experimental platform.
 
 \begin{figure}[H]
@@ -1403,6 +1402,7 @@ These results indicate that the proposed controller is able to provide rapid con
 \end{figure}
 
 \begin{figure}[H]
+    \label{fig:compare_boxplot_ADR}
     \centering
     {\includegraphics[width=.55\linewidth]{../Figure/implementation/box_plot/lqidgvsboxplot_ADR}
     }
@@ -1421,8 +1421,9 @@ Then, the model parameters were identified using the NSL method.
 For evaluation of the proposed method, the regulation and tracking proposed were successfully performed.
 Moreover, the ability of the proposed method was investigated in the rejection of the input disturbance and modeling error in the experimental platform.
 Finally, a comparison
-was also performed between the results of classical PID, LQR, and LQIR with the proposed method.
-The implementation results illustrated the excellent performance of the LQIR controller based on the game theory approach in attitude control for the quadrotor platform. However, one challenge in applying this method to the 3-DOF quadrotor experimental setup is the presence of noise and errors of the AHRS sensor. It must be calibrated before a run of the algorithm. One another challenge is in implementing the controller. This controller requires a desired trajectory. It must program on the Arduino Mega2560 board using the embedded coder before a run of the algorithm.
+was also performed between the results of classical PID variations of LQR and the robust structures with the proposed method.
+The implementation results illustrated the excellent performance of the LQIR controller based on the game theory approach in attitude control for the quadrotor platform.
+However, one challenge in applying this method to the 3-DOF quadrotor experimental setup was the presence of noise and errors of the AHRS sensor. It was calibrated before a run of the algorithm. One another challenge was in implementing the controller. Since, this controller required a desired trajectory, it was programmed on the Arduino Mega2560 board using the embedded coder before a run of the algorithm.
 
 
 % \section{The Non-cooperative Game}
@@ -1608,7 +1609,7 @@ The implementation results illustrated the excellent performance of the LQIR con
 %% bib items, please use
 %%
 % \vspace{-0.3cm}
- \bibliographystyle{elsarticle-harv} 
+\bibliographystyle{elsarticle-num} 
  \bibliography{refs}
 
  % appendix: linearization
@@ -1632,9 +1633,12 @@ To linearize the nonlinear model of the quadrotor around the equilibrium points 
 
 \begin{align}
     \mathbf{A} =& \left.\dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}\right|_{\boldsymbol{{\mathrm{x}}}^*= \boldsymbol{{\mathrm{u}}}^*=\boldsymbol{0}} = \begin{bmatrix}
-        \dfrac{f_1}{x_1} & \dots & \dfrac{f_1}{x_6} \\
-        \vdots & \ddots & \vdots \\
-        \dfrac{f_6}{x_1} & \dots & \dfrac{f_6}{x_6}
+        \dfrac{\partial f_1}{\partial x_1} & \dots && \dots & &\dfrac{\partial f_1}{\partial x_6} \\
+        \vdots & \ddots &&  & &\vdots \\
+        & & \ddots & & & \\
+        \dfrac{\partial f_4}{\partial x_1} & \dots && \dfrac{\partial f_4}{\partial x_4} &\dots &\dfrac{\partial f_4}{\partial x_6} \\
+        \vdots &  &&  & \ddots &\vdots \\[1em]
+        \dfrac{\partial f_6}{\partial x_1} & \dots && \dots & &\dfrac{\partial f_6}{\partial x_6}
     \end{bmatrix} \\ =&\begin{bmatrix}
         \Gamma_1 x_3 & 0 & -\Gamma_2 x_5  & 0 &  - \Gamma_2 x_3 & 0 \\
         1 & a_{21} & \sin(x_2)\tan(x4) & a_{24} & \cos(x_2)\tan(x4) & 0 \\
@@ -1734,7 +1738,7 @@ $$
         0 & 0 & 0
     \end{bmatrix}
 \end{equation}
-Finally, the linearized matrices defined at the equilibrium points are given as:
+Finally, the linearized matrices, defined at the equilibrium points, are given as:
 % \begin{equation}
 %     \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{u}) = \begin{cases}
 %         \dot{x}_1 &= \Gamma_1 x_1 x_3 - \Gamma_2 x_3 x_5 + \Gamma_3 (\Omega_{c, 2}^2 - \Omega_{c, 4}^2)  \\
@@ -1803,12 +1807,12 @@ Finally, the linearized matrices defined at the equilibrium points are given as:
 
 
 \section{Proof of the LQIR-DG controller}
-Since, the first player determines the control commands, while the second player generates the worst possible disturbance, a performance index of the differential game \cite{book_gth}, described by equation \eqref{eq:min_max_cost_function}, rearranges as
+Since, the first player determines the control commands and second player generates the worst possible disturbance, a performance index of the differential game \cite{book_gth}, described by equation \eqref{eq:min_max_cost_function}, is rearranged as
 \begin{equation}
     \max_{d_i}\min{u_i} J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i) = \min_{d_i}\left(-J(\mathbf{x}_{_i}, d_i, u_i)\right)\min_{u_i}J(\mathbf{x}_{\mathrm{a}_i}, d_i, u_i)
 \end{equation}
-and subject to the augmented system, denoted in equation \eqref{systemlqidg}. To find the optimal control policy function, $u_i$, it is assumed that the solution for the above optimization problem is unique and $d_i = \mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_1}$.
-Moreover, Pontryagin's maximum principle \cite{kirk2004optimal} is utilized to minimize the following Hamiltonian related to the first player
+that are subjected to the augmented system, denoted in equation \eqref{systemlqidg}. To find the optimal control policy function, $u_i$, it is assumed that the solution for the above optimization problem is unique and $d_i = \mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_1}$.
+Moreover, Pontryagin's maximum principle~\cite{kirk2004optimal} is utilized to minimize the following Hamiltonian related to the first player
 \begin{equation}
     \mathcal{H}_1 = \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{Q} \mathbf{x}_{\mathrm{a}_i} + \dfrac{1}{2}\mathbf{u}_i^\mathrm{T} R \mathbf{u}_i - \dfrac{1}{2}\mathbf{x}_{\mathrm{a}_i}^\mathrm{T} \mathbf{K}_{d_i} R_{d} \mathbf{K}_{d_i}  \mathbf{x}_{\mathrm{a}_i} + \lambda_1^\mathrm{T}(\mathbf{A}\mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}\mathbf{x}_{\mathrm{a}_i}) \end{equation}
     where $\lambda_1$ is the Lagrangian variable related to the first player. Hence, the first-order necessary conditions for a minimize of this Hamiltonian are given by
@@ -1824,8 +1828,7 @@ Moreover, Pontryagin's maximum principle \cite{kirk2004optimal} is utilized to m
 \begin{equation}\label{eq:Hamiltonian_x}
     \dot{\mathbf{x}}_{\mathrm{a}_i}  = \dfrac{\partial \mathcal{H}_1}{\partial \lambda_1} = \mathbf{A}_{\mathrm{a}_i} \mathbf{x}_{\mathrm{a}_i}  + \mathbf{B}_{\mathrm{a}_i} \mathbf{u}_i + \mathbf{B}_{\mathrm{a}_i} \mathbf{K}_{d_i} \mathbf{x}_{\mathrm{a}_i} 
 \end{equation}
-By assuming $\lambda_1 = \mathbf{P}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}$, 
- and $\dot{\mathbf{P}}_{\mathrm{a}_i} = 0$, and combining equations \eqref{eq:Hamiltonian_u}, \eqref{eq:Hamiltonian_lambda} and \eqref{eq:Hamiltonian_x}, the Riccati equation for first player is obtained as follows:
+By assuming $\lambda_1 = \mathbf{P}_{\mathrm{a}_i}\mathbf{x}_{\mathrm{a}_i}$,  $\dot{\mathbf{P}}_{\mathrm{a}_i} = 0$, and combining above equations, the Riccati equation for first player is obtained as follows:
 \begin{equation}\label{eq:riccatti}
     -( \mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i})^\mathrm{T} \mathbf{P}_{\mathrm{a}_i} - \mathbf{P}_{\mathrm{a}_i} (\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{d_i}) + \mathbf{P}_{\mathrm{a}_i} \mathbf{B}_{\mathrm{a}_i} \mathbf{R}^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T} \mathbf{P}_{\mathrm{a}_i} - \mathbf{Q}_{\mathrm{a}_i}  + \mathbf{K}_{d_i}^\mathrm{T} R_{d} \mathbf{K}_{d_i} = 0 
 \end{equation}
@@ -1850,8 +1853,7 @@ Here $\lambda_2$ is the Lagrangian variable related to the second player. Theref
 \begin{equation}\label{eq:Hamiltonian_x_d}
     \dot{\mathbf{x}}_{\mathrm{a}_i}  = \dfrac{\partial \mathcal{H}_2}{\partial \lambda_2} = \mathbf{A}_{\mathrm{a}_i} \mathbf{x}_{\mathrm{a}_i}  +  \mathbf{B}_{\mathrm{a}_i} \mathbf{K}_{d_i} \mathbf{x}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i} \mathbf{d}_i 
 \end{equation}
-By assuming $\lambda_2 = \mathbf{P}_{\mathrm{a}_{d_i}}\mathbf{x}_{\mathrm{a}_i}$, 
- and $\dot{\mathbf{P}}_{\mathrm{a}_{d_i}} = 0$, and combining equations \eqref{eq:Hamiltonian_d}, \eqref{eq:Hamiltonian_lambda_d} and \eqref{eq:Hamiltonian_x_d}, the Riccati equation for first player is obtained as follows:
+By assuming $\lambda_2 = \mathbf{P}_{\mathrm{a}_{d_i}}\mathbf{x}_{\mathrm{a}_i}$, $\dot{\mathbf{P}}_{\mathrm{a}_{d_i}} = 0$, and combining equations \eqref{eq:Hamiltonian_d}, \eqref{eq:Hamiltonian_lambda_d} and \eqref{eq:Hamiltonian_x_d}, the Riccati equation for first player is obtained as follows:
  \begin{equation}\label{eq:riccatti_d}
     -( \mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{\mathrm{a}_i})^\mathrm{T} \mathbf{P}_{\mathrm{a}_{d_i}} - \mathbf{P}_{\mathrm{a}_{d_i}} (\mathbf{A}_{\mathrm{a}_i} + \mathbf{B}_{\mathrm{a}_i}\mathbf{K}_{\mathrm{a}_i}) + \mathbf{P}_{\mathrm{a}_{d_i}} \mathbf{B}_{\mathrm{a}_i} \mathbf{R}_d^{-1} \mathbf{B}_{\mathrm{a}_i}^\mathrm{T} \mathbf{P}_{\mathrm{a}_{d_i}} + \mathbf{Q}_{\mathrm{a}_i}  + \mathbf{K}_{\mathrm{a}_i}^\mathrm{T} R \mathbf{K}_{\mathrm{a}_i} = 0
  \end{equation}
